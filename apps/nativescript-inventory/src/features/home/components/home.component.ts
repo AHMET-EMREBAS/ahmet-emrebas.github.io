@@ -7,7 +7,7 @@ import { setStatusBarColor } from '../../../utils';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  title = 'Home Component v2';
+  title = 'Home Component v1';
 
   ngOnInit() {
     setStatusBarColor('dark', '#97d9e9');
