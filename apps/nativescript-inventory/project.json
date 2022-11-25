@@ -1,0 +1,71 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "nativescript-inventory",
+  "sourceRoot": "apps/nativescript-inventory/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "builder": "@nativescript/nx:build",
+      "options": {
+        "noHmr": true,
+        "production": true,
+        "uglify": true,
+        "release": true,
+        "forDevice": true
+      },
+      "configurations": {
+        "prod": {
+          "fileReplacements": [
+            {
+              "replace": "./src/environments/environment.ts",
+              "with": "./src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "ios": {
+      "builder": "@nativescript/nx:build",
+      "options": {
+        "platform": "ios"
+      },
+      "configurations": {
+        "build": {
+          "copyTo": "./dist/build.ipa"
+        },
+        "prod": {
+          "combineWithConfig": "build:prod"
+        }
+      }
+    },
+    "android": {
+      "builder": "@nativescript/nx:build",
+      "options": {
+        "platform": "android"
+      },
+      "configurations": {
+        "build": {
+          "copyTo": "./dist/build.apk"
+        },
+        "prod": {
+          "combineWithConfig": "build:prod"
+        }
+      }
+    },
+    "clean": {
+      "builder": "@nativescript/nx:build",
+      "options": {
+        "clean": true
+      }
+    },
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/nativescript-inventory/**/*.ts",
+          "apps/nativescript-inventory/src/**/*.html"
+        ]
+      }
+    }
+  }
+}

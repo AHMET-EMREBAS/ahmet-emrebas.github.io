@@ -7,7 +7,8 @@
     "inventory-desktop": "apps/inventory-desktop",
     "inventory-e2e": "apps/inventory-e2e",
     "material": "libs/material",
-    "server": "apps/server"
+    "server": "apps/server",
+    "nativescript-inventory": "apps/nativescript-inventory/"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
