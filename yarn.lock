@@ -1971,7 +1971,7 @@
     "@nativescript/types-android" "~8.3.0"
     "@nativescript/types-ios" "~8.3.0"
 
-"@nativescript/webpack@~5.0.0":
+"@nativescript/webpack@^5.0.11":
   version "5.0.11"
   resolved "https://registry.yarnpkg.com/@nativescript/webpack/-/webpack-5.0.11.tgz#0a633c2229b00d08616afa3bb989bc0096efce1f"
   integrity sha512-O70Iyg1y3CrxZRm9RyVuGtFYzyKk+fvIRdohXT2BofGPsGMEs+a3/RWadLw14ult486YXNkHj9OsUhKfQK7hAA==
@@ -2068,15 +2068,10 @@
   dependencies:
     tslib "2.4.1"
 
-"@ngtools/webpack@15.0.1":
+"@ngtools/webpack@15.0.1", "@ngtools/webpack@^15.0.1":
   version "15.0.1"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-15.0.1.tgz#4b9d4ed967c2a3c851aea0a0bb383aeabb665d95"
   integrity sha512-HIAWWJvmhktcyoBQwP1MnKyuC4bcs85z2pLGyPtud69N0kCQU4lq0FuGeatiSXMs4dzpz9wRx4NuAxvL0exGrQ==
-
-"@ngtools/webpack@^14.0.0":
-  version "14.2.10"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-14.2.10.tgz#d33ff1147d01bd1f5d936a3d1744c81a28e2ca6a"
-  integrity sha512-sLHapZLVub6mEz5b19tf1VfIV1w3tYfg7FNPLeni79aldxu1FbP1v2WmiFAnMzrswqyK0bhTtxrl+Z/CLKqyoQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
