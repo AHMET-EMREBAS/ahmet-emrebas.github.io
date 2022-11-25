@@ -12,3 +12,5 @@
 - Run the Device, then run `nx run app-name:android`
 - Set the android:exported="true" in Androidmanifest
 - Do not forget to install node dependencies
+
+- Set paths for tools `C:\Users\aecst\AppData\Local\Android\Sdk\tools\bin`
