@@ -4,9 +4,10 @@ import { setStatusBarColor } from '../../../utils';
 @Component({
   moduleId: module.id,
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent {
+  title = 'Home Component';
 
   ngOnInit() {
     setStatusBarColor('dark', '#97d9e9');
