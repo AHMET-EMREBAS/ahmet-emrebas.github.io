@@ -1,5 +1,5 @@
 {
-  "root": "apps/inventory-desktop",
+  "name": "inventory-desktop",
   "sourceRoot": "apps/inventory-desktop/src",
   "projectType": "application",
   "targets": {

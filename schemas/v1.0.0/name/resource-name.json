@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "ResourceNames",
+  "title": "Resource names",
+  "description": "Available resource names",
+  "type": "string",
+
+  "enum": [
+    "product",
+    "category",
+    "department",
+    "price",
+    "quantity",
+    "pricelevel",
+
+    "tag",
+
+    "message",
+
+    "promotion",
+    "store",
+
+    "order",
+    "transaction",
+    "clockin",
+
+    "contact",
+    "profile",
+    "email",
+    "phone",
+    "organization",
+
+    "skill",
+    "accomplishment",
+
+    "resource",
+    "user",
+    "customer",
+    "balance",
+    "permission",
+    "cart",
+    "education",
+    "city",
+    "state",
+    "zip",
+
+    "like",
+    "review",
+    "comment",
+
+    "task"
+  ]
+}

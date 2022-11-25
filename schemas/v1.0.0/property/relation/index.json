@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "RelationProperty",
+  "title": "Relation Property",
+  "properties": {
+    "type": {
+      "enum": ["many-to-many", "many-to-one", "one-to-one", "one-to-many"],
+      "default": "many-to-one"
+    },
+    "target": {
+      "$ref": "../../name/resource-name.json"
+    },
+    "onDelete": {
+      "enum": ["RESTRICT", "CASCADE", "SET NULL", "DEFAULT", "NO ACTION"],
+      "description": "Define how the parent deletion event affect the relation?"
+    },
+    "onUpdate": {
+      "enum": ["RESTRICT", "CASCADE", "SET NULL", "DEFAULT", "NO ACTION"],
+      "description": "Define how the parent update event affect the relation?"
+    },
+    "cascade": {
+      "type": "array",
+      "items": {
+        "enum": ["insert", "update", "remove", "soft-remove", "recover"]
+      },
+      "description": "Define how the relation object manipulates its relationship."
+    },
+    "from": {
+      "enum": ["request", "param"]
+    }
+  },
+  "required": ["type", "target"],
+  "additionalProperties": false
+}

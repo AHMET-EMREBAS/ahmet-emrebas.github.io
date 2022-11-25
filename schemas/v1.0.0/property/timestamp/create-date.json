@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "CreateDateProperty",
+  "title": "Create Date Property",
+  "description": "Timestamp of creation",
+  "properties": {
+    "type": {
+      "const": "createdAt"
+    }
+  },
+  "required": ["type"]
+}

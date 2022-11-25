@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "NotAllowedProperty",
+  "title": "Not Allowed Property",
+
+  "properties": {
+    "prefix": {
+      "not": true,
+      "default": "Not allowed here!"
+    },
+    "suffix": {
+      "not": true,
+      "default": "Not allowed here!"
+    },
+    "min": {
+      "not": true,
+      "default": "Not allowed here!"
+    },
+    "max": {
+      "not": true,
+      "default": "Not allowed here!"
+    },
+    "minLength": {
+      "not": true,
+      "default": "Not allowed here!"
+    },
+    "maxLength": {
+      "not": true,
+      "default": "Not allowed here!"
+    }
+  }
+}

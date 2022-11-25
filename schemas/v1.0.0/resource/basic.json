@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Basic Resource",
+  "properties": {
+    "type": {
+      "const": "basic-resource"
+    },
+    "properties": {
+      "$ref": "./properties.json"
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unique": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["type"],
+  "additionalProperties": false
+}

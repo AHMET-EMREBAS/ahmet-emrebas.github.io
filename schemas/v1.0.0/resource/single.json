@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Single Resource",
+  "$id": "SingleResource",
+  "description": "A single resouce is one who has only one string property with the same name as its resouce. For example, category, department, price level, is single resource.",
+  "properties": {
+    "singleResource": { "type": "boolean", "const": true }
+  },
+  "required": ["singleResource"],
+  "additionalProperties": false
+}

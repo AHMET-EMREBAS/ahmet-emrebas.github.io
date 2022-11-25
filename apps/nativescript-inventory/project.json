@@ -1,11 +1,10 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "nativescript-inventory",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/nativescript-inventory/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "builder": "@nativescript/nx:build",
       "executor": "@nativescript/nx:build",
       "options": {
         "noHmr": true,
@@ -26,7 +25,6 @@
       }
     },
     "ios": {
-      "builder": "@nativescript/nx:build",
       "executor": "@nativescript/nx:build",
       "options": {
         "platform": "ios"
@@ -41,7 +39,6 @@
       }
     },
     "android": {
-      "builder": "@nativescript/nx:build",
       "executor": "@nativescript/nx:build",
       "options": {
         "platform": "android"
@@ -56,14 +53,12 @@
       }
     },
     "clean": {
-      "builder": "@nativescript/nx:build",
       "executor": "@nativescript/nx:build",
       "options": {
         "clean": true
       }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [

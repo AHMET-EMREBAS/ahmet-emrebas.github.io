@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "./boolean.json"
+    },
+    {
+      "$ref": "./string.json"
+    },
+    {
+      "$ref": "./date.json"
+    },
+    {
+      "$ref": "./number.json"
+    },
+    {
+      "$ref": "./upc.json"
+    },
+    {
+      "$ref": "./email.json"
+    },
+    {
+      "$ref": "./password.json"
+    }
+  ]
+}

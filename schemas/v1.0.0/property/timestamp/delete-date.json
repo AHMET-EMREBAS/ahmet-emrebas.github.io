@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "DeleteDateProperty",
+  "title": "Delete Date Property",
+  "description": "Timestamp of creation",
+  "properties": {
+    "type": {
+      "const": "deletedAt"
+    }
+  },
+  "required": ["type"]
+}
