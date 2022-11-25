@@ -12,7 +12,8 @@
     "project-management-e2e": "apps/project-management-e2e",
     "rg": "libs/rg",
     "rg-e2e": "apps/rg-e2e",
-    "server": "apps/server"
+    "server": "apps/server",
+    "nativescript-mobile": "apps/nativescript-mobile/"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
