@@ -7,10 +7,10 @@
     "postinstall": "node ./tools/postinstall.js"
   },
   "dependencies": {
-    "@nativescript/core": "*"
+    "@nativescript/core": "^8.3.6"
   },
   "devDependencies": {
-    "@nativescript/android": "~8.3.0",
-    "@nativescript/ios": "~8.3.0"
+    "@nativescript/android": "^8.3.1",
+    "@nativescript/ios": "^8.3.3"
   }
 }

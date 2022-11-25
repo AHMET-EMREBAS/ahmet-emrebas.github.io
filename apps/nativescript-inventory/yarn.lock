@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@nativescript/android@~8.3.0":
+"@nativescript/android@^8.3.1":
   version "8.3.1"
   resolved "https://registry.yarnpkg.com/@nativescript/android/-/android-8.3.1.tgz#107f8eb567cd7caf64b76d5c1510cd29998204f3"
   integrity sha512-Q82ZuACx4DapjKsvqlGVEhcIAJR111ppMRL+Dnw2Jkt1YeE5CFQUZGq1mE72BfzrqrV6RrkgHtwS4EF511JxbQ==
 
-"@nativescript/core@*":
+"@nativescript/core@^8.3.6":
   version "8.3.6"
   resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-8.3.6.tgz#7b68498a3beea3d35f448c25b37aab60e4064371"
   integrity sha512-rl/BRdmK9tBoNcyCoNFbvRH8koLuRsRYOcqrN12t6FlETx1Gyk3upKO8vBkXze93kOeMOcguRbYEr1i4v3BW9g==
@@ -26,7 +26,7 @@
     glob "^7.1.0"
     mkdirp "^1.0.4"
 
-"@nativescript/ios@~8.3.0":
+"@nativescript/ios@^8.3.3":
   version "8.3.3"
   resolved "https://registry.yarnpkg.com/@nativescript/ios/-/ios-8.3.3.tgz#d07e1b03574bd4de8d2ea671932832577f801b02"
   integrity sha512-5Ac3WGQWKkt2Crw6XeqhLctQs0I2xhvO7+2diq/fyGdcLmdUxl/lerBJRY478S0THNufvnq8HCUIXm90UlpXfg==
