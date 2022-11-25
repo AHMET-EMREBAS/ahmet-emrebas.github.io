@@ -1,5 +1,13 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "common": "libs/common",
+    "core": "libs/core",
+    "inventory": "apps/inventory",
+    "inventory-desktop": "apps/inventory-desktop",
+    "inventory-e2e": "apps/inventory-e2e",
+    "material": "libs/material",
+    "server": "apps/server"
+  },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

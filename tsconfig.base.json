@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ae/common": ["libs/common/src/index.ts"],
+      "@ae/core": ["libs/core/src/index.ts"],
+      "@ae/material": ["libs/material/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
