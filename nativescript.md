@@ -14,3 +14,9 @@
 - Do not forget to install node dependencies
 
 - Set paths for tools `C:\Users\aecst\AppData\Local\Android\Sdk\tools\bin`
+
+### Important
+
+- Angular builder package must be compatible with the current angular version
+- Use the angular-builder 14 in nativescript
+- You do not have to change the angular-builder version for entire project. Just change it in the nativescript package.json file.

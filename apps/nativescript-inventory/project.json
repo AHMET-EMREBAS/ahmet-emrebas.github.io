@@ -5,7 +5,6 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "builder": "@nativescript/nx:build",
       "executor": "@nativescript/nx:build",
       "options": {
         "noHmr": true,
@@ -27,7 +26,6 @@
     },
     "ios": {
       "executor": "@nativescript/nx:build",
-      "builder": "@nativescript/nx:build",
       "options": {
         "platform": "ios"
       },
@@ -42,7 +40,6 @@
     },
     "android": {
       "executor": "@nativescript/nx:build",
-      "builder": "@nativescript/nx:build",
       "options": {
         "platform": "android"
       },
@@ -57,14 +54,12 @@
     },
     "clean": {
       "executor": "@nativescript/nx:build",
-      "builder": "@nativescript/nx:build",
       "options": {
         "clean": true
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "builder": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/nativescript-inventory/**/*.ts",
