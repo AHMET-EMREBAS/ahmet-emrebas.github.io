@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../../node_modules/nx-electron/src/validation/maker.schema.json",
-  "icon": "dist/apps/desktop/assets/logo.png",
+  "icon": "dist/apps/inventory-desktop/assets/logo.png",
   "appId": "com.ae.inventory",
   "npmRebuild": false,
   "buildDependenciesFromSource": false,
