@@ -1,1 +1,7 @@
-{}
+{
+  "yaml.schemas": {
+    "schemas/v1.0.0/resource.json": ["projects/**/*.yaml", "projects/*.yaml"]
+  },
+  "angular.enable-strict-mode-prompt": false,
+  "eslint.validate": ["json"]
+}

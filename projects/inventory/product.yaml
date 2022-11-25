@@ -1,0 +1,26 @@
+type: basic-resource
+mainProperty: name
+properties:
+  name:
+    type: string
+
+  description:
+    type: string
+
+  category:
+    type: many-to-one
+    target: category
+
+required:
+  - name
+
+unique:
+  - name
+
+group:
+  primary:
+    - name
+    - description
+
+  meta:
+    - category

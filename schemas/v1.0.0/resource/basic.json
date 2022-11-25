@@ -10,17 +10,34 @@
     },
     "required": {
       "type": "array",
+      "description": "List of required items",
       "items": {
         "type": "string"
       }
     },
     "unique": {
       "type": "array",
+      "description": "List of unique items",
       "items": {
         "type": "string"
       }
+    },
+    "group": {
+      "type": "object",
+      "description": "Group input items. Each group will be shown in the same form.",
+      "patternProperties": {
+        "^[a-z]{1}[a-zA-Z]{1,}$": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "mainProperty": {
+      "type": "string",
+      "description": "The readable and desdriptive property of the entity to represent the entity as text.",
+      "default": "name"
     }
   },
-  "required": ["type"],
+  "required": ["type", "mainProperty"],
   "additionalProperties": false
 }

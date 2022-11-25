@@ -10,6 +10,8 @@
     "nativescript-inventory": "apps/nativescript-inventory",
     "project-management": "apps/project-management",
     "project-management-e2e": "apps/project-management-e2e",
+    "rg": "libs/rg",
+    "rg-e2e": "apps/rg-e2e",
     "server": "apps/server"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
