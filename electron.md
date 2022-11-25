@@ -1,0 +1,3 @@
+- Set the base.href './'
+- To build `nx build app-name`
+- To mame `nx run app-name:make`
