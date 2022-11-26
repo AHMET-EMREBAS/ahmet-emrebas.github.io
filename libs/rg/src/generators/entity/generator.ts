@@ -52,7 +52,6 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
     });
 
     // generate controller
-
     generateFiles(tree, CONTROLLER_SOURCE, CONTROLLER_TARGET, {
       ...RESOURCE_NAMES,
       temp: '',
@@ -79,9 +78,20 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
       relations,
       temp: '',
     });
+
+    // generate controller
+    generateFiles(tree, CONTROLLER_SOURCE, CONTROLLER_TARGET, {
+      ...RESOURCE_NAMES,
+      ...getHelpers(SSOT_OBJECT),
+      properties,
+      relations,
+      temp: '',
+    });
   }
 
-  // generate interface
+  // update index.ts and format code
 
   await formatAndIndex(tree, MODELS_DIR);
+  await formatAndIndex(tree, INTERFACE_DIR);
+  await formatAndIndex(tree, REST_DIR);
 }

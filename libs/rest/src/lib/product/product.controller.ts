@@ -1,16 +1,24 @@
+import { ICategory, IProduct } from '@ae/common';
+import { Product } from '@ae/models';
 import { Controller, Get, Inject, Post } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+const RESOURCE_PATH = 'product';
 
 @Controller()
 export class ProductController {
-  constructor() {}
+  constructor(
+    @InjectRepository(Product) private readonly repo: Repository<Product>
+  ) {}
 
-  @Get('product')
-  readProduct() {
-    return [];
+  @Get(RESOURCE_PATH)
+  readProduct(): Promise<IProduct<ICategory, any, any>> {
+    return [{ id: 1 }, { id: 2 }];
   }
 
-  @Post('product')
+  @Post(RESOURCE_PATH)
   createProduct() {
-    return {};
+    return { id: 1 };
   }
 }
