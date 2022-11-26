@@ -24,7 +24,7 @@ export class <%- className %> extends BaseEntity{
         %>
 
         <% if(value.type ==='string') { %>
-          @Column({type:'string',  })
+          @Column({ type:'text',  })
           <%- ____columnPropertyName %>:string;
         <% } %>
 

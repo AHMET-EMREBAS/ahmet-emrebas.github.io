@@ -1,8 +1,8 @@
-import { ICategory, IProduct } from '@ae/common';
-import { Product } from '@ae/models';
-import { Controller, Get, Inject, Post } from '@nestjs/common';
+import { Controller, Get, Inject, Post, Body } from '@nestjs/common';
+
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Product } from '@ae/models';
 
 const RESOURCE_PATH = 'product';
 
@@ -13,12 +13,12 @@ export class ProductController {
   ) {}
 
   @Get(RESOURCE_PATH)
-  readProduct(): Promise<IProduct<ICategory, any, any>> {
-    return [{ id: 1 }, { id: 2 }];
+  readProduct() {
+    return this.repo.find();
   }
 
   @Post(RESOURCE_PATH)
-  createProduct() {
-    return { id: 1 };
+  createProduct(@Body() body: any) {
+    return this.repo.save(body);
   }
 }

@@ -1,16 +1,14 @@
-<%
-let ___readInterface= 'I<%- className %>';
 
-%>
+
 
 import { Controller, Get, Inject, Post, Body } from '@nestjs/common';
-import { <%- ___readInterface %> } from '@ae/common';
 
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { <%- className %>} from '@ae/models';
+
 
 const RESOURCE_PATH = '<%- fileName %>';
-const d:Partial<<%- ___readInterface %>> = {id:1};
 
 @Controller()
 export class <%- className %>Controller {
