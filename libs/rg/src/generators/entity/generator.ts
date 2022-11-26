@@ -26,13 +26,17 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
   const RESOURCE_TYPE = SSOT_OBJECT.type;
 
   const MODELS_DIR = join('libs', 'models', 'src', 'lib');
+  const REST_DIR = join('libs', 'rest', 'src', 'lib');
   const INTERFACE_DIR = join('libs', 'common', 'src', 'lib', 'interface');
+
+  const ENTITY_SOURCE = join(__dirname, RESOURCE_TYPE);
+  const ENTITY_TARGET = join(MODELS_DIR, RESOURCE_NAMES.fileName);
 
   const INTERFACE_SOURCE = join(__dirname, RESOURCE_TYPE + '-interface');
   const INTERFACE_TARGET = join(INTERFACE_DIR, RESOURCE_NAMES.fileName);
 
-  const ENTITY_SOURCE = join(__dirname, RESOURCE_TYPE);
-  const ENTITY_TARGET = join(MODELS_DIR, RESOURCE_NAMES.fileName);
+  const CONTROLLER_SOURCE = join(__dirname, RESOURCE_TYPE + '-controller');
+  const CONTROLLER_TARGET = join(REST_DIR, RESOURCE_NAMES.fileName);
 
   if (SSOT_OBJECT.type === 'single-resource') {
     // generate entity
@@ -43,6 +47,13 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
 
     // genereate interface
     generateFiles(tree, INTERFACE_SOURCE, INTERFACE_TARGET, {
+      ...RESOURCE_NAMES,
+      temp: '',
+    });
+
+    // generate controller
+
+    generateFiles(tree, CONTROLLER_SOURCE, CONTROLLER_TARGET, {
       ...RESOURCE_NAMES,
       temp: '',
     });

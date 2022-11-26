@@ -1,0 +1,18 @@
+import { Controller, Get, Inject, Post } from '@nestjs/common';
+
+const RESOURCE_PATH = <%- fileName %>;
+
+@Controller()
+export class <%- className %>Controller {
+  constructor() {}
+
+  @Get(RESOURCE_PATH)
+  readProduct() {
+    return [{id:1}, {id:2}];
+  }
+
+  @Post(RESOURCE_PATH)
+  createProduct() {
+    return {id:1};
+  }
+}
