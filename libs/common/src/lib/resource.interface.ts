@@ -9,3 +9,5 @@ export interface IBasicResource {
   group?: Record<string, string[]>;
   mainProperty: string;
 }
+
+export type IResource = ISingleResource | IBasicResource;
