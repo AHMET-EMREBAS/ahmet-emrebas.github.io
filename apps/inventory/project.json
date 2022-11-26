@@ -5,8 +5,11 @@
   "sourceRoot": "apps/inventory/src",
   "prefix": "ae",
   "i18n": {
-    "sourceLocale": "en",
     "locales": {
+      "en": {
+        "baseHref": "",
+        "translation": "apps/inventory/src/locales/messages.en.xlf"
+      },
       "tr": {
         "baseHref": "",
         "translation": "apps/inventory/src/locales/messages.tr.xlf"
@@ -65,7 +68,25 @@
             }
           ],
           "outputHashing": "all",
-          "localize": false
+          "localize": true,
+          "baseHref": "./"
+        },
+        "electron": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "localize": true,
+          "baseHref": "./"
         },
         "development": {
           "buildOptimizer": false,

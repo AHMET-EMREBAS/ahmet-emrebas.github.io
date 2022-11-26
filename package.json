@@ -1,6 +1,19 @@
 {
   "name": "ae",
   "version": "0.0.0",
+  "description": "Built by Ahmet Emrebas",
+  "contributors": [
+    {
+      "email": "aemrebas.dev@gmail.com",
+      "name": "Ahmet Emrebas",
+      "url": "https://github.com/ahmet-emrebas"
+    }
+  ],
+  "author": {
+    "email": "aemrebas.dev@gmail.com",
+    "name": "Ahmet Emrebas",
+    "url": "https://ahmet-emrebas.github.io"
+  },
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
