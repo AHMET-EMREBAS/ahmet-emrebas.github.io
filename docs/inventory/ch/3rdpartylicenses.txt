@@ -4,13 +4,7 @@ MIT
 @angular/common
 MIT
 
-@angular/compiler
-MIT
-
 @angular/core
-MIT
-
-@angular/localize
 MIT
 
 @angular/platform-browser

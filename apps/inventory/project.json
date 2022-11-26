@@ -76,7 +76,9 @@
         },
         "doc": {
           "outputHashing": "all",
-          "outputPath": "docs/inventory"
+          "outputPath": "docs/inventory",
+          "baseHref": "./",
+          "localize": true
         },
         "development": {
           "buildOptimizer": false,
