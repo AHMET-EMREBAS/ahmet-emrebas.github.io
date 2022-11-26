@@ -6,8 +6,13 @@
   "prefix": "ae",
   "i18n": {
     "locales": {
-      "tr": "apps/web/src/app/locale/messages.tr.xlf",
-      "en": "apps/web/src/app/locale/messages.en.xlf"
+      "tr": "apps/inventory/src/locales/messages.tr.xlf",
+      "en": "apps/inventory/src/locales/messages.xlf",
+      "es": "apps/inventory/src/locales/messages.es.xlf",
+      "fr": "apps/inventory/src/locales/messages.fr.xlf",
+      "rs": "apps/inventory/src/locales/messages.rs.xlf",
+      "ch": "apps/inventory/src/locales/messages.ch.xlf",
+      "jp": "apps/inventory/src/locales/messages.jp.xlf"
     }
   },
   "targets": {
@@ -26,9 +31,7 @@
           "apps/inventory/src/assets"
         ],
         "styles": ["apps/inventory/src/styles.scss"],
-        "scripts": [],
-        "i18nMissingTranslation": "warning",
-        "localize": ["tr", "en"]
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -44,7 +47,8 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "localize": ["tr", "en", "es", "fr", "rs", "ch", "jp"]
         },
         "development": {
           "buildOptimizer": false,
