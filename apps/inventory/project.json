@@ -39,19 +39,28 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/inventory",
         "index": "apps/inventory/src/index.html",
         "main": "apps/inventory/src/main.ts",
-        "polyfills": ["node_modules/zone.js"],
+        "polyfills": [
+          "node_modules/zone.js"
+        ],
         "tsConfig": "apps/inventory/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/inventory/src/favicon.ico",
-          "apps/inventory/src/assets"
+          "apps/inventory/src/assets",
+          "apps/inventory/src/manifest.webmanifest"
         ],
-        "styles": ["apps/inventory/src/styles.scss"]
+        "styles": [
+          "apps/inventory/src/styles.scss"
+        ],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/inventory/ngsw-config.json"
       },
       "configurations": {
         "production": {
@@ -132,7 +141,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/inventory/jest.config.ts",
         "passWithNoTests": true

@@ -7,19 +7,25 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/project-management",
         "index": "apps/project-management/src/index.html",
         "main": "apps/project-management/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/project-management/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/project-management/src/favicon.ico",
           "apps/project-management/src/assets"
         ],
-        "styles": ["apps/project-management/src/styles.scss"],
+        "styles": [
+          "apps/project-management/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -78,7 +84,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/project-management/jest.config.ts",
         "passWithNoTests": true
