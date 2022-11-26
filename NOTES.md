@@ -50,3 +50,8 @@
 
 - Install @angular/pwa `yarn add -D @angular/pwa`
 - Add pwa `nx g @angular/pwa:ng-add --project=project-name`
+
+### Hot to plugin
+
+`nx g @nrwl/nx-plugin:plugin [pluginName]`
+`nx generate @nrwl/nx-plugin:generator [generatorName] --project=[pluginName]`
