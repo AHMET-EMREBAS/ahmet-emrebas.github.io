@@ -1,8 +1,70 @@
-import { Entity } from 'typeorm';
-import { BaseEntity } from '@ae/core
+import { Entity, Column,JoinColumn, JoinTable,
+<% for(const [key, value] of relations) { %>
+    <%- genName(value.type).className %>
+<% } %>
+} from 'typeorm';
+
+import { BaseEntity } from '@ae/core';
+
+<% for(const [key, value] of relations) { %>
+      <%
+        let __NAMES = genName(value.target)
+      %>
+      import { <%- __NAMES.className %> } from '../<%- __NAMES.fileName %>'
+<% } %>
+
 
 @Entity()
-export class <%- classname %> extends BaseEntity{
+export class <%- className %> extends BaseEntity{
 
+<% for(const [key, value] of properties) { %>
+
+        <%
+          let ____columnPropertyName =genName(key).propertyName
+        %>
+
+        <% if(value.type ==='string') { %>
+          @Column({type:'string',  })
+          <%- ____columnPropertyName %>:string;
+        <% } %>
+
+        <% if(value.type ==='number') { %>
+          @Column({ type:'numeric'  })
+          <%- ____columnPropertyName %>:number;
+        <% } %>
+
+        <% if(value.type ==='boolean') { %>
+          @Column({ type:'boolean'  })
+          <%- ____columnPropertyName %>:boolean;
+        <% } %>
+
+        <% if(value.type ==='date') { %>
+          @Column({ type:'date'  })
+          <%- ____columnPropertyName %>:Date;
+        <% } %>
+
+<% } %>
+
+<% for(const [key, value] of relations) { %>
+
+        <%
+          let ____targetClassName = genName(key).className;
+          let ____toOneRelationOptions = "{eager:true, nullable:true }";
+          let ____columnPropertyName =genName(key).propertyName
+        %>
+
+        <% if(value.type ==='many-to-one') { %>
+          @ManyToOne(()=><%- ____targetClassName %>, <%- ____toOneRelationOptions %>)
+          @JoinColumn()
+          <%- ____columnPropertyName %>: <%- ____targetClassName %>;
+        <% } %>
+
+        <% if(value.type ==='one-to-one') { %>
+          @OneToOne(()=><%- ____targetClassName %>, <%- ____toOneRelationOptions %>)
+          @JoinColumn()
+          <%- ____columnPropertyName %>: <%- ____targetClassName %>;
+        <% } %>
+
+<% } %>
 }
 

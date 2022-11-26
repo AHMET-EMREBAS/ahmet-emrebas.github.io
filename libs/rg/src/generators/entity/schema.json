@@ -7,10 +7,15 @@
   "properties": {
     "name": {
       "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
       "x-prompt": {
         "message": "Select the resource",
         "type": "list",
         "description": "List of resource names.",
+
         "items": [
           { "label": "- Product resource", "value": "product" },
           { "label": "- Category resource", "value": "category" },

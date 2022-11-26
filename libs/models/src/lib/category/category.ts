@@ -2,7 +2,7 @@ import { BaseEntity } from '@ae/core';
 import { Entity, Column } from 'typeorm';
 
 @Entity()
-export class <%- className %> extends BaseEntity{
+export class Category extends BaseEntity{
   @Column({ type:'text', unique:true })
-   <%- propertyName %>: string
+   category: string
 }

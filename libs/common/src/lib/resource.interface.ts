@@ -1,13 +1,8 @@
-export interface ISingleResource {
-  type: 'single-resource';
-}
-
-export interface IBasicResource {
-  type: 'basic-resource';
+export interface IResource {
+  type: 'basic-resource' | 'single-resource';
   required?: string[];
   unique?: string[];
   group?: Record<string, string[]>;
   mainProperty: string;
+  properties?: any;
 }
-
-export type IResource = ISingleResource | IBasicResource;

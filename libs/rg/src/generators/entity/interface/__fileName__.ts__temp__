@@ -1,0 +1,9 @@
+
+export interface I<%- className %>{
+
+<% for(const [key, value] of properties) {%>
+
+
+<%}%>
+
+}
