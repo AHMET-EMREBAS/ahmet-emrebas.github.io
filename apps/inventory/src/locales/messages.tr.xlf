@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="3902961887793684628" datatype="html">
         <source>Hello</source>
-        <target>Hola</target>
+        <target>Merhaba</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/inventory/src/app/app.component.ts</context>
           <context context-type="linenumber">3</context>
