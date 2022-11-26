@@ -4,7 +4,12 @@
   "projectType": "application",
   "sourceRoot": "apps/inventory/src",
   "prefix": "ae",
-
+  "i18n": {
+    "locales": {
+      "tr": "apps/web/src/app/locale/messages.tr.xlf",
+      "en": "apps/web/src/app/locale/messages.en.xlf"
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -21,7 +26,9 @@
           "apps/inventory/src/assets"
         ],
         "styles": ["apps/inventory/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "i18nMissingTranslation": "warning",
+        "localize": ["tr", "en"]
       },
       "configurations": {
         "production": {
