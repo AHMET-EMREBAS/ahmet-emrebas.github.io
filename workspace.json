@@ -12,7 +12,9 @@
     "project-management-e2e": "apps/project-management-e2e",
     "rg": "libs/rg",
     "rg-e2e": "apps/rg-e2e",
-    "server": "apps/server"
+    "server": "apps/server",
+    "web": "apps/web",
+    "web-e2e": "apps/web-e2e"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
