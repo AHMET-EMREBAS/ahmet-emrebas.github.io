@@ -18,7 +18,8 @@
       "@ae/common": ["libs/common/src/index.ts"],
       "@ae/core": ["libs/core/src/index.ts"],
       "@ae/material": ["libs/material/src/index.ts"],
-      "@ae/rg": ["libs/rg/src/index.ts"]
+      "@ae/models": ["libs/models/src/index.ts"],
+      "rg": ["libs/rg/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

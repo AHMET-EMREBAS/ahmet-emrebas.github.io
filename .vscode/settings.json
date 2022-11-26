@@ -1,6 +1,6 @@
 {
   "yaml.schemas": {
-    "schemas/resource/index.json": ["projects/**/*.yaml", "projects/*.yaml"]
+    "schemas/resource/index.json": ["ssot/**/*.yaml", "ssot/*.yaml"]
   },
   "angular.enable-strict-mode-prompt": false,
   "eslint.validate": ["json"]

@@ -7,6 +7,7 @@
     "inventory-desktop": "apps/inventory-desktop",
     "inventory-e2e": "apps/inventory-e2e",
     "material": "libs/material",
+    "models": "libs/models",
     "nativescript-inventory": "apps/nativescript-inventory",
     "project-management": "apps/project-management",
     "project-management-e2e": "apps/project-management-e2e",

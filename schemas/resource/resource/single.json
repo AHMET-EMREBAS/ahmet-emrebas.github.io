@@ -4,8 +4,10 @@
   "$id": "SingleResource",
   "description": "A single resouce is one who has only one string property with the same name as its resouce. For example, category, department, price level, is single resource.",
   "properties": {
-    "singleResource": { "type": "boolean", "const": true }
+    "type": {
+      "const": "single-resource"
+    }
   },
-  "required": ["singleResource"],
+  "required": ["type"],
   "additionalProperties": false
 }

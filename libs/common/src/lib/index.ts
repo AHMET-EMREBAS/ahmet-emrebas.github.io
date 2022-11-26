@@ -1,1 +1,2 @@
-export const commonName = 'common';
+export * from './resource.interface';
+export * from './interfaces';
