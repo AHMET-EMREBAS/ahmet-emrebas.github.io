@@ -1,4 +1,4 @@
-export interface IProduct<Category0, Category1, Category2> {
+export interface IProduct<Category0> {
   name: string;
 
   description: string;

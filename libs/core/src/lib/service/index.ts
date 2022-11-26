@@ -1,1 +1,2 @@
-export * from './resource.service';
+export * from './single-resource.service';
+export * from './basic-resource.service';

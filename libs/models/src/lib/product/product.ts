@@ -1,4 +1,4 @@
-import { Entity, Column, JoinColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
 
 import { BaseEntity } from '@ae/core';
 
