@@ -44,7 +44,7 @@
         "outputPath": "dist/apps/inventory",
         "index": "apps/inventory/src/index.html",
         "main": "apps/inventory/src/main.ts",
-        "polyfills": ["node_modules/zone.js"],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/inventory/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
