@@ -7,6 +7,11 @@
       "factory": "./src/generators/rg/generator",
       "schema": "./src/generators/rg/schema.json",
       "description": "rg generator"
+    },
+    "entity": {
+      "factory": "./src/generators/entity/generator",
+      "schema": "./src/generators/entity/schema.json",
+      "description": "entity generator"
     }
   }
 }
