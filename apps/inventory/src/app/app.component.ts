@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+const hello = $localize`Hello`;
+
 @Component({
   selector: 'ae-root',
   templateUrl: './app.component.html',
