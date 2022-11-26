@@ -26,12 +26,9 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
 
   const MODELS_DIR = join('libs', 'models', 'src', 'lib');
   const INTERFACE_DIR = join('libs', 'common', 'src', 'lib', 'interface');
-  const INTERFACE_SOURCE = join(__dirname, 'interface');
-  const INTERFACE_TARGET = join(
-    __dirname,
-    'interface',
-    RESOURCE_NAMES.fileName
-  );
+
+  const INTERFACE_SOURCE = join(__dirname, RESOURCE_TYPE + '-interface');
+  const INTERFACE_TARGET = join(INTERFACE_DIR, RESOURCE_NAMES.fileName);
 
   const ENTITY_SOURCE = join(__dirname, RESOURCE_TYPE);
   const ENTITY_TARGET = join(MODELS_DIR, RESOURCE_NAMES.fileName);
@@ -42,16 +39,32 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
       ...RESOURCE_NAMES,
       temp: '',
     });
+
     // genereate interface
-    generateFiles(tree, INTERFACE_SOURCE, INTERFACE_DIR, INTERFACE_TARGET);
+    generateFiles(tree, INTERFACE_SOURCE, INTERFACE_TARGET, {
+      ...RESOURCE_NAMES,
+      temp: '',
+    });
   } else {
-    const properties = Object.entries(SSOT_OBJECT.properties);
+    const allitems = Object.entries(SSOT_OBJECT.properties);
+    const properties = allitems.filter((e) => !e?.[1]?.['target']);
+    const relations = allitems.filter((e) => e?.[1]?.['target']);
+
+    // genereate entity
     generateFiles(tree, ENTITY_SOURCE, ENTITY_TARGET, {
       ...RESOURCE_NAMES,
       ...getHelpers(SSOT_OBJECT),
       properties,
-      relations: properties.filter((e) => e?.[1]?.['target']),
-      object: SSOT_OBJECT,
+      relations,
+      temp: '',
+    });
+
+    // generate interface
+    generateFiles(tree, INTERFACE_SOURCE, INTERFACE_TARGET, {
+      ...RESOURCE_NAMES,
+      ...getHelpers(SSOT_OBJECT),
+      properties,
+      relations,
       temp: '',
     });
   }

@@ -1,2 +1,2 @@
 export * from './resource.interface';
-export * from './interfaces';
+export * from './interface';
