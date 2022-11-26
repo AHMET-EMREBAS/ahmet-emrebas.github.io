@@ -37,7 +37,7 @@
       "options": {
         "name": "inventory-desktop",
         "frontendProject": "inventory",
-        "outputPath": "dist/packages",
+        "outputPath": "dist/packages/inventory-desktop",
         "prepackageOnly": true
       }
     },
@@ -46,7 +46,7 @@
       "options": {
         "name": "inventory-desktop",
         "frontendProject": "inventory",
-        "outputPath": "dist/executables"
+        "outputPath": "dist/executables/inventory-desktop"
       }
     },
     "lint": {

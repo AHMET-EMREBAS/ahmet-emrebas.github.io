@@ -5,11 +5,14 @@
   "sourceRoot": "apps/inventory/src",
   "prefix": "ae",
   "i18n": {
-    "sourceLocale": "en",
     "locales": {
       "tr": {
         "baseHref": "",
         "translation": "apps/inventory/src/locales/messages.tr.xlf"
+      },
+      "en": {
+        "baseHref": "",
+        "translation": "apps/inventory/src/locales/messages.xlf"
       },
       "es": {
         "baseHref": "",
@@ -66,7 +69,8 @@
             }
           ],
           "outputHashing": "all",
-          "localize": true
+          "localize": ["tr", "en", "es", "fr", "rs", "ch", "jp"],
+          "baseHref": "./somehref"
         },
         "development": {
           "buildOptimizer": false,

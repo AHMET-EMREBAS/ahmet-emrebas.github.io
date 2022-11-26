@@ -425,10 +425,23 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
         #middle-content {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
+        a {
+          margin: 10px;
+        }
       }
     </style>
     <div class="wrapper">
       <div class="container">
+        <div class="flex gap-2">
+          <a href="../en/index.html">en</a>
+          <a href="../tr/index.html">tr</a>
+          <a href="../jp/index.html">jp</a>
+          <a href="../es/index.html">es</a>
+          <a href="../fr/index.html">fr</a>
+          <a href="../ch/index.html">ch</a>
+          <a href="../rs/index.html">rs</a>
+        </div>
         <!--  WELCOME  -->
         <div id="welcome">
           <h1>
