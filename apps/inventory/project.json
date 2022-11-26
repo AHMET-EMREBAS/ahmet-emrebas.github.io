@@ -48,8 +48,7 @@
           "apps/inventory/src/favicon.ico",
           "apps/inventory/src/assets"
         ],
-        "styles": ["apps/inventory/src/styles.scss"],
-        "scripts": []
+        "styles": ["apps/inventory/src/styles.scss"]
       },
       "configurations": {
         "production": {
@@ -66,7 +65,7 @@
             }
           ],
           "outputHashing": "all",
-          "localize": true
+          "localize": false
         },
         "development": {
           "buildOptimizer": false,
