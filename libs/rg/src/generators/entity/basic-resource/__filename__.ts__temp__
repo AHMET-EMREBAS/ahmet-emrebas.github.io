@@ -1,12 +1,12 @@
 import { Entity, Column,JoinColumn, JoinTable,
 <% for(const [key, value] of relations) { %>
-    <%- genName(value.type).className %>
+    <%- genName(value.type).className %>,
 <% } %>
 } from 'typeorm';
 
 import { BaseEntity } from '@ae/core';
 
-<% for(const [key, value] of relations) { %>
+<% for(const [key, value] of uniqueBy(relations, (e)=>e[1].target)) { %>
       <%
         let __NAMES = genName(value.target)
       %>
@@ -48,8 +48,9 @@ export class <%- className %> extends BaseEntity{
 <% for(const [key, value] of relations) { %>
 
         <%
-          let ____targetClassName = genName(key).className;
-          let ____toOneRelationOptions = "{eager:true, nullable:true }";
+          let ____targetClassName = genName(value.target).className;
+          let ____targetPropertyName = genName(value.target).propertyName;
+          let ____toOneRelationOptions = "{eager: true, nullable: true}";
           let ____columnPropertyName =genName(key).propertyName
         %>
 
@@ -62,6 +63,19 @@ export class <%- className %> extends BaseEntity{
         <% if(value.type ==='one-to-one') { %>
           @OneToOne(()=><%- ____targetClassName %>, <%- ____toOneRelationOptions %>)
           @JoinColumn()
+          <%- ____columnPropertyName %>: <%- ____targetClassName %>;
+        <% } %>
+
+
+        <% if(value.type ==='many-to-many') { %>
+          @ManyToMany(()=><%- ____targetClassName %>, <%- ____toOneRelationOptions %>)
+          @JoinTable({name: '<%- propertyName +'-'+ ____columnPropertyName %>' })
+          <%- ____columnPropertyName %>: <%- ____targetClassName %>;
+        <% } %>
+
+        <% if(value.type ==='one-to-many') { %>
+          @OneToMany(()=><%- ____targetClassName %>, (<%-____targetPropertyName %>: <%- ____targetClassName %>) => <%-____targetPropertyName %>.id, <%- ____toOneRelationOptions %>)
+          @JoinTable({name: '<%- propertyName +'-'+ ____columnPropertyName %>' })
           <%- ____columnPropertyName %>: <%- ____targetClassName %>;
         <% } %>
 

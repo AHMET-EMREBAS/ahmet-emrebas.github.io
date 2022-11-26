@@ -11,6 +11,13 @@ properties:
     type: many-to-one
     target: category
 
+  categories:
+    type: many-to-many
+    target: category
+
+  categoriesAll:
+    type: one-to-many
+    target: category
 required:
   - name
 

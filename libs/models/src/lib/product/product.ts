@@ -1,4 +1,12 @@
-import { Entity, Column, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  JoinColumn,
+  JoinTable,
+  ManyToOne,
+  ManyToMany,
+  OneToMany,
+} from 'typeorm';
 
 import { BaseEntity } from '@ae/core';
 
@@ -15,4 +23,15 @@ export class Product extends BaseEntity {
   @ManyToOne(() => Category, { eager: true, nullable: true })
   @JoinColumn()
   category: Category;
+
+  @ManyToMany(() => Category, { eager: true, nullable: true })
+  @JoinTable({ name: 'product-categories' })
+  categories: Category;
+
+  @OneToMany(() => Category, (category: Category) => category.id, {
+    eager: true,
+    nullable: true,
+  })
+  @JoinTable({ name: 'product-categoriesAll' })
+  categoriesAll: Category;
 }

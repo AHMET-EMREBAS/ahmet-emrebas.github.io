@@ -5,7 +5,7 @@ import { EntityGeneratorSchema } from './schema';
 import { load } from 'js-yaml';
 import { IResource } from '@ae/common';
 import { formatAndIndex } from '../utils';
-
+import { uniqBy } from 'lodash';
 function getSOTObject(tree: Tree, name: string) {
   const SSOT_FILE = readFileSync(join(tree.root, 'ssot', name + '.yaml'));
   const ssotObject = load(SSOT_FILE.toString()) as IResource;
@@ -17,6 +17,7 @@ function getHelpers(ssotObject: IResource) {
     isUnique: (p: string) => ssotObject.unique?.includes(p),
     isRequired: (p: string) => ssotObject.required?.includes(p),
     genName: (p: string) => names(p),
+    uniqueBy: uniqBy,
   };
 }
 export default async function (tree: Tree, options: EntityGeneratorSchema) {
