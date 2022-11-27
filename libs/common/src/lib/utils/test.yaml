@@ -1,6 +1,6 @@
 a:
   $ref: '#/b'
 b:
-  name: b
+  $ref: '#/c'
 c:
-  $ref: '#/a'
+  name: b

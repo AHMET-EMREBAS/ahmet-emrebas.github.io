@@ -9,8 +9,8 @@ describe('Parse yaml', () => {
     let yamlObj: any = load(file);
 
     expect(yamlObj.a.$ref).toBe('#/b');
-    expect(yamlObj.c.$ref).toBe('#/a');
-    expect(yamlObj.b.name).toBe('b');
+    expect(yamlObj.b.$ref).toBe('#/c');
+    expect(yamlObj.c.name).toBe('b');
 
     if (yamlObj) {
       yamlObj = parseYamlObject(yamlObj);

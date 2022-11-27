@@ -14,9 +14,11 @@ export function parseYamlObject(
       let value: Record<string, any> | null = null;
 
       r.forEach((e) => (value ? (value = value[e]) : (value = mainObject[e])));
-
       delete obj['$ref'];
       Object.assign(obj, value);
+      if (obj['$ref']) {
+        extractRef(obj);
+      }
     }
   }
 

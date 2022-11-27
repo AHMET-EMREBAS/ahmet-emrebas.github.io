@@ -31,8 +31,18 @@ components:
           type: string
           uniqueItems: true
 
+        price:
+          type: number
+          minimum: 0
+
+        const:
+          type: number
+          minimum: 0
+
       required:
         - name
+        - price
+        - cost
 
     Quantity:
       properties:
@@ -40,12 +50,19 @@ components:
           type: number
           format: id
 
-        name:
-          type: string
-          uniqueItems: true
+        quantity:
+          type: number
+
+        store:
+          $ref: '#/components/schemas/Store'
+
+        product:
+          $ref: '#/components/schemas/Product'
 
       required:
-        - name
+        - quantity
+        - product
+        - store
 
     Product:
       properties:
