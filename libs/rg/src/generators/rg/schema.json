@@ -5,10 +5,10 @@
   "title": "",
   "type": "object",
   "properties": {
-    "project": {
+    "ssot": {
       "type": "string",
       "x-prompt": {
-        "message": "Select the project",
+        "message": "Select the ssot",
         "type": "list",
         "items": [
           { "label": "- Inventory", "value": "inventory" },
@@ -17,5 +17,5 @@
       }
     }
   },
-  "required": ["project"]
+  "required": ["ssot"]
 }

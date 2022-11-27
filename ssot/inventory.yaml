@@ -3,19 +3,24 @@ description: Inventory Management System for managing, product, prices, quantiti
 entities:
   category:
     description: Category entity schema
-    $ref: '#/bases/SingleEntity'
+    $ref: '#/commons/SingleEntity'
 
   department:
     description: Department entity schema
-    $ref: '#/bases/SingleEntity'
+    $ref: '#/commons/SingleEntity'
 
   pricelevel:
     description: Pricelevel entity schema
-    $ref: '#/bases/SingleEntity'
+    $ref: '#/commons/SingleEntity'
 
   cart:
     description: Cart entity schema. It is for grouping orders in a cart.
-    $ref: '#/bases/SingleEntity'
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 30
 
   store:
     description: Store entity schema
