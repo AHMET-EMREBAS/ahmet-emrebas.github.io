@@ -1,0 +1,241 @@
+{
+  "title": "Generation Schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Application name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Application description"
+    },
+    "entities": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Referance"
+            },
+            {
+              "$ref": "#/definitions/Entity"
+            }
+          ]
+        },
+        "additionalProperties": false
+      }
+    },
+    "views": {
+      "$ref": "#/properties/entities"
+    },
+
+    "commons": {
+      "type": "object",
+      "$ref": "#/properties/entities"
+    }
+  },
+  "definitions": {
+    "Referance": {
+      "title": "Referance",
+      "type": "object",
+      "patternProperties": {
+        "^\\$ref$": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Entity": {
+      "title": "Entity defination",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/StringProperty"
+                },
+                {
+                  "$ref": "#/definitions/NumberProperty"
+                },
+                {
+                  "$ref": "#/definitions/DateProperty"
+                },
+                {
+                  "$ref": "#/definitions/BooleanProperty"
+                },
+                {
+                  "$ref": "#/definitions/RelationProperty"
+                },
+                {
+                  "$ref": "#/definitions/ViewProperty"
+                }
+              ]
+            }
+          }
+        },
+        "mainProperty": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unique": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": ["properties", "mainProperty"]
+    },
+    "StringProperty": {
+      "title": "String Property",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "string"
+        },
+        "format": { "type": "string", "enum": ["email", "phone", "password"] },
+        "minLength": { "type": "number", "default": 1 },
+        "maxLength": { "type": "number", "default": 30 }
+      },
+      "additionalProperties": false,
+      "required": ["type", "minLength", "maxLength"]
+    },
+    "NumberProperty": {
+      "title": "Number Property",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "number"
+        },
+        "min": { "type": "number", "default": 0 },
+        "max": { "type": "number", "default": 900900900900 },
+        "format": { "type": "string", "enum": ["number", "currency"] }
+      },
+      "additionalProperties": false,
+      "required": ["type", "min", "max"]
+    },
+    "DateProperty": {
+      "title": "Date Property",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "date"
+        },
+        "format": {
+          "type": "string",
+          "enum": ["createdAt", "updatedAt", "deletedAt", "custom"],
+          "default": "id"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["type", "format"]
+    },
+    "BooleanProperty": {
+      "title": "Boolean Property",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["type"]
+    },
+    "RelationProperty": {
+      "title": "Relation Property",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["many-to-one", "many-to-many", "one-to-one", "one-to-many"],
+          "default": "many-to-one",
+          "description": "Type of the relation ship"
+        },
+        "target": {
+          "$ref": "#/definitions/ResourceNames"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["type", "target"]
+    },
+    "Select": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "properties": {
+            "as": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "ViewProperty": {
+      "title": "View Property",
+      "type": "object",
+      "properties": {
+        "from": {
+          "description": "Main entity",
+          "$ref": "#/definitions/ResourceNames"
+        },
+        "select": {
+          "$ref": "#/definitions/Select"
+        },
+        "join": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "properties": {
+                "select": {
+                  "$ref": "#/definitions/Select"
+                }
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": ["from", "join"]
+    },
+    "ResourceNames": {
+      "title": "Resource Names",
+      "type": "string",
+      "description": "Target entity for this relation.",
+      "enum": [
+        "product",
+        "store",
+        "price",
+        "quantity",
+        "category",
+        "pricelevel",
+        "user",
+        "customer",
+        "permission",
+        "cart",
+        "order",
+        "saleunit",
+        "sale"
+      ],
+      "default": "category"
+    }
+  },
+  "additionalProperties": false
+}

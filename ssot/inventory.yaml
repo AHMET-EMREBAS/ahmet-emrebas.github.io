@@ -1,88 +1,251 @@
-openapi: '3.0.2'
-info:
-  title: API Title
-  version: '1.0'
-servers:
-  - url: http://localhost:3333/api
+name: Inventory Application
+description: Inventory Management System for managing, product, prices, quantities, customers, employees, and POS system.
+entities:
+  category:
+    description: Category entity schema
+    $ref: '#/bases/SingleEntity'
 
-paths:
-  /product:
-    summary: Get all products
-  /category:
-    summary: Get all categories
-components:
-  schemas:
-    Category:
-      $ref: '#/components/schemas/SinglePropertySchema'
+  department:
+    description: Department entity schema
+    $ref: '#/bases/SingleEntity'
 
-    Store:
-      $ref: '#/components/schemas/SinglePropertySchema'
+  pricelevel:
+    description: Pricelevel entity schema
+    $ref: '#/bases/SingleEntity'
 
-    PriceLevel:
-      $ref: '#/components/schemas/SinglePropertySchema'
+  cart:
+    description: Cart entity schema. It is for grouping orders in a cart.
+    $ref: '#/bases/SingleEntity'
 
-    Price:
-      properties:
-        id:
-          type: number
-          format: id
+  store:
+    description: Store entity schema
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 30
 
-        name:
-          type: string
-          uniqueItems: true
+      pricelevel:
+        type: many-to-one
+        target: pricelevel
 
-        price:
-          type: number
-          minimum: 0
+    required:
+      - name
+    unique:
+      - name
 
-        const:
-          type: number
-          minimum: 0
+  product:
+    description: Product entity schema
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 30
 
-      required:
-        - name
-        - price
-        - cost
+      description:
+        type: string
+        minLength: 1
+        maxLength: 400
 
-    Quantity:
-      properties:
-        id:
-          type: number
-          format: id
+      barcode:
+        type: string
+        minLength: 10
+        maxLength: 13
 
-        quantity:
-          type: number
+      category:
+        type: many-to-one
+        target: category
 
-        store:
-          $ref: '#/components/schemas/Store'
+      price:
+        type: number
+        min: 0
+        max: 900900900900
 
-        product:
-          $ref: '#/components/schemas/Product'
+      const:
+        type: number
+        min: 0
+        max: 900900900900
 
-      required:
-        - quantity
-        - product
-        - store
+    required:
+      - name
+    unique:
+      - name
 
-    Product:
-      properties:
-        name:
-          type: string
-          maxLength: 30
-        category:
-          type: string
-          items:
-            $ref: '#/components/schemas/Category'
+  price:
+    description: Price entity schema
+    mainProperty: price
+    properties:
+      price:
+        type: number
+        min: 0
+        max: 900900900900
 
-      required:
-        - name
+      const:
+        type: number
+        min: 0
+        max: 900900900900
 
-    SinglePropertySchema:
-      properties:
-        id:
-          type: number
-        name:
-          type: string
-          uniqueItems: true
-      required:
-        - name
+      pricelevel:
+        type: many-to-one
+        target: pricelevel
+
+      product:
+        type: many-to-one
+        target: product
+
+  quantity:
+    description: Quantity entity schema
+    mainProperty: quantity
+    properties:
+      quantity:
+        type: number
+        min: -1000
+        max: 900900900900
+
+      product:
+        type: many-to-one
+        target: product
+
+      store:
+        type: many-to-one
+        target: store
+
+  order:
+    mainProperty: id
+    properties:
+      quantity:
+        type: number
+        min: 0
+        max: 900900900900
+
+      product:
+        type: many-to-one
+        target: product
+
+      cart:
+        type: many-to-one
+        target: cart
+
+      customer:
+        type: many-to-one
+        target: customer
+
+  transaction:
+    mainProperty: id
+    properties:
+      cart:
+        type: many-to-one
+        target: cart
+      complete:
+        type: boolean
+
+  employee:
+    $ref: '#/commons/UserEntity'
+
+  customer:
+    $ref: '#/commons/UserEntity'
+
+  permission:
+    mainProperty: description
+    properties:
+      name:
+        type: string
+        minLength: 3
+        maxLength: 20
+      description:
+        type: string
+        minLength: 3
+        maxLength: 400
+
+    required:
+      - name
+      - description
+
+    unique:
+      - name
+
+views:
+  checkout:
+    mainProperty: id
+    properties:
+      name:
+        from: order
+        select:
+          quantity:
+            as: quantity
+          customerId:
+            as: customerId
+
+        join:
+          cart:
+            select:
+              id:
+                as: cartId
+
+          product:
+            select:
+              name:
+                as: productName
+              barcode:
+                as: barcode
+
+commons:
+  SingleEntity:
+    description: Entity with an only name property
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 50
+
+    required:
+      - name
+    unique:
+      - name
+
+  UserEntity:
+    description: User entity
+    mainProperty: fullName
+    properties:
+      fullName:
+        type: string
+        minLength: 3
+        maxLength: 50
+
+      username:
+        type: string
+        format: email
+        minLength: 6
+        maxLength: 50
+
+      password:
+        type: string
+        format: password
+        minLength: 1
+        maxLength: 30
+
+      phone:
+        type: string
+        format: phone
+        minLength: 10
+        maxLength: 20
+
+      permissions:
+        type: many-to-many
+        target: permission
+
+      pricelevel:
+        type: many-to-one
+        target: pricelevel
+
+    required:
+      - username
+      - password
+      - phone
+
+    unique:
+      - username
+      - phone

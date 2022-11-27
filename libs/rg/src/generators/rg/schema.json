@@ -5,35 +5,17 @@
   "title": "",
   "type": "object",
   "properties": {
-    "name": {
+    "project": {
       "type": "string",
       "x-prompt": {
-        "message": "Select the resource.",
+        "message": "Select the project",
         "type": "list",
-        "description": "List of resource names.",
         "items": [
-          { "label": "- Product resource", "value": "product" },
-          { "label": "- Category resource", "value": "category" },
-          { "label": "- Department resource", "value": "department" },
-          { "label": "- Price resource", "value": "price" },
-          { "label": "- Quanity resource", "value": "quanity" },
-          { "label": "- Store resource", "value": "store" }
-        ]
-      }
-    },
-    "type": {
-      "type": "string",
-      "x-prompt": {
-        "message": "What do you want to generate?",
-        "type": "list",
-        "description": "Generation Options",
-        "items": [
-          { "label": "- [Server] Entity", "value": "entity" },
-          { "label": "- [Server] Rest", "value": "rest" },
-          { "label": "- [Common] Interface", "value": "interface" }
+          { "label": "- Inventory", "value": "inventory" },
+          { "label": "- Project Management", "value": "pma" }
         ]
       }
     }
   },
-  "required": ["name"]
+  "required": ["project"]
 }

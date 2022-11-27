@@ -18,7 +18,7 @@ export class CategoryController {
   }
 
   @Post(RESOURCE_PATH)
-  createProduct(@Body() body: any) {
+  createProduct(@Body() body: Category) {
     return this.repo.save(body);
   }
 }
