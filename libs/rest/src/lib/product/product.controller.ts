@@ -1,19 +1,24 @@
-import { Controller, Get, Post, Body, Query } from '@nestjs/common';
-import { ProductService } from './product.service';
+import { Controller, Get, Inject, Post, Body } from '@nestjs/common';
+
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Product } from '@ae/models';
 
 const RESOURCE_PATH = 'product';
 
 @Controller()
 export class ProductController {
-  constructor(private readonly service: ProductService) {}
+  constructor(
+    @InjectRepository(Product) private readonly repo: Repository<Product>
+  ) {}
 
   @Get(RESOURCE_PATH)
-  readProduct(@Query() query: any) {
-    return this.service.findAll(query);
+  readProduct() {
+    return this.repo.find();
   }
 
   @Post(RESOURCE_PATH)
   createProduct(@Body() body: any) {
-    return this.service.save(body);
+    return this.repo.save(body);
   }
 }

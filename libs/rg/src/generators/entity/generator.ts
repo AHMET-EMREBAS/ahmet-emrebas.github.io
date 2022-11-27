@@ -25,6 +25,8 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
   const SSOT_OBJECT = getSOTObject(tree, RESOURCE_NAMES.fileName);
   const RESOURCE_TYPE = SSOT_OBJECT.type;
 
+  console.log((SSOT_OBJECT as any)['rest'].get.product);
+
   const MODELS_DIR = join('libs', 'models', 'src', 'lib');
   const REST_DIR = join('libs', 'rest', 'src', 'lib');
   const INTERFACE_DIR = join('libs', 'common', 'src', 'lib', 'interface');

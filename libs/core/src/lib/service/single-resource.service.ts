@@ -15,11 +15,15 @@ export class SingleResourceService<T> {
     return this.__repo.findOneByOrFail({ id } as any);
   }
 
-  update(id: number, body: T) {
+  update(id: number, body: Partial<T>) {
     return this.__repo.update(id, body as any);
   }
 
   delete(id: number) {
     return this.__repo.delete(id);
+  }
+
+  count() {
+    return this.__repo.count();
   }
 }

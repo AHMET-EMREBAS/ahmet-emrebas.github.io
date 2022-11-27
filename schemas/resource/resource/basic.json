@@ -36,6 +36,10 @@
       "type": "string",
       "description": "The readable and desdriptive property of the entity to represent the entity as text.",
       "default": "name"
+    },
+    "rest": {
+      "type": "object",
+      "$ref": "../rest/index.json"
     }
   },
   "required": ["type", "mainProperty"],

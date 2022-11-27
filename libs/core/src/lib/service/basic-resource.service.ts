@@ -1,25 +1,8 @@
-import { FindManyOptions, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
+import { SingleResourceService } from './single-resource.service';
 
-export class BasicResourceService<T> {
-  constructor(private readonly __repo: Repository<T>) {}
-
-  save(item: T) {
-    return this.__repo.save(item);
-  }
-
-  findAll(findManyOptions: FindManyOptions<T>) {
-    return this.__repo.find(findManyOptions);
-  }
-
-  findOne(id: number) {
-    return this.__repo.findOneByOrFail({ id } as any);
-  }
-
-  update(id: number, body: T) {
-    return this.__repo.update(id, body as any);
-  }
-
-  delete(id: number) {
-    return this.__repo.delete(id);
+export class BasicResourceService<T> extends SingleResourceService<T> {
+  constructor(repo: Repository<T>) {
+    super(repo);
   }
 }

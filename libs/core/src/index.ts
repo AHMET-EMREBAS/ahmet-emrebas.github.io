@@ -1,2 +1,1 @@
-export * from './lib/base/base.entity';
-export * from './lib/service';
+export * from './lib';

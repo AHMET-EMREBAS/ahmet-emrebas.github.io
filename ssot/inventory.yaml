@@ -1,0 +1,71 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: http://localhost:3333/api
+
+paths:
+  /product:
+    summary: Get all products
+  /category:
+    summary: Get all categories
+components:
+  schemas:
+    Category:
+      $ref: '#/components/schemas/SinglePropertySchema'
+
+    Store:
+      $ref: '#/components/schemas/SinglePropertySchema'
+
+    PriceLevel:
+      $ref: '#/components/schemas/SinglePropertySchema'
+
+    Price:
+      properties:
+        id:
+          type: number
+          format: id
+
+        name:
+          type: string
+          uniqueItems: true
+
+      required:
+        - name
+
+    Quantity:
+      properties:
+        id:
+          type: number
+          format: id
+
+        name:
+          type: string
+          uniqueItems: true
+
+      required:
+        - name
+
+    Product:
+      properties:
+        name:
+          type: string
+          maxLength: 30
+        category:
+          type: string
+          items:
+            $ref: '#/components/schemas/Category'
+
+      required:
+        - name
+
+    SinglePropertySchema:
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+          uniqueItems: true
+      required:
+        - name
