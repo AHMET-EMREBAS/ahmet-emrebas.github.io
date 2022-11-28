@@ -1,1 +1,2 @@
 export * from './<%- fileName %>';
+export * from './<%- fileName %>-view';

@@ -1,0 +1,83 @@
+import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { <%- className %>} from './<%- fileName %>';
+
+<%
+
+  // Properties
+  let  __P = entity.properties.filter(e=>!!!e.target);
+
+  // Relations
+  let __R = entity.properties.filter(e=>!!e.target);
+
+  let __TypeORMImports =[...new Set( __R.map(e=>e.type))].map(e=>genName(e).className).join(' ,');
+
+  let __RelationImports = [...new Set( __R.map(e=>e.target))].map(e=>{
+    return [genName(e).className, e];
+  })
+
+%>
+
+<% for(const [key, value] of __RelationImports) { %>
+
+  import { <%- key %> } from '../<%- value %>';
+
+<% } %>
+
+
+
+%>
+@ViewEntity({
+  expression: (ds: DataSource) => {
+    return ds
+      .createQueryBuilder()
+      .select('<%- propertyName %>.id', 'id')
+      .addSelect(`ROW_NUMBER () OVER (ORDER BY <%- propertyName %>.id)`, 'index')
+
+      <% for(const s of __P){ %>
+      .addSelect('<%- propertyName %>.<%- s.name %>', '<%- s.name %>')
+      <% } %>
+
+   <% for(const s of __R){ %>
+     <% for(const k of s.views) { %>
+      .addSelect('<%- genName(s.target).propertyName %>.<%- k.name %>', '<%- k.as %>')
+     <% } %>
+   <% } %>
+
+
+      .from(<%- className %>, '<%- propertyName %>')
+
+
+
+      <% for(const s of __R){ %>
+
+      .leftJoin(<%- genName(s.target).className %>,
+      '<%- genName(s.target).propertyName %>',
+      '<%- genName(s.target).propertyName %>.id = <%- propertyName %>.<%- genName(s.target).propertyName %>Id')
+
+      <% } %>
+  },
+})
+export class <%- className %>View {
+  @ViewColumn()
+  index: string;
+
+  @ViewColumn()
+  id: number;
+
+<% for(const s of __P){ %>
+  @ViewColumn()
+  <%- genName(s.name).propertyName %>: <%- s.type =='date' ? "Date" : s.type %>;
+<% } %>
+
+
+
+<% for(const k of __R){ %>
+  <% for(const s of k.views) { %>
+    @ViewColumn()
+    <%- genName(s.as).propertyName %>: <%- s.type =='date' ? "Date" : s.type %>;
+  <% } %>
+<% } %>
+
+
+
+}

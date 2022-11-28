@@ -1,0 +1,49 @@
+import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { <%- genName(entity.from).className %> } from '../<%- genName(entity.from).fileName %>';
+<% for(const s of entity.join){ %>
+import { <%- genName(s.name).className %>} from '../<%- genName(s.name).fileName %>';
+<% } %>
+
+<%
+
+let __mainEntity = genName(entity.from);
+
+
+%>
+@ViewEntity({
+  expression: (ds: DataSource) => {
+    return ds
+      .createQueryBuilder()
+      .select('<%- __mainEntity.propertyName %>.id', 'id')
+      .addSelect(`ROW_NUMBER () OVER (ORDER BY price.id)`, 'index')
+      <% for(const s of entity.select){ %>
+      .addSelect('<%- __mainEntity.propertyName %>.<%- s.name %>', '<%- s.as %>')
+      <% } %>
+
+   <% for(const s of entity.join){ %>
+    <% for(const k of s.select){ %>
+
+      .addSelect('<%- genName(s.name).propertyName %>.<%- k.name %>', '<%- k.as %>')
+
+    <% } %>
+   <% } %>
+
+
+      .from(<%- __mainEntity.className %>, '<%- __mainEntity.propertyName %>')
+
+
+
+      <% for(const s of entity.join){ %>
+
+      .leftJoin(<%- genName(s.name).className %>, '<%- genName(s.name).propertyName %>', '<%- genName(s.name).propertyName %>.id = <%- __mainEntity.propertyName %>.<%- genName(s.name).propertyName %>Id')
+
+      <% } %>
+  },
+})
+export class <%- genName(entity.name).className %>View {
+  @ViewColumn()
+  index: string;
+
+  @ViewColumn()
+  id: number;
+}

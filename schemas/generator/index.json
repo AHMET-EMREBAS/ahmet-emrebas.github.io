@@ -28,7 +28,12 @@
       }
     },
     "views": {
-      "$ref": "#/properties/entities"
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "$ref": "#/definitions/ViewProperty"
+        }
+      }
     },
 
     "commons": {
@@ -74,9 +79,6 @@
                 },
                 {
                   "$ref": "#/definitions/RelationProperty"
-                },
-                {
-                  "$ref": "#/definitions/ViewProperty"
                 }
               ]
             }
@@ -104,6 +106,7 @@
       "additionalProperties": false,
       "required": ["properties", "mainProperty"]
     },
+
     "StringProperty": {
       "title": "String Property",
       "type": "object",
@@ -170,10 +173,29 @@
         },
         "target": {
           "$ref": "#/definitions/ResourceNames"
+        },
+        "views": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "properties": {
+                "as": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["string", "number", "date", "boolean"],
+                  "default": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": ["as", "type"]
+            }
+          }
         }
       },
       "additionalProperties": false,
-      "required": ["type", "target"]
+      "required": ["type", "target", "views"]
     },
     "Select": {
       "type": "object",
@@ -182,6 +204,10 @@
           "properties": {
             "as": {
               "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["string", "number", "date", "boolean"]
             }
           },
           "additionalProperties": false

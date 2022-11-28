@@ -29,7 +29,7 @@ export class User extends BaseEntity {
 
   @ManyToMany(() => Permission, { eager: true, nullable: true })
   @JoinTable()
-  permissions: Permission;
+  permissions: Permission[];
 
   @ManyToOne(() => Pricelevel, { eager: true, nullable: true })
   @JoinColumn()

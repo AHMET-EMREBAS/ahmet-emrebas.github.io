@@ -34,6 +34,10 @@ entities:
       pricelevel:
         type: many-to-one
         target: pricelevel
+        views:
+          name:
+            as: pricelevel
+            type: string
 
     required:
       - name
@@ -62,6 +66,10 @@ entities:
       category:
         type: many-to-one
         target: category
+        views:
+          name:
+            as: category
+            type: string
 
       price:
         type: number
@@ -95,10 +103,18 @@ entities:
       pricelevel:
         type: many-to-one
         target: pricelevel
+        views:
+          name:
+            as: pricelevel
+            type: string
 
       product:
         type: many-to-one
         target: product
+        views:
+          name:
+            as: product
+            type: string
 
   quantity:
     description: Quantity entity schema
@@ -112,10 +128,18 @@ entities:
       product:
         type: many-to-one
         target: product
+        views:
+          name:
+            as: product
+            type: string
 
       store:
         type: many-to-one
         target: store
+        views:
+          name:
+            as: store
+            type: string
 
   order:
     mainProperty: id
@@ -128,14 +152,26 @@ entities:
       product:
         type: many-to-one
         target: product
+        views:
+          barcode:
+            as: barcode
+            type: string
 
       cart:
         type: many-to-one
         target: cart
+        views:
+          id:
+            as: cartId
+            type: number
 
       customer:
         type: many-to-one
         target: customer
+        views:
+          username:
+            as: customer
+            type: string
 
   transaction:
     mainProperty: id
@@ -143,6 +179,11 @@ entities:
       cart:
         type: many-to-one
         target: cart
+        views:
+          id:
+            as: cartId
+            type: number
+
       complete:
         type: boolean
 
@@ -185,35 +226,44 @@ entities:
       to:
         type: many-to-one
         target: user
+        views:
+          username:
+            as: username
+            type: string
 
       from:
         type: many-to-one
         target: user
-
+        views:
+          username:
+            as: username
+            type: string
 views:
-  checkout:
-    mainProperty: id
-    properties:
-      name:
-        from: order
+  order:
+    from: order
+    select:
+      quantity:
+        as: quantity
+        type: number
+      customerId:
+        as: customerId
+        type: number
+
+    join:
+      cart:
         select:
-          quantity:
-            as: quantity
-          customerId:
-            as: customerId
+          id:
+            as: cartId
+            type: number
 
-        join:
-          cart:
-            select:
-              id:
-                as: cartId
-
-          product:
-            select:
-              name:
-                as: productName
-              barcode:
-                as: barcode
+      product:
+        select:
+          name:
+            as: productName
+            type: string
+          barcode:
+            as: barcode
+            type: string
 
 commons:
   SingleEntity:
@@ -260,10 +310,18 @@ commons:
       permissions:
         type: many-to-many
         target: permission
+        views:
+          name:
+            as: permission
+            type: string
 
       pricelevel:
         type: many-to-one
         target: pricelevel
+        views:
+          name:
+            as: pricelevel
+            type: string
 
     required:
       - username

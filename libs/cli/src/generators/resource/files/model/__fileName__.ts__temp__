@@ -51,7 +51,9 @@ export class <%- className %> extends BaseEntity {
 <% for(const __Relation of __R) { %>
 
         <%
-          let ____targetClassName = genName(__Relation.target).className;
+          let ____targetClassnameObj =  genName(__Relation.target).className;
+          let ____targetClassName = __Relation.type.endsWith('many') ?   ____targetClassnameObj + '[]': ____targetClassnameObj;
+
           let ____targetPropertyName = genName(__Relation.target).propertyName;
           let ____toOneRelationOptions = "{eager: true, nullable: true}";
           let ____columnPropertyName =genName(__Relation.name).propertyName
@@ -63,7 +65,7 @@ export class <%- className %> extends BaseEntity {
         %>
 
 
-        @<%- ___RelationType %>(()=><%- ____targetClassName %>, <%- __IsOneToMany %> <%- ____toOneRelationOptions %>)
+        @<%- ___RelationType %>(()=><%- ____targetClassnameObj %>, <%- __IsOneToMany %> <%- ____toOneRelationOptions %>)
         @<%- __JoinType %>()
         <%- ____columnPropertyName %>: <%- ____targetClassName %>;
 

@@ -31,11 +31,12 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
   );
 
   async function generateThem(
+    items: any[],
     source: string,
     libraryName: string,
     subfolder = ''
   ) {
-    for (const entity of ssotObj.entities) {
+    for (const entity of items) {
       const helper = getHelpers(entity);
 
       generateFiles(
@@ -56,6 +57,10 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     }
   }
 
-  await generateThem('model', 'models');
-  await generateThem('interface', 'common', 'interface');
+  console.log(ssotObj.entities);
+
+  console.log(ssotObj.entities.find((e) => e.name == 'product'));
+
+  await generateThem(ssotObj.entities, 'model', 'models');
+  await generateThem(ssotObj.entities, 'interface', 'common', 'interface');
 }
