@@ -1,14 +1,25 @@
 import { namifyObjectByProperty, parseYamlObject } from '@ae/common';
-import { Tree } from '@nrwl/devkit';
+import { generateFiles, names, Tree } from '@nrwl/devkit';
 import { readFileSync } from 'fs';
 import { load } from 'js-yaml';
+import { uniqBy } from 'lodash';
 import { join } from 'path';
 import { RgGeneratorSchema } from './schema';
 
-export default async function (tree: Tree, options: RgGeneratorSchema) {
-  const SSOT_TARGET_PATH = join(tree.root, 'ssot', options.ssot + '.yaml');
+function getHelpers(entity: any) {
+  return {
+    isUnique: (p: string) => entity.unique?.includes(p),
+    isRequired: (p: string) => entity.required?.includes(p),
+    genName: (p: string) => names(p),
+    uniqueBy: uniqBy,
+  };
+}
 
-  const file = readFileSync(SSOT_TARGET_PATH).toString();
+export default async function (tree: Tree, options: RgGeneratorSchema) {
+  const file = readFileSync(
+    join(tree.root, 'ssot', options.ssot + '.yaml')
+  ).toString();
+
   const ssotContent = parseYamlObject(load(file));
 
   const ssotObj: any = namifyObjectByProperty(
@@ -19,6 +30,17 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
   );
 
   for (const entity of ssotObj.entities) {
-    console.log(entity.name);
+    const helper = getHelpers(entity);
+
+    generateFiles(
+      tree,
+      join(__dirname, 'files', 'entity'),
+      join('libs', 'models', 'src', 'lib'),
+      {
+        temp: '',
+        ...helper,
+        NAMES: names(entity.name),
+      }
+    );
   }
 }
