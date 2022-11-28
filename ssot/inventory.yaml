@@ -68,7 +68,7 @@ entities:
         min: 0
         max: 900900900900
 
-      const:
+      cost:
         type: number
         min: 0
         max: 900900900900
@@ -87,7 +87,7 @@ entities:
         min: 0
         max: 900900900900
 
-      const:
+      cost:
         type: number
         min: 0
         max: 900900900900

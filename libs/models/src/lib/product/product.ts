@@ -12,6 +12,15 @@ export class Product extends BaseEntity {
   @Column({ type: 'text' })
   description: string;
 
+  @Column({ type: 'text' })
+  barcode: string;
+
+  @Column({ type: 'numeric' })
+  price: string;
+
+  @Column({ type: 'numeric' })
+  cost: string;
+
   @ManyToOne(() => Category, { eager: true, nullable: true })
   @JoinColumn()
   category: Category;

@@ -1,9 +1,10 @@
 import { namifyObjectByProperty, parseYamlObject } from '@ae/common';
-import { generateFiles, names, Tree } from '@nrwl/devkit';
+import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
 import { readFileSync } from 'fs';
 import { load } from 'js-yaml';
 import { uniqBy } from 'lodash';
 import { join } from 'path';
+import { formatAndIndex } from '../utils';
 import { RgGeneratorSchema } from './schema';
 
 function getHelpers(entity: any) {
@@ -35,12 +36,14 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     generateFiles(
       tree,
       join(__dirname, 'files', 'entity'),
-      join('libs', 'models', 'src', 'lib'),
+      join('libs', 'models', 'src', 'lib', entity.name),
       {
         temp: '',
         ...helper,
-        NAMES: names(entity.name),
+        ...names(entity.name),
+        entity,
       }
     );
+    await formatAndIndex(tree, join('libs', 'models', 'src', 'lib'));
   }
 }

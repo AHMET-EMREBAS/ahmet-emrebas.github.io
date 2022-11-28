@@ -1,3 +1,4 @@
+
 <%
 
   // Properties
@@ -9,8 +10,8 @@
   let __TypeORMImports =[...new Set( __R.map(e=>e.type))].map(e=>genName(e).className).join(' ,');
 
   let __RelationImports = [...new Set( __R.map(e=>e.name))].map(e=>{
-    return [genName(e).className, e]
-  })
+    return [genName(e).className, e];
+  });
 
 %>
 
@@ -23,6 +24,7 @@ import { BaseEntity } from '@ae/core';
   import { <%- key %> } from './<%- value %>';
 
 <% } %>
+
 
 
 @Entity()
