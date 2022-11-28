@@ -1,9 +1,9 @@
-import { Order } from './order';
+import { IOrder } from './order';
 
-import { Product } from './product';
+import { IReadProduct } from '../product';
 
-import { Cart } from './cart';
+import { IReadCart } from '../cart';
 
-import { Customer } from './customer';
+import { IReadCustomer } from '../customer';
 
-export type ReadOrder = Order<Product, Cart, Customer>;
+export type IReadOrder = IOrder<IReadProduct, IReadCart, IReadCustomer>;

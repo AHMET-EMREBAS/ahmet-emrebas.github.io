@@ -1,7 +1,7 @@
-import { Quantity } from './quantity';
+import { IQuantity } from './quantity';
 
-import { Product } from './product';
+import { IReadProduct } from '../product';
 
-import { Store } from './store';
+import { IReadStore } from '../store';
 
-export type ReadQuantity = Quantity<Product, Store>;
+export type IReadQuantity = IQuantity<IReadProduct, IReadStore>;

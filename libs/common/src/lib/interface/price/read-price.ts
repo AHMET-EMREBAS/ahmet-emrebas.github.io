@@ -1,7 +1,7 @@
-import { Price } from './price';
+import { IPrice } from './price';
 
-import { Pricelevel } from './pricelevel';
+import { IReadPricelevel } from '../pricelevel';
 
-import { Product } from './product';
+import { IReadProduct } from '../product';
 
-export type ReadPrice = Price<Pricelevel, Product>;
+export type IReadPrice = IPrice<IReadPricelevel, IReadProduct>;

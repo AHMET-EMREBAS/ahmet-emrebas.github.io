@@ -1,3 +1,3 @@
-import { Department } from './department';
+import { IDepartment } from './department';
 
-export type ReadDepartment = Department;
+export type IReadDepartment = IDepartment;

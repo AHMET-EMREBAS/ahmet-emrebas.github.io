@@ -1,3 +1,3 @@
-import { Permission } from './permission';
+import { IPermission } from './permission';
 
-export type ReadPermission = Permission;
+export type IReadPermission = IPermission;

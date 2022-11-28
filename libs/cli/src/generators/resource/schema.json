@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "Resource",
+  "title": "Generate resources",
+  "type": "object",
+  "properties": {
+    "ssot": {
+      "type": "string",
+      "x-prompt": {
+        "message": "Select the ssot",
+        "type": "list",
+        "items": [
+          { "label": "- Inventory", "value": "inventory" },
+          { "label": "- Project Management", "value": "pma" }
+        ]
+      }
+    }
+  },
+  "required": ["ssot"]
+}

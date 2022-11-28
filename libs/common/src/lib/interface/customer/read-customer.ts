@@ -1,7 +1,7 @@
-import { Customer } from './customer';
+import { ICustomer } from './customer';
 
-import { Permission } from './permission';
+import { IReadPermission } from '../permission';
 
-import { Pricelevel } from './pricelevel';
+import { IReadPricelevel } from '../pricelevel';
 
-export type ReadCustomer = Customer<Permission, Pricelevel>;
+export type IReadCustomer = ICustomer<IReadPermission, IReadPricelevel>;

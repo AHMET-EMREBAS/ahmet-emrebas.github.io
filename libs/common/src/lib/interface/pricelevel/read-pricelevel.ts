@@ -1,3 +1,3 @@
-import { Pricelevel } from './pricelevel';
+import { IPricelevel } from './pricelevel';
 
-export type ReadPricelevel = Pricelevel;
+export type IReadPricelevel = IPricelevel;

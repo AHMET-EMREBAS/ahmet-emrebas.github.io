@@ -1,5 +1,5 @@
-import { Transaction } from './transaction';
+import { ITransaction } from './transaction';
 
-import { Cart } from './cart';
+import { IReadCart } from '../cart';
 
-export type ReadTransaction = Transaction<Cart>;
+export type IReadTransaction = ITransaction<IReadCart>;

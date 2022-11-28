@@ -1,7 +1,7 @@
-import { Employee } from './employee';
+import { IEmployee } from './employee';
 
-import { Permission } from './permission';
+import { IReadPermission } from '../permission';
 
-import { Pricelevel } from './pricelevel';
+import { IReadPricelevel } from '../pricelevel';
 
-export type ReadEmployee = Employee<Permission, Pricelevel>;
+export type IReadEmployee = IEmployee<IReadPermission, IReadPricelevel>;

@@ -1,0 +1,4 @@
+export * from './<%- fileName %>';
+export * from './read-<%- fileName %>';
+export * from './create-<%- fileName %>';
+

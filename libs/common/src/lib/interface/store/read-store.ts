@@ -1,5 +1,5 @@
-import { Store } from './store';
+import { IStore } from './store';
 
-import { Pricelevel } from './pricelevel';
+import { IReadPricelevel } from '../pricelevel';
 
-export type ReadStore = Store<Pricelevel>;
+export type IReadStore = IStore<IReadPricelevel>;

@@ -1,3 +1,3 @@
-import { Category } from './category';
+import { ICategory } from './category';
 
-export type ReadCategory = Category;
+export type IReadCategory = ICategory;

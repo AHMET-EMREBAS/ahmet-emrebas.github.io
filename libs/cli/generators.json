@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "cli",
+  "version": "0.0.1",
+  "generators": {
+    "cli": {
+      "factory": "./src/generators/cli/generator",
+      "schema": "./src/generators/cli/schema.json",
+      "description": "cli generator"
+    },
+    "resource": {
+      "factory": "./src/generators/resource/generator",
+      "schema": "./src/generators/resource/schema.json",
+      "description": "resource generator"
+    }
+  }
+}

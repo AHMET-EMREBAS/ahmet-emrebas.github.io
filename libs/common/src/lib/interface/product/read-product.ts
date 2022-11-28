@@ -1,5 +1,5 @@
-import { Product } from './product';
+import { IProduct } from './product';
 
-import { Category } from './category';
+import { IReadCategory } from '../category';
 
-export type ReadProduct = Product<Category>;
+export type IReadProduct = IProduct<IReadCategory>;

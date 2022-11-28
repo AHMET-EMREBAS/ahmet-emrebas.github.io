@@ -1,5 +1,5 @@
 name: Inventory Application
-description: Inventory Management System for managing, product, prices, quantities, customers, employees, and POS system.
+description: Inventory Management System for managing, product, prices, quantities, customers, users, and POS system.
 entities:
   category:
     description: Category entity schema
@@ -146,7 +146,7 @@ entities:
       complete:
         type: boolean
 
-  employee:
+  user:
     $ref: '#/commons/UserEntity'
 
   customer:
@@ -170,6 +170,25 @@ entities:
 
     unique:
       - name
+
+  messgae:
+    mainProperty: title
+    properties:
+      title:
+        type: string
+        minLength: 1
+        maxLength: 30
+      message:
+        type: string
+        minLength: 1
+        maxLength: 400
+      to:
+        type: many-to-one
+        target: user
+
+      from:
+        type: many-to-one
+        target: user
 
 views:
   checkout:

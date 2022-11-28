@@ -1,3 +1,3 @@
-import { Cart } from './cart';
+import { ICart } from './cart';
 
-export type ReadCart = Cart;
+export type IReadCart = ICart;

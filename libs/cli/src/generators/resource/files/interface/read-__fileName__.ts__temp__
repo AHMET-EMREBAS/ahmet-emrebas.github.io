@@ -1,0 +1,27 @@
+
+
+
+<%
+  // Relations
+  let __R = entity.properties.filter(e=>!!e.target);
+%>
+
+
+import { I<%- className %> } from './<%- fileName %>';
+
+<% for(const Relation of uniqueBy(__R, 'target')) { %>
+    import { IRead<%- genName(Relation.target).className %> } from '../<%- genName(Relation.target).fileName %>';
+<% } %>
+
+<% if(__R?.length > 0){ %>
+export type IRead<%- className %> = I<%- className %><
+    <% let __t = 0; %>
+    <% for(const Relation of __R) { %>
+        IRead<%- genName(Relation.target).className   %>,
+    <% } %>
+>;
+<% } else { %>
+
+ export type IRead<%- className %> = I<%- className %>;
+
+<% } %>

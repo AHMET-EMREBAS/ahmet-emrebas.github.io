@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "cli": "libs/cli",
+    "cli-e2e": "apps/cli-e2e",
     "common": "libs/common",
     "core": "libs/core",
     "inventory": "apps/inventory",
@@ -12,8 +14,6 @@
     "project-management": "apps/project-management",
     "project-management-e2e": "apps/project-management-e2e",
     "rest": "libs/rest",
-    "rg": "libs/rg",
-    "rg-e2e": "apps/rg-e2e",
     "server": "apps/server",
     "utils": "libs/utils",
     "web": "apps/web",
