@@ -2,11 +2,10 @@ import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
 import generator from './generator';
-import { RgGeneratorSchema } from './schema';
 
 describe('rg generator', () => {
   let appTree: Tree;
-  const options: RgGeneratorSchema = { name: 'test' };
+  const options: any = {};
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();

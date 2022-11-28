@@ -15,6 +15,7 @@
     "rg": "libs/rg",
     "rg-e2e": "apps/rg-e2e",
     "server": "apps/server",
+    "utils": "libs/utils",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e"
   },

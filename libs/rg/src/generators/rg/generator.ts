@@ -1,4 +1,4 @@
-import { namifyObjectByProperty, parseYamlObject } from '@ae/common';
+import { namifyObjectByProperty, parseYamlObject } from '@ae/utils';
 import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
 import { readFileSync } from 'fs';
 import { load } from 'js-yaml';

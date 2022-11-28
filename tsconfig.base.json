@@ -20,6 +20,7 @@
       "@ae/material": ["libs/material/src/index.ts"],
       "@ae/models": ["libs/models/src/index.ts"],
       "@ae/rest": ["libs/rest/src/index.ts"],
+      "@ae/utils": ["libs/utils/src/index.ts"],
       "rg": ["libs/rg/src/index.ts"]
     }
   },
