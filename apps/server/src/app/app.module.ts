@@ -1,25 +1,18 @@
 import { Module } from '@nestjs/common';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CategoryController } from '@ae/rest';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import * as Entities from '@ae/models';
-
-const ListOfEntities = Object.values(Entities);
+import {} from '@ae/models';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: 'temp/databse/main.sqlite',
-      entities: ListOfEntities,
+      database: 'dist/databses/main.sqlite',
+      entities: [],
       synchronize: true,
       dropSchema: true,
     }),
-    TypeOrmModule.forFeature(ListOfEntities),
+    TypeOrmModule.forFeature([]),
   ],
-  controllers: [AppController, CategoryController],
-  providers: [AppService],
 })
 export class AppModule {}

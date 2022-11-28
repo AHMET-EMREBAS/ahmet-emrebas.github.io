@@ -1,2 +1,1 @@
-export * from './category';
-export * from './product';
+export const ___________rest = '';

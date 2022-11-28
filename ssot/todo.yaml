@@ -1,0 +1,333 @@
+name: Inventory Application
+description: Inventory Management System for managing, product, prices, quantities, customers, users, and POS system.
+entities:
+  category:
+    description: Category entity schema
+    $ref: '#/commons/SingleEntity'
+
+  department:
+    description: Department entity schema
+    $ref: '#/commons/SingleEntity'
+
+  pricelevel:
+    description: Pricelevel entity schema
+    $ref: '#/commons/SingleEntity'
+
+  cart:
+    description: Cart entity schema. It is for grouping orders in a cart.
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 30
+
+  store:
+    description: Store entity schema
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 30
+
+      pricelevel:
+        type: many-to-one
+        target: pricelevel
+        views:
+          name:
+            as: pricelevel
+            type: string
+
+    required:
+      - name
+    unique:
+      - name
+
+  product:
+    description: Product entity schema
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 30
+
+      description:
+        type: string
+        minLength: 1
+        maxLength: 400
+
+      barcode:
+        type: string
+        minLength: 10
+        maxLength: 13
+
+      category:
+        type: many-to-one
+        target: category
+        views:
+          name:
+            as: category
+            type: string
+
+      price:
+        type: number
+        min: 0
+        max: 900900900900
+
+      cost:
+        type: number
+        min: 0
+        max: 900900900900
+
+    required:
+      - name
+    unique:
+      - name
+
+  price:
+    description: Price entity schema
+    mainProperty: price
+    properties:
+      price:
+        type: number
+        min: 0
+        max: 900900900900
+
+      cost:
+        type: number
+        min: 0
+        max: 900900900900
+
+      pricelevel:
+        type: many-to-one
+        target: pricelevel
+        views:
+          name:
+            as: pricelevel
+            type: string
+
+      product:
+        type: many-to-one
+        target: product
+        views:
+          name:
+            as: product
+            type: string
+
+  quantity:
+    description: Quantity entity schema
+    mainProperty: quantity
+    properties:
+      quantity:
+        type: number
+        min: -1000
+        max: 900900900900
+
+      product:
+        type: many-to-one
+        target: product
+        views:
+          name:
+            as: product
+            type: string
+
+      store:
+        type: many-to-one
+        target: store
+        views:
+          name:
+            as: store
+            type: string
+
+  order:
+    mainProperty: id
+    properties:
+      quantity:
+        type: number
+        min: 0
+        max: 900900900900
+
+      product:
+        type: many-to-one
+        target: product
+        views:
+          barcode:
+            as: barcode
+            type: string
+
+      cart:
+        type: many-to-one
+        target: cart
+        views:
+          id:
+            as: cartId
+            type: number
+
+      customer:
+        type: many-to-one
+        target: customer
+        views:
+          username:
+            as: customer
+            type: string
+
+  transaction:
+    mainProperty: id
+    properties:
+      cart:
+        type: many-to-one
+        target: cart
+        views:
+          id:
+            as: cartId
+            type: number
+
+      complete:
+        type: boolean
+
+  user:
+    $ref: '#/commons/UserEntity'
+
+  customer:
+    $ref: '#/commons/UserEntity'
+
+  permission:
+    mainProperty: description
+    properties:
+      name:
+        type: string
+        minLength: 3
+        maxLength: 20
+      description:
+        type: string
+        minLength: 3
+        maxLength: 400
+
+    required:
+      - name
+      - description
+
+    unique:
+      - name
+
+  messgae:
+    mainProperty: title
+    properties:
+      title:
+        type: string
+        minLength: 1
+        maxLength: 30
+      message:
+        type: string
+        minLength: 1
+        maxLength: 400
+      to:
+        type: many-to-one
+        target: user
+        views:
+          username:
+            as: username
+            type: string
+
+      from:
+        type: many-to-one
+        target: user
+        views:
+          username:
+            as: username
+            type: string
+views:
+  order:
+    from: order
+    select:
+      quantity:
+        as: quantity
+        type: number
+      customerId:
+        as: customerId
+        type: number
+
+    join:
+      cart:
+        select:
+          id:
+            as: cartId
+            type: number
+
+      product:
+        select:
+          name:
+            as: productName
+            type: string
+          barcode:
+            as: barcode
+            type: string
+
+commons:
+  SingleEntity:
+    description: Entity with an only name property
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 50
+
+    required:
+      - name
+    unique:
+      - name
+
+  UserEntity:
+    description: User entity
+    mainProperty: fullName
+    properties:
+      fullName:
+        type: string
+        minLength: 3
+        maxLength: 50
+
+      username:
+        type: string
+        format: email
+        minLength: 6
+        maxLength: 50
+
+      password:
+        type: string
+        format: password
+        minLength: 1
+        maxLength: 30
+
+      phone:
+        type: string
+        format: phone
+        minLength: 10
+        maxLength: 20
+
+      permissions:
+        type: many-to-many
+        target: permission
+        views:
+          name:
+            as: permission
+            type: string
+
+      pricelevel:
+        type: many-to-one
+        target: pricelevel
+        views:
+          name:
+            as: pricelevel
+            type: string
+
+    required:
+      - username
+      - password
+      - phone
+
+    unique:
+      - username
+      - phone
