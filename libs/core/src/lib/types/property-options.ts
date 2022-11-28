@@ -1,0 +1,20 @@
+import { ApiPropertyOptions } from '@nestjs/swagger';
+import { InputType } from './input-type';
+
+export interface PropertyOptions extends ApiPropertyOptions {
+  required?: false | undefined;
+  inputType: InputType;
+  type: 'string' | 'number' | 'boolean' | 'date';
+  enum?: string[];
+  ean?: true;
+  phone?: true;
+  before?: Date;
+  after?: Date;
+  email?: true;
+  password?: true;
+  uuid?: true;
+  maximum?: number;
+  minimum?: number;
+  minLength?: number;
+  maxLength?: number;
+}

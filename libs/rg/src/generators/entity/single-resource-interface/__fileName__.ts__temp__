@@ -1,4 +1,0 @@
-
-export interface I<%- className %>{
-  <%- propertyName %>:string
-}
