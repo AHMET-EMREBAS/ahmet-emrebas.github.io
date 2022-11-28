@@ -3,16 +3,15 @@ import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { EntityGeneratorSchema } from './schema';
 import { load } from 'js-yaml';
-import { IResource } from '@ae/common';
 import { formatAndIndex } from '../utils';
 import { uniqBy } from 'lodash';
 function getSOTObject(tree: Tree, name: string) {
   const SSOT_FILE = readFileSync(join(tree.root, 'ssot', name + '.yaml'));
-  const ssotObject = load(SSOT_FILE.toString()) as IResource;
+  const ssotObject = load(SSOT_FILE.toString()) as any;
   return ssotObject;
 }
 
-function getHelpers(ssotObject: IResource) {
+function getHelpers(ssotObject: any) {
   return {
     isUnique: (p: string) => ssotObject.unique?.includes(p),
     isRequired: (p: string) => ssotObject.required?.includes(p),

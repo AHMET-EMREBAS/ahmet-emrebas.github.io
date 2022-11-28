@@ -1,0 +1,38 @@
+
+
+
+<%
+
+  // Properties
+  let  __P = entity.properties.filter(e=>!!!e.target);
+
+  // Relations
+  let __R = entity.properties.filter(e=>!!e.target);
+
+  let __TypeORMImports =[...new Set( __R.map(e=>e.type))].map(e=>genName(e).className).join(' ,');
+
+  let __RelationImports = [...new Set( __R.map(e=>e.target))].map(e=>{
+    return [genName(e).className, e];
+  })
+
+%>
+
+
+import { I<%- className %> } from './<%- fileName %>';
+
+<% for(const Relation of uniqueBy(__R, 'target')) { %>
+    import { I<%- genName(Relation.target).className %> } from '../<%- genName(Relation.target).fileName %>';
+<% } %>
+
+<% if(__R?.length > 0){ %>
+export type IRead<%- className %> = <%- className %><
+    <% let __t = 0; %>
+    <% for(const Relation of __R) { %>
+        <%- genName(Relation.target).className   %>,
+    <% } %>
+>;
+<% } else { %>
+
+ export type IRead<%- className %> = <%- className %>;
+
+<% } %>

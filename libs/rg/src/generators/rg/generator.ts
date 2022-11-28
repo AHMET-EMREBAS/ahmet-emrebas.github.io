@@ -30,20 +30,32 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     'views'
   );
 
-  for (const entity of ssotObj.entities) {
-    const helper = getHelpers(entity);
+  async function generateThem(
+    source: string,
+    libraryName: string,
+    subfolder = ''
+  ) {
+    for (const entity of ssotObj.entities) {
+      const helper = getHelpers(entity);
 
-    generateFiles(
-      tree,
-      join(__dirname, 'files', 'entity'),
-      join('libs', 'models', 'src', 'lib', entity.name),
-      {
-        temp: '',
-        ...helper,
-        ...names(entity.name),
-        entity,
-      }
-    );
-    await formatAndIndex(tree, join('libs', 'models', 'src', 'lib'));
+      generateFiles(
+        tree,
+        join(__dirname, 'files', source),
+        join('libs', libraryName, 'src', 'lib', subfolder, entity.name),
+        {
+          temp: '',
+          ...helper,
+          ...names(entity.name),
+          entity,
+        }
+      );
+      await formatAndIndex(
+        tree,
+        join('libs', libraryName, 'src', 'lib', subfolder)
+      );
+    }
   }
+
+  await generateThem('model', 'models');
+  await generateThem('interface', 'common', 'interface');
 }
