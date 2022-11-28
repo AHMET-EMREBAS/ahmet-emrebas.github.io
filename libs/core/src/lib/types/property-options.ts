@@ -3,7 +3,7 @@ import { InputType } from './input-type';
 
 export interface PropertyOptions extends ApiPropertyOptions {
   required?: false | undefined;
-  inputType: InputType;
+  inputType?: InputType;
   type: 'string' | 'number' | 'boolean' | 'date';
   enum?: string[];
   ean?: true;
