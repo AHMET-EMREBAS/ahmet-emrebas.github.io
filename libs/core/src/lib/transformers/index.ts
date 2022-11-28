@@ -1,1 +1,1 @@
-export * from './password.transformer';
+export * from './PasswordTransformer';

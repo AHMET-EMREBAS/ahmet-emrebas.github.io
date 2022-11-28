@@ -57,10 +57,6 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     }
   }
 
-  console.log(ssotObj.entities);
-
-  console.log(ssotObj.entities.find((e) => e.name == 'product'));
-
   await generateThem(ssotObj.entities, 'model', 'models');
   await generateThem(ssotObj.entities, 'interface', 'common', 'interface');
 }

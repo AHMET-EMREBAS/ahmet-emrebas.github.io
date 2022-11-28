@@ -1,2 +1,2 @@
-export * from './is-password';
-export * from './validators';
+export * from './IsPassword';
+export * from './Validators';

@@ -1,0 +1,3 @@
+export * from './read-<%- fileName %>.dto';
+export * from './create-<%- fileName %>.dto';
+export * from './update-<%- fileName %>.dto';

@@ -12,6 +12,11 @@
       "factory": "./src/generators/resource/generator",
       "schema": "./src/generators/resource/schema.json",
       "description": "resource generator"
+    },
+    "interface": {
+      "factory": "./src/generators/interface/generator",
+      "schema": "./src/generators/interface/schema.json",
+      "description": "interface generator"
     }
   }
 }

@@ -1,2 +1,2 @@
-export * from './parse-yaml';
-export * from './namify-object';
+export * from './parse-yaml-object';
+export * from './namify-object-property';

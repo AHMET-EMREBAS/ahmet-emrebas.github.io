@@ -1,2 +1,2 @@
-export * from './country-code';
-export * from './property-options';
+export * from './CountryCode';
+export * from './PropertyOptions';

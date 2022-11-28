@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { join, parse } from 'path';
-import { parseYamlObject } from './parse-yaml';
+import { parseYamlObject } from './parse-yaml-object';
 import { load } from 'js-yaml';
 
 describe('Parse yaml', () => {

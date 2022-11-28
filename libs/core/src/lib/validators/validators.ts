@@ -13,8 +13,8 @@ import {
   IsUrl,
   IsEAN,
 } from 'class-validator';
-import { CountryCode } from '../types/country-code';
-import { IsPassword } from './is-password';
+import { CountryCode } from '../types/CountryCode';
+import { IsPassword } from './IsPassword';
 
 export const Validators = {
   required: (value: false | undefined) =>

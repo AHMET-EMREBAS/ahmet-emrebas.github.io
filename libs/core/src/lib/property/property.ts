@@ -7,6 +7,7 @@ import { Validators } from '../validators';
 import { PropertyOptions } from '../types';
 
 /**
+ * Property decorator
  * Add validations and transformers for properties
  * @param options
  * @returns

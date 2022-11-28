@@ -1,2 +1,2 @@
-export * from './base.entity';
-export * from './single-resource.entity';
+export * from './BaseEntity';
+export * from './MinimalEntity';
