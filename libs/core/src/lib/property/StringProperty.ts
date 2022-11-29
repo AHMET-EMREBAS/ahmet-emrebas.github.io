@@ -2,10 +2,10 @@ import { PropertyOptions } from '../types';
 import { Property } from './Property';
 
 export type StringPropertyOptions = Pick<
-  PropertyOptions,
-  'required' | 'minLength' | 'maxLength'
+  PropertyOptions<string>,
+  'required' | 'minLength' | 'maxLength' | 'default' | 'enum'
 >;
 
 export function StringProperty(options: StringPropertyOptions) {
-  return Property({ type: 'string', inputType: 'text', ...options });
+  return Property<string>({ type: 'string', inputType: 'text', ...options });
 }

@@ -48,6 +48,8 @@
     "class-validator": "^0.13.2",
     "js-yaml": "^4.1.0",
     "nativescript-theme-core": "~1.0.4",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.0.0-rc.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

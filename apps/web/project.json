@@ -52,7 +52,12 @@
           "apps/web/src/assets",
           "apps/web/src/manifest.webmanifest"
         ],
-        "styles": ["apps/web/src/styles.scss"],
+        "styles": [
+          "apps/web/src/styles.scss",
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css"
+        ],
         "scripts": [],
         "serviceWorker": true,
         "ngswConfigPath": "apps/web/ngsw-config.json"

@@ -1,1 +1,2 @@
-export * from './PaginatorDto';
+export * from './QueryDto';
+export * from './IdDto';

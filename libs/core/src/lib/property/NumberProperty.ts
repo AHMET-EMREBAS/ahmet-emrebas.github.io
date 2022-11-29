@@ -2,10 +2,10 @@ import { PropertyOptions } from '../types';
 import { Property } from './Property';
 
 export type NumberPropertyOptions = Pick<
-  PropertyOptions,
-  'required' | 'minimum' | 'maximum'
+  PropertyOptions<number>,
+  'required' | 'minimum' | 'maximum' | 'default' | 'enum'
 >;
 
 export function NumberProperty(options: NumberPropertyOptions) {
-  return Property({ type: 'number', inputType: 'number', ...options });
+  return Property<number>({ type: 'number', inputType: 'number', ...options });
 }

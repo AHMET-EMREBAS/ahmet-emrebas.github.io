@@ -2,10 +2,10 @@ import { PropertyOptions } from '../types';
 import { Property } from './Property';
 
 export type DatePropertyOptions = Pick<
-  PropertyOptions,
-  'required' | 'before' | 'after'
+  PropertyOptions<Date>,
+  'required' | 'before' | 'after' | 'default'
 >;
 
 export function DateProperty(options: DatePropertyOptions) {
-  return Property({ type: 'date', inputType: 'date', ...options });
+  return Property<Date>({ type: 'date', inputType: 'date', ...options });
 }

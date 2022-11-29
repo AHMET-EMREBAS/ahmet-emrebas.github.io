@@ -1,7 +1,10 @@
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
 
-export type PasswordPropertyOptions = Pick<PropertyOptions, 'required'>;
+export type PasswordPropertyOptions = Pick<
+  PropertyOptions<string>,
+  'required' | 'default'
+>;
 
 /**
  * Password propety decorator
@@ -9,7 +12,7 @@ export type PasswordPropertyOptions = Pick<PropertyOptions, 'required'>;
  * @returns
  */
 export function PasswordProperty(options: PasswordPropertyOptions) {
-  return Property({
+  return Property<string>({
     type: 'string',
     inputType: 'password',
     password: true,

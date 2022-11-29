@@ -4,3 +4,4 @@ export * from './NumberProperty';
 export * from './DateProperty';
 export * from './BooleanProperty';
 export * from './PasswordProperty';
+export * from './EmailProperty';
