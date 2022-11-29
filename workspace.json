@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "api": "apps/api",
+    "auth": "apps/auth",
     "cli": "libs/cli",
     "common": "libs/common",
     "components": "libs/components",

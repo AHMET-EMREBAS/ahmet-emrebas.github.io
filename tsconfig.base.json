@@ -15,13 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ae/cli": ["libs/cli/src/index.ts"],
       "@ae/common": ["libs/common/src/index.ts"],
       "@ae/components": ["libs/components/src/index.ts"],
       "@ae/core": ["libs/core/src/index.ts"],
       "@ae/models": ["libs/models/src/index.ts"],
       "@ae/rest": ["libs/rest/src/index.ts"],
-      "@ae/utils": ["libs/utils/src/index.ts"],
-      "@ae/cli": ["libs/cli/src/index.ts"]
+      "@ae/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

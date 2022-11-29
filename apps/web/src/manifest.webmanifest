@@ -6,6 +6,7 @@
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
+  "version": "0.0.2",
   "icons": [
     {
       "src": "assets/icons/android-icon-144x144.png",
