@@ -2,22 +2,16 @@
   "version": 2,
   "projects": {
     "cli": "libs/cli",
-    "cli-e2e": "apps/cli-e2e",
     "common": "libs/common",
     "core": "libs/core",
     "desktop": "apps/desktop",
-    "inventory": "apps/inventory",
-    "inventory-desktop": "apps/inventory-desktop",
-    "inventory-e2e": "apps/inventory-e2e",
     "material": "libs/material",
     "models": "libs/models",
-    "nativescript-inventory": "apps/nativescript-inventory",
     "rest": "libs/rest",
-    "server": "apps/server",
     "utils": "libs/utils",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e",
-    "mobile": "apps/nativescript-mobile/"
+    "mobile": "apps/mobile/"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
