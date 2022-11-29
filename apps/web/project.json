@@ -8,31 +8,31 @@
     "locales": {
       "en": {
         "baseHref": "",
-        "translation": "apps/inventory/src/locales/messages.en.xlf"
+        "translation": "apps/web/src/locales/messages.en.xlf"
       },
       "tr": {
         "baseHref": "",
-        "translation": "apps/inventory/src/locales/messages.tr.xlf"
+        "translation": "apps/web/src/locales/messages.tr.xlf"
       },
       "es": {
         "baseHref": "",
-        "translation": "apps/inventory/src/locales/messages.es.xlf"
+        "translation": "apps/web/src/locales/messages.es.xlf"
       },
       "fr": {
         "baseHref": "",
-        "translation": "apps/inventory/src/locales/messages.fr.xlf"
+        "translation": "apps/web/src/locales/messages.fr.xlf"
       },
-      "rs": {
+      "ru": {
         "baseHref": "",
-        "translation": "apps/inventory/src/locales/messages.rs.xlf"
+        "translation": "apps/web/src/locales/messages.ru.xlf"
       },
-      "ch": {
+      "cn": {
         "baseHref": "",
-        "translation": "apps/inventory/src/locales/messages.ch.xlf"
+        "translation": "apps/web/src/locales/messages.cn.xlf"
       },
       "jp": {
         "baseHref": "",
-        "translation": "apps/inventory/src/locales/messages.jp.xlf"
+        "translation": "apps/web/src/locales/messages.jp.xlf"
       }
     }
   },
@@ -103,8 +103,10 @@
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
+
       "options": {
-        "browserTarget": "web:build"
+        "browserTarget": "web:build",
+        "outputPath": "apps/web/src/locales"
       }
     },
     "lint": {
