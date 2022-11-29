@@ -3,15 +3,15 @@
   "projects": {
     "cli": "libs/cli",
     "common": "libs/common",
+    "components": "libs/components",
     "core": "libs/core",
     "desktop": "apps/desktop",
-    "material": "libs/material",
+    "mobile": "apps/mobile",
     "models": "libs/models",
     "rest": "libs/rest",
     "utils": "libs/utils",
     "web": "apps/web",
-    "web-e2e": "apps/web-e2e",
-    "mobile": "apps/mobile/"
+    "web-e2e": "apps/web-e2e"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

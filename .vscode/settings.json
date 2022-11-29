@@ -1,7 +1,6 @@
 {
   "yaml.schemas": {
-    "schemas/generator/index.json": ["ssot/**/*.yaml", "ssot/*.yaml"],
-    "file:///c%3A/Users/aecst/Projects/ahmet-emrebas/schemas/generator/index.json": "file:///c%3A/Users/aecst/Projects/ahmet-emrebas/ssot/category.yaml"
+    "schemas/generator/index.json": ["source/**/*.yaml", "source/*.yaml"]
   },
   "angular.enable-strict-mode-prompt": false,
   "eslint.validate": ["json"]

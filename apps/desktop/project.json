@@ -1,5 +1,5 @@
 {
-  "root": "apps/desktop",
+  "name": "desktop",
   "sourceRoot": "apps/desktop/src",
   "projectType": "application",
   "targets": {
