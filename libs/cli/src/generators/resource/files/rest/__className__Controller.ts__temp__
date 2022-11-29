@@ -1,0 +1,137 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+  Patch,
+  BadRequestException
+} from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import {
+  FunctionsDto,
+  PaginatorDto,
+  QueryDto,
+  ViewDto,
+  WhereDto
+} from 'core/dto';
+
+ import {
+  CanRead,
+  CanWrite,
+} from '../../auth/decorators';
+
+import {
+  <%- classname %>,
+  <%- classname %>View,
+} from './entity';
+import {
+  Create<%- classname %>Dto,
+  Update<%- classname %>Dto
+} from './dto';
+
+import { <%- classname %>ViewService } from './<%- name %>-view.service';
+import { <%- classname %>Service } from './<%- name %>.service';
+
+@ApiTags('<%- name %>')
+@Controller('<%- name %>')
+export class <%- classname %>Controller {
+  constructor(
+    private readonly service: <%- classname %>Service,
+    private readonly viewService: <%- classname %>ViewService
+  ) {}
+  @CanRead('<%- name %>')
+  @Get()
+  read<%- classname %>(
+    @Query() paginatorDto: PaginatorDto<<%- classname %> | <%- classname %>View>,
+    @Query() viewDto: ViewDto,
+    @Query() whereDto: WhereDto
+  ) {
+    const q = {
+      ...paginatorDto,
+      where: whereDto.where,
+    };
+
+    if (viewDto.view === true) {
+      return this.viewService.find(q);
+    }
+    return this.service.find(q);
+  }
+
+
+  @CanRead('<%- name %>')
+  @Get(':id')
+  read<%- classname %>ById(@Param('id') id: number, @Query() view: ViewDto) {
+    if (view.view === true) {
+      return this.viewService.findOneBy({ id });
+    }
+    return this.service.findOneBy({ id });
+  }
+
+  @CanWrite('<%- name %>')
+  @Post()
+  write<%- classname %>(@Body() body: Create<%- classname %>Dto) {
+    return this.service.save(body);
+  }
+
+  @CanWrite('<%- name %>')
+  @Put(':id')
+  update<%- classname %>(@Param('id') id: number, @Body() body: Update<%- classname %>Dto) {
+    return this.service.update(id, body);
+  }
+
+  @CanWrite('<%- name %>')
+  @Delete(':id')
+  delete<%- classname %>(@Param('id') id: number) {
+    return this.service.delete(id);
+  }
+
+  @CanRead('<%- name %>')
+  @Patch()
+  functions<%- classname %>(@Query() whereDto: WhereDto, @Query() functions: FunctionsDto) {
+    if (functions.query === 'count') {
+      return this.viewService.count({ where: whereDto.where});
+    }
+    throw new BadRequestException('Must provide a function name.');
+  }
+
+
+  <% for( const r of options.Relations || []) { %>
+
+
+      <% if(r.type.endsWith('One')) { %>
+
+            @CanWrite('<%- name %>')
+            @Post(':id/<%- r.name %>/:<%- r.name %>Id')
+            set<%- r.name %>To<%- classname %>(id: number, <%- r.name %>Id: number) {
+              return this.service.set(id, <%- r.name %>Id, '<%- r.name %>');
+            }
+
+
+            @CanWrite('<%- name %>')
+            @Post(':id/<%- r.name %>')
+            unset<%- r.name %>From<%- classname %>(id: number) {
+              return this.service.unset(id, '<%- r.name %>');
+            }
+      <% } else { %>
+
+            @CanWrite('<%- name %>')
+            @Post(':id/<%- r.name %>/:rid')
+            add<%- r.name %>To<%- classname %>(id: number, rid: number) {
+              return this.service.add(id, rid, '<%- r.name %>');
+            }
+
+              @CanWrite('<%- name %>')
+            @Post(':id/<%- r.name %>/:rid')
+            remove<%- r.name %>From<%- classname %>(id: number, rid: number) {
+              return this.service.remove(id, rid, '<%- r.name %>');
+            }
+
+      <% } %>
+
+  <% } %>
+
+}

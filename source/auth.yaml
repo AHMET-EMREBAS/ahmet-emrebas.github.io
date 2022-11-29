@@ -1,0 +1,94 @@
+name: Inventory Application
+description: Inventory Management System for managing, product, prices, quantities, customers, users, and POS system.
+entities:
+  user:
+    $ref: '#/commons/UserEntity'
+
+  customer:
+    $ref: '#/commons/UserEntity'
+
+  permission:
+    mainProperty: description
+    properties:
+      name:
+        type: string
+        minLength: 3
+        maxLength: 20
+      description:
+        type: string
+        minLength: 3
+        maxLength: 400
+
+    required:
+      - name
+      - description
+
+    unique:
+      - name
+
+commons:
+  SingleEntity:
+    description: Entity with an only name property
+    mainProperty: name
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 50
+
+    required:
+      - name
+    unique:
+      - name
+
+  UserEntity:
+    description: User entity
+    mainProperty: fullName
+    properties:
+      fullName:
+        type: string
+        minLength: 3
+        maxLength: 50
+
+      username:
+        type: string
+        format: email
+        minLength: 6
+        maxLength: 50
+
+      password:
+        type: string
+        format: password
+        minLength: 1
+        maxLength: 30
+
+      phone:
+        type: string
+        format: phone
+        minLength: 10
+        maxLength: 20
+
+      permissions:
+        type: many-to-many
+        target: permission
+        views:
+          name:
+            as: permission
+            type: string
+
+      pricelevel:
+        type: many-to-one
+        target: pricelevel
+        views:
+          name:
+            as: pricelevel
+            type: string
+
+    required:
+      - username
+      - password
+      - phone
+
+    unique:
+      - username
+      - phone

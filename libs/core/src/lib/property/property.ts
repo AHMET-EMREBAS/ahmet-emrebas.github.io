@@ -5,6 +5,7 @@ import { Expose } from 'class-transformer';
 
 import { Validators } from '../validators';
 import { PropertyOptions } from '../types';
+import { StringToTypeTransformer } from '../transformers';
 
 /**
  * Property decorator
@@ -25,5 +26,10 @@ export function Property(options: PropertyOptions) {
 
   validators.push(Validators.required(options.required));
 
-  return applyDecorators(Expose(), ApiProperty(options), ...validators);
+  return applyDecorators(
+    Expose(),
+    ApiProperty(options),
+    ...validators,
+    StringToTypeTransformer(options.type)
+  );
 }

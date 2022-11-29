@@ -1,2 +1,3 @@
+export * from './ResourceService';
 export * from './MinimalResourceService';
-export * from './AdvanceResourceService';
+export * from './ResourceViewService';

@@ -10,7 +10,7 @@ import { v4 } from 'uuid';
 
 import { InternalServerErrorException, Logger } from '@nestjs/common';
 
-export class MinimalResourceService<T> {
+export class ResourceService<T> {
   private readonly logger = new Logger(
     this.__repo.metadata.targetName + ' Service'
   );
@@ -45,6 +45,24 @@ export class MinimalResourceService<T> {
 
   findOneById(id: number) {
     return this.findOneBy({ id } as unknown as FindOptionsWhere<T>);
+  }
+
+  findAndCount(options?: FindManyOptions<T>) {
+    try {
+      return this.__repo.findAndCount(options);
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  findAndCountBy(options: FindOptionsWhere<T> | FindOptionsWhere<T>[]) {
+    try {
+      return this.__repo.findAndCountBy(options);
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
   }
 
   findBy(options: FindOptionsWhere<T> | FindOptionsWhere<T>[]) {
@@ -109,9 +127,110 @@ export class MinimalResourceService<T> {
     return deleteResult.affected > 0;
   }
 
+  async recover(id: number) {
+    try {
+      const found = await this.__repo.findOne({
+        where: { id } as unknown as FindOptionsWhere<T>,
+        withDeleted: true,
+      });
+      return await this.__repo.recover(found);
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  count(options?: FindManyOptions<T>) {
+    try {
+      return this.__repo.count(options);
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
+
   async softDelete(id: number) {
     try {
       return (await this.__repo.softDelete(id)).affected > 0;
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  /**
+   * Add many to  many relation ship
+   * @param id
+   * @param relationId
+   * @param relationName
+   * @returns
+   */
+  add(id: number, relationId: number, relationName: string) {
+    try {
+      return this.__repo
+        .createQueryBuilder()
+        .relation(relationName)
+        .of(id)
+        .add(relationId);
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  /**
+   * Add many to one relationship
+   * @param id
+   * @param relationId
+   * @param relationName
+   * @returns
+   */
+  set(id: number, relationId: number, relationName: string) {
+    try {
+      return this.__repo
+        .createQueryBuilder()
+        .relation(relationName)
+        .of(id)
+        .set(relationId);
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  /**
+   * Remove many to one relationship
+   * @param id
+   * @param relationName
+   * @returns
+   */
+  unset(id: number, relationName: string) {
+    try {
+      return this.__repo
+        .createQueryBuilder()
+        .relation(relationName)
+        .of(id)
+        .set(null);
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  /**
+   * Remove many to many relationship
+   * @param id
+   * @param relationId
+   * @param relationName
+   * @returns
+   */
+  remove(id: number, relationId: number, relationName: string) {
+    try {
+      return this.__repo
+        .createQueryBuilder()
+        .relation(relationName)
+        .of(id)
+        .remove(relationId);
     } catch (err) {
       this.logger.error(err);
       throw new InternalServerErrorException();
