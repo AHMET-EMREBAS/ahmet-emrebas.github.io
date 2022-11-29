@@ -98,7 +98,7 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "proxyConfig": "undefined/proxy.conf.json"
+        "proxyConfig": "apps/web/proxy.conf.json"
       }
     },
     "extract-i18n": {
