@@ -16,7 +16,8 @@
     "server": "apps/server",
     "utils": "libs/utils",
     "web": "apps/web",
-    "web-e2e": "apps/web-e2e"
+    "web-e2e": "apps/web-e2e",
+    "mobile": "apps/nativescript-mobile/"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

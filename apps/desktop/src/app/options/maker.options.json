@@ -1,3 +1,11 @@
 {
-  "$schema": "../../../../../node_modules/nx-electron/src/validation/maker.schema.json"
+  "$schema": "../../../../../node_modules/nx-electron/src/validation/maker.schema.json",
+  "icon": "dist/apps/desktop/assets/logo.png",
+  "appId": "com.ae.APP_NAME",
+  "npmRebuild": false,
+  "buildDependenciesFromSource": false,
+  "compression": "maximum",
+  "electronCompile": false,
+  "productName": "Product Name",
+  "copyright": "Copyright © 2022 Ahmet Emrebas"
 }
