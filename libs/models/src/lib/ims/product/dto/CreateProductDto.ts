@@ -30,7 +30,7 @@ export class CreateProductDto implements CreateProduct {
   description: string;
 
   @StringProperty({
-    required: false,
+    required: true,
     minLength: 10,
     maxLength: 13,
 
@@ -39,12 +39,12 @@ export class CreateProductDto implements CreateProduct {
   barcode: string;
 
   @NumberProperty({
-    required: false,
+    required: true,
   })
   price: number;
 
   @NumberProperty({
-    required: false,
+    required: true,
   })
   cost: number;
 

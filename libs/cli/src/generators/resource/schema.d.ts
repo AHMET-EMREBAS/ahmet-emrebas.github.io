@@ -1,5 +1,5 @@
 export interface RgGeneratorSchema {
-  ssot: string;
+  name: string;
   tags?: string;
   directory?: string;
 }

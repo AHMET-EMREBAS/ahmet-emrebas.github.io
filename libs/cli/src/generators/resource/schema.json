@@ -5,10 +5,10 @@
   "title": "Generate resources",
   "type": "object",
   "properties": {
-    "ssot": {
+    "name": {
       "type": "string",
       "x-prompt": {
-        "message": "Select the ssot",
+        "message": "Select the project",
         "type": "list",
         "items": [
           { "label": "- Inventory Mangement System", "value": "ims" },
@@ -18,5 +18,5 @@
       }
     }
   },
-  "required": ["ssot"]
+  "required": ["name"]
 }

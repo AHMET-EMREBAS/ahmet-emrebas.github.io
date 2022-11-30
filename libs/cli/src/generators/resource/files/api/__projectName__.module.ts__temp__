@@ -1,0 +1,20 @@
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+<% entities.forEach(e=> { %>
+import { <%- genName(e.name).className %>Module } from '@ae/rest/<%- projectName %>/<%- genName(e.name).propertyName %>/<%- genName(e.name).className %>Module'
+ <% })%>
+@Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'better-sqlite3',
+      database: 'dist/projectName/projectName.sqlite',
+      autoLoadEntities: true,
+      dropSchema: true,
+      synchronize: true,
+    }),
+<% entities.forEach(e=> { %>
+    <%- genName(e.name).className %>Module,
+<% })%>
+  ],
+})
+export class <%- genName(projectName).className %>Module {}

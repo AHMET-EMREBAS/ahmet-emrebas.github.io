@@ -23,21 +23,17 @@ export class Product extends BaseEntity {
   @Column({
     type: 'text',
 
-    nullable: true,
+    unique: true,
   })
   barcode?: string;
 
   @Column({
     type: 'numeric',
-
-    nullable: true,
   })
   price?: number;
 
   @Column({
     type: 'numeric',
-
-    nullable: true,
   })
   cost?: number;
 

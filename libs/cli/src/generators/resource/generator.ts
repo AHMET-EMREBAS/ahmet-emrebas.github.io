@@ -25,13 +25,15 @@ function getHelpers(entity: any) {
 }
 
 export default async function (tree: Tree, options: RgGeneratorSchema) {
+  const projectName = options.name;
+
   const __COMMON_LIBRARY_DIR = join('libs', 'common', 'src', 'lib');
   const __MODELS_LIBRARY_DIR = join('libs', 'models', 'src', 'lib');
   const __REST_LIBRARY_DIR = join('libs', 'rest', 'src', 'lib');
 
-  const COMMON_LIBRARY_DIR = join(__COMMON_LIBRARY_DIR, options.ssot);
-  const MODELS_LIBRARY_DIR = join(__MODELS_LIBRARY_DIR, options.ssot);
-  const REST_LIBRARY_DIR = join(__REST_LIBRARY_DIR, options.ssot);
+  const COMMON_LIBRARY_DIR = join(__COMMON_LIBRARY_DIR, projectName);
+  const MODELS_LIBRARY_DIR = join(__MODELS_LIBRARY_DIR, projectName);
+  const REST_LIBRARY_DIR = join(__REST_LIBRARY_DIR, projectName);
 
   tryCatch(() => mkdirSync(COMMON_LIBRARY_DIR));
   tryCatch(() => mkdirSync(MODELS_LIBRARY_DIR));
@@ -42,19 +44,34 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
   const REST_FILES = 'rest';
 
   const file = readFileSync(
-    join(tree.root, 'source', options.ssot + '.yaml')
+    join(tree.root, 'source', projectName + '.yaml')
   ).toString();
 
   const ssotContent = parseYamlObject(load(file));
 
-  const ssotObj: any = namifyObjectByProperty(
+  const projectObject: any = namifyObjectByProperty(
     ssotContent,
     'properties',
     'entities',
     'views'
   );
 
-  async function generateThem(
+  async function generateApiApp(__projectName: string) {
+    await generateFiles(
+      tree,
+      join(__dirname, 'files', 'api'),
+      join('apps', 'api', 'src', 'app'),
+      {
+        projectName: __projectName,
+        entities: projectObject.entities,
+        temp: '',
+        genName: names,
+      }
+    );
+    await formatFiles(tree);
+  }
+
+  async function genereateResources(
     items: any[],
     source: string,
     libraryName: string,
@@ -79,11 +96,24 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     }
   }
 
-  await generateThem(ssotObj.entities, MODEL_FILES, 'models', options.ssot);
-  await generateThem(ssotObj.entities, INTERFACE_FILES, 'common', options.ssot);
-  await generateThem(ssotObj.entities, REST_FILES, 'rest', options.ssot);
+  await genereateResources(
+    projectObject.entities,
+    MODEL_FILES,
+    'models',
+    projectName
+  );
+  await genereateResources(
+    projectObject.entities,
+    INTERFACE_FILES,
+    'common',
+    projectName
+  );
+  await genereateResources(
+    projectObject.entities,
+    REST_FILES,
+    'rest',
+    projectName
+  );
 
-  addIndexFile(MODELS_LIBRARY_DIR);
-  addIndexFile(COMMON_LIBRARY_DIR);
-  addIndexFile(REST_LIBRARY_DIR);
+  await generateApiApp(projectName);
 }

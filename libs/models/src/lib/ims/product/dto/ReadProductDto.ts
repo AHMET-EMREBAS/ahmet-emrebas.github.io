@@ -22,13 +22,13 @@ export class ReadProductDto implements ReadProduct {
   @StringProperty({ required: false })
   description: string;
 
-  @StringProperty({ required: false })
+  @StringProperty({ required: true })
   barcode: string;
 
-  @NumberProperty({ required: false })
+  @NumberProperty({ required: true })
   price: number;
 
-  @NumberProperty({ required: false })
+  @NumberProperty({ required: true })
   cost: number;
 
   @ManyToOneProperty({ required: false })
