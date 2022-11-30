@@ -1,6 +1,6 @@
 import { ResourceViewService } from '@ae/core';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PriceView } from '@ae/models/ims/price';
+import { PriceView } from '@ae/models/ims/price/PriceView';
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 

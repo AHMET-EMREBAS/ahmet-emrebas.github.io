@@ -1,8 +1,10 @@
-import { Pricelevel } from '@ae/models/ims/pricelevel';
+import { Pricelevel } from '@ae/models/ims/pricelevel/Pricelevel';
 
-import { Product } from '@ae/models/ims/product';
+import { Product } from '@ae/models/ims/product/Product';
 
-import { Price, PriceView } from '@ae/models/ims/price';
+import { Price } from '@ae/models/ims/price/Price';
+import { PriceView } from '@ae/models/ims/price/PriceView';
+import { PriceOptionView } from '@ae/models/ims/price/PriceOptionView';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,7 +13,17 @@ import { PriceViewService } from './PriceViewService';
 import { PriceController } from './PriceController';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Price, PriceView, Pricelevel, Product])],
+  imports: [
+    TypeOrmModule.forFeature([
+      Price,
+      PriceView,
+      PriceOptionView,
+
+      Pricelevel,
+
+      Product,
+    ]),
+  ],
   providers: [PriceService, PriceViewService],
   controllers: [PriceController],
 })

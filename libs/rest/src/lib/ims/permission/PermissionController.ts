@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Permission,
-  PermissionView,
-  CreatePermissionDto,
-  UpdatePermissionDto,
-} from '@ae/models/ims/permission';
+
+import { Permission } from '@ae/models/ims/permission/Permission';
+import { PermissionView } from '@ae/models/ims/permission/PermissionView';
+import { PermissionOptionView } from '@ae/models/ims/permission/PermissionOptionView';
+import { CreatePermissionDto } from '@ae/models/ims/permission/dto/CreatePermissionDto';
+import { UpdatePermissionDto } from '@ae/models/ims/permission/dto/UpdatePermissionDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { PermissionService } from './PermissionService';

@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Transaction,
-  TransactionView,
-  CreateTransactionDto,
-  UpdateTransactionDto,
-} from '@ae/models/ims/transaction';
+
+import { Transaction } from '@ae/models/ims/transaction/Transaction';
+import { TransactionView } from '@ae/models/ims/transaction/TransactionView';
+import { TransactionOptionView } from '@ae/models/ims/transaction/TransactionOptionView';
+import { CreateTransactionDto } from '@ae/models/ims/transaction/dto/CreateTransactionDto';
+import { UpdateTransactionDto } from '@ae/models/ims/transaction/dto/UpdateTransactionDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { TransactionService } from './TransactionService';

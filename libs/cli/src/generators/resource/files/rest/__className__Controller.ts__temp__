@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  <%- className %>,
-  <%- className %>View,
-  Create<%- className %>Dto,
-  Update<%- className %>Dto,
-} from '@ae/models/<%- projectName %>/<%- fileName %>';
+
+import {<%- className %>} from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>';
+import {<%- className %>View} from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>View';
+import {<%- className %>OptionView } from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>OptionView';
+import {Create<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Create<%- className %>Dto';
+import {Update<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Update<%- className %>Dto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { <%- className %>Service } from './<%- className %>Service';
@@ -65,25 +66,25 @@ export class <%- className %>Controller {
     <% if(e.type.endsWith('one')){ %>
 
 
-      @Set('<%- genName(e.target).propertyName %>')
-      set<%- genName(e.target).className %>(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
-        return this.service.set(id, <%- genName(e.target).propertyName %>Id, '<%- genName(e.target).propertyName %>');
+      @Set('<%- genName(e.name).propertyName %>')
+      set<%- genName(e.name).className %>(@ParamId() id: number, @ParamRid() <%- genName(e.name).propertyName %>Id: number) {
+        return this.service.set(id, <%- genName(e.name).propertyName %>Id, '<%- genName(e.name).propertyName %>');
       }
 
-      @Unset('<%- genName(e.target).propertyName %>')
-      unset<%- genName(e.target).className %>(@ParamId() id: number) {
-        return this.service.unset(id, '<%- genName(e.target).propertyName %>');
+      @Unset('<%- genName(e.name).propertyName %>')
+      unset<%- genName(e.name).className %>(@ParamId() id: number) {
+        return this.service.unset(id, '<%- genName(e.name).propertyName %>');
       }
 
     <%} else { %>
 
-      @Add('<%- genName(e.target).propertyName %>')
-      add<%- genName(e.target).className %>(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
-        return this.service.set(id, <%- genName(e.target).propertyName %>Id, '<%- genName(e.target).propertyName %>');
+      @Add('<%- genName(e.name).propertyName %>')
+      add<%- genName(e.name).className %>(@ParamId() id: number, @ParamRid() <%- genName(e.name).propertyName %>Id: number) {
+        return this.service.set(id, <%- genName(e.name).propertyName %>Id, '<%- genName(e.name).propertyName %>');
       }
 
-      @Remove('<%- genName(e.target).propertyName %>')
-      remove<%- genName(e.target).className %>(@ParamId() id: number) {
+      @Remove('<%- genName(e.name).propertyName %>')
+      remove<%- genName(e.name).className %>(@ParamId() id: number) {
         return this.service.unset(id, '<%- genName(e.target).propertyName %>');
       }
 

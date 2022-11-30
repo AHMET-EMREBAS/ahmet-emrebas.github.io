@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Price,
-  PriceView,
-  CreatePriceDto,
-  UpdatePriceDto,
-} from '@ae/models/ims/price';
+
+import { Price } from '@ae/models/ims/price/Price';
+import { PriceView } from '@ae/models/ims/price/PriceView';
+import { PriceOptionView } from '@ae/models/ims/price/PriceOptionView';
+import { CreatePriceDto } from '@ae/models/ims/price/dto/CreatePriceDto';
+import { UpdatePriceDto } from '@ae/models/ims/price/dto/UpdatePriceDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { PriceService } from './PriceService';

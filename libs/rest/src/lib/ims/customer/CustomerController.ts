@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Customer,
-  CustomerView,
-  CreateCustomerDto,
-  UpdateCustomerDto,
-} from '@ae/models/ims/customer';
+
+import { Customer } from '@ae/models/ims/customer/Customer';
+import { CustomerView } from '@ae/models/ims/customer/CustomerView';
+import { CustomerOptionView } from '@ae/models/ims/customer/CustomerOptionView';
+import { CreateCustomerDto } from '@ae/models/ims/customer/dto/CreateCustomerDto';
+import { UpdateCustomerDto } from '@ae/models/ims/customer/dto/UpdateCustomerDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CustomerService } from './CustomerService';
@@ -59,13 +60,13 @@ export class CustomerController {
     return this.service.delete(id);
   }
 
-  @Add('permission')
-  addPermission(@ParamId() id: number, @ParamRid() permissionId: number) {
-    return this.service.set(id, permissionId, 'permission');
+  @Add('permissions')
+  addPermissions(@ParamId() id: number, @ParamRid() permissionsId: number) {
+    return this.service.set(id, permissionsId, 'permissions');
   }
 
-  @Remove('permission')
-  removePermission(@ParamId() id: number) {
+  @Remove('permissions')
+  removePermissions(@ParamId() id: number) {
     return this.service.unset(id, 'permission');
   }
 

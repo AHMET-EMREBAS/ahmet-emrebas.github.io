@@ -75,6 +75,7 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
           entity,
         }
       );
+      await formatFiles(tree);
     }
   }
 
@@ -85,6 +86,4 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
   addIndexFile(MODELS_LIBRARY_DIR);
   addIndexFile(COMMON_LIBRARY_DIR);
   addIndexFile(REST_LIBRARY_DIR);
-
-  await formatFiles(tree);
 }

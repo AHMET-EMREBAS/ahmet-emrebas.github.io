@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Quantity,
-  QuantityView,
-  CreateQuantityDto,
-  UpdateQuantityDto,
-} from '@ae/models/ims/quantity';
+
+import { Quantity } from '@ae/models/ims/quantity/Quantity';
+import { QuantityView } from '@ae/models/ims/quantity/QuantityView';
+import { QuantityOptionView } from '@ae/models/ims/quantity/QuantityOptionView';
+import { CreateQuantityDto } from '@ae/models/ims/quantity/dto/CreateQuantityDto';
+import { UpdateQuantityDto } from '@ae/models/ims/quantity/dto/UpdateQuantityDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { QuantityService } from './QuantityService';

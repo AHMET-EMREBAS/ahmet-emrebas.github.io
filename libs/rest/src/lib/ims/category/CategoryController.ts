@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Category,
-  CategoryView,
-  CreateCategoryDto,
-  UpdateCategoryDto,
-} from '@ae/models/ims/category';
+
+import { Category } from '@ae/models/ims/category/Category';
+import { CategoryView } from '@ae/models/ims/category/CategoryView';
+import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
+import { CreateCategoryDto } from '@ae/models/ims/category/dto/CreateCategoryDto';
+import { UpdateCategoryDto } from '@ae/models/ims/category/dto/UpdateCategoryDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CategoryService } from './CategoryService';

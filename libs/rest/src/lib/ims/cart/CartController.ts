@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Cart,
-  CartView,
-  CreateCartDto,
-  UpdateCartDto,
-} from '@ae/models/ims/cart';
+
+import { Cart } from '@ae/models/ims/cart/Cart';
+import { CartView } from '@ae/models/ims/cart/CartView';
+import { CartOptionView } from '@ae/models/ims/cart/CartOptionView';
+import { CreateCartDto } from '@ae/models/ims/cart/dto/CreateCartDto';
+import { UpdateCartDto } from '@ae/models/ims/cart/dto/UpdateCartDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CartService } from './CartService';

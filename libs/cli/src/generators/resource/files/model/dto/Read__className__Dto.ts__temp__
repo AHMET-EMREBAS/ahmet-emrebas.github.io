@@ -1,4 +1,4 @@
-import {  Read<%- className %> } from '@ae/common/<%- projectName %>';
+import {  Read<%- className %> } from '@ae/common/<%- projectName %>/<%- propertyName %>/Create<%- className %>';
 
 import {
 
@@ -31,7 +31,7 @@ OneToOneProperty
 
 
 <% uniqueBy(__R, 'target').forEach(e=>{ %>
-  import {  Read<%- genName(e.target).className %>Dto } from '../../<%- genName(e.target).fileName %>';
+  import {  Read<%- genName(e.target).className %>Dto } from '../../<%- genName(e.target).className %>';
 <% }) %>
 
 export class Read<%- className %>Dto implements  Read<%- className %> {

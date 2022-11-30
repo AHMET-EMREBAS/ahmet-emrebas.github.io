@@ -1,4 +1,6 @@
-import { Category, CategoryView } from '@ae/models/ims/category';
+import { Category } from '@ae/models/ims/category/Category';
+import { CategoryView } from '@ae/models/ims/category/CategoryView';
+import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -7,7 +9,9 @@ import { CategoryViewService } from './CategoryViewService';
 import { CategoryController } from './CategoryController';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Category, CategoryView])],
+  imports: [
+    TypeOrmModule.forFeature([Category, CategoryView, CategoryOptionView]),
+  ],
   providers: [CategoryService, CategoryViewService],
   controllers: [CategoryController],
 })

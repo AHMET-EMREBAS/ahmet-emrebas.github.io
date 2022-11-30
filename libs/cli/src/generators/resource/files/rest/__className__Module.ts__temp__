@@ -1,10 +1,12 @@
 
 
 <% uniqueBy(entity.properties.filter(e=>e.target), 'target').forEach(e=>{ %>
-import { <%- genName(e.target).className %> } from '@ae/models/<%- projectName %>/<%- genName(e.target).fileName %>';
+import { <%- genName(e.target).className %> } from '@ae/models/<%- projectName %>/<%- genName(e.target).fileName %>/<%- genName(e.target).className %>';
 <% }) %>
 
-import { <%- className %>, <%- className %>View } from '@ae/models/<%- projectName %>/<%- fileName %>';
+import {<%- className %>} from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>';
+import {<%- className %>View} from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>View';
+import {<%- className %>OptionView } from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>OptionView';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -16,6 +18,7 @@ import { <%- className %>Controller } from './<%- className %>Controller';
   imports: [TypeOrmModule.forFeature([
     <%- className %>,
     <%- className %>View,
+    <%- className %>OptionView,
 
 <% uniqueBy(entity.properties.filter(e=>e.target), 'target').forEach(e=>{ %>
   <%- genName(e.target).className %> ,

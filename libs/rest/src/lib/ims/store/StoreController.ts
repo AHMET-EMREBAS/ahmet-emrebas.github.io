@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Store,
-  StoreView,
-  CreateStoreDto,
-  UpdateStoreDto,
-} from '@ae/models/ims/store';
+
+import { Store } from '@ae/models/ims/store/Store';
+import { StoreView } from '@ae/models/ims/store/StoreView';
+import { StoreOptionView } from '@ae/models/ims/store/StoreOptionView';
+import { CreateStoreDto } from '@ae/models/ims/store/dto/CreateStoreDto';
+import { UpdateStoreDto } from '@ae/models/ims/store/dto/UpdateStoreDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { StoreService } from './StoreService';

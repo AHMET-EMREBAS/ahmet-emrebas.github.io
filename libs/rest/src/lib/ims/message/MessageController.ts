@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Message,
-  MessageView,
-  CreateMessageDto,
-  UpdateMessageDto,
-} from '@ae/models/ims/message';
+
+import { Message } from '@ae/models/ims/message/Message';
+import { MessageView } from '@ae/models/ims/message/MessageView';
+
+import { CreateMessageDto } from '@ae/models/ims/message/dto/CreateMessageDto';
+import { UpdateMessageDto } from '@ae/models/ims/message/dto/UpdateMessageDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { MessageService } from './MessageService';
@@ -59,24 +60,24 @@ export class MessageController {
     return this.service.delete(id);
   }
 
-  @Set('user')
-  setUser(@ParamId() id: number, @ParamRid() userId: number) {
-    return this.service.set(id, userId, 'user');
+  @Set('to')
+  setTo(@ParamId() id: number, @ParamRid() toId: number) {
+    return this.service.set(id, toId, 'to');
   }
 
-  @Unset('user')
-  unsetUser(@ParamId() id: number) {
-    return this.service.unset(id, 'user');
+  @Unset('to')
+  unsetTo(@ParamId() id: number) {
+    return this.service.unset(id, 'to');
   }
 
-  @Set('user')
-  setUser(@ParamId() id: number, @ParamRid() userId: number) {
-    return this.service.set(id, userId, 'user');
+  @Set('from')
+  setFrom(@ParamId() id: number, @ParamRid() fromId: number) {
+    return this.service.set(id, fromId, 'from');
   }
 
-  @Unset('user')
-  unsetUser(@ParamId() id: number) {
-    return this.service.unset(id, 'user');
+  @Unset('from')
+  unsetFrom(@ParamId() id: number) {
+    return this.service.unset(id, 'from');
   }
 
   @Aggregate('cont')

@@ -1,5 +1,5 @@
 import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
-import { <%- className %>} from './<%- fileName %>';
+import { <%- className %>} from './<%- className %>';
 
 <%
 
@@ -12,14 +12,14 @@ import { <%- className %>} from './<%- fileName %>';
   let __TypeORMImports =[...new Set( __R.map(e=>e.type))].map(e=>genName(e).className).join(' ,');
 
   let __RelationImports = [...new Set( __R.map(e=>e.target))].map(e=>{
-    return [genName(e).className, e];
+    return [genName(e).className,  e ];
   })
 
 %>
 
 <% for(const [key, value] of __RelationImports) { %>
 
-  import { <%- key %> } from '../<%- value %>';
+  import { <%- key %> } from '../<%- value %>/<%- key %>';
 
 <% } %>
 

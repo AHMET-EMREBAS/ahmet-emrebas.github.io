@@ -1,10 +1,12 @@
-import { Product } from '@ae/models/ims/product';
+import { Product } from '@ae/models/ims/product/Product';
 
-import { Cart } from '@ae/models/ims/cart';
+import { Cart } from '@ae/models/ims/cart/Cart';
 
-import { Customer } from '@ae/models/ims/customer';
+import { Customer } from '@ae/models/ims/customer/Customer';
 
-import { Order, OrderView } from '@ae/models/ims/order';
+import { Order } from '@ae/models/ims/order/Order';
+import { OrderView } from '@ae/models/ims/order/OrderView';
+import { OrderOptionView } from '@ae/models/ims/order/OrderOptionView';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -14,7 +16,17 @@ import { OrderController } from './OrderController';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Order, OrderView, Product, Cart, Customer]),
+    TypeOrmModule.forFeature([
+      Order,
+      OrderView,
+      OrderOptionView,
+
+      Product,
+
+      Cart,
+
+      Customer,
+    ]),
   ],
   providers: [OrderService, OrderViewService],
   controllers: [OrderController],

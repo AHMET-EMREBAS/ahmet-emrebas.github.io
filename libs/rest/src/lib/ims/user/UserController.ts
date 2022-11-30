@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  User,
-  UserView,
-  CreateUserDto,
-  UpdateUserDto,
-} from '@ae/models/ims/user';
+
+import { User } from '@ae/models/ims/user/User';
+import { UserView } from '@ae/models/ims/user/UserView';
+import { UserOptionView } from '@ae/models/ims/user/UserOptionView';
+import { CreateUserDto } from '@ae/models/ims/user/dto/CreateUserDto';
+import { UpdateUserDto } from '@ae/models/ims/user/dto/UpdateUserDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './UserService';
@@ -59,13 +60,13 @@ export class UserController {
     return this.service.delete(id);
   }
 
-  @Add('permission')
-  addPermission(@ParamId() id: number, @ParamRid() permissionId: number) {
-    return this.service.set(id, permissionId, 'permission');
+  @Add('permissions')
+  addPermissions(@ParamId() id: number, @ParamRid() permissionsId: number) {
+    return this.service.set(id, permissionsId, 'permissions');
   }
 
-  @Remove('permission')
-  removePermission(@ParamId() id: number) {
+  @Remove('permissions')
+  removePermissions(@ParamId() id: number) {
     return this.service.unset(id, 'permission');
   }
 

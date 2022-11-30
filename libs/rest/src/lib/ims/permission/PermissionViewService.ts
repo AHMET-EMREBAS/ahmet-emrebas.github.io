@@ -1,6 +1,6 @@
 import { ResourceViewService } from '@ae/core';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PermissionView } from '@ae/models/ims/permission';
+import { PermissionView } from '@ae/models/ims/permission/PermissionView';
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 

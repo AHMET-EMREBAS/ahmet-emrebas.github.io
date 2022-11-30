@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Department,
-  DepartmentView,
-  CreateDepartmentDto,
-  UpdateDepartmentDto,
-} from '@ae/models/ims/department';
+
+import { Department } from '@ae/models/ims/department/Department';
+import { DepartmentView } from '@ae/models/ims/department/DepartmentView';
+import { DepartmentOptionView } from '@ae/models/ims/department/DepartmentOptionView';
+import { CreateDepartmentDto } from '@ae/models/ims/department/dto/CreateDepartmentDto';
+import { UpdateDepartmentDto } from '@ae/models/ims/department/dto/UpdateDepartmentDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { DepartmentService } from './DepartmentService';

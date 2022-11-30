@@ -1,8 +1,10 @@
-import { Permission } from '@ae/models/ims/permission';
+import { Permission } from '@ae/models/ims/permission/Permission';
 
-import { Pricelevel } from '@ae/models/ims/pricelevel';
+import { Pricelevel } from '@ae/models/ims/pricelevel/Pricelevel';
 
-import { User, UserView } from '@ae/models/ims/user';
+import { User } from '@ae/models/ims/user/User';
+import { UserView } from '@ae/models/ims/user/UserView';
+import { UserOptionView } from '@ae/models/ims/user/UserOptionView';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,7 +13,17 @@ import { UserViewService } from './UserViewService';
 import { UserController } from './UserController';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, UserView, Permission, Pricelevel])],
+  imports: [
+    TypeOrmModule.forFeature([
+      User,
+      UserView,
+      UserOptionView,
+
+      Permission,
+
+      Pricelevel,
+    ]),
+  ],
   providers: [UserService, UserViewService],
   controllers: [UserController],
 })

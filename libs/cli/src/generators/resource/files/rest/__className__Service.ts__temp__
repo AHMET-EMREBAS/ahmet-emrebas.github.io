@@ -1,6 +1,6 @@
 import { ResourceService } from '@ae/core';
 import { InjectRepository } from '@nestjs/typeorm';
-import { <%- className %> } from '@ae/models/<%- projectName %>/<%- fileName %>';
+import { <%- className %> } from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>';
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 

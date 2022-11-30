@@ -21,7 +21,7 @@ import { BaseEntity } from '@ae/core';
 
 <% for(const [key, value] of __RelationImports) { %>
 
-  import { <%- key %> } from '../<%- value %>';
+  import { <%- key %> } from '../<%- value %>/<%- key %>';
 
 <% } %>
 

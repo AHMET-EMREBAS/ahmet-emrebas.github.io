@@ -280,7 +280,7 @@ entities:
         inputType: search-one
         views:
           username:
-            as: username
+            as: to
             type: string
 
       from:
@@ -289,7 +289,7 @@ entities:
         inputType: search-one
         views:
           username:
-            as: username
+            as: from
             type: string
     required:
       - title

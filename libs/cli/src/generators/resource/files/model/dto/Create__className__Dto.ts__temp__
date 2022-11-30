@@ -1,4 +1,4 @@
-import {  Create<%- className %> } from '@ae/common/<%- projectName %>';
+import {  Create<%- className %> } from '@ae/common/<%- projectName %>/<%- propertyName %>/Create<%- className %>';
 
 import {
 

@@ -12,12 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import {
-  Order,
-  OrderView,
-  CreateOrderDto,
-  UpdateOrderDto,
-} from '@ae/models/ims/order';
+
+import { Order } from '@ae/models/ims/order/Order';
+import { OrderView } from '@ae/models/ims/order/OrderView';
+import { OrderOptionView } from '@ae/models/ims/order/OrderOptionView';
+import { CreateOrderDto } from '@ae/models/ims/order/dto/CreateOrderDto';
+import { UpdateOrderDto } from '@ae/models/ims/order/dto/UpdateOrderDto';
+
 import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { OrderService } from './OrderService';

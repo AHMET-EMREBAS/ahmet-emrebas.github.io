@@ -1,6 +1,6 @@
 import { ResourceService } from '@ae/core';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@ae/models/ims/user';
+import { User } from '@ae/models/ims/user/User';
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 

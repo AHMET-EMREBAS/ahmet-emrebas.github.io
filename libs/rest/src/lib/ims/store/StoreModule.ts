@@ -1,6 +1,8 @@
-import { Pricelevel } from '@ae/models/ims/pricelevel';
+import { Pricelevel } from '@ae/models/ims/pricelevel/Pricelevel';
 
-import { Store, StoreView } from '@ae/models/ims/store';
+import { Store } from '@ae/models/ims/store/Store';
+import { StoreView } from '@ae/models/ims/store/StoreView';
+import { StoreOptionView } from '@ae/models/ims/store/StoreOptionView';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -9,7 +11,9 @@ import { StoreViewService } from './StoreViewService';
 import { StoreController } from './StoreController';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Store, StoreView, Pricelevel])],
+  imports: [
+    TypeOrmModule.forFeature([Store, StoreView, StoreOptionView, Pricelevel]),
+  ],
   providers: [StoreService, StoreViewService],
   controllers: [StoreController],
 })
