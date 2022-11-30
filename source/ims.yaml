@@ -23,6 +23,9 @@ entities:
         maxLength: 30
         inputType: text
 
+    required:
+      - name
+
   store:
     description: Store entity schema
     mainProperty: name
@@ -129,6 +132,12 @@ entities:
             as: product
             type: string
 
+    required:
+      - price
+      - cost
+      - pricelevel
+      - product
+
   quantity:
     description: Quantity entity schema
     mainProperty: quantity
@@ -156,6 +165,11 @@ entities:
           name:
             as: store
             type: string
+
+    required:
+      - quantity
+      - product
+      - store
 
   order:
     mainProperty: id
@@ -193,6 +207,12 @@ entities:
             as: customer
             type: string
 
+    required:
+      - quantity
+      - product
+      - cart
+      - customer
+
   transaction:
     mainProperty: id
     properties:
@@ -207,6 +227,10 @@ entities:
 
       complete:
         type: boolean
+
+    required:
+      - cart
+      - complete
 
   user:
     $ref: '#/commons/UserEntity'
@@ -266,6 +290,11 @@ entities:
           username:
             as: username
             type: string
+    required:
+      - title
+      - message
+      - to
+      - from
 
 commons:
   SingleEntity:

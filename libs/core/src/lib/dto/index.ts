@@ -1,2 +1,2 @@
 export * from './QueryDto';
-export * from './IdDto';
+export * from './IDDto';

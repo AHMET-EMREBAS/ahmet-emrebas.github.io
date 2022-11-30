@@ -17,7 +17,7 @@ import { CountryCode } from '../types/CountryCode';
 import { IsPassword } from './IsPassword';
 
 export const Validators = {
-  required: (value: false | undefined) =>
+  required: (value: boolean | undefined) =>
     value == false ? IsOptional() : IsNotEmpty(),
   enum: (value: string[]) => IsIn(value),
   phone: (value: CountryCode | true) =>

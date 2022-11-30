@@ -2,7 +2,7 @@ import { ApiPropertyOptions } from '@nestjs/swagger';
 import { InputType } from './InputType';
 
 export interface PropertyOptions<ValueType> extends ApiPropertyOptions {
-  required?: false | undefined;
+  required?: boolean | undefined;
   inputType?: InputType;
   type: 'string' | 'number' | 'boolean' | 'date' | 'object' | 'array';
   enum?: string[];

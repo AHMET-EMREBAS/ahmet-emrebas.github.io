@@ -14,14 +14,14 @@ import { I<%- className %> } from './<%- fileName %>';
 <% } %>
 
 <% if(__R?.length > 0){ %>
-export type Read<%- className %> = I<%- className %><
+export interface Read<%- className %> extends I<%- className %><
     <% let __t = 0; %>
     <% for(const Relation of __R) { %>
         Read<%- genName(Relation.target).className   %>,
     <% } %>
->;
+>{};
 <% } else { %>
 
- export type Read<%- className %> = I<%- className %>;
+ export type Read<%- className %>  =   I<%- className %>;
 
 <% } %>

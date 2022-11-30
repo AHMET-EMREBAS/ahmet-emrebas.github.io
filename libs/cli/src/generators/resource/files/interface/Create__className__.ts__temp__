@@ -5,21 +5,24 @@
 %>
 
 
-import { I<%- className %> } from './<%- fileName %>';
+import { I<%- className %> } from './I<%- className %>';
 
 <% if(__R.length > 0 ) { %>
-import { ID } from '../../common';
+
+  import { ID } from '../../common';
+
 <% } %>
 
+
 <% if(__R?.length > 0){ %>
-export type Create<%- className %> = I<%- className %><
+export interface  Create<%- className %> extends I<%- className %><
     <% let __t = 0; %>
     <% for(const Relation of __R) { %>
-        <% if(Relation.type.endsWith('many')) { %> IID[], <% } else { %> IID, <% } %>
+        <% if(Relation.type.endsWith('many')) { %> ID[], <% } else { %> ID, <% } %>
     <% } %>
->;
+>{};
 <% } else { %>
 
- export type Create<%- className %> = I<%- className %>;
+ export interface Create<%- className %> extends I<%- className %>{};
 
 <% } %>

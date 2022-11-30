@@ -1,6 +1,6 @@
 import { NumberProperty } from '../property';
 
-export class IdDto {
+export class IDDto {
   @NumberProperty({ minimum: 1 })
   id: number;
 }

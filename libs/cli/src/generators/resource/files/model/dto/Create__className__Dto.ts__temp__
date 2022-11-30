@@ -1,0 +1,48 @@
+import {  Create<%- className %> } from '@ae/common/<%- projectName %>';
+
+import {
+
+IDDto,
+StringProperty,
+DateProperty,
+NumberProperty,
+BooleanProperty,
+EmailProperty,
+PasswordProperty,
+ManyToManyProperty,
+ManyToOneProperty,
+OneToManyProperty,
+OneToOneProperty
+
+
+} from '@ae/core';
+
+
+
+<%
+
+  // Properties
+  let  __P = entity.properties.filter(e=>!!!e.target);
+
+  // Relations
+  let __R = entity.properties.filter(e=>!!e.target);
+
+
+%>
+
+export class Create<%- className %>Dto implements  Create<%- className %> {
+
+  <% __P.forEach(e=> { %>
+
+    @<%- genName(e.type).className %>Property({ required: <%-  !!entity.required?.includes(e.name) %> })
+    <%- e.name %>: <%- e.type %>
+
+  <% }) %>
+
+  <% __R.forEach(e=> { %>
+
+    @<%- genName(e.type).className %>Property({ required: <%-  !!entity.required?.includes(e.name) %> })
+    <%- e.name %>: IDDto<%- e.type.endsWith('many') ? '[]' : '' %>;
+
+  <% }) %>
+}
