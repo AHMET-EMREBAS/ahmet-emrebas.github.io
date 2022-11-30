@@ -79,11 +79,12 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
   }
 
   await generateThem(ssotObj.entities, MODEL_FILES, 'models', options.ssot);
-
   await generateThem(ssotObj.entities, INTERFACE_FILES, 'common', options.ssot);
+  await generateThem(ssotObj.entities, REST_FILES, 'rest', options.ssot);
 
   addIndexFile(MODELS_LIBRARY_DIR);
   addIndexFile(COMMON_LIBRARY_DIR);
+  addIndexFile(REST_LIBRARY_DIR);
 
   await formatFiles(tree);
 }

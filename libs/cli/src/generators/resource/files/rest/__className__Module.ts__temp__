@@ -1,8 +1,7 @@
 
-import { Category } from '@ae/models/ims/category';
 
-<% uniqueBy(entity.properties.filter(e=>e.target), 'target')).forEach(e=>{ %>
-import { <%- genName(e.target).className %> } from '@ae/modles/<%- projectName %>/<%- genName(e.target).className %>';
+<% uniqueBy(entity.properties.filter(e=>e.target), 'target').forEach(e=>{ %>
+import { <%- genName(e.target).className %> } from '@ae/models/<%- projectName %>/<%- genName(e.target).fileName %>';
 <% }) %>
 
 import { <%- className %>, <%- className %>View } from '@ae/models/<%- projectName %>/<%- fileName %>';
@@ -14,8 +13,16 @@ import { <%- className %>ViewService } from './<%- className %>ViewService';
 import { <%- className %>Controller } from './<%- className %>Controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([<%- className %>, <%- className %>View, Category])],
+  imports: [TypeOrmModule.forFeature([
+    <%- className %>,
+    <%- className %>View,
+
+<% uniqueBy(entity.properties.filter(e=>e.target), 'target').forEach(e=>{ %>
+  <%- genName(e.target).className %> ,
+<% }) %>
+
+  ])],
   providers: [<%- className %>Service, <%- className %>ViewService],
-  controllers:[<%- className %>Controller,]
+  controllers:[<%- className %>Controller %>]
 })
 export class <%- className %>Module {}

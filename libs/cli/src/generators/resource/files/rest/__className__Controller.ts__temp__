@@ -66,24 +66,24 @@ export class <%- className %>Controller {
 
 
       @Set('<%- genName(e.target).propertyName %>')
-      setCategory(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
+      set<%- genName(e.target).className %>(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
         return this.service.set(id, <%- genName(e.target).propertyName %>Id, '<%- genName(e.target).propertyName %>');
       }
 
       @Unset('<%- genName(e.target).propertyName %>')
-      unsetCategory(@ParamId() id: number) {
+      unset<%- genName(e.target).className %>(@ParamId() id: number) {
         return this.service.unset(id, '<%- genName(e.target).propertyName %>');
       }
 
     <%} else { %>
 
       @Add('<%- genName(e.target).propertyName %>')
-      addCategory(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
+      add<%- genName(e.target).className %>(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
         return this.service.set(id, <%- genName(e.target).propertyName %>Id, '<%- genName(e.target).propertyName %>');
       }
 
       @Remove('<%- genName(e.target).propertyName %>')
-      removeCategory(@ParamId() id: number) {
+      remove<%- genName(e.target).className %>(@ParamId() id: number) {
         return this.service.unset(id, '<%- genName(e.target).propertyName %>');
       }
 

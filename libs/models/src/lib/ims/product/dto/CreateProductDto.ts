@@ -3,8 +3,15 @@ import { CreateProduct } from '@ae/common/ims';
 import {
   IDDto,
   StringProperty,
+  DateProperty,
   NumberProperty,
+  BooleanProperty,
+  EmailProperty,
+  PasswordProperty,
+  ManyToManyProperty,
   ManyToOneProperty,
+  OneToManyProperty,
+  OneToOneProperty,
 } from '@ae/core';
 
 export class CreateProductDto implements CreateProduct {
