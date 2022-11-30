@@ -135,7 +135,12 @@
           "$ref": "#/definitions/InputFormat"
         },
         "minLength": { "type": "number", "default": 1 },
-        "maxLength": { "type": "number", "default": 30 }
+        "maxLength": { "type": "number", "default": 30 },
+        "ean": { "type": "boolean", "const": true },
+        "email": { "type": "boolean", "const": true },
+        "uuid": { "type": "boolean", "const": true },
+        "password": { "type": "boolean", "const": true },
+        "enum": { "type": "array", "items": { "type": "string" } }
       },
       "additionalProperties": false,
       "required": ["type", "minLength", "maxLength"]

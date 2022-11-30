@@ -1,6 +1,8 @@
 import {
   Add,
   Aggregate,
+  ParamId,
+  ParamRid,
   QueryDto,
   Read,
   ReadById,
@@ -10,7 +12,13 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import { Body, Controller, Delete, Param, Query } from '@nestjs/common';
+import {
+  Product,
+  ProductView,
+  CreateProductDto,
+  UpdateProductDto,
+} from '@ae/models/ims/product';
+import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ProductService } from './ProductService';
 import { ProductViewService } from './ProductViewService';
@@ -24,7 +32,7 @@ export class ProductController {
   ) {}
 
   @Read()
-  find(@Query() query: QueryDto<any>) {
+  find(@Query() query: QueryDto<Product & ProductView>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
@@ -32,42 +40,42 @@ export class ProductController {
   }
 
   @ReadById()
-  findById(@Param('id') id: number) {
+  findById(@ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
   @Write()
-  save(@Body() body: any) {
+  save(@Body() body: CreateProductDto) {
     return this.service.save(body);
   }
 
   @Update()
-  update(@Param('id') id: number, @Body() body: any) {
+  update(@ParamId() id: number, @Body() body: UpdateProductDto) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  delete(@Param('id') id: number) {
+  delete(@ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Set('category')
-  setCategory(id: number, categoryId: number) {
+  setCategory(@ParamId() id: number, @ParamRid() categoryId: number) {
     return this.service.set(id, categoryId, 'category');
   }
 
   @Unset('category')
-  unsetCategory(id: number) {
+  unsetCategory(@ParamId() id: number) {
     return this.service.unset(id, 'category');
   }
 
   @Add('category')
-  addCategory(id: number, categoryId: number) {
+  addCategory(@ParamId() id: number, @ParamRid() categoryId: number) {
     return this.service.set(id, categoryId, 'category');
   }
 
   @Remove('category')
-  removeCategory(id: number) {
+  removeCategory(@ParamId() id: number) {
     return this.service.unset(id, 'category');
   }
 

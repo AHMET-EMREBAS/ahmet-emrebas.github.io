@@ -43,7 +43,7 @@ export class <%- className %> extends BaseEntity {
         %>
 
         @Column({ type: '<%- ____typeMap[__Property.type] || __Property.type %>'  })
-      <%- ____columnPropertyName %>: <%-  __Property.type  %>;
+      <%- ____columnPropertyName %>?: <%-  __Property.type  %>;
 
 
 <% } %>
@@ -67,7 +67,7 @@ export class <%- className %> extends BaseEntity {
 
         @<%- ___RelationType %>(()=><%- ____targetClassnameObj %>, <%- __IsOneToMany %> <%- ____toOneRelationOptions %>)
         @<%- __JoinType %>()
-        <%- ____columnPropertyName %>: <%- ____targetClassName %>;
+        <%- ____columnPropertyName %>?: <%- ____targetClassName %>;
 
 
 <% } %>

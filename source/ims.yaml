@@ -70,6 +70,7 @@ entities:
         type: string
         minLength: 10
         maxLength: 13
+        ean: true
         inputType: barcode
 
       category:
@@ -259,7 +260,7 @@ entities:
     unique:
       - name
 
-  messgae:
+  message:
     mainProperty: title
     properties:
       title:
@@ -324,21 +325,20 @@ commons:
 
       username:
         type: string
-
+        email: true
         inputType: email
         minLength: 6
         maxLength: 50
 
       password:
         type: string
-
+        password: true
         inputType: password
         minLength: 1
         maxLength: 30
 
       phone:
         type: string
-
         minLength: 10
         maxLength: 20
         inputType: phone

@@ -1,7 +1,14 @@
 import { ResourceViewService } from '@ae/core';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ProductView } from '@ae/models/ims/product';
+import { Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
 
-export class ProductViewService extends ResourceViewService<any> {
-  constructor() {
-    super();
+@Injectable()
+export class ProductViewService extends ResourceViewService<ProductView> {
+  constructor(
+    @InjectRepository(ProductView) productViewRepo: Repository<ProductView>
+  ) {
+    super(productViewRepo);
   }
 }

@@ -1,11 +1,19 @@
 import { namifyObjectByProperty, parseYamlObject } from '@ae/utils';
-import { generateFiles, names, Tree } from '@nrwl/devkit';
-import { readFileSync } from 'fs';
+import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
+import { mkdirSync, readFileSync } from 'fs';
 import { load } from 'js-yaml';
 import { uniqBy } from 'lodash';
 import { join } from 'path';
-import { formatAndIndex } from '../utils';
+import { addIndexFile } from '../utils';
 import { RgGeneratorSchema } from './schema';
+
+function tryCatch(func: () => any) {
+  try {
+    func();
+  } catch (err) {
+    // ignore
+  }
+}
 
 function getHelpers(entity: any) {
   return {
@@ -17,6 +25,22 @@ function getHelpers(entity: any) {
 }
 
 export default async function (tree: Tree, options: RgGeneratorSchema) {
+  const __COMMON_LIBRARY_DIR = join('libs', 'common', 'src', 'lib');
+  const __MODELS_LIBRARY_DIR = join('libs', 'models', 'src', 'lib');
+  const __REST_LIBRARY_DIR = join('libs', 'rest', 'src', 'lib');
+
+  const COMMON_LIBRARY_DIR = join(__COMMON_LIBRARY_DIR, options.ssot);
+  const MODELS_LIBRARY_DIR = join(__MODELS_LIBRARY_DIR, options.ssot);
+  const REST_LIBRARY_DIR = join(__REST_LIBRARY_DIR, options.ssot);
+
+  tryCatch(() => mkdirSync(COMMON_LIBRARY_DIR));
+  tryCatch(() => mkdirSync(MODELS_LIBRARY_DIR));
+  tryCatch(() => mkdirSync(REST_LIBRARY_DIR));
+
+  const MODEL_FILES = 'model';
+  const INTERFACE_FILES = 'interface';
+  const REST_FILES = 'rest';
+
   const file = readFileSync(
     join(tree.root, 'source', options.ssot + '.yaml')
   ).toString();
@@ -51,13 +75,15 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
           entity,
         }
       );
-      await formatAndIndex(
-        tree,
-        join('libs', libraryName, 'src', 'lib', subfolder)
-      );
     }
   }
 
-  await generateThem(ssotObj.entities, 'model', 'models', options.ssot);
-  await generateThem(ssotObj.entities, 'interface', 'common', options.ssot);
+  await generateThem(ssotObj.entities, MODEL_FILES, 'models', options.ssot);
+
+  await generateThem(ssotObj.entities, INTERFACE_FILES, 'common', options.ssot);
+
+  addIndexFile(MODELS_LIBRARY_DIR);
+  addIndexFile(COMMON_LIBRARY_DIR);
+
+  await formatFiles(tree);
 }

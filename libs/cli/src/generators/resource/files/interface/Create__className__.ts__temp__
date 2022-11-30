@@ -15,14 +15,14 @@ import { I<%- className %> } from './I<%- className %>';
 
 
 <% if(__R?.length > 0){ %>
-export interface  Create<%- className %> extends I<%- className %><
+export type  Create<%- className %> = I<%- className %><
     <% let __t = 0; %>
     <% for(const Relation of __R) { %>
         <% if(Relation.type.endsWith('many')) { %> ID[], <% } else { %> ID, <% } %>
     <% } %>
->{};
+>;
 <% } else { %>
 
- export interface Create<%- className %> extends I<%- className %>{};
+ export type  Create<%- className %> =  I<%- className %>;
 
 <% } %>

@@ -1,4 +1,4 @@
-import {  Create<%- className %> } from '@ae/common/<%- projectName %>';
+import {  Read<%- className %> } from '@ae/common/<%- projectName %>';
 
 import {
 
@@ -31,10 +31,10 @@ OneToOneProperty
 
 
 <% uniqueBy(__R, 'target').forEach(e=>{ %>
-  import {  Read<%- genName(e.target).className %> } from '../../<%- genName(e.target).fileName %>';
+  import {  Read<%- genName(e.target).className %>Dto } from '../../<%- genName(e.target).fileName %>';
 <% }) %>
 
-export class Create<%- className %>Dto implements  Create<%- className %> {
+export class Read<%- className %>Dto implements  Read<%- className %> {
 
   <% __P.forEach(e=> { %>
 
@@ -46,7 +46,7 @@ export class Create<%- className %>Dto implements  Create<%- className %> {
   <% __R.forEach(e=> { %>
 
     @<%- genName(e.type).className %>Property({ required: <%-  entity.required?.includes(e.name) %> })
-    <%- e.name %>: Read<%- genName(e.target).className %> <% if(e.type.endsWith('many')) { %> [] <% } %>
+    <%- e.name %>: Read<%- genName(e.target).className %>Dto <% if(e.type.endsWith('many')) { %> [] <% } %>
 
   <% }) %>
 }

@@ -1,8 +1,8 @@
-import { formatFiles, names, Tree } from '@nrwl/devkit';
+import { names, Tree } from '@nrwl/devkit';
 import { readdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-export async function formatAndIndex(tree: Tree, projectDir: string) {
+export function addIndexFile(projectDir: string) {
   const generatedResources = readdirSync(projectDir);
   const modelImports = generatedResources
     .filter((e) => !e.startsWith('index'))
@@ -10,5 +10,4 @@ export async function formatAndIndex(tree: Tree, projectDir: string) {
     .join('\n');
 
   writeFileSync(join(projectDir, 'index.ts'), modelImports);
-  await formatFiles(tree);
 }

@@ -34,12 +34,12 @@ export interface I<%- className %>
    %>
 
   <% for(const Property of __P) { %>
-    <%- genName(Property.name).propertyName %>: <%- __typeMap[Property.type] || Property.type %>
+    <%- genName(Property.name).propertyName %>?: <%- __typeMap[Property.type] || Property.type %>
   <% } %>
 
   <% __rCount = 0; %>
   <% for(const Relation of __R) { %>
-    <%- genName(Relation.name).propertyName %>: <%- genName(Relation.target).className +  __rCount++;  %>,
+    <%- genName(Relation.name).propertyName %>?: <%- genName(Relation.target).className +  __rCount++;  %>,
   <% } %>
 
 

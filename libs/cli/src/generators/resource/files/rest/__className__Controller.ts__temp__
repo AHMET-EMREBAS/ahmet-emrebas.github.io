@@ -1,6 +1,8 @@
 import {
   Add,
   Aggregate,
+  ParamId,
+  ParamRid,
   QueryDto,
   Read,
   ReadById,
@@ -10,21 +12,27 @@ import {
   Update,
   Write,
 } from '@ae/core';
-import { Body, Controller, Delete, Param, Query } from '@nestjs/common';
+import {
+  <%- className %>,
+  <%- className %>View,
+  Create<%- className %>Dto,
+  Update<%- className %>Dto,
+} from '@ae/models/<%- projectName %>/<%- fileName %>';
+import { Body, Controller, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ProductService } from './ProductService';
-import { ProductViewService } from './ProductViewService';
+import { <%- className %>Service } from './<%- className %>Service';
+import { <%- className %>ViewService } from './<%- className %>ViewService';
 
-@ApiTags('product')
-@Controller('product')
-export class ProductController {
+@ApiTags('<%- fileName %>')
+@Controller('<%- fileName %>')
+export class <%- className %>Controller {
   constructor(
-    private readonly service: ProductService,
-    private readonly viewService: ProductViewService
+    private readonly service: <%- className %>Service,
+    private readonly viewService: <%- className %>ViewService
   ) {}
 
   @Read()
-  find(@Query() query: QueryDto<any>) {
+  find(@Query() query: QueryDto<<%- className %> & <%- className %>View>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
@@ -32,44 +40,57 @@ export class ProductController {
   }
 
   @ReadById()
-  findById(@Param('id') id: number) {
+  findById(@ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
   @Write()
-  save(@Body() body: any) {
+  save(@Body() body: Create<%- className %>Dto) {
     return this.service.save(body);
   }
 
   @Update()
-  update(@Param('id') id: number, @Body() body: any) {
+  update(@ParamId() id: number, @Body() body: Update<%- className %>Dto) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  delete(@Param('id') id: number) {
+  delete(@ParamId() id: number) {
     return this.service.delete(id);
   }
 
-  @Set('category')
-  setCategory(id: number, categoryId: number) {
-    return this.service.set(id, categoryId, 'category');
-  }
 
-  @Unset('category')
-  unsetCategory(id: number) {
-    return this.service.unset(id, 'category');
-  }
+<% uniqueBy(entity.properties.filter(e=>e.target)).forEach(e=>{ %>
 
-  @Add('category')
-  addCategory(id: number, categoryId: number) {
-    return this.service.set(id, categoryId, 'category');
-  }
+    <% if(e.type.endsWith('one')){ %>
 
-  @Remove('category')
-  removeCategory(id: number) {
-    return this.service.unset(id, 'category');
-  }
+
+      @Set('<%- genName(e.target).propertyName %>')
+      setCategory(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
+        return this.service.set(id, <%- genName(e.target).propertyName %>Id, '<%- genName(e.target).propertyName %>');
+      }
+
+      @Unset('<%- genName(e.target).propertyName %>')
+      unsetCategory(@ParamId() id: number) {
+        return this.service.unset(id, '<%- genName(e.target).propertyName %>');
+      }
+
+    <%} else { %>
+
+      @Add('<%- genName(e.target).propertyName %>')
+      addCategory(@ParamId() id: number, @ParamRid() <%- genName(e.target).propertyName %>Id: number) {
+        return this.service.set(id, <%- genName(e.target).propertyName %>Id, '<%- genName(e.target).propertyName %>');
+      }
+
+      @Remove('<%- genName(e.target).propertyName %>')
+      removeCategory(@ParamId() id: number) {
+        return this.service.unset(id, '<%- genName(e.target).propertyName %>');
+      }
+
+    <% } %>
+
+<% }) %>
+
 
   @Aggregate('cont')
   count() {
