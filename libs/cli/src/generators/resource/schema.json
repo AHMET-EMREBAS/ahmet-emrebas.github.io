@@ -11,8 +11,9 @@
         "message": "Select the ssot",
         "type": "list",
         "items": [
-          { "label": "- Inventory", "value": "inventory" },
-          { "label": "- Project Management", "value": "pma" }
+          { "label": "- Inventory Mangement System", "value": "ims" },
+          { "label": "- Project Management System", "value": "pms" },
+          { "label": "- Auth  System", "value": "auth" }
         ]
       }
     }

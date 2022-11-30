@@ -3,7 +3,15 @@ import { Property } from './Property';
 
 export type StringPropertyOptions = Pick<
   PropertyOptions<string>,
-  'required' | 'minLength' | 'maxLength' | 'default' | 'enum'
+  | 'required'
+  | 'minLength'
+  | 'maxLength'
+  | 'ean'
+  | 'uuid'
+  | 'email'
+  | 'password'
+  | 'default'
+  | 'enum'
 >;
 
 export function StringProperty(options: StringPropertyOptions) {

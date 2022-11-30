@@ -43,7 +43,7 @@ export class <%- className %> extends BaseEntity {
         %>
 
         @Column({ type: '<%- ____typeMap[__Property.type] || __Property.type %>'  })
-        <%- ____columnPropertyName %>:string;
+      <%- ____columnPropertyName %>: <%-  __Property.type  %>;
 
 
 <% } %>

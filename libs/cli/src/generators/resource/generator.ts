@@ -18,7 +18,7 @@ function getHelpers(entity: any) {
 
 export default async function (tree: Tree, options: RgGeneratorSchema) {
   const file = readFileSync(
-    join(tree.root, 'ssot', options.ssot + '.yaml')
+    join(tree.root, 'source', options.ssot + '.yaml')
   ).toString();
 
   const ssotContent = parseYamlObject(load(file));
@@ -39,11 +39,12 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     for (const entity of items) {
       const helper = getHelpers(entity);
 
-      generateFiles(
+      await generateFiles(
         tree,
         join(__dirname, 'files', source),
         join('libs', libraryName, 'src', 'lib', subfolder, entity.name),
         {
+          projectName: subfolder,
           temp: '',
           ...helper,
           ...names(entity.name),
@@ -57,6 +58,6 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     }
   }
 
-  await generateThem(ssotObj.entities, 'model', 'models');
-  await generateThem(ssotObj.entities, 'interface', 'common', 'interface');
+  await generateThem(ssotObj.entities, 'model', 'models', options.ssot);
+  await generateThem(ssotObj.entities, 'interface', 'common', options.ssot);
 }

@@ -1,5 +1,5 @@
-export * from './<%- fileName %>';
-export * from './read-<%- fileName %>';
-export * from './create-<%- fileName %>';
-export * from './update-<%- fileName %>';
+export * from './I<%- className %>';
+export * from './Read<%- className %>';
+export * from './Create<%- className %>';
+export * from './Update<%- className %>';
 

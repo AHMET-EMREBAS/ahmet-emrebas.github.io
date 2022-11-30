@@ -1,2 +1,0 @@
-import {  ICreate<%- className %>  } from './create-<%- fileName %>';
-export type IUpdate<%- className %> = Partial<ICreate<%- className %>>;

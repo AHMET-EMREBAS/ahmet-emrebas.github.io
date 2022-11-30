@@ -1,4 +1,6 @@
 export * from './Property';
+export * from './SearchOneProperty';
+export * from './SearchManyProperty';
 export * from './StringProperty';
 export * from './NumberProperty';
 export * from './DateProperty';

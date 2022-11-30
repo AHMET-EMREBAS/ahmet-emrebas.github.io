@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { applyDecorators } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
-import { Expose, Transform } from 'class-transformer';
+import { Expose } from 'class-transformer';
 
 import { Validators } from '../validators';
 import { PropertyOptions } from '../types';
+import { Transformers } from '../transformers/Transformers';
+import { ValidateNested } from 'class-validator';
 
 /**
  * Property decorator
@@ -17,20 +19,30 @@ export function Property<T>(options: PropertyOptions<T>) {
     throw new Error('Property type is required!');
   }
 
-  const notNull = (e: unknown) => !!e;
+  if (!options.inputType) {
+    throw new Error('Property inputType is required!');
+  }
+
+  const notFalsy = (e: unknown) => !!e;
 
   const validators = Object.entries(options)
     .map(([key, value]) => Validators[key]?.(value))
-    .filter(notNull);
+    .filter(notFalsy);
 
   validators.push(Validators.required(options.required));
 
-  const transformers = [];
+  if (options.type === 'object') {
+    validators.push(ValidateNested());
+  }
+
+  if (options.type === 'array') {
+    validators.push(ValidateNested({ each: true }));
+  }
 
   return applyDecorators(
     Expose(),
     ApiProperty(options),
     ...validators,
-    ...transformers
+    Transformers[options.type]
   );
 }

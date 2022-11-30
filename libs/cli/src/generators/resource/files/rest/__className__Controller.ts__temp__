@@ -1,137 +1,78 @@
 import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-  Query,
-  Patch,
-  BadRequestException
-} from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
-import {
-  FunctionsDto,
-  PaginatorDto,
+  Add,
+  Aggregate,
   QueryDto,
-  ViewDto,
-  WhereDto
-} from 'core/dto';
+  Read,
+  ReadById,
+  Remove,
+  Set,
+  Unset,
+  Update,
+  Write,
+} from '@ae/core';
+import { Body, Controller, Delete, Param, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { ProductService } from './ProductService';
+import { ProductViewService } from './ProductViewService';
 
- import {
-  CanRead,
-  CanWrite,
-} from '../../auth/decorators';
-
-import {
-  <%- classname %>,
-  <%- classname %>View,
-} from './entity';
-import {
-  Create<%- classname %>Dto,
-  Update<%- classname %>Dto
-} from './dto';
-
-import { <%- classname %>ViewService } from './<%- name %>-view.service';
-import { <%- classname %>Service } from './<%- name %>.service';
-
-@ApiTags('<%- name %>')
-@Controller('<%- name %>')
-export class <%- classname %>Controller {
+@ApiTags('product')
+@Controller('product')
+export class ProductController {
   constructor(
-    private readonly service: <%- classname %>Service,
-    private readonly viewService: <%- classname %>ViewService
+    private readonly service: ProductService,
+    private readonly viewService: ProductViewService
   ) {}
-  @CanRead('<%- name %>')
-  @Get()
-  read<%- classname %>(
-    @Query() paginatorDto: PaginatorDto<<%- classname %> | <%- classname %>View>,
-    @Query() viewDto: ViewDto,
-    @Query() whereDto: WhereDto
-  ) {
-    const q = {
-      ...paginatorDto,
-      where: whereDto.where,
-    };
 
-    if (viewDto.view === true) {
-      return this.viewService.find(q);
+  @Read()
+  find(@Query() query: QueryDto<any>) {
+    if (query.view === true) {
+      return this.viewService.find(query);
     }
-    return this.service.find(q);
+    return this.service.find(query);
   }
 
-
-  @CanRead('<%- name %>')
-  @Get(':id')
-  read<%- classname %>ById(@Param('id') id: number, @Query() view: ViewDto) {
-    if (view.view === true) {
-      return this.viewService.findOneBy({ id });
-    }
+  @ReadById()
+  findById(@Param('id') id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @CanWrite('<%- name %>')
-  @Post()
-  write<%- classname %>(@Body() body: Create<%- classname %>Dto) {
+  @Write()
+  save(@Body() body: any) {
     return this.service.save(body);
   }
 
-  @CanWrite('<%- name %>')
-  @Put(':id')
-  update<%- classname %>(@Param('id') id: number, @Body() body: Update<%- classname %>Dto) {
+  @Update()
+  update(@Param('id') id: number, @Body() body: any) {
     return this.service.update(id, body);
   }
 
-  @CanWrite('<%- name %>')
-  @Delete(':id')
-  delete<%- classname %>(@Param('id') id: number) {
+  @Delete()
+  delete(@Param('id') id: number) {
     return this.service.delete(id);
   }
 
-  @CanRead('<%- name %>')
-  @Patch()
-  functions<%- classname %>(@Query() whereDto: WhereDto, @Query() functions: FunctionsDto) {
-    if (functions.query === 'count') {
-      return this.viewService.count({ where: whereDto.where});
-    }
-    throw new BadRequestException('Must provide a function name.');
+  @Set('category')
+  setCategory(id: number, categoryId: number) {
+    return this.service.set(id, categoryId, 'category');
   }
 
+  @Unset('category')
+  unsetCategory(id: number) {
+    return this.service.unset(id, 'category');
+  }
 
-  <% for( const r of options.Relations || []) { %>
+  @Add('category')
+  addCategory(id: number, categoryId: number) {
+    return this.service.set(id, categoryId, 'category');
+  }
 
+  @Remove('category')
+  removeCategory(id: number) {
+    return this.service.unset(id, 'category');
+  }
 
-      <% if(r.type.endsWith('One')) { %>
-
-            @CanWrite('<%- name %>')
-            @Post(':id/<%- r.name %>/:<%- r.name %>Id')
-            set<%- r.name %>To<%- classname %>(id: number, <%- r.name %>Id: number) {
-              return this.service.set(id, <%- r.name %>Id, '<%- r.name %>');
-            }
-
-
-            @CanWrite('<%- name %>')
-            @Post(':id/<%- r.name %>')
-            unset<%- r.name %>From<%- classname %>(id: number) {
-              return this.service.unset(id, '<%- r.name %>');
-            }
-      <% } else { %>
-
-            @CanWrite('<%- name %>')
-            @Post(':id/<%- r.name %>/:rid')
-            add<%- r.name %>To<%- classname %>(id: number, rid: number) {
-              return this.service.add(id, rid, '<%- r.name %>');
-            }
-
-              @CanWrite('<%- name %>')
-            @Post(':id/<%- r.name %>/:rid')
-            remove<%- r.name %>From<%- classname %>(id: number, rid: number) {
-              return this.service.remove(id, rid, '<%- r.name %>');
-            }
-
-      <% } %>
-
-  <% } %>
-
+  @Aggregate('cont')
+  count() {
+    return this.service.count();
+  }
 }

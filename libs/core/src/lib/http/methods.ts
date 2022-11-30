@@ -4,6 +4,7 @@ import {
   Post,
   Put,
   Delete as DeleteRequest,
+  Patch,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -43,6 +44,10 @@ export function ReadById() {
   );
 }
 
+/**
+ * Post request for creating item.
+ * @returns
+ */
 export function Write() {
   return applyDecorators(
     ApiOperation({ summary: 'Create one', operationId: 'save' }),
@@ -52,6 +57,10 @@ export function Write() {
   );
 }
 
+/**
+ * Put request for updating item
+ * @returns
+ */
 export function Update() {
   return applyDecorators(
     ApiOperation({ summary: 'Update one by id', operationId: 'update' }),
@@ -61,6 +70,10 @@ export function Update() {
   );
 }
 
+/**
+ * Delete request for deleting item
+ * @returns
+ */
 export function Delete() {
   return applyDecorators(
     ApiOperation({ summary: 'Delete one by id', operationId: 'delete' }),
@@ -70,6 +83,11 @@ export function Delete() {
   );
 }
 
+/**
+ * Post request for setting relation.
+ * @param relation
+ * @returns
+ */
 export function Set(relation: string) {
   return applyDecorators(
     ApiOperation({
@@ -82,6 +100,11 @@ export function Set(relation: string) {
   );
 }
 
+/**
+ * Delete request for unsetting item.
+ * @param relation
+ * @returns
+ */
 export function Unset(relation: string) {
   return applyDecorators(
     ApiOperation({
@@ -94,6 +117,11 @@ export function Unset(relation: string) {
   );
 }
 
+/**
+ * Put request for updating many-to-many relationship list
+ * @param relation
+ * @returns
+ */
 export function Add(relation: string) {
   return applyDecorators(
     ApiOperation({
@@ -106,6 +134,11 @@ export function Add(relation: string) {
   );
 }
 
+/**
+ * Delete request for removing many-to-many relation from list
+ * @param relation
+ * @returns
+ */
 export function Remove(relation: string) {
   return applyDecorators(
     ApiOperation({
@@ -117,14 +150,13 @@ export function Remove(relation: string) {
   );
 }
 
-// @CanWrite('product')
-// @Post(':id/department/:departmentId')
-// setdepartmentToProduct(id: number, departmentId: number) {
-//   return this.service.set(id, departmentId, 'department');
-// }
-
-// @CanWrite('product')
-// @Post(':id/department')
-// unsetdepartmentFromProduct(id: number) {
-//   return this.service.unset(id, 'department');
-// }
+export function Aggregate(name: string) {
+  return applyDecorators(
+    ApiOperation({
+      summary: `${name}`,
+      operationId: name,
+    }),
+    CanRead(),
+    Patch(name)
+  );
+}

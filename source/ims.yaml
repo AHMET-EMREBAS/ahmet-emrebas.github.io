@@ -21,6 +21,7 @@ entities:
         type: string
         minLength: 1
         maxLength: 30
+        inputType: text
 
   store:
     description: Store entity schema
@@ -30,10 +31,12 @@ entities:
         type: string
         minLength: 1
         maxLength: 30
+        inputType: text
 
       pricelevel:
         type: many-to-one
         target: pricelevel
+        inputType: search-one
         views:
           name:
             as: pricelevel
@@ -52,20 +55,24 @@ entities:
         type: string
         minLength: 1
         maxLength: 30
+        inputType: text
 
       description:
         type: string
         minLength: 1
         maxLength: 400
+        inputType: textarea
 
       barcode:
         type: string
         minLength: 10
         maxLength: 13
+        inputType: barcode
 
       category:
         type: many-to-one
         target: category
+        inputType: search-one
         views:
           name:
             as: category
@@ -75,11 +82,13 @@ entities:
         type: number
         min: 0
         max: 900900900900
+        inputType: currency
 
       cost:
         type: number
         min: 0
         max: 900900900900
+        inputType: currency
 
     required:
       - name
@@ -94,15 +103,18 @@ entities:
         type: number
         min: 0
         max: 900900900900
+        inputType: currency
 
       cost:
         type: number
         min: 0
         max: 900900900900
+        inputType: currency
 
       pricelevel:
         type: many-to-one
         target: pricelevel
+        inputType: search-one
         views:
           name:
             as: pricelevel
@@ -111,6 +123,7 @@ entities:
       product:
         type: many-to-one
         target: product
+        inputType: search-one
         views:
           name:
             as: product
@@ -124,10 +137,12 @@ entities:
         type: number
         min: -1000
         max: 900900900900
+        inputType: number
 
       product:
         type: many-to-one
         target: product
+        inputType: search-one
         views:
           name:
             as: product
@@ -136,6 +151,7 @@ entities:
       store:
         type: many-to-one
         target: store
+        inputType: search-one
         views:
           name:
             as: store
@@ -148,10 +164,12 @@ entities:
         type: number
         min: 0
         max: 900900900900
+        inputType: number
 
       product:
         type: many-to-one
         target: product
+        inputType: search-one
         views:
           barcode:
             as: barcode
@@ -160,6 +178,7 @@ entities:
       cart:
         type: many-to-one
         target: cart
+        inputType: search-one
         views:
           id:
             as: cartId
@@ -168,6 +187,7 @@ entities:
       customer:
         type: many-to-one
         target: customer
+        inputType: search-one
         views:
           username:
             as: customer
@@ -179,6 +199,7 @@ entities:
       cart:
         type: many-to-one
         target: cart
+        inputType: search-one
         views:
           id:
             as: cartId
@@ -200,10 +221,12 @@ entities:
         type: string
         minLength: 3
         maxLength: 20
+        inputType: text
       description:
         type: string
         minLength: 3
         maxLength: 400
+        inputType: textarea
 
     required:
       - name
@@ -219,13 +242,17 @@ entities:
         type: string
         minLength: 1
         maxLength: 30
+        inputType: text
       message:
         type: string
         minLength: 1
         maxLength: 400
+        inputType: textarea
+
       to:
         type: many-to-one
         target: user
+        inputType: search-one
         views:
           username:
             as: username
@@ -234,35 +261,10 @@ entities:
       from:
         type: many-to-one
         target: user
+        inputType: search-one
         views:
           username:
             as: username
-            type: string
-views:
-  order:
-    from: order
-    select:
-      quantity:
-        as: quantity
-        type: number
-      customerId:
-        as: customerId
-        type: number
-
-    join:
-      cart:
-        select:
-          id:
-            as: cartId
-            type: number
-
-      product:
-        select:
-          name:
-            as: productName
-            type: string
-          barcode:
-            as: barcode
             type: string
 
 commons:
@@ -274,6 +276,7 @@ commons:
         type: string
         minLength: 1
         maxLength: 50
+        inputType: text
 
     required:
       - name
@@ -288,28 +291,33 @@ commons:
         type: string
         minLength: 3
         maxLength: 50
+        inputType: text
 
       username:
         type: string
-        format: email
+
+        inputType: email
         minLength: 6
         maxLength: 50
 
       password:
         type: string
-        format: password
+
+        inputType: password
         minLength: 1
         maxLength: 30
 
       phone:
         type: string
-        format: phone
+
         minLength: 10
         maxLength: 20
+        inputType: phone
 
       permissions:
         type: many-to-many
         target: permission
+        inputType: search-many
         views:
           name:
             as: permission
@@ -318,6 +326,7 @@ commons:
       pricelevel:
         type: many-to-one
         target: pricelevel
+        inputType: search-one
         views:
           name:
             as: pricelevel

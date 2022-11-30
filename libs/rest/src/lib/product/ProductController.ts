@@ -1,16 +1,19 @@
 import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-  Query,
-  Patch,
-  BadRequestException,
-} from '@nestjs/common';
+  Add,
+  Aggregate,
+  QueryDto,
+  Read,
+  ReadById,
+  Remove,
+  Set,
+  Unset,
+  Update,
+  Write,
+} from '@ae/core';
+import { Body, Controller, Delete, Param, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { ProductService } from './ProductService';
+import { ProductViewService } from './ProductViewService';
 
 @ApiTags('product')
 @Controller('product')
@@ -19,84 +22,57 @@ export class ProductController {
     private readonly service: ProductService,
     private readonly viewService: ProductViewService
   ) {}
-  @CanRead('product')
-  @Get()
-  readProduct(
-    @Query() paginatorDto: PaginatorDto<Product | ProductView>,
-    @Query() viewDto: ViewDto,
-    @Query() whereDto: WhereDto
-  ) {
-    const q = {
-      ...paginatorDto,
-      where: whereDto.where,
-    };
 
-    if (viewDto.view === true) {
-      return this.viewService.find(q);
+  @Read()
+  find(@Query() query: QueryDto<any>) {
+    if (query.view === true) {
+      return this.viewService.find(query);
     }
-    return this.service.find(q);
+    return this.service.find(query);
   }
 
-  @CanRead('product')
-  @Get(':id')
-  readProductById(@Param('id') id: number, @Query() view: ViewDto) {
-    if (view.view === true) {
-      return this.viewService.findOneBy({ id });
-    }
+  @ReadById()
+  findById(@Param('id') id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @CanWrite('product')
-  @Post()
-  writeProduct(@Body() body: CreateProductDto) {
+  @Write()
+  save(@Body() body: any) {
     return this.service.save(body);
   }
 
-  @CanWrite('product')
-  @Put(':id')
-  updateProduct(@Param('id') id: number, @Body() body: UpdateProductDto) {
+  @Update()
+  update(@Param('id') id: number, @Body() body: any) {
     return this.service.update(id, body);
   }
 
-  @CanWrite('product')
-  @Delete(':id')
-  deleteProduct(@Param('id') id: number) {
+  @Delete()
+  delete(@Param('id') id: number) {
     return this.service.delete(id);
   }
 
-  @CanRead('product')
-  @Patch()
-  functionsProduct(
-    @Query() whereDto: WhereDto,
-    @Query() functions: FunctionsDto
-  ) {
-    if (functions.query === 'count') {
-      return this.viewService.count({ where: whereDto.where });
-    }
-    throw new BadRequestException('Must provide a function name.');
-  }
-
-  @CanWrite('product')
-  @Post(':id/category/:categoryId')
-  setcategoryToProduct(id: number, categoryId: number) {
+  @Set('category')
+  setCategory(id: number, categoryId: number) {
     return this.service.set(id, categoryId, 'category');
   }
 
-  @CanWrite('product')
-  @Post(':id/category')
-  unsetcategoryFromProduct(id: number) {
+  @Unset('category')
+  unsetCategory(id: number) {
     return this.service.unset(id, 'category');
   }
 
-  @CanWrite('product')
-  @Post(':id/department/:departmentId')
-  setdepartmentToProduct(id: number, departmentId: number) {
-    return this.service.set(id, departmentId, 'department');
+  @Add('category')
+  addCategory(id: number, categoryId: number) {
+    return this.service.set(id, categoryId, 'category');
   }
 
-  @CanWrite('product')
-  @Post(':id/department')
-  unsetdepartmentFromProduct(id: number) {
-    return this.service.unset(id, 'department');
+  @Remove('category')
+  removeCategory(id: number) {
+    return this.service.unset(id, 'category');
+  }
+
+  @Aggregate('cont')
+  count() {
+    return this.service.count();
   }
 }

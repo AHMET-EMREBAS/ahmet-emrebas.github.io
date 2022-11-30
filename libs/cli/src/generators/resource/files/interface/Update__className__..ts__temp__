@@ -1,0 +1,2 @@
+import {  Create<%- className %>  } from './create-<%- fileName %>';
+export type Update<%- className %> = Partial<Create<%- className %>>;

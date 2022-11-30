@@ -106,6 +106,20 @@
       "additionalProperties": false,
       "required": ["properties", "mainProperty"]
     },
+    "InputFormat": {
+      "type": "string",
+      "enum": [
+        "string",
+        "boolean",
+        "date",
+        "password",
+        "email",
+        "phone",
+        "id",
+        "uuid",
+        "number"
+      ]
+    },
 
     "StringProperty": {
       "title": "String Property",
@@ -114,7 +128,12 @@
         "type": {
           "const": "string"
         },
-        "format": { "type": "string", "enum": ["email", "phone", "password"] },
+        "inputType": {
+          "$ref": "#/definitions/InputType"
+        },
+        "format": {
+          "$ref": "#/definitions/InputFormat"
+        },
         "minLength": { "type": "number", "default": 1 },
         "maxLength": { "type": "number", "default": 30 }
       },
@@ -128,9 +147,12 @@
         "type": {
           "const": "number"
         },
+        "inputType": {
+          "$ref": "#/definitions/InputType"
+        },
         "min": { "type": "number", "default": 0 },
         "max": { "type": "number", "default": 900900900900 },
-        "format": { "type": "string", "enum": ["number", "currency"] }
+        "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
       "required": ["type", "min", "max"]
@@ -142,11 +164,15 @@
         "type": {
           "const": "date"
         },
-        "format": {
+        "inputType": {
+          "$ref": "#/definitions/InputType"
+        },
+        "timestamp": {
           "type": "string",
           "enum": ["createdAt", "updatedAt", "deletedAt", "custom"],
           "default": "id"
-        }
+        },
+        "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
       "required": ["type", "format"]
@@ -157,10 +183,34 @@
       "properties": {
         "type": {
           "const": "boolean"
-        }
+        },
+        "inputType": {
+          "$ref": "#/definitions/InputType"
+        },
+        "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
       "required": ["type"]
+    },
+    "InputType": {
+      "type": "string",
+      "enum": [
+        "text",
+        "textarea",
+        "checkbox",
+        "select-one",
+        "select-many",
+        "search-one",
+        "search-many",
+        "date",
+        "currency",
+        "email",
+        "password",
+        "barcode",
+        "number",
+        "phone"
+      ],
+      "additionalProperties": false
     },
     "RelationProperty": {
       "title": "Relation Property",
@@ -170,6 +220,9 @@
           "enum": ["many-to-one", "many-to-many", "one-to-one", "one-to-many"],
           "default": "many-to-one",
           "description": "Type of the relation ship"
+        },
+        "inputType": {
+          "$ref": "#/definitions/InputType"
         },
         "target": {
           "$ref": "#/definitions/ResourceNames"
@@ -192,7 +245,8 @@
               "required": ["as", "type"]
             }
           }
-        }
+        },
+        "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
       "required": ["type", "target", "views"]
@@ -258,7 +312,8 @@
         "cart",
         "order",
         "saleunit",
-        "sale"
+        "sale",
+        "transaction"
       ],
       "default": "category"
     }

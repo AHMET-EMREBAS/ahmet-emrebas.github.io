@@ -9,7 +9,7 @@ export type BooleanPropertyOptions = Pick<
 export function BooleanProperty(options: BooleanPropertyOptions) {
   return Property<boolean>({
     type: 'boolean',
-    ...options,
     inputType: 'checkbox',
+    ...options,
   });
 }

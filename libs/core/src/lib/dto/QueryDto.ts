@@ -13,11 +13,12 @@ import {
   MoreThanOrEqual,
   Not,
 } from 'typeorm';
-import { BooleanProperty, NumberProperty, StringProperty } from '../property';
 import {
-  DefaultBooleanTransformer,
-  DefaultNumberTransformer,
-} from '../transformers';
+  BooleanProperty,
+  NumberProperty,
+  Property,
+  StringProperty,
+} from '../property';
 
 const QUERIES = {
   startsWith: (value: string) => ILike(`${value}%`),
@@ -34,8 +35,8 @@ const QUERIES = {
   between: (value: [string, string]) => {
     return Between(value[0], value[1]);
   },
-  is: (value: any) => Equal(value),
-  isNot: (value: any) => Not(Equal(value)),
+  is: (value: unknown) => Equal(value),
+  isNot: (value: unknown) => Not(Equal(value)),
   before: (value: Date) => LessThan(value),
   after: (value: Date) => MoreThan(value),
   dateIs: (value: Date) => Equal(value),
@@ -43,82 +44,23 @@ const QUERIES = {
   dateBefore: (value: Date) => LessThan(value),
   dateAfter: (value: Date) => MoreThan(value),
 };
-export class QueryDto {
-  @IsOptional()
-  @Expose()
-  @Transform(({ value }) => {
-    if (!value) {
-      return {};
-    }
-
-    let queryType: 'global' | 'local';
-    let globalValue = '';
-
-    const localQuery = {};
-    const globalQuery = [];
-
-    const filterObject = JSON.parse(value);
-
-    if (filterObject.global) {
-      queryType = 'global';
-      globalValue = filterObject.global.value;
-    } else {
-      queryType = 'local';
-    }
-
-    const entries = Object.entries(filterObject);
-
-    function writeLocal(key: string, value: any) {
-      localQuery[key] = value;
-    }
-
-    function writeGlobal(key: string) {
-      globalQuery.push({ [key]: QUERIES.contains(globalValue) });
-    }
-
-    for (const [key, value] of entries) {
-      if (key === 'global') {
-        continue;
-      }
-
-      for (const f of value as FilterMetadata[]) {
-        if (queryType === 'local') {
-          if (f.value && f.value !== 'undefined' && f.value !== 'null') {
-            writeLocal(key, QUERIES[f.matchMode](f.value));
-          }
-          continue;
-        } else {
-          writeGlobal(key);
-        }
-      }
-    }
-    return queryType === 'local'
-      ? localQuery
-      : globalQuery.length > 0
-      ? globalQuery
-      : {};
-  })
-  where: any;
-
-  @NumberProperty({ required: false, minimum: 1 })
-  @DefaultNumberTransformer(20)
+export class QueryDto<T> {
+  @NumberProperty({ required: false, minimum: 1, default: 20 })
   take: number;
 
-  @NumberProperty({ required: false, minimum: 0 })
-  @DefaultNumberTransformer(0)
+  @NumberProperty({ required: false, minimum: 0, default: 0 })
   skip: number;
 
   @BooleanProperty({ required: false, default: false })
-  @DefaultBooleanTransformer(true)
   view: boolean;
 
-  @BooleanProperty({ default: false })
-  @DefaultBooleanTransformer(false)
+  @BooleanProperty({ required: false, default: false })
   withDeleted: boolean;
 
   @StringProperty({
     required: false,
     enum: ['1', '-1', 'ASC', 'DESC', 'asc', 'desc'],
+    default: 'id',
   })
   sortOrder?: string;
 
@@ -128,6 +70,7 @@ export class QueryDto {
   @StringProperty({
     required: false,
     enum: ['first', 'last'],
+    default: 'last',
   })
   nullsOrder?: string;
 
@@ -144,5 +87,5 @@ export class QueryDto {
       },
     };
   })
-  order: FindOptionsOrder<any>;
+  order: FindOptionsOrder<T>;
 }
