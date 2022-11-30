@@ -1,6 +1,6 @@
 import {
   Add,
-  Aggregate,
+  Count,
   ParamId,
   ParamRid,
   QueryDto,
@@ -90,7 +90,7 @@ export class OrderController {
     return this.service.unset(id, 'customer');
   }
 
-  @Aggregate('cont')
+  @Count()
   count() {
     return this.service.count();
   }

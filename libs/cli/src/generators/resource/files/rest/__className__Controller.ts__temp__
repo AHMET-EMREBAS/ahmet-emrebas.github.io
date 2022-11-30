@@ -1,6 +1,6 @@
 import {
   Add,
-  Aggregate,
+  Count,
   ParamId,
   ParamRid,
   QueryDto,
@@ -93,7 +93,7 @@ export class <%- className %>Controller {
 <% }) %>
 
 
-  @Aggregate('cont')
+  @Count()
   count() {
     return this.service.count();
   }

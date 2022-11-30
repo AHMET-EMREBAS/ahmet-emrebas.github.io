@@ -1,6 +1,6 @@
 import {
   Add,
-  Aggregate,
+  Count,
   ParamId,
   ParamRid,
   QueryDto,
@@ -80,7 +80,7 @@ export class UserController {
     return this.service.unset(id, 'pricelevel');
   }
 
-  @Aggregate('cont')
+  @Count()
   count() {
     return this.service.count();
   }

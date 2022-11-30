@@ -1,0 +1,15 @@
+import { ResourceViewService } from '@ae/core';
+import { InjectRepository } from '@nestjs/typeorm';
+import { <%- className %>OptionView } from '@ae/models/<%- projectName %>/<%- propertyName %>/<%- className %>OptionView';
+import { Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class MesssageOptionViewService extends ResourceViewService<<%- className %>OptionView> {
+  constructor(
+    @InjectRepository(<%- className %>OptionView)
+    messageViewRepo: Repository<<%- className %>OptionView>
+  ) {
+    super(messageViewRepo);
+  }
+}

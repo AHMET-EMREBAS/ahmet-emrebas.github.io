@@ -1,6 +1,6 @@
 import {
   Add,
-  Aggregate,
+  Count,
   ParamId,
   ParamRid,
   QueryDto,
@@ -80,7 +80,7 @@ export class PriceController {
     return this.service.unset(id, 'product');
   }
 
-  @Aggregate('cont')
+  @Count()
   count() {
     return this.service.count();
   }

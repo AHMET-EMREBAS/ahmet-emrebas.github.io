@@ -160,3 +160,7 @@ export function Aggregate(name: string) {
     Patch(name)
   );
 }
+
+export function Count() {
+  return Aggregate('count');
+}

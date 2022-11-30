@@ -1,6 +1,6 @@
 import {
   Add,
-  Aggregate,
+  Count,
   ParamId,
   ParamRid,
   QueryDto,
@@ -60,7 +60,7 @@ export class DepartmentController {
     return this.service.delete(id);
   }
 
-  @Aggregate('cont')
+  @Count()
   count() {
     return this.service.count();
   }

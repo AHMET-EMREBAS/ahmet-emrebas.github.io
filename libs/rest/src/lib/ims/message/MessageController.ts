@@ -1,6 +1,6 @@
 import {
   Add,
-  Aggregate,
+  Count,
   ParamId,
   ParamRid,
   QueryDto,
@@ -15,7 +15,7 @@ import {
 
 import { Message } from '@ae/models/ims/message/Message';
 import { MessageView } from '@ae/models/ims/message/MessageView';
-
+import { MessageOptionView } from '@ae/models/ims/message/MessageOptionView';
 import { CreateMessageDto } from '@ae/models/ims/message/dto/CreateMessageDto';
 import { UpdateMessageDto } from '@ae/models/ims/message/dto/UpdateMessageDto';
 
@@ -80,7 +80,7 @@ export class MessageController {
     return this.service.unset(id, 'from');
   }
 
-  @Aggregate('cont')
+  @Count()
   count() {
     return this.service.count();
   }
