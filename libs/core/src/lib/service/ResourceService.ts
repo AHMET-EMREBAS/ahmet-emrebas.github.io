@@ -1,20 +1,45 @@
 import {
   DeepPartial,
+  Equal,
   FindManyOptions,
   FindOneOptions,
   FindOptionsWhere,
   Repository,
 } from 'typeorm';
+
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { v4 } from 'uuid';
 
-import { InternalServerErrorException, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  InternalServerErrorException,
+  Logger,
+} from '@nestjs/common';
 
 export class ResourceService<T> {
+  private readonly uniqueColumns!: string[];
   private readonly logger = new Logger(
     this.__repo.metadata.targetName + ' Service'
   );
-  constructor(public readonly __repo: Repository<T>) {}
+  constructor(public readonly __repo: Repository<T>) {
+    this.uniqueColumns = this.__repo.metadata.uniques.map(
+      (e) => e.columns[0].propertyName
+    );
+  }
+
+  async isUnique(obj: T) {
+    for (const c of this.uniqueColumns) {
+      const found = await this.__repo.findOne({
+        where: { name: Equal(obj[c]) } as any,
+      });
+
+      if (found) {
+        const message = `${c} must be unique!`;
+
+        throw new BadRequestException([message]);
+      }
+    }
+  }
 
   find(options?: FindManyOptions<T>) {
     try {
@@ -101,12 +126,12 @@ export class ResourceService<T> {
     }
   }
 
-  save(t: T) {
+  async save(t: T) {
+    await this.isUnique(t);
     try {
-      return this.__repo.save({ ...t, uuid: v4() });
+      return await this.__repo.save({ ...t, uuid: v4() });
     } catch (err) {
-      this.logger.error(err);
-      throw new InternalServerErrorException();
+      throw new InternalServerErrorException(err);
     }
   }
 

@@ -10,7 +10,9 @@ import { Customer } from '../customer/Customer';
 
 @Entity()
 export class Order extends BaseEntity {
-  @Column({ type: 'numeric' })
+  @Column({
+    type: 'numeric',
+  })
   quantity?: number;
 
   @ManyToOne(() => Product, { eager: true, nullable: true })

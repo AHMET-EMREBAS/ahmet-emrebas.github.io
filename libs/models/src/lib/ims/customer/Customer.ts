@@ -15,16 +15,30 @@ import { Pricelevel } from '../pricelevel/Pricelevel';
 
 @Entity()
 export class Customer extends BaseEntity {
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+
+    nullable: true,
+  })
   fullName?: string;
 
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+
+    unique: true,
+  })
   username?: string;
 
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+  })
   password?: string;
 
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+
+    unique: true,
+  })
   phone?: string;
 
   @ManyToMany(() => Permission, { eager: true, nullable: true })

@@ -38,11 +38,20 @@ export class <%- className %> extends BaseEntity {
             "string":"text",
             "number":"numeric"
           };
-
-          let ___nullable = __Property.required === false
         %>
 
-        @Column({ type: '<%- ____typeMap[__Property.type] || __Property.type %>'  })
+        @Column({
+           type: '<%- ____typeMap[__Property.type] || __Property.type %>',
+
+          <% if(!entity.required?.includes(__Property.name)) { %>
+            nullable: true,
+           <% } %>
+
+          <% if(entity.unique?.includes(__Property.name)) { %>
+            unique: true
+           <% } %>
+
+         })
       <%- ____columnPropertyName %>?: <%-  __Property.type  %>;
 
 

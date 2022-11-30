@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class MesssageOptionViewService extends ResourceViewService<StoreOptionView> {
+export class StoreOptionViewService extends ResourceViewService<StoreOptionView> {
   constructor(
     @InjectRepository(StoreOptionView)
     messageViewRepo: Repository<StoreOptionView>

@@ -8,10 +8,14 @@ import { Product } from '../product/Product';
 
 @Entity()
 export class Price extends BaseEntity {
-  @Column({ type: 'numeric' })
+  @Column({
+    type: 'numeric',
+  })
   price?: number;
 
-  @Column({ type: 'numeric' })
+  @Column({
+    type: 'numeric',
+  })
   cost?: number;
 
   @ManyToOne(() => Pricelevel, { eager: true, nullable: true })

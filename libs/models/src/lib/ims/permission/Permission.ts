@@ -4,9 +4,15 @@ import { BaseEntity } from '@ae/core';
 
 @Entity()
 export class Permission extends BaseEntity {
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+
+    unique: true,
+  })
   name?: string;
 
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+  })
   description?: string;
 }

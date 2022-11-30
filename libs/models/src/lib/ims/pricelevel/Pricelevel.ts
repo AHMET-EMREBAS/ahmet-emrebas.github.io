@@ -4,6 +4,10 @@ import { BaseEntity } from '@ae/core';
 
 @Entity()
 export class Pricelevel extends BaseEntity {
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+
+    unique: true,
+  })
   name?: string;
 }

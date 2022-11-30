@@ -8,7 +8,9 @@ import { Store } from '../store/Store';
 
 @Entity()
 export class Quantity extends BaseEntity {
-  @Column({ type: 'numeric' })
+  @Column({
+    type: 'numeric',
+  })
   quantity?: number;
 
   @ManyToOne(() => Product, { eager: true, nullable: true })

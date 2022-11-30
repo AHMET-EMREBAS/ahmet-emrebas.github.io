@@ -6,10 +6,14 @@ import { User } from '../user/User';
 
 @Entity()
 export class Message extends BaseEntity {
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+  })
   title?: string;
 
-  @Column({ type: 'text' })
+  @Column({
+    type: 'text',
+  })
   message?: string;
 
   @ManyToOne(() => User, { eager: true, nullable: true })

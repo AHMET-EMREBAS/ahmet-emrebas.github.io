@@ -6,7 +6,9 @@ import { Cart } from '../cart/Cart';
 
 @Entity()
 export class Transaction extends BaseEntity {
-  @Column({ type: 'boolean' })
+  @Column({
+    type: 'boolean',
+  })
   complete?: boolean;
 
   @ManyToOne(() => Cart, { eager: true, nullable: true })
