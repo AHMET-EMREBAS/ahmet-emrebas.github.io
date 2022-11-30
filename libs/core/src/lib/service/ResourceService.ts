@@ -36,7 +36,7 @@ export class ResourceService<T> {
       if (found) {
         const message = `${c} must be unique!`;
 
-        throw new BadRequestException([message]);
+        throw new BadRequestException({ [c]: { unique: message } });
       }
     }
   }

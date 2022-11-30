@@ -3,7 +3,7 @@
  * This is only a minimal backend to get started.
  */
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
@@ -25,11 +25,15 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
-      stopAtFirstError: true,
-      validationError: {
-        target: false,
-        value: false,
+      exceptionFactory: (errors) => {
+        const errorResponse = {};
+        errors.forEach((e) => {
+          errorResponse[e.property] = e.constraints;
+        });
+
+        throw new BadRequestException(errorResponse);
       },
+      validationError: { target: false, value: false },
     })
   );
 
