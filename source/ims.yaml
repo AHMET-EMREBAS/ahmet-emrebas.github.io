@@ -96,8 +96,13 @@ entities:
 
     required:
       - name
+      - barcode
+      - price
+      - cost
+
     unique:
       - name
+      - barcode
 
   price:
     description: Price entity schema

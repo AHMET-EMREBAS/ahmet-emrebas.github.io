@@ -7,6 +7,7 @@ import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
+import { GlobalValidationPipe } from '@ae/core';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -20,22 +21,9 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
+
   SwaggerModule.setup('api', app, document);
-
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-      exceptionFactory: (errors) => {
-        const errorResponse = {};
-        errors.forEach((e) => {
-          errorResponse[e.property] = e.constraints;
-        });
-
-        throw new BadRequestException(errorResponse);
-      },
-      validationError: { target: false, value: false },
-    })
-  );
+  app.useGlobalPipes(GlobalValidationPipe);
 
   await app.listen(port);
 
