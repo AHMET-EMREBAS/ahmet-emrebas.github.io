@@ -1,5 +1,7 @@
-import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Sprint } from './Sprint';
+
+import { ViewEntity, ViewColumn } from '@ae/core';
 
 import { Project } from '../project/Project';
 

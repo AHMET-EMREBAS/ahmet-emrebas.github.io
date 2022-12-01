@@ -1,5 +1,7 @@
-import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Transaction } from './Transaction';
+
+import { ViewEntity, ViewColumn } from '@ae/core';
 
 import { Cart } from '../cart/Cart';
 

@@ -15,9 +15,8 @@
 
 %>
 
-import { Entity, Column,JoinColumn, JoinTable, <%- __TypeORMImports %>  } from 'typeorm';
 
-import { BaseEntity } from '@ae/core';
+import { BaseEntity , Entity, Column , ManyToMany, OneToMany, OneToOne, ManyToOne} from '@ae/core';
 
 <% for(const [key, value] of __RelationImports) { %>
 
@@ -67,15 +66,12 @@ export class <%- className %> extends BaseEntity {
           let ____toOneRelationOptions = "{eager: true, nullable: true}";
           let ____columnPropertyName =genName(__Relation.name).propertyName
           let ___RelationType = genName(__Relation.type).className;
-          let __JoinType = __Relation.type.endsWith('many')  ? 'JoinTable' : "JoinColumn";
 
-          let __IsOneToMany = __Relation.type ==='one-to-many' ? `(${____targetPropertyName} : ${____targetClassName} ) => ${____targetPropertyName}.id,`: ``;
 
         %>
 
 
-        @<%- ___RelationType %>(()=><%- ____targetClassnameObj %>, <%- __IsOneToMany %> <%- ____toOneRelationOptions %>)
-        @<%- __JoinType %>()
+        @<%- ___RelationType %>(<%- ____targetClassnameObj %>,  <%- ____toOneRelationOptions %>)
         <%- ____columnPropertyName %>?: <%- ____targetClassName %>;
 
 

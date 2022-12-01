@@ -1,5 +1,7 @@
-import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Tag } from './Tag';
+
+import { ViewEntity, ViewColumn } from '@ae/core';
 
 @ViewEntity({
   expression: (ds: DataSource) => {

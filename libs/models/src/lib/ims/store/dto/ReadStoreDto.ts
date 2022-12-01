@@ -11,10 +11,12 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
 import { ReadPricelevelDto } from '../../Pricelevel';
 
+@DTO()
 export class ReadStoreDto implements ReadStore {
   @StringProperty({ required: true })
   name: string;

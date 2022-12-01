@@ -12,8 +12,10 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
+@DTO()
 export class CreateProjectDto implements CreateProject {
   @StringProperty({
     required: true,

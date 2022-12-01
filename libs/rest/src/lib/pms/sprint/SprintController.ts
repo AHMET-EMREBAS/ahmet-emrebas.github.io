@@ -11,67 +11,75 @@ import {
   Unset,
   Update,
   Write,
+  Controller,
+  ArgId,
+  ArgRid,
 } from '@ae/core';
-
 import { Sprint } from '@ae/models/pms/sprint/Sprint';
 import { SprintView } from '@ae/models/pms/sprint/SprintView';
 import { SprintOptionView } from '@ae/models/pms/sprint/SprintOptionView';
 import { CreateSprintDto } from '@ae/models/pms/sprint/dto/CreateSprintDto';
 import { UpdateSprintDto } from '@ae/models/pms/sprint/dto/UpdateSprintDto';
 
-import { Body, Controller, Delete, Query } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Delete, Query } from '@nestjs/common';
+
 import { SprintService } from './SprintService';
 import { SprintViewService } from './SprintViewService';
+import { Args } from '@nestjs/graphql';
 
-@ApiTags('pms | Sprint')
-@Controller('pms/sprint')
+@Controller('pms/sprint', Sprint)
 export class SprintController {
   constructor(
     private readonly service: SprintService,
     private readonly viewService: SprintViewService
   ) {}
 
-  @Read()
-  find(@Query() query: QueryDto<Sprint & SprintView>) {
+  @Read(Sprint)
+  findSprint(@Args('query') @Query() query: QueryDto<Sprint & SprintView>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById()
-  findById(@ParamId() id: number) {
+  @ReadById(Sprint)
+  findBySprintId(@ArgId() @ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write()
-  save(@Body() body: CreateSprintDto) {
+  @Write(Sprint)
+  saveSprint(@Args('sprint') @Body() body: CreateSprintDto) {
     return this.service.save(body);
   }
 
   @Update()
-  update(@ParamId() id: number, @Body() body: UpdateSprintDto) {
+  updateSprint(
+    @ArgId() @ParamId() id: number,
+    @Args('sprint') @Body() body: UpdateSprintDto
+  ) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  delete(@ParamId() id: number) {
+  deleteSprint(@ArgId() @ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Set('project')
-  setProject(@ParamId() id: number, @ParamRid() projectId: number) {
+  setSprintProject(
+    @ArgId() @ParamId() id: number,
+    @ArgRid() @ParamRid() projectId: number
+  ) {
     return this.service.set(id, projectId, 'project');
   }
 
   @Unset('project')
-  unsetProject(@ParamId() id: number) {
+  unsetSprintProject(@ArgId() @ParamId() id: number) {
     return this.service.unset(id, 'project');
   }
 
   @Count()
-  count() {
+  countSprint() {
     return this.service.count();
   }
 }

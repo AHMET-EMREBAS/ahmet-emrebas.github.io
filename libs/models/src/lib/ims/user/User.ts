@@ -1,13 +1,12 @@
 import {
+  BaseEntity,
   Entity,
   Column,
-  JoinColumn,
-  JoinTable,
   ManyToMany,
+  OneToMany,
+  OneToOne,
   ManyToOne,
-} from 'typeorm';
-
-import { BaseEntity } from '@ae/core';
+} from '@ae/core';
 
 import { Permission } from '../permission/Permission';
 
@@ -41,11 +40,9 @@ export class User extends BaseEntity {
   })
   phone?: string;
 
-  @ManyToMany(() => Permission, { eager: true, nullable: true })
-  @JoinTable()
+  @ManyToMany(Permission, { eager: true, nullable: true })
   permissions?: Permission[];
 
-  @ManyToOne(() => Pricelevel, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Pricelevel, { eager: true, nullable: true })
   pricelevel?: Pricelevel;
 }

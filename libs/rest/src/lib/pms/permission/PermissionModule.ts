@@ -16,7 +16,7 @@ import { PermissionController } from './PermissionController';
       PermissionOptionView,
     ]),
   ],
-  providers: [PermissionService, PermissionViewService],
+  providers: [PermissionService, PermissionViewService, PermissionController],
   controllers: [PermissionController],
 })
 export class PermissionModule {}

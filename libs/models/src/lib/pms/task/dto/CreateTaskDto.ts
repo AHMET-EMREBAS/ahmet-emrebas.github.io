@@ -12,8 +12,10 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
+@DTO()
 export class CreateTaskDto implements CreateTask {
   @StringProperty({
     required: true,
@@ -34,9 +36,7 @@ export class CreateTaskDto implements CreateTask {
     minLength: 1,
     maxLength: 30,
 
-    enum: open,
-    inprogress,
-    done,
+    enum: ['open', 'inprogress', 'done'],
   })
   status: string;
 

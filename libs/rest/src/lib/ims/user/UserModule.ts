@@ -24,7 +24,7 @@ import { UserController } from './UserController';
       Pricelevel,
     ]),
   ],
-  providers: [UserService, UserViewService],
+  providers: [UserService, UserViewService, UserController],
   controllers: [UserController],
 })
 export class UserModule {}

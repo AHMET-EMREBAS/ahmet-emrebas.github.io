@@ -7,6 +7,14 @@ entities:
   customer:
     $ref: '#/commons/UserEntity'
 
+  category:
+    description: Category entity schema
+    $ref: '#/commons/SingleEntity'
+
+  pricelevel:
+    description: Pricelevel entity schema
+    $ref: '#/commons/SingleEntity'
+
   permission:
     mainProperty: description
     properties:

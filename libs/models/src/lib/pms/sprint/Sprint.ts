@@ -1,6 +1,12 @@
-import { Entity, Column, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
-
-import { BaseEntity } from '@ae/core';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  ManyToOne,
+} from '@ae/core';
 
 import { Project } from '../project/Project';
 
@@ -13,7 +19,6 @@ export class Sprint extends BaseEntity {
   })
   name?: string;
 
-  @ManyToOne(() => Project, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Project, { eager: true, nullable: true })
   project?: Project;
 }

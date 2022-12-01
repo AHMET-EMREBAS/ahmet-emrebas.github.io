@@ -12,8 +12,10 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
+@DTO()
 export class CreateCartDto implements CreateCart {
   @StringProperty({
     required: true,

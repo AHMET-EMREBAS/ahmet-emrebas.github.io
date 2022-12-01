@@ -1,5 +1,7 @@
-import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Customer } from './Customer';
+
+import { ViewEntity, ViewColumn } from '@ae/core';
 
 import { Permission } from '../permission/Permission';
 

@@ -14,7 +14,8 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { CanRead, CanWrite } from '../auth';
-
+import { Query, Mutation } from '@nestjs/graphql';
+import { ClassConstructor } from 'class-transformer';
 function upperFirst(str: string) {
   return str[0].toUpperCase() + str.substring(1);
 }
@@ -26,21 +27,23 @@ const ReadRequestResponses = applyDecorators(
   ApiUnauthorizedResponse({ description: 'Lack of privileges.' })
 );
 
-export function Read() {
+export function Read(obj: ClassConstructor<any>) {
   return applyDecorators(
     ApiOperation({ summary: 'Get all', operationId: 'find' }),
     ReadRequestResponses,
     Get(),
-    CanRead()
+    CanRead(),
+    Query(() => [obj])
   );
 }
 
-export function ReadById() {
+export function ReadById(obj: ClassConstructor<any>) {
   return applyDecorators(
     ApiOperation({ summary: 'Get one by id', operationId: 'findById' }),
     ReadRequestResponses,
     Get(':id'),
-    CanRead()
+    CanRead(),
+    Query(() => obj)
   );
 }
 
@@ -48,12 +51,13 @@ export function ReadById() {
  * Post request for creating item.
  * @returns
  */
-export function Write() {
+export function Write(obj: ClassConstructor<any>) {
   return applyDecorators(
     ApiOperation({ summary: 'Create one', operationId: 'save' }),
     ReadRequestResponses,
     Post(),
-    CanWrite()
+    CanWrite(),
+    Mutation(() => obj)
   );
 }
 
@@ -66,7 +70,8 @@ export function Update() {
     ApiOperation({ summary: 'Update one by id', operationId: 'update' }),
     ReadRequestResponses,
     Put(':id'),
-    CanWrite()
+    CanWrite(),
+    Mutation(() => Boolean)
   );
 }
 
@@ -79,7 +84,8 @@ export function Delete() {
     ApiOperation({ summary: 'Delete one by id', operationId: 'delete' }),
     ReadRequestResponses,
     DeleteRequest(':id'),
-    CanWrite()
+    CanWrite(),
+    Mutation(() => Boolean)
   );
 }
 
@@ -96,7 +102,8 @@ export function Set(relation: string) {
     }),
     ReadRequestResponses,
     Post(`:id/${relation}/:rid`),
-    CanWrite()
+    CanWrite(),
+    Mutation(() => Boolean)
   );
 }
 
@@ -113,7 +120,8 @@ export function Unset(relation: string) {
     }),
     ReadRequestResponses,
     DeleteRequest(`:id/${relation}`),
-    CanWrite()
+    CanWrite(),
+    Mutation(() => Boolean)
   );
 }
 
@@ -130,7 +138,8 @@ export function Add(relation: string) {
     }),
     ReadRequestResponses,
     Put(`:id/${relation}/:rid`),
-    CanWrite()
+    CanWrite(),
+    Mutation(() => Boolean)
   );
 }
 
@@ -146,7 +155,8 @@ export function Remove(relation: string) {
       operationId: `remove${upperFirst(relation)}`,
     }),
     DeleteRequest(`:id/${relation}/:rid`),
-    CanWrite()
+    CanWrite(),
+    Mutation(() => Boolean)
   );
 }
 
@@ -157,7 +167,8 @@ export function Aggregate(name: string) {
       operationId: name,
     }),
     CanRead(),
-    Patch(name)
+    Patch(name),
+    Mutation(() => Boolean)
   );
 }
 

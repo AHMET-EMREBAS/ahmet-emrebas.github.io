@@ -1,6 +1,12 @@
-import { Entity, Column, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
-
-import { BaseEntity } from '@ae/core';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  ManyToOne,
+} from '@ae/core';
 
 import { Product } from '../product/Product';
 
@@ -13,11 +19,9 @@ export class Quantity extends BaseEntity {
   })
   quantity?: number;
 
-  @ManyToOne(() => Product, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Product, { eager: true, nullable: true })
   product?: Product;
 
-  @ManyToOne(() => Store, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Store, { eager: true, nullable: true })
   store?: Store;
 }

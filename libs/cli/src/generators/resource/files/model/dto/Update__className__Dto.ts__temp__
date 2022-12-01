@@ -1,3 +1,60 @@
-import { PartialType } from '@nestjs/swagger';
-import { Create<%- className %>Dto } from './Create<%- className %>Dto';
-export class  Update<%- className %>Dto extends  PartialType(Create<%- className %>Dto){};
+import {  Create<%- className %> } from '@ae/common/<%- projectName %>/<%- propertyName %>/Create<%- className %>';
+
+import {
+
+IDDto,
+StringProperty,
+DateProperty,
+NumberProperty,
+BooleanProperty,
+EmailProperty,
+PasswordProperty,
+ManyToManyProperty,
+ManyToOneProperty,
+OneToManyProperty,
+OneToOneProperty,
+DTO
+
+} from '@ae/core';
+
+
+
+<%
+
+  // Properties
+  let  __P = entity.properties.filter(e=>!!!e.target);
+
+  // Relations
+  let __R = entity.properties.filter(e=>!!e.target);
+
+
+%>
+@DTO()
+export class Update<%- className %>Dto implements  Update<%- className %> {
+
+  <% __P.forEach(e=> { %>
+
+    @<%- genName(e.type).className %>Property({
+      required: false,
+      <% if(e.minLength) { %> minLength: <%- e.minLength %>, <% } %>
+      <% if(e.maxLength) { %> maxLength: <%- e.maxLength %>, <% } %>
+      <% if(e.maximum) { %> maximum: <%- e.maximum %>, <% } %>
+      <% if(e.minimum) { %> minimum: <%- e.minimum %>, <% } %>
+      <% if(e.enum) { %> enum: <%- e.enum %>, <% } %>
+      <% if(e.email) { %> email: <%- e.email %>, <% } %>
+      <% if(e.password) { %> password: <%- e.password %>, <% } %>
+      <% if(e.uuid) { %> uuid: <%- e.uuid %>, <% } %>
+      <% if(e.ean) { %> ean: <%- e.ean %>, <% } %>
+
+      })
+    <%- e.name %>: <%- e.type %>
+
+  <% }) %>
+
+  <% __R.forEach(e=> { %>
+
+    @<%- genName(e.type).className %>Property({ required: false })
+    <%- e.name %>: IDDto<%- e.type.endsWith('many') ? '[]' : '' %>;
+
+  <% }) %>
+}

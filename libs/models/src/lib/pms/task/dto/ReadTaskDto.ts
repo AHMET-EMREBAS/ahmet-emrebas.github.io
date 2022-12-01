@@ -11,12 +11,14 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
 import { ReadUserDto } from '../../User';
 
 import { ReadTagDto } from '../../Tag';
 
+@DTO()
 export class ReadTaskDto implements ReadTask {
   @StringProperty({ required: true })
   name: string;

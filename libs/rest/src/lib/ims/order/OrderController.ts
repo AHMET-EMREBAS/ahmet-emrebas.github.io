@@ -11,87 +11,101 @@ import {
   Unset,
   Update,
   Write,
+  Controller,
+  ArgId,
+  ArgRid,
 } from '@ae/core';
-
 import { Order } from '@ae/models/ims/order/Order';
 import { OrderView } from '@ae/models/ims/order/OrderView';
 import { OrderOptionView } from '@ae/models/ims/order/OrderOptionView';
 import { CreateOrderDto } from '@ae/models/ims/order/dto/CreateOrderDto';
 import { UpdateOrderDto } from '@ae/models/ims/order/dto/UpdateOrderDto';
 
-import { Body, Controller, Delete, Query } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Delete, Query } from '@nestjs/common';
+
 import { OrderService } from './OrderService';
 import { OrderViewService } from './OrderViewService';
+import { Args } from '@nestjs/graphql';
 
-@ApiTags('ims | Order')
-@Controller('ims/order')
+@Controller('ims/order', Order)
 export class OrderController {
   constructor(
     private readonly service: OrderService,
     private readonly viewService: OrderViewService
   ) {}
 
-  @Read()
-  find(@Query() query: QueryDto<Order & OrderView>) {
+  @Read(Order)
+  findOrder(@Args('query') @Query() query: QueryDto<Order & OrderView>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById()
-  findById(@ParamId() id: number) {
+  @ReadById(Order)
+  findByOrderId(@ArgId() @ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write()
-  save(@Body() body: CreateOrderDto) {
+  @Write(Order)
+  saveOrder(@Args('order') @Body() body: CreateOrderDto) {
     return this.service.save(body);
   }
 
   @Update()
-  update(@ParamId() id: number, @Body() body: UpdateOrderDto) {
+  updateOrder(
+    @ArgId() @ParamId() id: number,
+    @Args('order') @Body() body: UpdateOrderDto
+  ) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  delete(@ParamId() id: number) {
+  deleteOrder(@ArgId() @ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Set('product')
-  setProduct(@ParamId() id: number, @ParamRid() productId: number) {
+  setOrderProduct(
+    @ArgId() @ParamId() id: number,
+    @ArgRid() @ParamRid() productId: number
+  ) {
     return this.service.set(id, productId, 'product');
   }
 
   @Unset('product')
-  unsetProduct(@ParamId() id: number) {
+  unsetOrderProduct(@ArgId() @ParamId() id: number) {
     return this.service.unset(id, 'product');
   }
 
   @Set('cart')
-  setCart(@ParamId() id: number, @ParamRid() cartId: number) {
+  setOrderCart(
+    @ArgId() @ParamId() id: number,
+    @ArgRid() @ParamRid() cartId: number
+  ) {
     return this.service.set(id, cartId, 'cart');
   }
 
   @Unset('cart')
-  unsetCart(@ParamId() id: number) {
+  unsetOrderCart(@ArgId() @ParamId() id: number) {
     return this.service.unset(id, 'cart');
   }
 
   @Set('customer')
-  setCustomer(@ParamId() id: number, @ParamRid() customerId: number) {
+  setOrderCustomer(
+    @ArgId() @ParamId() id: number,
+    @ArgRid() @ParamRid() customerId: number
+  ) {
     return this.service.set(id, customerId, 'customer');
   }
 
   @Unset('customer')
-  unsetCustomer(@ParamId() id: number) {
+  unsetOrderCustomer(@ArgId() @ParamId() id: number) {
     return this.service.unset(id, 'customer');
   }
 
   @Count()
-  count() {
+  countOrder() {
     return this.service.count();
   }
 }

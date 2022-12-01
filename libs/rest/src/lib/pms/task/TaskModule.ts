@@ -16,7 +16,7 @@ import { TaskController } from './TaskController';
   imports: [
     TypeOrmModule.forFeature([Task, TaskView, TaskOptionView, User, Tag]),
   ],
-  providers: [TaskService, TaskViewService],
+  providers: [TaskService, TaskViewService, TaskController],
   controllers: [TaskController],
 })
 export class TaskModule {}

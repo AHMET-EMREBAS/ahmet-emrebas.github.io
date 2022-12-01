@@ -1,10 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { CategoryModule } from '@ae/rest/ims/category/CategoryModule';
-
-import { PricelevelModule } from '@ae/rest/ims/pricelevel/PricelevelModule';
-
 import { CartModule } from '@ae/rest/ims/cart/CartModule';
 
 import { StoreModule } from '@ae/rest/ims/store/StoreModule';
@@ -23,6 +19,10 @@ import { UserModule } from '@ae/rest/ims/user/UserModule';
 
 import { CustomerModule } from '@ae/rest/ims/customer/CustomerModule';
 
+import { CategoryModule } from '@ae/rest/ims/category/CategoryModule';
+
+import { PricelevelModule } from '@ae/rest/ims/pricelevel/PricelevelModule';
+
 import { PermissionModule } from '@ae/rest/ims/permission/PermissionModule';
 
 @Module({
@@ -34,10 +34,6 @@ import { PermissionModule } from '@ae/rest/ims/permission/PermissionModule';
       dropSchema: true,
       synchronize: true,
     }),
-
-    CategoryModule,
-
-    PricelevelModule,
 
     CartModule,
 
@@ -56,6 +52,10 @@ import { PermissionModule } from '@ae/rest/ims/permission/PermissionModule';
     UserModule,
 
     CustomerModule,
+
+    CategoryModule,
+
+    PricelevelModule,
 
     PermissionModule,
   ],

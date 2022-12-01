@@ -24,7 +24,7 @@ import { QuantityController } from './QuantityController';
       Store,
     ]),
   ],
-  providers: [QuantityService, QuantityViewService],
+  providers: [QuantityService, QuantityViewService, QuantityController],
   controllers: [QuantityController],
 })
 export class QuantityModule {}

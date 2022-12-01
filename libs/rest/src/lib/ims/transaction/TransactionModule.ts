@@ -20,7 +20,11 @@ import { TransactionController } from './TransactionController';
       Cart,
     ]),
   ],
-  providers: [TransactionService, TransactionViewService],
+  providers: [
+    TransactionService,
+    TransactionViewService,
+    TransactionController,
+  ],
   controllers: [TransactionController],
 })
 export class TransactionModule {}

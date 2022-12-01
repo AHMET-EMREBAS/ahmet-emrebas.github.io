@@ -1,11 +1,14 @@
-import { applyDecorators, Controller } from '@nestjs/common';
+import { ClassConstructor } from 'class-transformer';
+import { Resolver } from '@nestjs/graphql';
+import { applyDecorators, Controller as __Controller } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Resource } from '../auth/Resource';
 
-export function ResourceController(resourceName: string) {
+export function Controller(resourceName: string, obj: ClassConstructor<any>) {
   return applyDecorators(
     ApiTags(resourceName),
     Resource(resourceName),
-    Controller(resourceName)
+    __Controller(resourceName),
+    Resolver(() => obj)
   );
 }

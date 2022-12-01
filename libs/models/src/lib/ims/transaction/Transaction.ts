@@ -1,6 +1,12 @@
-import { Entity, Column, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
-
-import { BaseEntity } from '@ae/core';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  ManyToOne,
+} from '@ae/core';
 
 import { Cart } from '../cart/Cart';
 
@@ -11,7 +17,6 @@ export class Transaction extends BaseEntity {
   })
   complete?: boolean;
 
-  @ManyToOne(() => Cart, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Cart, { eager: true, nullable: true })
   cart?: Cart;
 }

@@ -16,7 +16,7 @@ import { PricelevelController } from './PricelevelController';
       PricelevelOptionView,
     ]),
   ],
-  providers: [PricelevelService, PricelevelViewService],
+  providers: [PricelevelService, PricelevelViewService, PricelevelController],
   controllers: [PricelevelController],
 })
 export class PricelevelModule {}

@@ -1,6 +1,12 @@
-import { Entity, Column, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
-
-import { BaseEntity } from '@ae/core';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  ManyToOne,
+} from '@ae/core';
 
 import { Pricelevel } from '../pricelevel/Pricelevel';
 
@@ -18,11 +24,9 @@ export class Price extends BaseEntity {
   })
   cost?: number;
 
-  @ManyToOne(() => Pricelevel, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Pricelevel, { eager: true, nullable: true })
   pricelevel?: Pricelevel;
 
-  @ManyToOne(() => Product, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Product, { eager: true, nullable: true })
   product?: Product;
 }

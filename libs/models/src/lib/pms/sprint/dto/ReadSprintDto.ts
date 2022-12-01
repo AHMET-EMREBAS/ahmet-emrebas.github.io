@@ -11,10 +11,12 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
 import { ReadProjectDto } from '../../Project';
 
+@DTO()
 export class ReadSprintDto implements ReadSprint {
   @StringProperty({ required: true })
   name: string;

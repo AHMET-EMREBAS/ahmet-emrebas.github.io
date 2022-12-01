@@ -11,8 +11,8 @@ EmailProperty,
 ManyToManyProperty,
 ManyToOneProperty,
 OneToManyProperty,
-OneToOneProperty
-
+OneToOneProperty,
+DTO
 
 } from '@ae/core';
 
@@ -34,6 +34,7 @@ OneToOneProperty
   import {  Read<%- genName(e.target).className %>Dto } from '../../<%- genName(e.target).className %>';
 <% }) %>
 
+@DTO()
 export class Read<%- className %>Dto implements  Read<%- className %> {
 
   <% __P.forEach(e=> { %>

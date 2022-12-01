@@ -1,6 +1,12 @@
-import { Entity, Column, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
-
-import { BaseEntity } from '@ae/core';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  ManyToOne,
+} from '@ae/core';
 
 import { Pricelevel } from '../pricelevel/Pricelevel';
 
@@ -13,7 +19,6 @@ export class Store extends BaseEntity {
   })
   name?: string;
 
-  @ManyToOne(() => Pricelevel, { eager: true, nullable: true })
-  @JoinColumn()
+  @ManyToOne(Pricelevel, { eager: true, nullable: true })
   pricelevel?: Pricelevel;
 }

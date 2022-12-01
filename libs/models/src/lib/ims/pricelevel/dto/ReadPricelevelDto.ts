@@ -11,8 +11,10 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
+@DTO()
 export class ReadPricelevelDto implements ReadPricelevel {
   @StringProperty({ required: true })
   name: string;

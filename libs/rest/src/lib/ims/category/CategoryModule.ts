@@ -12,7 +12,7 @@ import { CategoryController } from './CategoryController';
   imports: [
     TypeOrmModule.forFeature([Category, CategoryView, CategoryOptionView]),
   ],
-  providers: [CategoryService, CategoryViewService],
+  providers: [CategoryService, CategoryViewService, CategoryController],
   controllers: [CategoryController],
 })
 export class CategoryModule {}

@@ -11,8 +11,10 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
+  DTO,
 } from '@ae/core';
 
+@DTO()
 export class ReadCategoryDto implements ReadCategory {
   @StringProperty({ required: true })
   name: string;

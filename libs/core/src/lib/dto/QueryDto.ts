@@ -20,6 +20,8 @@ import {
   StringProperty,
 } from '../property';
 
+import { InputType } from '@nestjs/graphql';
+
 const QUERIES = {
   startsWith: (value: string) => ILike(`${value}%`),
   contains: (value: string) => ILike(`%${value}%`),
@@ -44,6 +46,8 @@ const QUERIES = {
   dateBefore: (value: Date) => LessThan(value),
   dateAfter: (value: Date) => MoreThan(value),
 };
+
+@InputType()
 export class QueryDto<T> {
   @NumberProperty({ required: false, minimum: 1, default: 20 })
   take: number;

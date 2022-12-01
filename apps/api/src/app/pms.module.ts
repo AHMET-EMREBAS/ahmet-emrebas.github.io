@@ -13,6 +13,10 @@ import { UserModule } from '@ae/rest/pms/user/UserModule';
 
 import { CustomerModule } from '@ae/rest/pms/customer/CustomerModule';
 
+import { CategoryModule } from '@ae/rest/pms/category/CategoryModule';
+
+import { PricelevelModule } from '@ae/rest/pms/pricelevel/PricelevelModule';
+
 import { PermissionModule } from '@ae/rest/pms/permission/PermissionModule';
 
 @Module({
@@ -36,6 +40,10 @@ import { PermissionModule } from '@ae/rest/pms/permission/PermissionModule';
     UserModule,
 
     CustomerModule,
+
+    CategoryModule,
+
+    PricelevelModule,
 
     PermissionModule,
   ],

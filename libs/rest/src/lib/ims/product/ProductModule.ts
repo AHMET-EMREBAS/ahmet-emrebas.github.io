@@ -20,7 +20,7 @@ import { ProductController } from './ProductController';
       Category,
     ]),
   ],
-  providers: [ProductService, ProductViewService],
+  providers: [ProductService, ProductViewService, ProductController],
   controllers: [ProductController],
 })
 export class ProductModule {}

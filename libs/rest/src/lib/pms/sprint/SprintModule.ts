@@ -14,7 +14,7 @@ import { SprintController } from './SprintController';
   imports: [
     TypeOrmModule.forFeature([Sprint, SprintView, SprintOptionView, Project]),
   ],
-  providers: [SprintService, SprintViewService],
+  providers: [SprintService, SprintViewService, SprintController],
   controllers: [SprintController],
 })
 export class SprintModule {}

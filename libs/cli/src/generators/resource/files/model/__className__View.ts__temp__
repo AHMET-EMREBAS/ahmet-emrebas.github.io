@@ -1,5 +1,7 @@
-import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { <%- className %>} from './<%- className %>';
+
+import { ViewEntity, ViewColumn} from '@ae/core';
 
 <%
 

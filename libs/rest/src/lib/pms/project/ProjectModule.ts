@@ -12,7 +12,7 @@ import { ProjectController } from './ProjectController';
   imports: [
     TypeOrmModule.forFeature([Project, ProjectView, ProjectOptionView]),
   ],
-  providers: [ProjectService, ProjectViewService],
+  providers: [ProjectService, ProjectViewService, ProjectController],
   controllers: [ProjectController],
 })
 export class ProjectModule {}

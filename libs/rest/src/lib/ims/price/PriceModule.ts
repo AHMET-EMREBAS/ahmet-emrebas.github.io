@@ -24,7 +24,7 @@ import { PriceController } from './PriceController';
       Product,
     ]),
   ],
-  providers: [PriceService, PriceViewService],
+  providers: [PriceService, PriceViewService, PriceController],
   controllers: [PriceController],
 })
 export class PriceModule {}

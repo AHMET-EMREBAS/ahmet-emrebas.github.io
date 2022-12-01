@@ -1,6 +1,12 @@
-import { Entity, Column, JoinColumn, JoinTable } from 'typeorm';
-
-import { BaseEntity } from '@ae/core';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  ManyToOne,
+} from '@ae/core';
 
 @Entity()
 export class Tag extends BaseEntity {

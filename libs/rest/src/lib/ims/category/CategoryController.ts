@@ -11,57 +11,64 @@ import {
   Unset,
   Update,
   Write,
+  Controller,
+  ArgId,
+  ArgRid,
 } from '@ae/core';
-
 import { Category } from '@ae/models/ims/category/Category';
 import { CategoryView } from '@ae/models/ims/category/CategoryView';
 import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
 import { CreateCategoryDto } from '@ae/models/ims/category/dto/CreateCategoryDto';
 import { UpdateCategoryDto } from '@ae/models/ims/category/dto/UpdateCategoryDto';
 
-import { Body, Controller, Delete, Query } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Delete, Query } from '@nestjs/common';
+
 import { CategoryService } from './CategoryService';
 import { CategoryViewService } from './CategoryViewService';
+import { Args } from '@nestjs/graphql';
 
-@ApiTags('ims | Category')
-@Controller('ims/category')
+@Controller('ims/category', Category)
 export class CategoryController {
   constructor(
     private readonly service: CategoryService,
     private readonly viewService: CategoryViewService
   ) {}
 
-  @Read()
-  find(@Query() query: QueryDto<Category & CategoryView>) {
+  @Read(Category)
+  findCategory(
+    @Args('query') @Query() query: QueryDto<Category & CategoryView>
+  ) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById()
-  findById(@ParamId() id: number) {
+  @ReadById(Category)
+  findByCategoryId(@ArgId() @ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write()
-  save(@Body() body: CreateCategoryDto) {
+  @Write(Category)
+  saveCategory(@Args('category') @Body() body: CreateCategoryDto) {
     return this.service.save(body);
   }
 
   @Update()
-  update(@ParamId() id: number, @Body() body: UpdateCategoryDto) {
+  updateCategory(
+    @ArgId() @ParamId() id: number,
+    @Args('category') @Body() body: UpdateCategoryDto
+  ) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  delete(@ParamId() id: number) {
+  deleteCategory(@ArgId() @ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Count()
-  count() {
+  countCategory() {
     return this.service.count();
   }
 }

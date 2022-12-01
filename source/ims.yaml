@@ -1,14 +1,6 @@
 name: Inventory Application
 description: Inventory Management System for managing, product, prices, quantities, customers, users, and POS system.
 entities:
-  category:
-    description: Category entity schema
-    $ref: '#/commons/SingleEntity'
-
-  pricelevel:
-    description: Pricelevel entity schema
-    $ref: '#/commons/SingleEntity'
-
   cart:
     description: Cart entity schema. It is for grouping orders in a cart.
     mainProperty: name

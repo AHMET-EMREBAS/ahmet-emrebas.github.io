@@ -25,7 +25,8 @@ import { <%- className %>Controller } from './<%- className %>Controller';
 <% }) %>
 
   ])],
-  providers: [<%- className %>Service, <%- className %>ViewService],
-  controllers:[<%- className %>Controller %>]
+  providers: [<%- className %>Service, <%- className %>ViewService, <%- className %>Controller %>],
+  controllers:[<%- className %>Controller %>],
+
 })
 export class <%- className %>Module {}

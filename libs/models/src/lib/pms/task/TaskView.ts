@@ -1,5 +1,7 @@
-import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Task } from './Task';
+
+import { ViewEntity, ViewColumn } from '@ae/core';
 
 import { User } from '../user/User';
 

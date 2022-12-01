@@ -24,7 +24,7 @@ import { CustomerController } from './CustomerController';
       Pricelevel,
     ]),
   ],
-  providers: [CustomerService, CustomerViewService],
+  providers: [CustomerService, CustomerViewService, CustomerController],
   controllers: [CustomerController],
 })
 export class CustomerModule {}

@@ -14,7 +14,7 @@ import { StoreController } from './StoreController';
   imports: [
     TypeOrmModule.forFeature([Store, StoreView, StoreOptionView, Pricelevel]),
   ],
-  providers: [StoreService, StoreViewService],
+  providers: [StoreService, StoreViewService, StoreController],
   controllers: [StoreController],
 })
 export class StoreModule {}

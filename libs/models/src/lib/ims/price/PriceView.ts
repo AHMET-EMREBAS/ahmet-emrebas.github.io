@@ -1,5 +1,7 @@
-import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Price } from './Price';
+
+import { ViewEntity, ViewColumn } from '@ae/core';
 
 import { Pricelevel } from '../pricelevel/Pricelevel';
 
