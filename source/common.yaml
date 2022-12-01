@@ -1,85 +1,32 @@
-name: Project Management Application
-description: Project management application
+name: Auth application
+description: Auth application
 entities:
-  project:
-    $ref: '#/commons/SingleEntity'
+  user:
+    $ref: '#/commons/UserEntity'
 
-  sprint:
-    mainProperty: name
+  customer:
+    $ref: '#/commons/UserEntity'
+
+  permission:
+    mainProperty: description
     properties:
       name:
         type: string
-        minLength: 1
-        maxLength: 30
+        minLength: 3
+        maxLength: 20
         inputType: text
-
-      project:
-        type: many-to-one
-        target: project
-        inputType: search-one
-        views:
-          name:
-            as: project
-            type: string
-
-    required:
-      - name
-      - project
-
-    unique:
-      - name
-
-  task:
-    mainProperty: name
-    properties:
-      name:
-        type: string
-        inputType: text
-        minLength: 1
-        maxLength: 30
-
       description:
         type: string
+        minLength: 3
+        maxLength: 400
         inputType: textarea
-        minLength: 1
-        maxLength: 30
-
-      status:
-        type: string
-        inputType: select-one
-        minLength: 1
-        maxLength: 30
-        enum:
-          - open
-          - inprogress
-          - done
-
-      user:
-        type: many-to-one
-        inputType: search-one
-        target: user
-        views:
-          username:
-            as: user
-            type: string
-
-      tag:
-        type: many-to-many
-        inputType: search-one
-        target: tag
-        views:
-          tag:
-            as: tag
-            type: string
 
     required:
       - name
+      - description
 
     unique:
       - name
-
-  tag:
-    $ref: '#/commons/SingleEntity'
 
 commons:
   SingleEntity:

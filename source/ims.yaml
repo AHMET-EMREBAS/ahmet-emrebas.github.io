@@ -5,10 +5,6 @@ entities:
     description: Category entity schema
     $ref: '#/commons/SingleEntity'
 
-  department:
-    description: Department entity schema
-    $ref: '#/commons/SingleEntity'
-
   pricelevel:
     description: Pricelevel entity schema
     $ref: '#/commons/SingleEntity'
@@ -24,6 +20,8 @@ entities:
         inputType: text
 
     required:
+      - name
+    unique:
       - name
 
   store:
@@ -233,74 +231,11 @@ entities:
 
       complete:
         type: boolean
+        inputType: checkbox
 
     required:
       - cart
       - complete
-
-  user:
-    $ref: '#/commons/UserEntity'
-
-  customer:
-    $ref: '#/commons/UserEntity'
-
-  permission:
-    mainProperty: description
-    properties:
-      name:
-        type: string
-        minLength: 3
-        maxLength: 20
-        inputType: text
-      description:
-        type: string
-        minLength: 3
-        maxLength: 400
-        inputType: textarea
-
-    required:
-      - name
-      - description
-
-    unique:
-      - name
-
-  message:
-    mainProperty: title
-    properties:
-      title:
-        type: string
-        minLength: 1
-        maxLength: 30
-        inputType: text
-      message:
-        type: string
-        minLength: 1
-        maxLength: 400
-        inputType: textarea
-
-      to:
-        type: many-to-one
-        target: user
-        inputType: search-one
-        views:
-          username:
-            as: to
-            type: string
-
-      from:
-        type: many-to-one
-        target: user
-        inputType: search-one
-        views:
-          username:
-            as: from
-            type: string
-    required:
-      - title
-      - message
-      - to
-      - from
 
 commons:
   SingleEntity:
@@ -317,60 +252,3 @@ commons:
       - name
     unique:
       - name
-
-  UserEntity:
-    description: User entity
-    mainProperty: fullName
-    properties:
-      fullName:
-        type: string
-        minLength: 3
-        maxLength: 50
-        inputType: text
-
-      username:
-        type: string
-        email: true
-        inputType: email
-        minLength: 6
-        maxLength: 50
-
-      password:
-        type: string
-        password: true
-        inputType: password
-        minLength: 1
-        maxLength: 30
-
-      phone:
-        type: string
-        minLength: 10
-        maxLength: 20
-        inputType: phone
-
-      permissions:
-        type: many-to-many
-        target: permission
-        inputType: search-many
-        views:
-          name:
-            as: permission
-            type: string
-
-      pricelevel:
-        type: many-to-one
-        target: pricelevel
-        inputType: search-one
-        views:
-          name:
-            as: pricelevel
-            type: string
-
-    required:
-      - username
-      - password
-      - phone
-
-    unique:
-      - username
-      - phone

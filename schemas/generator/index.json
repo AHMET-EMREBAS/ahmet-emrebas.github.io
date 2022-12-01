@@ -129,7 +129,8 @@
           "const": "string"
         },
         "inputType": {
-          "$ref": "#/definitions/InputType"
+          "$ref": "#/definitions/InputType",
+          "default": "text"
         },
         "format": {
           "$ref": "#/definitions/InputFormat"
@@ -143,7 +144,7 @@
         "enum": { "type": "array", "items": { "type": "string" } }
       },
       "additionalProperties": false,
-      "required": ["type", "minLength", "maxLength"]
+      "required": ["type", "minLength", "maxLength", "inputType"]
     },
     "NumberProperty": {
       "title": "Number Property",
@@ -153,14 +154,15 @@
           "const": "number"
         },
         "inputType": {
-          "$ref": "#/definitions/InputType"
+          "$ref": "#/definitions/InputType",
+          "default": "number"
         },
         "min": { "type": "number", "default": 0 },
         "max": { "type": "number", "default": 900900900900 },
         "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
-      "required": ["type", "min", "max"]
+      "required": ["type", "min", "max", "inputType"]
     },
     "DateProperty": {
       "title": "Date Property",
@@ -170,7 +172,8 @@
           "const": "date"
         },
         "inputType": {
-          "$ref": "#/definitions/InputType"
+          "$ref": "#/definitions/InputType",
+          "default": "date"
         },
         "timestamp": {
           "type": "string",
@@ -180,7 +183,7 @@
         "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
-      "required": ["type", "format"]
+      "required": ["type", "format", "inputType"]
     },
     "BooleanProperty": {
       "title": "Boolean Property",
@@ -190,12 +193,13 @@
           "const": "boolean"
         },
         "inputType": {
-          "$ref": "#/definitions/InputType"
+          "$ref": "#/definitions/InputType",
+          "default": "checkbox"
         },
         "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
-      "required": ["type"]
+      "required": ["type", "inputType"]
     },
     "InputType": {
       "type": "string",
@@ -227,7 +231,8 @@
           "description": "Type of the relation ship"
         },
         "inputType": {
-          "$ref": "#/definitions/InputType"
+          "$ref": "#/definitions/InputType",
+          "default": "search-one"
         },
         "target": {
           "$ref": "#/definitions/ResourceNames"
@@ -254,7 +259,7 @@
         "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
-      "required": ["type", "target", "views"]
+      "required": ["type", "target", "views", "inputType"]
     },
     "Select": {
       "type": "object",
@@ -318,7 +323,12 @@
         "order",
         "saleunit",
         "sale",
-        "transaction"
+        "transaction",
+        "project",
+        "sprint",
+        "tag",
+        "blog",
+        "task"
       ],
       "default": "category"
     }

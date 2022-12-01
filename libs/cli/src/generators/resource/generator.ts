@@ -1,6 +1,7 @@
 import { namifyObjectByProperty, parseYamlObject } from '@ae/utils';
 import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
-import { mkdirSync, readFileSync, rmdirSync } from 'fs';
+import { mkdirSync, readFileSync } from 'fs';
+import { rmdirSync } from 'fs-extra';
 import { load } from 'js-yaml';
 import { uniqBy } from 'lodash';
 import { join } from 'path';
@@ -79,7 +80,6 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
   ) {
     for (const entity of items) {
       const helper = getHelpers(entity);
-
       await generateFiles(
         tree,
         join(__dirname, 'files', source),
@@ -95,11 +95,9 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
       await formatFiles(tree);
     }
   }
-
-  rmdirSync(COMMON_LIBRARY_DIR);
-  rmdirSync(MODELS_LIBRARY_DIR);
-  rmdirSync(REST_LIBRARY_DIR);
-
+  rmdirSync(MODELS_LIBRARY_DIR, { recursive: true });
+  rmdirSync(COMMON_LIBRARY_DIR, { recursive: true });
+  rmdirSync(REST_LIBRARY_DIR, { recursive: true });
   await genereateResources(
     projectObject.entities,
     MODEL_FILES,

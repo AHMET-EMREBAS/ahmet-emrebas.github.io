@@ -1,5 +1,5 @@
-name: Inventory Application
-description: Inventory Management System for managing, product, prices, quantities, customers, users, and POS system.
+name: Web application
+description: Web application
 entities:
   category:
     description: Category entity schema
@@ -218,25 +218,6 @@ entities:
       - product
       - cart
       - customer
-
-  transaction:
-    mainProperty: id
-    properties:
-      cart:
-        type: many-to-one
-        target: cart
-        inputType: search-one
-        views:
-          id:
-            as: cartId
-            type: number
-
-      complete:
-        type: boolean
-
-    required:
-      - cart
-      - complete
 
   user:
     $ref: '#/commons/UserEntity'
