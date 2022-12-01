@@ -1,4 +1,5 @@
 import { CreateCategory } from '@ae/common/ims/category/CreateCategory';
+import { UpdateCategory } from '@ae/common/ims/category/UpdateCategory';
 
 import {
   IDDto,

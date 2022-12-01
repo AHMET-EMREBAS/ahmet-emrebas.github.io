@@ -1,4 +1,5 @@
 import { CreateProject } from '@ae/common/pms/project/CreateProject';
+import { UpdateProject } from '@ae/common/pms/project/UpdateProject';
 
 import {
   IDDto,

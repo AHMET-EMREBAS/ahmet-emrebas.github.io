@@ -1,4 +1,5 @@
 import { CreateCustomer } from '@ae/common/ims/customer/CreateCustomer';
+import { UpdateCustomer } from '@ae/common/ims/customer/UpdateCustomer';
 
 import {
   IDDto,

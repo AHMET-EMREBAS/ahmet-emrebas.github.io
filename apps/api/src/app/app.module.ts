@@ -10,7 +10,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 @Module({
   imports: [
     ImsModule,
-    PmsModule,
+
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       installSubscriptionHandlers: true,

@@ -42,7 +42,7 @@ export function Column(columnOptions: ColumnOptions) {
 }
 
 export function Entity() {
-  return applyDecorators(ObjectType({ implements: BaseEntity }), __Entity());
+  return applyDecorators(ObjectType(), __Entity());
 }
 
 export function DTO() {

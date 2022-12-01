@@ -1,4 +1,5 @@
 import { CreatePricelevel } from '@ae/common/pms/pricelevel/CreatePricelevel';
+import { UpdatePricelevel } from '@ae/common/pms/pricelevel/UpdatePricelevel';
 
 import {
   IDDto,

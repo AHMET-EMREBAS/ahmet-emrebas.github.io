@@ -1,4 +1,5 @@
 import { CreateCategory } from '@ae/common/pms/category/CreateCategory';
+import { UpdateCategory } from '@ae/common/pms/category/UpdateCategory';
 
 import {
   IDDto,

@@ -1,4 +1,5 @@
 import { CreatePrice } from '@ae/common/ims/price/CreatePrice';
+import { UpdatePrice } from '@ae/common/ims/price/UpdatePrice';
 
 import {
   IDDto,

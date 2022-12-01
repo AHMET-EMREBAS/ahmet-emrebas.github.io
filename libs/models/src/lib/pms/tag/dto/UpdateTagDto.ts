@@ -1,4 +1,5 @@
 import { CreateTag } from '@ae/common/pms/tag/CreateTag';
+import { UpdateTag } from '@ae/common/pms/tag/UpdateTag';
 
 import {
   IDDto,

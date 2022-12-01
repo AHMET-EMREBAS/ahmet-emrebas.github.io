@@ -1,4 +1,5 @@
 import { CreateProduct } from '@ae/common/ims/product/CreateProduct';
+import { UpdateProduct } from '@ae/common/ims/product/UpdateProduct';
 
 import {
   IDDto,

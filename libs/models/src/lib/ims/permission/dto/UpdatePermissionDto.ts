@@ -1,4 +1,5 @@
 import { CreatePermission } from '@ae/common/ims/permission/CreatePermission';
+import { UpdatePermission } from '@ae/common/ims/permission/UpdatePermission';
 
 import {
   IDDto,

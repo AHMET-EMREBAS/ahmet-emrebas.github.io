@@ -1,4 +1,5 @@
 import { CreateTransaction } from '@ae/common/ims/transaction/CreateTransaction';
+import { UpdateTransaction } from '@ae/common/ims/transaction/UpdateTransaction';
 
 import {
   IDDto,

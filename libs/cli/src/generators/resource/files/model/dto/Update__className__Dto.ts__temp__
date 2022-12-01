@@ -1,4 +1,5 @@
 import {  Create<%- className %> } from '@ae/common/<%- projectName %>/<%- propertyName %>/Create<%- className %>';
+import {  Update<%- className %> } from '@ae/common/<%- projectName %>/<%- propertyName %>/Update<%- className %>';
 
 import {
 

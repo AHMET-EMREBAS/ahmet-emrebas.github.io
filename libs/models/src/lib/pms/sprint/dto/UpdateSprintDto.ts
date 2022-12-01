@@ -1,4 +1,5 @@
 import { CreateSprint } from '@ae/common/pms/sprint/CreateSprint';
+import { UpdateSprint } from '@ae/common/pms/sprint/UpdateSprint';
 
 import {
   IDDto,
