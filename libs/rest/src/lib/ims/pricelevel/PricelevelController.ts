@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { PricelevelService } from './PricelevelService';
 import { PricelevelViewService } from './PricelevelViewService';
 
-@ApiTags('pricelevel')
-@Controller('pricelevel')
+@ApiTags('ims | Pricelevel')
+@Controller('ims/pricelevel')
 export class PricelevelController {
   constructor(
     private readonly service: PricelevelService,

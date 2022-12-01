@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './UserService';
 import { UserViewService } from './UserViewService';
 
-@ApiTags('user')
-@Controller('user')
+@ApiTags('ims | User')
+@Controller('ims/user')
 export class UserController {
   constructor(
     private readonly service: UserService,

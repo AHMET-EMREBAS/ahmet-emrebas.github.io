@@ -33,7 +33,7 @@ import { MessageModule } from '@ae/rest/ims/message/MessageModule';
   imports: [
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: 'dist/projectName/projectName.sqlite',
+      database: 'dist/ims/ims.sqlite',
       autoLoadEntities: true,
       dropSchema: true,
       synchronize: true,

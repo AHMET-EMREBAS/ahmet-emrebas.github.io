@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { PermissionService } from './PermissionService';
 import { PermissionViewService } from './PermissionViewService';
 
-@ApiTags('permission')
-@Controller('permission')
+@ApiTags('ims | Permission')
+@Controller('ims/permission')
 export class PermissionController {
   constructor(
     private readonly service: PermissionService,

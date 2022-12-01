@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { CartService } from './CartService';
 import { CartViewService } from './CartViewService';
 
-@ApiTags('cart')
-@Controller('cart')
+@ApiTags('ims | Cart')
+@Controller('ims/cart')
 export class CartController {
   constructor(
     private readonly service: CartService,

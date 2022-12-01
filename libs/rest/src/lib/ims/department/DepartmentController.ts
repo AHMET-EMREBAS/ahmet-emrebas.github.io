@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { DepartmentService } from './DepartmentService';
 import { DepartmentViewService } from './DepartmentViewService';
 
-@ApiTags('department')
-@Controller('department')
+@ApiTags('ims | Department')
+@Controller('ims/department')
 export class DepartmentController {
   constructor(
     private readonly service: DepartmentService,

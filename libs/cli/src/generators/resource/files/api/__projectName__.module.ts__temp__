@@ -7,7 +7,7 @@ import { <%- genName(e.name).className %>Module } from '@ae/rest/<%- projectName
   imports: [
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: 'dist/projectName/projectName.sqlite',
+      database: 'dist/<%- projectName %>/<%- projectName %>.sqlite',
       autoLoadEntities: true,
       dropSchema: true,
       synchronize: true,

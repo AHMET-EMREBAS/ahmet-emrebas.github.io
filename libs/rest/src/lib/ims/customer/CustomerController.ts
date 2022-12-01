@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { CustomerService } from './CustomerService';
 import { CustomerViewService } from './CustomerViewService';
 
-@ApiTags('customer')
-@Controller('customer')
+@ApiTags('ims | Customer')
+@Controller('ims/customer')
 export class CustomerController {
   constructor(
     private readonly service: CustomerService,

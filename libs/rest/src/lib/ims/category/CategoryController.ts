@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { CategoryService } from './CategoryService';
 import { CategoryViewService } from './CategoryViewService';
 
-@ApiTags('category')
-@Controller('category')
+@ApiTags('ims | Category')
+@Controller('ims/category')
 export class CategoryController {
   constructor(
     private readonly service: CategoryService,

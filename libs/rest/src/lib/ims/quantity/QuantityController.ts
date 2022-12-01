@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { QuantityService } from './QuantityService';
 import { QuantityViewService } from './QuantityViewService';
 
-@ApiTags('quantity')
-@Controller('quantity')
+@ApiTags('ims | Quantity')
+@Controller('ims/quantity')
 export class QuantityController {
   constructor(
     private readonly service: QuantityService,

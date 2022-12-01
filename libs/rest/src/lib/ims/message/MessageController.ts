@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { MessageService } from './MessageService';
 import { MessageViewService } from './MessageViewService';
 
-@ApiTags('message')
-@Controller('message')
+@ApiTags('ims | Message')
+@Controller('ims/message')
 export class MessageController {
   constructor(
     private readonly service: MessageService,

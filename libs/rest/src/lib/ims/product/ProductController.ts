@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { ProductService } from './ProductService';
 import { ProductViewService } from './ProductViewService';
 
-@ApiTags('product')
-@Controller('product')
+@ApiTags('ims | Product')
+@Controller('ims/product')
 export class ProductController {
   constructor(
     private readonly service: ProductService,

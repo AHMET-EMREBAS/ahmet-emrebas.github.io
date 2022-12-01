@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { OrderService } from './OrderService';
 import { OrderViewService } from './OrderViewService';
 
-@ApiTags('order')
-@Controller('order')
+@ApiTags('ims | Order')
+@Controller('ims/order')
 export class OrderController {
   constructor(
     private readonly service: OrderService,

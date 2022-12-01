@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { TransactionService } from './TransactionService';
 import { TransactionViewService } from './TransactionViewService';
 
-@ApiTags('transaction')
-@Controller('transaction')
+@ApiTags('ims | Transaction')
+@Controller('ims/transaction')
 export class TransactionController {
   constructor(
     private readonly service: TransactionService,

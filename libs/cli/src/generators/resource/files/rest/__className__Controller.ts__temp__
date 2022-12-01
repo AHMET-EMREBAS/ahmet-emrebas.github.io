@@ -24,8 +24,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { <%- className %>Service } from './<%- className %>Service';
 import { <%- className %>ViewService } from './<%- className %>ViewService';
 
-@ApiTags('<%- fileName %>')
-@Controller('<%- fileName %>')
+@ApiTags('<%- projectName %> | <%- className %>')
+@Controller('<%- projectName %>/<%- fileName %>')
 export class <%- className %>Controller {
   constructor(
     private readonly service: <%- className %>Service,
