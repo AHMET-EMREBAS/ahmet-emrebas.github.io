@@ -1,6 +1,6 @@
 import { namifyObjectByProperty, parseYamlObject } from '@ae/utils';
 import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
-import { mkdirSync, readFileSync } from 'fs';
+import { mkdirSync, readFileSync, rmdirSync } from 'fs';
 import { load } from 'js-yaml';
 import { uniqBy } from 'lodash';
 import { join } from 'path';
@@ -95,6 +95,10 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
       await formatFiles(tree);
     }
   }
+
+  rmdirSync(COMMON_LIBRARY_DIR);
+  rmdirSync(MODELS_LIBRARY_DIR);
+  rmdirSync(REST_LIBRARY_DIR);
 
   await genereateResources(
     projectObject.entities,
