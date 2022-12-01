@@ -1,4 +1,4 @@
-import { ReadSprint } from '@ae/common/pms/sprint/CreateSprint';
+import { ReadSprint } from '@ae/common/pms/sprint/ReadSprint';
 
 import {
   IDDto,

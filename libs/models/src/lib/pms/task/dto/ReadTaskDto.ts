@@ -1,4 +1,4 @@
-import { ReadTask } from '@ae/common/pms/task/CreateTask';
+import { ReadTask } from '@ae/common/pms/task/ReadTask';
 
 import {
   IDDto,

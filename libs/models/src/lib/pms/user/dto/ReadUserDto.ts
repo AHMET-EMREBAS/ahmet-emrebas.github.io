@@ -1,4 +1,4 @@
-import { ReadUser } from '@ae/common/pms/user/CreateUser';
+import { ReadUser } from '@ae/common/pms/user/ReadUser';
 
 import {
   IDDto,

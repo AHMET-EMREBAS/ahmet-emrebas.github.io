@@ -1,4 +1,4 @@
-import { ReadProduct } from '@ae/common/ims/product/CreateProduct';
+import { ReadProduct } from '@ae/common/ims/product/ReadProduct';
 
 import {
   IDDto,

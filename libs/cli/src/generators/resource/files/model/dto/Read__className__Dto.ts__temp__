@@ -1,4 +1,4 @@
-import {  Read<%- className %> } from '@ae/common/<%- projectName %>/<%- propertyName %>/Create<%- className %>';
+import {  Read<%- className %> } from '@ae/common/<%- projectName %>/<%- propertyName %>/Read<%- className %>';
 
 import {
 

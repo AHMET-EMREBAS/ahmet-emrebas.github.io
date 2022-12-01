@@ -1,4 +1,4 @@
-import { ReadCategory } from '@ae/common/ims/category/CreateCategory';
+import { ReadCategory } from '@ae/common/ims/category/ReadCategory';
 
 import {
   IDDto,

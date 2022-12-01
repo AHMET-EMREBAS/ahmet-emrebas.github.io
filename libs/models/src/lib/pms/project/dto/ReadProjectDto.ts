@@ -1,4 +1,4 @@
-import { ReadProject } from '@ae/common/pms/project/CreateProject';
+import { ReadProject } from '@ae/common/pms/project/ReadProject';
 
 import {
   IDDto,

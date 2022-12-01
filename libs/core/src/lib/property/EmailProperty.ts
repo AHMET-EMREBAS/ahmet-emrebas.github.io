@@ -1,5 +1,6 @@
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
+import { StringProperty } from './StringProperty';
 
 export type EmailPropertyOptions = Pick<
   PropertyOptions<string>,
@@ -7,8 +8,7 @@ export type EmailPropertyOptions = Pick<
 >;
 
 export function EmailProperty(options: EmailPropertyOptions) {
-  return Property<string>({
-    type: 'string',
+  return StringProperty({
     inputType: 'email',
     email: true,
     ...options,

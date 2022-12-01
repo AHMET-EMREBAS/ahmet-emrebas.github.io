@@ -1,4 +1,4 @@
-import { ReadOrder } from '@ae/common/ims/order/CreateOrder';
+import { ReadOrder } from '@ae/common/ims/order/ReadOrder';
 
 import {
   IDDto,

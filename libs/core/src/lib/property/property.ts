@@ -2,11 +2,11 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
-
 import { Validators } from '../validators';
 import { PropertyOptions } from '../types';
 import { Transformers } from '../transformers/Transformers';
 import { ValidateNested } from 'class-validator';
+import { GraphFields } from '../graph';
 
 /**
  * Property decorator
@@ -31,18 +31,18 @@ export function Property<T>(options: PropertyOptions<T>) {
 
   validators.push(Validators.required(options.required));
 
-  if (options.type === 'object') {
-    validators.push(ValidateNested());
-  }
+  if (options.type === 'object') validators.push(ValidateNested());
 
-  if (options.type === 'array') {
-    validators.push(ValidateNested({ each: true }));
-  }
+  if (options.type === 'array') validators.push(ValidateNested({ each: true }));
 
   return applyDecorators(
     Expose(),
     ApiProperty(options),
     ...validators,
+    GraphFields[options.type]({
+      defaultValue: options.default,
+      nullable: options.required === undefined ? true : options.required,
+    }),
     Transformers[options.type]
   );
 }

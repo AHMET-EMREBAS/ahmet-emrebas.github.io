@@ -1,4 +1,4 @@
-import { ReadPrice } from '@ae/common/ims/price/CreatePrice';
+import { ReadPrice } from '@ae/common/ims/price/ReadPrice';
 
 import {
   IDDto,

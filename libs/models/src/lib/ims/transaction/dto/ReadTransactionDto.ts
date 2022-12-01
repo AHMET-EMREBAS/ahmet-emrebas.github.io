@@ -1,4 +1,4 @@
-import { ReadTransaction } from '@ae/common/ims/transaction/CreateTransaction';
+import { ReadTransaction } from '@ae/common/ims/transaction/ReadTransaction';
 
 import {
   IDDto,

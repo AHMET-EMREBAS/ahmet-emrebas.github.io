@@ -1,4 +1,4 @@
-import { ReadStore } from '@ae/common/ims/store/CreateStore';
+import { ReadStore } from '@ae/common/ims/store/ReadStore';
 
 import {
   IDDto,

@@ -1,4 +1,4 @@
-import { ReadTag } from '@ae/common/pms/tag/CreateTag';
+import { ReadTag } from '@ae/common/pms/tag/ReadTag';
 
 import {
   IDDto,

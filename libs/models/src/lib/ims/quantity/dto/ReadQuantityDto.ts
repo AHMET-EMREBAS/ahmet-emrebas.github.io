@@ -1,4 +1,4 @@
-import { ReadQuantity } from '@ae/common/ims/quantity/CreateQuantity';
+import { ReadQuantity } from '@ae/common/ims/quantity/ReadQuantity';
 
 import {
   IDDto,

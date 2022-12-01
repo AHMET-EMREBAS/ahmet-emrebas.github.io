@@ -1,4 +1,4 @@
-import { ReadPermission } from '@ae/common/pms/permission/CreatePermission';
+import { ReadPermission } from '@ae/common/pms/permission/ReadPermission';
 
 import {
   IDDto,

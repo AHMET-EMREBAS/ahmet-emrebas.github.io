@@ -6,13 +6,21 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { UUIDTransformer } from '../transformers';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
+@ObjectType({ isAbstract: true })
 export class BaseEntity {
-  @PrimaryGeneratedColumn() id?: number;
-  @CreateDateColumn() createdAt?: Date;
-  @UpdateDateColumn() updatedAt?: Date;
-  @DeleteDateColumn() deletedAt?: Date;
+  @Field(() => Int, { nullable: true }) @PrimaryGeneratedColumn() id?: number;
 
-  @Column({ type: 'boolean', default: true }) active?: boolean;
-  @Column({ type: 'numeric', transformer: UUIDTransformer }) uuid?: number;
+  @Field(() => String, { nullable: true }) @CreateDateColumn() createdAt?: Date;
+  @Field(() => String, { nullable: true }) @UpdateDateColumn() updatedAt?: Date;
+  @Field(() => String, { nullable: true }) @DeleteDateColumn() deletedAt?: Date;
+
+  @Field(() => Boolean, { nullable: true })
+  @Column({ type: 'boolean', default: true })
+  active?: boolean;
+
+  @Field(() => String, { nullable: true })
+  @Column({ type: 'numeric', transformer: UUIDTransformer })
+  uuid?: number;
 }

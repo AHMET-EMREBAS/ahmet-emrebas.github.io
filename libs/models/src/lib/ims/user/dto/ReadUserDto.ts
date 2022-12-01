@@ -1,4 +1,4 @@
-import { ReadUser } from '@ae/common/ims/user/CreateUser';
+import { ReadUser } from '@ae/common/ims/user/ReadUser';
 
 import {
   IDDto,

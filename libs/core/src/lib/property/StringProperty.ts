@@ -6,6 +6,7 @@ export type StringPropertyOptions = Pick<
   | 'required'
   | 'minLength'
   | 'maxLength'
+  | 'inputType'
   | 'ean'
   | 'uuid'
   | 'email'
@@ -15,5 +16,9 @@ export type StringPropertyOptions = Pick<
 >;
 
 export function StringProperty(options: StringPropertyOptions) {
-  return Property<string>({ type: 'string', inputType: 'text', ...options });
+  return Property<string>({
+    type: 'string',
+    inputType: options.inputType || 'text',
+    ...options,
+  });
 }

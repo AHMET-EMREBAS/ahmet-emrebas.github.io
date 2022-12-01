@@ -1,5 +1,6 @@
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
+import { StringProperty } from './StringProperty';
 
 export type PasswordPropertyOptions = Pick<
   PropertyOptions<string>,
@@ -12,8 +13,7 @@ export type PasswordPropertyOptions = Pick<
  * @returns
  */
 export function PasswordProperty(options: PasswordPropertyOptions) {
-  return Property<string>({
-    type: 'string',
+  return StringProperty({
     inputType: 'password',
     password: true,
     minLength: 6,

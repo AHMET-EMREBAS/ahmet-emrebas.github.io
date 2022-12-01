@@ -1,3 +1,4 @@
+import { applyDecorators } from '@nestjs/common';
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
 
@@ -7,11 +8,13 @@ export type ManyToManyPropertyOptions = Pick<
 >;
 
 export function ManyToManyProperty(options: ManyToManyPropertyOptions) {
-  return Property<string>({
-    type: 'array',
-    inputType: 'search-many',
-    ...options,
-  });
+  return applyDecorators(
+    Property<string>({
+      type: 'array',
+      inputType: 'search-many',
+      ...options,
+    })
+  );
 }
 
 export function OneToManyProperty(options: ManyToManyPropertyOptions) {

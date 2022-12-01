@@ -1,4 +1,4 @@
-import { ReadCustomer } from '@ae/common/ims/customer/CreateCustomer';
+import { ReadCustomer } from '@ae/common/ims/customer/ReadCustomer';
 
 import {
   IDDto,
