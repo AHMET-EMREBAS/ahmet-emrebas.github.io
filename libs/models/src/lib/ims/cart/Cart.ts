@@ -6,6 +6,8 @@ import { BaseEntity } from '@ae/core';
 export class Cart extends BaseEntity {
   @Column({
     type: 'text',
+
+    unique: true,
   })
   name?: string;
 }

@@ -18,7 +18,7 @@ export class CreateProjectDto implements CreateProject {
   @StringProperty({
     required: true,
     minLength: 1,
-    maxLength: 30,
+    maxLength: 50,
   })
   name: string;
 }

@@ -1,11 +1,10 @@
 import { namifyObjectByProperty, parseYamlObject } from '@ae/utils';
 import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
-import { mkdirSync, readFileSync } from 'fs';
+import { mkdirSync, readFileSync, rmdir, rmSync } from 'fs';
 import { rmdirSync } from 'fs-extra';
 import { load } from 'js-yaml';
 import { uniqBy } from 'lodash';
 import { join } from 'path';
-import { addIndexFile } from '../utils';
 import { RgGeneratorSchema } from './schema';
 
 function tryCatch(func: () => any) {
@@ -44,11 +43,16 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
   const INTERFACE_FILES = 'interface';
   const REST_FILES = 'rest';
 
-  const file = readFileSync(
+  const projectYamlFile = readFileSync(
     join(tree.root, 'source', projectName + '.yaml')
   ).toString();
 
-  const ssotContent = parseYamlObject(load(file));
+  const commonProjectYamlFile = readFileSync(
+    join(tree.root, 'source', 'common' + '.yaml')
+  ).toString();
+
+  const ssotContent = parseYamlObject(load(projectYamlFile));
+  const commonContent = parseYamlObject(load(commonProjectYamlFile));
 
   const projectObject: any = namifyObjectByProperty(
     ssotContent,
@@ -56,6 +60,15 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
     'entities',
     'views'
   );
+
+  const commonObject: any = namifyObjectByProperty(
+    commonContent,
+    'properties',
+    'entities',
+    'views'
+  );
+
+  projectObject.entities.push(...commonObject.entities);
 
   async function generateApiApp(__projectName: string) {
     await generateFiles(
@@ -95,9 +108,11 @@ export default async function (tree: Tree, options: RgGeneratorSchema) {
       await formatFiles(tree);
     }
   }
-  rmdirSync(MODELS_LIBRARY_DIR, { recursive: true });
-  rmdirSync(COMMON_LIBRARY_DIR, { recursive: true });
-  rmdirSync(REST_LIBRARY_DIR, { recursive: true });
+
+  tryCatch(() => rmSync(MODELS_LIBRARY_DIR, { recursive: true }));
+  tryCatch(() => rmSync(COMMON_LIBRARY_DIR, { recursive: true }));
+  tryCatch(() => rmSync(REST_LIBRARY_DIR, { recursive: true }));
+
   await genereateResources(
     projectObject.entities,
     MODEL_FILES,

@@ -1,6 +1,12 @@
 const isObject = (o: any) => typeof o === 'object';
 const isArray = (o: any) => !!o.push && !!o.pop;
 
+/**
+ * Convert each object into array and name each item with the object key.
+ * @param obj
+ * @param objProperties
+ * @returns
+ */
 export function namifyObjectByProperty(
   obj: Record<string, Record<string, any>>,
   ...objProperties: string[]

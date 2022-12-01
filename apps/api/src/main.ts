@@ -5,9 +5,12 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-
+import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app/app.module';
+import * as favicon from 'serve-favicon';
+
 import { GlobalValidationPipe } from '@ae/core';
+import { join } from 'path';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -23,6 +26,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('api', app, document);
+
+  app.use(favicon(join(__dirname, 'favicon.ico')));
+  app.use(cookieParser());
   app.useGlobalPipes(GlobalValidationPipe);
 
   await app.listen(port);
