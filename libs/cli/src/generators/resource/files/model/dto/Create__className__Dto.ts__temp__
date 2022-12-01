@@ -40,7 +40,7 @@ export class Create<%- className %>Dto implements  Create<%- className %> {
       <% if(e.maxLength) { %> maxLength: <%- e.maxLength %>, <% } %>
       <% if(e.maximum) { %> maximum: <%- e.maximum %>, <% } %>
       <% if(e.minimum) { %> minimum: <%- e.minimum %>, <% } %>
-      <% if(e.enum) { %> enum: [ e.enum.forEach(_enumValue=>{ %> '<%- _enumValue %>', <% })%> ], <% } %>
+      <% if(e.enum) { %> enum: [ <% e.enum.forEach(_eValue=>{ %> '<%- _eValue %>',  <% }) %>  ]<% } %>
       <% if(e.email) { %> email: <%- e.email %>, <% } %>
       <% if(e.password) { %> password: <%- e.password %>, <% } %>
       <% if(e.uuid) { %> uuid: <%- e.uuid %>, <% } %>

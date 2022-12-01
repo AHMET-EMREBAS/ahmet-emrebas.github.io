@@ -1,6 +1,29 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateStoreDto } from './CreateStoreDto';
-import { DTO } from '@ae/core';
+import { CreateStore } from '@ae/common/ims/store/CreateStore';
+
+import {
+  IDDto,
+  StringProperty,
+  DateProperty,
+  NumberProperty,
+  BooleanProperty,
+  EmailProperty,
+  PasswordProperty,
+  ManyToManyProperty,
+  ManyToOneProperty,
+  OneToManyProperty,
+  OneToOneProperty,
+  DTO,
+} from '@ae/core';
 
 @DTO()
-export class UpdateStoreDto extends PartialType(CreateStoreDto) {}
+export class UpdateStoreDto implements UpdateStore {
+  @StringProperty({
+    required: false,
+    minLength: 1,
+    maxLength: 30,
+  })
+  name: string;
+
+  @ManyToOneProperty({ required: false })
+  pricelevel: IDDto;
+}

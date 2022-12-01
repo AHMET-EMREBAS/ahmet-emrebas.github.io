@@ -1,6 +1,33 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreatePermissionDto } from './CreatePermissionDto';
-import { DTO } from '@ae/core';
+import { CreatePermission } from '@ae/common/pms/permission/CreatePermission';
+
+import {
+  IDDto,
+  StringProperty,
+  DateProperty,
+  NumberProperty,
+  BooleanProperty,
+  EmailProperty,
+  PasswordProperty,
+  ManyToManyProperty,
+  ManyToOneProperty,
+  OneToManyProperty,
+  OneToOneProperty,
+  DTO,
+} from '@ae/core';
 
 @DTO()
-export class UpdatePermissionDto extends PartialType(CreatePermissionDto) {}
+export class UpdatePermissionDto implements UpdatePermission {
+  @StringProperty({
+    required: false,
+    minLength: 3,
+    maxLength: 20,
+  })
+  name: string;
+
+  @StringProperty({
+    required: false,
+    minLength: 3,
+    maxLength: 400,
+  })
+  description: string;
+}

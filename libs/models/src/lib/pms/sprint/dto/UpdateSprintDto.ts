@@ -1,6 +1,29 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateSprintDto } from './CreateSprintDto';
-import { DTO } from '@ae/core';
+import { CreateSprint } from '@ae/common/pms/sprint/CreateSprint';
+
+import {
+  IDDto,
+  StringProperty,
+  DateProperty,
+  NumberProperty,
+  BooleanProperty,
+  EmailProperty,
+  PasswordProperty,
+  ManyToManyProperty,
+  ManyToOneProperty,
+  OneToManyProperty,
+  OneToOneProperty,
+  DTO,
+} from '@ae/core';
 
 @DTO()
-export class UpdateSprintDto extends PartialType(CreateSprintDto) {}
+export class UpdateSprintDto implements UpdateSprint {
+  @StringProperty({
+    required: false,
+    minLength: 1,
+    maxLength: 30,
+  })
+  name: string;
+
+  @ManyToOneProperty({ required: false })
+  project: IDDto;
+}

@@ -1,6 +1,26 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateTagDto } from './CreateTagDto';
-import { DTO } from '@ae/core';
+import { CreateTag } from '@ae/common/pms/tag/CreateTag';
+
+import {
+  IDDto,
+  StringProperty,
+  DateProperty,
+  NumberProperty,
+  BooleanProperty,
+  EmailProperty,
+  PasswordProperty,
+  ManyToManyProperty,
+  ManyToOneProperty,
+  OneToManyProperty,
+  OneToOneProperty,
+  DTO,
+} from '@ae/core';
 
 @DTO()
-export class UpdateTagDto extends PartialType(CreateTagDto) {}
+export class UpdateTagDto implements UpdateTag {
+  @StringProperty({
+    required: false,
+    minLength: 1,
+    maxLength: 50,
+  })
+  name: string;
+}
