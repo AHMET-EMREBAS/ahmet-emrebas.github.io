@@ -1,11 +1,17 @@
+import { applyDecorators } from '@nestjs/common';
+import { Field } from '@nestjs/graphql';
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
+import { CommonFields } from './StringProperty';
 
 export type DatePropertyOptions = Pick<
   PropertyOptions<Date>,
-  'required' | 'before' | 'after' | 'default'
+  CommonFields | 'before' | 'after'
 >;
 
 export function DateProperty(options: DatePropertyOptions) {
-  return Property<Date>({ type: 'date', inputType: 'date', ...options });
+  return applyDecorators(
+    Field(() => String),
+    Property<Date>({ type: 'date', inputType: 'date', ...options })
+  );
 }

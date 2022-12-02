@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { OrderView } from '@ae/models/ims/order/OrderView';
 import { OrderOptionView } from '@ae/models/ims/order/OrderOptionView';
 import { CreateOrderDto } from '@ae/models/ims/order/dto/CreateOrderDto';
 import { UpdateOrderDto } from '@ae/models/ims/order/dto/UpdateOrderDto';
+import { ReadOrderDto } from '@ae/models/ims/order/dto/ReadOrderDto';
 
 import { OrderService } from './OrderService';
 import { OrderViewService } from './OrderViewService';
@@ -34,22 +36,37 @@ export class OrderResolver {
     private readonly optionViewService: OrderOptionViewService
   ) {}
 
-  @GRead(Order)
-  findOrder(@Args('query') query: QueryDto<Order & OrderView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadOrderDto)
+  findOrders(@Args('query', { nullable: true }) query: QueryDto<Order>) {
     return this.service.find(query);
   }
 
-  @GReadById(Order)
+  @GRead(OrderView)
+  viewOrders(@Args('query', { nullable: true }) query: QueryDto<OrderView>) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadOrderDto)
   findByOrderId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Order)
+  @GReadById(OrderView)
+  viewByOrderId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadOrderDto)
   saveOrder(@Args('order') body: CreateOrderDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadOrderDto)
+  saveOrders(
+    @Args('orders', { type: () => [CreateOrderDto] })
+    body: CreateOrderDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -98,7 +115,7 @@ export class OrderResolver {
   }
 
   @GOptions()
-  optionsOrder(@Args('query') query: QueryDto<Order & OrderView>) {
+  optionsOrder(@Args('query') query: QueryDto<OrderOptionView>) {
     return this.optionViewService.find(query);
   }
 }

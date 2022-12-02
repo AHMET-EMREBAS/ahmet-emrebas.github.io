@@ -11,26 +11,28 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
+  BaseEntity,
 } from '@ae/core';
 
-import { ReadProductDto } from '../../Product';
+import { ObjectType } from '@nestjs/graphql';
 
-import { ReadCartDto } from '../../Cart';
+import { ReadProductDto } from '../../product/dto/ReadProductDto';
 
-import { ReadCustomerDto } from '../../Customer';
+import { ReadCartDto } from '../../cart/dto/ReadCartDto';
 
-@DTO()
-export class ReadOrderDto implements ReadOrder {
-  @NumberProperty({ required: true })
+import { ReadCustomerDto } from '../../customer/dto/ReadCustomerDto';
+
+@ObjectType()
+export class ReadOrderDto extends BaseEntity implements ReadOrder {
+  @NumberProperty({})
   quantity: number;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(ReadProductDto, {})
   product: ReadProductDto;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(ReadCartDto, {})
   cart: ReadCartDto;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(ReadCustomerDto, {})
   customer: ReadCustomerDto;
 }

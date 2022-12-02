@@ -15,12 +15,12 @@ import { IDDto } from '../dto';
  * @param options
  * @returns
  */
-export function Property<T>(options: PropertyOptions<T>) {
-  if (!options.type) {
+export function Property<T>(options?: PropertyOptions<T>) {
+  if (!options?.type) {
     throw new Error('Property type is required!');
   }
 
-  if (!options.inputType) {
+  if (!options?.inputType) {
     throw new Error('Property inputType is required!');
   }
 
@@ -30,19 +30,19 @@ export function Property<T>(options: PropertyOptions<T>) {
     .map(([key, value]) => Validators[key]?.(value))
     .filter(notFalsy);
 
-  if (options.required === false) {
+  if (options?.required === false) {
     validators.unshift(IsOptional());
   } else {
     validators.unshift(IsNotEmpty());
   }
 
-  if (options.type === 'object')
+  if (options?.type === 'object')
     validators.push(
       Type(() => IDDto),
       ValidateNested()
     );
 
-  if (options.type === 'array')
+  if (options?.type === 'array')
     validators.push(
       Type(() => IDDto),
       ValidateNested({ each: true })
@@ -52,10 +52,6 @@ export function Property<T>(options: PropertyOptions<T>) {
     Expose(),
     ApiProperty(options),
     ...validators,
-    GraphFields[options.type]({
-      defaultValue: options.default,
-      nullable: options.required === false ? true : false,
-    }),
-    Transformers[options.type]
+    Transformers[options?.type]
   );
 }

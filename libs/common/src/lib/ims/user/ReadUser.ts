@@ -1,7 +1,7 @@
 import { IUser } from './IUser';
 
-import { ReadPermission } from '../permission';
+import { ReadPermission } from '../permission/ReadPermission';
 
-import { ReadPricelevel } from '../pricelevel';
+import { ReadPricelevel } from '../pricelevel/ReadPricelevel';
 
 export type ReadUser = IUser<ReadPermission, ReadPricelevel>;

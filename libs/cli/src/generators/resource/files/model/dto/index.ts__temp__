@@ -1,3 +1,0 @@
-export * from './Read<%- className %>Dto';
-export * from './Create<%- className %>Dto';
-export * from './Update<%- className %>Dto';

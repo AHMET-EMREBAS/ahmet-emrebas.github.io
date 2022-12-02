@@ -11,30 +11,32 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
+  BaseEntity,
 } from '@ae/core';
 
-import { ReadPermissionDto } from '../../Permission';
+import { ObjectType } from '@nestjs/graphql';
 
-import { ReadPricelevelDto } from '../../Pricelevel';
+import { ReadPermissionDto } from '../../permission/dto/ReadPermissionDto';
 
-@DTO()
-export class ReadCustomerDto implements ReadCustomer {
-  @StringProperty({ required: false })
+import { ReadPricelevelDto } from '../../pricelevel/dto/ReadPricelevelDto';
+
+@ObjectType()
+export class ReadCustomerDto extends BaseEntity implements ReadCustomer {
+  @StringProperty({})
   fullName: string;
 
-  @StringProperty({ required: true })
+  @StringProperty({})
   username: string;
 
-  @StringProperty({ required: true })
+  @StringProperty({})
   password: string;
 
-  @StringProperty({ required: true })
+  @StringProperty({})
   phone: string;
 
-  @ManyToManyProperty({ required: false })
+  @ManyToManyProperty(ReadPermissionDto, {})
   permissions: ReadPermissionDto[];
 
-  @ManyToOneProperty({ required: false })
+  @ManyToOneProperty(ReadPricelevelDto, {})
   pricelevel: ReadPricelevelDto;
 }

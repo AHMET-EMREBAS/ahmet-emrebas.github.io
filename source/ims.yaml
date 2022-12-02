@@ -7,6 +7,7 @@ entities:
     properties:
       name:
         type: string
+        description: unique cart name
         minLength: 1
         maxLength: 30
         inputType: text
@@ -22,12 +23,14 @@ entities:
     properties:
       name:
         type: string
+        description: Unique store name
         minLength: 1
         maxLength: 30
         inputType: text
 
       pricelevel:
         type: many-to-one
+        description: Store price level
         target: pricelevel
         inputType: search-one
         views:
@@ -46,18 +49,21 @@ entities:
     properties:
       name:
         type: string
+        description: Unique product name
         minLength: 1
         maxLength: 30
         inputType: text
 
       description:
         type: string
+        description: Product description
         minLength: 1
         maxLength: 400
         inputType: textarea
 
       barcode:
         type: string
+        description: Unique product barcode
         minLength: 10
         maxLength: 13
         ean: true
@@ -66,6 +72,7 @@ entities:
       category:
         type: many-to-one
         target: category
+        description: Product category
         inputType: search-one
         views:
           name:
@@ -74,14 +81,16 @@ entities:
 
       price:
         type: number
-        min: 0
-        max: 900900900900
+        description: Product price
+        minimum: 0
+        maximum: 900900900900
         inputType: currency
 
       cost:
         type: number
-        min: 0
-        max: 900900900900
+        description: Product cost
+        minimum: 0
+        maximum: 900900900900
         inputType: currency
 
     required:
@@ -100,14 +109,14 @@ entities:
     properties:
       price:
         type: number
-        min: 0
-        max: 900900900900
+        minimum: 0
+        maximum: 900900900900
         inputType: currency
 
       cost:
         type: number
-        min: 0
-        max: 900900900900
+        minimum: 0
+        maximum: 900900900900
         inputType: currency
 
       pricelevel:
@@ -140,8 +149,8 @@ entities:
     properties:
       quantity:
         type: number
-        min: -1000
-        max: 900900900900
+        minimum: -1000
+        maximum: 900900900900
         inputType: number
 
       product:
@@ -172,8 +181,8 @@ entities:
     properties:
       quantity:
         type: number
-        min: 0
-        max: 900900900900
+        minimum: 0
+        maximum: 900900900900
         inputType: number
 
       product:

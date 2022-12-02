@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { StoreView } from '@ae/models/ims/store/StoreView';
 import { StoreOptionView } from '@ae/models/ims/store/StoreOptionView';
 import { CreateStoreDto } from '@ae/models/ims/store/dto/CreateStoreDto';
 import { UpdateStoreDto } from '@ae/models/ims/store/dto/UpdateStoreDto';
+import { ReadStoreDto } from '@ae/models/ims/store/dto/ReadStoreDto';
 
 import { StoreService } from './StoreService';
 import { StoreViewService } from './StoreViewService';
@@ -34,22 +36,37 @@ export class StoreResolver {
     private readonly optionViewService: StoreOptionViewService
   ) {}
 
-  @GRead(Store)
-  findStore(@Args('query') query: QueryDto<Store & StoreView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadStoreDto)
+  findStores(@Args('query', { nullable: true }) query: QueryDto<Store>) {
     return this.service.find(query);
   }
 
-  @GReadById(Store)
+  @GRead(StoreView)
+  viewStores(@Args('query', { nullable: true }) query: QueryDto<StoreView>) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadStoreDto)
   findByStoreId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Store)
+  @GReadById(StoreView)
+  viewByStoreId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadStoreDto)
   saveStore(@Args('store') body: CreateStoreDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadStoreDto)
+  saveStores(
+    @Args('stores', { type: () => [CreateStoreDto] })
+    body: CreateStoreDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -78,7 +95,7 @@ export class StoreResolver {
   }
 
   @GOptions()
-  optionsStore(@Args('query') query: QueryDto<Store & StoreView>) {
+  optionsStore(@Args('query') query: QueryDto<StoreOptionView>) {
     return this.optionViewService.find(query);
   }
 }

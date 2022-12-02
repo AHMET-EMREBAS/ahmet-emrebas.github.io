@@ -12,9 +12,10 @@ ManyToManyProperty,
 ManyToOneProperty,
 OneToManyProperty,
 OneToOneProperty,
-DTO
-
+BaseEntity
 } from '@ae/core';
+
+import {  ObjectType } from '@nestjs/graphql';
 
 
 
@@ -31,22 +32,22 @@ DTO
 
 
 <% uniqueBy(__R, 'target').forEach(e=>{ %>
-  import {  Read<%- genName(e.target).className %>Dto } from '../../<%- genName(e.target).className %>';
+  import {  Read<%- genName(e.target).className %>Dto } from '../../<%- genName(e.target).fileName %>/dto/Read<%- genName(e.target).className %>Dto';
 <% }) %>
 
-@DTO()
-export class Read<%- className %>Dto implements  Read<%- className %> {
+@ObjectType()
+export class Read<%- className %>Dto extends BaseEntity implements  Read<%- className %> {
 
   <% __P.forEach(e=> { %>
 
-    @<%- genName(e.type).className %>Property({ required: <%-  entity.required?.includes(e.name) %> })
+    @<%- genName(e.type).className %>Property({  <% if(e.description) { %> description: '<%- e.description %>', <% } %> })
     <%- e.name %>: <%- e.type %>
 
   <% }) %>
 
   <% __R.forEach(e=> { %>
 
-    @<%- genName(e.type).className %>Property({ required: <%-  entity.required?.includes(e.name) %> })
+    @<%- genName(e.type).className %>Property(Read<%- genName(e.target).className %>Dto,{ <% if(e.description) { %> description: '<%- e.description %>', <% } %> })
     <%- e.name %>: Read<%- genName(e.target).className %>Dto <% if(e.type.endsWith('many')) { %> [] <% } %>
 
   <% }) %>

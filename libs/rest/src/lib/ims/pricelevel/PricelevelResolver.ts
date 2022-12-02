@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { PricelevelView } from '@ae/models/ims/pricelevel/PricelevelView';
 import { PricelevelOptionView } from '@ae/models/ims/pricelevel/PricelevelOptionView';
 import { CreatePricelevelDto } from '@ae/models/ims/pricelevel/dto/CreatePricelevelDto';
 import { UpdatePricelevelDto } from '@ae/models/ims/pricelevel/dto/UpdatePricelevelDto';
+import { ReadPricelevelDto } from '@ae/models/ims/pricelevel/dto/ReadPricelevelDto';
 
 import { PricelevelService } from './PricelevelService';
 import { PricelevelViewService } from './PricelevelViewService';
@@ -34,22 +36,41 @@ export class PricelevelResolver {
     private readonly optionViewService: PricelevelOptionViewService
   ) {}
 
-  @GRead(Pricelevel)
-  findPricelevel(@Args('query') query: QueryDto<Pricelevel & PricelevelView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadPricelevelDto)
+  findPricelevels(
+    @Args('query', { nullable: true }) query: QueryDto<Pricelevel>
+  ) {
     return this.service.find(query);
   }
 
-  @GReadById(Pricelevel)
+  @GRead(PricelevelView)
+  viewPricelevels(
+    @Args('query', { nullable: true }) query: QueryDto<PricelevelView>
+  ) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadPricelevelDto)
   findByPricelevelId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Pricelevel)
+  @GReadById(PricelevelView)
+  viewByPricelevelId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadPricelevelDto)
   savePricelevel(@Args('pricelevel') body: CreatePricelevelDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadPricelevelDto)
+  savePricelevels(
+    @Args('pricelevels', { type: () => [CreatePricelevelDto] })
+    body: CreatePricelevelDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -71,9 +92,7 @@ export class PricelevelResolver {
   }
 
   @GOptions()
-  optionsPricelevel(
-    @Args('query') query: QueryDto<Pricelevel & PricelevelView>
-  ) {
+  optionsPricelevel(@Args('query') query: QueryDto<PricelevelOptionView>) {
     return this.optionViewService.find(query);
   }
 }

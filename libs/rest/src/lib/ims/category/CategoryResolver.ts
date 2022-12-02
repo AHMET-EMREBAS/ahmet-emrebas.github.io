@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { CategoryView } from '@ae/models/ims/category/CategoryView';
 import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
 import { CreateCategoryDto } from '@ae/models/ims/category/dto/CreateCategoryDto';
 import { UpdateCategoryDto } from '@ae/models/ims/category/dto/UpdateCategoryDto';
+import { ReadCategoryDto } from '@ae/models/ims/category/dto/ReadCategoryDto';
 
 import { CategoryService } from './CategoryService';
 import { CategoryViewService } from './CategoryViewService';
@@ -34,22 +36,39 @@ export class CategoryResolver {
     private readonly optionViewService: CategoryOptionViewService
   ) {}
 
-  @GRead(Category)
-  findCategory(@Args('query') query: QueryDto<Category & CategoryView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadCategoryDto)
+  findCategorys(@Args('query', { nullable: true }) query: QueryDto<Category>) {
     return this.service.find(query);
   }
 
-  @GReadById(Category)
+  @GRead(CategoryView)
+  viewCategorys(
+    @Args('query', { nullable: true }) query: QueryDto<CategoryView>
+  ) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadCategoryDto)
   findByCategoryId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Category)
+  @GReadById(CategoryView)
+  viewByCategoryId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadCategoryDto)
   saveCategory(@Args('category') body: CreateCategoryDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadCategoryDto)
+  saveCategorys(
+    @Args('categorys', { type: () => [CreateCategoryDto] })
+    body: CreateCategoryDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -71,7 +90,7 @@ export class CategoryResolver {
   }
 
   @GOptions()
-  optionsCategory(@Args('query') query: QueryDto<Category & CategoryView>) {
+  optionsCategory(@Args('query') query: QueryDto<CategoryOptionView>) {
     return this.optionViewService.find(query);
   }
 }

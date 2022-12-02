@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { CustomerView } from '@ae/models/ims/customer/CustomerView';
 import { CustomerOptionView } from '@ae/models/ims/customer/CustomerOptionView';
 import { CreateCustomerDto } from '@ae/models/ims/customer/dto/CreateCustomerDto';
 import { UpdateCustomerDto } from '@ae/models/ims/customer/dto/UpdateCustomerDto';
+import { ReadCustomerDto } from '@ae/models/ims/customer/dto/ReadCustomerDto';
 
 import { CustomerService } from './CustomerService';
 import { CustomerViewService } from './CustomerViewService';
@@ -34,22 +36,39 @@ export class CustomerResolver {
     private readonly optionViewService: CustomerOptionViewService
   ) {}
 
-  @GRead(Customer)
-  findCustomer(@Args('query') query: QueryDto<Customer & CustomerView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadCustomerDto)
+  findCustomers(@Args('query', { nullable: true }) query: QueryDto<Customer>) {
     return this.service.find(query);
   }
 
-  @GReadById(Customer)
+  @GRead(CustomerView)
+  viewCustomers(
+    @Args('query', { nullable: true }) query: QueryDto<CustomerView>
+  ) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadCustomerDto)
   findByCustomerId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Customer)
+  @GReadById(CustomerView)
+  viewByCustomerId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadCustomerDto)
   saveCustomer(@Args('customer') body: CreateCustomerDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadCustomerDto)
+  saveCustomers(
+    @Args('customers', { type: () => [CreateCustomerDto] })
+    body: CreateCustomerDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -91,7 +110,7 @@ export class CustomerResolver {
   }
 
   @GOptions()
-  optionsCustomer(@Args('query') query: QueryDto<Customer & CustomerView>) {
+  optionsCustomer(@Args('query') query: QueryDto<CustomerOptionView>) {
     return this.optionViewService.find(query);
   }
 }

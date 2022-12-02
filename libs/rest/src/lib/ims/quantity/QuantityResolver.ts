@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { QuantityView } from '@ae/models/ims/quantity/QuantityView';
 import { QuantityOptionView } from '@ae/models/ims/quantity/QuantityOptionView';
 import { CreateQuantityDto } from '@ae/models/ims/quantity/dto/CreateQuantityDto';
 import { UpdateQuantityDto } from '@ae/models/ims/quantity/dto/UpdateQuantityDto';
+import { ReadQuantityDto } from '@ae/models/ims/quantity/dto/ReadQuantityDto';
 
 import { QuantityService } from './QuantityService';
 import { QuantityViewService } from './QuantityViewService';
@@ -34,22 +36,39 @@ export class QuantityResolver {
     private readonly optionViewService: QuantityOptionViewService
   ) {}
 
-  @GRead(Quantity)
-  findQuantity(@Args('query') query: QueryDto<Quantity & QuantityView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadQuantityDto)
+  findQuantitys(@Args('query', { nullable: true }) query: QueryDto<Quantity>) {
     return this.service.find(query);
   }
 
-  @GReadById(Quantity)
+  @GRead(QuantityView)
+  viewQuantitys(
+    @Args('query', { nullable: true }) query: QueryDto<QuantityView>
+  ) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadQuantityDto)
   findByQuantityId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Quantity)
+  @GReadById(QuantityView)
+  viewByQuantityId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadQuantityDto)
   saveQuantity(@Args('quantity') body: CreateQuantityDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadQuantityDto)
+  saveQuantitys(
+    @Args('quantitys', { type: () => [CreateQuantityDto] })
+    body: CreateQuantityDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -91,7 +110,7 @@ export class QuantityResolver {
   }
 
   @GOptions()
-  optionsQuantity(@Args('query') query: QueryDto<Quantity & QuantityView>) {
+  optionsQuantity(@Args('query') query: QueryDto<QuantityOptionView>) {
     return this.optionViewService.find(query);
   }
 }

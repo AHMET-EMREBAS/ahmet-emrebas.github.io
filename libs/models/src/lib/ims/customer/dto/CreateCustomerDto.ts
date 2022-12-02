@@ -12,10 +12,11 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class CreateCustomerDto implements CreateCustomer {
   @StringProperty({
     required: false,
@@ -49,9 +50,9 @@ export class CreateCustomerDto implements CreateCustomer {
   })
   phone: string;
 
-  @ManyToManyProperty({ required: false })
+  @ManyToManyProperty(IDDto, { required: false })
   permissions: IDDto[];
 
-  @ManyToOneProperty({ required: false })
+  @ManyToOneProperty(IDDto, { required: false })
   pricelevel: IDDto;
 }

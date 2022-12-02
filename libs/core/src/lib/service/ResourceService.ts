@@ -15,8 +15,9 @@ import {
   InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
+import { BaseEntity } from '../entity';
 
-export class ResourceService<T> {
+export class ResourceService<T extends BaseEntity> {
   private readonly uniqueColumns!: string[];
   private readonly logger = new Logger(
     this.__repo.metadata.targetName + ' Service'
@@ -129,7 +130,8 @@ export class ResourceService<T> {
   async save(t: T) {
     await this.isUnique(t);
     try {
-      return await this.__repo.save({ ...t, uuid: v4() });
+      const saved = await this.__repo.save({ ...t, uuid: v4() });
+      return await this.findOneById(saved.id);
     } catch (err) {
       throw new InternalServerErrorException(err);
     }

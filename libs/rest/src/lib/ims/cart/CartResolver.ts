@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { CartView } from '@ae/models/ims/cart/CartView';
 import { CartOptionView } from '@ae/models/ims/cart/CartOptionView';
 import { CreateCartDto } from '@ae/models/ims/cart/dto/CreateCartDto';
 import { UpdateCartDto } from '@ae/models/ims/cart/dto/UpdateCartDto';
+import { ReadCartDto } from '@ae/models/ims/cart/dto/ReadCartDto';
 
 import { CartService } from './CartService';
 import { CartViewService } from './CartViewService';
@@ -34,22 +36,37 @@ export class CartResolver {
     private readonly optionViewService: CartOptionViewService
   ) {}
 
-  @GRead(Cart)
-  findCart(@Args('query') query: QueryDto<Cart & CartView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadCartDto)
+  findCarts(@Args('query', { nullable: true }) query: QueryDto<Cart>) {
     return this.service.find(query);
   }
 
-  @GReadById(Cart)
+  @GRead(CartView)
+  viewCarts(@Args('query', { nullable: true }) query: QueryDto<CartView>) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadCartDto)
   findByCartId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Cart)
+  @GReadById(CartView)
+  viewByCartId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadCartDto)
   saveCart(@Args('cart') body: CreateCartDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadCartDto)
+  saveCarts(
+    @Args('carts', { type: () => [CreateCartDto] })
+    body: CreateCartDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -68,7 +85,7 @@ export class CartResolver {
   }
 
   @GOptions()
-  optionsCart(@Args('query') query: QueryDto<Cart & CartView>) {
+  optionsCart(@Args('query') query: QueryDto<CartOptionView>) {
     return this.optionViewService.find(query);
   }
 }

@@ -1,4 +1,0 @@
-export * from './<%- className %>';
-export * from './<%- className %>View';
-export * from './<%- className %>OptionView';
-export * from './dto';

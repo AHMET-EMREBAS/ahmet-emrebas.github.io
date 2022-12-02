@@ -1,11 +1,7 @@
 import { PropertyOptions } from '../types';
-import { Property } from './Property';
-import { StringProperty } from './StringProperty';
+import { CommonFields, StringProperty } from './StringProperty';
 
-export type EmailPropertyOptions = Pick<
-  PropertyOptions<string>,
-  'required' | 'default'
->;
+export type EmailPropertyOptions = Pick<PropertyOptions<string>, CommonFields>;
 
 export function EmailProperty(options: EmailPropertyOptions) {
   return StringProperty({

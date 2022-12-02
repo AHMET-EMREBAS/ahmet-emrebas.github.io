@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { ProductView } from '@ae/models/ims/product/ProductView';
 import { ProductOptionView } from '@ae/models/ims/product/ProductOptionView';
 import { CreateProductDto } from '@ae/models/ims/product/dto/CreateProductDto';
 import { UpdateProductDto } from '@ae/models/ims/product/dto/UpdateProductDto';
+import { ReadProductDto } from '@ae/models/ims/product/dto/ReadProductDto';
 
 import { ProductService } from './ProductService';
 import { ProductViewService } from './ProductViewService';
@@ -34,26 +36,35 @@ export class ProductResolver {
     private readonly optionViewService: ProductOptionViewService
   ) {}
 
-  @GRead(Product)
-  findProduct(@Args('query') query?: QueryDto<Product & ProductView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadProductDto)
+  findProducts(@Args('query', { nullable: true }) query: QueryDto<Product>) {
     return this.service.find(query);
   }
 
-  @GReadById(Product)
+  @GRead(ProductView)
+  viewProducts(
+    @Args('query', { nullable: true }) query: QueryDto<ProductView>
+  ) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadProductDto)
   findByProductId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Product)
+  @GReadById(ProductView)
+  viewByProductId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadProductDto)
   saveProduct(@Args('product') body: CreateProductDto) {
     return this.service.save(body);
   }
 
-  @GWrite([Product])
-  async saveProducts(
+  @GWriteMany(ReadProductDto)
+  saveProducts(
     @Args('products', { type: () => [CreateProductDto] })
     body: CreateProductDto[]
   ) {
@@ -86,7 +97,7 @@ export class ProductResolver {
   }
 
   @GOptions()
-  optionsProduct(@Args('query') query: QueryDto<Product & ProductView>) {
+  optionsProduct(@Args('query') query: QueryDto<ProductOptionView>) {
     return this.optionViewService.find(query);
   }
 }

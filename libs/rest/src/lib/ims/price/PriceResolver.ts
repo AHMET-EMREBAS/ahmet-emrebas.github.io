@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { PriceView } from '@ae/models/ims/price/PriceView';
 import { PriceOptionView } from '@ae/models/ims/price/PriceOptionView';
 import { CreatePriceDto } from '@ae/models/ims/price/dto/CreatePriceDto';
 import { UpdatePriceDto } from '@ae/models/ims/price/dto/UpdatePriceDto';
+import { ReadPriceDto } from '@ae/models/ims/price/dto/ReadPriceDto';
 
 import { PriceService } from './PriceService';
 import { PriceViewService } from './PriceViewService';
@@ -34,22 +36,37 @@ export class PriceResolver {
     private readonly optionViewService: PriceOptionViewService
   ) {}
 
-  @GRead(Price)
-  findPrice(@Args('query') query: QueryDto<Price & PriceView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadPriceDto)
+  findPrices(@Args('query', { nullable: true }) query: QueryDto<Price>) {
     return this.service.find(query);
   }
 
-  @GReadById(Price)
+  @GRead(PriceView)
+  viewPrices(@Args('query', { nullable: true }) query: QueryDto<PriceView>) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadPriceDto)
   findByPriceId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Price)
+  @GReadById(PriceView)
+  viewByPriceId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadPriceDto)
   savePrice(@Args('price') body: CreatePriceDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadPriceDto)
+  savePrices(
+    @Args('prices', { type: () => [CreatePriceDto] })
+    body: CreatePriceDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -88,7 +105,7 @@ export class PriceResolver {
   }
 
   @GOptions()
-  optionsPrice(@Args('query') query: QueryDto<Price & PriceView>) {
+  optionsPrice(@Args('query') query: QueryDto<PriceOptionView>) {
     return this.optionViewService.find(query);
   }
 }

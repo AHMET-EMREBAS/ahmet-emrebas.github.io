@@ -13,24 +13,29 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class UpdatePriceDto implements UpdatePrice {
   @NumberProperty({
     required: false,
+
+    maximum: 900900900900,
   })
   price: number;
 
   @NumberProperty({
     required: false,
+
+    maximum: 900900900900,
   })
   cost: number;
 
-  @ManyToOneProperty({ required: false })
+  @ManyToOneProperty(IDDto, { required: false })
   pricelevel: IDDto;
 
-  @ManyToOneProperty({ required: false })
+  @ManyToOneProperty(IDDto, { required: false })
   product: IDDto;
 }

@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { TransactionView } from '@ae/models/ims/transaction/TransactionView';
 import { TransactionOptionView } from '@ae/models/ims/transaction/TransactionOptionView';
 import { CreateTransactionDto } from '@ae/models/ims/transaction/dto/CreateTransactionDto';
 import { UpdateTransactionDto } from '@ae/models/ims/transaction/dto/UpdateTransactionDto';
+import { ReadTransactionDto } from '@ae/models/ims/transaction/dto/ReadTransactionDto';
 
 import { TransactionService } from './TransactionService';
 import { TransactionViewService } from './TransactionViewService';
@@ -34,24 +36,41 @@ export class TransactionResolver {
     private readonly optionViewService: TransactionOptionViewService
   ) {}
 
-  @GRead(Transaction)
-  findTransaction(
-    @Args('query') query: QueryDto<Transaction & TransactionView>
+  @GRead(ReadTransactionDto)
+  findTransactions(
+    @Args('query', { nullable: true }) query: QueryDto<Transaction>
   ) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
     return this.service.find(query);
   }
 
-  @GReadById(Transaction)
+  @GRead(TransactionView)
+  viewTransactions(
+    @Args('query', { nullable: true }) query: QueryDto<TransactionView>
+  ) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadTransactionDto)
   findByTransactionId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Transaction)
+  @GReadById(TransactionView)
+  viewByTransactionId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadTransactionDto)
   saveTransaction(@Args('transaction') body: CreateTransactionDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadTransactionDto)
+  saveTransactions(
+    @Args('transactions', { type: () => [CreateTransactionDto] })
+    body: CreateTransactionDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -83,9 +102,7 @@ export class TransactionResolver {
   }
 
   @GOptions()
-  optionsTransaction(
-    @Args('query') query: QueryDto<Transaction & TransactionView>
-  ) {
+  optionsTransaction(@Args('query') query: QueryDto<TransactionOptionView>) {
     return this.optionViewService.find(query);
   }
 }

@@ -7,11 +7,6 @@
   // Relations
   let __R = entity.properties.filter(e=>!!e.target);
 
-  let __TypeORMImports =[...new Set( __R.map(e=>e.type))].map(e=>genName(e).className).join(' ,');
-
-  let __RelationImports = [...new Set( __R.map(e=>e.target))].map(e=>{
-    return [genName(e).className, e];
-  })
 
 %>
 
@@ -39,7 +34,7 @@ export interface I<%- className %>
 
   <% __rCount = 0; %>
   <% for(const Relation of __R) { %>
-    <%- genName(Relation.name).propertyName %>?: <%- genName(Relation.target).className +  __rCount++;  %>,
+    <%- genName(Relation.name).propertyName %>?:  <%- genName(Relation.target).className +  __rCount++  %>   <% if(Relation.type.endsWith('many')) { %> [] <% } else { %>  <% } %>;
   <% } %>
 
 

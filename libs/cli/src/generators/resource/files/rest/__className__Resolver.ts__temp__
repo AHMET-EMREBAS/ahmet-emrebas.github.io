@@ -11,6 +11,7 @@ import {
     GUpdate,
     GDelete,
     GWrite,
+    GWriteMany,
 
     ArgId,
     ArgRid,
@@ -22,6 +23,7 @@ import {<%- className %>View} from '@ae/models/<%- projectName %>/<%- fileName %
 import {<%- className %>OptionView } from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>OptionView';
 import {Create<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Create<%- className %>Dto';
 import {Update<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Update<%- className %>Dto';
+import {Read<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Read<%- className %>Dto';
 
 
 import { <%- className %>Service } from './<%- className %>Service';
@@ -36,18 +38,18 @@ export class <%- className %>Resolver {
     private readonly optionViewService: <%- className %>OptionViewService
   ) {}
 
-  @GRead(<%- className %>)
+  @GRead(Read<%- className %>Dto)
   find<%- className %>s(@Args('query',{nullable:true}) query: QueryDto<<%- className %>>) {
     return this.service.find(query);
   }
 
   @GRead(<%- className %>View)
-  view%- className %>s(@Args('query',{nullable:true}) query: QueryDto<<%- className %>View>) {
+  view<%- className %>s(@Args('query',{nullable:true}) query: QueryDto<<%- className %>View>) {
     return this.viewService.find(query);
   }
 
 
-  @GReadById(<%- className %>)
+  @GReadById(Read<%- className %>Dto)
   findBy<%- className %>Id(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
@@ -57,15 +59,15 @@ export class <%- className %>Resolver {
     return this.viewService.findOneBy({ id });
   }
 
-  @GWrite(<%- className %>)
+  @GWrite(Read<%- className %>Dto)
   save<%- className %>(@Args('<%- propertyName %>')  body: Create<%- className %>Dto) {
     return this.service.save(body);
   }
 
-  @GWrite([Create<%- className %>Dto])
-  async save<%- className %>s(
+  @GWriteMany(Read<%- className %>Dto)
+  save<%- className %>s(
     @Args('<%- propertyName %>s', { type: () => [Create<%- className %>Dto] })
-    body: CreateProductDto[]
+    body: Create<%- className %>Dto[]
   ) {
     return this.service.saveMany(body);
   }

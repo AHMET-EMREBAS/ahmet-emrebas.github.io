@@ -18,7 +18,7 @@ import { I<%- className %> } from './I<%- className %>';
 export type  Create<%- className %> = I<%- className %><
     <% let __t = 0; %>
     <% for(const Relation of __R) { %>
-        <% if(Relation.type.endsWith('many')) { %> ID[], <% } else { %> ID, <% } %>
+        ID,
     <% } %>
 >;
 <% } else { %>

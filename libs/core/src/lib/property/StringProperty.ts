@@ -1,9 +1,13 @@
+import { applyDecorators } from '@nestjs/common';
+import { Field } from '@nestjs/graphql';
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
 
+export type CommonFields = 'required' | 'default' | 'description';
+
 export type StringPropertyOptions = Pick<
   PropertyOptions<string>,
-  | 'required'
+  | CommonFields
   | 'minLength'
   | 'maxLength'
   | 'inputType'
@@ -11,14 +15,16 @@ export type StringPropertyOptions = Pick<
   | 'uuid'
   | 'email'
   | 'password'
-  | 'default'
   | 'enum'
 >;
 
 export function StringProperty(options: StringPropertyOptions) {
-  return Property<string>({
-    type: 'string',
-    inputType: options.inputType || 'text',
-    ...options,
-  });
+  return applyDecorators(
+    Property<string>({
+      type: 'string',
+      inputType: options.inputType || 'text',
+      ...options,
+    }),
+    Field(() => String)
+  );
 }

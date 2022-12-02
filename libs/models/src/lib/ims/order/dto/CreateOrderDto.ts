@@ -12,22 +12,25 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class CreateOrderDto implements CreateOrder {
   @NumberProperty({
     required: true,
+
+    maximum: 900900900900,
   })
   quantity: number;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(IDDto, { required: true })
   product: IDDto;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(IDDto, { required: true })
   cart: IDDto;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(IDDto, { required: true })
   customer: IDDto;
 }

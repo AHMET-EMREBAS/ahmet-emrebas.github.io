@@ -12,15 +12,18 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class CreateProductDto implements CreateProduct {
   @StringProperty({
     required: true,
     minLength: 1,
     maxLength: 30,
+
+    description: 'Unique product name',
   })
   name: string;
 
@@ -28,6 +31,8 @@ export class CreateProductDto implements CreateProduct {
     required: false,
     minLength: 1,
     maxLength: 400,
+
+    description: 'Product description',
   })
   description: string;
 
@@ -37,19 +42,28 @@ export class CreateProductDto implements CreateProduct {
     maxLength: 13,
 
     ean: true,
+    description: 'Unique product barcode',
   })
   barcode: string;
 
   @NumberProperty({
     required: true,
+
+    maximum: 900900900900,
+
+    description: 'Product price',
   })
   price: number;
 
   @NumberProperty({
     required: true,
+
+    maximum: 900900900900,
+
+    description: 'Product cost',
   })
   cost: number;
 
-  @ManyToOneProperty({ required: false })
+  @ManyToOneProperty(IDDto, { required: false })
   category: IDDto;
 }

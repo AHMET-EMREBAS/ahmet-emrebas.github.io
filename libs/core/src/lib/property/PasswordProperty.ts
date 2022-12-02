@@ -1,10 +1,10 @@
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
-import { StringProperty } from './StringProperty';
+import { CommonFields, StringProperty } from './StringProperty';
 
 export type PasswordPropertyOptions = Pick<
   PropertyOptions<string>,
-  'required' | 'default'
+  CommonFields
 >;
 
 /**

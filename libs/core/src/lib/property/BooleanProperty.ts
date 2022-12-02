@@ -1,15 +1,21 @@
+import { applyDecorators } from '@nestjs/common';
+import { Field } from '@nestjs/graphql';
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
+import { CommonFields } from './StringProperty';
 
 export type BooleanPropertyOptions = Pick<
   PropertyOptions<boolean>,
-  'required' | 'default'
+  CommonFields
 >;
 
 export function BooleanProperty(options: BooleanPropertyOptions) {
-  return Property<boolean>({
-    type: 'boolean',
-    inputType: 'checkbox',
-    ...options,
-  });
+  return applyDecorators(
+    Field(() => Boolean),
+    Property<boolean>({
+      type: 'boolean',
+      inputType: 'checkbox',
+      ...options,
+    })
+  );
 }

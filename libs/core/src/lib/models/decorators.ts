@@ -20,7 +20,6 @@ import {
 import { ClassConstructor } from 'class-transformer';
 
 import { Field } from '@nestjs/graphql';
-import { BaseEntity } from '../entity';
 import { ViewEntityOptions } from 'typeorm/decorator/options/ViewEntityOptions';
 export function Column(columnOptions: ColumnOptions) {
   const ctype: string = (columnOptions.type || 'text') as string;
@@ -46,7 +45,7 @@ export function Entity() {
 }
 
 export function DTO() {
-  return applyDecorators(InputType({ description: 'Dto object' }));
+  return InputType();
 }
 
 export function ManyToOne(

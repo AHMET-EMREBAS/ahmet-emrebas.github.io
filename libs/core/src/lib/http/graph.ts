@@ -31,6 +31,18 @@ export function GWrite(obj: ClassConstructor<any> | [ClassConstructor<any>]) {
 
 /**
  * GraphQL Request
+ * Post request for creating item.
+ * @returns
+ */
+export function GWriteMany(obj: ClassConstructor<any>) {
+  return applyDecorators(
+    CanWrite(),
+    Mutation(() => [obj], { description: 'Save item' })
+  );
+}
+
+/**
+ * GraphQL Request
  * Put request for updating item
  * @returns
  */

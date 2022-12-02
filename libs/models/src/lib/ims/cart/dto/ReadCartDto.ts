@@ -11,11 +11,13 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
+  BaseEntity,
 } from '@ae/core';
 
-@DTO()
-export class ReadCartDto implements ReadCart {
-  @StringProperty({ required: true })
+import { ObjectType } from '@nestjs/graphql';
+
+@ObjectType()
+export class ReadCartDto extends BaseEntity implements ReadCart {
+  @StringProperty({ description: 'unique cart name' })
   name: string;
 }

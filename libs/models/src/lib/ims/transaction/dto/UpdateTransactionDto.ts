@@ -13,16 +13,17 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class UpdateTransactionDto implements UpdateTransaction {
   @BooleanProperty({
     required: false,
   })
   complete: boolean;
 
-  @ManyToOneProperty({ required: false })
+  @ManyToOneProperty(IDDto, { required: false })
   cart: IDDto;
 }

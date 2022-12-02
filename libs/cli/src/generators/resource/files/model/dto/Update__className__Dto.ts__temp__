@@ -14,9 +14,11 @@ ManyToManyProperty,
 ManyToOneProperty,
 OneToManyProperty,
 OneToOneProperty,
-DTO
 
 } from '@ae/core';
+
+import { InputType } from '@nestjs/graphql';
+
 
 
 
@@ -30,7 +32,7 @@ DTO
 
 
 %>
-@DTO()
+@InputType()
 export class Update<%- className %>Dto implements  Update<%- className %> {
 
   <% __P.forEach(e=> { %>
@@ -46,6 +48,7 @@ export class Update<%- className %>Dto implements  Update<%- className %> {
       <% if(e.password) { %> password: <%- e.password %>, <% } %>
       <% if(e.uuid) { %> uuid: <%- e.uuid %>, <% } %>
       <% if(e.ean) { %> ean: <%- e.ean %>, <% } %>
+      <% if(e.description) { %> description: '<%- e.description %>', <% } %>
 
       })
     <%- e.name %>: <%- e.type %>
@@ -54,7 +57,7 @@ export class Update<%- className %>Dto implements  Update<%- className %> {
 
   <% __R.forEach(e=> { %>
 
-    @<%- genName(e.type).className %>Property({ required: false })
+    @<%- genName(e.type).className %>Property(IDDto,{ required: false })
     <%- e.name %>: IDDto<%- e.type.endsWith('many') ? '[]' : '' %>;
 
   <% }) %>

@@ -1,14 +1,21 @@
 import { applyDecorators } from '@nestjs/common';
-import { Field, InputType } from '@nestjs/graphql';
+import { Field } from '@nestjs/graphql';
+import { ClassConstructor } from 'class-transformer';
 import { PropertyOptions } from '../types';
 import { Property } from './Property';
+import { CommonFields } from './StringProperty';
+
 export type ManyToOnePropertyOptions = Pick<
   PropertyOptions<string>,
-  'required' | 'default' | 'enum'
+  CommonFields
 >;
 
-export function ManyToOneProperty(options: ManyToOnePropertyOptions) {
+export function ManyToOneProperty<T = unknown>(
+  obj: ClassConstructor<T>,
+  options?: ManyToOnePropertyOptions
+) {
   return applyDecorators(
+    Field(() => obj, { nullable: options.required === false ? true : false }),
     Property<string>({
       type: 'object',
       inputType: 'search-one',
@@ -17,6 +24,9 @@ export function ManyToOneProperty(options: ManyToOnePropertyOptions) {
   );
 }
 
-export function OneToOneProperty(options: ManyToOnePropertyOptions) {
-  return ManyToOneProperty(options);
+export function OneToOneProperty<T = unknown>(
+  obj: ClassConstructor<T>,
+  options?: ManyToOnePropertyOptions
+) {
+  return ManyToOneProperty<T>(obj, options);
 }

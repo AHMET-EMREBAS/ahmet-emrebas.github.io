@@ -10,7 +10,7 @@
 import { I<%- className %> } from './I<%- className %>';
 
 <% for(const Relation of uniqueBy(__R, 'target')) { %>
-    import { Read<%- genName(Relation.target).className %> } from '../<%- genName(Relation.target).fileName %>';
+    import { Read<%- genName(Relation.target).className %> } from '../<%- genName(Relation.target).fileName %>/Read<%- genName(Relation.target).className %>';
 <% } %>
 
 <% if(__R?.length > 0){ %>

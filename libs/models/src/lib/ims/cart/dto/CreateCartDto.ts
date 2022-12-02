@@ -12,15 +12,18 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class CreateCartDto implements CreateCart {
   @StringProperty({
     required: true,
     minLength: 1,
     maxLength: 30,
+
+    description: 'unique cart name',
   })
   name: string;
 }

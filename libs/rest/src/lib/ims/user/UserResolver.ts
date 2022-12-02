@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { UserView } from '@ae/models/ims/user/UserView';
 import { UserOptionView } from '@ae/models/ims/user/UserOptionView';
 import { CreateUserDto } from '@ae/models/ims/user/dto/CreateUserDto';
 import { UpdateUserDto } from '@ae/models/ims/user/dto/UpdateUserDto';
+import { ReadUserDto } from '@ae/models/ims/user/dto/ReadUserDto';
 
 import { UserService } from './UserService';
 import { UserViewService } from './UserViewService';
@@ -34,22 +36,37 @@ export class UserResolver {
     private readonly optionViewService: UserOptionViewService
   ) {}
 
-  @GRead(User)
-  findUser(@Args('query') query: QueryDto<User & UserView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadUserDto)
+  findUsers(@Args('query', { nullable: true }) query: QueryDto<User>) {
     return this.service.find(query);
   }
 
-  @GReadById(User)
+  @GRead(UserView)
+  viewUsers(@Args('query', { nullable: true }) query: QueryDto<UserView>) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadUserDto)
   findByUserId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(User)
+  @GReadById(UserView)
+  viewByUserId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadUserDto)
   saveUser(@Args('user') body: CreateUserDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadUserDto)
+  saveUsers(
+    @Args('users', { type: () => [CreateUserDto] })
+    body: CreateUserDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -88,7 +105,7 @@ export class UserResolver {
   }
 
   @GOptions()
-  optionsUser(@Args('query') query: QueryDto<User & UserView>) {
+  optionsUser(@Args('query') query: QueryDto<UserOptionView>) {
     return this.optionViewService.find(query);
   }
 }

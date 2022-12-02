@@ -11,6 +11,7 @@ import {
   GUpdate,
   GDelete,
   GWrite,
+  GWriteMany,
   ArgId,
   ArgRid,
   QueryDto,
@@ -21,6 +22,7 @@ import { PermissionView } from '@ae/models/ims/permission/PermissionView';
 import { PermissionOptionView } from '@ae/models/ims/permission/PermissionOptionView';
 import { CreatePermissionDto } from '@ae/models/ims/permission/dto/CreatePermissionDto';
 import { UpdatePermissionDto } from '@ae/models/ims/permission/dto/UpdatePermissionDto';
+import { ReadPermissionDto } from '@ae/models/ims/permission/dto/ReadPermissionDto';
 
 import { PermissionService } from './PermissionService';
 import { PermissionViewService } from './PermissionViewService';
@@ -34,22 +36,41 @@ export class PermissionResolver {
     private readonly optionViewService: PermissionOptionViewService
   ) {}
 
-  @GRead(Permission)
-  findPermission(@Args('query') query: QueryDto<Permission & PermissionView>) {
-    if (query.view === true) {
-      return this.viewService.find(query);
-    }
+  @GRead(ReadPermissionDto)
+  findPermissions(
+    @Args('query', { nullable: true }) query: QueryDto<Permission>
+  ) {
     return this.service.find(query);
   }
 
-  @GReadById(Permission)
+  @GRead(PermissionView)
+  viewPermissions(
+    @Args('query', { nullable: true }) query: QueryDto<PermissionView>
+  ) {
+    return this.viewService.find(query);
+  }
+
+  @GReadById(ReadPermissionDto)
   findByPermissionId(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @GWrite(Permission)
+  @GReadById(PermissionView)
+  viewByPermissionId(@ArgId() id: number) {
+    return this.viewService.findOneBy({ id });
+  }
+
+  @GWrite(ReadPermissionDto)
   savePermission(@Args('permission') body: CreatePermissionDto) {
     return this.service.save(body);
+  }
+
+  @GWriteMany(ReadPermissionDto)
+  savePermissions(
+    @Args('permissions', { type: () => [CreatePermissionDto] })
+    body: CreatePermissionDto[]
+  ) {
+    return this.service.saveMany(body);
   }
 
   @GUpdate()
@@ -71,9 +92,7 @@ export class PermissionResolver {
   }
 
   @GOptions()
-  optionsPermission(
-    @Args('query') query: QueryDto<Permission & PermissionView>
-  ) {
+  optionsPermission(@Args('query') query: QueryDto<PermissionOptionView>) {
     return this.optionViewService.find(query);
   }
 }

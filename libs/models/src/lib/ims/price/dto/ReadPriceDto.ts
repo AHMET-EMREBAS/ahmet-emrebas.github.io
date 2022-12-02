@@ -11,24 +11,26 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
+  BaseEntity,
 } from '@ae/core';
 
-import { ReadPricelevelDto } from '../../Pricelevel';
+import { ObjectType } from '@nestjs/graphql';
 
-import { ReadProductDto } from '../../Product';
+import { ReadPricelevelDto } from '../../pricelevel/dto/ReadPricelevelDto';
 
-@DTO()
-export class ReadPriceDto implements ReadPrice {
-  @NumberProperty({ required: true })
+import { ReadProductDto } from '../../product/dto/ReadProductDto';
+
+@ObjectType()
+export class ReadPriceDto extends BaseEntity implements ReadPrice {
+  @NumberProperty({})
   price: number;
 
-  @NumberProperty({ required: true })
+  @NumberProperty({})
   cost: number;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(ReadPricelevelDto, {})
   pricelevel: ReadPricelevelDto;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(ReadProductDto, {})
   product: ReadProductDto;
 }

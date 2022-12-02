@@ -49,32 +49,56 @@ const QUERIES = {
 
 @InputType({ description: 'QueryDto' })
 export class QueryDto<T> {
-  @NumberProperty({ required: false, minimum: 1, default: 20 })
+  @NumberProperty({
+    required: false,
+    minimum: 1,
+    default: 20,
+    description: 'Limit the number of items',
+  })
   take?: number;
 
-  @NumberProperty({ required: false, minimum: 0, default: 0 })
+  @NumberProperty({
+    required: false,
+    minimum: 0,
+    default: 0,
+    description: 'Skip the number of items',
+  })
   skip?: number;
 
-  @BooleanProperty({ required: false, default: false })
+  @BooleanProperty({
+    required: false,
+    default: false,
+    description: 'Determine either actual entity or view entity is read.',
+  })
   view?: boolean;
 
-  @BooleanProperty({ required: false, default: false })
+  @BooleanProperty({
+    required: false,
+    default: false,
+    description: 'Include deleted items or not.',
+  })
   withDeleted?: boolean;
 
   @StringProperty({
     required: false,
     enum: ['1', '-1', 'ASC', 'DESC', 'asc', 'desc'],
     default: 'asc',
+    description: 'Ascending or Descending order',
   })
   sortOrder?: string;
 
-  @StringProperty({ required: false, default: 'id' })
+  @StringProperty({
+    required: false,
+    default: 'id',
+    description: 'Sort items by the field',
+  })
   sortField?: string;
 
   @StringProperty({
     required: false,
     enum: ['first', 'last'],
     default: 'last',
+    description: 'Null items come first or last',
   })
   nullsOrder?: string;
 

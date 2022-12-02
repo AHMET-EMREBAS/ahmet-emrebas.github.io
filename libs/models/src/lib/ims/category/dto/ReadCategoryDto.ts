@@ -11,11 +11,13 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
+  BaseEntity,
 } from '@ae/core';
 
-@DTO()
-export class ReadCategoryDto implements ReadCategory {
-  @StringProperty({ required: true })
+import { ObjectType } from '@nestjs/graphql';
+
+@ObjectType()
+export class ReadCategoryDto extends BaseEntity implements ReadCategory {
+  @StringProperty({})
   name: string;
 }

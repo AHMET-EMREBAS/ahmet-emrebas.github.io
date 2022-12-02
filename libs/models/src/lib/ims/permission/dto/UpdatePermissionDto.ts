@@ -13,10 +13,11 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class UpdatePermissionDto implements UpdatePermission {
   @StringProperty({
     required: false,

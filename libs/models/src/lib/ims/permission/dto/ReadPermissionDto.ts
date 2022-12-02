@@ -11,14 +11,16 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
+  BaseEntity,
 } from '@ae/core';
 
-@DTO()
-export class ReadPermissionDto implements ReadPermission {
-  @StringProperty({ required: true })
+import { ObjectType } from '@nestjs/graphql';
+
+@ObjectType()
+export class ReadPermissionDto extends BaseEntity implements ReadPermission {
+  @StringProperty({})
   name: string;
 
-  @StringProperty({ required: true })
+  @StringProperty({})
   description: string;
 }

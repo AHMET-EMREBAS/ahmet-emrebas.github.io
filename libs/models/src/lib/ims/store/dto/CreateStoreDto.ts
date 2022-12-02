@@ -12,18 +12,21 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
 } from '@ae/core';
 
-@DTO()
+import { InputType } from '@nestjs/graphql';
+
+@InputType()
 export class CreateStoreDto implements CreateStore {
   @StringProperty({
     required: true,
     minLength: 1,
     maxLength: 30,
+
+    description: 'Unique store name',
   })
   name: string;
 
-  @ManyToOneProperty({ required: false })
+  @ManyToOneProperty(IDDto, { required: false })
   pricelevel: IDDto;
 }

@@ -11,16 +11,18 @@ import {
   ManyToOneProperty,
   OneToManyProperty,
   OneToOneProperty,
-  DTO,
+  BaseEntity,
 } from '@ae/core';
 
-import { ReadCartDto } from '../../Cart';
+import { ObjectType } from '@nestjs/graphql';
 
-@DTO()
-export class ReadTransactionDto implements ReadTransaction {
-  @BooleanProperty({ required: true })
+import { ReadCartDto } from '../../cart/dto/ReadCartDto';
+
+@ObjectType()
+export class ReadTransactionDto extends BaseEntity implements ReadTransaction {
+  @BooleanProperty({})
   complete: boolean;
 
-  @ManyToOneProperty({ required: true })
+  @ManyToOneProperty(ReadCartDto, {})
   cart: ReadCartDto;
 }

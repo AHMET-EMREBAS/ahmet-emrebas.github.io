@@ -1,5 +1,0 @@
-export * from './I<%- className %>';
-export * from './Read<%- className %>';
-export * from './Create<%- className %>';
-export * from './Update<%- className %>';
-

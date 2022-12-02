@@ -128,6 +128,9 @@
         "type": {
           "const": "string"
         },
+        "description": {
+          "type": "string"
+        },
         "inputType": {
           "$ref": "#/definitions/InputType",
           "default": "text"
@@ -153,16 +156,20 @@
         "type": {
           "const": "number"
         },
+        "description": {
+          "type": "string"
+        },
         "inputType": {
           "$ref": "#/definitions/InputType",
           "default": "number"
         },
-        "min": { "type": "number", "default": 0 },
-        "max": { "type": "number", "default": 900900900900 },
+
+        "minimum": { "type": "number", "default": 0 },
+        "maximum": { "type": "number", "default": 900900900900 },
         "format": { "$ref": "#/definitions/InputFormat" }
       },
       "additionalProperties": false,
-      "required": ["type", "min", "max", "inputType"]
+      "required": ["type", "minimum", "maximum", "inputType"]
     },
     "DateProperty": {
       "title": "Date Property",
@@ -170,6 +177,9 @@
       "properties": {
         "type": {
           "const": "date"
+        },
+        "description": {
+          "type": "string"
         },
         "inputType": {
           "$ref": "#/definitions/InputType",
@@ -191,6 +201,9 @@
       "properties": {
         "type": {
           "const": "boolean"
+        },
+        "description": {
+          "type": "string"
         },
         "inputType": {
           "$ref": "#/definitions/InputType",
@@ -229,6 +242,9 @@
           "enum": ["many-to-one", "many-to-many", "one-to-one", "one-to-many"],
           "default": "many-to-one",
           "description": "Type of the relation ship"
+        },
+        "description": {
+          "type": "string"
         },
         "inputType": {
           "$ref": "#/definitions/InputType",
