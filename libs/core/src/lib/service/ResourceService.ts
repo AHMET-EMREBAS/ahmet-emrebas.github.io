@@ -30,7 +30,7 @@ export class ResourceService<T> {
   async isUnique(obj: T) {
     for (const c of this.uniqueColumns) {
       const found = await this.__repo.findOne({
-        where: { name: Equal(obj[c]) } as any,
+        where: { [c]: Equal(obj[c]) } as any,
       });
 
       if (found) {

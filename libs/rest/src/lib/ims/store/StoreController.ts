@@ -21,7 +21,7 @@ import { StoreOptionView } from '@ae/models/ims/store/StoreOptionView';
 import { CreateStoreDto } from '@ae/models/ims/store/dto/CreateStoreDto';
 import { UpdateStoreDto } from '@ae/models/ims/store/dto/UpdateStoreDto';
 
-import { Body, Delete, Query } from '@nestjs/common';
+import { Body, Delete, Optional, Query } from '@nestjs/common';
 
 import { StoreService } from './StoreService';
 import { StoreViewService } from './StoreViewService';
@@ -48,7 +48,12 @@ export class StoreController {
   }
 
   @Write(Store)
-  saveStore(@Args('store') @Body() body: CreateStoreDto) {
+  saveStore(
+    @Optional()
+    @Body()
+    @Args('store', { type: () => CreateStoreDto })
+    body: CreateStoreDto
+  ) {
     return this.service.save(body);
   }
 

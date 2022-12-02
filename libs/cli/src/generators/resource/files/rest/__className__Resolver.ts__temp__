@@ -1,68 +1,66 @@
-import { Body,   Query } from '@nestjs/common';
+import {Args} from '@nestjs/graphql';
 import {
-  Add,
-  Count,
-  Options,
-  ParamId,
-  ParamRid,
-  QueryDto,
-  Read,
-  ReadById,
-  Remove,
-  Set,
-  Unset,
-  Update,
-  Write,
-  Delete,
-  Controller,
-} from '@ae/core';
+    GAdd,
+    GCount,
+    GOptions,
+    GRead,
+    GReadById,
+    GRemove,
+    GSet,
+    GUnset,
+    GUpdate,
+    GDelete,
+    GWrite,
 
+    ArgId,
+    ArgRid,
+    QueryDto,
+    Resolver
+} from '@ae/core';
 import {<%- className %>} from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>';
 import {<%- className %>View} from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>View';
 import {<%- className %>OptionView } from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>OptionView';
 import {Create<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Create<%- className %>Dto';
 import {Update<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Update<%- className %>Dto';
 
+import { Body,  Delete, Query } from '@nestjs/common';
 
 import { <%- className %>Service } from './<%- className %>Service';
 import { <%- className %>ViewService } from './<%- className %>ViewService';
-import {<%- className %>OptionViewService} from './<%- className %>OptionViewService';
 
-import {Args} from '@nestjs/graphql';
-
-@Controller('<%- projectName %>/<%- fileName %>')
-export class <%- className %>Controller {
+@Resolver(<%- className %>)
+export class <%- className %>Resolver {
   constructor(
     private readonly service: <%- className %>Service,
     private readonly viewService: <%- className %>ViewService,
     private readonly optionViewService: <%- className %>OptionViewService
   ) {}
 
-  @Read()
-  find<%- className %>(@Query() query: QueryDto<<%- className %> & <%- className %>View>) {
+  @GRead(<%- className %>)
+  find<%- className %>(@Args('query') query: QueryDto<<%- className %> & <%- className %>View>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById()
-  findBy<%- className %>Id( @ParamId() id: number) {
+  @GReadById(<%- className %>)
+  findBy<%- className %>Id(@ArgId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write()
-  save<%- className %>( @Body() body: Create<%- className %>Dto) {
+  @GWrite(<%- className %>)
+  save<%- className %>(@Args('<%- propertyName %>')  body: Create<%- className %>Dto) {
     return this.service.save(body);
   }
 
-  @Update()
-  update<%- className %>( @ParamId() id: number,  @Body() body: Update<%- className %>Dto) {
+  @GUpdate()
+  update<%- className %>(@ArgId() id: number, @Args('<%- propertyName %>')  body: Update<%- className %>Dto) {
     return this.service.update(id, body);
   }
 
-  @Delete()
-  delete<%- className %>( @ParamId() id: number) {
+  @GDelete()
+  delete<%- className %>(@ArgId() id: number) {
     return this.service.delete(id);
   }
 
@@ -73,24 +71,24 @@ export class <%- className %>Controller {
 
 
       @Set('<%- genName(e.name).propertyName %>')
-      set<%- className %><%- genName(e.name).className %>( @ParamId() id: number,  @ParamRid() <%- genName(e.name).propertyName %>Id: number) {
+      set<%- className %><%- genName(e.name).className %>(@ArgId() id: number, @ArgRid()  <%- genName(e.name).propertyName %>Id: number) {
         return this.service.set(id, <%- genName(e.name).propertyName %>Id, '<%- genName(e.name).propertyName %>');
       }
 
       @Unset('<%- genName(e.name).propertyName %>')
-      unset<%- className %><%- genName(e.name).className %>( @ParamId() id: number) {
+      unset<%- className %><%- genName(e.name).className %>(@ArgId() id: number) {
         return this.service.unset(id, '<%- genName(e.name).propertyName %>');
       }
 
     <%} else { %>
 
       @Add('<%- genName(e.name).propertyName %>')
-      add<%- className %><%- genName(e.name).className %>( @ParamId() id: number,  @ParamRid() <%- genName(e.name).propertyName %>Id: number) {
+      add<%- className %><%- genName(e.name).className %>(@ArgId() id: number, @ArgRid()  <%- genName(e.name).propertyName %>Id: number) {
         return this.service.set(id, <%- genName(e.name).propertyName %>Id, '<%- genName(e.name).propertyName %>');
       }
 
       @Remove('<%- genName(e.name).propertyName %>')
-      remove<%- className %><%- genName(e.name).className %>( @ParamId() id: number) {
+      remove<%- className %><%- genName(e.name).className %>(@ArgId() id: number) {
         return this.service.unset(id, '<%- genName(e.target).propertyName %>');
       }
 
@@ -99,13 +97,12 @@ export class <%- className %>Controller {
 <% }) %>
 
 
-  @Count()
+  @GCount()
   count<%- className %>() {
     return this.service.count();
   }
 
-
-  @Options()
+  @GOptions()
   options<%- className %>(@Query() query:@Query() query: QueryDto<<%- className %> & <%- className %>View>){
     return this.optionViewService.find(query);
   }

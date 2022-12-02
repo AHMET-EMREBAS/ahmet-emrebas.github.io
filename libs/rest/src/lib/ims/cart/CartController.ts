@@ -21,11 +21,18 @@ import { CartOptionView } from '@ae/models/ims/cart/CartOptionView';
 import { CreateCartDto } from '@ae/models/ims/cart/dto/CreateCartDto';
 import { UpdateCartDto } from '@ae/models/ims/cart/dto/UpdateCartDto';
 
-import { Body, Delete, Query } from '@nestjs/common';
+import {
+  applyDecorators,
+  Body,
+  Delete,
+  Query,
+  ValidationPipe,
+} from '@nestjs/common';
 
 import { CartService } from './CartService';
 import { CartViewService } from './CartViewService';
 import { Args } from '@nestjs/graphql';
+import { ApiBody } from '@nestjs/swagger';
 
 @Controller('ims/cart', Cart)
 export class CartController {
@@ -52,7 +59,10 @@ export class CartController {
   }
 
   @Write(Cart)
-  saveCart(@Args('cart') @Body() body: CreateCartDto) {
+  saveCart(
+    @Body() body: CreateCartDto,
+    @Args('cart', { nullable: true }) args: CreateCartDto
+  ) {
     return this.service.save(body);
   }
 

@@ -18,7 +18,10 @@ import {
 import { Category } from '@ae/models/ims/category/Category';
 import { CategoryView } from '@ae/models/ims/category/CategoryView';
 import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
-import { CreateCategoryDto } from '@ae/models/ims/category/dto/CreateCategoryDto';
+import {
+  CreateCategoryDto,
+  GraphCreateCategoryDto,
+} from '@ae/models/ims/category/dto/CreateCategoryDto';
 import { UpdateCategoryDto } from '@ae/models/ims/category/dto/UpdateCategoryDto';
 
 import { Body, Delete, Query } from '@nestjs/common';
@@ -50,8 +53,12 @@ export class CategoryController {
   }
 
   @Write(Category)
-  saveCategory(@Args('category') @Body() body: CreateCategoryDto) {
-    return this.service.save(body);
+  saveCategory(
+    @Args('category', { type: () => GraphCreateCategoryDto })
+    @Body()
+    body: CreateCategoryDto
+  ) {
+    return this.service.save(body.category);
   }
 
   @Update()

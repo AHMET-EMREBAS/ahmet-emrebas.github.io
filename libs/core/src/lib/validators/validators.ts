@@ -1,3 +1,4 @@
+import { applyDecorators } from '@nestjs/common';
 import {
   MinLength,
   MaxLength,
@@ -11,7 +12,6 @@ import {
   Matches,
   IsPhoneNumber,
   IsUrl,
-  IsEAN,
 } from 'class-validator';
 import { CountryCode } from '../types/CountryCode';
 import { IsPassword } from './IsPassword';
@@ -20,7 +20,7 @@ export const Validators = {
   enum: (value: string[]) => IsIn(value),
   phone: (value: CountryCode | true) =>
     IsPhoneNumber(value === true ? undefined : value),
-  ean: (value: true) => IsEAN(),
+  ean: (value: true) => applyDecorators(MinLength(10), MaxLength(13)),
   url: (value: true) => IsUrl(),
   before: (value: Date) => Max(value.getTime()),
   after: (value: Date) => Min(value.getTime()),

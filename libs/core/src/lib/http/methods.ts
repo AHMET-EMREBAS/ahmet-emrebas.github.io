@@ -14,36 +14,33 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { CanRead, CanWrite } from '../auth';
-import { Query, Mutation } from '@nestjs/graphql';
-import { ClassConstructor } from 'class-transformer';
+
 function upperFirst(str: string) {
   return str[0].toUpperCase() + str.substring(1);
 }
 
-const ReadRequestResponses = applyDecorators(
+export const ReadRequestResponses = applyDecorators(
   ApiOkResponse({ description: 'Success' }),
   ApiInternalServerErrorResponse({ description: 'Not client error' }),
   ApiBadRequestResponse({ description: 'Insufficient parameters.' }),
   ApiUnauthorizedResponse({ description: 'Lack of privileges.' })
 );
 
-export function Read(obj: ClassConstructor<any>) {
+export function Read() {
   return applyDecorators(
-    ApiOperation({ summary: 'Get all', operationId: 'find' }),
+    ApiOperation({ summary: 'Find all items' }),
     ReadRequestResponses,
     Get(),
-    CanRead(),
-    Query(() => [obj])
+    CanRead()
   );
 }
 
-export function ReadById(obj: ClassConstructor<any>) {
+export function ReadById() {
   return applyDecorators(
-    ApiOperation({ summary: 'Get one by id', operationId: 'findById' }),
+    ApiOperation({ summary: 'Find one item by id' }),
     ReadRequestResponses,
     Get(':id'),
-    CanRead(),
-    Query(() => obj)
+    CanRead()
   );
 }
 
@@ -51,13 +48,12 @@ export function ReadById(obj: ClassConstructor<any>) {
  * Post request for creating item.
  * @returns
  */
-export function Write(obj: ClassConstructor<any>) {
+export function Write() {
   return applyDecorators(
-    ApiOperation({ summary: 'Create one', operationId: 'save' }),
+    ApiOperation({ summary: 'Save item' }),
     ReadRequestResponses,
     Post(),
-    CanWrite(),
-    Mutation(() => obj)
+    CanWrite()
   );
 }
 
@@ -67,11 +63,10 @@ export function Write(obj: ClassConstructor<any>) {
  */
 export function Update() {
   return applyDecorators(
-    ApiOperation({ summary: 'Update one by id', operationId: 'update' }),
+    ApiOperation({ summary: 'Update item' }),
     ReadRequestResponses,
     Put(':id'),
-    CanWrite(),
-    Mutation(() => Boolean)
+    CanWrite()
   );
 }
 
@@ -81,11 +76,10 @@ export function Update() {
  */
 export function Delete() {
   return applyDecorators(
-    ApiOperation({ summary: 'Delete one by id', operationId: 'delete' }),
+    ApiOperation({ summary: 'Delete item' }),
     ReadRequestResponses,
     DeleteRequest(':id'),
-    CanWrite(),
-    Mutation(() => Boolean)
+    CanWrite()
   );
 }
 
@@ -96,14 +90,10 @@ export function Delete() {
  */
 export function Set(relation: string) {
   return applyDecorators(
-    ApiOperation({
-      summary: `Set one ${relation}`,
-      operationId: `set${upperFirst(relation)}`,
-    }),
+    ApiOperation({ summary: `Set ${relation}` }),
     ReadRequestResponses,
     Post(`:id/${relation}/:rid`),
-    CanWrite(),
-    Mutation(() => Boolean)
+    CanWrite()
   );
 }
 
@@ -114,14 +104,10 @@ export function Set(relation: string) {
  */
 export function Unset(relation: string) {
   return applyDecorators(
-    ApiOperation({
-      summary: `Unset one ${relation}`,
-      operationId: `unset${upperFirst(relation)}`,
-    }),
+    ApiOperation({ summary: `Unset ${relation}` }),
     ReadRequestResponses,
     DeleteRequest(`:id/${relation}`),
-    CanWrite(),
-    Mutation(() => Boolean)
+    CanWrite()
   );
 }
 
@@ -133,13 +119,12 @@ export function Unset(relation: string) {
 export function Add(relation: string) {
   return applyDecorators(
     ApiOperation({
-      summary: `Add one ${relation}`,
+      summary: `Add ${relation}`,
       operationId: `add${upperFirst(relation)}`,
     }),
     ReadRequestResponses,
     Put(`:id/${relation}/:rid`),
-    CanWrite(),
-    Mutation(() => Boolean)
+    CanWrite()
   );
 }
 
@@ -150,28 +135,24 @@ export function Add(relation: string) {
  */
 export function Remove(relation: string) {
   return applyDecorators(
-    ApiOperation({
-      summary: `Remove one ${relation}`,
-      operationId: `remove${upperFirst(relation)}`,
-    }),
+    ApiOperation({ summary: `Remove ${relation}` }),
     DeleteRequest(`:id/${relation}/:rid`),
-    CanWrite(),
-    Mutation(() => Boolean)
+    CanWrite()
   );
 }
 
 export function Aggregate(name: string) {
   return applyDecorators(
-    ApiOperation({
-      summary: `${name}`,
-      operationId: name,
-    }),
+    ApiOperation({ summary: `${name}` }),
     CanRead(),
-    Patch(name),
-    Mutation(() => Boolean)
+    Patch(name)
   );
 }
 
 export function Count() {
   return Aggregate('count');
+}
+
+export function Options() {
+  return Aggregate('options');
 }

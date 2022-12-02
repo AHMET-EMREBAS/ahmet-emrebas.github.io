@@ -11,25 +11,35 @@ import * as favicon from 'serve-favicon';
 
 import { GlobalValidationPipe } from '@ae/core';
 import { join } from 'path';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
+
   const port = process.env.PORT || 3333;
 
+  app.use(cookieParser());
+  app.useGlobalPipes(GlobalValidationPipe);
+  app.use(favicon(join(__dirname, 'favicon.ico')));
+
   const config = new DocumentBuilder()
-    .setTitle('API')
-    .setDescription('Project Name')
+
+    .setTitle('Api Document')
+    .setDescription('Api Document ')
+    .setContact(
+      'Ahmet Emrebas',
+      'https://ahmet-emrebas.github.io',
+      'aemrebas.dev@gmail.com'
+    )
+    .setVersion('1.0.0')
+    .setLicense('Commerciel', 'https://ahmet-emrebas.github.io')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('api', app, document);
-
-  app.use(favicon(join(__dirname, 'favicon.ico')));
-  app.use(cookieParser());
-  app.useGlobalPipes(GlobalValidationPipe);
 
   await app.listen(port);
 
