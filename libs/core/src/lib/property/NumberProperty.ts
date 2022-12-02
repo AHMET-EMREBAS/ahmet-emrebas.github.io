@@ -12,6 +12,6 @@ export type NumberPropertyOptions = Pick<
 export function NumberProperty(options: NumberPropertyOptions) {
   return applyDecorators(
     Property<number>({ type: 'number', inputType: 'number', ...options }),
-    Field(() => Float)
+    Field(() => Float, { nullable: options.required === false ? true : false })
   );
 }

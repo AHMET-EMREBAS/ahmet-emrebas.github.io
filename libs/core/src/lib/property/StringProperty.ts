@@ -25,6 +25,6 @@ export function StringProperty(options: StringPropertyOptions) {
       inputType: options.inputType || 'text',
       ...options,
     }),
-    Field(() => String)
+    Field(() => String, { nullable: options.required === false ? true : false })
   );
 }

@@ -11,7 +11,9 @@ export type BooleanPropertyOptions = Pick<
 
 export function BooleanProperty(options: BooleanPropertyOptions) {
   return applyDecorators(
-    Field(() => Boolean),
+    Field(() => Boolean, {
+      nullable: options.required === false ? true : false,
+    }),
     Property<boolean>({
       type: 'boolean',
       inputType: 'checkbox',

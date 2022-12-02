@@ -11,7 +11,9 @@ export type DatePropertyOptions = Pick<
 
 export function DateProperty(options: DatePropertyOptions) {
   return applyDecorators(
-    Field(() => String),
+    Field(() => String, {
+      nullable: options.required === false ? true : false,
+    }),
     Property<Date>({ type: 'date', inputType: 'date', ...options })
   );
 }
