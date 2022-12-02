@@ -23,6 +23,7 @@ import { UserOptionView } from '@ae/models/ims/user/UserOptionView';
 import { CreateUserDto } from '@ae/models/ims/user/dto/CreateUserDto';
 import { UpdateUserDto } from '@ae/models/ims/user/dto/UpdateUserDto';
 import { ReadUserDto } from '@ae/models/ims/user/dto/ReadUserDto';
+import { QueryUserDto } from '@ae/models/ims/user/dto/QueryUserDto';
 
 import { UserService } from './UserService';
 import { UserViewService } from './UserViewService';
@@ -37,13 +38,19 @@ export class UserResolver {
   ) {}
 
   @GRead(ReadUserDto)
-  findUsers(@Args('query', { nullable: true }) query: QueryDto<User>) {
-    return this.service.find(query);
+  findUsers(
+    @Args('query', { nullable: true }) query: QueryDto<User>,
+    @Args('where', { nullable: true }) where: QueryUserDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(UserView)
-  viewUsers(@Args('query', { nullable: true }) query: QueryDto<UserView>) {
-    return this.viewService.find(query);
+  viewUsers(
+    @Args('query', { nullable: true }) query: QueryDto<UserView>,
+    @Args('where', { nullable: true }) where: QueryUserDto
+  ) {
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadUserDto)

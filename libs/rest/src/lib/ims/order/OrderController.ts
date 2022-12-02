@@ -22,6 +22,7 @@ import { OrderView } from '@ae/models/ims/order/OrderView';
 import { OrderOptionView } from '@ae/models/ims/order/OrderOptionView';
 import { CreateOrderDto } from '@ae/models/ims/order/dto/CreateOrderDto';
 import { UpdateOrderDto } from '@ae/models/ims/order/dto/UpdateOrderDto';
+import { QueryOrderDto } from '@ae/models/ims/order/dto/QueryOrderDto';
 
 import { OrderService } from './OrderService';
 import { OrderViewService } from './OrderViewService';
@@ -38,11 +39,14 @@ export class OrderController {
   ) {}
 
   @Read()
-  findOrder(@Query() query: QueryDto<Order & OrderView>) {
+  findOrder(
+    @Query() query: QueryDto<Order & OrderView>,
+    @Query() where: QueryOrderDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

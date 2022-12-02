@@ -13,27 +13,29 @@ import {
 /**
  * Type orm query operator helper
  */
-export const QueryOperators: Readonly<any> = {
+
+export const QueryOperators = {
   startsWith: (value: string) => ILike(`${value}%`),
   contains: (value: string) => ILike(`%${value}%`),
   notContains: (value: string) => Not(ILike(`%${value}%`)),
   endsWith: (value: string) => ILike(`%${value}`),
   equals: (value: string) => Equal(value),
   notEquals: (value: string) => Not(Equal(value)),
-  in: (value: string[]) => In(value),
+  in: (value: string) => In(value.split(',')),
   lt: (value: number) => LessThan(value),
   lte: (value: number) => LessThanOrEqual(value),
   gt: (value: number) => MoreThan(value),
   gte: (value: number) => MoreThanOrEqual(value),
-  between: (value: [string, string]) => {
-    return Between(value[0], value[1]);
+  between: (value: string) => {
+    const [v, v1] = value.split(',');
+    return Between(v, v1);
   },
-  is: (value: unknown) => Equal(value),
-  isNot: (value: unknown) => Not(Equal(value)),
-  before: (value: Date) => LessThan(value),
-  after: (value: Date) => MoreThan(value),
-  dateIs: (value: Date) => Equal(value),
-  dateIsNot: (value: Date) => Not(Equal(value)),
-  dateBefore: (value: Date) => LessThan(value),
-  dateAfter: (value: Date) => MoreThan(value),
+  is: (value: string) => Equal(value),
+  isNot: (value: string) => Not(Equal(value)),
+  before: (value: string) => LessThan(value),
+  after: (value: string) => MoreThan(value),
+  dateIs: (value: string) => Equal(value),
+  dateIsNot: (value: string) => Not(Equal(value)),
+  dateBefore: (value: string) => LessThan(value),
+  dateAfter: (value: string) => MoreThan(value),
 };

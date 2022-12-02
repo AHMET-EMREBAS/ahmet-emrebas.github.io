@@ -23,6 +23,7 @@ import { StoreOptionView } from '@ae/models/ims/store/StoreOptionView';
 import { CreateStoreDto } from '@ae/models/ims/store/dto/CreateStoreDto';
 import { UpdateStoreDto } from '@ae/models/ims/store/dto/UpdateStoreDto';
 import { ReadStoreDto } from '@ae/models/ims/store/dto/ReadStoreDto';
+import { QueryStoreDto } from '@ae/models/ims/store/dto/QueryStoreDto';
 
 import { StoreService } from './StoreService';
 import { StoreViewService } from './StoreViewService';
@@ -37,13 +38,19 @@ export class StoreResolver {
   ) {}
 
   @GRead(ReadStoreDto)
-  findStores(@Args('query', { nullable: true }) query: QueryDto<Store>) {
-    return this.service.find(query);
+  findStores(
+    @Args('query', { nullable: true }) query: QueryDto<Store>,
+    @Args('where', { nullable: true }) where: QueryStoreDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(StoreView)
-  viewStores(@Args('query', { nullable: true }) query: QueryDto<StoreView>) {
-    return this.viewService.find(query);
+  viewStores(
+    @Args('query', { nullable: true }) query: QueryDto<StoreView>,
+    @Args('where', { nullable: true }) where: QueryStoreDto
+  ) {
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadStoreDto)

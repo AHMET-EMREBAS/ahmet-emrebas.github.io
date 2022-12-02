@@ -22,6 +22,7 @@ import { QuantityView } from '@ae/models/ims/quantity/QuantityView';
 import { QuantityOptionView } from '@ae/models/ims/quantity/QuantityOptionView';
 import { CreateQuantityDto } from '@ae/models/ims/quantity/dto/CreateQuantityDto';
 import { UpdateQuantityDto } from '@ae/models/ims/quantity/dto/UpdateQuantityDto';
+import { QueryQuantityDto } from '@ae/models/ims/quantity/dto/QueryQuantityDto';
 
 import { QuantityService } from './QuantityService';
 import { QuantityViewService } from './QuantityViewService';
@@ -38,11 +39,14 @@ export class QuantityController {
   ) {}
 
   @Read()
-  findQuantity(@Query() query: QueryDto<Quantity & QuantityView>) {
+  findQuantity(
+    @Query() query: QueryDto<Quantity & QuantityView>,
+    @Query() where: QueryQuantityDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

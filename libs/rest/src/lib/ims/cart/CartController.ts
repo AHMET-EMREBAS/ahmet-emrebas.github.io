@@ -22,6 +22,7 @@ import { CartView } from '@ae/models/ims/cart/CartView';
 import { CartOptionView } from '@ae/models/ims/cart/CartOptionView';
 import { CreateCartDto } from '@ae/models/ims/cart/dto/CreateCartDto';
 import { UpdateCartDto } from '@ae/models/ims/cart/dto/UpdateCartDto';
+import { QueryCartDto } from '@ae/models/ims/cart/dto/QueryCartDto';
 
 import { CartService } from './CartService';
 import { CartViewService } from './CartViewService';
@@ -38,11 +39,14 @@ export class CartController {
   ) {}
 
   @Read()
-  findCart(@Query() query: QueryDto<Cart & CartView>) {
+  findCart(
+    @Query() query: QueryDto<Cart & CartView>,
+    @Query() where: QueryCartDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

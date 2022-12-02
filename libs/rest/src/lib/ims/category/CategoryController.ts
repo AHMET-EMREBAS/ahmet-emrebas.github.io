@@ -22,6 +22,7 @@ import { CategoryView } from '@ae/models/ims/category/CategoryView';
 import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
 import { CreateCategoryDto } from '@ae/models/ims/category/dto/CreateCategoryDto';
 import { UpdateCategoryDto } from '@ae/models/ims/category/dto/UpdateCategoryDto';
+import { QueryCategoryDto } from '@ae/models/ims/category/dto/QueryCategoryDto';
 
 import { CategoryService } from './CategoryService';
 import { CategoryViewService } from './CategoryViewService';
@@ -38,11 +39,14 @@ export class CategoryController {
   ) {}
 
   @Read()
-  findCategory(@Query() query: QueryDto<Category & CategoryView>) {
+  findCategory(
+    @Query() query: QueryDto<Category & CategoryView>,
+    @Query() where: QueryCategoryDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

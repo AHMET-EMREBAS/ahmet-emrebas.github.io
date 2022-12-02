@@ -24,7 +24,7 @@ import {<%- className %>OptionView } from '@ae/models/<%- projectName %>/<%- fil
 import {Create<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Create<%- className %>Dto';
 import {Update<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Update<%- className %>Dto';
 import {Read<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Read<%- className %>Dto';
-
+import {Query<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Query<%- className %>Dto';
 
 import { <%- className %>Service } from './<%- className %>Service';
 import { <%- className %>ViewService } from './<%- className %>ViewService';
@@ -39,13 +39,13 @@ export class <%- className %>Resolver {
   ) {}
 
   @GRead(Read<%- className %>Dto)
-  find<%- className %>s(@Args('query',{nullable:true}) query: QueryDto<<%- className %>>) {
-    return this.service.find(query);
+  find<%- className %>s(@Args('query',{nullable:true}) query: QueryDto<<%- className %>>, @Args('where', {nullable:true}) where:Query<%- className %>Dto) {
+    return this.service.find({...query, where});
   }
 
   @GRead(<%- className %>View)
-  view<%- className %>s(@Args('query',{nullable:true}) query: QueryDto<<%- className %>View>) {
-    return this.viewService.find(query);
+  view<%- className %>s(@Args('query',{nullable:true}) query: QueryDto<<%- className %>View>,  @Args('where', {nullable:true}) where:Query<%- className %>Dto) {
+    return this.viewService.find({...query, where});
   }
 
 

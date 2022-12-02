@@ -23,6 +23,7 @@ import { QuantityOptionView } from '@ae/models/ims/quantity/QuantityOptionView';
 import { CreateQuantityDto } from '@ae/models/ims/quantity/dto/CreateQuantityDto';
 import { UpdateQuantityDto } from '@ae/models/ims/quantity/dto/UpdateQuantityDto';
 import { ReadQuantityDto } from '@ae/models/ims/quantity/dto/ReadQuantityDto';
+import { QueryQuantityDto } from '@ae/models/ims/quantity/dto/QueryQuantityDto';
 
 import { QuantityService } from './QuantityService';
 import { QuantityViewService } from './QuantityViewService';
@@ -37,15 +38,19 @@ export class QuantityResolver {
   ) {}
 
   @GRead(ReadQuantityDto)
-  findQuantitys(@Args('query', { nullable: true }) query: QueryDto<Quantity>) {
-    return this.service.find(query);
+  findQuantitys(
+    @Args('query', { nullable: true }) query: QueryDto<Quantity>,
+    @Args('where', { nullable: true }) where: QueryQuantityDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(QuantityView)
   viewQuantitys(
-    @Args('query', { nullable: true }) query: QueryDto<QuantityView>
+    @Args('query', { nullable: true }) query: QueryDto<QuantityView>,
+    @Args('where', { nullable: true }) where: QueryQuantityDto
   ) {
-    return this.viewService.find(query);
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadQuantityDto)

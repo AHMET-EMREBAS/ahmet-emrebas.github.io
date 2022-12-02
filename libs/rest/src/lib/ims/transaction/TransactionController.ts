@@ -22,6 +22,7 @@ import { TransactionView } from '@ae/models/ims/transaction/TransactionView';
 import { TransactionOptionView } from '@ae/models/ims/transaction/TransactionOptionView';
 import { CreateTransactionDto } from '@ae/models/ims/transaction/dto/CreateTransactionDto';
 import { UpdateTransactionDto } from '@ae/models/ims/transaction/dto/UpdateTransactionDto';
+import { QueryTransactionDto } from '@ae/models/ims/transaction/dto/QueryTransactionDto';
 
 import { TransactionService } from './TransactionService';
 import { TransactionViewService } from './TransactionViewService';
@@ -38,11 +39,14 @@ export class TransactionController {
   ) {}
 
   @Read()
-  findTransaction(@Query() query: QueryDto<Transaction & TransactionView>) {
+  findTransaction(
+    @Query() query: QueryDto<Transaction & TransactionView>,
+    @Query() where: QueryTransactionDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

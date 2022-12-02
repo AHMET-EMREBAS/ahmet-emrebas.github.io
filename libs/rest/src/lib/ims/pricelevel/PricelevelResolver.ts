@@ -23,6 +23,7 @@ import { PricelevelOptionView } from '@ae/models/ims/pricelevel/PricelevelOption
 import { CreatePricelevelDto } from '@ae/models/ims/pricelevel/dto/CreatePricelevelDto';
 import { UpdatePricelevelDto } from '@ae/models/ims/pricelevel/dto/UpdatePricelevelDto';
 import { ReadPricelevelDto } from '@ae/models/ims/pricelevel/dto/ReadPricelevelDto';
+import { QueryPricelevelDto } from '@ae/models/ims/pricelevel/dto/QueryPricelevelDto';
 
 import { PricelevelService } from './PricelevelService';
 import { PricelevelViewService } from './PricelevelViewService';
@@ -38,16 +39,18 @@ export class PricelevelResolver {
 
   @GRead(ReadPricelevelDto)
   findPricelevels(
-    @Args('query', { nullable: true }) query: QueryDto<Pricelevel>
+    @Args('query', { nullable: true }) query: QueryDto<Pricelevel>,
+    @Args('where', { nullable: true }) where: QueryPricelevelDto
   ) {
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @GRead(PricelevelView)
   viewPricelevels(
-    @Args('query', { nullable: true }) query: QueryDto<PricelevelView>
+    @Args('query', { nullable: true }) query: QueryDto<PricelevelView>,
+    @Args('where', { nullable: true }) where: QueryPricelevelDto
   ) {
-    return this.viewService.find(query);
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadPricelevelDto)

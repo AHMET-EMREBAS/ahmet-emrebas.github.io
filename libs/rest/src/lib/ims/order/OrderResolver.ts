@@ -23,6 +23,7 @@ import { OrderOptionView } from '@ae/models/ims/order/OrderOptionView';
 import { CreateOrderDto } from '@ae/models/ims/order/dto/CreateOrderDto';
 import { UpdateOrderDto } from '@ae/models/ims/order/dto/UpdateOrderDto';
 import { ReadOrderDto } from '@ae/models/ims/order/dto/ReadOrderDto';
+import { QueryOrderDto } from '@ae/models/ims/order/dto/QueryOrderDto';
 
 import { OrderService } from './OrderService';
 import { OrderViewService } from './OrderViewService';
@@ -37,13 +38,19 @@ export class OrderResolver {
   ) {}
 
   @GRead(ReadOrderDto)
-  findOrders(@Args('query', { nullable: true }) query: QueryDto<Order>) {
-    return this.service.find(query);
+  findOrders(
+    @Args('query', { nullable: true }) query: QueryDto<Order>,
+    @Args('where', { nullable: true }) where: QueryOrderDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(OrderView)
-  viewOrders(@Args('query', { nullable: true }) query: QueryDto<OrderView>) {
-    return this.viewService.find(query);
+  viewOrders(
+    @Args('query', { nullable: true }) query: QueryDto<OrderView>,
+    @Args('where', { nullable: true }) where: QueryOrderDto
+  ) {
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadOrderDto)

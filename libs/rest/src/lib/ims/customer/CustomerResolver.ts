@@ -23,6 +23,7 @@ import { CustomerOptionView } from '@ae/models/ims/customer/CustomerOptionView';
 import { CreateCustomerDto } from '@ae/models/ims/customer/dto/CreateCustomerDto';
 import { UpdateCustomerDto } from '@ae/models/ims/customer/dto/UpdateCustomerDto';
 import { ReadCustomerDto } from '@ae/models/ims/customer/dto/ReadCustomerDto';
+import { QueryCustomerDto } from '@ae/models/ims/customer/dto/QueryCustomerDto';
 
 import { CustomerService } from './CustomerService';
 import { CustomerViewService } from './CustomerViewService';
@@ -37,15 +38,19 @@ export class CustomerResolver {
   ) {}
 
   @GRead(ReadCustomerDto)
-  findCustomers(@Args('query', { nullable: true }) query: QueryDto<Customer>) {
-    return this.service.find(query);
+  findCustomers(
+    @Args('query', { nullable: true }) query: QueryDto<Customer>,
+    @Args('where', { nullable: true }) where: QueryCustomerDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(CustomerView)
   viewCustomers(
-    @Args('query', { nullable: true }) query: QueryDto<CustomerView>
+    @Args('query', { nullable: true }) query: QueryDto<CustomerView>,
+    @Args('where', { nullable: true }) where: QueryCustomerDto
   ) {
-    return this.viewService.find(query);
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadCustomerDto)

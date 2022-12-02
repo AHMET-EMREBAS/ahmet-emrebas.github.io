@@ -22,6 +22,7 @@ import { PermissionView } from '@ae/models/ims/permission/PermissionView';
 import { PermissionOptionView } from '@ae/models/ims/permission/PermissionOptionView';
 import { CreatePermissionDto } from '@ae/models/ims/permission/dto/CreatePermissionDto';
 import { UpdatePermissionDto } from '@ae/models/ims/permission/dto/UpdatePermissionDto';
+import { QueryPermissionDto } from '@ae/models/ims/permission/dto/QueryPermissionDto';
 
 import { PermissionService } from './PermissionService';
 import { PermissionViewService } from './PermissionViewService';
@@ -38,11 +39,14 @@ export class PermissionController {
   ) {}
 
   @Read()
-  findPermission(@Query() query: QueryDto<Permission & PermissionView>) {
+  findPermission(
+    @Query() query: QueryDto<Permission & PermissionView>,
+    @Query() where: QueryPermissionDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

@@ -23,6 +23,7 @@ import { PriceOptionView } from '@ae/models/ims/price/PriceOptionView';
 import { CreatePriceDto } from '@ae/models/ims/price/dto/CreatePriceDto';
 import { UpdatePriceDto } from '@ae/models/ims/price/dto/UpdatePriceDto';
 import { ReadPriceDto } from '@ae/models/ims/price/dto/ReadPriceDto';
+import { QueryPriceDto } from '@ae/models/ims/price/dto/QueryPriceDto';
 
 import { PriceService } from './PriceService';
 import { PriceViewService } from './PriceViewService';
@@ -37,13 +38,19 @@ export class PriceResolver {
   ) {}
 
   @GRead(ReadPriceDto)
-  findPrices(@Args('query', { nullable: true }) query: QueryDto<Price>) {
-    return this.service.find(query);
+  findPrices(
+    @Args('query', { nullable: true }) query: QueryDto<Price>,
+    @Args('where', { nullable: true }) where: QueryPriceDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(PriceView)
-  viewPrices(@Args('query', { nullable: true }) query: QueryDto<PriceView>) {
-    return this.viewService.find(query);
+  viewPrices(
+    @Args('query', { nullable: true }) query: QueryDto<PriceView>,
+    @Args('where', { nullable: true }) where: QueryPriceDto
+  ) {
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadPriceDto)

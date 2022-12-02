@@ -22,6 +22,7 @@ import { PricelevelView } from '@ae/models/ims/pricelevel/PricelevelView';
 import { PricelevelOptionView } from '@ae/models/ims/pricelevel/PricelevelOptionView';
 import { CreatePricelevelDto } from '@ae/models/ims/pricelevel/dto/CreatePricelevelDto';
 import { UpdatePricelevelDto } from '@ae/models/ims/pricelevel/dto/UpdatePricelevelDto';
+import { QueryPricelevelDto } from '@ae/models/ims/pricelevel/dto/QueryPricelevelDto';
 
 import { PricelevelService } from './PricelevelService';
 import { PricelevelViewService } from './PricelevelViewService';
@@ -38,11 +39,14 @@ export class PricelevelController {
   ) {}
 
   @Read()
-  findPricelevel(@Query() query: QueryDto<Pricelevel & PricelevelView>) {
+  findPricelevel(
+    @Query() query: QueryDto<Pricelevel & PricelevelView>,
+    @Query() where: QueryPricelevelDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

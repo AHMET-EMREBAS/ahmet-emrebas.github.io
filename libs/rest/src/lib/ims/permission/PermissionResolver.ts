@@ -23,6 +23,7 @@ import { PermissionOptionView } from '@ae/models/ims/permission/PermissionOption
 import { CreatePermissionDto } from '@ae/models/ims/permission/dto/CreatePermissionDto';
 import { UpdatePermissionDto } from '@ae/models/ims/permission/dto/UpdatePermissionDto';
 import { ReadPermissionDto } from '@ae/models/ims/permission/dto/ReadPermissionDto';
+import { QueryPermissionDto } from '@ae/models/ims/permission/dto/QueryPermissionDto';
 
 import { PermissionService } from './PermissionService';
 import { PermissionViewService } from './PermissionViewService';
@@ -38,16 +39,18 @@ export class PermissionResolver {
 
   @GRead(ReadPermissionDto)
   findPermissions(
-    @Args('query', { nullable: true }) query: QueryDto<Permission>
+    @Args('query', { nullable: true }) query: QueryDto<Permission>,
+    @Args('where', { nullable: true }) where: QueryPermissionDto
   ) {
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @GRead(PermissionView)
   viewPermissions(
-    @Args('query', { nullable: true }) query: QueryDto<PermissionView>
+    @Args('query', { nullable: true }) query: QueryDto<PermissionView>,
+    @Args('where', { nullable: true }) where: QueryPermissionDto
   ) {
-    return this.viewService.find(query);
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadPermissionDto)

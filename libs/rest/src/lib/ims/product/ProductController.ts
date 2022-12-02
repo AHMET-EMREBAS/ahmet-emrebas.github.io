@@ -22,6 +22,7 @@ import { ProductView } from '@ae/models/ims/product/ProductView';
 import { ProductOptionView } from '@ae/models/ims/product/ProductOptionView';
 import { CreateProductDto } from '@ae/models/ims/product/dto/CreateProductDto';
 import { UpdateProductDto } from '@ae/models/ims/product/dto/UpdateProductDto';
+import { QueryProductDto } from '@ae/models/ims/product/dto/QueryProductDto';
 
 import { ProductService } from './ProductService';
 import { ProductViewService } from './ProductViewService';
@@ -38,11 +39,14 @@ export class ProductController {
   ) {}
 
   @Read()
-  findProduct(@Query() query: QueryDto<Product & ProductView>) {
+  findProduct(
+    @Query() query: QueryDto<Product & ProductView>,
+    @Query() where: QueryProductDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

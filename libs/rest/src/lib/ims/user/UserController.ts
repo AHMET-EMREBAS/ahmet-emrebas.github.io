@@ -22,6 +22,7 @@ import { UserView } from '@ae/models/ims/user/UserView';
 import { UserOptionView } from '@ae/models/ims/user/UserOptionView';
 import { CreateUserDto } from '@ae/models/ims/user/dto/CreateUserDto';
 import { UpdateUserDto } from '@ae/models/ims/user/dto/UpdateUserDto';
+import { QueryUserDto } from '@ae/models/ims/user/dto/QueryUserDto';
 
 import { UserService } from './UserService';
 import { UserViewService } from './UserViewService';
@@ -38,11 +39,14 @@ export class UserController {
   ) {}
 
   @Read()
-  findUser(@Query() query: QueryDto<User & UserView>) {
+  findUser(
+    @Query() query: QueryDto<User & UserView>,
+    @Query() where: QueryUserDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

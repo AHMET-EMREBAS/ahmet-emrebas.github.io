@@ -22,6 +22,7 @@ import { PriceView } from '@ae/models/ims/price/PriceView';
 import { PriceOptionView } from '@ae/models/ims/price/PriceOptionView';
 import { CreatePriceDto } from '@ae/models/ims/price/dto/CreatePriceDto';
 import { UpdatePriceDto } from '@ae/models/ims/price/dto/UpdatePriceDto';
+import { QueryPriceDto } from '@ae/models/ims/price/dto/QueryPriceDto';
 
 import { PriceService } from './PriceService';
 import { PriceViewService } from './PriceViewService';
@@ -38,11 +39,14 @@ export class PriceController {
   ) {}
 
   @Read()
-  findPrice(@Query() query: QueryDto<Price & PriceView>) {
+  findPrice(
+    @Query() query: QueryDto<Price & PriceView>,
+    @Query() where: QueryPriceDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

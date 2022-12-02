@@ -23,6 +23,7 @@ import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
 import { CreateCategoryDto } from '@ae/models/ims/category/dto/CreateCategoryDto';
 import { UpdateCategoryDto } from '@ae/models/ims/category/dto/UpdateCategoryDto';
 import { ReadCategoryDto } from '@ae/models/ims/category/dto/ReadCategoryDto';
+import { QueryCategoryDto } from '@ae/models/ims/category/dto/QueryCategoryDto';
 
 import { CategoryService } from './CategoryService';
 import { CategoryViewService } from './CategoryViewService';
@@ -37,15 +38,19 @@ export class CategoryResolver {
   ) {}
 
   @GRead(ReadCategoryDto)
-  findCategorys(@Args('query', { nullable: true }) query: QueryDto<Category>) {
-    return this.service.find(query);
+  findCategorys(
+    @Args('query', { nullable: true }) query: QueryDto<Category>,
+    @Args('where', { nullable: true }) where: QueryCategoryDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(CategoryView)
   viewCategorys(
-    @Args('query', { nullable: true }) query: QueryDto<CategoryView>
+    @Args('query', { nullable: true }) query: QueryDto<CategoryView>,
+    @Args('where', { nullable: true }) where: QueryCategoryDto
   ) {
-    return this.viewService.find(query);
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadCategoryDto)

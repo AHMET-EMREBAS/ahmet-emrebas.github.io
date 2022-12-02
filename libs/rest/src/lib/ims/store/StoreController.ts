@@ -22,6 +22,7 @@ import { StoreView } from '@ae/models/ims/store/StoreView';
 import { StoreOptionView } from '@ae/models/ims/store/StoreOptionView';
 import { CreateStoreDto } from '@ae/models/ims/store/dto/CreateStoreDto';
 import { UpdateStoreDto } from '@ae/models/ims/store/dto/UpdateStoreDto';
+import { QueryStoreDto } from '@ae/models/ims/store/dto/QueryStoreDto';
 
 import { StoreService } from './StoreService';
 import { StoreViewService } from './StoreViewService';
@@ -38,11 +39,14 @@ export class StoreController {
   ) {}
 
   @Read()
-  findStore(@Query() query: QueryDto<Store & StoreView>) {
+  findStore(
+    @Query() query: QueryDto<Store & StoreView>,
+    @Query() where: QueryStoreDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

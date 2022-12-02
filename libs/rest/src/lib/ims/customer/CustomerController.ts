@@ -22,6 +22,7 @@ import { CustomerView } from '@ae/models/ims/customer/CustomerView';
 import { CustomerOptionView } from '@ae/models/ims/customer/CustomerOptionView';
 import { CreateCustomerDto } from '@ae/models/ims/customer/dto/CreateCustomerDto';
 import { UpdateCustomerDto } from '@ae/models/ims/customer/dto/UpdateCustomerDto';
+import { QueryCustomerDto } from '@ae/models/ims/customer/dto/QueryCustomerDto';
 
 import { CustomerService } from './CustomerService';
 import { CustomerViewService } from './CustomerViewService';
@@ -38,11 +39,14 @@ export class CustomerController {
   ) {}
 
   @Read()
-  findCustomer(@Query() query: QueryDto<Customer & CustomerView>) {
+  findCustomer(
+    @Query() query: QueryDto<Customer & CustomerView>,
+    @Query() where: QueryCustomerDto
+  ) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({ ...query, where });
     }
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @ReadById()

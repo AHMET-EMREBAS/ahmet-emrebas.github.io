@@ -23,6 +23,7 @@ import { CartOptionView } from '@ae/models/ims/cart/CartOptionView';
 import { CreateCartDto } from '@ae/models/ims/cart/dto/CreateCartDto';
 import { UpdateCartDto } from '@ae/models/ims/cart/dto/UpdateCartDto';
 import { ReadCartDto } from '@ae/models/ims/cart/dto/ReadCartDto';
+import { QueryCartDto } from '@ae/models/ims/cart/dto/QueryCartDto';
 
 import { CartService } from './CartService';
 import { CartViewService } from './CartViewService';
@@ -37,13 +38,19 @@ export class CartResolver {
   ) {}
 
   @GRead(ReadCartDto)
-  findCarts(@Args('query', { nullable: true }) query: QueryDto<Cart>) {
-    return this.service.find(query);
+  findCarts(
+    @Args('query', { nullable: true }) query: QueryDto<Cart>,
+    @Args('where', { nullable: true }) where: QueryCartDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(CartView)
-  viewCarts(@Args('query', { nullable: true }) query: QueryDto<CartView>) {
-    return this.viewService.find(query);
+  viewCarts(
+    @Args('query', { nullable: true }) query: QueryDto<CartView>,
+    @Args('where', { nullable: true }) where: QueryCartDto
+  ) {
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadCartDto)

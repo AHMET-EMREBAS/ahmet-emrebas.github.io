@@ -22,6 +22,7 @@ import {<%- className %>View} from '@ae/models/<%- projectName %>/<%- fileName %
 import {<%- className %>OptionView } from '@ae/models/<%- projectName %>/<%- fileName %>/<%- className %>OptionView';
 import {Create<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Create<%- className %>Dto';
 import {Update<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Update<%- className %>Dto';
+import {Query<%- className %>Dto} from '@ae/models/<%- projectName %>/<%- fileName %>/dto/Query<%- className %>Dto';
 
 
 import { <%- className %>Service } from './<%- className %>Service';
@@ -39,11 +40,11 @@ export class <%- className %>Controller {
   ) {}
 
   @Read()
-  find<%- className %>(@Query() query: QueryDto<<%- className %> & <%- className %>View>) {
+  find<%- className %>(@Query() query: QueryDto<<%- className %> & <%- className %>View> , @Query() where:Query<%- className %>Dto) {
     if (query.view === true) {
-      return this.viewService.find(query);
+      return this.viewService.find({...query, where});
     }
-    return this.service.find(query);
+    return this.service.find({...query, where});
   }
 
   @ReadById()

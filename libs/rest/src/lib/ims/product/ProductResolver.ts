@@ -23,6 +23,7 @@ import { ProductOptionView } from '@ae/models/ims/product/ProductOptionView';
 import { CreateProductDto } from '@ae/models/ims/product/dto/CreateProductDto';
 import { UpdateProductDto } from '@ae/models/ims/product/dto/UpdateProductDto';
 import { ReadProductDto } from '@ae/models/ims/product/dto/ReadProductDto';
+import { QueryProductDto } from '@ae/models/ims/product/dto/QueryProductDto';
 
 import { ProductService } from './ProductService';
 import { ProductViewService } from './ProductViewService';
@@ -37,15 +38,19 @@ export class ProductResolver {
   ) {}
 
   @GRead(ReadProductDto)
-  findProducts(@Args('query', { nullable: true }) query: QueryDto<Product>) {
-    return this.service.find(query);
+  findProducts(
+    @Args('query', { nullable: true }) query: QueryDto<Product>,
+    @Args('where', { nullable: true }) where: QueryProductDto
+  ) {
+    return this.service.find({ ...query, where });
   }
 
   @GRead(ProductView)
   viewProducts(
-    @Args('query', { nullable: true }) query: QueryDto<ProductView>
+    @Args('query', { nullable: true }) query: QueryDto<ProductView>,
+    @Args('where', { nullable: true }) where: QueryProductDto
   ) {
-    return this.viewService.find(query);
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadProductDto)

@@ -20,7 +20,7 @@ import {
   StringProperty,
 } from '../property';
 
-import { InputType } from '@nestjs/graphql';
+import { ArgsType, InputType } from '@nestjs/graphql';
 
 const QUERIES = {
   startsWith: (value: string) => ILike(`${value}%`),

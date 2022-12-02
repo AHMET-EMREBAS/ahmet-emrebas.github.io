@@ -23,6 +23,7 @@ import { TransactionOptionView } from '@ae/models/ims/transaction/TransactionOpt
 import { CreateTransactionDto } from '@ae/models/ims/transaction/dto/CreateTransactionDto';
 import { UpdateTransactionDto } from '@ae/models/ims/transaction/dto/UpdateTransactionDto';
 import { ReadTransactionDto } from '@ae/models/ims/transaction/dto/ReadTransactionDto';
+import { QueryTransactionDto } from '@ae/models/ims/transaction/dto/QueryTransactionDto';
 
 import { TransactionService } from './TransactionService';
 import { TransactionViewService } from './TransactionViewService';
@@ -38,16 +39,18 @@ export class TransactionResolver {
 
   @GRead(ReadTransactionDto)
   findTransactions(
-    @Args('query', { nullable: true }) query: QueryDto<Transaction>
+    @Args('query', { nullable: true }) query: QueryDto<Transaction>,
+    @Args('where', { nullable: true }) where: QueryTransactionDto
   ) {
-    return this.service.find(query);
+    return this.service.find({ ...query, where });
   }
 
   @GRead(TransactionView)
   viewTransactions(
-    @Args('query', { nullable: true }) query: QueryDto<TransactionView>
+    @Args('query', { nullable: true }) query: QueryDto<TransactionView>,
+    @Args('where', { nullable: true }) where: QueryTransactionDto
   ) {
-    return this.viewService.find(query);
+    return this.viewService.find({ ...query, where });
   }
 
   @GReadById(ReadTransactionDto)
