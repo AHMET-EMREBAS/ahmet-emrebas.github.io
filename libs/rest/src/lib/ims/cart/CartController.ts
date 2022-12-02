@@ -35,7 +35,11 @@ export class CartController {
   ) {}
 
   @Read(Cart)
-  findCart(@Args('query') @Query() query: QueryDto<Cart & CartView>) {
+  findCart(
+    @Args('query')
+    @Query()
+    query: QueryDto<Cart & CartView>
+  ) {
     if (query.view === true) {
       return this.viewService.find(query);
     }

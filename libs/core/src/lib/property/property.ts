@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { applyDecorators } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
-import { Expose } from 'class-transformer';
+import { Expose, Transform } from 'class-transformer';
 import { Validators } from '../validators';
 import { PropertyOptions } from '../types';
 import { Transformers } from '../transformers/Transformers';
-import { ValidateNested } from 'class-validator';
+import { IsNotEmpty, IsOptional, ValidateNested } from 'class-validator';
 import { GraphFields } from '../graph';
 
 /**
@@ -29,7 +29,11 @@ export function Property<T>(options: PropertyOptions<T>) {
     .map(([key, value]) => Validators[key]?.(value))
     .filter(notFalsy);
 
-  validators.push(Validators.required(options.required));
+  if (options.required === false) {
+    validators.unshift(IsOptional());
+  } else {
+    validators.unshift(IsNotEmpty());
+  }
 
   if (options.type === 'object') validators.push(ValidateNested());
 
@@ -40,8 +44,9 @@ export function Property<T>(options: PropertyOptions<T>) {
     ApiProperty(options),
     ...validators,
     GraphFields[options.type]({
-      defaultValue: options.default,
-      nullable: options.required === undefined ? true : options.required,
+      defaultValue:
+        options.default === 'undefined' ? undefined : options.default,
+      nullable: options.required === false ? true : false,
     }),
     Transformers[options.type]
   );

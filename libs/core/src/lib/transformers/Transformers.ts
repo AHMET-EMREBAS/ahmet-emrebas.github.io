@@ -6,7 +6,7 @@ import { isStringObject } from 'util/types';
  * Transform any value from string to actual value.
  */
 export const Transformers = {
-  string: Transform(({ value }) => {
+  string: Transform(({ value, obj }) => {
     if (value === undefined || value === 'undefined') {
       return undefined;
     }

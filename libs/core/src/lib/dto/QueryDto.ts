@@ -47,7 +47,7 @@ const QUERIES = {
   dateAfter: (value: Date) => MoreThan(value),
 };
 
-@InputType()
+@InputType({ description: 'QueryDto' })
 export class QueryDto<T> {
   @NumberProperty({ required: false, minimum: 1, default: 20 })
   take: number;
@@ -64,11 +64,11 @@ export class QueryDto<T> {
   @StringProperty({
     required: false,
     enum: ['1', '-1', 'ASC', 'DESC', 'asc', 'desc'],
-    default: 'id',
+    default: 'asc',
   })
   sortOrder?: string;
 
-  @StringProperty({ required: false })
+  @StringProperty({ required: false, default: 'id' })
   sortField?: string;
 
   @StringProperty({
@@ -81,7 +81,8 @@ export class QueryDto<T> {
   @Expose()
   @Transform(({ obj }) => {
     const field = obj.sortField || 'id';
-    const sortDir = ['1', 'asc'].includes(obj.sortOrder.toLowerCase())
+    const sortOrder = obj.sortOrder || 'asc';
+    const sortDir = ['1', 'asc'].includes(sortOrder.toLowerCase())
       ? 'ASC'
       : 'DESC';
     return {
