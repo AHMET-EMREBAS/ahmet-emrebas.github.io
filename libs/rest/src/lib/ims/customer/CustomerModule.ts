@@ -10,7 +10,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomerService } from './CustomerService';
 import { CustomerViewService } from './CustomerViewService';
+import { CustomerOptionViewService } from './CustomerOptionViewService';
+
 import { CustomerController } from './CustomerController';
+import { CustomerResolver } from './CustomerResolver';
 
 @Module({
   imports: [
@@ -24,7 +27,12 @@ import { CustomerController } from './CustomerController';
       Pricelevel,
     ]),
   ],
-  providers: [CustomerService, CustomerViewService, CustomerController],
+  providers: [
+    CustomerService,
+    CustomerViewService,
+    CustomerOptionViewService,
+    CustomerResolver,
+  ],
   controllers: [CustomerController],
 })
 export class CustomerModule {}

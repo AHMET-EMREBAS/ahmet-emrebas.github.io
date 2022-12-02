@@ -8,13 +8,21 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SprintService } from './SprintService';
 import { SprintViewService } from './SprintViewService';
+import { SprintOptionViewService } from './SprintOptionViewService';
+
 import { SprintController } from './SprintController';
+import { SprintResolver } from './SprintResolver';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Sprint, SprintView, SprintOptionView, Project]),
   ],
-  providers: [SprintService, SprintViewService, SprintController],
+  providers: [
+    SprintService,
+    SprintViewService,
+    SprintOptionViewService,
+    SprintResolver,
+  ],
   controllers: [SprintController],
 })
 export class SprintModule {}

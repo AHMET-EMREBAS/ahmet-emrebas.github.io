@@ -53,8 +53,7 @@ export function Property<T>(options: PropertyOptions<T>) {
     ApiProperty(options),
     ...validators,
     GraphFields[options.type]({
-      defaultValue:
-        options.default === 'undefined' ? undefined : options.default,
+      defaultValue: options.default,
       nullable: options.required === false ? true : false,
     }),
     Transformers[options.type]

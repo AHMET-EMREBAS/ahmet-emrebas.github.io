@@ -1,6 +1,8 @@
+import { Body, Query } from '@nestjs/common';
 import {
   Add,
   Count,
+  Options,
   ParamId,
   ParamRid,
   QueryDto,
@@ -11,64 +13,65 @@ import {
   Unset,
   Update,
   Write,
+  Delete,
   Controller,
-  ArgId,
-  ArgRid,
 } from '@ae/core';
+
 import { Category } from '@ae/models/pms/category/Category';
 import { CategoryView } from '@ae/models/pms/category/CategoryView';
 import { CategoryOptionView } from '@ae/models/pms/category/CategoryOptionView';
 import { CreateCategoryDto } from '@ae/models/pms/category/dto/CreateCategoryDto';
 import { UpdateCategoryDto } from '@ae/models/pms/category/dto/UpdateCategoryDto';
 
-import { Body, Delete, Query } from '@nestjs/common';
-
 import { CategoryService } from './CategoryService';
 import { CategoryViewService } from './CategoryViewService';
+import { CategoryOptionViewService } from './CategoryOptionViewService';
+
 import { Args } from '@nestjs/graphql';
 
-@Controller('pms/category', Category)
+@Controller('pms/category')
 export class CategoryController {
   constructor(
     private readonly service: CategoryService,
-    private readonly viewService: CategoryViewService
+    private readonly viewService: CategoryViewService,
+    private readonly optionViewService: CategoryOptionViewService
   ) {}
 
-  @Read(Category)
-  findCategory(
-    @Args('query') @Query() query: QueryDto<Category & CategoryView>
-  ) {
+  @Read()
+  findCategory(@Query() query: QueryDto<Category & CategoryView>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById(Category)
-  findByCategoryId(@ArgId() @ParamId() id: number) {
+  @ReadById()
+  findByCategoryId(@ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write(Category)
-  saveCategory(@Args('category') @Body() body: CreateCategoryDto) {
+  @Write()
+  saveCategory(@Body() body: CreateCategoryDto) {
     return this.service.save(body);
   }
 
   @Update()
-  updateCategory(
-    @ArgId() @ParamId() id: number,
-    @Args('category') @Body() body: UpdateCategoryDto
-  ) {
+  updateCategory(@ParamId() id: number, @Body() body: UpdateCategoryDto) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  deleteCategory(@ArgId() @ParamId() id: number) {
+  deleteCategory(@ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Count()
   countCategory() {
     return this.service.count();
+  }
+
+  @Options()
+  optionsCategory(@Query() query: QueryDto<Category & CategoryView>) {
+    return this.optionViewService.find(query);
   }
 }

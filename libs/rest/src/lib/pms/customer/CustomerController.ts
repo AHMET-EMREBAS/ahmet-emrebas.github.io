@@ -1,6 +1,8 @@
+import { Body, Query } from '@nestjs/common';
 import {
   Add,
   Count,
+  Options,
   ParamId,
   ParamRid,
   QueryDto,
@@ -11,90 +13,91 @@ import {
   Unset,
   Update,
   Write,
+  Delete,
   Controller,
-  ArgId,
-  ArgRid,
 } from '@ae/core';
+
 import { Customer } from '@ae/models/pms/customer/Customer';
 import { CustomerView } from '@ae/models/pms/customer/CustomerView';
 import { CustomerOptionView } from '@ae/models/pms/customer/CustomerOptionView';
 import { CreateCustomerDto } from '@ae/models/pms/customer/dto/CreateCustomerDto';
 import { UpdateCustomerDto } from '@ae/models/pms/customer/dto/UpdateCustomerDto';
 
-import { Body, Delete, Query } from '@nestjs/common';
-
 import { CustomerService } from './CustomerService';
 import { CustomerViewService } from './CustomerViewService';
+import { CustomerOptionViewService } from './CustomerOptionViewService';
+
 import { Args } from '@nestjs/graphql';
 
-@Controller('pms/customer', Customer)
+@Controller('pms/customer')
 export class CustomerController {
   constructor(
     private readonly service: CustomerService,
-    private readonly viewService: CustomerViewService
+    private readonly viewService: CustomerViewService,
+    private readonly optionViewService: CustomerOptionViewService
   ) {}
 
-  @Read(Customer)
-  findCustomer(
-    @Args('query') @Query() query: QueryDto<Customer & CustomerView>
-  ) {
+  @Read()
+  findCustomer(@Query() query: QueryDto<Customer & CustomerView>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById(Customer)
-  findByCustomerId(@ArgId() @ParamId() id: number) {
+  @ReadById()
+  findByCustomerId(@ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write(Customer)
-  saveCustomer(@Args('customer') @Body() body: CreateCustomerDto) {
+  @Write()
+  saveCustomer(@Body() body: CreateCustomerDto) {
     return this.service.save(body);
   }
 
   @Update()
-  updateCustomer(
-    @ArgId() @ParamId() id: number,
-    @Args('customer') @Body() body: UpdateCustomerDto
-  ) {
+  updateCustomer(@ParamId() id: number, @Body() body: UpdateCustomerDto) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  deleteCustomer(@ArgId() @ParamId() id: number) {
+  deleteCustomer(@ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Add('permissions')
   addCustomerPermissions(
-    @ArgId() @ParamId() id: number,
-    @ArgRid() @ParamRid() permissionsId: number
+    @ParamId() id: number,
+    @ParamRid() permissionsId: number
   ) {
     return this.service.set(id, permissionsId, 'permissions');
   }
 
   @Remove('permissions')
-  removeCustomerPermissions(@ArgId() @ParamId() id: number) {
+  removeCustomerPermissions(@ParamId() id: number) {
     return this.service.unset(id, 'permission');
   }
 
   @Set('pricelevel')
   setCustomerPricelevel(
-    @ArgId() @ParamId() id: number,
-    @ArgRid() @ParamRid() pricelevelId: number
+    @ParamId() id: number,
+    @ParamRid() pricelevelId: number
   ) {
     return this.service.set(id, pricelevelId, 'pricelevel');
   }
 
   @Unset('pricelevel')
-  unsetCustomerPricelevel(@ArgId() @ParamId() id: number) {
+  unsetCustomerPricelevel(@ParamId() id: number) {
     return this.service.unset(id, 'pricelevel');
   }
 
   @Count()
   countCustomer() {
     return this.service.count();
+  }
+
+  @Options()
+  optionsCustomer(@Query() query: QueryDto<Customer & CustomerView>) {
+    return this.optionViewService.find(query);
   }
 }

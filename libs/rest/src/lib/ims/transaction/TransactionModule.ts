@@ -8,7 +8,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TransactionService } from './TransactionService';
 import { TransactionViewService } from './TransactionViewService';
+import { TransactionOptionViewService } from './TransactionOptionViewService';
+
 import { TransactionController } from './TransactionController';
+import { TransactionResolver } from './TransactionResolver';
 
 @Module({
   imports: [
@@ -23,7 +26,8 @@ import { TransactionController } from './TransactionController';
   providers: [
     TransactionService,
     TransactionViewService,
-    TransactionController,
+    TransactionOptionViewService,
+    TransactionResolver,
   ],
   controllers: [TransactionController],
 })

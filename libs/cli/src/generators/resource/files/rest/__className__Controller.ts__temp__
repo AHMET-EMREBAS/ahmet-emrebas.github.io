@@ -106,7 +106,7 @@ export class <%- className %>Controller {
 
 
   @Options()
-  options<%- className %>(@Query() query:@Query() query: QueryDto<<%- className %> & <%- className %>View>){
+  options<%- className %>(@Query()  query: QueryDto<<%- className %> & <%- className %>View>){
     return this.optionViewService.find(query);
   }
 }

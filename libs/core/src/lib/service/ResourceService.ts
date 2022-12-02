@@ -135,6 +135,16 @@ export class ResourceService<T> {
     }
   }
 
+  async saveMany(items: T[]) {
+    const result = [];
+    for (const i of items) {
+      await this.isUnique(i);
+      const saved = await this.save(i);
+      result.push(saved);
+    }
+    return result;
+  }
+
   async update(id: number, updated: QueryDeepPartialEntity<T>) {
     try {
       return await this.__repo.save({

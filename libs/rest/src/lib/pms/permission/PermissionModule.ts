@@ -6,7 +6,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PermissionService } from './PermissionService';
 import { PermissionViewService } from './PermissionViewService';
+import { PermissionOptionViewService } from './PermissionOptionViewService';
+
 import { PermissionController } from './PermissionController';
+import { PermissionResolver } from './PermissionResolver';
 
 @Module({
   imports: [
@@ -16,7 +19,12 @@ import { PermissionController } from './PermissionController';
       PermissionOptionView,
     ]),
   ],
-  providers: [PermissionService, PermissionViewService, PermissionController],
+  providers: [
+    PermissionService,
+    PermissionViewService,
+    PermissionOptionViewService,
+    PermissionResolver,
+  ],
   controllers: [PermissionController],
 })
 export class PermissionModule {}

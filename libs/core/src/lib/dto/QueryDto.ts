@@ -50,16 +50,16 @@ const QUERIES = {
 @InputType({ description: 'QueryDto' })
 export class QueryDto<T> {
   @NumberProperty({ required: false, minimum: 1, default: 20 })
-  take: number;
+  take?: number;
 
   @NumberProperty({ required: false, minimum: 0, default: 0 })
-  skip: number;
+  skip?: number;
 
   @BooleanProperty({ required: false, default: false })
-  view: boolean;
+  view?: boolean;
 
   @BooleanProperty({ required: false, default: false })
-  withDeleted: boolean;
+  withDeleted?: boolean;
 
   @StringProperty({
     required: false,
@@ -92,5 +92,5 @@ export class QueryDto<T> {
       },
     };
   })
-  order: FindOptionsOrder<T>;
+  order?: FindOptionsOrder<T>;
 }

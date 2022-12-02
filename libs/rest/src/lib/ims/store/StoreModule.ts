@@ -8,13 +8,21 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StoreService } from './StoreService';
 import { StoreViewService } from './StoreViewService';
+import { StoreOptionViewService } from './StoreOptionViewService';
+
 import { StoreController } from './StoreController';
+import { StoreResolver } from './StoreResolver';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Store, StoreView, StoreOptionView, Pricelevel]),
   ],
-  providers: [StoreService, StoreViewService, StoreController],
+  providers: [
+    StoreService,
+    StoreViewService,
+    StoreOptionViewService,
+    StoreResolver,
+  ],
   controllers: [StoreController],
 })
 export class StoreModule {}

@@ -8,8 +8,8 @@ import { Injectable } from '@nestjs/common';
 export class <%- className %>OptionViewService extends ResourceViewService<<%- className %>OptionView> {
   constructor(
     @InjectRepository(<%- className %>OptionView)
-    messageViewRepo: Repository<<%- className %>OptionView>
+    <%- propertyName %>ViewRepo: Repository<<%- className %>OptionView>
   ) {
-    super(messageViewRepo);
+    super(<%- propertyName %>ViewRepo);
   }
 }

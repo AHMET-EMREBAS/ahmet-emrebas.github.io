@@ -12,7 +12,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OrderService } from './OrderService';
 import { OrderViewService } from './OrderViewService';
+import { OrderOptionViewService } from './OrderOptionViewService';
+
 import { OrderController } from './OrderController';
+import { OrderResolver } from './OrderResolver';
 
 @Module({
   imports: [
@@ -28,7 +31,12 @@ import { OrderController } from './OrderController';
       Customer,
     ]),
   ],
-  providers: [OrderService, OrderViewService, OrderController],
+  providers: [
+    OrderService,
+    OrderViewService,
+    OrderOptionViewService,
+    OrderResolver,
+  ],
   controllers: [OrderController],
 })
 export class OrderModule {}

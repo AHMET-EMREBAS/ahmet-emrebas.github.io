@@ -10,7 +10,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { QuantityService } from './QuantityService';
 import { QuantityViewService } from './QuantityViewService';
+import { QuantityOptionViewService } from './QuantityOptionViewService';
+
 import { QuantityController } from './QuantityController';
+import { QuantityResolver } from './QuantityResolver';
 
 @Module({
   imports: [
@@ -24,7 +27,12 @@ import { QuantityController } from './QuantityController';
       Store,
     ]),
   ],
-  providers: [QuantityService, QuantityViewService, QuantityController],
+  providers: [
+    QuantityService,
+    QuantityViewService,
+    QuantityOptionViewService,
+    QuantityResolver,
+  ],
   controllers: [QuantityController],
 })
 export class QuantityModule {}

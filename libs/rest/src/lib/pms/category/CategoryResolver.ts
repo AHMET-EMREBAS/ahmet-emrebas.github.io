@@ -1,0 +1,77 @@
+import { Args } from '@nestjs/graphql';
+import {
+  GAdd,
+  GCount,
+  GOptions,
+  GRead,
+  GReadById,
+  GRemove,
+  GSet,
+  GUnset,
+  GUpdate,
+  GDelete,
+  GWrite,
+  ArgId,
+  ArgRid,
+  QueryDto,
+  Resolver,
+} from '@ae/core';
+import { Category } from '@ae/models/pms/category/Category';
+import { CategoryView } from '@ae/models/pms/category/CategoryView';
+import { CategoryOptionView } from '@ae/models/pms/category/CategoryOptionView';
+import { CreateCategoryDto } from '@ae/models/pms/category/dto/CreateCategoryDto';
+import { UpdateCategoryDto } from '@ae/models/pms/category/dto/UpdateCategoryDto';
+
+import { CategoryService } from './CategoryService';
+import { CategoryViewService } from './CategoryViewService';
+import { CategoryOptionViewService } from './CategoryOptionViewService';
+
+@Resolver(Category)
+export class CategoryResolver {
+  constructor(
+    private readonly service: CategoryService,
+    private readonly viewService: CategoryViewService,
+    private readonly optionViewService: CategoryOptionViewService
+  ) {}
+
+  @GRead(Category)
+  findCategory(@Args('query') query: QueryDto<Category & CategoryView>) {
+    if (query.view === true) {
+      return this.viewService.find(query);
+    }
+    return this.service.find(query);
+  }
+
+  @GReadById(Category)
+  findByCategoryId(@ArgId() id: number) {
+    return this.service.findOneBy({ id });
+  }
+
+  @GWrite(Category)
+  saveCategory(@Args('category') body: CreateCategoryDto) {
+    return this.service.save(body);
+  }
+
+  @GUpdate()
+  updateCategory(
+    @ArgId() id: number,
+    @Args('category') body: UpdateCategoryDto
+  ) {
+    return this.service.update(id, body);
+  }
+
+  @GDelete()
+  deleteCategory(@ArgId() id: number) {
+    return this.service.delete(id);
+  }
+
+  @GCount()
+  countCategory() {
+    return this.service.count();
+  }
+
+  @GOptions()
+  optionsCategory(@Args('query') query: QueryDto<Category & CategoryView>) {
+    return this.optionViewService.find(query);
+  }
+}

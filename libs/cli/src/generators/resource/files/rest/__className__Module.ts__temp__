@@ -12,8 +12,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { <%- className %>Service } from './<%- className %>Service';
 import { <%- className %>ViewService } from './<%- className %>ViewService';
+import { <%- className %>OptionViewService } from './<%- className %>OptionViewService';
+
 import { <%- className %>Controller } from './<%- className %>Controller';
-import { <%- className %>Resolver %> } from './<%- className %>Resolver %>';
+import { <%- className %>Resolver %> } from './<%- className %>Resolver';
 
 @Module({
   imports: [TypeOrmModule.forFeature([
@@ -26,7 +28,7 @@ import { <%- className %>Resolver %> } from './<%- className %>Resolver %>';
 <% }) %>
 
   ])],
-  providers: [<%- className %>Service, <%- className %>ViewService, <%- className %>Resolver %>],
+  providers: [<%- className %>Service, <%- className %>ViewService, <%- className %>OptionViewService, <%- className %>Resolver %>],
   controllers:[<%- className %>Controller %>],
 
 })

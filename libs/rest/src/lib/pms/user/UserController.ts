@@ -1,6 +1,8 @@
+import { Body, Query } from '@nestjs/common';
 import {
   Add,
   Count,
+  Options,
   ParamId,
   ParamRid,
   QueryDto,
@@ -11,88 +13,85 @@ import {
   Unset,
   Update,
   Write,
+  Delete,
   Controller,
-  ArgId,
-  ArgRid,
 } from '@ae/core';
+
 import { User } from '@ae/models/pms/user/User';
 import { UserView } from '@ae/models/pms/user/UserView';
 import { UserOptionView } from '@ae/models/pms/user/UserOptionView';
 import { CreateUserDto } from '@ae/models/pms/user/dto/CreateUserDto';
 import { UpdateUserDto } from '@ae/models/pms/user/dto/UpdateUserDto';
 
-import { Body, Delete, Query } from '@nestjs/common';
-
 import { UserService } from './UserService';
 import { UserViewService } from './UserViewService';
+import { UserOptionViewService } from './UserOptionViewService';
+
 import { Args } from '@nestjs/graphql';
 
-@Controller('pms/user', User)
+@Controller('pms/user')
 export class UserController {
   constructor(
     private readonly service: UserService,
-    private readonly viewService: UserViewService
+    private readonly viewService: UserViewService,
+    private readonly optionViewService: UserOptionViewService
   ) {}
 
-  @Read(User)
-  findUser(@Args('query') @Query() query: QueryDto<User & UserView>) {
+  @Read()
+  findUser(@Query() query: QueryDto<User & UserView>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById(User)
-  findByUserId(@ArgId() @ParamId() id: number) {
+  @ReadById()
+  findByUserId(@ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write(User)
-  saveUser(@Args('user') @Body() body: CreateUserDto) {
+  @Write()
+  saveUser(@Body() body: CreateUserDto) {
     return this.service.save(body);
   }
 
   @Update()
-  updateUser(
-    @ArgId() @ParamId() id: number,
-    @Args('user') @Body() body: UpdateUserDto
-  ) {
+  updateUser(@ParamId() id: number, @Body() body: UpdateUserDto) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  deleteUser(@ArgId() @ParamId() id: number) {
+  deleteUser(@ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Add('permissions')
-  addUserPermissions(
-    @ArgId() @ParamId() id: number,
-    @ArgRid() @ParamRid() permissionsId: number
-  ) {
+  addUserPermissions(@ParamId() id: number, @ParamRid() permissionsId: number) {
     return this.service.set(id, permissionsId, 'permissions');
   }
 
   @Remove('permissions')
-  removeUserPermissions(@ArgId() @ParamId() id: number) {
+  removeUserPermissions(@ParamId() id: number) {
     return this.service.unset(id, 'permission');
   }
 
   @Set('pricelevel')
-  setUserPricelevel(
-    @ArgId() @ParamId() id: number,
-    @ArgRid() @ParamRid() pricelevelId: number
-  ) {
+  setUserPricelevel(@ParamId() id: number, @ParamRid() pricelevelId: number) {
     return this.service.set(id, pricelevelId, 'pricelevel');
   }
 
   @Unset('pricelevel')
-  unsetUserPricelevel(@ArgId() @ParamId() id: number) {
+  unsetUserPricelevel(@ParamId() id: number) {
     return this.service.unset(id, 'pricelevel');
   }
 
   @Count()
   countUser() {
     return this.service.count();
+  }
+
+  @Options()
+  optionsUser(@Query() query: QueryDto<User & UserView>) {
+    return this.optionViewService.find(query);
   }
 }

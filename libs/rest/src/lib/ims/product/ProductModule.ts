@@ -8,7 +8,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductService } from './ProductService';
 import { ProductViewService } from './ProductViewService';
+import { ProductOptionViewService } from './ProductOptionViewService';
+
 import { ProductController } from './ProductController';
+import { ProductResolver } from './ProductResolver';
 
 @Module({
   imports: [
@@ -20,7 +23,12 @@ import { ProductController } from './ProductController';
       Category,
     ]),
   ],
-  providers: [ProductService, ProductViewService, ProductController],
+  providers: [
+    ProductService,
+    ProductViewService,
+    ProductOptionViewService,
+    ProductResolver,
+  ],
   controllers: [ProductController],
 })
 export class ProductModule {}

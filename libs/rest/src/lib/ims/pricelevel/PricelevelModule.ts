@@ -6,7 +6,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PricelevelService } from './PricelevelService';
 import { PricelevelViewService } from './PricelevelViewService';
+import { PricelevelOptionViewService } from './PricelevelOptionViewService';
+
 import { PricelevelController } from './PricelevelController';
+import { PricelevelResolver } from './PricelevelResolver';
 
 @Module({
   imports: [
@@ -16,7 +19,12 @@ import { PricelevelController } from './PricelevelController';
       PricelevelOptionView,
     ]),
   ],
-  providers: [PricelevelService, PricelevelViewService, PricelevelController],
+  providers: [
+    PricelevelService,
+    PricelevelViewService,
+    PricelevelOptionViewService,
+    PricelevelResolver,
+  ],
   controllers: [PricelevelController],
 })
 export class PricelevelModule {}

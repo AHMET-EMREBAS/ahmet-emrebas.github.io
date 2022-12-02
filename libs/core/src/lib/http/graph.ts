@@ -22,7 +22,7 @@ export function GReadById<T = unknown>(obj: ClassConstructor<T>) {
  * Post request for creating item.
  * @returns
  */
-export function GSave(obj: ClassConstructor<any>) {
+export function GWrite(obj: ClassConstructor<any> | [ClassConstructor<any>]) {
   return applyDecorators(
     CanWrite(),
     Mutation(() => obj, { description: 'Save item' })

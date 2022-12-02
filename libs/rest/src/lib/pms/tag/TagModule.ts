@@ -6,11 +6,14 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TagService } from './TagService';
 import { TagViewService } from './TagViewService';
+import { TagOptionViewService } from './TagOptionViewService';
+
 import { TagController } from './TagController';
+import { TagResolver } from './TagResolver';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Tag, TagView, TagOptionView])],
-  providers: [TagService, TagViewService, TagController],
+  providers: [TagService, TagViewService, TagOptionViewService, TagResolver],
   controllers: [TagController],
 })
 export class TagModule {}

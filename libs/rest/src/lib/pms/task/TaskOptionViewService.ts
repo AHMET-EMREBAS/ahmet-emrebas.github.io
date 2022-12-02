@@ -8,8 +8,8 @@ import { Injectable } from '@nestjs/common';
 export class TaskOptionViewService extends ResourceViewService<TaskOptionView> {
   constructor(
     @InjectRepository(TaskOptionView)
-    messageViewRepo: Repository<TaskOptionView>
+    taskViewRepo: Repository<TaskOptionView>
   ) {
-    super(messageViewRepo);
+    super(taskViewRepo);
   }
 }

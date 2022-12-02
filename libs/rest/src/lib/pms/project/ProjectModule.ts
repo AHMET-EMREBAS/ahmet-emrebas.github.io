@@ -6,13 +6,21 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProjectService } from './ProjectService';
 import { ProjectViewService } from './ProjectViewService';
+import { ProjectOptionViewService } from './ProjectOptionViewService';
+
 import { ProjectController } from './ProjectController';
+import { ProjectResolver } from './ProjectResolver';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Project, ProjectView, ProjectOptionView]),
   ],
-  providers: [ProjectService, ProjectViewService, ProjectController],
+  providers: [
+    ProjectService,
+    ProjectViewService,
+    ProjectOptionViewService,
+    ProjectResolver,
+  ],
   controllers: [ProjectController],
 })
 export class ProjectModule {}

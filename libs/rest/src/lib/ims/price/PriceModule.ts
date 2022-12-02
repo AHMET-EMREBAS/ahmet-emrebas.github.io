@@ -10,7 +10,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PriceService } from './PriceService';
 import { PriceViewService } from './PriceViewService';
+import { PriceOptionViewService } from './PriceOptionViewService';
+
 import { PriceController } from './PriceController';
+import { PriceResolver } from './PriceResolver';
 
 @Module({
   imports: [
@@ -24,7 +27,12 @@ import { PriceController } from './PriceController';
       Product,
     ]),
   ],
-  providers: [PriceService, PriceViewService, PriceController],
+  providers: [
+    PriceService,
+    PriceViewService,
+    PriceOptionViewService,
+    PriceResolver,
+  ],
   controllers: [PriceController],
 })
 export class PriceModule {}

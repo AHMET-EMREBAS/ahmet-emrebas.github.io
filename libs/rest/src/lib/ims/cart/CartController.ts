@@ -1,6 +1,8 @@
+import { Body, Query } from '@nestjs/common';
 import {
   Add,
   Count,
+  Options,
   ParamId,
   ParamRid,
   QueryDto,
@@ -11,76 +13,65 @@ import {
   Unset,
   Update,
   Write,
+  Delete,
   Controller,
-  ArgId,
-  ArgRid,
 } from '@ae/core';
+
 import { Cart } from '@ae/models/ims/cart/Cart';
 import { CartView } from '@ae/models/ims/cart/CartView';
 import { CartOptionView } from '@ae/models/ims/cart/CartOptionView';
 import { CreateCartDto } from '@ae/models/ims/cart/dto/CreateCartDto';
 import { UpdateCartDto } from '@ae/models/ims/cart/dto/UpdateCartDto';
 
-import {
-  applyDecorators,
-  Body,
-  Delete,
-  Query,
-  ValidationPipe,
-} from '@nestjs/common';
-
 import { CartService } from './CartService';
 import { CartViewService } from './CartViewService';
-import { Args } from '@nestjs/graphql';
-import { ApiBody } from '@nestjs/swagger';
+import { CartOptionViewService } from './CartOptionViewService';
 
-@Controller('ims/cart', Cart)
+import { Args } from '@nestjs/graphql';
+
+@Controller('ims/cart')
 export class CartController {
   constructor(
     private readonly service: CartService,
-    private readonly viewService: CartViewService
+    private readonly viewService: CartViewService,
+    private readonly optionViewService: CartOptionViewService
   ) {}
 
-  @Read(Cart)
-  findCart(
-    @Args('query')
-    @Query()
-    query: QueryDto<Cart & CartView>
-  ) {
+  @Read()
+  findCart(@Query() query: QueryDto<Cart & CartView>) {
     if (query.view === true) {
       return this.viewService.find(query);
     }
     return this.service.find(query);
   }
 
-  @ReadById(Cart)
-  findByCartId(@ArgId() @ParamId() id: number) {
+  @ReadById()
+  findByCartId(@ParamId() id: number) {
     return this.service.findOneBy({ id });
   }
 
-  @Write(Cart)
-  saveCart(
-    @Body() body: CreateCartDto,
-    @Args('cart', { nullable: true }) args: CreateCartDto
-  ) {
+  @Write()
+  saveCart(@Body() body: CreateCartDto) {
     return this.service.save(body);
   }
 
   @Update()
-  updateCart(
-    @ArgId() @ParamId() id: number,
-    @Args('cart') @Body() body: UpdateCartDto
-  ) {
+  updateCart(@ParamId() id: number, @Body() body: UpdateCartDto) {
     return this.service.update(id, body);
   }
 
   @Delete()
-  deleteCart(@ArgId() @ParamId() id: number) {
+  deleteCart(@ParamId() id: number) {
     return this.service.delete(id);
   }
 
   @Count()
   countCart() {
     return this.service.count();
+  }
+
+  @Options()
+  optionsCart(@Query() query: QueryDto<Cart & CartView>) {
+    return this.optionViewService.find(query);
   }
 }
