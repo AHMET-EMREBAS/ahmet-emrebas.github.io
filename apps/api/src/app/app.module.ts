@@ -1,9 +1,9 @@
-import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
-import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppResolver } from './app.resolver';
 
 @Module({
   imports: [
@@ -27,5 +27,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
   ],
+  providers: [AppResolver],
 })
 export class AppModule {}

@@ -3,14 +3,21 @@
  * This is only a minimal backend to get started.
  */
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app/app.module';
 import * as favicon from 'serve-favicon';
 
-import { GlobalValidationPipe } from '@ae/core';
 import { join } from 'path';
+
+const GLOBAL_VALIDATION_PIPE = new ValidationPipe({
+  transform: true,
+  transformOptions: {
+    excludeExtraneousValues: true,
+  },
+  validationError: { target: false, value: false },
+});
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -23,7 +30,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3333;
 
   app.use(cookieParser());
-  app.useGlobalPipes(GlobalValidationPipe);
+  app.useGlobalPipes(GLOBAL_VALIDATION_PIPE);
   app.use(favicon(join(__dirname, 'favicon.ico')));
 
   const config = new DocumentBuilder()
