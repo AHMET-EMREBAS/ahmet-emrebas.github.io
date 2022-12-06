@@ -1,14 +1,9 @@
 import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
-import { AppSchedule } from './app.schedule';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { AppResolver } from './app.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SampleModule } from './sample/sample.module';
 
 @Module({
   imports: [
@@ -19,7 +14,6 @@ import { SampleModule } from './sample/sample.module';
       synchronize: true,
       dropSchema: true,
     }),
-    SampleModule,
     CacheModule.register({
       isGlobal: true,
       ttl: 10,
@@ -32,16 +26,6 @@ import { SampleModule } from './sample/sample.module';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
-  ],
-  controllers: [AppController],
-  providers: [
-    AppService,
-    AppSchedule,
-    AppResolver,
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    },
   ],
 })
 export class AppModule {}

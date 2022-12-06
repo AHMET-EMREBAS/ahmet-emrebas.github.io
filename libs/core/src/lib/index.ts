@@ -1,13 +1,1 @@
-export * from './auth';
-export * from './dto';
-export * from './entity';
-export * from './http';
-export * from './property';
-export * from './service';
-export * from './transformers';
-export * from './types';
-export * from './utils';
-export * from './validators';
-export * from './query';
-export * from './graph';
-export * from './models';
+export const ___core = '';
