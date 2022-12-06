@@ -1,16 +1,9 @@
 import { ReadProduct } from '@ae/common/ims/product/ReadProduct';
 
 import {
-  IDDto,
   StringProperty,
-  DateProperty,
   NumberProperty,
-  BooleanProperty,
-  EmailProperty,
-  ManyToManyProperty,
   ManyToOneProperty,
-  OneToManyProperty,
-  OneToOneProperty,
   BaseEntity,
 } from '@ae/core';
 

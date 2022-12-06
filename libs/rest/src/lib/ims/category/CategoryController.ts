@@ -19,33 +19,21 @@ import {
 
 import { Category } from '@ae/models/ims/category/Category';
 import { CategoryView } from '@ae/models/ims/category/CategoryView';
-import { CategoryOptionView } from '@ae/models/ims/category/CategoryOptionView';
 import { CreateCategoryDto } from '@ae/models/ims/category/dto/CreateCategoryDto';
 import { UpdateCategoryDto } from '@ae/models/ims/category/dto/UpdateCategoryDto';
 import { QueryCategoryDto } from '@ae/models/ims/category/dto/QueryCategoryDto';
 
 import { CategoryService } from './CategoryService';
-import { CategoryViewService } from './CategoryViewService';
-import { CategoryOptionViewService } from './CategoryOptionViewService';
-
-import { Args } from '@nestjs/graphql';
 
 @Controller('ims/category')
 export class CategoryController {
-  constructor(
-    private readonly service: CategoryService,
-    private readonly viewService: CategoryViewService,
-    private readonly optionViewService: CategoryOptionViewService
-  ) {}
+  constructor(private readonly service: CategoryService) {}
 
   @Read()
   findCategory(
     @Query() query: QueryDto<Category & CategoryView>,
     @Query() where: QueryCategoryDto
   ) {
-    if (query.view === true) {
-      return this.viewService.find({ ...query, where });
-    }
     return this.service.find({ ...query, where });
   }
 
@@ -72,10 +60,5 @@ export class CategoryController {
   @Count()
   countCategory() {
     return this.service.count();
-  }
-
-  @Options()
-  optionsCategory(@Query() query: QueryDto<Category & CategoryView>) {
-    return this.optionViewService.find(query);
   }
 }

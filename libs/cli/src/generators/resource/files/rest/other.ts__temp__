@@ -1,6 +1,0 @@
-export * from './<%- className %>Controller';
-export * from './<%- className %>Resolver';
-export * from './<%- className %>Service';
-export * from './<%- className %>ViewService';
-export * from './<%- className %>Module';
-export * from './<%- className %>OptionViewService';

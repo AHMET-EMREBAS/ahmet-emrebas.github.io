@@ -1,12 +1,4 @@
-import {
-  BaseEntity,
-  Entity,
-  Column,
-  ManyToMany,
-  OneToMany,
-  OneToOne,
-  ManyToOne,
-} from '@ae/core';
+import { BaseEntity, Entity, Column, ManyToOne } from '@ae/core';
 
 import { Category } from '../category/Category';
 

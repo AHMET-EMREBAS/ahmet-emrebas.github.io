@@ -6,7 +6,64 @@
         <source>Hello World</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/app.component.ts</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8119202334065973300" datatype="html">
+        <source> Product Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4902817035128594900" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3885497195825665706" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3228987374257447860" datatype="html">
+        <source>Product Price</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8894377483833272091" datatype="html">
+        <source>Price</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2578732368187466916" datatype="html">
+        <source>Cost</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935187492052582731" datatype="html">
+        <source>Submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/client/src/lib/ims/product/create-product/create-product.component.html</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
     </body>

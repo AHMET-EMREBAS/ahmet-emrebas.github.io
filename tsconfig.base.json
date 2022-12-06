@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ae/cli": ["libs/cli/src/index.ts"],
+      "@ae/client/*": ["libs/client/src/lib/*"],
       "@ae/common/*": ["libs/common/src/lib/*"],
       "@ae/components": ["libs/components/src/index.ts"],
       "@ae/core": ["libs/core/src/index.ts"],

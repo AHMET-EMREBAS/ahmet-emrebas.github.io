@@ -6,11 +6,12 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SharedModule } from 'primeng/api';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     RouterModule.forRoot(appRoutes, {
       useHash: true,
       initialNavigation: 'enabledBlocking',

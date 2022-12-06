@@ -1,19 +1,6 @@
-import { CreateCart } from '@ae/common/ims/cart/CreateCart';
 import { UpdateCart } from '@ae/common/ims/cart/UpdateCart';
 
-import {
-  IDDto,
-  StringProperty,
-  DateProperty,
-  NumberProperty,
-  BooleanProperty,
-  EmailProperty,
-  PasswordProperty,
-  ManyToManyProperty,
-  ManyToOneProperty,
-  OneToManyProperty,
-  OneToOneProperty,
-} from '@ae/core';
+import { StringProperty } from '@ae/core';
 
 import { InputType } from '@nestjs/graphql';
 

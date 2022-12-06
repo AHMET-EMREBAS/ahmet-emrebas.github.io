@@ -16,12 +16,10 @@ export const GlobalValidationPipe = new ValidationPipe({
     });
   },
   validationError: { target: false, value: false },
-
   transform: true,
   transformOptions: {
     excludeExtraneousValues: true,
     exposeUnsetFields: false,
   },
-  forbidUnknownValues: true,
   stopAtFirstError: true,
 });
