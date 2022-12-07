@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "string",
+  "enum": [
+    "product",
+    "price",
+    "pricelevel",
+    "quantity",
+    "store",
+
+    "user",
+    "customer",
+    "permission",
+
+    "review",
+
+    "message",
+    "notification",
+    "img",
+    "category",
+    "department",
+    "log",
+    "event",
+    "contact",
+    "url",
+    "phone",
+    "email",
+
+    "blog",
+    "article",
+    "comment",
+    "like",
+
+    "project",
+    "task",
+    "sprint",
+    "tag",
+    "cron",
+
+    "clockin",
+
+    "order",
+    "transaction",
+
+    "menu",
+    "menuItem",
+    "profile",
+    "theme",
+    "session",
+    "config",
+
+    "test",
+    "score",
+    "competition",
+    "result"
+  ]
+}

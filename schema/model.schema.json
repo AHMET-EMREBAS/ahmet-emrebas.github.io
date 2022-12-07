@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "description": "Database model schema",
+  "title": "Model Schema",
+  "$id": "ModelSchema",
+  "properties": {
+    "meta": {
+      "$ref": "#/definitions/Meta"
+    },
+    "properties": {
+      "$ref": "#/definitions/Properties"
+    }
+  },
+  "required": ["meta", "properties"],
+  "additionalProperties": false,
+  "definitions": {
+    "Meta": {
+      "title": "Metadata",
+      "description": "Includes the metadata of the model like name, group, and other distinctive properties.",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/ModelNames"
+        },
+        "scope": {
+          "type": "string",
+          "description": "Scope of the model"
+        }
+      },
+      "required": ["name"]
+    },
+    "Properties": {
+      "title": "Properties",
+      "description": "Includes main properties of the model like username, description, age, price, cost , firstName, lastName etc.",
+      "$ref": "./model.properties.json"
+    },
+    "ModelNames": {
+      "$ref": "./model.names.json"
+    }
+  }
+}

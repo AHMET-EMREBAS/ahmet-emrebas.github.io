@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "string",
+  "enum": [
+    "text",
+    "textarea",
+    "number",
+    "number-range",
+    "barcode",
+    "uuid",
+    "apikey",
+    "email",
+    "currency",
+    "enum-one",
+    "enum-many",
+    "select-one",
+    "select-many",
+    "search-one",
+    "search-many",
+    "date",
+    "date-range",
+    "city",
+    "state",
+    "zip",
+    "phone",
+    "address",
+    "password",
+    "username"
+  ]
+}

@@ -1,0 +1,16 @@
+meta:
+  name: product
+  scope: inventory
+
+properties:
+  name:
+    type: number
+    inputType: number
+    minimum: 0
+    maximum: 0
+
+  description:
+    type: string
+    inputType: textarea
+    minLength: 0
+    maxLength: 0
