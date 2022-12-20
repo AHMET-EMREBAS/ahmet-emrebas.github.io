@@ -1,6 +1,18 @@
 properties:
   name:
-    type: Boolean
+    type: String
 
   description:
-    type: Boolean
+    type: String
+
+  category:
+    type: ManyToOne
+    target: category
+    eager: true
+    viewColumns:
+      name:
+        as: category
+
+  tags:
+    type: ManyToMany
+    target: tag

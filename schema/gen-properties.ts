@@ -1,19 +1,11 @@
 import { writeFileSync } from 'fs';
-import { kebabCase, snakeCase } from 'lodash';
+import { kebabCase } from 'lodash';
+import { join } from 'path';
 
 function toFileName(text: string) {
   return kebabCase(text) + '.schema.json';
 }
-type Types =
-  | 'String'
-  | 'Number'
-  | 'Integer'
-  | 'Date'
-  | 'Boolean'
-  | 'ManyToOne'
-  | 'ManyToMany'
-  | 'OneToOne'
-  | 'OneToMany';
+type Types = 'String' | 'Number' | 'Integer' | 'Date' | 'Boolean';
 
 type Validators =
   | 'minLength'
@@ -32,21 +24,13 @@ const properties: [Types, Validators[]][] = [
   ['Integer', ['minimum', 'maximum']],
   ['Boolean', []],
   ['Date', ['future', 'past']],
-  ['ManyToOne', []],
-  ['ManyToMany', []],
-  ['OneToOne', []],
-  ['OneToMany', []],
 ];
 
-const indexContent = {
+const indexContent: any = {
   $schema: 'http://json-schema.org/draft-07/schema',
   title: 'Property Type',
   $id: 'PropertyType',
-  oneOf: [
-    {
-      $ref: './integer.schema.json',
-    },
-  ],
+  oneOf: [],
 };
 
 for (const [propertyType, validators] of properties) {
@@ -60,7 +44,7 @@ for (const [propertyType, validators] of properties) {
       },
     },
     required: ['type'],
-    additionalItems: false,
+    additionalProperties: false,
   };
   if (validators && validators.length > 0) {
     for (const validator of validators) {
@@ -74,7 +58,13 @@ for (const [propertyType, validators] of properties) {
     $ref: `./${toFileName(propertyType)}`,
   });
 
-  writeFileSync(toFileName(propertyType), JSON.stringify(content));
+  writeFileSync(
+    join(__dirname, 'property', toFileName(propertyType)),
+    JSON.stringify(content)
+  );
 }
 
-writeFileSync(toFileName('index'), JSON.stringify(indexContent));
+writeFileSync(
+  join(__dirname, 'property', toFileName('index')),
+  JSON.stringify(indexContent)
+);

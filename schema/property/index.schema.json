@@ -8,10 +8,6 @@
     { "$ref": "./number.schema.json" },
     { "$ref": "./integer.schema.json" },
     { "$ref": "./boolean.schema.json" },
-    { "$ref": "./date.schema.json" },
-    { "$ref": "./many-to-one.schema.json" },
-    { "$ref": "./many-to-many.schema.json" },
-    { "$ref": "./one-to-one.schema.json" },
-    { "$ref": "./one-to-many.schema.json" }
+    { "$ref": "./date.schema.json" }
   ]
 }

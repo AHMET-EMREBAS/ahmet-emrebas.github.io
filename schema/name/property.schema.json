@@ -3,16 +3,31 @@
   "title": "Model Names",
   "type": "string",
   "enum": [
+    "id",
+    "uuid",
+    "active",
+    "createdAt",
+    "updatedAt",
+    "deletedAt",
+    "name",
     "username",
     "password",
     "email",
-    "name",
     "description",
     "price",
     "cost",
     "quantity",
     "upc",
-    "barcode"
+    "barcode",
+    "message",
+    "title",
+    "receiver",
+    "owner",
+    "assignee",
+    "status",
+    "url",
+    "path",
+    "data"
   ],
   "additionalProperties": false
 }
