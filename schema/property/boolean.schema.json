@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema","title":"Boolean Property","$id":"BooleanProperty","properties":{"type":{"const":"Boolean"}},"required":["type"],"additionalItems":false}

@@ -1,0 +1,18 @@
+{
+  "$id": "ModelNames",
+  "title": "Model Names",
+  "type": "string",
+  "enum": [
+    "username",
+    "password",
+    "email",
+    "name",
+    "description",
+    "price",
+    "cost",
+    "quantity",
+    "upc",
+    "barcode"
+  ],
+  "additionalProperties": false
+}

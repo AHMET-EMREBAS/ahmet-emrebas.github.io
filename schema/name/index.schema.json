@@ -1,0 +1,14 @@
+{
+  "$id": "ModelNames",
+  "title": "Model Names",
+  "type": "string",
+  "oneOf": [
+    {
+      "$ref": "./property.schema.json"
+    },
+    {
+      "$ref": "./resource.schema.json"
+    }
+  ],
+  "additionalProperties": false
+}

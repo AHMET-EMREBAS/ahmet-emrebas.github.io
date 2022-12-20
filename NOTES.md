@@ -12,7 +12,7 @@
 - Set link to each locale as follows
 
 ```
-          <a MUST BE CLICKED FIRST AND ONCE  href="./en/index.html">en</a>
+          <a  href="./en/index.html">en</a>
 
           <a href="../en/index.html">en</a>
           <a href="../tr/index.html">tr</a>
