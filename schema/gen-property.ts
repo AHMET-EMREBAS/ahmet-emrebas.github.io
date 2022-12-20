@@ -9,14 +9,22 @@ type Types = 'String' | 'Number' | 'Integer' | 'Date' | 'Boolean';
 
 type InputType =
   | 'text'
+  | 'password'
+  | 'email'
+  | 'barcode'
+  | 'uuid'
+  | 'id'
   | 'textarea'
   | 'texteditor'
-  | 'checkbox'
-  | 'switch'
   | 'integer'
   | 'decimal'
   | 'currency'
   | 'date'
+  | 'checkbox'
+  | 'radio'
+  | 'checkbox-group'
+  | 'switch'
+  | 'switch-group'
   | 'select-one'
   | 'select-many'
   | 'find-one'
@@ -35,7 +43,8 @@ type Validators =
   | 'required'
   | 'unique'
   | 'name'
-  | 'barcode';
+  | 'barcode'
+  | 'phone';
 
 const properties: [Types, Validators[], InputType[]][] = [
   [
@@ -50,16 +59,26 @@ const properties: [Types, Validators[], InputType[]][] = [
       'password',
       'uuid',
       'barcode',
+      'phone',
     ],
-    ['text', 'textarea', 'select-one', 'select-many'],
+    [
+      'text',
+      'password',
+      'email',
+      'uuid',
+      'barcode',
+      'textarea',
+      'select-one',
+      'select-many',
+    ],
   ],
   [
     'Number',
     ['required', 'unique', 'minimum', 'maximum'],
     ['decimal', 'currency'],
   ],
-  ['Integer', ['required', 'unique', 'minimum', 'maximum'], ['integer']],
-  ['Boolean', [], ['checkbox', 'switch']],
+  ['Integer', ['required', 'unique', 'minimum', 'maximum'], ['integer', 'id']],
+  ['Boolean', [], ['checkbox', 'switch', 'checkbox-group', 'switch-group']],
   ['Date', ['required', 'unique', 'future', 'past'], ['date']],
 ];
 
@@ -76,15 +95,22 @@ for (const [propertyType, validators, inputTypes] of properties) {
     title: propertyType + ' Property',
     $id: propertyType + 'Property',
     properties: {
+      description: {
+        type: 'string',
+      },
       type: {
         const: propertyType,
       },
       inputType: {
-        properties: {
-          form: {
-            enum: inputTypes,
-          },
-        },
+        enum: inputTypes,
+      },
+      enum: {
+        type: 'array',
+        items: {},
+      },
+      generated: {
+        type: 'string',
+        enum: ['id', 'uuid'],
       },
     },
     required: ['type', 'inputType'],

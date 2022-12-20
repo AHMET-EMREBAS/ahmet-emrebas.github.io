@@ -26,7 +26,10 @@
     "comment",
     "review",
     "message",
-    "event"
+    "event",
+    "inbox",
+    "resource",
+    "operations"
   ],
   "additionalProperties": false
 }

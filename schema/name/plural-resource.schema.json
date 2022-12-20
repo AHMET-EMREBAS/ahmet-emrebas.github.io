@@ -26,7 +26,8 @@
     "comments",
     "reviews",
     "messages",
-    "events"
+    "events",
+    "inboxs"
   ],
   "additionalProperties": false
 }

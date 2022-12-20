@@ -27,7 +27,12 @@
     "status",
     "url",
     "path",
-    "data"
+    "data",
+    "firstName",
+    "lastName",
+    "phone",
+    "resource",
+    "operation"
   ],
   "additionalProperties": false
 }

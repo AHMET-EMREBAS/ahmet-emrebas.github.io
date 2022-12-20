@@ -2,11 +2,24 @@ import { writeFileSync } from 'fs';
 import { kebabCase } from 'lodash';
 import { join } from 'path';
 
-const RelationTypes: [string, string[]][] = [
-  ['ManyToMany', ['select-many', 'find-many']],
-  ['OneToMany', ['select-many', 'find-many']],
-  ['ManyToOne', ['select-one', 'find-one', 'owner', 'targetOwner']],
-  ['OneToOne', ['select-one', 'find-one', 'owner', 'targetOwner']],
+type InputType =
+  | 'select-one'
+  | 'find-one'
+  | 'select-many'
+  | 'find-many'
+  | 'select-target'
+  | 'checkbox-group'
+  | 'switch-group'
+  | 'radio';
+
+const RelationTypes: [string, InputType[]][] = [
+  [
+    'ManyToMany',
+    ['select-many', 'find-many', 'checkbox-group', 'switch-group'],
+  ],
+  ['OneToMany', ['select-many', 'find-many', 'checkbox-group', 'switch-group']],
+  ['ManyToOne', ['select-one', 'find-one', 'select-target', 'radio']],
+  ['OneToOne', ['select-one', 'find-one', 'select-target', 'radio']],
 ];
 
 const indexContent: any = {
@@ -26,6 +39,9 @@ for (const [r, inputTypes] of RelationTypes) {
     title: `${r} Property`,
     $id: `${r}Property`,
     properties: {
+      description: {
+        type: 'string',
+      },
       type: { const: `${r}` },
       target: { type: 'string', $ref: '../name/resource.schema.json' },
       inputType: {
