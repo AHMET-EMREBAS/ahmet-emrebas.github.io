@@ -25,7 +25,8 @@
     "likes",
     "comments",
     "reviews",
-    "messages"
+    "messages",
+    "events"
   ],
   "additionalProperties": false
 }
