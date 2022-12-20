@@ -28,7 +28,8 @@ type InputType =
   | 'select-one'
   | 'select-many'
   | 'find-one'
-  | 'find-many';
+  | 'find-many'
+  | 'NA';
 
 type Validators =
   | 'minLength'
@@ -63,6 +64,7 @@ const properties: [Types, Validators[], InputType[]][] = [
     ],
     [
       'text',
+      'texteditor',
       'password',
       'email',
       'uuid',
@@ -70,6 +72,7 @@ const properties: [Types, Validators[], InputType[]][] = [
       'textarea',
       'select-one',
       'select-many',
+      'NA',
     ],
   ],
   [
@@ -77,9 +80,17 @@ const properties: [Types, Validators[], InputType[]][] = [
     ['required', 'unique', 'minimum', 'maximum'],
     ['decimal', 'currency'],
   ],
-  ['Integer', ['required', 'unique', 'minimum', 'maximum'], ['integer', 'id']],
-  ['Boolean', [], ['checkbox', 'switch', 'checkbox-group', 'switch-group']],
-  ['Date', ['required', 'unique', 'future', 'past'], ['date']],
+  [
+    'Integer',
+    ['required', 'unique', 'minimum', 'maximum'],
+    ['integer', 'id', 'NA'],
+  ],
+  [
+    'Boolean',
+    [],
+    ['checkbox', 'switch', 'checkbox-group', 'switch-group', 'NA'],
+  ],
+  ['Date', ['required', 'unique', 'future', 'past'], ['date', 'NA']],
 ];
 
 const indexContent: any = {

@@ -32,7 +32,9 @@
     "lastName",
     "phone",
     "resource",
-    "operation"
+    "operation",
+    "content",
+    "read"
   ],
   "additionalProperties": false
 }

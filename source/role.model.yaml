@@ -1,0 +1,22 @@
+properties:
+  name:
+    description: Unique role name like admin,
+      cashier, store manager, assistant manager,
+      project manager, developer, qa etc.
+    type: String
+    inputType: text
+    unique: true
+    required: true
+
+relations:
+  permissions:
+    description: Permissoins of this role like create product, update task,
+      create new user, send message to customer etc.
+    type: ManyToMany
+    target: permission
+    inputType: checkbox-group
+    eager: true
+    nullable: true
+    viewColumns:
+      name:
+        as: permission

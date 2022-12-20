@@ -1,0 +1,13 @@
+properties:
+  email:
+    type: String
+    inputType: text
+    required: true
+    unique: true
+    email: true
+
+relations:
+  owner:
+    type: ManyToOne
+    target: user
+    inputType: owner

@@ -10,16 +10,27 @@ type InputType =
   | 'select-target'
   | 'checkbox-group'
   | 'switch-group'
-  | 'radio';
+  | 'owner'
+  | 'radio'
+  | 'NA';
 
 const RelationTypes: [string, InputType[]][] = [
   [
     'ManyToMany',
-    ['select-many', 'find-many', 'checkbox-group', 'switch-group'],
+    ['select-many', 'find-many', 'checkbox-group', 'switch-group', 'NA'],
   ],
-  ['OneToMany', ['select-many', 'find-many', 'checkbox-group', 'switch-group']],
-  ['ManyToOne', ['select-one', 'find-one', 'select-target', 'radio']],
-  ['OneToOne', ['select-one', 'find-one', 'select-target', 'radio']],
+  [
+    'OneToMany',
+    ['select-many', 'find-many', 'checkbox-group', 'switch-group', 'NA'],
+  ],
+  [
+    'ManyToOne',
+    ['select-one', 'find-one', 'select-target', 'radio', 'owner', 'NA'],
+  ],
+  [
+    'OneToOne',
+    ['select-one', 'find-one', 'select-target', 'radio', 'owner', 'NA'],
+  ],
 ];
 
 const indexContent: any = {

@@ -27,7 +27,10 @@
     "reviews",
     "messages",
     "events",
-    "inboxs"
+    "inboxs",
+    "operations",
+    "blogs",
+    "articles"
   ],
   "additionalProperties": false
 }

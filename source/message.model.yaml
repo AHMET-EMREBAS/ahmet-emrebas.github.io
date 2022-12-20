@@ -1,19 +1,30 @@
 properties:
+  title:
+    type: String
+    inputType: text
+    maxLength: 50
+
   message:
     type: String
     inputType: textarea
     maxLength: 1000
     required: true
 
+  read:
+    type: Boolean
+    inputType: NA
+
 relations:
   owner:
+    description: Sender ID of the message
     type: ManyToOne
     target: user
     inputType: owner
     onDelete: CASCADE
 
   receiver:
+    description: Receiver ID of the message
     type: ManyToOne
     target: user
-    inputType: targetOwner
+    inputType: find-one
     onDelete: CASCADE

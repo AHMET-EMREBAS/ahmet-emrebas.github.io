@@ -29,7 +29,9 @@
     "event",
     "inbox",
     "resource",
-    "operations"
+    "operation",
+    "blog",
+    "article"
   ],
   "additionalProperties": false
 }

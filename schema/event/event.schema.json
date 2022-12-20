@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Event Property",
+  "$id": "EventProperty",
+  "properties": {
+    "description": { "type": "string" },
+    "on": {
+      "patternProperties": {
+        "read|write|update|delete": {
+          "properties": {
+            "set": {
+              "description": ""
+            },
+            "notify": {}
+          },
+          "additionalProperties": false
+        }
+      },
+      "minProperties": 1,
+      "propertyNames": {
+        "enum": ["read", "write", "update", "delete"]
+      }
+    }
+  },
+  "required": ["on"],
+  "additionalProperties": false,
+  "definitions": {
+    "Events": {}
+  }
+}

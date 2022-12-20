@@ -1,0 +1,18 @@
+properties:
+  username:
+    type: String
+    inputType: email
+    unique: true
+    required: true
+
+  password:
+    type: String
+    inputType: password
+    password: true
+    required: true
+
+relations:
+  roles:
+    type: ManyToMany
+    target: role
+    inputType: find-many
