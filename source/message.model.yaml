@@ -1,0 +1,19 @@
+properties:
+  message:
+    type: String
+    inputType: textarea
+    maxLength: 1000
+    required: true
+
+relations:
+  owner:
+    type: ManyToOne
+    target: user
+    inputType: owner
+    onDelete: CASCADE
+
+  receiver:
+    type: ManyToOne
+    target: user
+    inputType: targetOwner
+    onDelete: CASCADE

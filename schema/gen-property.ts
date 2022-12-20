@@ -80,7 +80,11 @@ for (const [propertyType, validators, inputTypes] of properties) {
         const: propertyType,
       },
       inputType: {
-        enum: inputTypes,
+        properties: {
+          form: {
+            enum: inputTypes,
+          },
+        },
       },
     },
     required: ['type', 'inputType'],

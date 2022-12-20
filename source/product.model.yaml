@@ -39,6 +39,7 @@ relations:
   category:
     type: ManyToOne
     target: category
+    inputType: find-one
     eager: true
     nullable: true
     viewColumns:

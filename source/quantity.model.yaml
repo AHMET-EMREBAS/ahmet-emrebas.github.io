@@ -8,6 +8,7 @@ relations:
   product:
     type: ManyToOne
     target: product
+    inputType: find-one
     eager: true
     onDelete: RESTRICT
     onUpdate: NO ACTION
@@ -18,6 +19,7 @@ relations:
   store:
     type: ManyToOne
     target: store
+    inputType: find-one
     eager: true
     onDelete: CASCADE
     onUpdate: CASCADE

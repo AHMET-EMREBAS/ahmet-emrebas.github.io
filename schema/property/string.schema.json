@@ -1,1 +1,38 @@
-{"$schema":"http://json-schema.org/draft-07/schema","title":"String Property","$id":"StringProperty","properties":{"type":{"const":"String"},"inputType":{"enum":["text","textarea","select-one","select-many"]},"name":{"type":"boolean","description":"Validator","default":true},"required":{"type":"boolean","description":"Validator","default":true},"unique":{"type":"boolean","description":"Validator","default":true},"minLength":{"type":"number","description":"Validator","default":0},"maxLength":{"type":"number","description":"Validator","default":0},"email":{"type":"boolean","description":"Validator","default":true},"password":{"type":"boolean","description":"Validator","default":true},"uuid":{"type":"boolean","description":"Validator","default":true},"barcode":{"type":"boolean","description":"Validator","default":true}},"required":["type","inputType"],"additionalProperties":false}
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "String Property",
+  "$id": "StringProperty",
+  "properties": {
+    "type": { "const": "String" },
+    "inputType": {
+      "enum": ["text", "textarea", "select-one", "select-many"]
+    },
+    "name": { "type": "boolean", "description": "Validator", "default": true },
+    "required": {
+      "type": "boolean",
+      "description": "Validator",
+      "default": true
+    },
+    "unique": {
+      "type": "boolean",
+      "description": "Validator",
+      "default": true
+    },
+    "minLength": { "type": "number", "description": "Validator", "default": 0 },
+    "maxLength": { "type": "number", "description": "Validator", "default": 0 },
+    "email": { "type": "boolean", "description": "Validator", "default": true },
+    "password": {
+      "type": "boolean",
+      "description": "Validator",
+      "default": true
+    },
+    "uuid": { "type": "boolean", "description": "Validator", "default": true },
+    "barcode": {
+      "type": "boolean",
+      "description": "Validator",
+      "default": true
+    }
+  },
+  "required": ["type", "inputType"],
+  "additionalProperties": false
+}

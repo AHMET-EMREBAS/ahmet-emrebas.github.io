@@ -15,6 +15,7 @@ relations:
   product:
     type: ManyToOne
     target: product
+    inputType: find-one
     eager: true
     onDelete: CASCADE
     onUpdate: CASCADE
@@ -22,6 +23,7 @@ relations:
   pricelevel:
     type: ManyToOne
     target: pricelevel
+    inputType: find-one
     eager: true
     onDelete: CASCADE
     onUpdate: CASCADE

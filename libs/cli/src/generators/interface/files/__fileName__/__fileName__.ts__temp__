@@ -1,0 +1,22 @@
+export interface I<%- className %>
+<% if(targets?.length > 0) { %>
+  <
+    <% for(const target of targets){ %>
+      <%- target %>,
+     <% } %>
+  >
+<% } %>
+
+{
+
+
+<% for(const [key, value] of properties ) { %>
+  <%- key %>: <%- propertyType(value.type) %>
+<% } %>
+
+
+<% for(const [key, value] of relations) { %>
+  <%- key %>: <%- upperFirst(value.target) %>
+<% } %>
+
+}
