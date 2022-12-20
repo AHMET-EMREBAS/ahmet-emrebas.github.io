@@ -20,6 +20,7 @@
       "@ae/common/*": ["libs/common/src/lib/*"],
       "@ae/components/*": ["libs/components/src/lib/*"],
       "@ae/core/*": ["libs/core/src/lib/*"],
+      "@ae/graph/*": ["libs/graph/src/lib/*"],
       "@ae/models/*": ["libs/models/src/lib/*"],
       "@ae/rest/*": ["libs/rest/src/lib/*"],
       "@ae/utils/*": ["libs/utils/src/lib/*"]

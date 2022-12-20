@@ -8,6 +8,7 @@
     "components": "libs/components",
     "core": "libs/core",
     "desktop": "apps/desktop",
+    "graph": "libs/graph",
     "mobile": "apps/mobile",
     "models": "libs/models",
     "rest": "libs/rest",
