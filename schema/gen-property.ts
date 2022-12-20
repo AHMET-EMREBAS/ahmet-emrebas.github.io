@@ -7,6 +7,21 @@ function toFileName(text: string) {
 }
 type Types = 'String' | 'Number' | 'Integer' | 'Date' | 'Boolean';
 
+type InputType =
+  | 'text'
+  | 'textarea'
+  | 'texteditor'
+  | 'checkbox'
+  | 'switch'
+  | 'integer'
+  | 'decimal'
+  | 'currency'
+  | 'date'
+  | 'select-one'
+  | 'select-many'
+  | 'find-one'
+  | 'find-many';
+
 type Validators =
   | 'minLength'
   | 'maxLength'
@@ -16,14 +31,36 @@ type Validators =
   | 'past'
   | 'email'
   | 'password'
-  | 'uuid';
+  | 'uuid'
+  | 'required'
+  | 'unique'
+  | 'name'
+  | 'barcode';
 
-const properties: [Types, Validators[]][] = [
-  ['String', ['minLength', 'maxLength', 'email', 'password', 'uuid']],
-  ['Number', ['minimum', 'maximum']],
-  ['Integer', ['minimum', 'maximum']],
-  ['Boolean', []],
-  ['Date', ['future', 'past']],
+const properties: [Types, Validators[], InputType[]][] = [
+  [
+    'String',
+    [
+      'name',
+      'required',
+      'unique',
+      'minLength',
+      'maxLength',
+      'email',
+      'password',
+      'uuid',
+      'barcode',
+    ],
+    ['text', 'textarea', 'select-one', 'select-many'],
+  ],
+  [
+    'Number',
+    ['required', 'unique', 'minimum', 'maximum'],
+    ['decimal', 'currency'],
+  ],
+  ['Integer', ['required', 'unique', 'minimum', 'maximum'], ['integer']],
+  ['Boolean', [], ['checkbox', 'switch']],
+  ['Date', ['required', 'unique', 'future', 'past'], ['date']],
 ];
 
 const indexContent: any = {
@@ -33,7 +70,7 @@ const indexContent: any = {
   oneOf: [],
 };
 
-for (const [propertyType, validators] of properties) {
+for (const [propertyType, validators, inputTypes] of properties) {
   const content: any = {
     $schema: 'http://json-schema.org/draft-07/schema',
     title: propertyType + ' Property',
@@ -42,15 +79,18 @@ for (const [propertyType, validators] of properties) {
       type: {
         const: propertyType,
       },
+      inputType: {
+        enum: inputTypes,
+      },
     },
-    required: ['type'],
+    required: ['type', 'inputType'],
     additionalProperties: false,
   };
   if (validators && validators.length > 0) {
     for (const validator of validators) {
       content.properties[validator] = !!validator.match(/min|max/)
-        ? { type: 'number', default: 0 }
-        : { type: 'boolean', default: false };
+        ? { type: 'number', description: 'Validator', default: 0 }
+        : { type: 'boolean', description: 'Validator', default: true };
     }
   }
 

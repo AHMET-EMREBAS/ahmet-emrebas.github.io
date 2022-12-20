@@ -5,14 +5,18 @@
     "properties": {
       "patternProperties": {
         ".*": {
-          "oneOf": [
-            {
-              "$ref": "./property/index.schema.json"
-            },
-            {
-              "$ref": "./relation/index.schema.json"
-            }
-          ]
+          "$ref": "./property/index.schema.json"
+        }
+      },
+      "propertyNames": {
+        "$ref": "./name/index.schema.json"
+      },
+      "minProperties": 1
+    },
+    "relations": {
+      "patternProperties": {
+        ".*": {
+          "$ref": "./relation/index.schema.json"
         }
       },
       "propertyNames": {

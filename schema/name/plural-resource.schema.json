@@ -1,0 +1,31 @@
+{
+  "$id": "ModelNames",
+  "title": "Model Names",
+  "type": "string",
+  "enum": [
+    "users",
+    "products",
+    "categories",
+    "departments",
+    "contacts",
+    "prices",
+    "quantities",
+    "stores",
+    "pricelevels",
+    "orders",
+    "transactions",
+    "imgs",
+    "profiles",
+    "roles",
+    "permissions",
+    "tasks",
+    "projects",
+    "sprints",
+    "tags",
+    "likes",
+    "comments",
+    "reviews",
+    "messages"
+  ],
+  "additionalProperties": false
+}

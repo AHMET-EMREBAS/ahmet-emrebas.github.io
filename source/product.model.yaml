@@ -1,18 +1,46 @@
 properties:
   name:
     type: String
+    inputType: text
+    name: true
+    unique: true
+    required: true
 
   description:
     type: String
+    inputType: textarea
+    maxLength: 400
 
+  upc:
+    type: String
+    inputType: text
+    unique: true
+    barcode: true
+
+  price:
+    type: Number
+    inputType: currency
+    minimum: 0
+    required: true
+
+  cost:
+    type: Number
+    inputType: currency
+    minimum: 0
+    required: true
+
+  quantity:
+    type: Integer
+    inputType: integer
+    minimum: 0
+    required: true
+
+relations:
   category:
     type: ManyToOne
     target: category
     eager: true
+    nullable: true
     viewColumns:
       name:
         as: category
-
-  tags:
-    type: ManyToMany
-    target: tag

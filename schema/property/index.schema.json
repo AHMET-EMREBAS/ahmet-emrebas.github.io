@@ -1,13 +1,1 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Property Type",
-  "$id": "PropertyType",
-  "oneOf": [
-    { "$ref": "./integer.schema.json" },
-    { "$ref": "./string.schema.json" },
-    { "$ref": "./number.schema.json" },
-    { "$ref": "./integer.schema.json" },
-    { "$ref": "./boolean.schema.json" },
-    { "$ref": "./date.schema.json" }
-  ]
-}
+{"$schema":"http://json-schema.org/draft-07/schema","title":"Property Type","$id":"PropertyType","oneOf":[{"$ref":"./string.schema.json"},{"$ref":"./number.schema.json"},{"$ref":"./integer.schema.json"},{"$ref":"./boolean.schema.json"},{"$ref":"./date.schema.json"}]}

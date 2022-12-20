@@ -1,0 +1,27 @@
+properties:
+  price:
+    type: Number
+    inputType: currency
+    minimum: 0
+    required: true
+
+  cost:
+    type: Number
+    inputType: currency
+    minimum: 0
+    required: true
+
+relations:
+  product:
+    type: ManyToOne
+    target: product
+    eager: true
+    onDelete: CASCADE
+    onUpdate: CASCADE
+
+  pricelevel:
+    type: ManyToOne
+    target: pricelevel
+    eager: true
+    onDelete: CASCADE
+    onUpdate: CASCADE

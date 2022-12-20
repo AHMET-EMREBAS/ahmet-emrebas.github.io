@@ -1,0 +1,26 @@
+properties:
+  quantity:
+    type: Integer
+    inputType: integer
+    minimum: 0
+
+relations:
+  product:
+    type: ManyToOne
+    target: product
+    eager: true
+    onDelete: RESTRICT
+    onUpdate: NO ACTION
+    viewColumns:
+      name:
+        as: product
+
+  store:
+    type: ManyToOne
+    target: store
+    eager: true
+    onDelete: CASCADE
+    onUpdate: CASCADE
+    viewColumns:
+      name:
+        as: store

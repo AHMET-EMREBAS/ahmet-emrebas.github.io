@@ -1,8 +1,1 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Boolean Property",
-  "$id": "BooleanProperty",
-  "properties": { "type": { "const": "Boolean" } },
-  "required": ["type"],
-  "additionalProperties": false
-}
+{"$schema":"http://json-schema.org/draft-07/schema","title":"Boolean Property","$id":"BooleanProperty","properties":{"type":{"const":"Boolean"},"inputType":{"enum":["checkbox","switch"]}},"required":["type","inputType"],"additionalProperties":false}

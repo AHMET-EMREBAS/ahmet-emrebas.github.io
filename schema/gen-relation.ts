@@ -38,13 +38,15 @@ for (const r of RelationTypes) {
         },
         minProperties: 1,
       },
-      eager: { type: 'boolean' },
-      nullable: { type: 'boolean' },
+      eager: { type: 'boolean', default: true },
+      nullable: { type: 'boolean', default: true },
       onDelete: {
         enum: ['RESTRICT', 'CASCADE', 'SET NULL', 'DEFAULT', 'NO ACTION'],
+        default: 'CASCADE',
       },
       onUpdate: {
         enum: ['RESTRICT', 'CASCADE', 'SET NULL', 'DEFAULT', 'NO ACTION'],
+        default: 'CASCADE',
       },
       cascase: {
         type: 'array',

@@ -8,6 +8,9 @@
     },
     {
       "$ref": "./resource.schema.json"
+    },
+    {
+      "$ref": "./plural-resource.schema.json"
     }
   ],
   "additionalProperties": false
