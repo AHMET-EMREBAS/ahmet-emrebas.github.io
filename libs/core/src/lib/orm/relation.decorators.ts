@@ -1,29 +1,26 @@
 import { applyDecorators } from '@nestjs/common';
 import {
-  OneToOne,
-  ManyToMany,
-  ManyToOne,
-  OneToMany,
+  OneToOne as OTO,
+  ManyToMany as MTM,
+  ManyToOne as MTO,
+  OneToMany as OTM,
   RelationOptions,
   JoinTable,
   JoinColumn,
 } from 'typeorm';
 import { ClassConstructor } from '../types/class-contructor';
 
-export type RelationType =
-  | 'OneToOne'
-  | 'ManyToMany'
-  | 'ManyToOne'
-  | 'OneToMany';
+type RelationType = 'OneToOne' | 'ManyToMany' | 'ManyToOne' | 'OneToMany';
+type ID = { id: number };
 
-export function Relation<T extends { id: number }>(
+function Relation<T extends ID>(
   type: RelationType,
   target: ClassConstructor<T>,
   options: RelationOptions
 ) {
   if (type === 'ManyToMany') {
     return applyDecorators(
-      ManyToMany(
+      MTM(
         () => target,
         (t) => t.id,
         options
@@ -34,7 +31,7 @@ export function Relation<T extends { id: number }>(
 
   if (type === 'ManyToOne') {
     return applyDecorators(
-      ManyToOne(
+      MTO(
         () => target,
         (t) => t.id,
         options
@@ -45,7 +42,7 @@ export function Relation<T extends { id: number }>(
 
   if (type === 'OneToMany') {
     return applyDecorators(
-      OneToMany(
+      OTM(
         () => target,
         (t) => t.id,
         options
@@ -56,7 +53,7 @@ export function Relation<T extends { id: number }>(
 
   if (type === 'OneToOne') {
     return applyDecorators(
-      OneToOne(
+      OTO(
         () => target,
         (t) => t.id,
         options
@@ -66,3 +63,23 @@ export function Relation<T extends { id: number }>(
 
   throw new Error(`${type} is not match for any realtion decorator!`);
 }
+
+export const ManyToMany = <T extends ID>(
+  target: ClassConstructor<T>,
+  options: RelationOptions
+) => Relation('ManyToMany', target, options);
+
+export const ManyToOne = <T extends ID>(
+  target: ClassConstructor<T>,
+  options: RelationOptions
+) => Relation('ManyToOne', target, options);
+
+export const OneToOne = <T extends ID>(
+  target: ClassConstructor<T>,
+  options: RelationOptions
+) => Relation('OneToOne', target, options);
+
+export const OneToMany = <T extends ID>(
+  target: ClassConstructor<T>,
+  options: RelationOptions
+) => Relation('OneToMany', target, options);

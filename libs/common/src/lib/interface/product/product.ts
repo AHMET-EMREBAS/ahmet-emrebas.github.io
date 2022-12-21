@@ -1,4 +1,5 @@
-export interface IProduct<Category> {
+import { IBaseEntity } from '../../common';
+export interface IProduct<Category> extends IBaseEntity {
   name: string;
 
   description: string;

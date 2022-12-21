@@ -1,4 +1,4 @@
-interface Property {
+export interface Property {
   type: string;
   inputType: string;
   minLength: number;
@@ -9,7 +9,7 @@ interface Property {
   unique: boolean;
 }
 
-interface Relation {
+export interface Relation {
   type: string;
   target: string;
   onDelete: string;
@@ -25,7 +25,7 @@ interface Relation {
   >;
 }
 
-export interface SourceSchema {
+export interface ModelSchema {
   properties: Record<string, Property>;
   relations: Record<string, Relation>;
 }

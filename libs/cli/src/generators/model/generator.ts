@@ -1,69 +1,56 @@
-import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  getWorkspaceLayout,
-  names,
-  offsetFromRoot,
-  Tree,
-} from '@nrwl/devkit';
-import * as path from 'path';
+import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
+import { upperFirst } from 'lodash';
+import { join } from 'path';
 import { ModelGeneratorSchema } from './schema';
+import { propertyType } from '../common/property-type';
+import { loadModel } from '../common/load-model';
+import { extractGroups } from '../common/extract-groups';
 
-interface NormalizedSchema extends ModelGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
+const SOURCE_FOLDER = join(__dirname, 'files');
+const TARGET_FOLDER = join('libs', 'models', 'src', 'lib');
+
+/**
+ * Check property has unique constraing
+ * @param value
+ * @returns
+ */
+function isUnique(value: any) {
+  return value.unique === true ? 'unique: true,' : '';
 }
 
-function normalizeOptions(tree: Tree, options: ModelGeneratorSchema): NormalizedSchema {
-  const name = names(options.name).fileName;
-  const projectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${name}`
-    : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
-
-  return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags,
-  };
-}
-
-function addFiles(tree: Tree, options: NormalizedSchema) {
-    const templateOptions = {
-      ...options,
-      ...names(options.name),
-      offsetFromRoot: offsetFromRoot(options.projectRoot),
-      template: ''
-    };
-    generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
+/**
+ * Check property has nullable constraint
+ * @param value
+ * @returns
+ */
+function isNullable(value: any) {
+  return value.nullable === true ? 'nullable: true,' : '';
 }
 
 export default async function (tree: Tree, options: ModelGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  addProjectConfiguration(
-    tree,
-    normalizedOptions.projectName,
-    {
-      root: normalizedOptions.projectRoot,
-      projectType: 'library',
-      sourceRoot: `${normalizedOptions.projectRoot}/src`,
-      targets: {
-        build: {
-          executor: "@ae/cli:build",
-        },
-      },
-      tags: normalizedOptions.parsedTags,
-    }
-  );
-  addFiles(tree, normalizedOptions);
+  const NAMES = names(options.name);
+  const schema = loadModel(tree, NAMES.name);
+
+  const {
+    properties,
+    relations,
+    relationTargets,
+    uniquePropertyTypes,
+    uniqueRelationTypes,
+  } = extractGroups(schema);
+
+  generateFiles(tree, SOURCE_FOLDER, TARGET_FOLDER, {
+    ...NAMES,
+    properties,
+    relations,
+    relationTargets,
+    uniquePropertyTypes,
+    uniqueRelationTypes,
+    propertyType,
+    upperFirst,
+    temp: '',
+    isUnique,
+    isNullable,
+  });
   await formatFiles(tree);
 }

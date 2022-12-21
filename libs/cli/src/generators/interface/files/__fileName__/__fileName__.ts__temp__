@@ -1,11 +1,12 @@
+import { IBaseEntity} from '../../common';
 export interface I<%- className %>
-<% if(targets?.length > 0) { %>
+<% if(relationTargets?.length > 0) { %>
   <
-    <% for(const target of targets){ %>
+    <% for(const target of relationTargets){ %>
       <%- target %>,
      <% } %>
   >
-<% } %>
+<% } %> extends IBaseEntity
 
 {
 

@@ -1,0 +1,60 @@
+
+import { Entity, BaseEntity,
+<% if(uniquePropertyTypes?.length > 0) { %>
+
+  <%  for(const type of uniquePropertyTypes) { %>
+    <%- type %>Column,
+  <% } %>
+
+<%  } %>
+
+<% if(uniqueRelationTypes?.length > 0) { %>
+
+  <%  for(const type of uniqueRelationTypes) { %>
+    <%- type %>,
+  <% } %>
+
+<%  } %>
+
+} from '@ae/core/orm';
+
+
+
+<% if(relationTargets?.length > 0){ %>
+
+    <% for(const rt of relationTargets) { %>
+      import { <%- rt %>  } from '../<%- rt.toLowerCase() %>';
+    <% } %>
+
+<% } %>
+
+import { I<%- className %> } from '@ae/common/interface/<%- fileName %>';
+
+@Entity()
+export class <%- className %> extends BaseEntity implements I<%- className %>
+<% if(relationTargets?.length > 0) { %>
+  <
+    <% for(const target of relationTargets){ %>
+      <%- target %>,
+     <% } %>
+  >
+<% } %>
+
+{
+
+  <% for(const [key, value] of properties){ %>
+
+    @<%- value.type %>Column({  <%- isUnique(value) %> <% isNullable(value) %> })
+    <%- key %>: <%- propertyType(value.type) %>;
+
+  <% } %>
+
+
+  <% for(const [key, value] of relations) { %>
+
+    @<%- value.type %>(<%- upperFirst(value.target) %>, { <% isNullable(value) %> })
+    <%- key %>: <%- upperFirst(value.target) %>;
+
+  <% } %>
+
+}

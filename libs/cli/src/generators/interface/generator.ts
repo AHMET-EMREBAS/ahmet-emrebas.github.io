@@ -3,43 +3,26 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { InterfaceGeneratorSchema } from './schema';
 import { load } from 'js-yaml';
-import { SourceSchema } from '../common/schema';
+import { ModelSchema } from '../common/model-schema';
+import { propertyType } from '../common/property-type';
 import { uniq, upperFirst } from 'lodash';
+import { loadModel } from '../common/load-model';
+import { extractGroups } from '../common/extract-groups';
 
 const SOURCE_FOLDER = join(__dirname, 'files');
 const TARGET_FOLDER = join('libs', 'common', 'src', 'lib', 'interface');
 
-function propertyType(t: 'String' | 'Number' | 'Integer' | 'Date' | 'Boolean') {
-  return {
-    String: 'string',
-    Number: 'number',
-    Integer: 'number',
-    Date: 'Date',
-    Boolean: 'boolean',
-  }[t];
-}
 export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
   const NAMES = names(options.name);
-  const schema = load(
-    readFileSync(
-      join(tree.root, 'source', NAMES.propertyName + '.model.yaml')
-    ).toString()
-  ) as SourceSchema;
+  const schema = loadModel(tree, NAMES.name);
 
-  const properties = Object.entries(schema.properties);
+  const { properties, relations, relationTargets } = extractGroups(schema);
 
-  const relations = Object.entries(schema.relations || {});
-
-  const targets = uniq(
-    Object.values(schema.relations || {})
-      .map((e) => e.target)
-      .map(upperFirst)
-  );
   generateFiles(tree, SOURCE_FOLDER, TARGET_FOLDER, {
     ...NAMES,
     properties,
     relations,
-    targets,
+    relationTargets,
     propertyType,
     upperFirst,
     temp: '',
