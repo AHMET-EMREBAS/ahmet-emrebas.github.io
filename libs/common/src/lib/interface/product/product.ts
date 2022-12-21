@@ -1,4 +1,5 @@
 import { IBaseEntity } from '../../common';
+
 export interface IProduct<Category> extends IBaseEntity {
   name: string;
 

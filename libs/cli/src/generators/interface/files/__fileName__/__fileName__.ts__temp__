@@ -1,4 +1,6 @@
 import { IBaseEntity} from '../../common';
+
+
 export interface I<%- className %>
 <% if(relationTargets?.length > 0) { %>
   <

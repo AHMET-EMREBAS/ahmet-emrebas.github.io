@@ -4,6 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppResolver } from './app.resolver';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AppResolver } from './app.resolver';
       synchronize: true,
       dropSchema: true,
     }),
+    ProductModule,
     CacheModule.register({
       isGlobal: true,
       ttl: 10,

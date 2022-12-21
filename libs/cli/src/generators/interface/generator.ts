@@ -1,11 +1,8 @@
 import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
-import { readFileSync } from 'fs';
 import { join } from 'path';
 import { InterfaceGeneratorSchema } from './schema';
-import { load } from 'js-yaml';
-import { ModelSchema } from '../common/model-schema';
 import { propertyType } from '../common/property-type';
-import { uniq, upperFirst } from 'lodash';
+import { upperFirst } from 'lodash';
 import { loadModel } from '../common/load-model';
 import { extractGroups } from '../common/extract-groups';
 
