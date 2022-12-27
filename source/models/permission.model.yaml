@@ -1,11 +1,4 @@
 properties:
-  uuid:
-    type: String
-    inputType: uuid
-    required: true
-    uuid: true
-    generated: uuid
-
   resource:
     type: String
     inputType: text

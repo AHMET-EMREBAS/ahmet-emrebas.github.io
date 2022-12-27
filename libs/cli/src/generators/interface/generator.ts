@@ -24,5 +24,6 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
     upperFirst,
     temp: '',
   });
+
   await formatFiles(tree);
 }

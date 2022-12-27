@@ -1,0 +1,26 @@
+
+import { Property,
+<% for(const r of uniqueRelationTypes) { %>
+  <%- r %>Property,
+<% } %>
+} from '@ae/core/property';
+import { IDDto } from '@ae/core/orm';
+
+export class Create<%- className %>Dto {
+
+  <% for(const [key, value] of properties){ %>
+
+    @Property( <%- JSON.stringify(value) %>)
+    <%- key %>: <%- propertyType(value.type) %>;
+
+  <% } %>
+
+
+  <% for(const [key, value] of relations) { %>
+
+    @<%- value.type %>Property()
+    <%- key %>: IDDto <%- value.type.endsWith('Many')  ? '[]' : '' %>;
+
+  <% } %>
+
+}

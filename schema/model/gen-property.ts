@@ -127,11 +127,32 @@ for (const [propertyType, validators, inputTypes] of properties) {
     required: ['type', 'inputType'],
     additionalProperties: false,
   };
+
   if (validators && validators.length > 0) {
     for (const validator of validators) {
-      content.properties[validator] = !!validator.match(/min|max/)
-        ? { type: 'number', description: 'Validator', default: 0 }
-        : { type: 'boolean', description: 'Validator', default: true };
+      if (validator.match(/min|max/)) {
+        content.properties[validator] = {
+          type: 'number',
+          description: 'Validator',
+          default: 0,
+        };
+        continue;
+      }
+
+      if (validator === 'required') {
+        content.properties[validator] = {
+          type: 'boolean',
+          description: 'Validator',
+          default: false,
+        };
+        continue;
+      }
+
+      content.properties[validator] = {
+        type: 'boolean',
+        description: 'Validator',
+        default: true,
+      };
     }
   }
 

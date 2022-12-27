@@ -11,3 +11,7 @@ relations:
     type: ManyToOne
     target: user
     inputType: owner
+    viewColumns:
+      username:
+        as: username
+        type: String

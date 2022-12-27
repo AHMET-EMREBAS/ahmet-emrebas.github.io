@@ -21,6 +21,10 @@ relations:
     target: user
     inputType: owner
     onDelete: CASCADE
+    viewColumns:
+      owner:
+        as: owner
+        type: String
 
   receiver:
     description: Receiver ID of the message
@@ -28,3 +32,7 @@ relations:
     target: user
     inputType: find-one
     onDelete: CASCADE
+    viewColumns:
+      username:
+        as: receiver
+        type: String

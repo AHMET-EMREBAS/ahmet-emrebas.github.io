@@ -65,7 +65,12 @@ for (const [r, inputTypes] of RelationTypes) {
               as: {
                 type: 'string',
               },
+              type: {
+                enum: ['String', 'Number', 'Integer', 'Date', 'Boolean'],
+              },
             },
+            required: ['as', 'type'],
+            additionalProperties: false,
           },
         },
         propertyNames: {

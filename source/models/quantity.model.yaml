@@ -15,6 +15,7 @@ relations:
     viewColumns:
       name:
         as: product
+        type: String
 
   store:
     type: ManyToOne
@@ -26,3 +27,4 @@ relations:
     viewColumns:
       name:
         as: store
+        type: String

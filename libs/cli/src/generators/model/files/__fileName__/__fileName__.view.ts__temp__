@@ -1,0 +1,93 @@
+import { DataSource, ViewColumn, ViewEntity } from 'typeorm';
+import { <%- className %> } from './<%- fileName %>.entity';
+
+<% if(relationTargets?.length > 0) { %>
+
+    <% for(const rt of relationTargets) { %>
+      import { <%- rt %>  } from '../<%- rt.toLowerCase() %>';
+    <% } %>
+
+<% } %>
+
+<% const PN = propertyName; %>
+
+@ViewEntity({
+  expression: (ds: DataSource) => {
+    return ds
+      .createQueryBuilder()
+      .select('<%- PN %>.id', 'id')
+      .addSelect(`ROW_NUMBER () OVER (ORDER BY <%- PN %>.id)`, 'index')
+
+      .addSelect('<%- PN %>.uuid', 'uuid')
+      .addSelect('<%- PN %>.createdAt', 'createdAt')
+      .addSelect('<%- PN %>.updatedAt', 'updatedAt')
+      .addSelect('<%- PN %>.deletedAt', 'deletedAt')
+      .addSelect('<%- PN %>.active', 'active')
+
+
+
+
+
+<% for(const [key, value] of relations) { %>
+  <% if(Object.keys(value.viewColumns).length > 0) { %>
+      <% for(const [property, options] of Object.entries(value.viewColumns))  { %>
+      .addSelect('<%- value.target %>.<%- property %>', '<%- options.as %>')
+
+      <% } %>
+  <% } %>
+
+<% } %>
+
+
+      .from(<%- className %>, '<%- PN %>')
+
+ <% for(const [key, value] of relations) { %>
+
+      .leftJoin(<%- upperFirst(value.target) %>, '<%- value.target %>', '<%- value.target %>.id = <%- PN %>.<%- value.target %>Id')
+
+<% } %>
+
+  },
+})
+export class View<%- className %>{
+  @ViewColumn()
+  index: string;
+
+  @ViewColumn()
+  id: number;
+
+  @ViewColumn()
+  uuid: string;
+
+  @ViewColumn()
+  createdAt: Date;
+
+  @ViewColumn()
+  updatedAt: Date;
+
+  @ViewColumn()
+  deletedAt: Date;
+
+  @ViewColumn()
+  active: boolean;
+
+  <% for(const [key, value] of properties) { %>
+    @ViewColumn()
+    <%- key %>: <%- propertyType(value.type) %>;
+  <% } %>
+
+
+   <% for(const [key, value] of relations) { %>
+     <% if(Object.keys(value.viewColumns).length > 0 ) { %>
+        <% for(const [property, options] of Object.entries(value.viewColumns))  { %>
+
+
+            @ViewColumn()
+            <%- options.as %>: <%- options.type.toLowerCase() %>;
+
+        <% } %>
+     <% } %>
+
+  <% } %>
+
+}

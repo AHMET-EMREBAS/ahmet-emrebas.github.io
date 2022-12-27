@@ -20,3 +20,4 @@ relations:
     viewColumns:
       name:
         as: permission
+        type: String

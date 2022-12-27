@@ -1,4 +1,5 @@
 export type PropertyOptions = Partial<{
+  type: string;
   inputType: string;
   required: boolean;
   unique: boolean;

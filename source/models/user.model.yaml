@@ -16,3 +16,7 @@ relations:
     type: ManyToMany
     target: role
     inputType: find-many
+    viewColumns:
+      name:
+        as: role
+        type: String

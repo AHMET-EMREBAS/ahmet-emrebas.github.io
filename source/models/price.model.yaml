@@ -19,6 +19,10 @@ relations:
     eager: true
     onDelete: CASCADE
     onUpdate: CASCADE
+    viewColumns:
+      barcode:
+        as: barcode
+        type: String
 
   pricelevel:
     type: ManyToOne
@@ -27,3 +31,7 @@ relations:
     eager: true
     onDelete: CASCADE
     onUpdate: CASCADE
+    viewColumns:
+      name:
+        as: pricelevel
+        type: String

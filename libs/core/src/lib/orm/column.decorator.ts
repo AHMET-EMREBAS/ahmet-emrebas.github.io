@@ -1,8 +1,8 @@
-import { applyDecorators } from '@nestjs/common';
 import { Column as C, ColumnOptions } from 'typeorm';
 import { v4 } from 'uuid';
+
 export function Column(options: ColumnOptions) {
-  return applyDecorators(C(options));
+  return C(options);
 }
 
 type ColumnMetaOptions = Partial<{

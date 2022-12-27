@@ -21,6 +21,7 @@ export interface Relation {
     string,
     {
       as: string;
+      type: 'String' | 'Number' | 'Integer' | 'Date' | 'Boolean';
     }
   >;
 }

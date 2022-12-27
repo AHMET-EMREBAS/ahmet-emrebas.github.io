@@ -14,6 +14,7 @@ import {
   IsNotEmpty,
 } from 'class-validator';
 import { IsPassword } from '../validators';
+
 /**
  * DTO property
  * @param options
@@ -59,5 +60,9 @@ export function Property(options: PropertyOptions) {
   } else {
     validators.push(IsNotEmpty());
   }
-  return applyDecorators(Expose(), ApiProperty({ ...options }), ...validators);
+  return applyDecorators(
+    Expose(),
+    ApiProperty({ ...options, type: options.type?.toLowerCase() }),
+    ...validators
+  );
 }
