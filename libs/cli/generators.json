@@ -2,36 +2,5 @@
   "$schema": "http://json-schema.org/schema",
   "name": "cli",
   "version": "0.0.1",
-  "generators": {
-    "cli": {
-      "factory": "./src/generators/cli/generator",
-      "schema": "./src/generators/cli/schema.json",
-      "description": "cli generator"
-    },
-    "resource": {
-      "factory": "./src/generators/resource/generator",
-      "schema": "./src/generators/resource/schema.json",
-      "description": "resource generator"
-    },
-    "interface": {
-      "factory": "./src/generators/interface/generator",
-      "schema": "./src/generators/interface/schema.json",
-      "description": "interface generator"
-    },
-    "model": {
-      "factory": "./src/generators/model/generator",
-      "schema": "./src/generators/model/schema.json",
-      "description": "model generator"
-    },
-    "graph": {
-      "factory": "./src/generators/graph/generator",
-      "schema": "./src/generators/graph/schema.json",
-      "description": "graph generator"
-    },
-    "rest": {
-      "factory": "./src/generators/rest/generator",
-      "schema": "./src/generators/rest/schema.json",
-      "description": "rest generator"
-    }
-  }
+  "generators": {}
 }

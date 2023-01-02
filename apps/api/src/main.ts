@@ -43,7 +43,7 @@ async function bootstrap() {
       'aemrebas.dev@gmail.com'
     )
     .setVersion('1.0.0')
-    .setLicense('Commerciel', 'https://ahmet-emrebas.github.io')
+    .setLicense('Commercial', 'https://ahmet-emrebas.github.io')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "enum": [
+    "Product",
+    "Category",
+    "Price",
+    "Quantity",
+    "Store",
+    "Pricelevel",
+    "Customer",
+    "User",
+    "Permission",
+    "Role",
+    "Message",
+    "Event"
+  ]
+}

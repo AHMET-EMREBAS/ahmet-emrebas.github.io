@@ -1,6 +1,0 @@
-properties:
-  name:
-    type: String
-    inputType: text
-    required: true
-    unique: true
