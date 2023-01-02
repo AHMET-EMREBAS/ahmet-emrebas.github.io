@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
-    "cli": "libs/cli",
     "client": "libs/client",
     "common": "libs/common",
     "components": "libs/components",
@@ -11,7 +10,8 @@
     "mobile": "apps/mobile",
     "models": "libs/models",
     "web": "apps/web",
-    "web-e2e": "apps/web-e2e"
+    "web-e2e": "apps/web-e2e",
+    "gen": "libs/gen"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

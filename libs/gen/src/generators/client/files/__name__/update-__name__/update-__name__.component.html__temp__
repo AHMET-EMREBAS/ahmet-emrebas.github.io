@@ -1,0 +1,20 @@
+<p-toolbar>
+  <p-button icon="pi pi-arrow-left" [routerLink]="['../']" routerLinkActive="router-link-active"
+    routerLinkActive="router-link-active" pTooltip="Go Back" tooltipPosition="bottom">
+  </p-button>
+  <strong> {{ title }} </strong>
+</p-toolbar>
+
+<div class="flex flex-column p-2 w-full">
+
+  <mat-stepper #stepper labelPosition="bottom">
+    <mat-step [label]="(group[0] ==='undefined' ? 'Others' : group[0]) | titlecase" *ngFor="let group of groups">
+      <ae-form [formGroup]="formGroup" [fields]="group[1]" [submitLabel]="false">
+       <div class="flex justify-content-end">
+          <p-button type="submit" label="Update <%- options.Name %>" (click)="submit()"></p-button>
+        </div>
+      </ae-form>
+    </mat-step>
+  </mat-stepper>
+
+</div>

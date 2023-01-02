@@ -1,0 +1,90 @@
+import {  PaginatorDto,  QueryDto,  ViewDto} from 'core/dto';
+import { PubSub } from 'graphql-subscriptions';
+import { ILike } from 'typeorm';
+
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  Subscription,
+} from '@nestjs/graphql';
+
+
+
+ import {
+  CanRead,
+  CanWrite,
+} from '../../auth/decorators';
+
+import {
+  <%- classname %>, 
+  <%- classname %>View,
+} from './entity';
+
+import {
+  Create<%- classname %>Dto,
+  Update<%- classname %>Dto
+} from './dto';
+
+import { <%- classname %>ViewService } from './<%- name %>-view.service';
+import { <%- classname %>Service } from './<%- name %>.service';
+
+const pubSub = new PubSub();
+
+@Resolver(() => <%- classname %>)
+export class <%- classname %>Resolver {
+  constructor(
+    private readonly service: <%- classname %>Service,
+    private readonly viewService: <%- classname %>ViewService
+  ) {}
+
+  @CanRead('<%- classname %>')
+  @Query(() => [<%- classname %>])
+  read<%- classname %>(
+    @Args('paginator') paginatorDto: PaginatorDto<<%- classname %> | <%- classname %>View>,
+    @Args('view') viewDto: ViewDto,
+    @Args('query') query: QueryDto
+  ) {
+   const q = {
+      ...paginatorDto,
+      where: query.toContains([
+        <% for(const f of options.SearchFields  || []) { %> '<%- f %>', <%} %>
+      ]),
+    };
+
+    if (viewDto.view === true) {
+      return this.viewService.find(q);
+    }
+    return this.service.find(q);
+  }
+
+  @CanRead('<%- classname %>')
+  @Query(() => <%- classname %>)
+  read<%- classname %>ById(@Args('id') id: number) {
+    return this.service.findOneBy({ id });
+  }
+  @CanWrite('<%- classname %>')
+  @Mutation(() => <%- classname %>)
+  write<%- classname %>(@Args('<%- name %>') body: Create<%- classname %>Dto) {
+    return this.service.save(body);
+  }
+
+  @CanWrite('<%- classname %>')
+  @Mutation(() => Boolean)
+  update<%- classname %>(@Args('id') id: number, @Args('<%- name %>') body: Update<%- classname %>Dto) {
+    return this.service.update(id, body);
+  }
+
+  @CanWrite('<%- classname %>')
+  @Mutation(() => Boolean)
+  delete<%- classname %>(@Args('id') id: number) {
+    return this.service.delete(id);
+  }
+
+  @CanWrite('<%- classname %>')
+  @Subscription(() => <%- classname %>)
+  onSave<%- classname %>() {
+    return pubSub.asyncIterator('saved<%- classname %>');
+  }
+}

@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+  
+import {IRead<%- classname %> } from 'common/<%- project %>/interfaces';
+
+import { NgrxBaseCollecitonService } from 'material/ngrx';
+
+import { of } from 'rxjs';
+
+import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
+
+
+@Injectable({ providedIn: 'root' })
+export class <%- classname %>Service extends NgrxBaseCollecitonService<Partial<IRead<%- classname %>>> {
+  constructor(sef: EntityCollectionServiceElementsFactory,  httpClient: HttpClient) {
+    super('<%- classname %>', sef, httpClient);
+  }
+}

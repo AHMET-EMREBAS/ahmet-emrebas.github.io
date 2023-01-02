@@ -1,0 +1,136 @@
+import {
+  DataSource,
+  ViewColumn,
+  ViewEntity,
+} from 'typeorm';
+
+import {
+  Field,
+  Int,
+  ObjectType,
+} from '@nestjs/graphql';
+
+import { <%- classname %> } from './<%- name %>.entity';
+
+import { I<%- classname %> } from 'common/<%- project %>/interfaces/<%- name %>';
+
+<% for(const target of new Set(options.Relations?.map(e=>e.target) || [])) { %> 
+
+import { <%- target  %>  } from '../../<%- target.toLowerCase() %>';
+
+<% } %>
+
+
+
+@ObjectType()
+@ViewEntity({
+  expression: (ds: DataSource) => {
+    return ds
+      .createQueryBuilder()
+      .select('<%- name %>.id', 'id')
+      .addSelect(`ROW_NUMBER () OVER (ORDER BY <%- name %>.id)`, 'index')
+
+      .addSelect('<%- name %>.uuid', 'uuid')
+      .addSelect('<%- name %>.createdAt', 'createdAt')
+      .addSelect('<%- name %>.updatedAt', 'updatedAt')
+      .addSelect('<%- name %>.deletedAt', 'deletedAt')
+      .addSelect('<%- name %>.active', 'active')
+      
+
+
+        <% for(const o of options.Properties) { %> 
+            .addSelect('<%- name %>.<%- o.Property %>', '<%- o.Property %>')
+        <% } %>
+
+        <% for(const o of options.Relations || []) { %> 
+          
+            <% for(const v of o.viewColumns || []) { %> 
+                  .addSelect('<%- o.name %>.<%- v.column %>', '<%- v.as %>')
+            <% } %>
+        <% } %>
+
+
+      .from(<%- classname %>, '<%- name %>')
+
+      <% for(const o of options.Relations || []) { %> 
+
+        <% if(o.type.endsWith('Many')) { %> 
+
+            
+            .leftJoin('<%- name %>-<%- o.target.toLowerCase() %>','<%- name %><%- o.target %>','<%- name %><%- o.target %>.<%- name %>Id = <%- name %>.id')
+
+            .leftJoin(<%- o.target %>, '<%- o.name %>', '<%- o.target.toLowerCase() %>.id = <%- name %><%- o.target %>.<%- o.target.toLowerCase() %>Id ')
+        
+        <% } else { %>
+            .leftJoin(<%- o.target %>, '<%- o.name %>', '<%- o.name %>.id = <%- name %>.<%- o.name %>Id')
+        <% } %>
+
+      <% } %> 
+  },
+})
+export class <%- classname %>View 
+
+<% if(options.Relations?.length > 0) { %> 
+    implements I<%- classname %><   <% for(const o of options.Relations || []) { %>  string,   <% } %> >
+<% } else { %> 
+  implements I<%- classname %>
+<% } %>
+
+
+
+{
+
+
+  @Field()
+  @ViewColumn()
+  index: string;
+
+  @Field()
+  @ViewColumn()
+  id: number;
+
+  @Field()
+  @ViewColumn()
+  uuid: string;
+
+
+
+
+<% for(const o of options.Properties) { %> 
+  
+  @Field()
+  @ViewColumn()
+  <%- o.Property %>: <%- o.Column.valueType %>;
+
+
+<% } %>
+
+<% for(const o of options.Relations || []) { %> 
+
+    <% for(const v of o.viewColumns || []) { %> 
+
+        @Field()
+        @ViewColumn()
+        <%- v.as %>: <%- v.valueType %>
+
+    <% } %>
+<% } %>
+
+  @Field()
+  @ViewColumn()
+  createdAt: Date;
+
+  @Field()
+  @ViewColumn()
+  updatedAt: Date;
+
+  @Field()
+  @ViewColumn()
+  deletedAt: Date;
+
+  @Field()
+  @ViewColumn()
+  active: boolean;
+
+
+}

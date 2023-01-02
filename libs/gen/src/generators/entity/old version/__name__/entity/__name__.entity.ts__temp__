@@ -1,0 +1,77 @@
+import { BaseEntity } from 'core/entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToOne,
+  OneToOne, 
+  OneToMany, 
+  ManyToMany
+} from 'typeorm';
+import { ID } from 'core/dto'
+import { hashPassword } from 'core/transformers';
+ 
+import { I<%- classname %> } from 'common/<%- project %>/interfaces/<%- name %>';
+
+
+<% for(const target of new Set(options.Relations?.map(e=>e.target) || [])) { %> 
+
+import { <%- target  %>  } from '../../<%- target.toLowerCase() %>';
+
+<% } %>
+
+import {
+  Field,
+  ObjectType,
+} from '@nestjs/graphql';
+
+@Entity()
+@ObjectType()
+export class <%- classname %> extends BaseEntity
+
+
+
+<% if(options.Relations?.length > 0) { %> 
+    implements I<%- classname %><   <% for(const o of options.Relations || []) { %>  
+    
+    <% if(o.type.endsWith('One')) { %>   
+       ID,
+    <% } else { %> 
+      ID[],
+    <% } %>
+
+      <% } %> >
+<% } else { %> 
+  implements I<%- classname %>
+<% } %>
+
+
+ {
+
+<% for(const o of options.Properties) { %> 
+  
+  @Field()
+  @Column({
+  type: '<%- o.Column.columnType %>', 
+  nullable: <%- !options.Required?.includes(o.Property) %>, 
+  unique:  <%- !!options.Unique?.includes(o.Property) %>,
+   transformer: [
+      <% if(o.Column.hash) { %> { to: (value) => hashPassword(value), from: (value) => value }, <% } %>
+    ],
+  })
+  <%- o.Property %>: <%- o.Column.valueType %>;
+
+
+<% } %>
+
+<% for(const o of options.Relations || []) { %> 
+
+  @<%- o.type %>(()=> <%- o.target %>, { eager: <%- o.eager===true %>, nullable: <%- o.nullable===true %>, onDelete: '<%- o.onDelete || 'RESTRICT' %>'})
+  <% if(o.joinColumn) { %>  @JoinColumn()  <% } %> 
+  <% if(o.joinTable) { %>  @JoinTable({name:'<%- name %>-<%- o.target.toLowerCase() %>'})  <% } %> 
+  <%- o.name %>?:  <% if(o.type.endsWith('Many')) { %> ID[]; <% } else {  %> ID; <% } %>
+
+<% } %>
+
+}

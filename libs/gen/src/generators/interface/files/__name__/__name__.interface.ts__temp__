@@ -1,0 +1,29 @@
+import { BaseInterface } from '../../../base';
+
+
+
+export interface I<%- classname %>
+
+
+<% if(options.Relations?.length > 0 ) { %> 
+<% let i = 1 %>
+<
+<% for(const o of options.Relations || []) { %> 
+  <%- o.target + i++ %>,
+<% } %>
+>
+
+<% } %>
+  extends BaseInterface {
+
+<% for(const o of options.Properties) { %> 
+  <%- o.Property %><% if(!options.Required?.includes(o.Property)) { %>?<% }%>: <%- o.Column.valueType %>;
+<% } %>
+
+<% let j = 1 %>
+<% for(const o of options.Relations || []) { %> 
+  <%- o.name %>?: <%- o.target + j++ %> 
+<% } %>
+
+}
+

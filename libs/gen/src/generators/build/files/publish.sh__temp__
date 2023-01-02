@@ -1,0 +1,6 @@
+git init
+git add .
+git commit -m'initial'
+heroku git:remote <%- name %>
+git push heroku main --force
+

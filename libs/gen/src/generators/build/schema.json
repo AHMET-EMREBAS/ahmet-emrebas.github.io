@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "Build",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "x-prompt": {
+        "messsage": "Select the application to publish : ",
+        "type": "list",
+        "items": [
+          {
+            "value": "ae-databridge",
+            "label": "Databridge Application"
+          },
+          {
+            "value": "ae-auth",
+            "label": "Authentication Service"
+          }
+        ]
+      }
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the project (used for linting)",
+      "alias": "t"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the project is placed",
+      "alias": "d"
+    }
+  },
+  "required": ["name"]
+}

@@ -1,0 +1,41 @@
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
+import {  ActivatedRoute,  Router} from '@angular/router';
+
+import { PrmConfirmationService } from 'material/resource';
+
+import { <%- classname %>Service } from '../<%- name %>.service';
+
+
+@Component({
+  selector: 'ae-delete-<%- name %>',
+  templateUrl: './delete-<%- name %>.component.html',
+  styleUrls: ['./delete-<%- name %>.component.scss'],
+})
+export class Delete<%- classname %>Component implements OnInit {
+  title = 'Delete <%- classname %>';
+  constructor(
+    private readonly prmConfirmationService: PrmConfirmationService,
+    private readonly <%- name %>Service: <%- classname %>Service,
+    private readonly router:Router, 
+    private readonly route:ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.prmConfirmationService.confirm({
+      message: 'Are you sure to delete the item?',
+      header: 'Delete',
+      icon: 'pi pi-times',
+      acceptButtonStyleClass: 'p-button-danger',
+      acceptLabel: 'Yes, delete item.',
+      accept: () => {
+        this.<%- name %>Service.deleteItem();
+      },
+      reject: () => {
+        this.router.navigate(['../'], { relativeTo: this.route });
+      },
+    });
+  }
+}

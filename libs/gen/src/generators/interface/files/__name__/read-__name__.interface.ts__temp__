@@ -1,0 +1,26 @@
+import { I<%- classname %> } from './<%- name %>.interface';
+
+
+<% for(const target of new Set(options.Relations?.map(e=>e.target) || [])) { %> 
+
+import { IRead<%- target %> } from '../<%- target.toLowerCase() %>';
+
+<% } %>
+
+
+
+<% if(options.Relations?.length > 0 ) { %> 
+export type  IRead<%- classname %> = I<%- classname %><
+<% for(const o of options.Relations || []) { %> 
+     <% if(o.type.endsWith('One')) {%> 
+      IRead<%- o.target %>,
+    <% } else {  %> 
+     IRead<%- o.target %>[],
+    <% } %>
+<% } %>
+> 
+
+<% } else { %> 
+export type  IRead<%- classname %> = I<%- classname %>
+<% } %>
+

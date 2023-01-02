@@ -1,0 +1,25 @@
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { 
+  <%- classname %>, 
+  <%- classname %>View
+} from './entity';
+
+import { <%- classname %>ViewService } from './<%- name %>-view.service';
+import { <%- classname %>Controller } from './<%- name %>.controller';
+import { <%- classname %>Resolver } from './<%- name %>.resolver';
+import { <%- classname %>Service } from './<%- name %>.service';
+import { <%- classname %>Subscriber } from './<%- name %>.subscriber';
+
+@Module({
+  controllers: [<%- classname %>Controller],
+  imports: [TypeOrmModule.forFeature([<%- classname %>, <%- classname %>View])],
+  providers: [
+    <%- classname %>Resolver,
+    <%- classname %>Service,
+    <%- classname %>ViewService,
+    <%- classname %>Subscriber,
+  ],
+})
+export class <%- classname %>Module {}

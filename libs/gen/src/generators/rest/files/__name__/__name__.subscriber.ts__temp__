@@ -1,0 +1,13 @@
+import {
+  EntitySubscriberInterface,
+  EventSubscriber,
+} from 'typeorm';
+
+import {<%- classname %>} from './entity'
+
+@EventSubscriber()
+export class <%- classname %>Subscriber implements EntitySubscriberInterface {
+   listenTo() {
+    return <%- classname %>;
+  }
+}

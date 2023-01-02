@@ -1,0 +1,3 @@
+<ae-table #dataTable [data]="(items$ | async)!" [columns]="columns" (filterEvent)="handleEvent()" [totalRecords]="(totalRecords$ | async)!"
+    (sortEvent)="handleEvent()" (pageEvent)="handleEvent()" (selectEvent)="selectItems($event)" (newEvent)="newItem()"
+    (editEvent)="editItems()" (deleteEvent)="deleteItems($event)" (clearEvent)="handleEvent()"></ae-table>
