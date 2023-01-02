@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Relation Property",
+  "$id": "RelationProperty",
+  "propertyNames": {
+    "$ref": "../name/property.schema.json"
+  },
+  "minProperties": 1,
+  "patternProperties": {
+    ".*": {
+      "properties": {
+        "type": {
+          "enum": ["one-to-one", "one-to-many", "many-to-one", "many-to-many"]
+        },
+        "target": {
+          "$ref": "../name/resource.schema.json"
+        },
+        "eager": {
+          "type": "boolean",
+          "default": true
+        },
+        "onUpdate": {
+          "$ref": "#/definitions/OnEvent"
+        },
+        "onDelete": {
+          "$ref": "#/definitions/OnEvent"
+        },
+        "cascade": {
+          "oneOf": [
+            {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "enum": ["insert", "update", "remove", "soft-remove", "recover"]
+              }
+            },
+            {
+              "type": "boolean",
+              "default": true
+            }
+          ]
+        },
+        "views": {
+          "patternProperties": {
+            ".*": {
+              "properties": {
+                "type": { "enum": ["string", "number", "boolean", "date"] },
+                "as": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "required": ["type", "target"]
+    }
+  },
+  "definitions": {
+    "OnEvent": {
+      "enum": ["RESTRICT", "CASCADE", "SET NULL", "DEFAULT", "NO ACTION"]
+    }
+  }
+}

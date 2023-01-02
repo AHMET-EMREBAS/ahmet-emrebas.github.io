@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "properties": {
+    "properties": {
+      "$ref": "./property/index.schema.json"
+    },
+    "relations": {
+      "$ref": "./relation/index.schema.json"
+    },
+    "unique": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "./name/property.schema.json" }
+    },
+    "required": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "./name/property.schema.json" }
+    },
+    "static": {
+      "type": "array",
+      "description": "Properties that NOT allowed to update.",
+      "uniqueItems": true,
+      "items": { "$ref": "./name/property.schema.json" }
+    },
+    "generated": {
+      "type": "array",
+      "description": "Generated properties",
+      "uniqueItems": true,
+      "items": { "$ref": "./name/property.schema.json" }
+    },
+    "sortable": {
+      "oneOf": [
+        {
+          "type": "array",
+          "description": "Sortable properties",
+          "uniqueItems": true,
+          "items": { "$ref": "./name/property.schema.json" }
+        },
+        {
+          "type": "boolean",
+          "default": true,
+          "description": "If true, then all properties will be sortable"
+        }
+      ]
+    },
+    "searchable": {
+      "oneOf": [
+        {
+          "type": "array",
+          "description": "Searchable properties",
+          "uniqueItems": true,
+          "items": { "$ref": "./name/property.schema.json" }
+        },
+        {
+          "type": "boolean",
+          "default": true,
+          "description": "If true, then all properties will be searchable"
+        }
+      ]
+    }
+  }
+}

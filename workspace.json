@@ -9,6 +9,7 @@
     "core": "libs/core",
     "desktop": "apps/desktop",
     "mobile": "apps/mobile",
+    "models": "libs/models",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e"
   },

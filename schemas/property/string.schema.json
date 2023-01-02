@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "StringProperty",
+  "title": "String Property",
+  "properties": {
+    "type": { "const": "string" },
+    "minLength": { "type": "integer", "minimum": 0, "default": 0 },
+    "maxLength": { "type": "integer", "minimum": 0, "default": 0 }
+  },
+  "required": ["type"]
+}

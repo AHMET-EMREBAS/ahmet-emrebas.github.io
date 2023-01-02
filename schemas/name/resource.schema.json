@@ -1,17 +1,22 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Resource Names",
+  "$id": "ResourceNames",
   "enum": [
     "Product",
     "Category",
     "Price",
     "Quantity",
+    "PriceLevel",
     "Store",
-    "Pricelevel",
+    "Message",
+    "Event",
+    "Order",
+    "Transaction",
     "Customer",
     "User",
-    "Permission",
-    "Role",
-    "Message",
-    "Event"
+    "Task",
+    "Schedule",
+    "Clockin"
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "IntegerProperty",
+  "title": "Integer Property",
+  "properties": {
+    "type": { "const": "integer" },
+    "minimum": { "type": "integer", "default": 0 },
+    "maximum": { "type": "integer", "default": 0 }
+  },
+  "required": ["type"]
+}

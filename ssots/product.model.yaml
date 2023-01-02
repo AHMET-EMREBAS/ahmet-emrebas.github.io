@@ -1,0 +1,29 @@
+properties:
+  name:
+    type: name
+
+  description:
+    type: description
+
+  price:
+    type: currency
+
+  cost:
+    type: currency
+
+  quantity:
+    type: integer
+
+relations:
+  category:
+    type: one-to-one
+    target: Category
+    eager: true
+    views:
+      name:
+        type: string
+        as: category
+
+sortable: true
+
+searchable: true
