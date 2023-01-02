@@ -1,5 +1,6 @@
 {
   "name": "desktop",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/desktop/src",
   "projectType": "application",
   "targets": {
@@ -58,7 +59,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/desktop"],
+      "outputs": ["{workspaceRoot}/coverage/apps/desktop"],
       "options": {
         "jestConfig": "apps/desktop/jest.config.js",
         "passWithNoTests": true

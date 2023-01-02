@@ -24,6 +24,8 @@
     "Address",
     "CustomerEmail",
     "CustomerPhone",
-    "CustomerAddress"
+    "CustomerAddress",
+    "Role",
+    "Permission"
   ]
 }

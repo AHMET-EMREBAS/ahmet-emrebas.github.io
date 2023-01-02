@@ -1,0 +1,12 @@
+properties:
+  name:
+    type: name
+
+  description:
+    type: string
+
+unique:
+  - name
+
+required:
+  - name

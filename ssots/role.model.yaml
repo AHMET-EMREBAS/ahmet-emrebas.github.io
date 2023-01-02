@@ -1,0 +1,18 @@
+properties:
+  name:
+    type: name
+
+  description:
+    type: string
+
+relations:
+  permissions:
+    type: many-to-many
+    target: Permission
+    eager: true
+
+required:
+  - name
+
+unique:
+  - name

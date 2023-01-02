@@ -1,0 +1,18 @@
+properties:
+  username:
+    type: email
+
+  password:
+    type: password
+
+relations:
+  roles:
+    type: many-to-many
+    target: Role
+
+unique:
+  - username
+
+required:
+  - username
+  - password

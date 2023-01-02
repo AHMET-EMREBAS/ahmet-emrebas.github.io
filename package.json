@@ -1,6 +1,6 @@
 {
   "name": "ae",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "description": "Built by Ahmet Emrebas",
   "contributors": [
     {
@@ -92,10 +92,10 @@
     "@nrwl/angular": "^15.2.1",
     "@nrwl/cli": "15.2.1",
     "@nrwl/cypress": "15.2.1",
-    "@nrwl/devkit": "15.2.1",
+    "@nrwl/devkit": "15.4.2",
     "@nrwl/eslint-plugin-nx": "15.2.1",
-    "@nrwl/jest": "15.2.1",
-    "@nrwl/js": "15.2.1",
+    "@nrwl/jest": "15.4.2",
+    "@nrwl/js": "15.4.2",
     "@nrwl/linter": "15.2.1",
     "@nrwl/nest": "15.2.1",
     "@nrwl/node": "15.2.1",
@@ -124,7 +124,6 @@
     "jest-preset-angular": "~12.2.2",
     "jsonc-eslint-parser": "^2.1.0",
     "lodash": "^4.17.21",
-    "nx": "15.2.1",
     "nx-electron": "^13.2.1",
     "prettier": "^2.6.2",
     "sass": "^1.32.0",

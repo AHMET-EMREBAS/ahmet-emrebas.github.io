@@ -46,6 +46,10 @@
     "addresses",
     "uuid",
     "orders",
-    "products"
+    "products",
+    "roles",
+    "role",
+    "permission",
+    "permissions"
   ]
 }

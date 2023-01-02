@@ -50,8 +50,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "web",
-  "cli": {
-    "defaultCollection": "nx-electron"
-  }
+  "defaultProject": "web"
 }
