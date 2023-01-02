@@ -2,6 +2,9 @@ properties:
   name:
     type: name
 
+  description:
+    type: description
+
 unique:
   - name
 

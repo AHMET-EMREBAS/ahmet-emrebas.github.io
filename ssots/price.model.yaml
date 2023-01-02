@@ -1,0 +1,38 @@
+properties:
+  price:
+    type: currency
+
+  cost:
+    type: currency
+
+relations:
+  priceLevel:
+    type: many-to-one
+    target: PriceLevel
+    eager: true
+    onDelete: CASCADE
+    onUpdate: CASCADE
+    views:
+      name:
+        type: string
+        as: priceLevel
+
+  product:
+    type: many-to-one
+    target: PriceLevel
+    eager: true
+    onDelete: CASCADE
+    onUpdate: CASCADE
+    views:
+      name:
+        type: string
+        as: priceLevel
+      barcode:
+        type: string
+        as: barcode
+
+required:
+  - price
+  - cost
+  - priceLevel
+  - product

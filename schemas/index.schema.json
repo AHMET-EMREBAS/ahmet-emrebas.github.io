@@ -45,10 +45,10 @@
       ]
     },
     "searchable": {
+      "description": "Searchable properties",
       "oneOf": [
         {
           "type": "array",
-          "description": "Searchable properties",
           "uniqueItems": true,
           "items": { "$ref": "./name/property.schema.json" }
         },
@@ -58,6 +58,43 @@
           "description": "If true, then all properties will be searchable"
         }
       ]
+    },
+    "urlQuery": {
+      "type": "array",
+      "description": "Properties passed via url query params",
+      "uniqueItems": true,
+      "items": { "$ref": "./name/property.schema.json" }
+    },
+    "urlParam": {
+      "type": "array",
+      "description": "Properties passed via url params",
+      "uniqueItems": true,
+      "items": { "$ref": "./name/property.schema.json" }
+    },
+
+    "map": {
+      "patternProperties": {
+        ".*": {
+          "properties": {
+            "properties": {
+              "description": "Relation properties",
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "./name/property.schema.json"
+              }
+            },
+            "each": {
+              "description": "If relation relation is many relaiton then set true",
+              "const": true
+            }
+          }
+        }
+      },
+
+      "propertyNames": {
+        "$ref": "./name/property.schema.json"
+      }
     }
   }
 }

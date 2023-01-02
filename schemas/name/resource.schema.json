@@ -17,6 +17,13 @@
     "User",
     "Task",
     "Schedule",
-    "Clockin"
+    "Clockin",
+    "Contact",
+    "Phone",
+    "Email",
+    "Address",
+    "CustomerEmail",
+    "CustomerPhone",
+    "CustomerAddress"
   ]
 }

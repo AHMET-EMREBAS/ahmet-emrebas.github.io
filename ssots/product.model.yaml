@@ -5,6 +5,9 @@ properties:
   description:
     type: description
 
+  barcode:
+    type: ean
+
   price:
     type: currency
 
@@ -24,6 +27,12 @@ relations:
         type: string
         as: category
 
-sortable: true
+unique:
+  - name
 
-searchable: true
+required:
+  - name
+  - description
+  - price
+  - cost
+  - quantity

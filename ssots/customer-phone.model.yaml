@@ -1,0 +1,15 @@
+properties:
+  phone:
+    type: phone
+
+relations:
+  customer:
+    type: many-to-one
+    target: Customer
+    onDelete: CASCADE
+
+required:
+  - phone
+
+unique:
+  - phone

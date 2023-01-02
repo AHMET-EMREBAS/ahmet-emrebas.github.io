@@ -1,0 +1,19 @@
+properties:
+  name:
+    type: name
+
+relations:
+  priceLevel:
+    type: many-to-one
+    target: PriceLevel
+    eager: true
+    views:
+      name:
+        type: string
+        as: priceLevel
+
+unique:
+  - name
+
+required:
+  - name

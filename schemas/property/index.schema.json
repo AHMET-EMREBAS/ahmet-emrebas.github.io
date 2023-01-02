@@ -18,7 +18,13 @@
         { "$ref": "./password.schema.json" },
         { "$ref": "./string.schema.json" },
         { "$ref": "./uuid.schema.json" },
-        { "$ref": "./ean.schema.json" }
+        { "$ref": "./ean.schema.json" },
+        { "$ref": "./phone.schema.json" },
+        { "$ref": "./city.schema.json" },
+        { "$ref": "./state.schema.json" },
+        { "$ref": "./street.schema.json" },
+        { "$ref": "./suite.schema.json" },
+        { "$ref": "./zip.schema.json" }
       ]
     }
   }

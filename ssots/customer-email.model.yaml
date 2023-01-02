@@ -1,0 +1,15 @@
+properties:
+  email:
+    type: email
+
+relations:
+  customer:
+    type: many-to-one
+    target: Customer
+    onDelete: CASCADE
+
+required:
+  - email
+
+unique:
+  - email

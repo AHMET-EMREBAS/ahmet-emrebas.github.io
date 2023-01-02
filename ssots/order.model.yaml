@@ -1,0 +1,49 @@
+properties:
+  quantity:
+    type: integer
+    minimum: 1
+
+relations:
+  store:
+    type: many-to-one
+    target: Store
+    eager: true
+    onDelete: CASCADE
+    onUpdate: CASCADE
+    views:
+      name:
+        type: string
+        as: store
+
+  product:
+    type: many-to-one
+    target: PriceLevel
+    eager: true
+    onDelete: CASCADE
+    onUpdate: CASCADE
+    views:
+      name:
+        type: string
+        as: priceLevel
+      barcode:
+        type: string
+        as: barcode
+
+  customer:
+    type: many-to-one
+    target: Customer
+    eager: true
+    onDelete: SET NULL
+    onUpdate: CASCADE
+    views:
+      username:
+        type: string
+        as: username
+      priceLevel:
+        type: string
+        as: priceLevel
+
+required:
+  - quantity
+  - product
+  - store
