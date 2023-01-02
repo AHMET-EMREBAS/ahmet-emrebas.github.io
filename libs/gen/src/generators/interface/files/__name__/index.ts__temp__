@@ -1,4 +1,0 @@
-export  * from './<%- name %>.interface';
-export  * from './read-<%- name %>.interface';
-export  * from './create-<%- name %>.interface';
-export * from './update-<%- name %>.interface'; 

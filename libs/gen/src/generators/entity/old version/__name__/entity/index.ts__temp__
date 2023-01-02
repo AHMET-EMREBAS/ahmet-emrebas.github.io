@@ -1,2 +1,0 @@
-export * from './<%- name %>-view.entity';
-export * from './<%- name %>.entity';

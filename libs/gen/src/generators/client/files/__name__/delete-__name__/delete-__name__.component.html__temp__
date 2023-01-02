@@ -1,7 +1,0 @@
-<p-toolbar>
-    <p-button icon="pi pi-arrow-left" [routerLink]="['../']" routerLinkActive="router-link-active"
-        routerLinkActive="router-link-active" pTooltip="Go Back" tooltipPosition="bottom">
-    </p-button>
-    <strong> {{title}} </strong>
-</p-toolbar>
-<p-confirmDialog></p-confirmDialog>

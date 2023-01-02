@@ -1,7 +1,0 @@
-export * from "./create-<%- name %>";
-export * from "./delete-<%- name %>";
-export * from "./<%- name %>.component";
-export * from "./<%- name %>.module";
-export * from "./<%- name %>.service";
-export * from "./update-<%- name %>";
-export * from "./view-<%- name %>";

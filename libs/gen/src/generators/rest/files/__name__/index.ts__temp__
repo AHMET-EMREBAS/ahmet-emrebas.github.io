@@ -1,9 +1,0 @@
-export * from './<%- name %>.service';
-export * from './<%- name %>-view.service';
-export * from './<%- name %>.controller';
-export * from './<%- name %>.module';
-export * from './<%- name %>.resolver';
-export * from './<%- name %>.subscriber';
-export * from './entity'; 
-export * from './dto';
-
