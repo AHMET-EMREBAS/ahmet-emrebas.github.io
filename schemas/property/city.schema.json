@@ -1,9 +1,0 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "CityProperty",
-  "title": "City Property",
-  "properties": {
-    "type": { "const": "city" }
-  },
-  "required": ["type"]
-}

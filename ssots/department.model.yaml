@@ -1,9 +1,0 @@
-properties:
-  name:
-    type: name
-
-unique:
-  - name
-
-required:
-  - name

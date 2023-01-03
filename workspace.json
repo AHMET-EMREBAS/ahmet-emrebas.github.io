@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
+    "cli": "libs/cli",
+    "cli-e2e": "apps/cli-e2e",
     "common": "libs/common",
     "components": "libs/components",
     "core": "libs/core",

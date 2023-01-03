@@ -1,9 +1,0 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "SuiteProperty",
-  "title": "Suite Property",
-  "properties": {
-    "type": { "const": "suite" }
-  },
-  "required": ["type"]
-}
