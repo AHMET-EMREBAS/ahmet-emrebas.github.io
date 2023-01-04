@@ -1,69 +1,75 @@
-import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  getWorkspaceLayout,
-  names,
-  offsetFromRoot,
-  Tree,
-} from '@nrwl/devkit';
-import * as path from 'path';
+import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
+import { join } from 'path';
 import { InterfaceGeneratorSchema } from './schema';
-
-interface NormalizedSchema extends InterfaceGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
-}
-
-function normalizeOptions(tree: Tree, options: InterfaceGeneratorSchema): NormalizedSchema {
-  const name = names(options.name).fileName;
-  const projectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${name}`
-    : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
-
-  return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags,
-  };
-}
-
-function addFiles(tree: Tree, options: NormalizedSchema) {
-    const templateOptions = {
-      ...options,
-      ...names(options.name),
-      offsetFromRoot: offsetFromRoot(options.projectRoot),
-      template: ''
-    };
-    generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
-}
+import { load } from 'js-yaml';
+import { readFileSync } from 'fs';
+import { SchemaInterface } from '../shared/schema.interface';
+import { parseType } from '../shared';
 
 export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  addProjectConfiguration(
-    tree,
-    normalizedOptions.projectName,
-    {
-      root: normalizedOptions.projectRoot,
-      projectType: 'library',
-      sourceRoot: `${normalizedOptions.projectRoot}/src`,
-      targets: {
-        build: {
-          executor: "cli:build",
-        },
-      },
-      tags: normalizedOptions.parsedTags,
-    }
+  const PROJECT_NAME = options.project;
+  const MODEL_NAME = options.model;
+
+  const MODEL_SCHEMA_PATH = join(
+    'resources',
+    PROJECT_NAME,
+    MODEL_NAME + '.yaml'
   );
-  addFiles(tree, normalizedOptions);
+
+  const FILES = join(__dirname, 'files');
+  const TARGET = join('libs', 'common', 'src', 'lib', PROJECT_NAME);
+
+  const MODEL_SCHEMA = (await load(
+    readFileSync(MODEL_SCHEMA_PATH).toString()
+  )) as SchemaInterface;
+
+  const properties = [
+    ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
+      return `${key}: ${parseType(value.type)}`;
+    }),
+    ...Object.entries(MODEL_SCHEMA.relations || {}).map(([key, value]) => {
+      return `${key}: ${value.target} ${
+        value.type.endsWith('Many') ? '[]' : ''
+      }`;
+    }),
+  ];
+
+  const readProperties = [
+    ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
+      return `${key}: ${parseType(value.type)}`;
+    }),
+  ];
+
+  Object.values(MODEL_SCHEMA.relations || {}).map((value) => {
+    for (const { as, type } of Object.values(value.views)) {
+      readProperties.push(`${as}:${type || 'string'}`);
+    }
+  });
+
+  const createProperties = [
+    ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
+      return `${key}: ${parseType(value.type)}`;
+    }),
+    ...Object.entries(MODEL_SCHEMA.relations || {}).map(([key, value]) => {
+      return `${key}: ${
+        value.type.endsWith('Many') ? '{ id:number}[]' : 'number'
+      }`;
+    }),
+  ];
+
+  const generics = `<${[
+    ...new Set(
+      Object.values(MODEL_SCHEMA.relations || {}).map((e) => e.target)
+    ),
+  ].join(', ')}>`;
+
+  generateFiles(tree, FILES, TARGET, {
+    properties,
+    readProperties,
+    generics,
+    ...names(MODEL_NAME),
+    template: '',
+    createProperties,
+  });
   await formatFiles(tree);
 }

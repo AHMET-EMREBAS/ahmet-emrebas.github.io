@@ -6,7 +6,10 @@ import { InterfaceGeneratorSchema } from './schema';
 
 describe('interface generator', () => {
   let appTree: Tree;
-  const options: InterfaceGeneratorSchema = { name: 'test' };
+  const options: InterfaceGeneratorSchema = {
+    model: 'test',
+    project: 'test',
+  };
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();

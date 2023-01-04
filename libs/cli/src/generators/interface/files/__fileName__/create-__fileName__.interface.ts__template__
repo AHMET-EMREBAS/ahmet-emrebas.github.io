@@ -1,0 +1,5 @@
+export interface Create<%- className %>Interface {
+   <% for(const p of createProperties) { %>
+     <%- p %>
+   <% } %>
+}

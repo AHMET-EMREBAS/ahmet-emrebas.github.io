@@ -29,6 +29,28 @@ import { Column } from 'typeorm';
 import { EntityConstructor } from '../shared';
 import { IsPassword } from '../validators/is-password';
 
+/**
+ *      "text-sm",
+        "text-md",
+        "text-lg",
+        "number",
+        "number-positive",
+        "number-negative",
+        "integer",
+        "integer-positive",
+        "integer-negative",
+        "boolean",
+        "datetime",
+        "password",
+        "email",
+        "barcode",
+        "uuid",
+        "uri",
+        "date",
+        "time",
+        "phone"
+ */
+
 export enum PropertyType {
   STRING = 'string',
   NUMBER = 'number',
@@ -76,6 +98,7 @@ export interface PropertyOptions
   format?: PropertyFormat;
   enum?: (string | number)[];
   type: PropertyType;
+  label?: string;
 }
 
 function apiPropertyOptions(options: PropertyOptions) {
@@ -192,23 +215,26 @@ export function BooleanProperty(options: BasicPropertyOptions = {}) {
   );
 }
 
-export function TextProperty(options: BasicPropertyOptions = {}) {
-  return applyDecorators(
-    Property({
-      type: PropertyType.STRING,
-      maxLength: 400,
-      default: 'some text',
-      ...options,
-    })
-  );
-}
-export function LongTextProperty(options: BasicPropertyOptions = {}) {
+export function TextProperty(
+  options: BasicPropertyOptions & { maxLength?: number } = {}
+) {
   return Property({
     type: PropertyType.STRING,
-    maxLength: 1000,
-    default: 'long text',
+    default: 'some text',
     ...options,
   });
+}
+
+export function TextSmProperty(options: BasicPropertyOptions = {}) {
+  return TextProperty({ ...options, maxLength: 30 });
+}
+
+export function TextMdProperty(options: BasicPropertyOptions = {}) {
+  return TextProperty({ ...options, maxLength: 400 });
+}
+
+export function TextLgProperty(options: BasicPropertyOptions = {}) {
+  return TextProperty({ ...options, maxLength: 1000 });
 }
 
 export function EmailProperty(options: BasicPropertyOptions = {}) {
@@ -220,7 +246,7 @@ export function EmailProperty(options: BasicPropertyOptions = {}) {
   });
 }
 
-export function UUIDProperty(options: BasicPropertyOptions = {}) {
+export function UuidProperty(options: BasicPropertyOptions = {}) {
   return Property({
     type: PropertyType.STRING,
     format: PropertyFormat.UUID,
@@ -251,12 +277,19 @@ export function PhoneProperty(options: BasicPropertyOptions = {}) {
   return Property({
     type: PropertyType.STRING,
     format: PropertyFormat.PHONE,
-    default: '888 888 88 88',
+    default: '+1 888 888 88 88',
     ...options,
   });
 }
 
-export function PositiveNumberProperty(options: BasicPropertyOptions = {}) {
+export function DateProperty(options: BasicPropertyOptions = {}) {
+  return Property({
+    type: PropertyType.DATE,
+    ...options,
+  });
+}
+
+export function NumberPositiveProperty(options: BasicPropertyOptions = {}) {
   return Property({
     type: PropertyType.NUMBER,
     minimum: 0,
@@ -265,7 +298,7 @@ export function PositiveNumberProperty(options: BasicPropertyOptions = {}) {
   });
 }
 
-export function PositiveIntegerProperty(options: BasicPropertyOptions = {}) {
+export function IntegerPositiveProperty(options: BasicPropertyOptions = {}) {
   return Property({
     type: PropertyType.INTEGER,
     minimum: 0,
@@ -274,15 +307,13 @@ export function PositiveIntegerProperty(options: BasicPropertyOptions = {}) {
   });
 }
 
-export function UrlProperty(options: BasicPropertyOptions = {}) {
-  return applyDecorators(
-    Property({
-      type: PropertyType.STRING,
-      format: PropertyFormat.URL,
-      default: 'http://localhost:3333/public/imgs/placeholder.png',
-      ...options,
-    })
-  );
+export function UriProperty(options: BasicPropertyOptions = {}) {
+  return Property({
+    type: PropertyType.STRING,
+    format: PropertyFormat.URL,
+    default: 'http://localhost:3333/public/imgs/placeholder.png',
+    ...options,
+  });
 }
 
 const commonOptions: ValidationPipeOptions = {

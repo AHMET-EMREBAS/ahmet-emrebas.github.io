@@ -25,6 +25,9 @@
             "as": {
               "type": "string"
             },
+            "type": {
+              "enum": ["string", "number", "Date", "boolean"]
+            },
             "prefix": {
               "type": "string"
             },

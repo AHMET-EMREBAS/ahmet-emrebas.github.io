@@ -2,27 +2,27 @@
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
   "$id": "Interface",
-  "title": "",
+  "title": "Interface args",
   "type": "object",
   "properties": {
-    "name": {
+    "project": {
       "type": "string",
       "description": "",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "Project name"
     },
-    "tags": {
+    "model": {
       "type": "string",
-      "description": "Add tags to the project (used for linting)",
-      "alias": "t"
-    }, 
-    "directory": {
-      "type": "string",
-      "description": "A directory where the project is placed"
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "Model name"
     }
   },
-  "required": ["name"]
+  "required": ["project", "model"]
 }

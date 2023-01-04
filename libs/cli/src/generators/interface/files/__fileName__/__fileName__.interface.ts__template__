@@ -1,0 +1,5 @@
+export interface <%- className %>Interface <%- generics %> {
+   <% for(const p of properties) { %>
+     <%- p %>
+   <% } %>
+}

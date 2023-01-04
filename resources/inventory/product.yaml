@@ -21,12 +21,35 @@ properties:
     type: barcode
     label: Barcode
 
+relations:
+  category:
+    target: Category
+    eager: true
+    type: ManyToOne
+    views:
+      name:
+        as: category
+        label: Category
+        type: string
+
+  department:
+    target: Department
+    eager: true
+    type: ManyToOne
+    views:
+      name:
+        as: department
+        label: Department
+        type: string
+
 required:
   - name
   - price
   - cost
   - quantity
   - barcode
+  - category
+  - department
 
 unique:
   - name
@@ -36,6 +59,8 @@ formGroup:
   Product:
     - name
     - barcode
+    - category
+    - department
 
   Price:
     - price

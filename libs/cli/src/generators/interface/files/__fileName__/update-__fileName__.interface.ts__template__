@@ -1,0 +1,3 @@
+import { Create<%- className %>Interface } from './create-<%- fileName %>.interface';
+
+export type Update<%- className %>Interface  = Partial<Create<%- className %>Interface>

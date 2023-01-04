@@ -42,6 +42,7 @@ relations:
       id:
         as: eid
         label: Employee Id
+        type: number
 
 required:
   - quantity
