@@ -2,11 +2,11 @@ import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
 import generator from './generator';
-import { RestModulesGeneratorSchema } from './schema';
+import { InterfaceGeneratorSchema } from './schema';
 
-describe('rest-modules generator', () => {
+describe('interface generator', () => {
   let appTree: Tree;
-  const options: RestModulesGeneratorSchema = { name: 'test' };
+  const options: InterfaceGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();

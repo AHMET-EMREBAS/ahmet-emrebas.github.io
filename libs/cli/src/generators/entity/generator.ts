@@ -8,16 +8,16 @@ import {
   Tree,
 } from '@nrwl/devkit';
 import * as path from 'path';
-import { RestModulesGeneratorSchema } from './schema';
+import { EntityGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends RestModulesGeneratorSchema {
+interface NormalizedSchema extends EntityGeneratorSchema {
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
   parsedTags: string[];
 }
 
-function normalizeOptions(tree: Tree, options: RestModulesGeneratorSchema): NormalizedSchema {
+function normalizeOptions(tree: Tree, options: EntityGeneratorSchema): NormalizedSchema {
   const name = names(options.name).fileName;
   const projectDirectory = options.directory
     ? `${names(options.directory).fileName}/${name}`
@@ -47,7 +47,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
     generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
 }
 
-export default async function (tree: Tree, options: RestModulesGeneratorSchema) {
+export default async function (tree: Tree, options: EntityGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
   addProjectConfiguration(
     tree,

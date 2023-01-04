@@ -8,10 +8,50 @@
       "schema": "./src/generators/cli/schema.json",
       "description": "cli generator"
     },
-    "rest-modules": {
-      "factory": "./src/generators/rest-modules/generator",
-      "schema": "./src/generators/rest-modules/schema.json",
-      "description": "rest-modules generator"
+    "interface": {
+      "factory": "./src/generators/interface/generator",
+      "schema": "./src/generators/interface/schema.json",
+      "description": "interface generator"
+    },
+    "entity": {
+      "factory": "./src/generators/entity/generator",
+      "schema": "./src/generators/entity/schema.json",
+      "description": "entity generator"
+    },
+    "controller": {
+      "factory": "./src/generators/controller/generator",
+      "schema": "./src/generators/controller/schema.json",
+      "description": "controller generator"
+    },
+    "service": {
+      "factory": "./src/generators/service/generator",
+      "schema": "./src/generators/service/schema.json",
+      "description": "service generator"
+    },
+    "create-form": {
+      "factory": "./src/generators/create-form/generator",
+      "schema": "./src/generators/create-form/schema.json",
+      "description": "create-form generator"
+    },
+    "table-view": {
+      "factory": "./src/generators/table-view/generator",
+      "schema": "./src/generators/table-view/schema.json",
+      "description": "table-view generator"
+    },
+    "update-form": {
+      "factory": "./src/generators/update-form/generator",
+      "schema": "./src/generators/update-form/schema.json",
+      "description": "update-form generator"
+    },
+    "card-view": {
+      "factory": "./src/generators/card-view/generator",
+      "schema": "./src/generators/card-view/schema.json",
+      "description": "card-view generator"
+    },
+    "ngrx-service": {
+      "factory": "./src/generators/ngrx-service/generator",
+      "schema": "./src/generators/ngrx-service/schema.json",
+      "description": "ngrx-service generator"
     }
   }
 }
