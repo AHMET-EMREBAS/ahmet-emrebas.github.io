@@ -1,0 +1,19 @@
+properties:
+  name:
+    type: text-sm
+
+relations:
+  permissions:
+    type: ManyToMany
+    eager: true
+    target: Permission
+    views:
+      name:
+        as: permission
+        label: Permission
+
+unique:
+  - name
+
+required:
+  - name

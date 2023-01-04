@@ -67,6 +67,11 @@
     "gid",
     "customer",
     "type",
-    "pin"
+    "pin",
+    "start",
+    "end",
+    "title",
+    "employee",
+    "employees"
   ]
 }

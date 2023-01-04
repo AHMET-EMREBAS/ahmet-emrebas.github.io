@@ -27,5 +27,5 @@ relations:
     target: Role
     views:
       name:
-        as: roles
+        as: role
         label: Roles

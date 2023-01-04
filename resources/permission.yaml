@@ -1,0 +1,9 @@
+properties:
+  name:
+    type: text-sm
+
+required:
+  - name
+
+unique:
+  - name

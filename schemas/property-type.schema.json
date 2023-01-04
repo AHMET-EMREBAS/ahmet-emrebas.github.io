@@ -9,6 +9,13 @@
     "label": {
       "type": "string"
     },
+    "enum": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
     "hint": {
       "type": "string"
     },

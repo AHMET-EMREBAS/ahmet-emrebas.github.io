@@ -1,0 +1,39 @@
+properties:
+  start:
+    type: date
+
+  end:
+    type: date
+
+relations:
+  employee:
+    type: ManyToOne
+    eager: true
+    target: Employee
+    views:
+      id:
+        as: eid
+        label: Employee Id
+
+      username:
+        as: phone
+        label: phone
+
+      firstName:
+        as: firstName
+        label: First Name
+
+      lastName:
+        as: lastName
+        label: Last Name
+
+      phone:
+        as: phone
+        label: phone
+
+required:
+  - start
+
+static:
+  - start
+  - end
