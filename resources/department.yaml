@@ -1,0 +1,10 @@
+properties:
+  name:
+    type: text-sm
+    label: Department Name
+
+unique:
+  - name
+
+required:
+  - name

@@ -3,7 +3,6 @@ import { ApiProperty, ApiPropertyOptions } from '@nestjs/swagger';
 import { Expose, Transform } from 'class-transformer';
 import {
   IsBoolean,
-  IsBooleanString,
   IsDate,
   IsEAN,
   IsEmail,
@@ -20,7 +19,6 @@ import {
   MinLength,
 } from 'class-validator';
 import { IsPassword } from '../validators/is-password';
-import { Property } from './property.decorator';
 
 export enum ParamType {
   STRING = 'string',

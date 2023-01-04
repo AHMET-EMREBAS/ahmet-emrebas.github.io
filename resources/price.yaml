@@ -1,0 +1,41 @@
+properties:
+  price:
+    type: number-positive
+    label: Price
+    prefix: CURRENCY
+
+  cost:
+    type: number-positive
+    label: Cost
+    prefix: CURRENCY
+
+relations:
+  product:
+    type: ManyToOne
+    eager: true
+    onDelete: CASCADE
+    target: Product
+    views:
+      barcode:
+        as: barcode
+        label: Barcode
+
+      name:
+        as: name
+        label: Product Name
+
+  priceLevel:
+    type: ManyToOne
+    target: PriceLevel
+    eager: true
+    onDelete: CASCADE
+    views:
+      name:
+        as: priceLevel
+        label: Price Level
+
+required:
+  - price
+  - cost
+  - product
+  - priceLevel

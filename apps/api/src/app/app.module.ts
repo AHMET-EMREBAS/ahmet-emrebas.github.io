@@ -4,6 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppResolver } from './app.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -13,7 +14,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       dropSchema: true,
     }),
-
     CacheModule.register({
       isGlobal: true,
       ttl: 10,
@@ -27,6 +27,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
   ],
+
   providers: [AppResolver],
 })
 export class AppModule {}

@@ -1,0 +1,45 @@
+properties:
+  name:
+    type: text-sm
+    label: Product Name
+
+  price:
+    type: number-positive
+    label: Unit Price
+    prefix: CURRENCY
+
+  cost:
+    type: number-positive
+    label: Unit Cost
+    prefix: CURRENCY
+
+  quantity:
+    type: number-positive
+    label: Quantity
+
+  barcode:
+    type: barcode
+    label: Barcode
+
+required:
+  - name
+  - price
+  - cost
+  - quantity
+  - barcode
+
+unique:
+  - name
+  - barcode
+
+formGroup:
+  Product:
+    - name
+    - barcode
+
+  Price:
+    - price
+    - cost
+
+  Quantity:
+    - quantity

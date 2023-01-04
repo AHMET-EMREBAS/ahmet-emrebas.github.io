@@ -1,0 +1,31 @@
+properties:
+  username:
+    type: email
+
+  password:
+    type: password
+
+  pin:
+    type: text-sm
+
+  firstName:
+    type: text-sm
+    label: First Name
+
+  lastName:
+    type: text-sm
+    label: Last Name
+
+  phone:
+    type: phone
+    label: Phone
+
+relations:
+  roles:
+    type: ManyToMany
+    eager: true
+    target: Role
+    views:
+      name:
+        as: roles
+        label: Roles

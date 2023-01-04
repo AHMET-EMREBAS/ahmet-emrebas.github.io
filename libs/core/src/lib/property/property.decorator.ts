@@ -1,6 +1,5 @@
 import {
   applyDecorators,
-  HttpStatus,
   UnprocessableEntityException,
   ValidationPipe,
   ValidationPipeOptions,

@@ -1,0 +1,49 @@
+properties:
+  quantity:
+    type: integer-positive
+
+relations:
+  store:
+    type: ManyToOne
+    target: Store
+    eager: true
+    views:
+      name:
+        as: storeName
+        label: Store Name
+
+  product:
+    type: ManyToOne
+    target: Product
+    eager: true
+    views:
+      name:
+        as: name
+        label: Product Name
+
+      barcode:
+        as: barcode
+        label: Product Name
+
+  customer:
+    type: ManyToOne
+    eager: true
+    target: Customer
+    views:
+      name:
+        as: customer
+        label: Customer
+
+  employee:
+    type: ManyToOne
+    eager: true
+    target: Employee
+    views:
+      id:
+        as: eid
+        label: Employee Id
+
+required:
+  - quantity
+  - product
+  - customer

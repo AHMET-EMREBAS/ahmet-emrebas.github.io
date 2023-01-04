@@ -1,0 +1,36 @@
+properties:
+  quantity:
+    type: integer-positive
+    label: Quantity
+
+relations:
+  product:
+    type: ManyToOne
+    eager: true
+    onDelete: CASCADE
+    target: Product
+    views:
+      barcode:
+        as: barcode
+        label: Barcode
+      name:
+        as: productName
+        label: Product Name
+
+  store:
+    type: ManyToOne
+    eager: true
+    onDelete: CASCADE
+    target: Store
+    views:
+      name:
+        as: name
+        label: Store Name
+
+unique:
+  - quantity
+
+required:
+  - quantity
+  - product
+  - store

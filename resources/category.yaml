@@ -1,0 +1,10 @@
+properties:
+  name:
+    type: text-sm
+    label: Category Name
+
+unique:
+  - name
+
+required:
+  - name

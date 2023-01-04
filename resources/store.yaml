@@ -1,0 +1,20 @@
+properties:
+  name:
+    type: text-sm
+    label: Store Name
+
+relations:
+  priceLevel:
+    type: ManyToOne
+    target: PriceLevel
+    eager: true
+    views:
+      name:
+        as: priceLevel
+        label: Price Level
+
+unique:
+  - name
+
+required:
+  - name
