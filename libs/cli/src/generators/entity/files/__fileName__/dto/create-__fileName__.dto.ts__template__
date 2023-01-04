@@ -1,0 +1,6 @@
+export class Create<%- className %>Dto {
+  <% for(const p of properties ) { %>
+
+    <%- p %>
+  <% } %>
+}
