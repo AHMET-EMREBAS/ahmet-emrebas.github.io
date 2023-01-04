@@ -4,7 +4,7 @@ import { InterfaceGeneratorSchema } from './schema';
 import { load } from 'js-yaml';
 import { readFileSync } from 'fs';
 import { SchemaInterface } from '../shared/schema.interface';
-import { parseType } from '../shared';
+import { parsePropertyType } from '../shared';
 
 export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
   const PROJECT_NAME = options.project;
@@ -25,7 +25,7 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
 
   const properties = [
     ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
-      return `${key}: ${parseType(value.type)}`;
+      return `${key}: ${parsePropertyType(value.type)}`;
     }),
     ...Object.entries(MODEL_SCHEMA.relations || {}).map(([key, value]) => {
       return `${key}: ${value.target} ${
@@ -36,7 +36,7 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
 
   const readProperties = [
     ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
-      return `${key}: ${parseType(value.type)}`;
+      return `${key}: ${parsePropertyType(value.type)}`;
     }),
   ];
 
@@ -48,7 +48,7 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
 
   const createProperties = [
     ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
-      return `${key}: ${parseType(value.type)}`;
+      return `${key}: ${parsePropertyType(value.type)}`;
     }),
     ...Object.entries(MODEL_SCHEMA.relations || {}).map(([key, value]) => {
       return `${key}: ${

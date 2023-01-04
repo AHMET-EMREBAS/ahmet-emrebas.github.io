@@ -1,69 +1,122 @@
+import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
+import { readFileSync } from 'fs';
+import { load } from 'js-yaml';
+import { join } from 'path';
 import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  getWorkspaceLayout,
-  names,
-  offsetFromRoot,
-  Tree,
-} from '@nrwl/devkit';
-import * as path from 'path';
+  parseColumnType,
+  parsePropertyDecorator,
+  parsePropertyType,
+  SchemaInterface,
+} from '../shared';
 import { EntityGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends EntityGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
-}
-
-function normalizeOptions(tree: Tree, options: EntityGeneratorSchema): NormalizedSchema {
-  const name = names(options.name).fileName;
-  const projectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${name}`
-    : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
-
-  return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags,
-  };
-}
-
-function addFiles(tree: Tree, options: NormalizedSchema) {
-    const templateOptions = {
-      ...options,
-      ...names(options.name),
-      offsetFromRoot: offsetFromRoot(options.projectRoot),
-      template: ''
-    };
-    generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
-}
-
 export default async function (tree: Tree, options: EntityGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  addProjectConfiguration(
-    tree,
-    normalizedOptions.projectName,
-    {
-      root: normalizedOptions.projectRoot,
-      projectType: 'library',
-      sourceRoot: `${normalizedOptions.projectRoot}/src`,
-      targets: {
-        build: {
-          executor: "cli:build",
-        },
-      },
-      tags: normalizedOptions.parsedTags,
+  const PROJECT_NAME = options.project;
+  const MODEL_NAME = options.model;
+
+  const MODEL_SCHEMA_PATH = join(
+    'resources',
+    PROJECT_NAME,
+    MODEL_NAME + '.yaml'
+  );
+
+  const FILES = join(__dirname, 'files');
+  const TARGET = join('libs', 'models', 'src', 'lib', PROJECT_NAME);
+
+  const MODEL_SCHEMA = (await load(
+    readFileSync(MODEL_SCHEMA_PATH).toString()
+  )) as SchemaInterface;
+
+  const columns = Object.entries(MODEL_SCHEMA.properties || {}).map(
+    ([key, value]) => {
+      const propertyOptions = {
+        type: parseColumnType(value.type),
+      };
+
+      if (!MODEL_SCHEMA.required.includes(key)) {
+        propertyOptions['nullable'] = true;
+      }
+
+      if (MODEL_SCHEMA.unique.includes(key)) {
+        propertyOptions['unique'] = true;
+      }
+
+      return {
+        property: `${key}:${parsePropertyType(value.type)}`,
+        decorator: `@Column( ${JSON.stringify(propertyOptions)})`,
+      };
     }
   );
-  addFiles(tree, normalizedOptions);
+
+  const relations = Object.entries(MODEL_SCHEMA.relations || {}).map(
+    ([key, value]) => {
+      const relationOptions = {};
+
+      if (value.eager) relationOptions['eager'] = true;
+      if (value.onDelete) relationOptions['onDelete'] = true;
+
+      return {
+        property: `${key}:${value.target}${
+          value.type.endsWith('Many') ? '[]' : ''
+        }`,
+        decorator: `
+        @${value.type}(()=>${value.target}, e=>e.id, ${JSON.stringify(
+          relationOptions
+        )})\n
+        ${value.type.endsWith('Many') ? '@JoinTable()' : '@JoinColumn()'}
+
+        `,
+      };
+    }
+  );
+
+  const properties = [
+    ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
+      return {
+        property: `${key}: ${parsePropertyType(value.type)}`,
+        decorator: `@${parsePropertyDecorator(value.type)}(${JSON.stringify(
+          value
+        )})`,
+      };
+    }),
+    ...Object.entries(MODEL_SCHEMA.relations || {}).map(([key, value]) => {
+      return {
+        property: `${key}: ${
+          value.type.endsWith('Many') ? 'IDDto' : 'IDDto[]'
+        }`,
+        decorator: value.type.endsWith('Many')
+          ? '@IdProperty({each:true})'
+          : '@IdProperty()',
+      };
+    }),
+  ];
+  const propertyDecorators = [
+    ...new Set(
+      Object.values(MODEL_SCHEMA).map((value) => {
+        return `${parsePropertyDecorator(value.type)}`;
+      })
+    ),
+  ].join(', ');
+
+  const targets = [
+    ...new Set(
+      Object.values(MODEL_SCHEMA.relations || {}).map((e) => e.target)
+    ),
+  ]
+    .map((e) => {
+      return `import { ${e}} from '../${names(e).fileName}';`;
+    })
+    .join('\n');
+
+  generateFiles(tree, FILES, TARGET, {
+    ...names(MODEL_NAME),
+    columns,
+    relations,
+    template: '',
+    properties,
+    propertyDecorators,
+    targets,
+  });
+
   await formatFiles(tree);
 }

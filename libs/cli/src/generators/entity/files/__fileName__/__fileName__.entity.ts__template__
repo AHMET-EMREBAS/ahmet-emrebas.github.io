@@ -1,6 +1,19 @@
-import { Entity , Column } from 'typeorm';
+import { Entity , Column , JoinTable ,JoinColumn, ManyToOne, OneToMany, ManyToMany, OneToOne } from 'typeorm';
+import { Relation , RelationType} from '@ae/core/relations';
+import { BaseEntity } from '@ae/core/entity';
+<%- targets %>
 
 @Entity()
-export class <%- className %> {
+export class <%- className %> extends BaseEntity {
+
+    <% for(const c of columns) { %>
+     <%- c.decorator %>
+     <%- c.property %>
+    <% } %>
+
+    <% for(const c of relations) { %>
+     <%- c.decorator %>
+     <%- c.property %>
+    <% } %>
 
 }

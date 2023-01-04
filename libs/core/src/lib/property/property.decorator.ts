@@ -185,14 +185,7 @@ export function Property(options: PropertyOptions) {
   return applyDecorators(
     Expose(),
     apiPropertyOptions(options),
-    parseValidators(options),
-    Column({
-      type: ColumnType(options.type),
-      unique: !!options.unique,
-      nullable: options.optional === true ? true : false,
-      update: options.update === false ? false : true,
-      enum: options.enum,
-    })
+    parseValidators(options)
   );
 }
 

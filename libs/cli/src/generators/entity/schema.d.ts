@@ -1,5 +1,6 @@
 export interface EntityGeneratorSchema {
-    name: string;
-    tags?: string;
-    directory?: string;
+  project: string;
+  model: string;
+  tags?: string;
+  directory?: string;
 }

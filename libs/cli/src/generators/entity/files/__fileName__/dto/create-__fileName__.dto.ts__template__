@@ -1,6 +1,8 @@
+import { <%- propertyDecorators %> } from '@ae/core/property';
+
 export class Create<%- className %>Dto {
   <% for(const p of properties ) { %>
-
-    <%- p %>
+    <%- p.decorator %>
+    <%- p.property %>
   <% } %>
 }

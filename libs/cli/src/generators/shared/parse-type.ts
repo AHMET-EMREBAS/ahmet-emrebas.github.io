@@ -23,6 +23,6 @@ export const TypeMap = {
   time: 'Date',
 };
 
-export function parseType(type: string) {
+export function parsePropertyType(type: string) {
   return TypeMap[type];
 }
