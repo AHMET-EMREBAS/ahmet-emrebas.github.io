@@ -57,6 +57,11 @@
       "factory": "./src/generators/rest-module/generator",
       "schema": "./src/generators/rest-module/schema.json",
       "description": "rest-module generator"
+    },
+    "import-rest": {
+      "factory": "./src/generators/import-rest/generator",
+      "schema": "./src/generators/import-rest/schema.json",
+      "description": "import-rest generator"
     }
   }
 }

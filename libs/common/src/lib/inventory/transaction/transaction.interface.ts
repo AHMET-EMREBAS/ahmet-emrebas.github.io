@@ -1,5 +1,5 @@
 import { BaseInterface } from '../../common';
 
-export interface TransactionInterface<Order> extends BaseInterface {
-  orders: Order[];
+export interface TransactionInterface<Porder> extends BaseInterface {
+  orders: Porder[];
 }

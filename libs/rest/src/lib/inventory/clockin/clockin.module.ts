@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Clockin, ClockinView } from '@ae/models/inventory/clockin';
 import { ClockinController } from './clockin.controller';
 import { ClockinViewController } from './clockin-view.controller';
@@ -13,4 +13,9 @@ import { Employee } from '@ae/models/inventory/employee';
   controllers: [ClockinController, ClockinViewController],
   providers: [ClockinService, ClockinViewService],
 })
-export class ClockinModule {}
+export class ClockinModule implements OnModuleInit {
+  constructor(private readonly service: ClockinService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

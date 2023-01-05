@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module , OnModuleInit} from '@nestjs/common';
 import {<%- className %>, <%- className %>View } from '@ae/models/<%- project %>/<%- fileName %>';
 import { <%- className %>Controller,  } from './<%- fileName %>.controller';
 import { <%- className %>ViewController  } from './<%- fileName %>-view.controller';
@@ -24,4 +24,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
      ]
 })
-export class <%- className %>Module{ }
+export class <%- className %>Module implements OnModuleInit {
+  constructor(private readonly service: <%- className %>Service) {}
+  onModuleInit() {
+    // Seed database
+  }}

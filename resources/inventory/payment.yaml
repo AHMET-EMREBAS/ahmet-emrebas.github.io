@@ -1,0 +1,8 @@
+relations:
+  orders:
+    type: OneToMany
+    target: Porder
+    eager: true
+    views:
+      quantity:
+        as: quantity

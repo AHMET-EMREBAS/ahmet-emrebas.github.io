@@ -1,5 +1,0 @@
-relations:
-  orders:
-    type: OneToMany
-    target: Order
-    eager: true

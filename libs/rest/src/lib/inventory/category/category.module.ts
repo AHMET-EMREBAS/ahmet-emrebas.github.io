@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Category, CategoryView } from '@ae/models/inventory/category';
 import { CategoryController } from './category.controller';
 import { CategoryViewController } from './category-view.controller';
@@ -11,4 +11,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   controllers: [CategoryController, CategoryViewController],
   providers: [CategoryService, CategoryViewService],
 })
-export class CategoryModule {}
+export class CategoryModule implements OnModuleInit {
+  constructor(private readonly service: CategoryService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

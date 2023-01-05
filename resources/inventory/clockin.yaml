@@ -16,7 +16,7 @@ relations:
         label: Employee Id
 
       username:
-        as: phone
+        as: username
         label: phone
 
       firstName:

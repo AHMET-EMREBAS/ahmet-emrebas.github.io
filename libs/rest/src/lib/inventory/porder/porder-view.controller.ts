@@ -15,29 +15,26 @@ import {
   QueryObject,
   ParamId,
 } from '@ae/core/rest';
-import {
-  CreateCategoryDto,
-  UpdateCategoryDto,
-} from '@ae/models/inventory/category';
+import { CreatePorderDto, UpdatePorderDto } from '@ae/models/inventory/porder';
 import {
   SetRelationDto,
   UnsetRelationDto,
   AddRelationDto,
   RemoveRelationDto,
 } from '@ae/core/dto';
-import { CategoryViewService } from './category-view.service';
+import { PorderViewService } from './porder-view.service';
 
 @ResourceController()
-export class CategoryViewController {
-  constructor(private readonly service: CategoryViewService) {}
+export class PorderViewController {
+  constructor(private readonly service: PorderViewService) {}
 
   @GetAll()
-  findCategorys(@QueryObject() query: QueryDto) {
+  findPorders(@QueryObject() query: QueryDto) {
     return this.service.find(query);
   }
 
   @GetOneById()
-  findCategoryByIdCategory(@ParamId() id: number) {
+  findPorderByIdPorder(@ParamId() id: number) {
     return this.service.findOneById(id);
   }
 }

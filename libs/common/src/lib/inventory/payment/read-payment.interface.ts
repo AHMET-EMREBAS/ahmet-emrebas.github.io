@@ -1,5 +1,5 @@
 import { BaseInterface } from '../../common';
 
-export interface ReadTransactionInterface extends BaseInterface {
+export interface ReadPaymentInterface extends BaseInterface {
   quantity: string;
 }

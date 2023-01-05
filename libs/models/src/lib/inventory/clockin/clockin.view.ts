@@ -21,7 +21,7 @@ import { Employee } from '../employee';
       .addSelect('clockin.end', 'end')
 
       .addSelect('employee.id', 'eid')
-      .addSelect('employee.username', 'phone')
+      .addSelect('employee.username', 'username')
       .addSelect('employee.firstName', 'firstName')
       .addSelect('employee.lastName', 'lastName')
       .addSelect('employee.phone', 'phone')
@@ -63,7 +63,7 @@ export class ClockinView {
   eid: string;
 
   @ViewColumn()
-  phone: string;
+  username: string;
 
   @ViewColumn()
   firstName: string;

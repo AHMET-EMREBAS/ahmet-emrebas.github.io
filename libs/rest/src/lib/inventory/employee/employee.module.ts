@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
 import { Employee, EmployeeView } from '@ae/models/inventory/employee';
-import { EmployeeController } from './employee.controller';
-import { EmployeeViewController } from './employee-view.controller';
-import { EmployeeService } from './employee.service';
-import { EmployeeViewService } from './employee-view.service';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { EmployeeViewController } from './employee-view.controller';
+import { EmployeeViewService } from './employee-view.service';
+import { EmployeeController } from './employee.controller';
+import { EmployeeService } from './employee.service';
 
 import { Role } from '@ae/models/inventory/role';
 

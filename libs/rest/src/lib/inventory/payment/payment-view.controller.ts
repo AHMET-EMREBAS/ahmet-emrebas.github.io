@@ -16,28 +16,28 @@ import {
   ParamId,
 } from '@ae/core/rest';
 import {
-  CreateCategoryDto,
-  UpdateCategoryDto,
-} from '@ae/models/inventory/category';
+  CreatePaymentDto,
+  UpdatePaymentDto,
+} from '@ae/models/inventory/payment';
 import {
   SetRelationDto,
   UnsetRelationDto,
   AddRelationDto,
   RemoveRelationDto,
 } from '@ae/core/dto';
-import { CategoryViewService } from './category-view.service';
+import { PaymentViewService } from './payment-view.service';
 
 @ResourceController()
-export class CategoryViewController {
-  constructor(private readonly service: CategoryViewService) {}
+export class PaymentViewController {
+  constructor(private readonly service: PaymentViewService) {}
 
   @GetAll()
-  findCategorys(@QueryObject() query: QueryDto) {
+  findPayments(@QueryObject() query: QueryDto) {
     return this.service.find(query);
   }
 
   @GetOneById()
-  findCategoryByIdCategory(@ParamId() id: number) {
+  findPaymentByIdPayment(@ParamId() id: number) {
     return this.service.findOneById(id);
   }
 }

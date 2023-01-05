@@ -278,6 +278,13 @@ export function DateProperty(options: BasicPropertyOptions = {}) {
   });
 }
 
+export function NumberProperty(options: BasicPropertyOptions = {}) {
+  return Property({
+    type: PropertyType.NUMBER,
+    default: 20.99,
+    ...options,
+  });
+}
 export function PositiveNumberProperty(options: BasicPropertyOptions = {}) {
   return Property({
     type: PropertyType.NUMBER,
