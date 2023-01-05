@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Department, DepartmentView } from '@ae/models/inventory/department';
 import { DepartmentController } from './department.controller';
 import { DepartmentViewController } from './department-view.controller';
@@ -11,4 +11,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   controllers: [DepartmentController, DepartmentViewController],
   providers: [DepartmentService, DepartmentViewService],
 })
-export class DepartmentModule {}
+export class DepartmentModule implements OnModuleInit {
+  constructor(private readonly service: DepartmentService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

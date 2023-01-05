@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Tag, TagView } from '@ae/models/inventory/tag';
 import { TagController } from './tag.controller';
 import { TagViewController } from './tag-view.controller';
@@ -11,4 +11,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   controllers: [TagController, TagViewController],
   providers: [TagService, TagViewService],
 })
-export class TagModule {}
+export class TagModule implements OnModuleInit {
+  constructor(private readonly service: TagService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

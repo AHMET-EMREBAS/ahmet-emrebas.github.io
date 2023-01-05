@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Store, StoreView } from '@ae/models/inventory/store';
 import { StoreController } from './store.controller';
 import { StoreViewController } from './store-view.controller';
@@ -13,4 +13,9 @@ import { PriceLevel } from '@ae/models/inventory/price-level';
   controllers: [StoreController, StoreViewController],
   providers: [StoreService, StoreViewService],
 })
-export class StoreModule {}
+export class StoreModule implements OnModuleInit {
+  constructor(private readonly service: StoreService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

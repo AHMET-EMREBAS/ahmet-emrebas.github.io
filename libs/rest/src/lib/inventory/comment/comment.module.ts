@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Comment, CommentView } from '@ae/models/inventory/comment';
 import { CommentController } from './comment.controller';
 import { CommentViewController } from './comment-view.controller';
@@ -14,4 +14,9 @@ import { Task } from '@ae/models/inventory/task';
   controllers: [CommentController, CommentViewController],
   providers: [CommentService, CommentViewService],
 })
-export class CommentModule {}
+export class CommentModule implements OnModuleInit {
+  constructor(private readonly service: CommentService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

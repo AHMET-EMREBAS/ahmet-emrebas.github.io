@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Role, RoleView } from '@ae/models/inventory/role';
 import { RoleController } from './role.controller';
 import { RoleViewController } from './role-view.controller';
@@ -13,4 +13,9 @@ import { Permission } from '@ae/models/inventory/permission';
   controllers: [RoleController, RoleViewController],
   providers: [RoleService, RoleViewService],
 })
-export class RoleModule {}
+export class RoleModule implements OnModuleInit {
+  constructor(private readonly service: RoleService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

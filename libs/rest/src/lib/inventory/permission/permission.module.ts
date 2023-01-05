@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Permission, PermissionView } from '@ae/models/inventory/permission';
 import { PermissionController } from './permission.controller';
 import { PermissionViewController } from './permission-view.controller';
@@ -11,4 +11,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   controllers: [PermissionController, PermissionViewController],
   providers: [PermissionService, PermissionViewService],
 })
-export class PermissionModule {}
+export class PermissionModule implements OnModuleInit {
+  constructor(private readonly service: PermissionService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}

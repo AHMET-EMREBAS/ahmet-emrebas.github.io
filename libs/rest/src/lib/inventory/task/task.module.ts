@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { Task, TaskView } from '@ae/models/inventory/task';
 import { TaskController } from './task.controller';
 import { TaskViewController } from './task-view.controller';
@@ -13,4 +13,9 @@ import { Employee } from '@ae/models/inventory/employee';
   controllers: [TaskController, TaskViewController],
   providers: [TaskService, TaskViewService],
 })
-export class TaskModule {}
+export class TaskModule implements OnModuleInit {
+  constructor(private readonly service: TaskService) {}
+  onModuleInit() {
+    // Seed database
+  }
+}
