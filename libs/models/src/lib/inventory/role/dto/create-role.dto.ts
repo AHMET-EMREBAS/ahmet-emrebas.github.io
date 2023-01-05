@@ -1,6 +1,7 @@
-import { TextSmProperty, IdProperty } from '@ae/core/property';
-import { IdDto } from '@ae/core/dto';
-export class CreateRoleDto {
+import { IdProperty, TextSmProperty } from '@ae/core/property';
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreateRoleDto extends BaseDto {
   @TextSmProperty({ unique: true })
   name: string;
 

@@ -1,6 +1,7 @@
-import { IdDto } from '@ae/core/dto';
-import { DateProperty, IdProperty } from '@ae/core/property';
-export class CreateClockinDto {
+import { IdProperty, DateProperty } from '@ae/core/property';
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreateClockinDto extends BaseDto {
   @DateProperty({})
   start: Date;
 

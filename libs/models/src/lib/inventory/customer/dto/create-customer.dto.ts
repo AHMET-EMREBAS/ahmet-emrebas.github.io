@@ -1,12 +1,13 @@
 import {
+  IdProperty,
   TextSmProperty,
   EmailProperty,
   PasswordProperty,
   PhoneProperty,
-  IdProperty,
 } from '@ae/core/property';
-import { IdDto } from '@ae/core/dto';
-export class CreateCustomerDto {
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreateCustomerDto extends BaseDto {
   @TextSmProperty({})
   type: string;
 

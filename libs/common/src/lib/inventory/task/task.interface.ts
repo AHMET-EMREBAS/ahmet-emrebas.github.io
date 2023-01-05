@@ -1,4 +1,6 @@
-export interface TaskInterface<Employee> {
+import { BaseInterface } from '../../common';
+
+export interface TaskInterface<Employee> extends BaseInterface {
   title: string;
 
   description: string;

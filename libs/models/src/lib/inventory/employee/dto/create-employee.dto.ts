@@ -1,12 +1,13 @@
 import {
+  IdProperty,
   EmailProperty,
   PasswordProperty,
   TextSmProperty,
   PhoneProperty,
-  IdProperty,
 } from '@ae/core/property';
-import { IdDto } from '@ae/core/dto';
-export class CreateEmployeeDto {
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreateEmployeeDto extends BaseDto {
   @EmailProperty({ optional: true })
   username: string;
 

@@ -1,4 +1,6 @@
-export interface ReadOrderInterface {
+import { BaseInterface } from '../../common';
+
+export interface ReadOrderInterface extends BaseInterface {
   quantity: number;
 
   storeName: string;

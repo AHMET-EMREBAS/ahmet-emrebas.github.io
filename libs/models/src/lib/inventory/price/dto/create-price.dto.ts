@@ -1,6 +1,7 @@
-import { PositiveNumberProperty, IdProperty } from '@ae/core/property';
-import { IdDto } from '@ae/core/dto';
-export class CreatePriceDto {
+import { IdProperty, PositiveNumberProperty } from '@ae/core/property';
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreatePriceDto extends BaseDto {
   @PositiveNumberProperty({})
   price: number;
 

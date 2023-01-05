@@ -1,6 +1,7 @@
-import { TextMdProperty, TextSmProperty, IdProperty } from '@ae/core/property';
-import { IdDto } from '@ae/core/dto';
-export class CreateTaskDto {
+import { IdProperty, TextMdProperty, TextSmProperty } from '@ae/core/property';
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreateTaskDto extends BaseDto {
   @TextMdProperty({})
   title: string;
 

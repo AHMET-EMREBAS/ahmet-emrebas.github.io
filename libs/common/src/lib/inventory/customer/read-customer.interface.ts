@@ -1,4 +1,6 @@
-export interface ReadCustomerInterface {
+import { BaseInterface } from '../../common';
+
+export interface ReadCustomerInterface extends BaseInterface {
   type: string;
 
   username: string;

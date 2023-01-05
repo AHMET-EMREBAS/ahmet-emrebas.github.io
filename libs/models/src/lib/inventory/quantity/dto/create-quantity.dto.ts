@@ -1,6 +1,7 @@
-import { PositiveIntegerProperty, IdProperty } from '@ae/core/property';
-import { IdDto } from '@ae/core/dto';
-export class CreateQuantityDto {
+import { IdProperty, PositiveIntegerProperty } from '@ae/core/property';
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreateQuantityDto extends BaseDto {
   @PositiveIntegerProperty({ unique: true })
   quantity: number;
 

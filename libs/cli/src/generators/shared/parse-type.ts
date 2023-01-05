@@ -24,5 +24,8 @@ export const TypeMap = {
 };
 
 export function parsePropertyType(type: string) {
-  return TypeMap[type];
+  if (!type) {
+    return 'string';
+  }
+  return TypeMap[type] || type;
 }

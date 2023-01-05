@@ -1,4 +1,6 @@
-export interface CustomerInterface<PriceLevel> {
+import { BaseInterface } from '../../common';
+
+export interface CustomerInterface<PriceLevel> extends BaseInterface {
   type: string;
 
   username: string;

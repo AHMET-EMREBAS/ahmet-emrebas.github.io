@@ -118,6 +118,55 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
     })
     .join('\n');
 
+  //     .addSelect('<%- propertyName %>.active', 'active')
+  const addPropertySelects = Object.entries(MODEL_SCHEMA.properties || {})
+    .map(([key, value]) => {
+      return `.addSelect('${
+        names(MODEL_NAME).propertyName
+      }.${key}', '${key}' )`;
+    })
+    .join('\n');
+  const addRelationSelects = Object.entries(MODEL_SCHEMA.relations || {})
+    .map(([key, value]) => {
+      return Object.entries(value.views || {})
+        .map(([rname, roptions]) => {
+          return `.addSelect('${names(value.target).propertyName}.${rname}', '${
+            roptions.as
+          }' )`;
+        })
+        .join('\n');
+    })
+    .join('\n');
+
+  // .leftJoin(Category, 'category', 'category.id = <%- propertyName %>.categoryId')
+  const joins = Object.entries(MODEL_SCHEMA.relations || {})
+    .map(([key, value]) => {
+      const pname = names(value.target).propertyName;
+      return `.leftJoin(${value.target}, '${pname}', '${pname}.id = ${
+        names(MODEL_NAME).propertyName
+      }.${pname}Id')`;
+    })
+    .join('\n');
+
+  const viewFields = [
+    ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
+      return `
+    @ViewColumn()
+    ${key}:${parsePropertyType(value.type)};\n
+    `;
+    }),
+    ...Object.entries(MODEL_SCHEMA.relations || {}).map(([key, value]) => {
+      return Object.entries(value.views || {})
+        .map(([vname, vvalue]) => {
+          return `
+        @ViewColumn()
+        ${vvalue.as}:${parsePropertyType(vvalue.type)};\n
+        `;
+        })
+        .join('\n');
+    }),
+  ].join('');
+
   generateFiles(tree, FILES, TARGET, {
     ...names(MODEL_NAME),
     columns,
@@ -126,6 +175,10 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
     properties,
     propertyDecorators,
     targets,
+    addPropertySelects,
+    addRelationSelects,
+    joins,
+    viewFields,
   });
 
   await formatFiles(tree);

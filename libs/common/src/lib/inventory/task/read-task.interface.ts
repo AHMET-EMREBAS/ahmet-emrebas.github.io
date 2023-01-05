@@ -1,4 +1,6 @@
-export interface ReadTaskInterface {
+import { BaseInterface } from '../../common';
+
+export interface ReadTaskInterface extends BaseInterface {
   title: string;
 
   description: string;

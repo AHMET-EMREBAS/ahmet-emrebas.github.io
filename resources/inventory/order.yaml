@@ -30,7 +30,7 @@ relations:
     eager: true
     target: Customer
     views:
-      name:
+      username:
         as: customer
         label: Customer
 

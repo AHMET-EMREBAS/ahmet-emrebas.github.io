@@ -8,12 +8,13 @@ import {
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
 import { InternalServerErrorException } from '@nestjs/common';
-import { SetRelationDto } from '../dto/set-relation.dto';
+import { IdDto } from '../dto';
 import { AddRelationDto } from '../dto/add-relation.dto';
-import { UnsetRelationDto } from '../dto/unset-relation.dto';
 import { RemoveRelationDto } from '../dto/remove-relation.dto';
+import { SetRelationDto } from '../dto/set-relation.dto';
+import { UnsetRelationDto } from '../dto/unset-relation.dto';
 
-export class ResourceService<T extends { id: number }> {
+export class ResourceService<T extends IdDto> {
   constructor(public readonly __repo: Repository<T>) {}
 
   find(options?: FindManyOptions<T>) {

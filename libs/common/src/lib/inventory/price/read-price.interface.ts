@@ -1,4 +1,6 @@
-export interface ReadPriceInterface {
+import { BaseInterface } from '../../common';
+
+export interface ReadPriceInterface extends BaseInterface {
   price: number;
 
   cost: number;

@@ -1,12 +1,12 @@
+import { readProjectConfiguration, Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
 import generator from './generator';
 import { ServiceGeneratorSchema } from './schema';
 
 describe('service generator', () => {
   let appTree: Tree;
-  const options: ServiceGeneratorSchema = { name: 'test' };
+  const options: ServiceGeneratorSchema = { project: 'test', model: 'text1' };
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();

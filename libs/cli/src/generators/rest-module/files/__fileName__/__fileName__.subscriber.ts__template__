@@ -1,0 +1,11 @@
+import { <%- className %> } from '@ae/models/<%- project %>/<%- fileName %>';
+import { EntitySubscriberInterface, EventSubscriber } from 'typeorm';
+
+
+@EventSubscriber()
+export class <%- className %>Subscriber implements EntitySubscriberInterface {
+  listenTo() {
+    return <%- className %>;
+  }
+
+}

@@ -1,4 +1,6 @@
-export interface ReadCommentInterface {
+import { BaseInterface } from '../../common';
+
+export interface ReadCommentInterface extends BaseInterface {
   comment: string;
 
   eid: string;

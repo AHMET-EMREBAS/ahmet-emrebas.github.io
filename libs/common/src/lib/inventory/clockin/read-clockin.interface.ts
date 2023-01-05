@@ -1,4 +1,6 @@
-export interface ReadClockinInterface {
+import { BaseInterface } from '../../common';
+
+export interface ReadClockinInterface extends BaseInterface {
   start: Date;
 
   end: Date;

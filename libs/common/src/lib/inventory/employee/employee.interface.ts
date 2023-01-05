@@ -1,4 +1,6 @@
-export interface EmployeeInterface<Role> {
+import { BaseInterface } from '../../common';
+
+export interface EmployeeInterface<Role> extends BaseInterface {
   username: string;
 
   password: string;

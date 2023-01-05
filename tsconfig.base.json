@@ -19,6 +19,7 @@
       "@ae/components/*": ["libs/components/src/lib/*"],
       "@ae/core/*": ["libs/core/src/lib/*"],
       "@ae/models/*": ["libs/models/src/lib/*"],
+      "@ae/rest/*": ["libs/rest/src/lib/*"],
       "cli": ["libs/cli/src/index.ts"]
     }
   },

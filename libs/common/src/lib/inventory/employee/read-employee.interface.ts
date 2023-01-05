@@ -1,4 +1,6 @@
-export interface ReadEmployeeInterface {
+import { BaseInterface } from '../../common';
+
+export interface ReadEmployeeInterface extends BaseInterface {
   username: string;
 
   password: string;

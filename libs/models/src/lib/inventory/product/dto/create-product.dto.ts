@@ -1,12 +1,13 @@
 import {
+  IdProperty,
   TextSmProperty,
   PositiveNumberProperty,
   PositiveIntegerProperty,
   BarcodeProperty,
-  IdProperty,
 } from '@ae/core/property';
-import { IdDto } from '@ae/core/dto';
-export class CreateProductDto {
+import { IdDto, BaseDto } from '@ae/core/dto';
+
+export class CreateProductDto extends BaseDto {
   @TextSmProperty({ unique: true })
   name: string;
 

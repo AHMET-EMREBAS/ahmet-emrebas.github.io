@@ -1,12 +1,6 @@
-import {
-  applyDecorators,
-  UnprocessableEntityException,
-  ValidationPipe,
-  ValidationPipeOptions,
-} from '@nestjs/common';
+import { applyDecorators } from '@nestjs/common';
 import { ApiProperty, ApiPropertyOptions } from '@nestjs/swagger';
 import { Expose, Type } from 'class-transformer';
-import { v4 } from 'uuid';
 import {
   IsBoolean,
   IsDate,
@@ -26,10 +20,9 @@ import {
   MinLength,
   ValidateNested,
 } from 'class-validator';
-import { Column } from 'typeorm';
-import { EntityConstructor } from '../shared';
+import { v4 } from 'uuid';
+
 import { IsPassword } from '../validators/is-password';
-import { IdDto } from '../dto';
 
 /**
  *      "text-sm",
@@ -295,12 +288,14 @@ export function PositiveNumberProperty(options: BasicPropertyOptions = {}) {
 }
 
 export function PositiveIntegerProperty(options: BasicPropertyOptions = {}) {
-  return Property({
-    type: PropertyType.INTEGER,
-    minimum: 0,
-    default: 0,
-    ...options,
-  });
+  return applyDecorators(
+    Property({
+      type: PropertyType.INTEGER,
+      minimum: 0,
+      default: 0,
+      ...options,
+    })
+  );
 }
 
 export function UriProperty(options: BasicPropertyOptions = {}) {
@@ -312,42 +307,22 @@ export function UriProperty(options: BasicPropertyOptions = {}) {
   });
 }
 
+class IdDto {
+  @PositiveIntegerProperty({ optional: false })
+  id: number;
+}
+
 export function IdProperty(
   options: BasicPropertyOptions & { each?: boolean } = {}
 ) {
   return applyDecorators(
     Expose(),
-    apiPropertyOptions({ type: PropertyType.OBJECT, ...options }),
+    apiPropertyOptions({
+      type: PropertyType.OBJECT,
+      default: { id: 1 },
+      ...options,
+    }),
     ValidateNested({ each: !!options.each }),
     Type(() => IdDto)
   );
-}
-
-const commonOptions: ValidationPipeOptions = {
-  transform: true,
-  transformOptions: {
-    excludeExtraneousValues: true,
-    exposeUnsetFields: false,
-    exposeDefaultValues: false,
-  },
-  exceptionFactory(errors) {
-    throw new UnprocessableEntityException(errors);
-  },
-};
-
-export function CreateValidationPipe(type: EntityConstructor) {
-  return new ValidationPipe({
-    ...commonOptions,
-    expectedType: type,
-  });
-}
-
-export function UpdateValidationPipe(type: EntityConstructor) {
-  return new ValidationPipe({
-    ...commonOptions,
-    expectedType: type,
-    skipMissingProperties: true,
-    skipNullProperties: true,
-    skipUndefinedProperties: true,
-  });
 }

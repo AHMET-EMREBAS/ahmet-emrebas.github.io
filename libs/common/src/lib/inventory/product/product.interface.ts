@@ -1,4 +1,6 @@
-export interface ProductInterface<Category, Department> {
+import { BaseInterface } from '../../common';
+
+export interface ProductInterface<Category, Department> extends BaseInterface {
   name: string;
 
   price: number;

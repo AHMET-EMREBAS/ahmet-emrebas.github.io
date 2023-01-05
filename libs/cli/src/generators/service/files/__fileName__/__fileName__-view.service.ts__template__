@@ -1,0 +1,14 @@
+import { Repository } from 'typeorm'
+import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common';
+import { ResourceService } from '@ae/core/rest';
+import { <%- className %>View   } from '@ae/models/<%- project %>/<%- fileName %>';
+
+@Injectable()
+export class <%- className %>ViewService extends ResourceService<<%- className %>View>{
+  constructor(@InjectRepository(<%- className %>View) __repo:Repository<<%- className %>View>){
+    super(__repo)
+  }
+}
+
+
