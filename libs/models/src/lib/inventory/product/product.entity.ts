@@ -1,8 +1,19 @@
-import { Entity, Column, JoinColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  JoinTable,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  ManyToMany,
+  OneToOne,
+} from 'typeorm';
+import { Relation, RelationType } from '@ae/core/relations';
+import { BaseEntity } from '@ae/core/entity';
 
 import { Category } from '../category';
 import { Department } from '../department';
-import { BaseEntity } from '@ae/core/entity';
+
 @Entity()
 export class Product extends BaseEntity {
   @Column({ type: 'text', unique: true })
@@ -14,7 +25,7 @@ export class Product extends BaseEntity {
   @Column({ type: 'numeric' })
   cost: number;
 
-  @Column({ type: 'numeric' })
+  @Column({ type: 'integer' })
   quantity: number;
 
   @Column({ type: 'text', unique: true })

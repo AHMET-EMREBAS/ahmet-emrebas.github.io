@@ -14,7 +14,7 @@ properties:
     prefix: CURRENCY
 
   quantity:
-    type: number-positive
+    type: integer-positive
     label: Quantity
 
   barcode:

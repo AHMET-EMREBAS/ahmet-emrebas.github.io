@@ -1,6 +1,5 @@
-import { undefined } from '@ae/core/property';
-
+import { TextSmProperty } from '@ae/core/property';
 export class CreateCategoryDto {
-  @TextSmProperty({ type: 'text-sm', label: 'Category Name' })
+  @TextSmProperty({ unique: true })
   name: string;
 }

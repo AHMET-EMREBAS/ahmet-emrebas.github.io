@@ -1,6 +1,6 @@
-import { undefined } from '@ae/core/property';
-
+import { TextSmProperty, IdProperty } from '@ae/core/property';
+import { IdDto } from '@ae/core/dto';
 export class CreateDepartmentDto {
-  @TextSmProperty({ type: 'text-sm', label: 'Department Name' })
+  @TextSmProperty({ unique: true })
   name: string;
 }

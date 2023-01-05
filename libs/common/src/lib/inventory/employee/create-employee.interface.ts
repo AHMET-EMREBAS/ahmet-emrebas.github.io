@@ -1,4 +1,4 @@
-export interface ReadEmployeeInterface {
+export interface CreateEmployeeInterface {
   username: string;
 
   password: string;

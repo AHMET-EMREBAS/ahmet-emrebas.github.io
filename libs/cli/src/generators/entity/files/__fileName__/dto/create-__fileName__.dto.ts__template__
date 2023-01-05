@@ -1,5 +1,5 @@
-import { <%- propertyDecorators %> } from '@ae/core/property';
-
+import { IdProperty, <%- propertyDecorators %>  } from '@ae/core/property';
+import { IdDto} from '@ae/core/dto'
 export class Create<%- className %>Dto {
   <% for(const p of properties ) { %>
     <%- p.decorator %>

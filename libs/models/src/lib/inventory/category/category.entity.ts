@@ -1,15 +1,5 @@
-import {
-  Entity,
-  Column,
-  JoinTable,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  ManyToMany,
-  OneToOne,
-} from 'typeorm';
-import { Relation, RelationType } from '@ae/core/relations';
 import { BaseEntity } from '@ae/core/entity';
+import { Column, Entity } from 'typeorm';
 
 @Entity()
 export class Category extends BaseEntity {

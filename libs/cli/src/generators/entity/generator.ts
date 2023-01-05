@@ -2,6 +2,7 @@ import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
 import { readFileSync } from 'fs';
 import { load } from 'js-yaml';
 import { join } from 'path';
+
 import {
   parseColumnType,
   parsePropertyDecorator,
@@ -33,11 +34,11 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
         type: parseColumnType(value.type),
       };
 
-      if (!MODEL_SCHEMA.required.includes(key)) {
+      if (!MODEL_SCHEMA.required?.includes(key)) {
         propertyOptions['nullable'] = true;
       }
 
-      if (MODEL_SCHEMA.unique.includes(key)) {
+      if (MODEL_SCHEMA.unique?.includes(key)) {
         propertyOptions['unique'] = true;
       }
 
@@ -53,7 +54,8 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
       const relationOptions = {};
 
       if (value.eager) relationOptions['eager'] = true;
-      if (value.onDelete) relationOptions['onDelete'] = true;
+      if (value.onDelete) relationOptions['onDelete'] = value.onDelete;
+      if (value.onUpdate) relationOptions['onUpdate'] = value.onUpdate;
 
       return {
         property: `${key}:${value.target}${
@@ -72,17 +74,25 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
 
   const properties = [
     ...Object.entries(MODEL_SCHEMA.properties || {}).map(([key, value]) => {
+      const propertyOptions = {};
+
+      if (!MODEL_SCHEMA.required?.includes(key))
+        propertyOptions['optional'] = true;
+
+      if (MODEL_SCHEMA.unique?.includes(key)) propertyOptions['unique'] = true;
+
       return {
         property: `${key}: ${parsePropertyType(value.type)}`,
         decorator: `@${parsePropertyDecorator(value.type)}(${JSON.stringify(
-          value
+          propertyOptions
         )})`,
       };
     }),
     ...Object.entries(MODEL_SCHEMA.relations || {}).map(([key, value]) => {
+      console.log(`${key}: ${value.type}`);
       return {
         property: `${key}: ${
-          value.type.endsWith('Many') ? 'IDDto' : 'IDDto[]'
+          value.type.endsWith('Many') ? 'IdDto[]' : 'IdDto'
         }`,
         decorator: value.type.endsWith('Many')
           ? '@IdProperty({each:true})'
@@ -92,7 +102,7 @@ export default async function (tree: Tree, options: EntityGeneratorSchema) {
   ];
   const propertyDecorators = [
     ...new Set(
-      Object.values(MODEL_SCHEMA).map((value) => {
+      Object.values(MODEL_SCHEMA.properties || {}).map((value) => {
         return `${parsePropertyDecorator(value.type)}`;
       })
     ),

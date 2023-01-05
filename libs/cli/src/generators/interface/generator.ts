@@ -1,10 +1,10 @@
 import { formatFiles, generateFiles, names, Tree } from '@nrwl/devkit';
-import { join } from 'path';
-import { InterfaceGeneratorSchema } from './schema';
-import { load } from 'js-yaml';
 import { readFileSync } from 'fs';
-import { SchemaInterface } from '../shared/schema.interface';
+import { load } from 'js-yaml';
+import { join } from 'path';
 import { parsePropertyType } from '../shared';
+import { SchemaInterface } from '../shared/schema.interface';
+import { InterfaceGeneratorSchema } from './schema';
 
 export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
   const PROJECT_NAME = options.project;
@@ -40,8 +40,8 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
     }),
   ];
 
-  Object.values(MODEL_SCHEMA.relations || {}).map((value) => {
-    for (const { as, type } of Object.values(value.views)) {
+  Object.values(MODEL_SCHEMA.relations || {})?.map((value) => {
+    for (const { as, type } of Object.values(value.views || {})) {
       readProperties.push(`${as}:${type || 'string'}`);
     }
   });

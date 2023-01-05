@@ -5,7 +5,7 @@ import {
   ValidationPipeOptions,
 } from '@nestjs/common';
 import { ApiProperty, ApiPropertyOptions } from '@nestjs/swagger';
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import { v4 } from 'uuid';
 import {
   IsBoolean,
@@ -24,10 +24,12 @@ import {
   MaxLength,
   Min,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
 import { Column } from 'typeorm';
 import { EntityConstructor } from '../shared';
 import { IsPassword } from '../validators/is-password';
+import { IdDto } from '../dto';
 
 /**
  *      "text-sm",
@@ -57,6 +59,7 @@ export enum PropertyType {
   INTEGER = 'integer',
   BOOLEAN = 'boolean',
   DATE = 'date',
+  OBJECT = 'object',
 }
 
 export enum PropertyFormat {
@@ -282,7 +285,7 @@ export function DateProperty(options: BasicPropertyOptions = {}) {
   });
 }
 
-export function NumberPositiveProperty(options: BasicPropertyOptions = {}) {
+export function PositiveNumberProperty(options: BasicPropertyOptions = {}) {
   return Property({
     type: PropertyType.NUMBER,
     minimum: 0,
@@ -291,7 +294,7 @@ export function NumberPositiveProperty(options: BasicPropertyOptions = {}) {
   });
 }
 
-export function IntegerPositiveProperty(options: BasicPropertyOptions = {}) {
+export function PositiveIntegerProperty(options: BasicPropertyOptions = {}) {
   return Property({
     type: PropertyType.INTEGER,
     minimum: 0,
@@ -307,6 +310,17 @@ export function UriProperty(options: BasicPropertyOptions = {}) {
     default: 'http://localhost:3333/public/imgs/placeholder.png',
     ...options,
   });
+}
+
+export function IdProperty(
+  options: BasicPropertyOptions & { each?: boolean } = {}
+) {
+  return applyDecorators(
+    Expose(),
+    apiPropertyOptions({ type: PropertyType.OBJECT, ...options }),
+    ValidateNested({ each: !!options.each }),
+    Type(() => IdDto)
+  );
 }
 
 const commonOptions: ValidationPipeOptions = {

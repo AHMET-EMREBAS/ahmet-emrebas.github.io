@@ -1,32 +1,30 @@
-import { undefined } from '@ae/core/property';
-
+import {
+  TextSmProperty,
+  PositiveNumberProperty,
+  PositiveIntegerProperty,
+  BarcodeProperty,
+  IdProperty,
+} from '@ae/core/property';
+import { IdDto } from '@ae/core/dto';
 export class CreateProductDto {
-  @TextSmProperty({ type: 'text-sm', label: 'Product Name' })
+  @TextSmProperty({ unique: true })
   name: string;
 
-  @PositiveNumberProperty({
-    type: 'number-positive',
-    label: 'Unit Price',
-    prefix: 'CURRENCY',
-  })
+  @PositiveNumberProperty({})
   price: number;
 
-  @PositiveNumberProperty({
-    type: 'number-positive',
-    label: 'Unit Cost',
-    prefix: 'CURRENCY',
-  })
+  @PositiveNumberProperty({})
   cost: number;
 
-  @PositiveNumberProperty({ type: 'number-positive', label: 'Quantity' })
+  @PositiveIntegerProperty({})
   quantity: number;
 
-  @BarcodeProperty({ type: 'barcode', label: 'Barcode' })
+  @BarcodeProperty({ unique: true })
   barcode: string;
 
   @IdProperty()
-  category: IDDto[];
+  category: IdDto;
 
   @IdProperty()
-  department: IDDto[];
+  department: IdDto;
 }

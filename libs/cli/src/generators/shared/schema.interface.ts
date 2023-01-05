@@ -26,9 +26,9 @@ export interface RelationOptions {
 }
 
 export interface SchemaInterface {
-  properties: Record<string, PropertyOptions>;
-  relations: Record<string, RelationOptions>;
-  required: string[];
-  unique: string;
-  formGroup: Record<string, string[]>;
+  properties?: Record<string, PropertyOptions>;
+  relations?: Record<string, RelationOptions>;
+  required?: string[];
+  unique?: string;
+  formGroup?: Record<string, string[]>;
 }
