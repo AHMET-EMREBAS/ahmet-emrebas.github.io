@@ -9,8 +9,8 @@ import { v4 } from 'uuid';
 
 export class BaseEntity {
   @PrimaryGeneratedColumn() id: number;
-  @CreateDateColumn() creatdAt: Date;
-  @UpdateDateColumn() udaptedAt: Date;
+  @CreateDateColumn() createdAt: Date;
+  @UpdateDateColumn() updatedAt: Date;
   @DeleteDateColumn() deletedAt: Date;
   @Column({ type: 'boolean', default: true }) active: boolean;
   @Column({ type: 'text', nullable: true }) comment: string;

@@ -1,0 +1,9 @@
+<div class="flex flex-column gap-2 border-4 w-full h-full">
+  <p-menubar [model]="menubar"></p-menubar>
+
+  <div class="flex flex-row gap-2 w-full h-full ">
+    <div class="flex flex-column  gap-2 w-full">
+      <ng-content select="[main-content]"></ng-content>
+    </div>
+  </div>
+</div>

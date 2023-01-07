@@ -1,0 +1,20 @@
+<div class="flex flex-column gap-2 h-full w-full">
+  <p-menubar [model]="menubar">
+    <ng-template pTemplate="start">
+      <div class="flex flex-row gap-2  align-items-center">
+        <img src="/assets/icons/android-icon-72x72.png" alt="Logo" width="30" height="30">
+        <strong>IMS</strong>
+      </div>
+    </ng-template>
+  </p-menubar>
+
+  <div class="flex flex row h-full gap-2 w-full ">
+    <div class="flex flex-column">
+      <p-menu [model]="leftmenu"></p-menu>
+    </div>
+    <div class="w-full">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

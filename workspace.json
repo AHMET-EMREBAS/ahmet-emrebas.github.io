@@ -4,6 +4,7 @@
     "api": "apps/api",
     "cli": "libs/cli",
     "cli-e2e": "apps/cli-e2e",
+    "client": "libs/client",
     "common": "libs/common",
     "components": "libs/components",
     "core": "libs/core",
@@ -14,5 +15,6 @@
     "web": "apps/web",
     "web-e2e": "apps/web-e2e"
   },
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "defaultProject": "web"
 }

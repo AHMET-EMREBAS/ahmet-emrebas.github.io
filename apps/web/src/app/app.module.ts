@@ -1,15 +1,17 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { StoreModule } from '@ngrx/store';
+import { AppComponent } from './app.component';
+import { appRoutes } from './app.routes';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({}),
     RouterModule.forRoot(appRoutes, {
       useHash: true,
       initialNavigation: 'enabledBlocking',

@@ -39,4 +39,11 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
+}
+
+
+.p-toolbar {
+  justify-content: flex-start !important;
+  gap: 3px;
 }

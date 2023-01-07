@@ -1,24 +1,7 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiProperty, ApiPropertyOptions } from '@nestjs/swagger';
 import { Expose, Transform } from 'class-transformer';
-import {
-  IsBoolean,
-  IsDate,
-  IsEAN,
-  IsEmail,
-  IsIn,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  IsUrl,
-  IsUUID,
-  Max,
-  MaxLength,
-  Min,
-  MinLength,
-} from 'class-validator';
-import { IsPassword } from '../validators/is-password';
+import { IsIn, IsNotEmpty, IsOptional } from 'class-validator';
 
 export enum ParamType {
   STRING = 'string',
@@ -62,55 +45,6 @@ function apiPropertyOptions(options: ParamOptions) {
 function parseValidators(options: ParamOptions) {
   const validators = [];
 
-  options.minLength && validators.push(MinLength(options.minLength));
-
-  options.maxLength && validators.push(MaxLength(options.maxLength));
-
-  options.minimum && validators.push(Min(options.minimum));
-
-  options.maximum && validators.push(Max(options.maximum));
-
-  switch (options.type) {
-    case ParamType.STRING:
-      validators.push(IsString());
-      break;
-
-    case ParamType.BOOLEAN:
-      validators.push(IsBoolean());
-      break;
-
-    case ParamType.DATE:
-      validators.push(IsDate());
-      break;
-
-    case ParamType.INTEGER:
-    case ParamType.NUMBER:
-      validators.push(IsNumber());
-      break;
-  }
-
-  switch (options.format) {
-    case ParamFormat.PASSWORD:
-      validators.push(IsPassword());
-      break;
-
-    case ParamFormat.EAN:
-      validators.push(IsEAN());
-      break;
-
-    case ParamFormat.UUID:
-      validators.push(IsUUID('4'));
-      break;
-
-    case ParamFormat.EMAIL:
-      validators.push(IsEmail());
-      break;
-
-    case ParamFormat.URL:
-      validators.push(IsUrl());
-      break;
-  }
-
   if (options.optional === true) {
     validators.push(IsOptional({ always: true }));
   } else {
@@ -120,25 +54,30 @@ function parseValidators(options: ParamOptions) {
   options.enum && validators.push(IsIn(options.enum));
 
   return applyDecorators(
-    ...validators,
     Transform(({ value }) => {
       if (value === null) {
         return options.default;
       }
 
-      switch (options.type) {
-        case ParamType.NUMBER:
-          return parseFloat(value);
-        case ParamType.INTEGER:
-          return parseInt(value);
-        case ParamType.BOOLEAN:
-          return ['1', 'true'].includes(value);
-        case ParamType.DATE:
-          return new Date(value);
-        default:
-          return value;
+      function parseIt() {
+        switch (options.type) {
+          case ParamType.NUMBER:
+            return parseFloat(value);
+          case ParamType.INTEGER:
+            return parseInt(value);
+          case ParamType.BOOLEAN:
+            return ['1', 'true'].includes(value);
+          case ParamType.DATE:
+            return new Date(value);
+          default:
+            return value;
+        }
       }
-    })
+      const v = parseIt() || null;
+
+      return v;
+    }),
+    ...validators
   );
 }
 

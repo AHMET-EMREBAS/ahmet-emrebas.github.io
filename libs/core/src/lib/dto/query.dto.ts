@@ -2,7 +2,7 @@ import { ParamType, UrlParam } from '../property';
 
 export class QueryDto {
   @UrlParam({
-    type: ParamType.INTEGER,
+    type: ParamType.NUMBER,
     default: 20,
     optional: true,
     maximum: 100,
@@ -10,7 +10,7 @@ export class QueryDto {
   take: number;
 
   @UrlParam({
-    type: ParamType.INTEGER,
+    type: ParamType.NUMBER,
     default: 0,
     optional: true,
   })

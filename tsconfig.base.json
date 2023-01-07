@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ae/client/*": ["libs/client/src/lib/*"],
       "@ae/common/*": ["libs/common/src/lib/*"],
       "@ae/components/*": ["libs/components/src/lib/*"],
       "@ae/core/*": ["libs/core/src/lib/*"],

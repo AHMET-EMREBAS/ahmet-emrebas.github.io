@@ -1,0 +1,116 @@
+<p-dialog header="Settings" [(visible)]="settingDialog" [style]="{width: '90%', height:'90%'}">
+
+    <p-tabView>
+        <p-tabPanel header="Visible Columns">
+            <div class="flex flex-column gap-2 p-5">
+
+                <div class="flex flex-column gap-2 w-full">
+                    <label><strong> Select Visible Columns </strong></label>
+                    <p-multiSelect styleClass="w-full" [options]="columns" [(ngModel)]="visibleColumns"
+                        optionLabel="header" [showClear]="true" [display]="'chip'">
+                    </p-multiSelect>
+                </div>
+            </div>
+        </p-tabPanel>
+
+    </p-tabView>
+
+</p-dialog>
+
+<p-toolbar styleClass="md:sticky top-0 z-5">
+    <div class="flex flex-grow-1 flex-column-reverse  flex-column gap-2  md:flex-row  md:justify-content-between">
+
+        <div class="flex  gap-2 justify-content-between ">
+            <div class="flex gap-2 ">
+
+                <!-- Create new item  -->
+                <button class="p-button-success" pButton icon="pi pi-plus" pTooltip="New" tooltipPosition="bottom"
+                    (click)="newEvent.emit()"></button>
+
+                <!-- Update the selection -->
+                <button pButton icon="pi pi-pencil" pTooltip="Edit selection" tooltipPosition="bottom"
+                    (click)="editEvent.emit(selectedItems)" [disabled]="selectedItems.length ===0"></button>
+            </div>
+
+            <!-- Delete the selection  -->
+            <button class="p-button-danger" pButton icon="pi pi-trash" pTooltip="Delete Selection"
+                tooltipPosition="bottom" (click)="deleteEvent.emit(selectedItems)"
+                [disabled]="selectedItems.length ===0"></button>
+        </div>
+
+        <div class="flex  justify-content-between  gap-2">
+
+            <!-- Setting dialog -->
+            <button class="p-button-secondary" pButton icon="pi pi-cog" pTooltip="Settings" tooltipPosition="bottom"
+                (click)="showSettingDialog()"></button>
+
+
+
+            <div class="flex gap-2">
+
+                <!-- Global search  -->
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [formControl]="searchControl"
+                        (input)="table.filterGlobal(searchControl.value,'contains')" placeholder="Global Search" />
+                </span>
+
+                <!-- Clear table filter  -->
+                <button pButton icon="pi pi-filter-slash" (click)="table.clear(); clearEvent.emit()"
+                    pTooltip="Clear filter" tooltipPosition="bottom"></button>
+            </div>
+        </div>
+    </div>
+</p-toolbar>
+<p-table #table [value]="data" [lazy]="true" dataKey="index" [columns]="visibleColumns"
+    a="//////////////////////////////////////////////////" [showCurrentPageReport]="true"
+    a="//////////////////////////////////////////////////" [rowHover]="true"
+    a="//////////////////////////////////////////////////" [rowsPerPageOptions]="[10,25,50, 100]"
+    a="//////////////////////////////////////////////////////////" [paginator]="true"
+    a="////////////////////////////////////////////////// " [totalRecords]="totalRecords"
+    a="//////////////////////////////////////////////////" styleClass="p-datatable-gridlines  p-datatable-striped"
+    a="////////////////////////////////////////////////////" responsiveLayout="scroll"
+    a="///////////////////////////////" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    a="//////////////////////////////////////////////////" [rows]="10"
+    a="////////////////////////////////////////////////////////////" [filterDelay]="400"
+    a="////////////////////////////////////////////////////////////" [virtualScrollDelay]="400"
+    a="////////////////////////////////////////////////// " (onSort)="sortEvent.emit($event)"
+    a="///////////////////////////////////////////////////" (onPage)="pageEvent.emit($event)"
+    a="/////////////////////////////////////////////" (selectionChange)="selectEvent.emit($event)"
+    a="//////////////////////////////////////////////////" [(selection)]="selectedItems"
+    a="//////////////////////////////////////////" (onFilter)="filterEvent.emit($event)"
+    a="////////////////////////////////////////////////////////////" [sortField]="'index'"
+    a="//////////////////////////////////////////" [globalFilterFields]="globalFilterFields">
+
+    <ng-template pTemplate="header">
+
+        <tr class="header-row">
+            <th>
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+
+            <th [pSortableColumn]="col.field" *ngFor="let col of visibleColumns" [class]="col.field">
+
+                {{col.header | titlecase}}
+
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+                <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
+
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData>
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+            </td>
+            <td *ngFor="let col of visibleColumns">
+                {{col.prefix}}
+                {{rowData[col.field] }}
+                {{col.suffix}}
+            </td>
+        </tr>
+    </ng-template>
+
+</p-table>
