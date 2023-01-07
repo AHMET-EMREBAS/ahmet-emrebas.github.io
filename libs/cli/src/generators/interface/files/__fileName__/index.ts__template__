@@ -1,6 +1,0 @@
-export * from './<%- fileName %>.interface';
-export * from './read-<%- fileName %>.interface';
-export * from './create-<%- fileName %>.interface';
-export * from './update-<%- fileName %>.interface';
-
-

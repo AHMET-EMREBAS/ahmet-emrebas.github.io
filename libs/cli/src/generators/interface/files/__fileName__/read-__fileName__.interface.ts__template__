@@ -1,7 +1,0 @@
-import { BaseInterface } from '../../common';
-
-export interface Read<%- className %>Interface extends BaseInterface {
-   <% for(const p of readProperties) { %>
-     <%- p %>
-   <% } %>
-}
