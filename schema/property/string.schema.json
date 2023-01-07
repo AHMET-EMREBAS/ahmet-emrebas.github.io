@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "properties": {
+    "meta": {
+      "properties": {
+        "type": {
+          "const": "string"
+        }
+      }
+    },
+    "validators": {
+      "properties": {
+        "minLength": {
+          "type": "number"
+        },
+        "maxLength": {
+          "type": "number"
+        },
+        "format": {
+          "enum": ["email", "password", "uuid", "uri"]
+        }
+      }
+    },
+    "ui": {
+      "properties": {
+        "component": {
+          "type": "string",
+          "enum": ["text", "textarea", "texteditor"]
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

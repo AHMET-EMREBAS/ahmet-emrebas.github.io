@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "properties": {
+    "meta": {
+      "properties": {
+        "type": {
+          "const": "boolean"
+        }
+      }
+    },
+    "ui": {
+      "properties": {
+        "component": {
+          "enum": ["switch", "checkbox"]
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
