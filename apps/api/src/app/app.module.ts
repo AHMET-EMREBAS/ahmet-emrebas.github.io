@@ -1,11 +1,9 @@
-import * as RestModules from '@ae/rest/inventory';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { CacheModule, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { AppResolver } from './app.resolver';
-console.log(Object.values(RestModules));
 
 @Module({
   imports: [
@@ -16,8 +14,6 @@ console.log(Object.values(RestModules));
       synchronize: true,
       dropSchema: true,
     }),
-    ...Object.values(RestModules),
-
     CacheModule.register({
       isGlobal: true,
       ttl: 10,
@@ -31,7 +27,6 @@ console.log(Object.values(RestModules));
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
   ],
-
   providers: [AppResolver],
 })
 export class AppModule {}
