@@ -8,7 +8,14 @@
           "properties": {
             "type": {
               "$ref": "#/definitions/PropertyTypes"
-            }
+            },
+            "minLength": { "type": "number", "minimum": 0 },
+            "maxLength": { "type": "number", "minimum": 0 },
+            "minimum": { "type": "number", "minimum": 0 },
+            "maximum": { "type": "number", "minimum": 0 },
+            "isEmail": { "type": "boolean" },
+            "isPassword": { "type": "boolean" },
+            "isUUID": { "type": "boolean" }
           },
           "required": ["type"],
           "additionalProperties": false
@@ -45,24 +52,7 @@
   },
   "definitions": {
     "PropertyTypes": {
-      "enum": [
-        "NameProperty",
-        "DescriptionProperty",
-        "CurrencyProperty",
-        "QuantityProperty",
-        "BooleanProperty",
-        "EmailProperty",
-        "DateProperty",
-        "DatetimeProperty",
-        "UUIDProperty",
-        "URIProperty",
-        "PhoneProperty",
-        "PasswordProperty",
-        "BarcodeProperty",
-        "AgeProperty",
-        "GenderProperty",
-        "ZipProperty"
-      ]
+      "enum": ["string", "number", "integer", "date", "boolean"]
     },
     "ResourceNames": {
       "enum": [

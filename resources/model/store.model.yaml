@@ -1,6 +1,8 @@
 properties:
   name:
-    type: NameProperty
+    type: string
+    minLength: 2
+    maxLength: 30
 
 relations:
   priceLevel:

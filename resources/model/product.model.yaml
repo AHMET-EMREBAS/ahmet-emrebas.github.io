@@ -1,21 +1,29 @@
 properties:
   name:
-    type: NameProperty
+    type: string
+    minLength: 2
+    maxLength: 30
 
   barcode:
-    type: BarcodeProperty
+    type: string
+    maxLength: 13
+    minLength: 12
 
   description:
-    type: DescriptionProperty
+    type: string
+    maxLength: 400
 
   cost:
-    type: CurrencyProperty
+    type: number
+    minimum: 0
 
   price:
-    type: CurrencyProperty
+    type: number
+    minimum: 0
 
   quantity:
-    type: QuantityProperty
+    type: integer
+    minimum: 0
 
 relations:
   category:
