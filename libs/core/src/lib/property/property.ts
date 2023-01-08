@@ -2,9 +2,13 @@ import { applyDecorators } from '@nestjs/common';
 import { ApiProperty, ApiPropertyOptions } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
 import {
+  IsBoolean,
+  IsDate,
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
+  IsString,
   IsUUID,
   Max,
   MaxLength,
@@ -39,6 +43,11 @@ type PropertyOptions = ApiPropertyOptions & OtherOptions;
 
 function parseValidatorAndTransformer(options: PropertyOptions) {
   const list = [];
+
+  if (options.type == 'string') list.push(IsString());
+  if (options.type == 'integer') list.push(IsNumber());
+  if (options.type == 'boolean') list.push(IsBoolean());
+  if (options.type == 'date') list.push(IsDate());
 
   if (options.minLength) list.push(MinLength(options.minLength));
   if (options.maxLength) list.push(MaxLength(options.maxLength));
