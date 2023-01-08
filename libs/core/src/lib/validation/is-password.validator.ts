@@ -2,7 +2,7 @@ import { applyDecorators } from '@nestjs/common';
 import { Matches } from 'class-validator';
 
 export function IsPassword() {
-  applyDecorators(
+  return applyDecorators(
     Matches(/[A-Z]{1,}/, {
       message: '$property should contain an uppercase letter!',
     }),
