@@ -1,0 +1,40 @@
+properties:
+  name:
+    type: NameProperty
+
+  barcode:
+    type: BarcodeProperty
+
+  description:
+    type: DescriptionProperty
+
+  cost:
+    type: CurrencyProperty
+
+  price:
+    type: CurrencyProperty
+
+  quantity:
+    type: QuantityProperty
+
+relations:
+  category:
+    target: Category
+    type: ManyToMany
+    views:
+      name:
+        as: category
+
+required:
+  - name
+  - cost
+  - price
+  - quantity
+
+unique:
+  - name
+
+searchable:
+  - name
+  - description
+  - category

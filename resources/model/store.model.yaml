@@ -1,0 +1,20 @@
+properties:
+  name:
+    type: NameProperty
+
+relations:
+  priceLevel:
+    target: PriceLevel
+    type: ManyToOne
+    views:
+      name:
+        as: priceLevel
+
+required:
+  - name
+
+unique:
+  - name
+
+searchable:
+  - name

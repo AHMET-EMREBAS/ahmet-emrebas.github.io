@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "ModelSchema",
+  "properties": {
+    "properties": {
+      "patternProperties": {
+        ".*": {
+          "properties": {
+            "type": {
+              "$ref": "#/definitions/PropertyTypes"
+            }
+          },
+          "required": ["type"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "relations": {
+      "patternProperties": {
+        ".*": {
+          "properties": {
+            "type": {
+              "enum": ["ManyToMany", "OneToOne", "OneToMany", "ManyToOne"]
+            },
+            "target": {
+              "$ref": "#/definitions/ResourceNames"
+            },
+            "views": {
+              "patternProperties": {
+                ".*": {
+                  "properties": {
+                    "as": { "type": "string" }
+                  },
+                  "required": ["as"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "required": ["type", "target", "views"],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PropertyTypes": {
+      "enum": [
+        "NameProperty",
+        "DescriptionProperty",
+        "CurrencyProperty",
+        "QuantityProperty",
+        "BooleanProperty",
+        "EmailProperty",
+        "DateProperty",
+        "DatetimeProperty",
+        "UUIDProperty",
+        "URIProperty",
+        "PhoneProperty",
+        "PasswordProperty",
+        "BarcodeProperty",
+        "AgeProperty",
+        "GenderProperty",
+        "ZipProperty"
+      ]
+    },
+    "ResourceNames": {
+      "enum": [
+        "Product",
+        "Category",
+        "Price",
+        "PriceLevel",
+        "Quantity",
+        "Store",
+        "User",
+        "Customer",
+        "Porder"
+      ]
+    }
+  }
+}

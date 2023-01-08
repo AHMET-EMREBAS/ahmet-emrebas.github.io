@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { AppResolver } from './app.resolver';
+import { SampleModule } from './sample';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AppResolver } from './app.resolver';
       synchronize: true,
       dropSchema: true,
     }),
+    SampleModule,
     CacheModule.register({
       isGlobal: true,
       ttl: 10,

@@ -1,0 +1,12 @@
+properties:
+  name:
+    type: NameProperty
+
+required:
+  - name
+
+unique:
+  - name
+
+searchable:
+  - name
