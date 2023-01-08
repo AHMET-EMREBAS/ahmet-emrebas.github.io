@@ -73,9 +73,6 @@ function parseValidatorAndTransformer(options: PropertyOptions) {
   if (options.isStringNumber)
     list.push(StringNumberTransformer(options.default));
 
-  if (options.isStringBoolean)
-    list.push(StringBooleanTransformer(options.default));
-
   if (options.isStringDate) list.push(StringDateTransformer(options.default));
 
   return list;

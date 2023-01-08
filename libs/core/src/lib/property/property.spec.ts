@@ -1,4 +1,5 @@
 import { validateSync } from 'class-validator';
+import { __plainToInstance } from '../shared';
 import { Property } from './property';
 
 class A {
@@ -88,6 +89,53 @@ describe('Property', () => {
         skipUndefinedProperties: true,
       });
       expect(errors.length > 0).toBe(hasError);
+    });
+  });
+
+  describe('Transformable properties', () => {
+    it('IsIntegerTransformer', () => {
+      class B {
+        @Property({ isStringNumber: true })
+        p: number;
+      }
+      const transformed = __plainToInstance(B, { p: '100' });
+      const errors = validateSync(transformed);
+      expect(transformed.p).toBe(100);
+    });
+
+    it('IsBooleanTransformer', () => {
+      class B {
+        @Property({ isStringBoolean: true })
+        p: number;
+      }
+      const transformed = __plainToInstance(B, { p: 'true' });
+      const errors = validateSync(transformed);
+      expect(transformed.p).toBe(true);
+    });
+
+    it('IsBooleanTransformer', () => {
+      class B {
+        @Property({ isStringBoolean: true })
+        p: number;
+      }
+      const transformed = __plainToInstance(B, { p: 'true' });
+      const errors = validateSync(transformed);
+      expect(transformed.p).toBe(true);
+    });
+
+    it('IsDateTransformer', () => {
+      class B {
+        @Property({ type: 'date', isStringDate: true })
+        value: any;
+      }
+      const d = new Date().toISOString();
+      const transformed = __plainToInstance(B, { value: d });
+
+      expect(transformed.value).toBeDefined();
+      expect(transformed.value).toBeInstanceOf(Date);
+
+      const errors = validateSync(transformed);
+      expect(transformed.value.toISOString()).toBe(d);
     });
   });
 });
