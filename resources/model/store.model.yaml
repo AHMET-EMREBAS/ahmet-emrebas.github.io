@@ -14,9 +14,3 @@ relations:
 
 required:
   - name
-
-unique:
-  - name
-
-searchable:
-  - name

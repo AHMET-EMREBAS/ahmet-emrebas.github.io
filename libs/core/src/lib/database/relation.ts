@@ -20,6 +20,7 @@ export enum RelationType {
 export type RelationMinimalOptions = {
   type: RelationType;
   target: ClassConstructor<any>;
+  targetProperty?: string;
 };
 
 /**
@@ -27,47 +28,35 @@ export type RelationMinimalOptions = {
  * @param param RelationMinimalOptions
  * @returns Relation Decorators
  */
-export function Relation({ target, type }: RelationMinimalOptions) {
+export function Relation(relationOptions: RelationMinimalOptions) {
   const options: RelationOptions = { nullable: true };
+  const { target, type, targetProperty } = relationOptions;
+
+  const propertyPicker = (t) => t[targetProperty || 'id'];
+  const targetPicker = () => target;
 
   switch (type) {
     case RelationType.ManyToMany:
       return applyDecorators(
-        ManyToMany(
-          () => target,
-          (t) => t.id,
-          options
-        ),
+        ManyToMany(targetPicker, propertyPicker, options),
         JoinTable()
       );
 
     case RelationType.ManyToOne:
       return applyDecorators(
-        ManyToOne(
-          () => target,
-          (t) => t.id,
-          options
-        ),
+        ManyToOne(targetPicker, propertyPicker, options),
         JoinColumn()
       );
 
     case RelationType.OneToOne:
       return applyDecorators(
-        OneToOne(
-          () => target,
-          (t) => t.id,
-          options
-        ),
+        OneToOne(targetPicker, propertyPicker, options),
         JoinColumn()
       );
 
     case RelationType.OneToMany:
       return applyDecorators(
-        OneToMany(
-          () => target,
-          (t) => t.id,
-          options
-        ),
+        OneToMany(targetPicker, propertyPicker, options),
         JoinColumn()
       );
   }

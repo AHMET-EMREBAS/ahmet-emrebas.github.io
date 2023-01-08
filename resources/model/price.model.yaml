@@ -1,0 +1,29 @@
+properties:
+  cost:
+    type: number
+    minimum: 0
+
+  price:
+    type: number
+    minimum: 0
+
+relations:
+  product:
+    target: Product
+    type: ManyToOne
+    views:
+      name:
+        as: product
+
+  priceLevel:
+    target: PriceLevel
+    type: ManyToOne
+    views:
+      name:
+        as: priceLevel
+
+required:
+  - cost
+  - price
+  - product
+  - priceLevel

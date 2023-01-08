@@ -6,9 +6,3 @@ properties:
 
 required:
   - name
-
-unique:
-  - name
-
-searchable:
-  - name

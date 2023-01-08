@@ -15,7 +15,8 @@
             "maximum": { "type": "number", "minimum": 0 },
             "isEmail": { "type": "boolean" },
             "isPassword": { "type": "boolean" },
-            "isUUID": { "type": "boolean" }
+            "isUUID": { "type": "boolean" },
+            "isUnique": { "type": "boolean" }
           },
           "required": ["type"],
           "additionalProperties": false

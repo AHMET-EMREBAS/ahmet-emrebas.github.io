@@ -1,18 +1,4 @@
 properties:
-  name:
-    type: string
-    minLength: 2
-    maxLength: 30
-
-  barcode:
-    type: string
-    maxLength: 13
-    minLength: 12
-
-  description:
-    type: string
-    maxLength: 400
-
   cost:
     type: number
     minimum: 0
@@ -26,12 +12,19 @@ properties:
     minimum: 0
 
 relations:
-  category:
-    target: Category
+  product:
+    target: Product
     type: ManyToOne
     views:
       name:
-        as: category
+        as: product
+
+  store:
+    target: Store
+    type: ManyToOne
+    views:
+      name:
+        as: store
 
 required:
   - name
