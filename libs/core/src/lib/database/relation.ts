@@ -7,7 +7,6 @@ import {
   ManyToOne,
   OneToMany,
   OneToOne,
-  RelationOptions,
 } from 'typeorm';
 
 export enum RelationType {
@@ -22,6 +21,8 @@ export type RelationMinimalOptions = {
   target: ClassConstructor<any>;
   targetProperty?: string;
   join?: boolean;
+  eager?: boolean;
+  nullable?: boolean;
 };
 
 /**
@@ -29,10 +30,8 @@ export type RelationMinimalOptions = {
  * @param param RelationMinimalOptions
  * @returns Relation Decorators
  */
-export function Relation(relationOptions: RelationMinimalOptions) {
-  const options: RelationOptions = { nullable: true };
-  const { target, type, targetProperty, join } = relationOptions;
-
+export function Relation(options: RelationMinimalOptions) {
+  const { target, type, targetProperty, join } = options;
   const propertyPicker = (t) => t[targetProperty || 'id'];
   const targetPicker = () => target;
 

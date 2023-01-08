@@ -1,8 +1,4 @@
-import {
-  ClassConstructor,
-  instanceToInstance,
-  plainToInstance,
-} from 'class-transformer';
+import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { GLOBAL_TRANSFORM_OPTIONS } from './global-transform-options';
 
 /**

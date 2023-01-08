@@ -33,6 +33,12 @@
             "target": {
               "$ref": "#/definitions/ResourceNames"
             },
+            "targetProperty": {
+              "type": "string"
+            },
+            "join": {
+              "type": "boolean"
+            },
             "views": {
               "patternProperties": {
                 ".*": {
