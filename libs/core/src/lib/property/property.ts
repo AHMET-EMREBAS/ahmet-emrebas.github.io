@@ -13,6 +13,7 @@ import {
 } from 'class-validator';
 import {
   StringBooleanTransformer,
+  StringDateTransformer,
   StringIntegerTransformer,
   StringNumberTransformer,
 } from '../transformer';
@@ -65,6 +66,8 @@ function parseValidatorAndTransformer(options: PropertyOptions) {
 
   if (options.isStringBoolean)
     list.push(StringBooleanTransformer(options.default));
+
+  if (options.isStringDate) list.push(StringDateTransformer(options.default));
 
   return list;
 }
