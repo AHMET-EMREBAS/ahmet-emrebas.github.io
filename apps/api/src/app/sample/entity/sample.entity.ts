@@ -1,7 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity } from '@ae/core';
 
 @Entity()
-export class Sample {
-  @PrimaryGeneratedColumn() id: number;
+export class Sample extends BaseEntity {
   @Column({ type: 'text', nullable: true }) name: string;
 }

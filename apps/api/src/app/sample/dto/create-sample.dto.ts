@@ -1,7 +1,5 @@
 import { Property } from '@ae/core';
-import { ApiProperty } from '@nestjs/swagger';
-import { Exclude, Expose } from 'class-transformer';
-import { MaxLength, MinLength } from 'class-validator';
+import { Exclude } from 'class-transformer';
 
 @Exclude()
 export class CreateSampleDto {

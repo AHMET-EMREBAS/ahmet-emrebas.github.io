@@ -6,40 +6,79 @@ import {
   IsNotEmpty,
   IsOptional,
   IsUUID,
+  Max,
+  MaxLength,
+  Min,
   MinLength,
 } from 'class-validator';
+import {
+  StringBooleanTransformer,
+  StringIntegerTransformer,
+  StringNumberTransformer,
+} from '../transformer';
 import { IsPassword } from '../validation';
 
 type OtherOptions = {
+  type?: 'string' | 'integer' | 'number' | 'boolean' | 'date';
+  minimum?: number;
+  maximum?: number;
   required?: boolean;
   unique?: boolean;
   isPassword?: boolean;
   isEmail?: boolean;
   isUUID?: boolean;
+  isStringBoolean?: boolean;
+  isStringInteger?: boolean;
+  isStringNumber?: boolean;
+  isStringDate?: boolean;
+  default?: any;
 };
 
 type PropertyOptions = ApiPropertyOptions & OtherOptions;
 
-function parseValidators(options: PropertyOptions) {
-  const validators = [];
-  if (options.minLength) validators.push(MinLength(options.minLength));
-  if (options.maxLength) validators.push(MinLength(options.maxLength));
-  if (options.minimum) validators.push(MinLength(options.minimum));
-  if (options.maximum) validators.push(MinLength(options.maximum));
+function parseValidatorAndTransformer(options: PropertyOptions) {
+  const list = [];
 
-  if (options.isPassword) validators.push(IsPassword());
-  if (options.isUUID) validators.push(IsUUID('4'));
-  if (options.isEmail) validators.push(IsEmail());
+  if (options.minLength) list.push(MinLength(options.minLength));
+  if (options.maxLength) list.push(MaxLength(options.maxLength));
+  if (options.minimum) list.push(Min(options.minimum));
+  if (options.maximum) list.push(Max(options.maximum));
+
+  if (options.isPassword) list.push(IsPassword());
+  if (options.isUUID) list.push(IsUUID('4'));
+  if (options.isEmail) list.push(IsEmail());
 
   if (options.required) {
-    validators.push(IsNotEmpty());
+    list.push(IsNotEmpty());
   } else {
-    validators.push(IsOptional());
+    list.push(IsOptional());
   }
-  return validators;
+
+  if (options.isStringBoolean)
+    list.push(StringBooleanTransformer(options.default));
+
+  if (options.isStringInteger)
+    list.push(StringIntegerTransformer(options.default));
+
+  if (options.isStringNumber)
+    list.push(StringNumberTransformer(options.default));
+
+  if (options.isStringBoolean)
+    list.push(StringBooleanTransformer(options.default));
+
+  return list;
 }
 
+/**
+ * Append api property options and validation decorators
+ * @param options
+ * @returns
+ */
 export function Property(options: PropertyOptions) {
-  const validators = parseValidators(options);
-  return applyDecorators(Expose(), ApiProperty(options), ...validators);
+  const validatorsAndTransformers = parseValidatorAndTransformer(options);
+  return applyDecorators(
+    Expose(),
+    ApiProperty(options),
+    ...validatorsAndTransformers
+  );
 }

@@ -21,6 +21,7 @@ export type RelationMinimalOptions = {
   type: RelationType;
   target: ClassConstructor<any>;
   targetProperty?: string;
+  join?: boolean;
 };
 
 /**
@@ -30,7 +31,7 @@ export type RelationMinimalOptions = {
  */
 export function Relation(relationOptions: RelationMinimalOptions) {
   const options: RelationOptions = { nullable: true };
-  const { target, type, targetProperty } = relationOptions;
+  const { target, type, targetProperty, join } = relationOptions;
 
   const propertyPicker = (t) => t[targetProperty || 'id'];
   const targetPicker = () => target;
@@ -39,25 +40,25 @@ export function Relation(relationOptions: RelationMinimalOptions) {
     case RelationType.ManyToMany:
       return applyDecorators(
         ManyToMany(targetPicker, propertyPicker, options),
-        JoinTable()
+        join && JoinTable()
       );
 
     case RelationType.ManyToOne:
       return applyDecorators(
         ManyToOne(targetPicker, propertyPicker, options),
-        JoinColumn()
+        join && JoinColumn()
       );
 
     case RelationType.OneToOne:
       return applyDecorators(
         OneToOne(targetPicker, propertyPicker, options),
-        JoinColumn()
+        join && JoinColumn()
       );
 
     case RelationType.OneToMany:
       return applyDecorators(
         OneToMany(targetPicker, propertyPicker, options),
-        JoinColumn()
+        join && JoinColumn()
       );
   }
 }

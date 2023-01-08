@@ -1,16 +1,14 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Expose, Transform } from 'class-transformer';
-import { Max } from 'class-validator';
+import { Property } from '../property';
 
 export class PaginatorDto {
-  @ApiProperty({ type: 'integer', required: false })
-  @Expose()
-  @Max(100)
-  @Transform(({ value }) => parseInt(value) || 20)
+  @Property({
+    type: 'integer',
+    minimum: 0,
+    maximum: 100,
+    isStringInteger: true,
+  })
   take?: number;
 
-  @ApiProperty({ type: 'integer', required: false })
-  @Expose()
-  @Transform(({ value }) => parseInt(value) || 0)
+  @Property({ type: 'integer', minimum: 0, isStringInteger: true })
   skip?: number;
 }

@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
-    "api-test-utils": "libs/api-test-utils",
     "cli": "libs/cli",
     "cli-e2e": "apps/cli-e2e",
     "common": "libs/common",

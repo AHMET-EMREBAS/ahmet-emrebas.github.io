@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ae/api-test-utils": ["libs/api-test-utils/src/index.ts"],
       "@ae/common": ["libs/common/src/index.ts"],
       "@ae/core": ["libs/core/src/index.ts"],
       "@ae/models": ["libs/models/src/index.ts"],

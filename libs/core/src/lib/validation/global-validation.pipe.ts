@@ -1,9 +1,6 @@
 import { ValidationPipe } from '@nestjs/common';
+import { GLOBAL_VALIDATION_PIPE_OPTIONS } from '../shared';
 
-export const GlobalValidationPipe = new ValidationPipe({
-  transform: true,
-  transformOptions: {
-    excludeExtraneousValues: true,
-  },
-  validationError: { target: false, value: false },
-});
+export const GlobalValidationPipe = new ValidationPipe(
+  GLOBAL_VALIDATION_PIPE_OPTIONS
+);
