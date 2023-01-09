@@ -9,7 +9,6 @@ import * as cookieParser from 'cookie-parser';
 import * as favicon from 'serve-favicon';
 import { AppModule } from './app/app.module';
 
-import { GlobalValidationPipe } from '@ae/core';
 import { join } from 'path';
 
 async function bootstrap() {
@@ -23,8 +22,9 @@ async function bootstrap() {
   const port = process.env.PORT || 3333;
 
   app.use(cookieParser());
-  app.useGlobalPipes(GlobalValidationPipe);
   app.use(favicon(join(__dirname, 'favicon.ico')));
+
+  // app.useGlobalPipes(GlobalValidationPipe);
 
   const config = new DocumentBuilder()
 

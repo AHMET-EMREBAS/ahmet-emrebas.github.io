@@ -1,0 +1,10 @@
+properties:
+  name:
+    propertyType: string
+    column:
+      type: text
+      unique: true
+      nullable: true
+    validations:
+      minLength: 2
+      maxLength: 50

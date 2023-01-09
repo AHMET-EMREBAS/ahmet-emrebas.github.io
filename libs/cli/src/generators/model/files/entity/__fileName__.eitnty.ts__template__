@@ -1,7 +1,0 @@
-import { Entity, Column } from '@ae/core'
-@Entity()
-export class <%- className %>{
-
-
-
-}

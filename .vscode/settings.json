@@ -6,6 +6,6 @@
     "source.organizeImports": true
   },
   "yaml.schemas": {
-    "schema/model/index.schema.json": ["resources/model/*.yaml"]
+    "schema/model.schema.json": ["resources/*.yaml", "resources/**/*.yaml"]
   }
 }

@@ -2,26 +2,5 @@
   "$schema": "http://json-schema.org/schema",
   "name": "cli",
   "version": "0.0.1",
-  "generators": {
-    "resource": {
-      "factory": "./src/generators/resource/generator",
-      "schema": "./src/generators/resource/schema.json",
-      "description": "resource generator"
-    },
-    "model": {
-      "factory": "./src/generators/model/generator",
-      "schema": "./src/generators/model/schema.json",
-      "description": "model generator"
-    },
-    "rest": {
-      "factory": "./src/generators/rest/generator",
-      "schema": "./src/generators/rest/schema.json",
-      "description": "rest generator"
-    },
-    "client": {
-      "factory": "./src/generators/client/generator",
-      "schema": "./src/generators/client/schema.json",
-      "description": "client generator"
-    }
-  }
+  "generators": {}
 }

@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "Property",
+  "title": "Property",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/StringProperty"
+    },
+    {
+      "$ref": "#/definitions/IntegerProperty"
+    }
+  ],
+  "definitions": {
+    "CCO": {
+      "description": "Common Column Options",
+      "properties": {
+        "unique": {
+          "type": "boolean",
+          "default": true
+        },
+        "nullable": {
+          "type": "boolean",
+          "default": true
+        },
+        "update": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "StringColumn": {
+      "allOf": [
+        {
+          "properties": {
+            "type": {
+              "const": "text"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/CCO"
+        }
+      ]
+    },
+    "IntegerColumn": {
+      "allOf": [
+        {
+          "properties": {
+            "type": {
+              "const": "integer"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/CCO"
+        }
+      ]
+    },
+    "NumberColumn": {
+      "allOf": [
+        {
+          "properties": {
+            "type": {
+              "const": "number"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/CCO"
+        }
+      ]
+    },
+    "BooleanColumn": {
+      "allOf": [
+        {
+          "properties": {
+            "type": {
+              "const": "boolean"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/CCO"
+        }
+      ]
+    },
+    "DateColumn": {
+      "allOf": [
+        {
+          "properties": {
+            "type": {
+              "const": "date"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/CCO"
+        }
+      ]
+    },
+    "StringProperty": {
+      "$id": "StringProperty",
+      "title": "StringProperty",
+      "properties": {
+        "propertyType": {
+          "const": "string"
+        },
+        "column": {
+          "$ref": "#/definitions/StringColumn"
+        },
+        "validations": {
+          "properties": {
+            "minLength": {
+              "type": "number"
+            },
+            "maxLength": {
+              "type": "number"
+            },
+            "format": {
+              "enum": ["email", "password"]
+            }
+          }
+        }
+      }
+    },
+    "IntegerProperty": {
+      "$id": "IntegerProperty",
+      "title": "IntegerProperty",
+      "properties": {
+        "propertyType": {
+          "const": "number"
+        },
+        "column": {
+          "$ref": "#/definitions/IntegerColumn"
+        },
+        "validations": {
+          "properties": {
+            "minimum": {
+              "type": "number"
+            },
+            "maximum": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}
