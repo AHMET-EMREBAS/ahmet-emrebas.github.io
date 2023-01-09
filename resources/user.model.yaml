@@ -1,0 +1,33 @@
+properties:
+  username:
+    propertyType: string
+    column:
+      type: text
+      unique: true
+    validations:
+      type: string
+      format: email
+      required: true
+
+  password:
+    propertyType: string
+    column:
+      type: text
+    validations:
+      type: string
+      format: password
+      required: true
+
+relations:
+  roles:
+    relationType: ManyToMany
+    target: Role
+    propertyType: IdDto[]
+    join: JoinTable
+    options:
+      nullable: true
+      eager: true
+    view:
+      name:
+        as: role
+        type: string

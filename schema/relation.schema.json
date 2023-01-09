@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "oneOf": [
+    { "$ref": "#/definitions/ManyToMany" },
+    { "$ref": "#/definitions/ManyToOne" },
+    { "$ref": "#/definitions/OneToMany" },
+    { "$ref": "#/definitions/OneToOne" }
+  ],
+  "definitions": {
+    "RelationOptions": {
+      "properties": {
+        "cascade": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "array",
+              "items": {
+                "enum": ["insert", "update", "remove", "soft-remove", "recover"]
+              }
+            }
+          ],
+          "default": true
+        },
+        "nullable": {
+          "type": "boolean",
+          "default": true
+        },
+        "eager": {
+          "type": "boolean",
+          "default": true
+        },
+        "onDelete": {
+          "enum": ["RESTRICT", "CASCADE", "SET NULL", "DEFAULT", "NO ACTION"],
+          "default": "SET NULL"
+        },
+        "onUpdate": {
+          "enum": ["RESTRICT", "CASCADE", "SET NULL", "DEFAULT", "NO ACTION"],
+          "default": "SET NULL"
+        },
+        "deferrable": {
+          "enum": ["INITIALLY IMMEDIATE", "INITIALLY DEFERRED"]
+        },
+        "createForeignKeyConstraints": {
+          "type": "boolean",
+          "default": true
+        },
+        "lazy": {
+          "type": "boolean",
+          "default": true
+        },
+        "orphanedRowAction": {
+          "enum": ["nullify", "delete", "soft-delete", "disable"],
+          "default": "nullify"
+        }
+      }
+    },
+    "ViewOptions": {
+      "patternProperties": {
+        ".*": {
+          "properties": {
+            "as": {
+              "type": "string"
+            },
+            "type": {
+              "enum": ["string", "number", "boolean", "Date"]
+            }
+          },
+          "additionalProperties": false,
+          "required": ["as", "type"]
+        }
+      }
+    },
+    "ManyToMany": {
+      "properties": {
+        "relationType": {
+          "const": "ManyToMany"
+        },
+        "target": {
+          "$ref": "./resource-names.schema.json"
+        },
+        "targetProperty": {
+          "type": "string"
+        },
+        "view": {
+          "$ref": "#/definitions/ViewOptions"
+        },
+        "propertyType": {
+          "const": "IdDto[]"
+        },
+        "join": {
+          "enum": ["", "JoinTable"]
+        },
+        "options": {
+          "$ref": "#/definitions/RelationOptions"
+        }
+      },
+      "required": ["relationType", "target", "propertyType", "join"]
+    },
+    "ManyToOne": {
+      "properties": {
+        "relationType": {
+          "const": "ManyToOne"
+        },
+        "target": {
+          "$ref": "./resource-names.schema.json"
+        },
+        "targetProperty": {
+          "type": "string"
+        },
+        "view": {
+          "$ref": "#/definitions/ViewOptions"
+        },
+        "propertyType": {
+          "const": "IdDto"
+        },
+        "join": {
+          "enum": ["", "JoinColumn"]
+        },
+        "options": {
+          "$ref": "#/definitions/RelationOptions"
+        }
+      },
+      "required": ["relationType", "target", "propertyType", "join"]
+    },
+    "OneToMany": {
+      "properties": {
+        "relationType": {
+          "const": "OneToMany"
+        },
+        "target": {
+          "$ref": "./resource-names.schema.json"
+        },
+        "targetProperty": {
+          "type": "string"
+        },
+        "view": {
+          "$ref": "#/definitions/ViewOptions"
+        },
+        "propertyType": {
+          "const": "IdDto[]"
+        },
+        "join": {
+          "enum": ["", "JoinTable"]
+        },
+        "options": {
+          "$ref": "#/definitions/RelationOptions"
+        }
+      },
+      "required": ["relationType", "target", "propertyType", "join"]
+    },
+    "OneToOne": {
+      "properties": {
+        "relationType": {
+          "const": "OneToOne"
+        },
+        "target": {
+          "$ref": "./resource-names.schema.json"
+        },
+        "targetProperty": {
+          "type": "string"
+        },
+        "view": {
+          "$ref": "#/definitions/ViewOptions"
+        },
+        "propertyType": {
+          "const": "IdDto"
+        },
+        "join": {
+          "enum": ["", "JoinColumn"]
+        },
+        "options": {
+          "$ref": "#/definitions/RelationOptions"
+        }
+      },
+      "required": ["relationType", "target", "propertyType", "join"]
+    }
+  }
+}

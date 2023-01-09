@@ -1,0 +1,20 @@
+relations:
+  resource:
+    relationType: ManyToOne
+    target: Resource
+    propertyType: IdDto
+    join: JoinColumn
+    view:
+      name:
+        as: resource
+        type: string
+
+  operation:
+    relationType: ManyToOne
+    target: Operation
+    propertyType: IdDto
+    join: JoinColumn
+    view:
+      name:
+        as: operation
+        type: string

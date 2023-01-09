@@ -7,11 +7,13 @@
           "$ref": "./property.schema.json"
         }
       }
-    }
-  },
-  "definitions": {
-    "ResourceNames": {
-      "enum": ["Product", "User", "Profile", "Role", "Permission", "Event"]
+    },
+    "relations": {
+      "patternProperties": {
+        ".*": {
+          "$ref": "./relation.schema.json"
+        }
+      }
     }
   }
 }

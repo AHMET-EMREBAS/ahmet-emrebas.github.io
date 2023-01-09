@@ -8,118 +8,82 @@
     },
     {
       "$ref": "#/definitions/IntegerProperty"
+    },
+    {
+      "$ref": "#/definitions/NumberProperty"
+    },
+    {
+      "$ref": "#/definitions/DateProperty"
+    },
+    {
+      "$ref": "#/definitions/BooleanProperty"
     }
   ],
   "definitions": {
     "CCO": {
       "description": "Common Column Options",
       "properties": {
-        "unique": {
-          "type": "boolean",
-          "default": true
-        },
-        "nullable": {
-          "type": "boolean",
-          "default": true
-        },
-        "update": {
-          "type": "boolean",
-          "default": true
-        }
+        "unique": { "type": "boolean", "default": true },
+        "nullable": { "type": "boolean", "default": true },
+        "update": { "type": "boolean", "default": true }
       }
     },
     "StringColumn": {
       "allOf": [
-        {
-          "properties": {
-            "type": {
-              "const": "text"
-            }
-          }
-        },
-        {
-          "$ref": "#/definitions/CCO"
-        }
+        { "properties": { "type": { "const": "text" } }, "required": ["type"] },
+        { "$ref": "#/definitions/CCO" }
       ]
     },
     "IntegerColumn": {
       "allOf": [
         {
-          "properties": {
-            "type": {
-              "const": "integer"
-            }
-          }
+          "properties": { "type": { "const": "integer" } },
+          "required": ["type"]
         },
-        {
-          "$ref": "#/definitions/CCO"
-        }
+        { "$ref": "#/definitions/CCO" }
       ]
     },
     "NumberColumn": {
       "allOf": [
         {
-          "properties": {
-            "type": {
-              "const": "number"
-            }
-          }
+          "properties": { "type": { "const": "number" } },
+          "required": ["type"]
         },
-        {
-          "$ref": "#/definitions/CCO"
-        }
+        { "$ref": "#/definitions/CCO" }
       ]
     },
     "BooleanColumn": {
       "allOf": [
         {
-          "properties": {
-            "type": {
-              "const": "boolean"
-            }
-          }
+          "properties": { "type": { "const": "boolean" } },
+          "required": ["type"]
         },
-        {
-          "$ref": "#/definitions/CCO"
-        }
+        { "$ref": "#/definitions/CCO" }
       ]
     },
     "DateColumn": {
       "allOf": [
-        {
-          "properties": {
-            "type": {
-              "const": "date"
-            }
-          }
-        },
-        {
-          "$ref": "#/definitions/CCO"
-        }
+        { "properties": { "type": { "const": "date" } }, "required": ["type"] },
+        { "$ref": "#/definitions/CCO" }
       ]
     },
     "StringProperty": {
       "$id": "StringProperty",
       "title": "StringProperty",
       "properties": {
-        "propertyType": {
-          "const": "string"
-        },
-        "column": {
-          "$ref": "#/definitions/StringColumn"
-        },
+        "propertyType": { "const": "string" },
+        "column": { "$ref": "#/definitions/StringColumn" },
         "validations": {
           "properties": {
-            "minLength": {
-              "type": "number"
-            },
-            "maxLength": {
-              "type": "number"
-            },
-            "format": {
-              "enum": ["email", "password"]
-            }
-          }
+            "required": { "type": "boolean" },
+            "unique": { "type": "boolean" },
+            "type": { "const": "string" },
+            "minLength": { "type": "number" },
+            "maxLength": { "type": "number" },
+            "format": { "enum": ["email", "password"] },
+            "enum": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["type"]
         }
       }
     },
@@ -127,21 +91,67 @@
       "$id": "IntegerProperty",
       "title": "IntegerProperty",
       "properties": {
-        "propertyType": {
-          "const": "number"
-        },
-        "column": {
-          "$ref": "#/definitions/IntegerColumn"
-        },
+        "propertyType": { "const": "number" },
+        "column": { "$ref": "#/definitions/IntegerColumn" },
         "validations": {
           "properties": {
-            "minimum": {
-              "type": "number"
-            },
-            "maximum": {
-              "type": "number"
-            }
-          }
+            "required": { "type": "boolean" },
+            "unique": { "type": "boolean" },
+            "type": { "const": "integer" },
+            "minimum": { "type": "number" },
+            "maximum": { "type": "number" }
+          },
+          "required": ["type"]
+        }
+      }
+    },
+    "NumberProperty": {
+      "$id": "NumberProperty",
+      "title": "NumberProperty",
+      "properties": {
+        "propertyType": { "const": "number" },
+        "column": { "$ref": "#/definitions/NumberColumn" },
+        "validations": {
+          "properties": {
+            "required": { "type": "boolean" },
+            "unique": { "type": "boolean" },
+            "type": { "const": "number" },
+            "minimum": { "type": "number" },
+            "maximum": { "type": "number" }
+          },
+          "required": ["type"]
+        }
+      }
+    },
+    "BooleanProperty": {
+      "$id": "BooleanProperty",
+      "title": "BooleanProperty",
+      "properties": {
+        "propertyType": { "const": "boolean" },
+        "column": { "$ref": "#/definitions/BooleanColumn" },
+        "validations": {
+          "properties": {
+            "required": { "type": "boolean" },
+            "unique": { "type": "boolean" },
+            "type": { "const": "boolean" }
+          },
+          "required": ["type"]
+        }
+      }
+    },
+    "DateProperty": {
+      "$id": "DateProperty",
+      "title": "DateProperty",
+      "properties": {
+        "propertyType": { "const": "Date" },
+        "column": { "$ref": "#/definitions/DateColumn" },
+        "validations": {
+          "properties": {
+            "required": { "type": "boolean" },
+            "unique": { "type": "boolean" },
+            "type": { "const": "date" }
+          },
+          "required": ["type"]
         }
       }
     }

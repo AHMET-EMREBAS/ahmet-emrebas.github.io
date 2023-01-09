@@ -1,0 +1,43 @@
+properties:
+  name:
+    propertyType: string
+    column:
+      type: text
+      nullable: true
+
+    validations:
+      type: string
+      maxLength: 50
+
+  message:
+    propertyType: string
+    column:
+      type: text
+      nullable: true
+
+    validations:
+      type: string
+      maxLength: 400
+
+  checked:
+    propertyType: boolean
+    column:
+      type: boolean
+      nullable: true
+
+    validations:
+      type: boolean
+
+relations:
+  users:
+    relationType: ManyToMany
+    target: User
+    propertyType: IdDto[]
+    join: JoinTable
+    options:
+      nullable: true
+
+    view:
+      id:
+        type: number
+        as: userId

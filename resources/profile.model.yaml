@@ -1,0 +1,29 @@
+properties:
+  firstName:
+    propertyType: string
+    column:
+      type: text
+    validations:
+      type: string
+      maxLength: 50
+      required: true
+
+  lastName:
+    propertyType: string
+    column:
+      type: text
+    validations:
+      type: string
+      maxLength: 50
+      required: true
+
+relations:
+  user:
+    relationType: OneToOne
+    target: User
+    propertyType: IdDto
+    join: JoinColumn
+    view:
+      id:
+        type: number
+        as: user

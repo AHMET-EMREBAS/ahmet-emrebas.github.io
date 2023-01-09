@@ -3,8 +3,13 @@ import { CacheModule, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { ManyToMany } from 'typeorm';
 import { AppResolver } from './app.resolver';
 
+class A {
+  @ManyToMany(() => A, (a) => a.id, { cascade: '' })
+  p: string;
+}
 @Module({
   imports: [
     TypeOrmModule.forRoot({
