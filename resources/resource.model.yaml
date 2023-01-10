@@ -1,6 +1,6 @@
 properties:
   name:
-    propertyType: string
+    type: string
     column:
       type: text
       unique: true

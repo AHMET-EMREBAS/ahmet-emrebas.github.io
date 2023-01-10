@@ -1,20 +1,23 @@
 relations:
   resource:
-    relationType: ManyToOne
+    type: ManyToOne
     target: Resource
-    propertyType: IdDto
-    join: JoinColumn
-    view:
-      name:
-        as: resource
-        type: string
+    join: true
 
   operation:
-    relationType: ManyToOne
+    type: ManyToOne
     target: Operation
-    propertyType: IdDto
-    join: JoinColumn
-    view:
+    join: true
+
+views:
+  - target: Resource
+    parent: Permission
+    viewFields:
       name:
-        as: operation
+        type: string
+
+  - target: Operation
+    parent: Permission
+    viewFields:
+      name:
         type: string

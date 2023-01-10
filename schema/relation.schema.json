@@ -56,125 +56,78 @@
         }
       }
     },
-    "ViewOptions": {
-      "patternProperties": {
-        ".*": {
-          "properties": {
-            "as": {
-              "type": "string"
-            },
-            "type": {
-              "enum": ["string", "number", "boolean", "Date"]
-            }
-          },
-          "additionalProperties": false,
-          "required": ["as", "type"]
-        }
-      }
-    },
+
     "ManyToMany": {
       "properties": {
-        "relationType": {
+        "type": {
           "const": "ManyToMany"
         },
         "target": {
           "$ref": "./resource-names.schema.json"
         },
-        "targetProperty": {
-          "type": "string"
-        },
-        "view": {
-          "$ref": "#/definitions/ViewOptions"
-        },
-        "propertyType": {
-          "const": "IdDto[]"
-        },
         "join": {
-          "enum": ["", "JoinTable"]
+          "type": "boolean"
         },
         "options": {
           "$ref": "#/definitions/RelationOptions"
         }
       },
-      "required": ["relationType", "target", "propertyType", "join"]
+      "additionalProperties": false,
+      "required": ["type", "target"]
     },
     "ManyToOne": {
       "properties": {
-        "relationType": {
+        "type": {
           "const": "ManyToOne"
         },
         "target": {
           "$ref": "./resource-names.schema.json"
         },
-        "targetProperty": {
-          "type": "string"
-        },
-        "view": {
-          "$ref": "#/definitions/ViewOptions"
-        },
-        "propertyType": {
-          "const": "IdDto"
-        },
         "join": {
-          "enum": ["", "JoinColumn"]
+          "type": "boolean"
         },
         "options": {
           "$ref": "#/definitions/RelationOptions"
         }
       },
-      "required": ["relationType", "target", "propertyType", "join"]
+      "additionalProperties": false,
+      "required": ["type", "target"]
     },
     "OneToMany": {
       "properties": {
-        "relationType": {
+        "type": {
           "const": "OneToMany"
         },
         "target": {
           "$ref": "./resource-names.schema.json"
         },
-        "targetProperty": {
-          "type": "string"
-        },
-        "view": {
-          "$ref": "#/definitions/ViewOptions"
-        },
-        "propertyType": {
-          "const": "IdDto[]"
-        },
         "join": {
-          "enum": ["", "JoinTable"]
+          "type": "boolean"
         },
         "options": {
           "$ref": "#/definitions/RelationOptions"
         }
       },
-      "required": ["relationType", "target", "propertyType", "join"]
+      "additionalProperties": false,
+      "required": ["type", "target"]
     },
     "OneToOne": {
       "properties": {
-        "relationType": {
+        "type": {
           "const": "OneToOne"
         },
         "target": {
           "$ref": "./resource-names.schema.json"
         },
-        "targetProperty": {
-          "type": "string"
-        },
-        "view": {
-          "$ref": "#/definitions/ViewOptions"
-        },
-        "propertyType": {
-          "const": "IdDto"
-        },
         "join": {
-          "enum": ["", "JoinColumn"]
+          "type": "boolean"
         },
         "options": {
           "$ref": "#/definitions/RelationOptions"
         }
       },
-      "required": ["relationType", "target", "propertyType", "join"]
+      "additionalProperties": false,
+      "required": ["type", "target"]
     }
   }
 }

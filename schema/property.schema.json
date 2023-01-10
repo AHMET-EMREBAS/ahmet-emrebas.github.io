@@ -71,7 +71,7 @@
       "$id": "StringProperty",
       "title": "StringProperty",
       "properties": {
-        "propertyType": { "const": "string" },
+        "type": { "const": "string" },
         "column": { "$ref": "#/definitions/StringColumn" },
         "validations": {
           "properties": {
@@ -85,13 +85,14 @@
           },
           "required": ["type"]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "IntegerProperty": {
       "$id": "IntegerProperty",
       "title": "IntegerProperty",
       "properties": {
-        "propertyType": { "const": "number" },
+        "type": { "const": "number" },
         "column": { "$ref": "#/definitions/IntegerColumn" },
         "validations": {
           "properties": {
@@ -103,13 +104,14 @@
           },
           "required": ["type"]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "NumberProperty": {
       "$id": "NumberProperty",
       "title": "NumberProperty",
       "properties": {
-        "propertyType": { "const": "number" },
+        "type": { "const": "number" },
         "column": { "$ref": "#/definitions/NumberColumn" },
         "validations": {
           "properties": {
@@ -121,13 +123,14 @@
           },
           "required": ["type"]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "BooleanProperty": {
       "$id": "BooleanProperty",
       "title": "BooleanProperty",
       "properties": {
-        "propertyType": { "const": "boolean" },
+        "type": { "const": "boolean" },
         "column": { "$ref": "#/definitions/BooleanColumn" },
         "validations": {
           "properties": {
@@ -137,13 +140,14 @@
           },
           "required": ["type"]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "DateProperty": {
       "$id": "DateProperty",
       "title": "DateProperty",
       "properties": {
-        "propertyType": { "const": "Date" },
+        "type": { "const": "Date" },
         "column": { "$ref": "#/definitions/DateColumn" },
         "validations": {
           "properties": {
@@ -153,7 +157,8 @@
           },
           "required": ["type"]
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }

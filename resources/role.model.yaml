@@ -1,0 +1,31 @@
+properties:
+  name:
+    type: string
+    column:
+      type: text
+      unique: true
+
+relations:
+  permissions:
+    type: ManyToMany
+    target: Permission
+    join: true
+    options:
+      nullable: true
+      eager: true
+
+views:
+  - target: Permission
+    parent: Role
+
+  - target: Resource
+    parent: Permission
+    viewFields:
+      name:
+        type: string
+
+  - target: Operation
+    parent: Permission
+    viewFields:
+      name:
+        type: string

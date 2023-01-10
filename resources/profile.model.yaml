@@ -1,6 +1,6 @@
 properties:
   firstName:
-    propertyType: string
+    type: string
     column:
       type: text
     validations:
@@ -9,7 +9,7 @@ properties:
       required: true
 
   lastName:
-    propertyType: string
+    type: string
     column:
       type: text
     validations:
@@ -19,11 +19,13 @@ properties:
 
 relations:
   user:
-    relationType: OneToOne
+    type: OneToOne
     target: User
-    propertyType: IdDto
-    join: JoinColumn
-    view:
+    join: true
+
+views:
+  - target: User
+    parent: Profile
+    viewFields:
       id:
         type: number
-        as: user

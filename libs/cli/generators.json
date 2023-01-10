@@ -2,5 +2,11 @@
   "$schema": "http://json-schema.org/schema",
   "name": "cli",
   "version": "0.0.1",
-  "generators": {}
+  "generators": {
+    "interface": {
+      "factory": "./src/generators/interface/generator",
+      "schema": "./src/generators/interface/schema.json",
+      "description": "interface generator"
+    }
+  }
 }

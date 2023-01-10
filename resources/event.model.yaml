@@ -1,6 +1,6 @@
 properties:
   name:
-    propertyType: string
+    type: string
     column:
       type: text
       nullable: true
@@ -10,7 +10,7 @@ properties:
       maxLength: 50
 
   message:
-    propertyType: string
+    type: string
     column:
       type: text
       nullable: true
@@ -20,7 +20,7 @@ properties:
       maxLength: 400
 
   checked:
-    propertyType: boolean
+    type: boolean
     column:
       type: boolean
       nullable: true
@@ -30,14 +30,15 @@ properties:
 
 relations:
   users:
-    relationType: ManyToMany
+    type: ManyToMany
     target: User
-    propertyType: IdDto[]
-    join: JoinTable
+    join: true
     options:
       nullable: true
 
-    view:
+views:
+  - target: User
+    parent: Profile
+    viewFields:
       id:
         type: number
-        as: userId

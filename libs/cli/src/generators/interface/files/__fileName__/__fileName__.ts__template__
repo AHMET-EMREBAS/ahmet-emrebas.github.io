@@ -1,0 +1,10 @@
+<%- imports  %>
+
+export interface <%- className %> {
+  id:number;
+  index:number;
+  <%- properties %>
+  <%- relations %>
+
+
+}

@@ -1,6 +1,6 @@
 properties:
   username:
-    propertyType: string
+    type: string
     column:
       type: text
       unique: true
@@ -10,7 +10,7 @@ properties:
       required: true
 
   password:
-    propertyType: string
+    type: string
     column:
       type: text
     validations:
@@ -20,14 +20,16 @@ properties:
 
 relations:
   roles:
-    relationType: ManyToMany
+    type: ManyToMany
     target: Role
-    propertyType: IdDto[]
-    join: JoinTable
+    join: true
     options:
       nullable: true
       eager: true
-    view:
+
+views:
+  - target: Role
+    parent: User
+    viewFields:
       name:
-        as: role
         type: string

@@ -1,0 +1,10 @@
+
+export interface Read<%- className %> {
+  id:number;
+  index:number;
+
+  <%- properties %>
+
+  <%- views %>
+
+}
