@@ -1,19 +1,24 @@
+import { AppendableFields } from './appendable';
 import { ClassDef } from './class-def';
 import { DecoratorFields } from './decorator';
 import { PropertyFields } from './property';
 
 export class ClassBuilder {
   private constructor(private readonly __instance: ClassDef) {}
-  private static init(name: string, classType: string) {
-    return new ClassBuilder(new ClassDef({ name, classType }));
+
+  static init() {
+    return new ClassBuilder(new ClassDef());
   }
 
-  static newClass(name: string) {
-    return this.init(name, 'class');
-  }
-
-  static newInterface(name: string) {
-    return this.init(name, 'interface');
+  addClasName(name: string, type: string, group: string) {
+    this.__instance.classNames?.add({
+      value: name,
+      groups: [group],
+    });
+    this.__instance.classTypes?.add({
+      value: type,
+      groups: [group],
+    });
   }
 
   addProperty(options: PropertyFields) {
@@ -26,27 +31,27 @@ export class ClassBuilder {
     return this;
   }
 
-  addImports(imp: string) {
+  addImports(imp: AppendableFields) {
     this.__instance.imports?.add(imp);
     return this;
   }
 
-  addComment(cmt: string) {
+  addComment(cmt: AppendableFields) {
     this.__instance.comments?.add(cmt);
     return this;
   }
 
-  addGeneric(gener: string) {
+  addGeneric(gener: AppendableFields) {
     this.__instance.generics?.add(gener);
     return this;
   }
 
-  addImplements(impl: string) {
+  addImplements(impl: AppendableFields) {
     this.__instance.implements?.add(impl);
     return this;
   }
 
-  addExtends(ext: string) {
+  addExtends(ext: AppendableFields) {
     this.__instance.extends?.add(ext);
     return this;
   }

@@ -17,15 +17,23 @@ export class Generics extends Appendables {
   }
 
   override toCode(group?: string | undefined): string {
-    if (this.appendables.length > 0) {
-      return `<${this.appendables
-        .map((e) => e.toCodeByGroup(group))
-        .join(',')}>`;
+    const gens = this.appendables
+      ?.map((e) => e.toCodeByGroup(group))
+      .join(',  ');
+
+    if (gens.replace(/[, ]/g, '').length > 0) {
+      return `<${gens}>`;
     }
     return '';
   }
 
   override toCodeByGroup(group?: string | undefined): string {
     return this.toCode(group);
+  }
+  override add(apd: AppendableFields<string[]>): void {
+    if (this.appendables.find((e) => e.value == apd.value)) {
+      return;
+    }
+    this.appendables.push(new Generic(apd));
   }
 }

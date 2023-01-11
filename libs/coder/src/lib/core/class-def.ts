@@ -1,4 +1,6 @@
 import { AppendableFields, Appendables } from './appendable';
+import { ClassNames } from './class-names';
+import { ClassTypes } from './class-type';
 import { Comments } from './comments';
 import { DecoratorFields, Decorators } from './decorator';
 import { Extends } from './extends ';
@@ -14,10 +16,10 @@ export interface ClassFields<
   Props = PropertyFields[],
   Appends = AppendableFields[]
 > {
-  name: string;
   decorators?: Decs;
   properties?: Props;
-  classType: string;
+  classNames?: Appends;
+  classTypes?: Appends;
   comments?: Appends;
   imports?: Appends;
   extends?: Appends;
@@ -29,28 +31,28 @@ export class ClassDef
   extends ToCode
   implements ClassFields<Decorators, Properties, Appendables>
 {
-  readonly name: string;
+  readonly classNames?: ClassNames | undefined;
+  readonly classTypes?: ClassTypes | undefined;
   readonly decorators?: Decorators | undefined;
   readonly properties?: Properties | undefined;
   readonly comments?: Comments | undefined;
-  readonly classType: string;
   readonly imports?: Imports | undefined;
   readonly extends?: Extends | undefined;
   readonly implements?: Implements | undefined;
   readonly generics?: Generics | undefined;
 
   constructor(
-    options: ClassFields<
+    options?: ClassFields<
       DecoratorFields[],
       PropertyFields<DecoratorFields[], AppendableFields[]>[],
       AppendableFields[]
     >
   ) {
     super([]);
-    this.name = options?.name;
-    this.classType = options?.classType;
+    this.classNames = new ClassNames(options?.classNames);
+    this.classTypes = new ClassTypes(options?.classTypes);
     this.decorators = new Decorators(options?.decorators);
-    this.comments = new Comments(options.comments);
+    this.comments = new Comments(options?.comments);
     this.properties = new Properties(options?.properties);
     this.imports = new Imports(options?.imports);
     this.extends = new Extends(options?.extends);
@@ -63,7 +65,9 @@ export class ClassDef
     ${this.imports?.toCodeByGroup(group) || ''}
     ${this.comments?.toCodeByGroup(group) || ''}
     ${this.decorators?.toCodeByGroup(group) || ''}
-    export ${this.classType} ${this.name} ${this.generics?.toCodeByGroup(
+    export ${this.classTypes?.toCodeByGroup(
+      group
+    )} ${this.classNames?.toCodeByGroup(group)} ${this.generics?.toCodeByGroup(
       group
     )} ${this.extends?.toCodeByGroup(group) || ''} ${
       this.implements?.toCodeByGroup(group) || ''

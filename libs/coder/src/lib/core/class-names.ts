@@ -1,26 +1,22 @@
-import { names } from '@nrwl/devkit';
 import { Appendable, AppendableFields, Appendables } from './appendable';
 
-export class Extend extends Appendable {
+export class ClassName extends Appendable {
   override toCode(group?: string | undefined): string {
-    const n = names(this.value);
-    return `${n.className}`;
+    return this.value;
   }
 }
 
-export class Extends extends Appendables {
-  override readonly appendables: Extend[];
+export class ClassNames extends Appendables {
+  override readonly appendables: ClassName[];
 
   constructor(appendables?: AppendableFields[]) {
     super([]);
-    this.appendables = appendables?.map((e) => new Extend(e)) || [];
+    this.appendables = appendables?.map((e) => new ClassName(e)) || [];
   }
 
   override toCode(group?: string | undefined): string {
     if (this.appendables.length > 0) {
-      return `extends ${this.appendables
-        .map((e) => e.toCodeByGroup(group))
-        .join(',')}`;
+      return this.appendables.map((e) => e.toCodeByGroup(group)).join(' ');
     }
     return '';
   }
@@ -28,8 +24,7 @@ export class Extends extends Appendables {
   override toCodeByGroup(group?: string | undefined): string {
     return this.toCode(group);
   }
-
   override add(appandable: AppendableFields<string[]>): void {
-    this.appendables.push(new Extend(appandable));
+    this.appendables.push(new ClassName(appandable));
   }
 }

@@ -27,4 +27,10 @@ export class Comments extends Appendables {
   override toCodeByGroup(group?: string | undefined): string {
     return this.toCode(group);
   }
+  override add(appandable: AppendableFields<string[]>): void {
+    if (this.appendables.find((e) => e.value == appandable.value)) {
+      return;
+    }
+    this.appendables.push(new Comment(appandable));
+  }
 }

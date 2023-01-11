@@ -26,4 +26,7 @@ export abstract class Appendables extends ToCode {
     super([]);
     this.appendables = appendables.map((e) => new Appendable(e));
   }
+  add(appandable: AppendableFields) {
+    throw new Error('Not Implemented');
+  }
 }

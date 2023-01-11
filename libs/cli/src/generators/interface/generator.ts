@@ -19,11 +19,14 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
   const FILES = join(__dirname, 'files');
   const MODEL = await loadModel(NAMES.fileName);
 
-  const __interface = ClassBuilder.newInterface(NAMES.className);
+  const __interface = ClassBuilder.init();
+
+  __interface.addClasName(NAMES.className, 'interface', Groups.I);
+  __interface.addClasName('Read' + NAMES.className, 'interface', Groups.I_READ);
 
   __interface.addProperty({ name: 'id', type: 'number', groups: Groups.ALL });
 
-  Object.entries(MODEL.properties).forEach(([key, value]) => {
+  Object.entries(MODEL.properties || {}).forEach(([key, value]) => {
     __interface.addProperty({
       name: key,
       type: value.type,
@@ -31,8 +34,8 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
     });
   });
 
-  Object.entries(MODEL.relations).forEach(([name, { type, target }]) => {
-    __interface.addGeneric(target);
+  Object.entries(MODEL.relations || {}).forEach(([name, { type, target }]) => {
+    __interface.addGeneric({ value: target, groups: [Groups.I] });
     __interface.addProperty({
       name,
       type: target + isMany(type),
@@ -41,7 +44,7 @@ export default async function (tree: Tree, options: InterfaceGeneratorSchema) {
   });
 
   MODEL.views?.forEach((e) => {
-    Object.entries(e.viewFields).map(([key, value]) => {
+    Object.entries(e.viewFields || {}).map(([key, value]) => {
       __interface.addProperty({
         name: `${names(e.target).propertyName}${names(key).className}`,
         type: value.type,
