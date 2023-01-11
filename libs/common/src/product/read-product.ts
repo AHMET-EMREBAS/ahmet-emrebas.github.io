@@ -1,6 +1,7 @@
-export interface ReadProduct {
-  id: number;
-  index: number;
+export interface Product {
+  id?: number;
 
-  name: string;
+  name?: string;
+
+  description?: string;
 }

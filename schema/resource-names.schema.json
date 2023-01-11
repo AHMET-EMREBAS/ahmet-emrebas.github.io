@@ -10,6 +10,7 @@
     "Permission",
     "Event",
     "Resource",
-    "Operation"
+    "Operation",
+    "Category"
   ]
 }

@@ -1,18 +1,1 @@
-<% for(const i of imports) { %>
-    import { <%- i.className %> } from '../<%- i.fileName %>';
-<% } %>
-
-export interface <%- className %> {
-  id?:number;
-  index?:number;
-
-  <% for(const p of properties) { %>
-    <%- p.key %>?:<%- p.type %>
-  <% } %>
-
-  <% for(const p of relations) { %>
-    <%- p.key %>?:<%- p.type %>
-  <% } %>
-
-
-}
+<%- interfaceFile %>

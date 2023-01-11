@@ -1,12 +1,7 @@
 import { ToCode } from './to-code';
 
-export class EmptyCode implements ToCode {
-  toCode(): string {
+export class EmptyCode extends ToCode {
+  override toCode(group?: string): string {
     return '';
   }
 }
-
-/**
- * Empty code
- */
-export const EC = new EmptyCode();
