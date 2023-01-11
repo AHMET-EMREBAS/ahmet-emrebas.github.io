@@ -1,0 +1,23 @@
+import { Entity, Column , PrimaryGeneratedColumn, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne, OneToMany } from 'typeorm';
+
+<% for(const i of entityImports) { %>
+    import { <%- i.className %> } from '../../<%- i.fileName %>';
+<% } %>
+
+@Entity()
+export class <%- className %> {
+  @PrimaryGeneratedColumn() id:number;
+
+  <% for(const p of columns) { %>
+    @Column(<%- p.column %>)
+    <%- p.key %> : <%- p.type %>;
+  <% } %>
+
+
+  <% for(const p of relations) { %>
+    @<%- p.type %>(()=> <%- p.target %>, e=>e.id, <%- p.options %>)
+    @<%- p.join %>()
+    <%- p.key %> : <%- p.target %> <%- p.type.endsWith('Many') ? '[]' : '' %>;
+  <% } %>
+
+}

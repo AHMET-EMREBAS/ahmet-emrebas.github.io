@@ -1,0 +1,39 @@
+import { ViewEntity, ViewColumn , DataSource } from 'typeorm';
+import { <%- className %> } from './<%- fileName %>.entity';
+
+<% for(const i of viewImports) { %>
+    import { <%- i.className %> } from '../../<%- i.fileName %>';
+<% } %>
+
+@ViewEntity({
+  expression:(ds:DataSource)=>{
+
+    return ds.createQueryBuilder()
+
+    .addSelect('<%- className %>.id', 'id')
+    .addSelect('ROW_NUMBER () OVER (ORDER BY <%- className %>.id)', 'index')
+
+    <% for(const s of selects) { %>
+      <%- s %>
+    <% } %>
+
+    .from(<%- className %>, '<%- className %>')
+
+    <% for(const j of leftJoins) { %>
+      <%- j %>
+    <% } %>
+  }
+})
+export class <%- className %>View {
+  @ViewColumn() id:number;
+  @ViewColumn() index:number;
+
+  <% for(const p of viewColumns) { %>
+    @ViewColumn()
+    <%- p.key %> : <%- p.type %>;
+  <% } %>
+
+
+
+
+}

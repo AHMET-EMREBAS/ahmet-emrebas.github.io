@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ae/coder": ["libs/coder/src/index.ts"],
       "@ae/common": ["libs/common/src/index.ts"],
       "@ae/core": ["libs/core/src/index.ts"],
       "@ae/models": ["libs/models/src/index.ts"],

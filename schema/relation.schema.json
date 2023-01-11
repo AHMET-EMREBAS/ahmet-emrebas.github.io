@@ -62,6 +62,7 @@
         "type": {
           "const": "ManyToMany"
         },
+
         "target": {
           "$ref": "./resource-names.schema.json"
         },

@@ -3,11 +3,25 @@ relations:
     type: ManyToOne
     target: Resource
     join: true
+    options:
+      nullable: true
+      eager: true
 
   operation:
     type: ManyToOne
     target: Operation
     join: true
+    options:
+      nullable: true
+      eager: true
+
+  oper:
+    type: ManyToOne
+    target: Operation
+    join: true
+    options:
+      nullable: true
+      eager: true
 
 views:
   - target: Resource

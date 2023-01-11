@@ -4,6 +4,7 @@
     "api": "apps/api",
     "cli": "libs/cli",
     "cli-e2e": "apps/cli-e2e",
+    "coder": "libs/coder",
     "common": "libs/common",
     "core": "libs/core",
     "desktop": "apps/desktop",

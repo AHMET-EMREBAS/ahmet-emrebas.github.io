@@ -11,31 +11,31 @@ type ResourceNames =
   | 'Role'
   | 'Permission';
 
-export interface ModelProperty {
-  type: 'string' | 'number' | 'Date' | 'boolean';
-  column: ColumnOptions;
+export class ModelProperty {
+  type?: 'string' | 'number' | 'Date' | 'boolean';
+  column?: ColumnOptions;
   validations?: ApiPropertyOptions;
 }
 
-export interface ModelViewFieldOptions {
-  type: 'string' | 'number' | 'boolean' | 'Date';
+export class ModelViewFieldOptions {
+  type?: 'string' | 'number' | 'boolean' | 'Date';
 }
 
-export interface ModelViewOptions {
-  target: ResourceNames;
-  parent: ResourceNames;
+export class ModelViewOptions {
+  target?: ResourceNames;
+  parent?: ResourceNames;
   viewFields?: Record<string, ModelViewFieldOptions>;
   condition?: string;
 }
 
-export interface ModelRelation {
-  type: 'ManyToMany' | 'OneToMany' | 'ManyToOne' | 'OneToOne';
-  target: ResourceNames;
+export class ModelRelation {
+  type?: 'ManyToMany' | 'OneToMany' | 'ManyToOne' | 'OneToOne';
+  target?: ResourceNames;
   join?: boolean;
   options?: RelationOptions;
 }
 
-export interface Model {
+export class Model {
   properties?: Record<string, ModelProperty>;
   relations?: Record<string, ModelRelation>;
   views?: ModelViewOptions[];

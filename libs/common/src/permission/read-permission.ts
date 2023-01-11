@@ -1,7 +1,8 @@
 export interface ReadPermission {
-  id: number;
-  index: number;
+  id?: number;
+  index?: number;
 
-  resourceName: string;
-  operationName: string;
+  resourceName?: string;
+
+  operationName?: string;
 }

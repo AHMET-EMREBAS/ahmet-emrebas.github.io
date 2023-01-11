@@ -7,6 +7,11 @@
       "factory": "./src/generators/interface/generator",
       "schema": "./src/generators/interface/schema.json",
       "description": "interface generator"
+    },
+    "entity": {
+      "factory": "./src/generators/entity/generator",
+      "schema": "./src/generators/entity/schema.json",
+      "description": "entity generator"
     }
   }
 }

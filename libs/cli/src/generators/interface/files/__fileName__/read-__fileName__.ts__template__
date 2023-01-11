@@ -1,10 +1,14 @@
-
 export interface Read<%- className %> {
-  id:number;
-  index:number;
+  id?:number;
+  index?:number;
 
-  <%- properties %>
 
-  <%- views %>
+  <% for(const p of properties) { %>
+    <%- p.key %>?:<%- p.type %>
+  <% } %>
+
+  <% for(const p of views) { %>
+    <%- p.key %>?:<%- p.type %>
+  <% } %>
 
 }

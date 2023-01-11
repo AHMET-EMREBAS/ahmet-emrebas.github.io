@@ -1,10 +1,12 @@
 import { Resource } from '../resource';
+
 import { Operation } from '../operation';
 
 export interface Permission {
-  id: number;
-  index: number;
+  id?: number;
+  index?: number;
 
-  resource: Resource;
-  operation: Operation;
+  resource?: Resource;
+
+  operation?: Operation;
 }
