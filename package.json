@@ -4,10 +4,12 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@nx/angular": "^16.8.1",
     "@nx/js": "16.8.1",
     "@nx/workspace": "16.8.1",
-    "nx": "16.8.1"
+    "nx": "16.8.1",
+    "prettier": "^2.6.2",
+    "typescript": "~5.1.3"
   }
 }
