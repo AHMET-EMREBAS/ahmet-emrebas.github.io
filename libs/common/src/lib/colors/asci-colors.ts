@@ -1,0 +1,26 @@
+
+const RESET = '\x1b[0m';
+const BLACK = '\x1b[30m';
+const WHITE = '\x1b[37m';
+const RED = '\x1b[31m';
+const GREEN = '\x1b[32m';
+const YELLOW = '\x1b[33m';
+const BLUE = '\x1b[34m';
+const BLACK_BG = '\x1b[40m';
+const WHITE_BG = '\x1b[47m';
+const RED_BG = '\x1b[41m';
+const GREEN_BG = '\x1b[42m';
+const YELLOW_BG = '\x1b[43m';
+const BLUE_BG = '\x1b[44m';
+export const _WHITE = (msg: string) => `${WHITE} ${msg} ${RESET}`;
+export const _BLACK = (msg: string) => `${BLACK} ${msg} ${RESET}`;
+export const _RED = (msg: string) => `${RED} ${msg} ${RESET}`;
+export const _GREEN = (msg: string) => `${GREEN} ${msg} ${RESET}`;
+export const _YELLOW = (msg: string) => `${YELLOW} ${msg} ${RESET}`;
+export const _BLUE = (msg: string) => `${BLUE} ${msg} ${RESET}`;
+export const _WHITE_BG = (msg: string) => `${WHITE_BG} ${msg} ${RESET}`;
+export const _BLACK_BG = (msg: string) => `${BLACK_BG} ${msg} ${RESET}`;
+export const _RED_BG = (msg: string) => `${RED_BG} ${msg} ${RESET}`;
+export const _GREEN_BG = (msg: string) => `${GREEN_BG} ${msg} ${RESET}`;
+export const _YELLOW_BG = (msg: string) => `${YELLOW_BG} ${msg} ${RESET}`;
+export const _BLUE_BG = (msg: string) => `${BLUE_BG} ${msg} ${RESET}`;
