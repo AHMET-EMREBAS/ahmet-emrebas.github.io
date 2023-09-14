@@ -1,0 +1,8 @@
+:root {
+  @for $s from 1 through 12 {
+    --h#{$s}: #{$s * 8}vh;
+    --w#{$s}: #{$s * 8}vw;
+    --font-size-#{$s}: #{0.6 + $s * 0.4}rem;
+    --border-radius-#{$s}: #{$s}px;
+  }
+}

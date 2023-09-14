@@ -71,7 +71,7 @@
           "libs/material/src/theme"
         ],
         "styles": [
-          "libs/material/src/theme/techbir.scss"
+          "libs/material/src/style.scss"
         ]
       },
       "configurations": {
@@ -101,7 +101,7 @@
           "libs/material/src/theme"
         ],
         "styles": [
-          "libs/material/src/theme/techbir.scss"
+          "libs/material/src/style.scss"
         ]
       },
       "configurations": {

@@ -1,0 +1,55 @@
+.techbir-common-button, a[techbir-flat-button], a[techbir-raised-button], a[techbir-button], button[techbir-flat-button], button[techbir-raised-button], button[techbir-button] {
+  min-height: var(--min-button-height);
+  min-width: var(--min-button-width);
+  border-radius: 3px;
+  border: 3px double transparent;
+}
+.techbir-common-button:hover, a[techbir-flat-button]:hover, a[techbir-raised-button]:hover, a[techbir-button]:hover, button[techbir-flat-button]:hover, button[techbir-raised-button]:hover, button[techbir-button]:hover {
+  border: 3px double gray;
+  cursor: pointer;
+  transition: border-color ease-in-out 200ms;
+}
+.techbir-common-button:active, a[techbir-flat-button]:active, a[techbir-raised-button]:active, a[techbir-button]:active, button[techbir-flat-button]:active, button[techbir-raised-button]:active, button[techbir-button]:active {
+  border-color: white;
+  transition: border-color ease-in-out 200ms;
+}
+
+button[techbir-button].primary {
+  background-color: var(--primary-color);
+  color: var(--primary-face-color);
+}
+
+a[techbir-button].primary {
+  background-color: var(--primary-color);
+  color: var(--primary-face-color);
+}
+
+button[techbir-raised-button].primary {
+  background-color: var(--primary-color);
+  color: var(--primary-face-color);
+}
+
+a[techbir-raised-button] .primary {
+  background-color: var(--primary-color);
+  color: var(--primary-face-color);
+}
+
+button[techbir-button].secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-face-color);
+}
+
+a[techbir-button].secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-face-color);
+}
+
+button[techbir-raised-button].secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-face-color);
+}
+
+a[techbir-raised-button] .secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-face-color);
+}/*# sourceMappingURL=button.component.css.map */

@@ -1,12 +1,9 @@
-@forward './_heights';
-@forward './_boxsizing';
-@forward './_colors';
-@forward './_shadow';
+@use './_colors' as colors;
+@use './_shadow' as shadows;
+@forward './__size';
 @forward './_flexbox';
 
-@function colorPalette($color, $light, $dark, $face) {
-    
-}
-
-@mixin configure($colorPalets) {
+@mixin configure($primary, $secondary, $shadowColor) {
+  @include shadows.createBoxShadowVars($shadowColor);
+  @include colors.createColorVars($primary, $secondary);
 }

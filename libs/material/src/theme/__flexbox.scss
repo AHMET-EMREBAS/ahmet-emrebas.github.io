@@ -30,15 +30,15 @@ $displays: (
 
 @each $d in $displays {
   .#{$d} {
-    display: #{$d};
+    display: $d;
   }
 }
 
 $flexDirections: (column, column-reverse, row, row-reverse);
 
-@each $fd in $flexDirection {
+@each $fd in $flexDirections {
   .flex.#{$fd} {
-    flex-direction: #{$fd};
+    flex-direction: $fd;
   }
 }
 
@@ -63,7 +63,7 @@ $justifyContent: (
 
 @each $jc in $justifyContent {
   .flex.#{$jc} {
-    justify-content: #{$jc};
+    justify-content: $jc;
   }
 }
 
@@ -79,7 +79,7 @@ $alignItems: (
 
 @each $ai in $alignItems {
   .flex.#{$ai} {
-    align-items: #{$ai};
+    align-items: $ai;
   }
 }
 
@@ -98,6 +98,6 @@ $alignContent: (
 
 @each $ac in $alignContent {
   .flex.#{$ac} {
-    align-content: #{$ac};
+    align-content: $ac;
   }
 }

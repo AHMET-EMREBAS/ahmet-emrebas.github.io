@@ -1,0 +1,3 @@
+@use './theme/techbir.scss' as techbir;
+
+@include techbir.configure(#213555, #4f709c, #252b48);

@@ -1,27 +1,28 @@
-@mixin colors($colors) {
-  @each $c in $colors {
-    .some {
-      color: red;
+$colorNames: (primary, secondary);
+$white: aliceblue;
+$black: rgba(20, 20, 20, 0.8);
+
+@mixin __colorVars($color) {
+  :root {
+    --surface: $white;
+
+    --surface-light: lighten($white, 20%);
+    --surface-lighter: lighten($white, 40%);
+
+    --surface-dark: darken($white, 20%);
+    --surface-darker: darken($white, 40%);
+
+    @each $cn in $colorNames {
+      --#{$cn}: $color;
+      --#{$cn}-light: lighten($color, 20%);
+      --#{$cn}-lighter: lighten($color, 40%);
+      --#{$cn}-dark: darken($color, 20%);
+      --#{$cn}-darker: darken($color, 50%);
     }
   }
 }
 
-:root {
-  --primary-color: navy;
-  --primary-face-color: white;
-  
-  --secondary-color: royalblue;
-  --secondary-face-color: white;
-
-  --warn-color: orange;
-  --warn-face-color: black;
-
-  --error-color: red;
-  --error-face-color: white;
-
-  --info-color: teal;
-  --info-face-color: white;
-
-  --success-color: green;
-  --success-face-color: black;
+@mixin createColorVars($primary, $secondary) {
+  @include __colorVars($primary);
+  @include __colorVars($secondary);
 }
