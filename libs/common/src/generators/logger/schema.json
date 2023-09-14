@@ -14,5 +14,7 @@
       "x-prompt": "What name would you like to use?"
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

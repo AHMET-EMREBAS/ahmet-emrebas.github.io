@@ -28,106 +28,128 @@ export const _BLUE_BG = (msg: string) => `${BLUE_BG} ${msg} ${RESET}`;
 type LogObjectMessage = Record<string, any>[];
 
 export class Logger {
-  constructor(private __context: string = 'Context') {}
+  constructor(protected __context: string = 'Context') {}
 
-  context(contextx: string) {
+  setContext(contextx: string) {
     this.__context = contextx;
   }
 
-  private now() {
+  protected timestamp() {
     return new Date().toLocaleString();
   }
 
-  private table(objs?: LogObjectMessage) {
+  protected table(objs?: LogObjectMessage) {
     if (objs) {
       objs.forEach((e) => console.table(objs));
     }
   }
 
-  protected preContext() {
+  protected context() {
     return `[${this.__context}]`;
   }
 
   protected infoContext() {
-    return this.preContext();
+    return this.context();
   }
+
   protected warnContext() {
-    return this.preContext();
+    return this.context();
   }
+
   protected debugContext() {
-    return this.preContext();
+    return this.context();
   }
+
   protected errorContext() {
-    return this.preContext();
+    return this.context();
   }
 
-  protected infoContextStye() {
-    return '';
-  }
-  protected warnContextStye() {
-    return '';
-  }
-  protected debugContextStye() {
-    return '';
-  }
-  protected errorContextStye() {
+  protected defaultStyle() {
     return '';
   }
 
-  protected infoMesageStye() {
-    return '';
-  }
-  protected warnMesageStye() {
-    return '';
-  }
-  protected debugMesageStye() {
-    return '';
-  }
-  protected errorMesageStye() {
-    return '';
+  protected infoContextStyle() {
+    return this.defaultStyle();
   }
 
-  protected infoTimestampStye() {
-    return '';
+  protected warnContextStyle() {
+    return this.defaultStyle();
   }
-  protected warnTimestampStye() {
-    return '';
+
+  protected debugContextStyle() {
+    return this.defaultStyle();
   }
-  protected debugTimestampStye() {
-    return '';
+
+  protected errorContextStyle() {
+    return this.defaultStyle();
   }
-  protected errorTimestampStye() {
-    return '';
+
+  protected infoMesageStyle() {
+    return this.defaultStyle();
+  }
+
+  protected warnMesageStyle() {
+    return this.defaultStyle();
+  }
+
+  protected debugMesageStyle() {
+    return this.defaultStyle();
+  }
+
+  protected errorMesageStyle() {
+    return this.defaultStyle();
+  }
+
+  protected infoTimestampStyle() {
+    return this.defaultStyle();
+  }
+
+  protected warnTimestampStyle() {
+    return this.defaultStyle();
+  }
+
+  protected debugTimestampStyle() {
+    return this.defaultStyle();
+  }
+
+  protected errorTimestampStyle() {
+    return this.defaultStyle();
   }
 
   protected infoTimestamp() {
-    return this.now();
-  }
-  protected warnTimestamp() {
-    return this.now();
-  }
-  protected debugTimestamp() {
-    return this.now();
-  }
-  protected errorTimestamp() {
-    return this.now();
+    return this.timestamp();
   }
 
-  protected preMessage(msg: string) {
-    return msg;
+  protected warnTimestamp() {
+    return this.timestamp();
+  }
+
+  protected debugTimestamp() {
+    return this.timestamp();
+  }
+
+  protected errorTimestamp() {
+    return this.timestamp();
+  }
+
+  protected message(msg: string) {
+    return `${msg}`;
   }
 
   protected infoMessage(msg: string) {
-    return this.preMessage(msg);
+    return this.message(msg);
   }
+
   protected warnMessage(msg: string) {
-    return this.preMessage(msg);
+    return this.message(msg);
   }
+
   protected debugMessage(msg: string) {
-    return this.preMessage(msg);
+    return this.message(msg);
   }
+
   protected errorMessage(msg: string) {
-    return this.preMessage(msg);
+    return this.message(msg);
   }
 
   info(message: string, objs?: LogObjectMessage) {
@@ -135,9 +157,9 @@ export class Logger {
       `${this.infoContext()} ${this.infoTimestamp()} ${this.infoMessage(
         message
       )}`,
-      this.infoContextStye(),
-      this.infoTimestampStye(),
-      this.infoMesageStye()
+      this.infoContextStyle(),
+      this.infoTimestampStyle(),
+      this.infoMesageStyle()
     );
     this.table(objs);
   }
@@ -147,9 +169,9 @@ export class Logger {
       `${this.errorContext()} ${this.errorTimestamp()} ${this.errorMessage(
         message
       )}`,
-      this.errorContextStye(),
-      this.errorTimestampStye(),
-      this.errorMesageStye()
+      this.errorContextStyle(),
+      this.errorTimestampStyle(),
+      this.errorMesageStyle()
     );
     this.table(objs);
   }
@@ -159,9 +181,9 @@ export class Logger {
       `${this.warnContext()} ${this.warnTimestamp()} ${this.warnMessage(
         message
       )}`,
-      this.warnContextStye(),
-      this.warnTimestampStye(),
-      this.warnMesageStye()
+      this.warnContextStyle(),
+      this.warnTimestampStyle(),
+      this.warnMesageStyle()
     );
     this.table(objs);
   }
@@ -171,9 +193,9 @@ export class Logger {
       `${this.debugContext()} ${this.debugTimestamp()} ${this.debugMessage(
         message
       )}`,
-      this.debugContextStye(),
-      this.debugTimestampStye(),
-      this.debugMesageStye()
+      this.debugContextStyle(),
+      this.debugTimestampStyle(),
+      this.debugMesageStyle()
     );
     this.table(objs);
   }

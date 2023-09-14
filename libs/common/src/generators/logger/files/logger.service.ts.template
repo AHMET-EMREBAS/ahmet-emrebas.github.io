@@ -1,6 +1,8 @@
-import { Logger } from './logger';
+import { Injectable } from '@angular/core';
+import { Logger } from '@techbir/common';
 
-export class ClientLogger extends Logger {
+@Injectable()
+export class LoggerService extends Logger {
   private commonStyle(style: string) {
     return `${style}  font-size:16pt; font-family:Arial; border:1px solid gray; border-radius:10px; padding:10px; margin-right:10px;`;
   }

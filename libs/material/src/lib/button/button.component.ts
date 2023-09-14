@@ -35,7 +35,7 @@ export class ButtonComponent implements OnInit {
     private readonly ref: ElementRef<HTMLElement>,
     @Optional() private readonly logger: LoggerService
   ) {
-    this.logger?.context('ButtonComponent');
+    this.logger.setContext('ButtonComponent');
   }
 
   ngOnInit(): void {
@@ -48,7 +48,6 @@ export class ButtonComponent implements OnInit {
       this.logger?.warn('Warn log');
       this.logger?.debug('Debug log');
       this.logger?.error(`Tag name should be ${validTagNames.join(' or ')}`);
-
     }
   }
 }
