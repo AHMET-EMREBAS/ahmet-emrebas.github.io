@@ -4,10 +4,16 @@ MIT
 @angular/core
 MIT
 
+@angular/localize
+MIT
+
 @angular/platform-browser
 MIT
 
 @angular/router
+MIT
+
+@angular/service-worker
 MIT
 
 rxjs

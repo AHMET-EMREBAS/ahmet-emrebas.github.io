@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'website';
+  title = `website`;
 
   constructor(private readonly httpClient: HttpClient) { }
   ngOnInit(): void {
+    console.log('Welcome to ', this.title)
 
     this.httpClient.get('api').subscribe(console.log)
   }

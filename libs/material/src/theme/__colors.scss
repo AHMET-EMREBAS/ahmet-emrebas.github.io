@@ -1,0 +1,8 @@
+
+@mixin colors($colors) {
+  @each $c in $colors {
+    .some {
+      color: red;
+    }
+  }
+}

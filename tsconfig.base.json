@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@techbir/material": ["libs/material/src"],
+      "@techbir/material/*": ["libs/material/src/lib/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
