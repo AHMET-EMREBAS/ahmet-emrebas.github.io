@@ -13,16 +13,21 @@ export default meta;
 type Story = StoryObj<SampleComponent>;
 
 export const Primary: Story = {
-  args: {
-
-    sampleInput: 'Sample Input'
+  argTypes: {
+    sampleInput: {
+      description: 'Sample input',
+      type: 'string',
+      defaultValue: 'Sample input',
+    },
   },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: {
+    sampleInput: 'Sample input',
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/sample works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Sample input/gi)).toBeTruthy();
   },
 };

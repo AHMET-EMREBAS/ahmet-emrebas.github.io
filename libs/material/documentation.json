@@ -18,7 +18,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StorybookConfig",
-                "defaultValue": "{\n  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],\n  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],\n  framework: {\n    name: '@storybook/angular',\n    options: {\n\n    },\n  },\n  docs: {\n    autodocs: true,\n    defaultName: 'Documentation',\n  },\n\n}"
+                "defaultValue": "{\r\n  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],\r\n  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],\r\n  framework: {\r\n    name: '@storybook/angular',\r\n    options: {\r\n\r\n    },\r\n  },\r\n  docs: {\r\n    autodocs: true,\r\n    defaultName: 'Documentation',\r\n  },\r\n\r\n}"
             },
             {
                 "name": "Heading",
@@ -28,7 +28,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    sampleInput: 'Sample input',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/sample works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "meta",
@@ -38,7 +38,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SampleComponent>",
-                "defaultValue": "{\n  component: SampleComponent,\n  title: 'SampleComponent',\n  tags: ['autodocs'],\n}"
+                "defaultValue": "{\r\n  component: SampleComponent,\r\n  title: 'SampleComponent',\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "preview",
@@ -58,7 +58,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n\n    sampleInput: 'Sample Input'\n  },\n}"
+                "defaultValue": "{\r\n  argTypes: {\r\n    sampleInput: {\r\n      description: 'Sample input',\r\n      type: 'string',\r\n      defaultValue: 'Sample input',\r\n    },\r\n  },\r\n}"
             }
         ],
         "functions": [],
@@ -86,7 +86,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StorybookConfig",
-                    "defaultValue": "{\n  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],\n  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],\n  framework: {\n    name: '@storybook/angular',\n    options: {\n\n    },\n  },\n  docs: {\n    autodocs: true,\n    defaultName: 'Documentation',\n  },\n\n}"
+                    "defaultValue": "{\r\n  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],\r\n  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],\r\n  framework: {\r\n    name: '@storybook/angular',\r\n    options: {\r\n\r\n    },\r\n  },\r\n  docs: {\r\n    autodocs: true,\r\n    defaultName: 'Documentation',\r\n  },\r\n\r\n}"
                 }
             ],
             "libs/material/src/lib/sample/sample.component.stories.ts": [
@@ -98,7 +98,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    sampleInput: 'Sample input',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/sample works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -108,7 +108,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SampleComponent>",
-                    "defaultValue": "{\n  component: SampleComponent,\n  title: 'SampleComponent',\n  tags: ['autodocs'],\n}"
+                    "defaultValue": "{\r\n  component: SampleComponent,\r\n  title: 'SampleComponent',\r\n  tags: ['autodocs'],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -118,7 +118,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n\n    sampleInput: 'Sample Input'\n  },\n}"
+                    "defaultValue": "{\r\n  argTypes: {\r\n    sampleInput: {\r\n      description: 'Sample input',\r\n      type: 'string',\r\n      defaultValue: 'Sample input',\r\n    },\r\n  },\r\n}"
                 }
             ],
             "libs/material/.storybook/preview.ts": [

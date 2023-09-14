@@ -9,9 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./sample.component.scss'],
 })
 export class SampleComponent {
-
-  /**
-   * Sample input
-   */
-  @Input() sampleInput = ''
+  @Input() sampleInput = 'sample works';
 }

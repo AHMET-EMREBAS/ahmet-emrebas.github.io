@@ -4,6 +4,6 @@ import { addons } from '@storybook/manager-api';
 import mainTheme from './main-theme';
 
 addons.setConfig({
-  enableShortcuts: false,
+  // enableShortcuts: false,
   theme: mainTheme,
 });
