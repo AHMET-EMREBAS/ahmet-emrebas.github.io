@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "logger": {
+      "factory": "./src/generators/logger/generator",
+      "schema": "./src/generators/logger/schema.json",
+      "description": "logger generator"
+    }
+  }
+}

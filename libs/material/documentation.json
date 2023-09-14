@@ -28,7 +28,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    color: 'secondary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -98,7 +98,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    color: 'primary',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    color: 'secondary',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -180,7 +180,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    color: 'secondary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -200,7 +200,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    color: 'primary',\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    color: 'secondary',\n  },\n}"
                 }
             ],
             "libs/material/src/lib/input/input.component.stories.ts": [

@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@techbir/common": ["libs/common/src/index.ts"],
+      "@techbir/gen": ["libs/gen/src/index.ts"],
+      "@techbir/gen/*": ["libs/gen/src/*"],
       "@techbir/material": ["libs/material/src"],
       "@techbir/material/*": ["libs/material/src/lib/*"],
       "@techbir/services": ["libs/services/src/index.ts"],
