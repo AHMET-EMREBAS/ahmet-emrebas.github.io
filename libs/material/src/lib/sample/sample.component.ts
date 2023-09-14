@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'ae-sample',
+  selector: 'techbir-sample',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sample.component.html',

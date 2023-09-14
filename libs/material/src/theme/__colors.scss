@@ -1,8 +1,27 @@
-
 @mixin colors($colors) {
   @each $c in $colors {
     .some {
       color: red;
     }
   }
+}
+
+:root {
+  --primary-color: navy;
+  --primary-face-color: white;
+  
+  --secondary-color: royalblue;
+  --secondary-face-color: white;
+
+  --warn-color: orange;
+  --warn-face-color: black;
+
+  --error-color: red;
+  --error-face-color: white;
+
+  --info-color: teal;
+  --info-face-color: white;
+
+  --success-color: green;
+  --success-face-color: black;
 }

@@ -2,7 +2,7 @@
   "name": "material",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/material/src",
-  "prefix": "ae",
+  "prefix": "techbir",
   "tags": [],
   "projectType": "library",
   "targets": {

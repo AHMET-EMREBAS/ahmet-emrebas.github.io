@@ -1,8 +1,5 @@
 import { Preview } from '@storybook/angular';
-import { setCompodocJson } from '@storybook/addon-docs/angular';
-import * as docJson from '../documentation.json';
-
-setCompodocJson(docJson);
+// import { setCompodocJson } from '@storybook/addon-docs/angular';
 
 const preview: Preview = {
   parameters: {

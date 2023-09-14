@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@techbir/material": ["libs/material/src"],
-      "@techbir/material/*": ["libs/material/src/lib/*"]
+      "@techbir/material/*": ["libs/material/src/lib/*"],
+      "@techbir/services": ["libs/services/src/index.ts"],
+      "@techbir/services/*": ["libs/services/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
