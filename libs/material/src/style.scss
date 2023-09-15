@@ -1,14 +1,22 @@
 @use './theme' as techbir;
 
 $lightness: 60%;
-$primary: hsl(219, 70%, $lightness);
-$secondary: hsl(298, 73%, $lightness);
-$warn: hsl(19, 66%, $lightness);
-$error: hsl(0, 63%, $lightness);
-$info: hsl(199, 100%, $lightness);
+$primary: dodgerblue;
+$secondary: slateblue;
+$warn: Violet;
+$error: tomato;
+$info: MediumSeaGreen;
 $dark: hsl(0, 0%, 5%);
 $light: hsl(0, 0%, 100%);
 
+// DodgerBlue
+// SlateBlue
+// MediumSeaGreen
+// Tomato
+// Orange
+// Gray
+// Violet
+// LightGray
 @include techbir.configure(
   $primary,
   $secondary,

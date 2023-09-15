@@ -4,7 +4,7 @@ import {
   FlatButtonDirective,
   IconButtonDirective,
   RaisedButtonDirective,
-} from './button.component';
+} from './buttons';
 
 @Component({
   selector: 'techbir-sample-buttons',

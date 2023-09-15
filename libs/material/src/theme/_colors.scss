@@ -1,4 +1,5 @@
 $colorNames: (primary, secondary, warn, error, info, dark, light);
+
 $surfaceColor: hsl(64, 19%, 50%);
 $darkColor: hsl(0, 20%, 10%);
 $lightColor: hsl(0, 20%, 70%);
@@ -7,7 +8,6 @@ $lightColor: hsl(0, 20%, 70%);
 :root {
   --lightness: 49;
   --dark: #{$darkColor};
-
   --light: #{$lightColor};
   --surface: #{$surfaceColor};
   --surface-light: #{lighten($surfaceColor, 10%)};
@@ -26,15 +26,12 @@ $lightColor: hsl(0, 20%, 70%);
 }
 
 @mixin __colorVars($name, $color) {
-  // Color vars
-  :root {
-    --#{$name}: #{$color};
-    --#{$name}-light: #{lighten($color, 20%)};
-    --#{$name}-lighter: #{lighten($color, 40%)};
-    --#{$name}-dark: #{darken($color, 20%)};
-    --#{$name}-darker: #{darken($color, 50%)};
-    --#{$name}-face: #{faceColor($color)};
-  }
+  --#{$name}: #{$color};
+  --#{$name}-light: #{lighten($color, 20%)};
+  --#{$name}-lighter: #{lighten($color, 40%)};
+  --#{$name}-dark: #{darken($color, 20%)};
+  --#{$name}-darker: #{darken($color, 50%)};
+  --#{$name}-face: #{faceColor($color)};
 }
 
 @mixin createColorVars(
@@ -46,11 +43,13 @@ $lightColor: hsl(0, 20%, 70%);
   $dark,
   $light
 ) {
-  @include __colorVars(primary, $primary);
-  @include __colorVars(secondary, $secondary);
-  @include __colorVars(warn, $warn);
-  @include __colorVars(error, $error);
-  @include __colorVars(info, $info);
-  @include __colorVars(dark, $dark);
-  @include __colorVars(light, $light);
+  :root {
+    @include __colorVars(primary, $primary);
+    @include __colorVars(secondary, $secondary);
+    @include __colorVars(warn, $warn);
+    @include __colorVars(error, $error);
+    @include __colorVars(info, $info);
+    @include __colorVars(dark, $dark);
+    @include __colorVars(light, $light);
+  }
 }
