@@ -73,13 +73,13 @@
 .roboto {
   font-family: Roboto;
 }
-.special_elite {
+.special-elite {
   font-family: Special Elite;
 }
-.josefin_sans {
+.josefin-sans {
   font-family: Josefin Sans;
 }
-.josefin_sans {
+.josefin-sans {
   font-family: Josefin Sans;
 }
 .lobster {
@@ -88,16 +88,16 @@
 .comfortaa {
   font-family: Comfortaa;
 }
-.rubik_dirt {
+.rubik-dirt {
   font-family: Rubik Dirt;
 }
-.rubik_iso {
+.rubik-iso {
   font-family: Rubik Iso;
 }
-.black_ops one {
+.black-ops-one {
   font-family: Black Ops One;
 }
-.concert_one {
+.concert-one {
   font-family: Concert One;
 }
 .tourney {
@@ -106,7 +106,7 @@
 .tourney {
   font-family: Tourney;
 }
-.dancing_script {
+.dancing-script {
   font-family: Dancing Script;
 }
 
@@ -144,6 +144,6 @@
   .fs-#{$size} {
     font-size: var(--font-size-#{$size});
     line-height: var(--line-height-#{$size});
-    letter-spacing:0.3em;
+    letter-spacing: 0.3em;
   }
 }

@@ -1,7 +1,8 @@
 import { Logger } from './logger';
 describe('Logger', () => {
   it('should log', () => {
-    const logger = new Logger('Context');
+    const logger = new Logger();
+    logger.setContext('Contex');
 
     expect(logger).toBeTruthy();
     logger.info('Info log');
