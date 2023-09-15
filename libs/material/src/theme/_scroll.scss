@@ -1,6 +1,7 @@
 /* Style the scrollbar track */
 ::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 6px; /* Width of the scrollbar */
+  height: 6px;
 }
 
 /* Style the scrollbar thumb (the draggable part) */

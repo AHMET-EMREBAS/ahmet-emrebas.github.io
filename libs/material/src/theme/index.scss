@@ -1,11 +1,6 @@
-@forward './border';
-@forward './buttons';
-@use './colors' as colors;
 @forward './flexbox';
 @forward './fonts';
-@forward './shadows';
 @forward './sizing';
-@forward './list';
 @forward './titles';
 @forward './scroll';
 @forward './positions';
@@ -14,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.clar-default {
+.clear-default {
   margin: 0px;
   padding: 0px;
   border: none;
@@ -30,22 +25,10 @@
 }
 
 html {
-  @extend .clar-default;
+  @extend .clear-default;
   @extend .full-container;
 }
 body {
-  @extend .clar-default;
+  @extend .clear-default;
   @extend .full-relative-container;
-}
-
-@mixin configure($primary, $secondary, $warn, $error, $info, $dark, $light) {
-  @include colors.createColorVars(
-    $primary,
-    $secondary,
-    $warn,
-    $error,
-    $info,
-    $dark,
-    $light
-  );
 }
