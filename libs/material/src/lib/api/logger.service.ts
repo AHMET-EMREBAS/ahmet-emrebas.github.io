@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ClientLogger } from '@techbir/common';
+import { ClientLogger } from '@techbir/common/logger';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LoggerService extends ClientLogger {}

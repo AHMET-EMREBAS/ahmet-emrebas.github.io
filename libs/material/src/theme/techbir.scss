@@ -2,8 +2,26 @@
 @use './_shadow' as shadows;
 @forward './__size';
 @forward './_flexbox';
+@forward './_buttons';
 
-@mixin configure($primary, $secondary, $shadowColor) {
+@mixin configure(
+  $primary,
+  $secondary,
+  $warn,
+  $error,
+  $info,
+  $dark,
+  $light,
+  $shadowColor
+) {
   @include shadows.createBoxShadowVars($shadowColor);
-  @include colors.createColorVars($primary, $secondary);
+  @include colors.createColorVars(
+    $primary,
+    $secondary,
+    $warn,
+    $error,
+    $info,
+    $dark,
+    $light
+  );
 }

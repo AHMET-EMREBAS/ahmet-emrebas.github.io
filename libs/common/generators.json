@@ -4,6 +4,11 @@
       "factory": "./src/generators/logger/generator",
       "schema": "./src/generators/logger/schema.json",
       "description": "logger generator"
+    },
+    "server-logger": {
+      "factory": "./src/generators/server-logger/generator",
+      "schema": "./src/generators/server-logger/schema.json",
+      "description": "server-logger generator"
     }
   }
 }

@@ -1,29 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ButtonComponent } from './button.component';
 
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { SampleButtonsComponent } from './sample-button.component';
 
-const meta: Meta<ButtonComponent> = {
-  component: ButtonComponent,
-  title: 'ButtonComponent',
+const meta: Meta<SampleButtonsComponent> = {
+  component: SampleButtonsComponent,
+  title: 'SampleButtonsComponent',
   tags: ['autodocs'],
 };
 export default meta;
-type Story = StoryObj<ButtonComponent>;
+type Story = StoryObj<SampleButtonsComponent>;
 
-export const Primary: Story = {
-  args: {
-    color: 'secondary',
-  },
-};
-
-export const Heading: Story = {
-  args: {
-    color: 'secondary',
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(canvas.getByText(/button works!/gi)).toBeTruthy();
-  },
-};
+export const Primary: Story = {};

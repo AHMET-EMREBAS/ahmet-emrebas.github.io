@@ -1,10 +1,16 @@
-import { formatFiles, generateFiles, names, Tree } from '@nx/devkit';
+import {
+  addProjectConfiguration,
+  formatFiles,
+  generateFiles,
+  names,
+  Tree,
+} from '@nx/devkit';
 import * as path from 'path';
-import { LoggerGeneratorSchema } from './schema';
+import { ServerLoggerGeneratorSchema } from './schema';
 
-export async function loggerGenerator(
+export async function serverLoggerGenerator(
   tree: Tree,
-  options: LoggerGeneratorSchema
+  options: ServerLoggerGeneratorSchema
 ) {
   const PROJECT_ROOT = `libs/${options.name}`;
   const API_ROOT = `libs/${options.name}/src/lib/api`;
@@ -16,4 +22,4 @@ export async function loggerGenerator(
   await formatFiles(tree);
 }
 
-export default loggerGenerator;
+export default serverLoggerGenerator;

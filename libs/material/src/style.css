@@ -1,0 +1,2910 @@
+:root {
+  --surface: aliceblue;
+  --surface-light: white;
+  --surface-lighter: white;
+  --surface-dark: rgba(0, 0, 0, 0.8);
+  --surface-darker: rgba(0, 0, 0, 0.8);
+}
+
+:root {
+  --h1: 8.333%;
+  --w1: 8.333%;
+  --font-size-1: 1rem;
+  --border-radius-1: 1px;
+  --h2: 16.666%;
+  --w2: 16.666%;
+  --font-size-2: 1.4rem;
+  --border-radius-2: 2px;
+  --h3: 24.999%;
+  --w3: 24.999%;
+  --font-size-3: 1.8rem;
+  --border-radius-3: 3px;
+  --h4: 33.332%;
+  --w4: 33.332%;
+  --font-size-4: 2.2rem;
+  --border-radius-4: 4px;
+  --h5: 41.665%;
+  --w5: 41.665%;
+  --font-size-5: 2.6rem;
+  --border-radius-5: 5px;
+  --h6: 49.998%;
+  --w6: 49.998%;
+  --font-size-6: 3rem;
+  --border-radius-6: 6px;
+  --h7: 58.331%;
+  --w7: 58.331%;
+  --font-size-7: 3.4rem;
+  --border-radius-7: 7px;
+  --h8: 66.664%;
+  --w8: 66.664%;
+  --font-size-8: 3.8rem;
+  --border-radius-8: 8px;
+  --h9: 74.997%;
+  --w9: 74.997%;
+  --font-size-9: 4.2rem;
+  --border-radius-9: 9px;
+  --h10: 83.33%;
+  --w10: 83.33%;
+  --font-size-10: 4.6rem;
+  --border-radius-10: 10px;
+  --h11: 91.663%;
+  --w11: 91.663%;
+  --font-size-11: 5rem;
+  --border-radius-11: 11px;
+  --h12: 99.996%;
+  --w12: 99.996%;
+  --font-size-12: 5.4rem;
+  --border-radius-12: 12px;
+}
+
+.block {
+  display: block;
+}
+
+.contents {
+  display: contents;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexbox {
+  display: flexbox;
+}
+
+.flow-root {
+  display: flow-root;
+}
+
+.grid {
+  display: grid;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.inline-flexbox {
+  display: inline-flexbox;
+}
+
+.inline-table {
+  display: inline-table;
+}
+
+.list-item {
+  display: list-item;
+}
+
+.none {
+  display: none;
+}
+
+.ruby {
+  display: ruby;
+}
+
+.ruby-base {
+  display: ruby-base;
+}
+
+.ruby-base-container {
+  display: ruby-base-container;
+}
+
+.ruby-text {
+  display: ruby-text;
+}
+
+.run-in {
+  display: run-in;
+}
+
+.table {
+  display: table;
+}
+
+.table-caption {
+  display: table-caption;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.table-column {
+  display: table-column;
+}
+
+.table-column-group {
+  display: table-column-group;
+}
+
+.table-footer-group {
+  display: table-footer-group;
+}
+
+.table-header-group {
+  display: table-header-group;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-row-group {
+  display: table-row-group;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.column-reverse {
+  flex-direction: column-reverse;
+}
+
+.flex.row {
+  flex-direction: row;
+}
+
+.flex.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex.baseline {
+  justify-content: baseline;
+}
+
+.flex.center {
+  justify-content: center;
+}
+
+.flex.end {
+  justify-content: end;
+}
+
+.flex.first baseline {
+  justify-content: first baseline;
+}
+
+.flex.flex-end {
+  justify-content: flex-end;
+}
+
+.flex.flex-start {
+  justify-content: flex-start;
+}
+
+.flex.last baseline {
+  justify-content: last baseline;
+}
+
+.flex.left {
+  justify-content: left;
+}
+
+.flex.right {
+  justify-content: right;
+}
+
+.flex.safe {
+  justify-content: safe;
+}
+
+.flex.space-around {
+  justify-content: space-around;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.space-evenly {
+  justify-content: space-evenly;
+}
+
+.flex.start {
+  justify-content: start;
+}
+
+.flex.stretch {
+  justify-content: stretch;
+}
+
+.flex.unsafe {
+  justify-content: unsafe;
+}
+
+.flex.stretch {
+  align-items: stretch;
+}
+
+.flex.flex-start {
+  align-items: flex-start;
+}
+
+.flex.flex-end {
+  align-items: flex-end;
+}
+
+.flex.center {
+  align-items: center;
+}
+
+.flex.baseline {
+  align-items: baseline;
+}
+
+.flex.first baseline {
+  align-items: first baseline;
+}
+
+.flex.last baseline {
+  align-items: last baseline;
+}
+
+.flex.stretch {
+  align-content: stretch;
+}
+
+.flex.flex-start {
+  align-content: flex-start;
+}
+
+.flex.flex-end {
+  align-content: flex-end;
+}
+
+.flex.center {
+  align-content: center;
+}
+
+.flex.space-between {
+  align-content: space-between;
+}
+
+.flex.space-around {
+  align-content: space-around;
+}
+
+.flex.space-evenly {
+  align-content: space-evenly;
+}
+
+.flex.start {
+  align-content: start;
+}
+
+.flex.end {
+  align-content: end;
+}
+
+.flex.baseline {
+  align-content: baseline;
+}
+
+.gap-1 {
+  gap: 1.618px;
+}
+
+.gap-2 {
+  gap: 3.236px;
+}
+
+.gap-3 {
+  gap: 4.854px;
+}
+
+.gap-4 {
+  gap: 6.472px;
+}
+
+.gap-5 {
+  gap: 8.09px;
+}
+
+.gap-6 {
+  gap: 9.708px;
+}
+
+.gap-7 {
+  gap: 11.326px;
+}
+
+.gap-8 {
+  gap: 12.944px;
+}
+
+.gap-9 {
+  gap: 14.562px;
+}
+
+.gap-10 {
+  gap: 16.18px;
+}
+
+.gap-11 {
+  gap: 17.798px;
+}
+
+.gap-12 {
+  gap: 19.416px;
+}
+
+:root {
+  --button-min-width: 120px;
+  --button-min-height: 36px;
+  --button-max-width: 200px;
+  --button-max-height: 100px;
+}
+
+.common-button, [techbirFlatButton], [techbirRaisedButton], [techbirButton] {
+  min-width: var(--button-min-width);
+  max-width: var(--button-max-width);
+  min-height: var(--button-min-height);
+  max-height: var(--button-max-height);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.primary[techbirButton] {
+  background-color: var(--primary);
+}
+
+.primary[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.primary[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.primary[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.primary[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.primary[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary[techbirButton] {
+  background-color: var(--primary);
+}
+
+.secondary[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.secondary[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.secondary[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.warn[techbirButton] {
+  background-color: var(--primary);
+}
+
+.warn[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.warn[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.warn[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.warn[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.warn[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.error[techbirButton] {
+  background-color: var(--primary);
+}
+
+.error[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.error[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.error[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.error[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.error[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.info[techbirButton] {
+  background-color: var(--primary);
+}
+
+.info[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.info[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.info[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.info[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.info[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.dark[techbirButton] {
+  background-color: var(--primary);
+}
+
+.dark[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.dark[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.dark[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.dark[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.dark[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.light[techbirButton] {
+  background-color: var(--primary);
+}
+
+.light[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.light[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.light[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.light[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.light[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+:root {
+  --box-shadow-000: 0px 0px 0px black;
+  --box-shadow-000-light: 0px
+    0px
+    0px
+    #333333;
+  --box-shadow-000-dark: 0px
+    0px
+    0px
+    black;
+  --box-shadow-000-inset: 0px 0px 0px black;
+  --box-shadow-000-light-inset: 0px
+    0px
+    0px
+    #333333;
+  --box-shadow-000-dark-inst: 0px
+    0px
+    0px
+    black;
+  --box-shadow-001: 0px 0px 1px black;
+  --box-shadow-001-light: 0px
+    0px
+    1px
+    #333333;
+  --box-shadow-001-dark: 0px
+    0px
+    1px
+    black;
+  --box-shadow-001-inset: 0px 0px 1px black;
+  --box-shadow-001-light-inset: 0px
+    0px
+    1px
+    #333333;
+  --box-shadow-001-dark-inst: 0px
+    0px
+    1px
+    black;
+  --box-shadow-002: 0px 0px 2px black;
+  --box-shadow-002-light: 0px
+    0px
+    2px
+    #333333;
+  --box-shadow-002-dark: 0px
+    0px
+    2px
+    black;
+  --box-shadow-002-inset: 0px 0px 2px black;
+  --box-shadow-002-light-inset: 0px
+    0px
+    2px
+    #333333;
+  --box-shadow-002-dark-inst: 0px
+    0px
+    2px
+    black;
+  --box-shadow-003: 0px 0px 3px black;
+  --box-shadow-003-light: 0px
+    0px
+    3px
+    #333333;
+  --box-shadow-003-dark: 0px
+    0px
+    3px
+    black;
+  --box-shadow-003-inset: 0px 0px 3px black;
+  --box-shadow-003-light-inset: 0px
+    0px
+    3px
+    #333333;
+  --box-shadow-003-dark-inst: 0px
+    0px
+    3px
+    black;
+  --box-shadow-004: 0px 0px 4px black;
+  --box-shadow-004-light: 0px
+    0px
+    4px
+    #333333;
+  --box-shadow-004-dark: 0px
+    0px
+    4px
+    black;
+  --box-shadow-004-inset: 0px 0px 4px black;
+  --box-shadow-004-light-inset: 0px
+    0px
+    4px
+    #333333;
+  --box-shadow-004-dark-inst: 0px
+    0px
+    4px
+    black;
+  --box-shadow-005: 0px 0px 5px black;
+  --box-shadow-005-light: 0px
+    0px
+    5px
+    #333333;
+  --box-shadow-005-dark: 0px
+    0px
+    5px
+    black;
+  --box-shadow-005-inset: 0px 0px 5px black;
+  --box-shadow-005-light-inset: 0px
+    0px
+    5px
+    #333333;
+  --box-shadow-005-dark-inst: 0px
+    0px
+    5px
+    black;
+  --box-shadow-006: 0px 0px 6px black;
+  --box-shadow-006-light: 0px
+    0px
+    6px
+    #333333;
+  --box-shadow-006-dark: 0px
+    0px
+    6px
+    black;
+  --box-shadow-006-inset: 0px 0px 6px black;
+  --box-shadow-006-light-inset: 0px
+    0px
+    6px
+    #333333;
+  --box-shadow-006-dark-inst: 0px
+    0px
+    6px
+    black;
+  --box-shadow-007: 0px 0px 7px black;
+  --box-shadow-007-light: 0px
+    0px
+    7px
+    #333333;
+  --box-shadow-007-dark: 0px
+    0px
+    7px
+    black;
+  --box-shadow-007-inset: 0px 0px 7px black;
+  --box-shadow-007-light-inset: 0px
+    0px
+    7px
+    #333333;
+  --box-shadow-007-dark-inst: 0px
+    0px
+    7px
+    black;
+  --box-shadow-010: 0px 1px 0px black;
+  --box-shadow-010-light: 0px
+    1px
+    0px
+    #333333;
+  --box-shadow-010-dark: 0px
+    1px
+    0px
+    black;
+  --box-shadow-010-inset: 0px 1px 0px black;
+  --box-shadow-010-light-inset: 0px
+    1px
+    0px
+    #333333;
+  --box-shadow-010-dark-inst: 0px
+    1px
+    0px
+    black;
+  --box-shadow-011: 0px 1px 1px black;
+  --box-shadow-011-light: 0px
+    1px
+    1px
+    #333333;
+  --box-shadow-011-dark: 0px
+    1px
+    1px
+    black;
+  --box-shadow-011-inset: 0px 1px 1px black;
+  --box-shadow-011-light-inset: 0px
+    1px
+    1px
+    #333333;
+  --box-shadow-011-dark-inst: 0px
+    1px
+    1px
+    black;
+  --box-shadow-012: 0px 1px 2px black;
+  --box-shadow-012-light: 0px
+    1px
+    2px
+    #333333;
+  --box-shadow-012-dark: 0px
+    1px
+    2px
+    black;
+  --box-shadow-012-inset: 0px 1px 2px black;
+  --box-shadow-012-light-inset: 0px
+    1px
+    2px
+    #333333;
+  --box-shadow-012-dark-inst: 0px
+    1px
+    2px
+    black;
+  --box-shadow-013: 0px 1px 3px black;
+  --box-shadow-013-light: 0px
+    1px
+    3px
+    #333333;
+  --box-shadow-013-dark: 0px
+    1px
+    3px
+    black;
+  --box-shadow-013-inset: 0px 1px 3px black;
+  --box-shadow-013-light-inset: 0px
+    1px
+    3px
+    #333333;
+  --box-shadow-013-dark-inst: 0px
+    1px
+    3px
+    black;
+  --box-shadow-014: 0px 1px 4px black;
+  --box-shadow-014-light: 0px
+    1px
+    4px
+    #333333;
+  --box-shadow-014-dark: 0px
+    1px
+    4px
+    black;
+  --box-shadow-014-inset: 0px 1px 4px black;
+  --box-shadow-014-light-inset: 0px
+    1px
+    4px
+    #333333;
+  --box-shadow-014-dark-inst: 0px
+    1px
+    4px
+    black;
+  --box-shadow-015: 0px 1px 5px black;
+  --box-shadow-015-light: 0px
+    1px
+    5px
+    #333333;
+  --box-shadow-015-dark: 0px
+    1px
+    5px
+    black;
+  --box-shadow-015-inset: 0px 1px 5px black;
+  --box-shadow-015-light-inset: 0px
+    1px
+    5px
+    #333333;
+  --box-shadow-015-dark-inst: 0px
+    1px
+    5px
+    black;
+  --box-shadow-016: 0px 1px 6px black;
+  --box-shadow-016-light: 0px
+    1px
+    6px
+    #333333;
+  --box-shadow-016-dark: 0px
+    1px
+    6px
+    black;
+  --box-shadow-016-inset: 0px 1px 6px black;
+  --box-shadow-016-light-inset: 0px
+    1px
+    6px
+    #333333;
+  --box-shadow-016-dark-inst: 0px
+    1px
+    6px
+    black;
+  --box-shadow-017: 0px 1px 7px black;
+  --box-shadow-017-light: 0px
+    1px
+    7px
+    #333333;
+  --box-shadow-017-dark: 0px
+    1px
+    7px
+    black;
+  --box-shadow-017-inset: 0px 1px 7px black;
+  --box-shadow-017-light-inset: 0px
+    1px
+    7px
+    #333333;
+  --box-shadow-017-dark-inst: 0px
+    1px
+    7px
+    black;
+  --box-shadow-020: 0px 2px 0px black;
+  --box-shadow-020-light: 0px
+    2px
+    0px
+    #333333;
+  --box-shadow-020-dark: 0px
+    2px
+    0px
+    black;
+  --box-shadow-020-inset: 0px 2px 0px black;
+  --box-shadow-020-light-inset: 0px
+    2px
+    0px
+    #333333;
+  --box-shadow-020-dark-inst: 0px
+    2px
+    0px
+    black;
+  --box-shadow-021: 0px 2px 1px black;
+  --box-shadow-021-light: 0px
+    2px
+    1px
+    #333333;
+  --box-shadow-021-dark: 0px
+    2px
+    1px
+    black;
+  --box-shadow-021-inset: 0px 2px 1px black;
+  --box-shadow-021-light-inset: 0px
+    2px
+    1px
+    #333333;
+  --box-shadow-021-dark-inst: 0px
+    2px
+    1px
+    black;
+  --box-shadow-022: 0px 2px 2px black;
+  --box-shadow-022-light: 0px
+    2px
+    2px
+    #333333;
+  --box-shadow-022-dark: 0px
+    2px
+    2px
+    black;
+  --box-shadow-022-inset: 0px 2px 2px black;
+  --box-shadow-022-light-inset: 0px
+    2px
+    2px
+    #333333;
+  --box-shadow-022-dark-inst: 0px
+    2px
+    2px
+    black;
+  --box-shadow-023: 0px 2px 3px black;
+  --box-shadow-023-light: 0px
+    2px
+    3px
+    #333333;
+  --box-shadow-023-dark: 0px
+    2px
+    3px
+    black;
+  --box-shadow-023-inset: 0px 2px 3px black;
+  --box-shadow-023-light-inset: 0px
+    2px
+    3px
+    #333333;
+  --box-shadow-023-dark-inst: 0px
+    2px
+    3px
+    black;
+  --box-shadow-024: 0px 2px 4px black;
+  --box-shadow-024-light: 0px
+    2px
+    4px
+    #333333;
+  --box-shadow-024-dark: 0px
+    2px
+    4px
+    black;
+  --box-shadow-024-inset: 0px 2px 4px black;
+  --box-shadow-024-light-inset: 0px
+    2px
+    4px
+    #333333;
+  --box-shadow-024-dark-inst: 0px
+    2px
+    4px
+    black;
+  --box-shadow-025: 0px 2px 5px black;
+  --box-shadow-025-light: 0px
+    2px
+    5px
+    #333333;
+  --box-shadow-025-dark: 0px
+    2px
+    5px
+    black;
+  --box-shadow-025-inset: 0px 2px 5px black;
+  --box-shadow-025-light-inset: 0px
+    2px
+    5px
+    #333333;
+  --box-shadow-025-dark-inst: 0px
+    2px
+    5px
+    black;
+  --box-shadow-026: 0px 2px 6px black;
+  --box-shadow-026-light: 0px
+    2px
+    6px
+    #333333;
+  --box-shadow-026-dark: 0px
+    2px
+    6px
+    black;
+  --box-shadow-026-inset: 0px 2px 6px black;
+  --box-shadow-026-light-inset: 0px
+    2px
+    6px
+    #333333;
+  --box-shadow-026-dark-inst: 0px
+    2px
+    6px
+    black;
+  --box-shadow-027: 0px 2px 7px black;
+  --box-shadow-027-light: 0px
+    2px
+    7px
+    #333333;
+  --box-shadow-027-dark: 0px
+    2px
+    7px
+    black;
+  --box-shadow-027-inset: 0px 2px 7px black;
+  --box-shadow-027-light-inset: 0px
+    2px
+    7px
+    #333333;
+  --box-shadow-027-dark-inst: 0px
+    2px
+    7px
+    black;
+  --box-shadow-030: 0px 3px 0px black;
+  --box-shadow-030-light: 0px
+    3px
+    0px
+    #333333;
+  --box-shadow-030-dark: 0px
+    3px
+    0px
+    black;
+  --box-shadow-030-inset: 0px 3px 0px black;
+  --box-shadow-030-light-inset: 0px
+    3px
+    0px
+    #333333;
+  --box-shadow-030-dark-inst: 0px
+    3px
+    0px
+    black;
+  --box-shadow-031: 0px 3px 1px black;
+  --box-shadow-031-light: 0px
+    3px
+    1px
+    #333333;
+  --box-shadow-031-dark: 0px
+    3px
+    1px
+    black;
+  --box-shadow-031-inset: 0px 3px 1px black;
+  --box-shadow-031-light-inset: 0px
+    3px
+    1px
+    #333333;
+  --box-shadow-031-dark-inst: 0px
+    3px
+    1px
+    black;
+  --box-shadow-032: 0px 3px 2px black;
+  --box-shadow-032-light: 0px
+    3px
+    2px
+    #333333;
+  --box-shadow-032-dark: 0px
+    3px
+    2px
+    black;
+  --box-shadow-032-inset: 0px 3px 2px black;
+  --box-shadow-032-light-inset: 0px
+    3px
+    2px
+    #333333;
+  --box-shadow-032-dark-inst: 0px
+    3px
+    2px
+    black;
+  --box-shadow-033: 0px 3px 3px black;
+  --box-shadow-033-light: 0px
+    3px
+    3px
+    #333333;
+  --box-shadow-033-dark: 0px
+    3px
+    3px
+    black;
+  --box-shadow-033-inset: 0px 3px 3px black;
+  --box-shadow-033-light-inset: 0px
+    3px
+    3px
+    #333333;
+  --box-shadow-033-dark-inst: 0px
+    3px
+    3px
+    black;
+  --box-shadow-034: 0px 3px 4px black;
+  --box-shadow-034-light: 0px
+    3px
+    4px
+    #333333;
+  --box-shadow-034-dark: 0px
+    3px
+    4px
+    black;
+  --box-shadow-034-inset: 0px 3px 4px black;
+  --box-shadow-034-light-inset: 0px
+    3px
+    4px
+    #333333;
+  --box-shadow-034-dark-inst: 0px
+    3px
+    4px
+    black;
+  --box-shadow-035: 0px 3px 5px black;
+  --box-shadow-035-light: 0px
+    3px
+    5px
+    #333333;
+  --box-shadow-035-dark: 0px
+    3px
+    5px
+    black;
+  --box-shadow-035-inset: 0px 3px 5px black;
+  --box-shadow-035-light-inset: 0px
+    3px
+    5px
+    #333333;
+  --box-shadow-035-dark-inst: 0px
+    3px
+    5px
+    black;
+  --box-shadow-036: 0px 3px 6px black;
+  --box-shadow-036-light: 0px
+    3px
+    6px
+    #333333;
+  --box-shadow-036-dark: 0px
+    3px
+    6px
+    black;
+  --box-shadow-036-inset: 0px 3px 6px black;
+  --box-shadow-036-light-inset: 0px
+    3px
+    6px
+    #333333;
+  --box-shadow-036-dark-inst: 0px
+    3px
+    6px
+    black;
+  --box-shadow-037: 0px 3px 7px black;
+  --box-shadow-037-light: 0px
+    3px
+    7px
+    #333333;
+  --box-shadow-037-dark: 0px
+    3px
+    7px
+    black;
+  --box-shadow-037-inset: 0px 3px 7px black;
+  --box-shadow-037-light-inset: 0px
+    3px
+    7px
+    #333333;
+  --box-shadow-037-dark-inst: 0px
+    3px
+    7px
+    black;
+  --box-shadow-100: 1px 0px 0px black;
+  --box-shadow-100-light: 1px
+    0px
+    0px
+    #333333;
+  --box-shadow-100-dark: 1px
+    0px
+    0px
+    black;
+  --box-shadow-100-inset: 1px 0px 0px black;
+  --box-shadow-100-light-inset: 1px
+    0px
+    0px
+    #333333;
+  --box-shadow-100-dark-inst: 1px
+    0px
+    0px
+    black;
+  --box-shadow-101: 1px 0px 1px black;
+  --box-shadow-101-light: 1px
+    0px
+    1px
+    #333333;
+  --box-shadow-101-dark: 1px
+    0px
+    1px
+    black;
+  --box-shadow-101-inset: 1px 0px 1px black;
+  --box-shadow-101-light-inset: 1px
+    0px
+    1px
+    #333333;
+  --box-shadow-101-dark-inst: 1px
+    0px
+    1px
+    black;
+  --box-shadow-102: 1px 0px 2px black;
+  --box-shadow-102-light: 1px
+    0px
+    2px
+    #333333;
+  --box-shadow-102-dark: 1px
+    0px
+    2px
+    black;
+  --box-shadow-102-inset: 1px 0px 2px black;
+  --box-shadow-102-light-inset: 1px
+    0px
+    2px
+    #333333;
+  --box-shadow-102-dark-inst: 1px
+    0px
+    2px
+    black;
+  --box-shadow-103: 1px 0px 3px black;
+  --box-shadow-103-light: 1px
+    0px
+    3px
+    #333333;
+  --box-shadow-103-dark: 1px
+    0px
+    3px
+    black;
+  --box-shadow-103-inset: 1px 0px 3px black;
+  --box-shadow-103-light-inset: 1px
+    0px
+    3px
+    #333333;
+  --box-shadow-103-dark-inst: 1px
+    0px
+    3px
+    black;
+  --box-shadow-104: 1px 0px 4px black;
+  --box-shadow-104-light: 1px
+    0px
+    4px
+    #333333;
+  --box-shadow-104-dark: 1px
+    0px
+    4px
+    black;
+  --box-shadow-104-inset: 1px 0px 4px black;
+  --box-shadow-104-light-inset: 1px
+    0px
+    4px
+    #333333;
+  --box-shadow-104-dark-inst: 1px
+    0px
+    4px
+    black;
+  --box-shadow-105: 1px 0px 5px black;
+  --box-shadow-105-light: 1px
+    0px
+    5px
+    #333333;
+  --box-shadow-105-dark: 1px
+    0px
+    5px
+    black;
+  --box-shadow-105-inset: 1px 0px 5px black;
+  --box-shadow-105-light-inset: 1px
+    0px
+    5px
+    #333333;
+  --box-shadow-105-dark-inst: 1px
+    0px
+    5px
+    black;
+  --box-shadow-106: 1px 0px 6px black;
+  --box-shadow-106-light: 1px
+    0px
+    6px
+    #333333;
+  --box-shadow-106-dark: 1px
+    0px
+    6px
+    black;
+  --box-shadow-106-inset: 1px 0px 6px black;
+  --box-shadow-106-light-inset: 1px
+    0px
+    6px
+    #333333;
+  --box-shadow-106-dark-inst: 1px
+    0px
+    6px
+    black;
+  --box-shadow-107: 1px 0px 7px black;
+  --box-shadow-107-light: 1px
+    0px
+    7px
+    #333333;
+  --box-shadow-107-dark: 1px
+    0px
+    7px
+    black;
+  --box-shadow-107-inset: 1px 0px 7px black;
+  --box-shadow-107-light-inset: 1px
+    0px
+    7px
+    #333333;
+  --box-shadow-107-dark-inst: 1px
+    0px
+    7px
+    black;
+  --box-shadow-110: 1px 1px 0px black;
+  --box-shadow-110-light: 1px
+    1px
+    0px
+    #333333;
+  --box-shadow-110-dark: 1px
+    1px
+    0px
+    black;
+  --box-shadow-110-inset: 1px 1px 0px black;
+  --box-shadow-110-light-inset: 1px
+    1px
+    0px
+    #333333;
+  --box-shadow-110-dark-inst: 1px
+    1px
+    0px
+    black;
+  --box-shadow-111: 1px 1px 1px black;
+  --box-shadow-111-light: 1px
+    1px
+    1px
+    #333333;
+  --box-shadow-111-dark: 1px
+    1px
+    1px
+    black;
+  --box-shadow-111-inset: 1px 1px 1px black;
+  --box-shadow-111-light-inset: 1px
+    1px
+    1px
+    #333333;
+  --box-shadow-111-dark-inst: 1px
+    1px
+    1px
+    black;
+  --box-shadow-112: 1px 1px 2px black;
+  --box-shadow-112-light: 1px
+    1px
+    2px
+    #333333;
+  --box-shadow-112-dark: 1px
+    1px
+    2px
+    black;
+  --box-shadow-112-inset: 1px 1px 2px black;
+  --box-shadow-112-light-inset: 1px
+    1px
+    2px
+    #333333;
+  --box-shadow-112-dark-inst: 1px
+    1px
+    2px
+    black;
+  --box-shadow-113: 1px 1px 3px black;
+  --box-shadow-113-light: 1px
+    1px
+    3px
+    #333333;
+  --box-shadow-113-dark: 1px
+    1px
+    3px
+    black;
+  --box-shadow-113-inset: 1px 1px 3px black;
+  --box-shadow-113-light-inset: 1px
+    1px
+    3px
+    #333333;
+  --box-shadow-113-dark-inst: 1px
+    1px
+    3px
+    black;
+  --box-shadow-114: 1px 1px 4px black;
+  --box-shadow-114-light: 1px
+    1px
+    4px
+    #333333;
+  --box-shadow-114-dark: 1px
+    1px
+    4px
+    black;
+  --box-shadow-114-inset: 1px 1px 4px black;
+  --box-shadow-114-light-inset: 1px
+    1px
+    4px
+    #333333;
+  --box-shadow-114-dark-inst: 1px
+    1px
+    4px
+    black;
+  --box-shadow-115: 1px 1px 5px black;
+  --box-shadow-115-light: 1px
+    1px
+    5px
+    #333333;
+  --box-shadow-115-dark: 1px
+    1px
+    5px
+    black;
+  --box-shadow-115-inset: 1px 1px 5px black;
+  --box-shadow-115-light-inset: 1px
+    1px
+    5px
+    #333333;
+  --box-shadow-115-dark-inst: 1px
+    1px
+    5px
+    black;
+  --box-shadow-116: 1px 1px 6px black;
+  --box-shadow-116-light: 1px
+    1px
+    6px
+    #333333;
+  --box-shadow-116-dark: 1px
+    1px
+    6px
+    black;
+  --box-shadow-116-inset: 1px 1px 6px black;
+  --box-shadow-116-light-inset: 1px
+    1px
+    6px
+    #333333;
+  --box-shadow-116-dark-inst: 1px
+    1px
+    6px
+    black;
+  --box-shadow-117: 1px 1px 7px black;
+  --box-shadow-117-light: 1px
+    1px
+    7px
+    #333333;
+  --box-shadow-117-dark: 1px
+    1px
+    7px
+    black;
+  --box-shadow-117-inset: 1px 1px 7px black;
+  --box-shadow-117-light-inset: 1px
+    1px
+    7px
+    #333333;
+  --box-shadow-117-dark-inst: 1px
+    1px
+    7px
+    black;
+  --box-shadow-120: 1px 2px 0px black;
+  --box-shadow-120-light: 1px
+    2px
+    0px
+    #333333;
+  --box-shadow-120-dark: 1px
+    2px
+    0px
+    black;
+  --box-shadow-120-inset: 1px 2px 0px black;
+  --box-shadow-120-light-inset: 1px
+    2px
+    0px
+    #333333;
+  --box-shadow-120-dark-inst: 1px
+    2px
+    0px
+    black;
+  --box-shadow-121: 1px 2px 1px black;
+  --box-shadow-121-light: 1px
+    2px
+    1px
+    #333333;
+  --box-shadow-121-dark: 1px
+    2px
+    1px
+    black;
+  --box-shadow-121-inset: 1px 2px 1px black;
+  --box-shadow-121-light-inset: 1px
+    2px
+    1px
+    #333333;
+  --box-shadow-121-dark-inst: 1px
+    2px
+    1px
+    black;
+  --box-shadow-122: 1px 2px 2px black;
+  --box-shadow-122-light: 1px
+    2px
+    2px
+    #333333;
+  --box-shadow-122-dark: 1px
+    2px
+    2px
+    black;
+  --box-shadow-122-inset: 1px 2px 2px black;
+  --box-shadow-122-light-inset: 1px
+    2px
+    2px
+    #333333;
+  --box-shadow-122-dark-inst: 1px
+    2px
+    2px
+    black;
+  --box-shadow-123: 1px 2px 3px black;
+  --box-shadow-123-light: 1px
+    2px
+    3px
+    #333333;
+  --box-shadow-123-dark: 1px
+    2px
+    3px
+    black;
+  --box-shadow-123-inset: 1px 2px 3px black;
+  --box-shadow-123-light-inset: 1px
+    2px
+    3px
+    #333333;
+  --box-shadow-123-dark-inst: 1px
+    2px
+    3px
+    black;
+  --box-shadow-124: 1px 2px 4px black;
+  --box-shadow-124-light: 1px
+    2px
+    4px
+    #333333;
+  --box-shadow-124-dark: 1px
+    2px
+    4px
+    black;
+  --box-shadow-124-inset: 1px 2px 4px black;
+  --box-shadow-124-light-inset: 1px
+    2px
+    4px
+    #333333;
+  --box-shadow-124-dark-inst: 1px
+    2px
+    4px
+    black;
+  --box-shadow-125: 1px 2px 5px black;
+  --box-shadow-125-light: 1px
+    2px
+    5px
+    #333333;
+  --box-shadow-125-dark: 1px
+    2px
+    5px
+    black;
+  --box-shadow-125-inset: 1px 2px 5px black;
+  --box-shadow-125-light-inset: 1px
+    2px
+    5px
+    #333333;
+  --box-shadow-125-dark-inst: 1px
+    2px
+    5px
+    black;
+  --box-shadow-126: 1px 2px 6px black;
+  --box-shadow-126-light: 1px
+    2px
+    6px
+    #333333;
+  --box-shadow-126-dark: 1px
+    2px
+    6px
+    black;
+  --box-shadow-126-inset: 1px 2px 6px black;
+  --box-shadow-126-light-inset: 1px
+    2px
+    6px
+    #333333;
+  --box-shadow-126-dark-inst: 1px
+    2px
+    6px
+    black;
+  --box-shadow-127: 1px 2px 7px black;
+  --box-shadow-127-light: 1px
+    2px
+    7px
+    #333333;
+  --box-shadow-127-dark: 1px
+    2px
+    7px
+    black;
+  --box-shadow-127-inset: 1px 2px 7px black;
+  --box-shadow-127-light-inset: 1px
+    2px
+    7px
+    #333333;
+  --box-shadow-127-dark-inst: 1px
+    2px
+    7px
+    black;
+  --box-shadow-130: 1px 3px 0px black;
+  --box-shadow-130-light: 1px
+    3px
+    0px
+    #333333;
+  --box-shadow-130-dark: 1px
+    3px
+    0px
+    black;
+  --box-shadow-130-inset: 1px 3px 0px black;
+  --box-shadow-130-light-inset: 1px
+    3px
+    0px
+    #333333;
+  --box-shadow-130-dark-inst: 1px
+    3px
+    0px
+    black;
+  --box-shadow-131: 1px 3px 1px black;
+  --box-shadow-131-light: 1px
+    3px
+    1px
+    #333333;
+  --box-shadow-131-dark: 1px
+    3px
+    1px
+    black;
+  --box-shadow-131-inset: 1px 3px 1px black;
+  --box-shadow-131-light-inset: 1px
+    3px
+    1px
+    #333333;
+  --box-shadow-131-dark-inst: 1px
+    3px
+    1px
+    black;
+  --box-shadow-132: 1px 3px 2px black;
+  --box-shadow-132-light: 1px
+    3px
+    2px
+    #333333;
+  --box-shadow-132-dark: 1px
+    3px
+    2px
+    black;
+  --box-shadow-132-inset: 1px 3px 2px black;
+  --box-shadow-132-light-inset: 1px
+    3px
+    2px
+    #333333;
+  --box-shadow-132-dark-inst: 1px
+    3px
+    2px
+    black;
+  --box-shadow-133: 1px 3px 3px black;
+  --box-shadow-133-light: 1px
+    3px
+    3px
+    #333333;
+  --box-shadow-133-dark: 1px
+    3px
+    3px
+    black;
+  --box-shadow-133-inset: 1px 3px 3px black;
+  --box-shadow-133-light-inset: 1px
+    3px
+    3px
+    #333333;
+  --box-shadow-133-dark-inst: 1px
+    3px
+    3px
+    black;
+  --box-shadow-134: 1px 3px 4px black;
+  --box-shadow-134-light: 1px
+    3px
+    4px
+    #333333;
+  --box-shadow-134-dark: 1px
+    3px
+    4px
+    black;
+  --box-shadow-134-inset: 1px 3px 4px black;
+  --box-shadow-134-light-inset: 1px
+    3px
+    4px
+    #333333;
+  --box-shadow-134-dark-inst: 1px
+    3px
+    4px
+    black;
+  --box-shadow-135: 1px 3px 5px black;
+  --box-shadow-135-light: 1px
+    3px
+    5px
+    #333333;
+  --box-shadow-135-dark: 1px
+    3px
+    5px
+    black;
+  --box-shadow-135-inset: 1px 3px 5px black;
+  --box-shadow-135-light-inset: 1px
+    3px
+    5px
+    #333333;
+  --box-shadow-135-dark-inst: 1px
+    3px
+    5px
+    black;
+  --box-shadow-136: 1px 3px 6px black;
+  --box-shadow-136-light: 1px
+    3px
+    6px
+    #333333;
+  --box-shadow-136-dark: 1px
+    3px
+    6px
+    black;
+  --box-shadow-136-inset: 1px 3px 6px black;
+  --box-shadow-136-light-inset: 1px
+    3px
+    6px
+    #333333;
+  --box-shadow-136-dark-inst: 1px
+    3px
+    6px
+    black;
+  --box-shadow-137: 1px 3px 7px black;
+  --box-shadow-137-light: 1px
+    3px
+    7px
+    #333333;
+  --box-shadow-137-dark: 1px
+    3px
+    7px
+    black;
+  --box-shadow-137-inset: 1px 3px 7px black;
+  --box-shadow-137-light-inset: 1px
+    3px
+    7px
+    #333333;
+  --box-shadow-137-dark-inst: 1px
+    3px
+    7px
+    black;
+  --box-shadow-200: 2px 0px 0px black;
+  --box-shadow-200-light: 2px
+    0px
+    0px
+    #333333;
+  --box-shadow-200-dark: 2px
+    0px
+    0px
+    black;
+  --box-shadow-200-inset: 2px 0px 0px black;
+  --box-shadow-200-light-inset: 2px
+    0px
+    0px
+    #333333;
+  --box-shadow-200-dark-inst: 2px
+    0px
+    0px
+    black;
+  --box-shadow-201: 2px 0px 1px black;
+  --box-shadow-201-light: 2px
+    0px
+    1px
+    #333333;
+  --box-shadow-201-dark: 2px
+    0px
+    1px
+    black;
+  --box-shadow-201-inset: 2px 0px 1px black;
+  --box-shadow-201-light-inset: 2px
+    0px
+    1px
+    #333333;
+  --box-shadow-201-dark-inst: 2px
+    0px
+    1px
+    black;
+  --box-shadow-202: 2px 0px 2px black;
+  --box-shadow-202-light: 2px
+    0px
+    2px
+    #333333;
+  --box-shadow-202-dark: 2px
+    0px
+    2px
+    black;
+  --box-shadow-202-inset: 2px 0px 2px black;
+  --box-shadow-202-light-inset: 2px
+    0px
+    2px
+    #333333;
+  --box-shadow-202-dark-inst: 2px
+    0px
+    2px
+    black;
+  --box-shadow-203: 2px 0px 3px black;
+  --box-shadow-203-light: 2px
+    0px
+    3px
+    #333333;
+  --box-shadow-203-dark: 2px
+    0px
+    3px
+    black;
+  --box-shadow-203-inset: 2px 0px 3px black;
+  --box-shadow-203-light-inset: 2px
+    0px
+    3px
+    #333333;
+  --box-shadow-203-dark-inst: 2px
+    0px
+    3px
+    black;
+  --box-shadow-204: 2px 0px 4px black;
+  --box-shadow-204-light: 2px
+    0px
+    4px
+    #333333;
+  --box-shadow-204-dark: 2px
+    0px
+    4px
+    black;
+  --box-shadow-204-inset: 2px 0px 4px black;
+  --box-shadow-204-light-inset: 2px
+    0px
+    4px
+    #333333;
+  --box-shadow-204-dark-inst: 2px
+    0px
+    4px
+    black;
+  --box-shadow-205: 2px 0px 5px black;
+  --box-shadow-205-light: 2px
+    0px
+    5px
+    #333333;
+  --box-shadow-205-dark: 2px
+    0px
+    5px
+    black;
+  --box-shadow-205-inset: 2px 0px 5px black;
+  --box-shadow-205-light-inset: 2px
+    0px
+    5px
+    #333333;
+  --box-shadow-205-dark-inst: 2px
+    0px
+    5px
+    black;
+  --box-shadow-206: 2px 0px 6px black;
+  --box-shadow-206-light: 2px
+    0px
+    6px
+    #333333;
+  --box-shadow-206-dark: 2px
+    0px
+    6px
+    black;
+  --box-shadow-206-inset: 2px 0px 6px black;
+  --box-shadow-206-light-inset: 2px
+    0px
+    6px
+    #333333;
+  --box-shadow-206-dark-inst: 2px
+    0px
+    6px
+    black;
+  --box-shadow-207: 2px 0px 7px black;
+  --box-shadow-207-light: 2px
+    0px
+    7px
+    #333333;
+  --box-shadow-207-dark: 2px
+    0px
+    7px
+    black;
+  --box-shadow-207-inset: 2px 0px 7px black;
+  --box-shadow-207-light-inset: 2px
+    0px
+    7px
+    #333333;
+  --box-shadow-207-dark-inst: 2px
+    0px
+    7px
+    black;
+  --box-shadow-210: 2px 1px 0px black;
+  --box-shadow-210-light: 2px
+    1px
+    0px
+    #333333;
+  --box-shadow-210-dark: 2px
+    1px
+    0px
+    black;
+  --box-shadow-210-inset: 2px 1px 0px black;
+  --box-shadow-210-light-inset: 2px
+    1px
+    0px
+    #333333;
+  --box-shadow-210-dark-inst: 2px
+    1px
+    0px
+    black;
+  --box-shadow-211: 2px 1px 1px black;
+  --box-shadow-211-light: 2px
+    1px
+    1px
+    #333333;
+  --box-shadow-211-dark: 2px
+    1px
+    1px
+    black;
+  --box-shadow-211-inset: 2px 1px 1px black;
+  --box-shadow-211-light-inset: 2px
+    1px
+    1px
+    #333333;
+  --box-shadow-211-dark-inst: 2px
+    1px
+    1px
+    black;
+  --box-shadow-212: 2px 1px 2px black;
+  --box-shadow-212-light: 2px
+    1px
+    2px
+    #333333;
+  --box-shadow-212-dark: 2px
+    1px
+    2px
+    black;
+  --box-shadow-212-inset: 2px 1px 2px black;
+  --box-shadow-212-light-inset: 2px
+    1px
+    2px
+    #333333;
+  --box-shadow-212-dark-inst: 2px
+    1px
+    2px
+    black;
+  --box-shadow-213: 2px 1px 3px black;
+  --box-shadow-213-light: 2px
+    1px
+    3px
+    #333333;
+  --box-shadow-213-dark: 2px
+    1px
+    3px
+    black;
+  --box-shadow-213-inset: 2px 1px 3px black;
+  --box-shadow-213-light-inset: 2px
+    1px
+    3px
+    #333333;
+  --box-shadow-213-dark-inst: 2px
+    1px
+    3px
+    black;
+  --box-shadow-214: 2px 1px 4px black;
+  --box-shadow-214-light: 2px
+    1px
+    4px
+    #333333;
+  --box-shadow-214-dark: 2px
+    1px
+    4px
+    black;
+  --box-shadow-214-inset: 2px 1px 4px black;
+  --box-shadow-214-light-inset: 2px
+    1px
+    4px
+    #333333;
+  --box-shadow-214-dark-inst: 2px
+    1px
+    4px
+    black;
+  --box-shadow-215: 2px 1px 5px black;
+  --box-shadow-215-light: 2px
+    1px
+    5px
+    #333333;
+  --box-shadow-215-dark: 2px
+    1px
+    5px
+    black;
+  --box-shadow-215-inset: 2px 1px 5px black;
+  --box-shadow-215-light-inset: 2px
+    1px
+    5px
+    #333333;
+  --box-shadow-215-dark-inst: 2px
+    1px
+    5px
+    black;
+  --box-shadow-216: 2px 1px 6px black;
+  --box-shadow-216-light: 2px
+    1px
+    6px
+    #333333;
+  --box-shadow-216-dark: 2px
+    1px
+    6px
+    black;
+  --box-shadow-216-inset: 2px 1px 6px black;
+  --box-shadow-216-light-inset: 2px
+    1px
+    6px
+    #333333;
+  --box-shadow-216-dark-inst: 2px
+    1px
+    6px
+    black;
+  --box-shadow-217: 2px 1px 7px black;
+  --box-shadow-217-light: 2px
+    1px
+    7px
+    #333333;
+  --box-shadow-217-dark: 2px
+    1px
+    7px
+    black;
+  --box-shadow-217-inset: 2px 1px 7px black;
+  --box-shadow-217-light-inset: 2px
+    1px
+    7px
+    #333333;
+  --box-shadow-217-dark-inst: 2px
+    1px
+    7px
+    black;
+  --box-shadow-220: 2px 2px 0px black;
+  --box-shadow-220-light: 2px
+    2px
+    0px
+    #333333;
+  --box-shadow-220-dark: 2px
+    2px
+    0px
+    black;
+  --box-shadow-220-inset: 2px 2px 0px black;
+  --box-shadow-220-light-inset: 2px
+    2px
+    0px
+    #333333;
+  --box-shadow-220-dark-inst: 2px
+    2px
+    0px
+    black;
+  --box-shadow-221: 2px 2px 1px black;
+  --box-shadow-221-light: 2px
+    2px
+    1px
+    #333333;
+  --box-shadow-221-dark: 2px
+    2px
+    1px
+    black;
+  --box-shadow-221-inset: 2px 2px 1px black;
+  --box-shadow-221-light-inset: 2px
+    2px
+    1px
+    #333333;
+  --box-shadow-221-dark-inst: 2px
+    2px
+    1px
+    black;
+  --box-shadow-222: 2px 2px 2px black;
+  --box-shadow-222-light: 2px
+    2px
+    2px
+    #333333;
+  --box-shadow-222-dark: 2px
+    2px
+    2px
+    black;
+  --box-shadow-222-inset: 2px 2px 2px black;
+  --box-shadow-222-light-inset: 2px
+    2px
+    2px
+    #333333;
+  --box-shadow-222-dark-inst: 2px
+    2px
+    2px
+    black;
+  --box-shadow-223: 2px 2px 3px black;
+  --box-shadow-223-light: 2px
+    2px
+    3px
+    #333333;
+  --box-shadow-223-dark: 2px
+    2px
+    3px
+    black;
+  --box-shadow-223-inset: 2px 2px 3px black;
+  --box-shadow-223-light-inset: 2px
+    2px
+    3px
+    #333333;
+  --box-shadow-223-dark-inst: 2px
+    2px
+    3px
+    black;
+  --box-shadow-224: 2px 2px 4px black;
+  --box-shadow-224-light: 2px
+    2px
+    4px
+    #333333;
+  --box-shadow-224-dark: 2px
+    2px
+    4px
+    black;
+  --box-shadow-224-inset: 2px 2px 4px black;
+  --box-shadow-224-light-inset: 2px
+    2px
+    4px
+    #333333;
+  --box-shadow-224-dark-inst: 2px
+    2px
+    4px
+    black;
+  --box-shadow-225: 2px 2px 5px black;
+  --box-shadow-225-light: 2px
+    2px
+    5px
+    #333333;
+  --box-shadow-225-dark: 2px
+    2px
+    5px
+    black;
+  --box-shadow-225-inset: 2px 2px 5px black;
+  --box-shadow-225-light-inset: 2px
+    2px
+    5px
+    #333333;
+  --box-shadow-225-dark-inst: 2px
+    2px
+    5px
+    black;
+  --box-shadow-226: 2px 2px 6px black;
+  --box-shadow-226-light: 2px
+    2px
+    6px
+    #333333;
+  --box-shadow-226-dark: 2px
+    2px
+    6px
+    black;
+  --box-shadow-226-inset: 2px 2px 6px black;
+  --box-shadow-226-light-inset: 2px
+    2px
+    6px
+    #333333;
+  --box-shadow-226-dark-inst: 2px
+    2px
+    6px
+    black;
+  --box-shadow-227: 2px 2px 7px black;
+  --box-shadow-227-light: 2px
+    2px
+    7px
+    #333333;
+  --box-shadow-227-dark: 2px
+    2px
+    7px
+    black;
+  --box-shadow-227-inset: 2px 2px 7px black;
+  --box-shadow-227-light-inset: 2px
+    2px
+    7px
+    #333333;
+  --box-shadow-227-dark-inst: 2px
+    2px
+    7px
+    black;
+  --box-shadow-230: 2px 3px 0px black;
+  --box-shadow-230-light: 2px
+    3px
+    0px
+    #333333;
+  --box-shadow-230-dark: 2px
+    3px
+    0px
+    black;
+  --box-shadow-230-inset: 2px 3px 0px black;
+  --box-shadow-230-light-inset: 2px
+    3px
+    0px
+    #333333;
+  --box-shadow-230-dark-inst: 2px
+    3px
+    0px
+    black;
+  --box-shadow-231: 2px 3px 1px black;
+  --box-shadow-231-light: 2px
+    3px
+    1px
+    #333333;
+  --box-shadow-231-dark: 2px
+    3px
+    1px
+    black;
+  --box-shadow-231-inset: 2px 3px 1px black;
+  --box-shadow-231-light-inset: 2px
+    3px
+    1px
+    #333333;
+  --box-shadow-231-dark-inst: 2px
+    3px
+    1px
+    black;
+  --box-shadow-232: 2px 3px 2px black;
+  --box-shadow-232-light: 2px
+    3px
+    2px
+    #333333;
+  --box-shadow-232-dark: 2px
+    3px
+    2px
+    black;
+  --box-shadow-232-inset: 2px 3px 2px black;
+  --box-shadow-232-light-inset: 2px
+    3px
+    2px
+    #333333;
+  --box-shadow-232-dark-inst: 2px
+    3px
+    2px
+    black;
+  --box-shadow-233: 2px 3px 3px black;
+  --box-shadow-233-light: 2px
+    3px
+    3px
+    #333333;
+  --box-shadow-233-dark: 2px
+    3px
+    3px
+    black;
+  --box-shadow-233-inset: 2px 3px 3px black;
+  --box-shadow-233-light-inset: 2px
+    3px
+    3px
+    #333333;
+  --box-shadow-233-dark-inst: 2px
+    3px
+    3px
+    black;
+  --box-shadow-234: 2px 3px 4px black;
+  --box-shadow-234-light: 2px
+    3px
+    4px
+    #333333;
+  --box-shadow-234-dark: 2px
+    3px
+    4px
+    black;
+  --box-shadow-234-inset: 2px 3px 4px black;
+  --box-shadow-234-light-inset: 2px
+    3px
+    4px
+    #333333;
+  --box-shadow-234-dark-inst: 2px
+    3px
+    4px
+    black;
+  --box-shadow-235: 2px 3px 5px black;
+  --box-shadow-235-light: 2px
+    3px
+    5px
+    #333333;
+  --box-shadow-235-dark: 2px
+    3px
+    5px
+    black;
+  --box-shadow-235-inset: 2px 3px 5px black;
+  --box-shadow-235-light-inset: 2px
+    3px
+    5px
+    #333333;
+  --box-shadow-235-dark-inst: 2px
+    3px
+    5px
+    black;
+  --box-shadow-236: 2px 3px 6px black;
+  --box-shadow-236-light: 2px
+    3px
+    6px
+    #333333;
+  --box-shadow-236-dark: 2px
+    3px
+    6px
+    black;
+  --box-shadow-236-inset: 2px 3px 6px black;
+  --box-shadow-236-light-inset: 2px
+    3px
+    6px
+    #333333;
+  --box-shadow-236-dark-inst: 2px
+    3px
+    6px
+    black;
+  --box-shadow-237: 2px 3px 7px black;
+  --box-shadow-237-light: 2px
+    3px
+    7px
+    #333333;
+  --box-shadow-237-dark: 2px
+    3px
+    7px
+    black;
+  --box-shadow-237-inset: 2px 3px 7px black;
+  --box-shadow-237-light-inset: 2px
+    3px
+    7px
+    #333333;
+  --box-shadow-237-dark-inst: 2px
+    3px
+    7px
+    black;
+  --box-shadow-300: 3px 0px 0px black;
+  --box-shadow-300-light: 3px
+    0px
+    0px
+    #333333;
+  --box-shadow-300-dark: 3px
+    0px
+    0px
+    black;
+  --box-shadow-300-inset: 3px 0px 0px black;
+  --box-shadow-300-light-inset: 3px
+    0px
+    0px
+    #333333;
+  --box-shadow-300-dark-inst: 3px
+    0px
+    0px
+    black;
+  --box-shadow-301: 3px 0px 1px black;
+  --box-shadow-301-light: 3px
+    0px
+    1px
+    #333333;
+  --box-shadow-301-dark: 3px
+    0px
+    1px
+    black;
+  --box-shadow-301-inset: 3px 0px 1px black;
+  --box-shadow-301-light-inset: 3px
+    0px
+    1px
+    #333333;
+  --box-shadow-301-dark-inst: 3px
+    0px
+    1px
+    black;
+  --box-shadow-302: 3px 0px 2px black;
+  --box-shadow-302-light: 3px
+    0px
+    2px
+    #333333;
+  --box-shadow-302-dark: 3px
+    0px
+    2px
+    black;
+  --box-shadow-302-inset: 3px 0px 2px black;
+  --box-shadow-302-light-inset: 3px
+    0px
+    2px
+    #333333;
+  --box-shadow-302-dark-inst: 3px
+    0px
+    2px
+    black;
+  --box-shadow-303: 3px 0px 3px black;
+  --box-shadow-303-light: 3px
+    0px
+    3px
+    #333333;
+  --box-shadow-303-dark: 3px
+    0px
+    3px
+    black;
+  --box-shadow-303-inset: 3px 0px 3px black;
+  --box-shadow-303-light-inset: 3px
+    0px
+    3px
+    #333333;
+  --box-shadow-303-dark-inst: 3px
+    0px
+    3px
+    black;
+  --box-shadow-304: 3px 0px 4px black;
+  --box-shadow-304-light: 3px
+    0px
+    4px
+    #333333;
+  --box-shadow-304-dark: 3px
+    0px
+    4px
+    black;
+  --box-shadow-304-inset: 3px 0px 4px black;
+  --box-shadow-304-light-inset: 3px
+    0px
+    4px
+    #333333;
+  --box-shadow-304-dark-inst: 3px
+    0px
+    4px
+    black;
+  --box-shadow-305: 3px 0px 5px black;
+  --box-shadow-305-light: 3px
+    0px
+    5px
+    #333333;
+  --box-shadow-305-dark: 3px
+    0px
+    5px
+    black;
+  --box-shadow-305-inset: 3px 0px 5px black;
+  --box-shadow-305-light-inset: 3px
+    0px
+    5px
+    #333333;
+  --box-shadow-305-dark-inst: 3px
+    0px
+    5px
+    black;
+  --box-shadow-306: 3px 0px 6px black;
+  --box-shadow-306-light: 3px
+    0px
+    6px
+    #333333;
+  --box-shadow-306-dark: 3px
+    0px
+    6px
+    black;
+  --box-shadow-306-inset: 3px 0px 6px black;
+  --box-shadow-306-light-inset: 3px
+    0px
+    6px
+    #333333;
+  --box-shadow-306-dark-inst: 3px
+    0px
+    6px
+    black;
+  --box-shadow-307: 3px 0px 7px black;
+  --box-shadow-307-light: 3px
+    0px
+    7px
+    #333333;
+  --box-shadow-307-dark: 3px
+    0px
+    7px
+    black;
+  --box-shadow-307-inset: 3px 0px 7px black;
+  --box-shadow-307-light-inset: 3px
+    0px
+    7px
+    #333333;
+  --box-shadow-307-dark-inst: 3px
+    0px
+    7px
+    black;
+  --box-shadow-310: 3px 1px 0px black;
+  --box-shadow-310-light: 3px
+    1px
+    0px
+    #333333;
+  --box-shadow-310-dark: 3px
+    1px
+    0px
+    black;
+  --box-shadow-310-inset: 3px 1px 0px black;
+  --box-shadow-310-light-inset: 3px
+    1px
+    0px
+    #333333;
+  --box-shadow-310-dark-inst: 3px
+    1px
+    0px
+    black;
+  --box-shadow-311: 3px 1px 1px black;
+  --box-shadow-311-light: 3px
+    1px
+    1px
+    #333333;
+  --box-shadow-311-dark: 3px
+    1px
+    1px
+    black;
+  --box-shadow-311-inset: 3px 1px 1px black;
+  --box-shadow-311-light-inset: 3px
+    1px
+    1px
+    #333333;
+  --box-shadow-311-dark-inst: 3px
+    1px
+    1px
+    black;
+  --box-shadow-312: 3px 1px 2px black;
+  --box-shadow-312-light: 3px
+    1px
+    2px
+    #333333;
+  --box-shadow-312-dark: 3px
+    1px
+    2px
+    black;
+  --box-shadow-312-inset: 3px 1px 2px black;
+  --box-shadow-312-light-inset: 3px
+    1px
+    2px
+    #333333;
+  --box-shadow-312-dark-inst: 3px
+    1px
+    2px
+    black;
+  --box-shadow-313: 3px 1px 3px black;
+  --box-shadow-313-light: 3px
+    1px
+    3px
+    #333333;
+  --box-shadow-313-dark: 3px
+    1px
+    3px
+    black;
+  --box-shadow-313-inset: 3px 1px 3px black;
+  --box-shadow-313-light-inset: 3px
+    1px
+    3px
+    #333333;
+  --box-shadow-313-dark-inst: 3px
+    1px
+    3px
+    black;
+  --box-shadow-314: 3px 1px 4px black;
+  --box-shadow-314-light: 3px
+    1px
+    4px
+    #333333;
+  --box-shadow-314-dark: 3px
+    1px
+    4px
+    black;
+  --box-shadow-314-inset: 3px 1px 4px black;
+  --box-shadow-314-light-inset: 3px
+    1px
+    4px
+    #333333;
+  --box-shadow-314-dark-inst: 3px
+    1px
+    4px
+    black;
+  --box-shadow-315: 3px 1px 5px black;
+  --box-shadow-315-light: 3px
+    1px
+    5px
+    #333333;
+  --box-shadow-315-dark: 3px
+    1px
+    5px
+    black;
+  --box-shadow-315-inset: 3px 1px 5px black;
+  --box-shadow-315-light-inset: 3px
+    1px
+    5px
+    #333333;
+  --box-shadow-315-dark-inst: 3px
+    1px
+    5px
+    black;
+  --box-shadow-316: 3px 1px 6px black;
+  --box-shadow-316-light: 3px
+    1px
+    6px
+    #333333;
+  --box-shadow-316-dark: 3px
+    1px
+    6px
+    black;
+  --box-shadow-316-inset: 3px 1px 6px black;
+  --box-shadow-316-light-inset: 3px
+    1px
+    6px
+    #333333;
+  --box-shadow-316-dark-inst: 3px
+    1px
+    6px
+    black;
+  --box-shadow-317: 3px 1px 7px black;
+  --box-shadow-317-light: 3px
+    1px
+    7px
+    #333333;
+  --box-shadow-317-dark: 3px
+    1px
+    7px
+    black;
+  --box-shadow-317-inset: 3px 1px 7px black;
+  --box-shadow-317-light-inset: 3px
+    1px
+    7px
+    #333333;
+  --box-shadow-317-dark-inst: 3px
+    1px
+    7px
+    black;
+  --box-shadow-320: 3px 2px 0px black;
+  --box-shadow-320-light: 3px
+    2px
+    0px
+    #333333;
+  --box-shadow-320-dark: 3px
+    2px
+    0px
+    black;
+  --box-shadow-320-inset: 3px 2px 0px black;
+  --box-shadow-320-light-inset: 3px
+    2px
+    0px
+    #333333;
+  --box-shadow-320-dark-inst: 3px
+    2px
+    0px
+    black;
+  --box-shadow-321: 3px 2px 1px black;
+  --box-shadow-321-light: 3px
+    2px
+    1px
+    #333333;
+  --box-shadow-321-dark: 3px
+    2px
+    1px
+    black;
+  --box-shadow-321-inset: 3px 2px 1px black;
+  --box-shadow-321-light-inset: 3px
+    2px
+    1px
+    #333333;
+  --box-shadow-321-dark-inst: 3px
+    2px
+    1px
+    black;
+  --box-shadow-322: 3px 2px 2px black;
+  --box-shadow-322-light: 3px
+    2px
+    2px
+    #333333;
+  --box-shadow-322-dark: 3px
+    2px
+    2px
+    black;
+  --box-shadow-322-inset: 3px 2px 2px black;
+  --box-shadow-322-light-inset: 3px
+    2px
+    2px
+    #333333;
+  --box-shadow-322-dark-inst: 3px
+    2px
+    2px
+    black;
+  --box-shadow-323: 3px 2px 3px black;
+  --box-shadow-323-light: 3px
+    2px
+    3px
+    #333333;
+  --box-shadow-323-dark: 3px
+    2px
+    3px
+    black;
+  --box-shadow-323-inset: 3px 2px 3px black;
+  --box-shadow-323-light-inset: 3px
+    2px
+    3px
+    #333333;
+  --box-shadow-323-dark-inst: 3px
+    2px
+    3px
+    black;
+  --box-shadow-324: 3px 2px 4px black;
+  --box-shadow-324-light: 3px
+    2px
+    4px
+    #333333;
+  --box-shadow-324-dark: 3px
+    2px
+    4px
+    black;
+  --box-shadow-324-inset: 3px 2px 4px black;
+  --box-shadow-324-light-inset: 3px
+    2px
+    4px
+    #333333;
+  --box-shadow-324-dark-inst: 3px
+    2px
+    4px
+    black;
+  --box-shadow-325: 3px 2px 5px black;
+  --box-shadow-325-light: 3px
+    2px
+    5px
+    #333333;
+  --box-shadow-325-dark: 3px
+    2px
+    5px
+    black;
+  --box-shadow-325-inset: 3px 2px 5px black;
+  --box-shadow-325-light-inset: 3px
+    2px
+    5px
+    #333333;
+  --box-shadow-325-dark-inst: 3px
+    2px
+    5px
+    black;
+  --box-shadow-326: 3px 2px 6px black;
+  --box-shadow-326-light: 3px
+    2px
+    6px
+    #333333;
+  --box-shadow-326-dark: 3px
+    2px
+    6px
+    black;
+  --box-shadow-326-inset: 3px 2px 6px black;
+  --box-shadow-326-light-inset: 3px
+    2px
+    6px
+    #333333;
+  --box-shadow-326-dark-inst: 3px
+    2px
+    6px
+    black;
+  --box-shadow-327: 3px 2px 7px black;
+  --box-shadow-327-light: 3px
+    2px
+    7px
+    #333333;
+  --box-shadow-327-dark: 3px
+    2px
+    7px
+    black;
+  --box-shadow-327-inset: 3px 2px 7px black;
+  --box-shadow-327-light-inset: 3px
+    2px
+    7px
+    #333333;
+  --box-shadow-327-dark-inst: 3px
+    2px
+    7px
+    black;
+  --box-shadow-330: 3px 3px 0px black;
+  --box-shadow-330-light: 3px
+    3px
+    0px
+    #333333;
+  --box-shadow-330-dark: 3px
+    3px
+    0px
+    black;
+  --box-shadow-330-inset: 3px 3px 0px black;
+  --box-shadow-330-light-inset: 3px
+    3px
+    0px
+    #333333;
+  --box-shadow-330-dark-inst: 3px
+    3px
+    0px
+    black;
+  --box-shadow-331: 3px 3px 1px black;
+  --box-shadow-331-light: 3px
+    3px
+    1px
+    #333333;
+  --box-shadow-331-dark: 3px
+    3px
+    1px
+    black;
+  --box-shadow-331-inset: 3px 3px 1px black;
+  --box-shadow-331-light-inset: 3px
+    3px
+    1px
+    #333333;
+  --box-shadow-331-dark-inst: 3px
+    3px
+    1px
+    black;
+  --box-shadow-332: 3px 3px 2px black;
+  --box-shadow-332-light: 3px
+    3px
+    2px
+    #333333;
+  --box-shadow-332-dark: 3px
+    3px
+    2px
+    black;
+  --box-shadow-332-inset: 3px 3px 2px black;
+  --box-shadow-332-light-inset: 3px
+    3px
+    2px
+    #333333;
+  --box-shadow-332-dark-inst: 3px
+    3px
+    2px
+    black;
+  --box-shadow-333: 3px 3px 3px black;
+  --box-shadow-333-light: 3px
+    3px
+    3px
+    #333333;
+  --box-shadow-333-dark: 3px
+    3px
+    3px
+    black;
+  --box-shadow-333-inset: 3px 3px 3px black;
+  --box-shadow-333-light-inset: 3px
+    3px
+    3px
+    #333333;
+  --box-shadow-333-dark-inst: 3px
+    3px
+    3px
+    black;
+  --box-shadow-334: 3px 3px 4px black;
+  --box-shadow-334-light: 3px
+    3px
+    4px
+    #333333;
+  --box-shadow-334-dark: 3px
+    3px
+    4px
+    black;
+  --box-shadow-334-inset: 3px 3px 4px black;
+  --box-shadow-334-light-inset: 3px
+    3px
+    4px
+    #333333;
+  --box-shadow-334-dark-inst: 3px
+    3px
+    4px
+    black;
+  --box-shadow-335: 3px 3px 5px black;
+  --box-shadow-335-light: 3px
+    3px
+    5px
+    #333333;
+  --box-shadow-335-dark: 3px
+    3px
+    5px
+    black;
+  --box-shadow-335-inset: 3px 3px 5px black;
+  --box-shadow-335-light-inset: 3px
+    3px
+    5px
+    #333333;
+  --box-shadow-335-dark-inst: 3px
+    3px
+    5px
+    black;
+  --box-shadow-336: 3px 3px 6px black;
+  --box-shadow-336-light: 3px
+    3px
+    6px
+    #333333;
+  --box-shadow-336-dark: 3px
+    3px
+    6px
+    black;
+  --box-shadow-336-inset: 3px 3px 6px black;
+  --box-shadow-336-light-inset: 3px
+    3px
+    6px
+    #333333;
+  --box-shadow-336-dark-inst: 3px
+    3px
+    6px
+    black;
+  --box-shadow-337: 3px 3px 7px black;
+  --box-shadow-337-light: 3px
+    3px
+    7px
+    #333333;
+  --box-shadow-337-dark: 3px
+    3px
+    7px
+    black;
+  --box-shadow-337-inset: 3px 3px 7px black;
+  --box-shadow-337-light-inset: 3px
+    3px
+    7px
+    #333333;
+  --box-shadow-337-dark-inst: 3px
+    3px
+    7px
+    black;
+}
+
+:root {
+  --primary: #2f84d3;
+  --primary-light: #83b6e5;
+  --primary-lighter: #d7e8f7;
+  --primary-dark: #1b5081;
+  --primary-darker: #010202;
+}
+
+:root {
+  --secondary: #4f709c;
+  --secondary-light: #8ca4c5;
+  --secondary-lighter: #d0dae7;
+  --secondary-dark: #2d3f58;
+  --secondary-darker: black;
+}
+
+:root {
+  --warn: orange;
+  --warn-light: #ffc966;
+  --warn-lighter: #ffedcc;
+  --warn-dark: #996300;
+  --warn-darker: black;
+}
+
+:root {
+  --error: red;
+  --error-light: #ff6666;
+  --error-lighter: #ffcccc;
+  --error-dark: #990000;
+  --error-darker: black;
+}
+
+:root {
+  --info: teal;
+  --info-light: #00e6e6;
+  --info-lighter: #4dffff;
+  --info-dark: #001a1a;
+  --info-darker: black;
+}
+
+:root {
+  --dark: black;
+  --dark-light: #333333;
+  --dark-lighter: #666666;
+  --dark-dark: black;
+  --dark-darker: black;
+}
+
+:root {
+  --light: white;
+  --light-light: white;
+  --light-lighter: white;
+  --light-dark: #cccccc;
+  --light-darker: gray;
+}/*# sourceMappingURL=style.css.map */

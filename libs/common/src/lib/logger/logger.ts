@@ -3,7 +3,7 @@
 type LogObjectMessage = Record<string, any>[];
 
 export class Logger {
-  constructor(protected __context: string = 'Context') {}
+  protected __context = 'context';
 
   setContext(contextx: string) {
     this.__context = contextx;

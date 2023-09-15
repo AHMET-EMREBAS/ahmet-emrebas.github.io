@@ -1,18 +1,6 @@
-import { NgModule, isDevMode } from '@angular/core';
-import { LoggerService } from './logger.service';
+import { NgModule } from '@angular/core';
 
 @NgModule({
-  providers: [
-    {
-      provide: LoggerService,
-      useFactory: () => {
-        if (isDevMode()) {
-          return LoggerService;
-        }
-        return undefined;
-      },
-    },
-  ],
-  exports: [LoggerService],
+  providers: [],
 })
 export class SharedModule {}

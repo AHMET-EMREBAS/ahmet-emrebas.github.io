@@ -2,7 +2,16 @@ import { Logger } from './logger';
 
 export class ClientLogger extends Logger {
   private commonStyle(style: string) {
-    return `${style}  font-size:16pt; font-family:Arial; border:1px solid gray; border-radius:10px; padding:10px; margin-right:10px;`;
+    return `${style}  
+    font-size:13pt; 
+    font-family:Arial; 
+    border:1px solid gray; 
+    border-radius:20px; 
+    padding:3px; 
+    padding-left:10px; 
+    padding-right:10px;
+    margin-right:3px;
+    `;
   }
   protected override defaultStyle(): string {
     return this.commonStyle('color:black; background-color:white;');

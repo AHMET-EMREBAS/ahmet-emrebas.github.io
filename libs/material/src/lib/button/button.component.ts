@@ -1,53 +1,70 @@
-/* eslint-disable @angular-eslint/component-selector */
-/* eslint-disable @angular-eslint/component-class-suffix */
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  Optional,
-  ViewEncapsulation,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ColorType } from '../api/color-type';
-import { LoggerService } from '../api';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Colors } from '../api';
 
-@Component({
-  selector: `
-  button[techbir-button], 
-  a[techbir-button], 
-  button[techbir-raised-button],
-  a[techbir-raised-button],
-   `,
-  standalone: true,
-  imports: [CommonModule],
-  providers: [LoggerService],
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
-
-  encapsulation: ViewEncapsulation.None,
-})
-export class ButtonComponent implements OnInit {
-  @Input() color: ColorType = 'primary';
-  @Input() label = 'Button';
+@Directive({})
+export class AbstractButton implements OnInit {
+  @Input() color: Colors = 'primary';
 
   constructor(
-    private readonly ref: ElementRef<HTMLElement>,
-    @Optional() private readonly logger: LoggerService
-  ) {
-    this.logger.setContext('ButtonComponent');
+    protected readonly ref: ElementRef<HTMLButtonElement | HTMLAnchorElement>
+  ) {}
+  ngOnInit(): void {
+    this.ref.nativeElement.classList.add(this.color);
   }
+}
+
+@Directive({
+  selector: 'button[techbirButton], a[techbirButton]',
+  standalone: true,
+})
+export class ButtonDirective implements OnInit {
+  @Input() techbirButton = 'primary';
+
+  constructor(private readonly ref: ElementRef<HTMLElement>) {}
 
   ngOnInit(): void {
-    const tagname = this.ref.nativeElement.tagName;
-    const validTagNames = ['a', 'button'];
+    this.ref.nativeElement.classList.add(this.techbirButton);
+  }
+}
 
-    const isTagnameValid = validTagNames.includes(tagname);
-    if (!isTagnameValid) {
-      this.logger?.info('Info log');
-      this.logger?.warn('Warn log');
-      this.logger?.debug('Debug log');
-      this.logger?.error(`Tag name should be ${validTagNames.join(' or ')}`);
-    }
+@Directive({
+  selector: 'button[techbirRaisedButton], a[techbirRaisedButton]',
+  standalone: true,
+})
+export class RaisedButtonDirective implements OnInit {
+  @Input() techbirRaisedButton = 'primary';
+
+  constructor(private readonly ref: ElementRef<HTMLElement>) {}
+
+  ngOnInit(): void {
+    this.ref.nativeElement.classList.add(this.techbirRaisedButton);
+  }
+}
+
+@Directive({
+  selector: 'button[techbirFlatButton], a[techbirFlatButton]',
+  standalone: true,
+})
+export class FlatButtonDirective implements OnInit {
+  @Input() techbirFlatButton = 'primary';
+
+  constructor(private readonly ref: ElementRef<HTMLElement>) {}
+
+  ngOnInit(): void {
+    this.ref.nativeElement.classList.add(this.techbirFlatButton);
+  }
+}
+
+@Directive({
+  selector: 'button[techbirIconButton], a[techbirIconButton]',
+  standalone: true,
+})
+export class IconButtonDirective implements OnInit {
+  @Input() techbirIconButton = 'primary';
+
+  constructor(private readonly ref: ElementRef<HTMLElement>) {}
+
+  ngOnInit(): void {
+    this.ref.nativeElement.classList.add(this.techbirIconButton);
   }
 }

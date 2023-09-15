@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@techbir/common": ["libs/common/src/index.ts"],
+      "@techbir/common/*": ["libs/common/src/lib/*"],
       "@techbir/gen": ["libs/gen/src/index.ts"],
       "@techbir/gen/*": ["libs/gen/src/*"],
       "@techbir/material": ["libs/material/src"],

@@ -1,0 +1,547 @@
+:root {
+  --surface: aliceblue;
+  --surface-light: white;
+  --surface-lighter: white;
+  --surface-dark: rgba(0, 0, 0, 0.8);
+  --surface-darker: rgba(0, 0, 0, 0.8);
+}
+
+:root {
+  --h1: 8.333%;
+  --w1: 8.333%;
+  --font-size-1: 1rem;
+  --border-radius-1: 1px;
+  --h2: 16.666%;
+  --w2: 16.666%;
+  --font-size-2: 1.4rem;
+  --border-radius-2: 2px;
+  --h3: 24.999%;
+  --w3: 24.999%;
+  --font-size-3: 1.8rem;
+  --border-radius-3: 3px;
+  --h4: 33.332%;
+  --w4: 33.332%;
+  --font-size-4: 2.2rem;
+  --border-radius-4: 4px;
+  --h5: 41.665%;
+  --w5: 41.665%;
+  --font-size-5: 2.6rem;
+  --border-radius-5: 5px;
+  --h6: 49.998%;
+  --w6: 49.998%;
+  --font-size-6: 3rem;
+  --border-radius-6: 6px;
+  --h7: 58.331%;
+  --w7: 58.331%;
+  --font-size-7: 3.4rem;
+  --border-radius-7: 7px;
+  --h8: 66.664%;
+  --w8: 66.664%;
+  --font-size-8: 3.8rem;
+  --border-radius-8: 8px;
+  --h9: 74.997%;
+  --w9: 74.997%;
+  --font-size-9: 4.2rem;
+  --border-radius-9: 9px;
+  --h10: 83.33%;
+  --w10: 83.33%;
+  --font-size-10: 4.6rem;
+  --border-radius-10: 10px;
+  --h11: 91.663%;
+  --w11: 91.663%;
+  --font-size-11: 5rem;
+  --border-radius-11: 11px;
+  --h12: 99.996%;
+  --w12: 99.996%;
+  --font-size-12: 5.4rem;
+  --border-radius-12: 12px;
+}
+
+.block {
+  display: block;
+}
+
+.contents {
+  display: contents;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexbox {
+  display: flexbox;
+}
+
+.flow-root {
+  display: flow-root;
+}
+
+.grid {
+  display: grid;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.inline-flexbox {
+  display: inline-flexbox;
+}
+
+.inline-table {
+  display: inline-table;
+}
+
+.list-item {
+  display: list-item;
+}
+
+.none {
+  display: none;
+}
+
+.ruby {
+  display: ruby;
+}
+
+.ruby-base {
+  display: ruby-base;
+}
+
+.ruby-base-container {
+  display: ruby-base-container;
+}
+
+.ruby-text {
+  display: ruby-text;
+}
+
+.run-in {
+  display: run-in;
+}
+
+.table {
+  display: table;
+}
+
+.table-caption {
+  display: table-caption;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.table-column {
+  display: table-column;
+}
+
+.table-column-group {
+  display: table-column-group;
+}
+
+.table-footer-group {
+  display: table-footer-group;
+}
+
+.table-header-group {
+  display: table-header-group;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-row-group {
+  display: table-row-group;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.column-reverse {
+  flex-direction: column-reverse;
+}
+
+.flex.row {
+  flex-direction: row;
+}
+
+.flex.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex.baseline {
+  justify-content: baseline;
+}
+
+.flex.center {
+  justify-content: center;
+}
+
+.flex.end {
+  justify-content: end;
+}
+
+.flex.first baseline {
+  justify-content: first baseline;
+}
+
+.flex.flex-end {
+  justify-content: flex-end;
+}
+
+.flex.flex-start {
+  justify-content: flex-start;
+}
+
+.flex.last baseline {
+  justify-content: last baseline;
+}
+
+.flex.left {
+  justify-content: left;
+}
+
+.flex.right {
+  justify-content: right;
+}
+
+.flex.safe {
+  justify-content: safe;
+}
+
+.flex.space-around {
+  justify-content: space-around;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.space-evenly {
+  justify-content: space-evenly;
+}
+
+.flex.start {
+  justify-content: start;
+}
+
+.flex.stretch {
+  justify-content: stretch;
+}
+
+.flex.unsafe {
+  justify-content: unsafe;
+}
+
+.flex.stretch {
+  align-items: stretch;
+}
+
+.flex.flex-start {
+  align-items: flex-start;
+}
+
+.flex.flex-end {
+  align-items: flex-end;
+}
+
+.flex.center {
+  align-items: center;
+}
+
+.flex.baseline {
+  align-items: baseline;
+}
+
+.flex.first baseline {
+  align-items: first baseline;
+}
+
+.flex.last baseline {
+  align-items: last baseline;
+}
+
+.flex.stretch {
+  align-content: stretch;
+}
+
+.flex.flex-start {
+  align-content: flex-start;
+}
+
+.flex.flex-end {
+  align-content: flex-end;
+}
+
+.flex.center {
+  align-content: center;
+}
+
+.flex.space-between {
+  align-content: space-between;
+}
+
+.flex.space-around {
+  align-content: space-around;
+}
+
+.flex.space-evenly {
+  align-content: space-evenly;
+}
+
+.flex.start {
+  align-content: start;
+}
+
+.flex.end {
+  align-content: end;
+}
+
+.flex.baseline {
+  align-content: baseline;
+}
+
+.gap-1 {
+  gap: 1.618px;
+}
+
+.gap-2 {
+  gap: 3.236px;
+}
+
+.gap-3 {
+  gap: 4.854px;
+}
+
+.gap-4 {
+  gap: 6.472px;
+}
+
+.gap-5 {
+  gap: 8.09px;
+}
+
+.gap-6 {
+  gap: 9.708px;
+}
+
+.gap-7 {
+  gap: 11.326px;
+}
+
+.gap-8 {
+  gap: 12.944px;
+}
+
+.gap-9 {
+  gap: 14.562px;
+}
+
+.gap-10 {
+  gap: 16.18px;
+}
+
+.gap-11 {
+  gap: 17.798px;
+}
+
+.gap-12 {
+  gap: 19.416px;
+}
+
+:root {
+  --button-min-width: 120px;
+  --button-min-height: 36px;
+  --button-max-width: 200px;
+  --button-max-height: 100px;
+}
+
+.common-button, [techbirFlatButton], [techbirRaisedButton], [techbirButton] {
+  min-width: var(--button-min-width);
+  max-width: var(--button-max-width);
+  min-height: var(--button-min-height);
+  max-height: var(--button-max-height);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.primary[techbirButton] {
+  background-color: var(--primary);
+}
+
+.primary[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.primary[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.primary[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.primary[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.primary[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary[techbirButton] {
+  background-color: var(--primary);
+}
+
+.secondary[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.secondary[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.secondary[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.warn[techbirButton] {
+  background-color: var(--primary);
+}
+
+.warn[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.warn[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.warn[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.warn[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.warn[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.error[techbirButton] {
+  background-color: var(--primary);
+}
+
+.error[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.error[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.error[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.error[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.error[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.info[techbirButton] {
+  background-color: var(--primary);
+}
+
+.info[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.info[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.info[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.info[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.info[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.dark[techbirButton] {
+  background-color: var(--primary);
+}
+
+.dark[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.dark[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.dark[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.dark[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.dark[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.light[techbirButton] {
+  background-color: var(--primary);
+}
+
+.light[techbirButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.light[techbirRaisedButton] {
+  background-color: var(--primary);
+}
+
+.light[techbirRaisedButton]:hover {
+  background-color: var(--primary-dark);
+}
+
+.light[techbirFlatButton] {
+  background-color: var(--primary);
+}
+
+.light[techbirFlatButton]:hover {
+  background-color: var(--primary-dark);
+}/*# sourceMappingURL=techbir.css.map */

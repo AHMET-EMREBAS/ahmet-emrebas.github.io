@@ -1,3 +1,19 @@
 @use './theme/techbir.scss' as techbir;
-
-@include techbir.configure(#213555, #4f709c, #252b48);
+// primary
+// secondary
+// warn
+// error
+// info
+// dark
+// light
+// shadow
+@include techbir.configure(
+  #2f84d3,
+  #4f709c,
+  orange,
+  red,
+  teal,
+  black,
+  white,
+  black
+);

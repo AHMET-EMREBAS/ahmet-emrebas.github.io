@@ -1,28 +1,41 @@
-$colorNames: (primary, secondary);
-$white: aliceblue;
-$black: rgba(20, 20, 20, 0.8);
+$colorNames: (primary, secondary, warn, error, info, dark, light);
+$light: aliceblue;
+$dark: rgba(20, 20, 20, 0.8);
 
-@mixin __colorVars($color) {
+:root {
+  --surface: #{$light};
+  --surface-light: #{lighten($light, 20%)};
+  --surface-lighter: #{lighten($light, 40%)};
+
+  --surface-dark: #{darken($dark, 20%)};
+  --surface-darker: #{darken($dark, 40%)};
+}
+
+
+@mixin __colorVars($name, $color) {
   :root {
-    --surface: $white;
-
-    --surface-light: lighten($white, 20%);
-    --surface-lighter: lighten($white, 40%);
-
-    --surface-dark: darken($white, 20%);
-    --surface-darker: darken($white, 40%);
-
-    @each $cn in $colorNames {
-      --#{$cn}: $color;
-      --#{$cn}-light: lighten($color, 20%);
-      --#{$cn}-lighter: lighten($color, 40%);
-      --#{$cn}-dark: darken($color, 20%);
-      --#{$cn}-darker: darken($color, 50%);
-    }
+    --#{$name}: #{$color};
+    --#{$name}-light: #{lighten($color, 20%)};
+    --#{$name}-lighter: #{lighten($color, 40%)};
+    --#{$name}-dark: #{darken($color, 20%)};
+    --#{$name}-darker: #{darken($color, 50%)};
   }
 }
 
-@mixin createColorVars($primary, $secondary) {
-  @include __colorVars($primary);
-  @include __colorVars($secondary);
+@mixin createColorVars(
+  $primary,
+  $secondary,
+  $warn,
+  $error,
+  $info,
+  $dark,
+  $light
+) {
+  @include __colorVars(primary, $primary);
+  @include __colorVars(secondary, $secondary);
+  @include __colorVars(warn, $warn);
+  @include __colorVars(error, $error);
+  @include __colorVars(info, $info);
+  @include __colorVars(dark, $dark);
+  @include __colorVars(light, $light);
 }
