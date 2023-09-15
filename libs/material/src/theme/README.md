@@ -98,49 +98,16 @@ $light: hsl(0, 0%, 100%);
 
 ### Border Classes
 
+Border classes is defiend by 4 parts
+
+- First part is `.border-`
+- Second part is `-color-name-`
+- Third part is `-border-style-` 
+- Fourth part is `-width-` which fall within the range of 1 to 12
+
 ```css
-.border-primary {
-  border-color: var(--primary);
-}
-
-.border-secondary {
-  border-color: var(--secondary);
-}
-
-.border-warn {
-  border-color: var(--warn);
-}
-
-.border-error {
-  border-color: var(--error);
-}
-
-.border-info {
-  border-color: var(--info);
-}
-
-.border-dark {
-  border-color: var(--dark);
-}
-
-.border-light {
-  border-color: var(--light);
-}
-
-.border-solid {
-  border-style: solid;
-}
-
-.border-dashed {
-  border-style: dashed;
-}
-
-.border-double {
-  border-style: double;
-}
-
-.border-dotted {
-  border-style: dotted;
+.border-info-dashed-3 {
+  border: var(--border-size-3) dashed var(--info);
 }
 ```
 

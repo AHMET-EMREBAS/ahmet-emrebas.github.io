@@ -1,4 +1,4 @@
-@use './theme/techbir.scss' as techbir;
+@use './theme' as techbir;
 
 $lightness: 60%;
 $primary: hsl(219, 70%, $lightness);

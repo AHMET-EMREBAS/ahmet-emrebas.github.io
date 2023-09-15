@@ -28,8 +28,6 @@ $displays: (
   table-row-group
 );
 
-
-
 @each $d in $displays {
   .#{$d} {
     display: $d;
@@ -109,5 +107,3 @@ $alignContent: (
     gap: #{$g * 1.618}px;
   }
 }
-
-

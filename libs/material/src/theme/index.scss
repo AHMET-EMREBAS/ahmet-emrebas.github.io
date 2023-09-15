@@ -1,0 +1,44 @@
+@forward './border';
+@forward './buttons';
+@use './colors' as colors;
+@forward './flexbox';
+@forward './fonts';
+@forward './shadows';
+@forward './sizing';
+@forward './list';
+@forward './titles';
+@forward './scroll';
+@forward './positions';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-1);
+  background-color: var(--surface-lighter);
+  color: var(--face);
+  padding: 0px;
+  margin: 0px;
+
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  overflow-y: auto;
+}
+
+@mixin configure($primary, $secondary, $warn, $error, $info, $dark, $light) {
+  @include colors.createColorVars(
+    $primary,
+    $secondary,
+    $warn,
+    $error,
+    $info,
+    $dark,
+    $light
+  );
+}

@@ -1,0 +1,44 @@
+@use 'sass:list';
+@use 'sass:math';
+
+$titles: (1, 2, 3, 4, 5, 6);
+
+@function titleSize($t) {
+  @return math.div(6, ($t * 1.618)) * 1.618;
+}
+
+@function subtitleSize($t) {
+  @return titleSize($t) * 0.6;
+}
+
+:root {
+  @each $t in $titles {
+    --title-#{$t}: #{titleSize($t)}rem;
+    --subtitle-#{$t}: #{subtitleSize($t)}rem;
+    --content-#{$t}: #{titleSize($t) / 1.618}rem;
+    --line-height-#{$t}: #{titleSize($t)}rem;
+  }
+}
+
+@each $t in $titles {
+  .title-#{$t} {
+    font-size: var(--title-#{$t});
+    line-height: var(--line-height-#{$t});
+  }
+  .subtitle-#{$t} {
+    font-size: var(--subtitle-#{$t});
+    font-weight: 200;
+    line-height: var(--line-height-#{$t});
+  }
+  .content-#{$t} {
+    font-size: var(--content-#{$t});
+    font-weight: 300;
+  }
+
+  h#{$t} {
+    @extend .title-#{$t};
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 0.1em;
+  }
+}
