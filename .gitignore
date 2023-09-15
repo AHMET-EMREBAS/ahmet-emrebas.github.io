@@ -39,3 +39,8 @@ testem.log
 Thumbs.db
 
 .angular
+
+
+# Material Library 
+/libs/material/src/**/*.css
+/libs/material/documentation.json
