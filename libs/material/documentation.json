@@ -44,21 +44,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/input/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<InputComponent>",
-                "defaultValue": "{\n  component: InputComponent,\n  title: 'InputComponent',\n  tags:['autodocs']\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/lib/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SampleButtonsComponent>",
                 "defaultValue": "{\n  component: SampleButtonsComponent,\n  title: 'SampleButtonsComponent',\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/input/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputComponent>",
+                "defaultValue": "{\n  component: InputComponent,\n  title: 'InputComponent',\n  tags:['autodocs']\n}"
             },
             {
                 "name": "meta",
@@ -84,21 +84,21 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/input/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/lib/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/input/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -117,8 +117,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<InputComponent>",
-                "file": "libs/material/src/lib/input/input.component.stories.ts",
+                "rawtype": "StoryObj<SampleButtonsComponent>",
+                "file": "libs/material/src/lib/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -128,8 +128,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<SampleButtonsComponent>",
-                "file": "libs/material/src/lib/button/button.component.stories.ts",
+                "rawtype": "StoryObj<InputComponent>",
+                "file": "libs/material/src/lib/input/input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -263,19 +263,6 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "libs/material/src/lib/input/input.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<InputComponent>",
-                    "file": "libs/material/src/lib/input/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
             "libs/material/src/lib/button/button.component.stories.ts": [
                 {
                     "name": "Story",
@@ -283,6 +270,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<SampleButtonsComponent>",
                     "file": "libs/material/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/input/input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputComponent>",
+                    "file": "libs/material/src/lib/input/input.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",

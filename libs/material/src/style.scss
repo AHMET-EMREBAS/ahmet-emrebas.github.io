@@ -1,19 +1,20 @@
 @use './theme/techbir.scss' as techbir;
-// primary
-// secondary
-// warn
-// error
-// info
-// dark
-// light
-// shadow
+
+$lightness: 60%;
+$primary: hsl(219, 70%, $lightness);
+$secondary: hsl(298, 73%, $lightness);
+$warn: hsl(19, 66%, $lightness);
+$error: hsl(0, 63%, $lightness);
+$info: hsl(199, 100%, $lightness);
+$dark: hsl(0, 0%, 5%);
+$light: hsl(0, 0%, 100%);
+
 @include techbir.configure(
-  #2f84d3,
-  #4f709c,
-  orange,
-  red,
-  teal,
-  black,
-  white,
-  black
+  $primary,
+  $secondary,
+  $warn,
+  $error,
+  $info,
+  $dark,
+  $light
 );

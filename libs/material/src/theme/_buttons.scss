@@ -1,0 +1,50 @@
+@use 'sass:list';
+@use './colors' as colors;
+
+$allButtonTypes: (Button, RaisedButton, FlatButton);
+$allButtonTypesSelector: ();
+
+@each $item in $allButtonTypes {
+  $prefixed: techbir#{$item};
+  $allButtonTypesSelector: append($allButtonTypesSelector, $prefixed);
+}
+
+.common-button {
+  min-width: var(--button-min-width);
+  max-width: var(--button-max-width);
+  min-height: var(--button-min-height);
+  max-height: var(--button-max-height);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+@each $b in $allButtonTypesSelector {
+  [#{$b}] {
+    @extend .common-button;
+  }
+}
+
+@each $c in colors.$colorNames {
+  .#{$c}[techbirRaisedButton] {
+    box-shadow: var(--box-shadow-1-1-1-#{$c});
+  }
+  @each $b in $allButtonTypesSelector {
+    .#{$c}[#{$b}] {
+      background-color: var(--#{$c});
+      color: var(--#{$c}-face);
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-family);
+      letter-spacing: 0.8px;
+      border: 3px solid transparent;
+    }
+    .#{$c}[#{$b}]:hover {
+      background-color: var(--#{$c}-dark);
+    }
+    .#{$c}[#{$b}]:active {
+      border: 3px double var(--#{$c}-light);
+    }
+  }
+}

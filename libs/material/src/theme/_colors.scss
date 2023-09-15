@@ -1,24 +1,24 @@
 $colorNames: (primary, secondary, warn, error, info, dark, light);
-$light: aliceblue;
-$dark: rgba(20, 20, 20, 0.8);
+$borderStyles: (solid, dashed, double, dotted);
 
-:root {
-  --surface: #{$light};
-  --surface-light: #{lighten($light, 20%)};
-  --surface-lighter: #{lighten($light, 40%)};
-
-  --surface-dark: #{darken($dark, 20%)};
-  --surface-darker: #{darken($dark, 40%)};
+@function faceColor($color) {
+  $l: lightness($color);
+  @if $l > 60 {
+    @return var(--dark);
+  } @else {
+    @return var(--light);
+  }
 }
 
-
 @mixin __colorVars($name, $color) {
+  // Color vars
   :root {
     --#{$name}: #{$color};
     --#{$name}-light: #{lighten($color, 20%)};
     --#{$name}-lighter: #{lighten($color, 40%)};
     --#{$name}-dark: #{darken($color, 20%)};
     --#{$name}-darker: #{darken($color, 50%)};
+    --#{$name}-face: #{faceColor($color)};
   }
 }
 
@@ -38,4 +38,18 @@ $dark: rgba(20, 20, 20, 0.8);
   @include __colorVars(info, $info);
   @include __colorVars(dark, $dark);
   @include __colorVars(light, $light);
+}
+
+// Border color classes
+@each $colorName in $colorNames {
+  .border-#{$colorName} {
+    border-color: var(--#{$colorName});
+  }
+}
+
+// Border style classes
+@each $style in $borderStyles {
+  .border-#{$style} {
+    border-style: #{$style};
+  }
 }

@@ -65,6 +65,11 @@
   src: url('./fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
 }
 
+:root {
+  --font-family: Roboto, cursive;
+  --font-size: 16px;
+}
+
 .roboto {
   font-family: Roboto;
 }

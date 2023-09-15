@@ -1,20 +1,13 @@
-@use './_colors' as colors;
-@use './_shadow' as shadows;
-@forward './__size';
-@forward './_flexbox';
-@forward './_buttons';
+@use './_vars';
+@use './colors' as colors;
 
-@mixin configure(
-  $primary,
-  $secondary,
-  $warn,
-  $error,
-  $info,
-  $dark,
-  $light,
-  $shadowColor
-) {
-  @include shadows.createBoxShadowVars($shadowColor);
+html,
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+@mixin configure($primary, $secondary, $warn, $error, $info, $dark, $light) {
   @include colors.createColorVars(
     $primary,
     $secondary,
@@ -24,4 +17,8 @@
     $dark,
     $light
   );
+
+  @import url('./fonts');
+  @import url('./buttons');
+  @import url('./flexbox');
 }

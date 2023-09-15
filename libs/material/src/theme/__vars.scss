@@ -1,0 +1,99 @@
+@use 'sass:math';
+
+$surfaceColor: hsl(0, 20%, 90%);
+$darkColor: hsl(0, 20%, 10%);
+$lightColor: hsl(0, 20%, 90%);
+$shadowColor: hsl(0, 20%, 10%);
+
+$oneUnit: math.div(100, 12);
+
+// Border
+:root {
+  --border-radius: 0.5em;
+
+  @for $size from 1 through 12 {
+    --border-radius-#{$size}: #{$size}px;
+    --border-size-#{$size}: #{$size}px;
+  }
+}
+// Font sizes
+:root {
+  @for $size from 1 through 12 {
+    --font-size-#{$size}: #{0.6 + $size * 0.4}rem;
+  }
+}
+
+// Lightness
+:root {
+  --lightness: 49%;
+  --dark: #{$darkColor};
+  --light: #{$lightColor};
+}
+
+// Black white colors
+:root {
+  --surface: #{$surfaceColor};
+  --surface-light: #{lighten($surfaceColor, 20%)};
+  --surface-lighter: #{lighten($surfaceColor, 40%)};
+  --surface-dark: #{darken($darkColor, 20%)};
+  --surface-darker: #{darken($darkColor, 40%)};
+}
+
+// Hight width
+:root {
+  @for $size from 1 through 12 {
+    --h-#{$size}: #{$size * $oneUnit}#{'%'};
+    --w-#{$size}: #{$size * $oneUnit}#{'%'};
+  }
+}
+
+// Box sizing
+:root {
+  @for $size from 1 through 12 {
+    --box-size-#{$size}: #{($size * $oneUnit * 4)}px;
+  }
+}
+
+// Button sizes
+:root {
+  --button-min-width: 120px;
+  --button-min-height: 36px;
+  --button-max-width: 200px;
+  --button-max-height: 100px;
+}
+
+// Boxshadows
+:root {
+  @for $a from 0 through 3 {
+    @for $b from 0 through 3 {
+      @for $c from 0 through 7 {
+        --box-shadow-#{$a}#{$b}#{$c}: #{$a}px #{$b}px #{$c}px #{$shadowColor};
+
+        --box-shadow-#{$a}#{$b}#{$c}-light: #{$a}px
+          #{$b}px
+          #{$c}px
+          #{lighten($shadowColor, 20%)};
+
+        --box-shadow-#{$a}#{$b}#{$c}-dark: #{$a}px
+          #{$b}px
+          #{$c}px
+          #{darken($shadowColor, 20%)};
+
+        --box-shadow-#{$a}#{$b}#{$c}-inset: #{$a}px
+          #{$b}px
+          #{$c}px
+          #{$shadowColor};
+
+        --box-shadow-#{$a}#{$b}#{$c}-light-inset: #{$a}px
+          #{$b}px
+          #{$c}px
+          #{lighten($shadowColor, 20%)};
+
+        --box-shadow-#{$a}#{$b}#{$c}-dark-inset: #{$a}px
+          #{$b}px
+          #{$c}px
+          #{darken($shadowColor, 20%)};
+      }
+    }
+  }
+}
