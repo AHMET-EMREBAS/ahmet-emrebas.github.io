@@ -74,7 +74,7 @@
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
         "browserTarget": "webapp:build",
-        "outputPath": "/apps/webapp/src/locale"
+        "outputPath": "apps/webapp/src/locale"
       }
     },
     "lint": {
