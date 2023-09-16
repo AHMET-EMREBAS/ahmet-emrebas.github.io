@@ -1,19 +1,19 @@
 <div #mainContainer>
-  <techbir-navigation #ref>
+  <techbir-navigation #navigation>
     <!-- Common sidenav elements -->
     <mat-toolbar main-toolbar color="primary">
       <div class="flex row gap-2 align-center justify-space-between w-100">
         <button
           mat-icon-button
-          (click)="ref.toggleSidenav()"
+          (click)="navigation.toggleSidenav()"
           i18n-matTooltip
           matTooltip="Sidenav toggle"
           aria-label="Toggle sidenav"
         >
-          <mat-icon *ngIf="ref.isSidenavOpen">menu_open</mat-icon>
-          <mat-icon *ngIf="!ref.isSidenavOpen">menu</mat-icon>
+          <mat-icon *ngIf="navigation.isSidenavOpen">menu_open</mat-icon>
+          <mat-icon *ngIf="!navigation.isSidenavOpen">menu</mat-icon>
         </button>
-        <a href="https://ahmet-emrebas.github.io">
+        <a href="https://ahmet-emrebas.github.io" target="_blank">
           <img src="/assets/icons/icon-72x72.png" alt="App Logo" class="logo" />
         </a>
       </div>
@@ -42,6 +42,7 @@
     <ng-template techbirLayoutStatusbar>
       <ng-container *ngTemplateOutlet="statusbar.templateRef"></ng-container>
 
+      <!-- Fullscreen -->
       <button
         mat-icon-button
         [techbirToggleFullscreen]="mainContainer"

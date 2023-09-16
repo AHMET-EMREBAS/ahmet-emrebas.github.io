@@ -35,7 +35,7 @@ export class ToggleFullscreenDirective implements AfterViewInit {
     }
   }
   ngAfterViewInit(): void {
-    this.techbirToggleFullscreen.addEventListener('click', () => {
+    this.elementRef.nativeElement.addEventListener('click', () => {
       this.toggle();
     });
   }
