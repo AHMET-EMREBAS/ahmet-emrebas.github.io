@@ -11,3 +11,5 @@ export * from './required';
 export * from './is-in';
 export * from './objectify';
 export * from './read-write-json';
+export * from './concat';
+export * from './add-property';

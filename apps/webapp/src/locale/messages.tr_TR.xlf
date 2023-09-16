@@ -18,7 +18,6 @@
       </trans-unit>
       <trans-unit id="489844404897890427" datatype="html">
         <source>Fullscreen</source>
-        <target>Tam Ekran</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material/src/lib/layout/navigation/navigation.component.html</context>
           <context context-type="linenumber">38</context>
@@ -33,7 +32,6 @@
       </trans-unit>
       <trans-unit id="7079253523828894003" datatype="html">
         <source>Sidenav toggle</source>
-        <target>Yan gezinme panelini açma ve kapatma</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material/src/lib/sidenav-toggle/sidenav-toggle.component.html</context>
           <context context-type="linenumber">5</context>

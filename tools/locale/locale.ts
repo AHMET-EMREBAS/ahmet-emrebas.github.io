@@ -2,10 +2,17 @@
 
 import { join } from 'path';
 import { cwd } from 'process';
-import { input, required, objectify, readJson, writeJson } from '../utils';
+import {
+  input,
+  required,
+  objectify,
+  readJson,
+  writeJson,
+  concat,
+  addProperty,
+} from '../utils';
 import { localeList } from './locale-list';
 import { readFileSync, writeFileSync } from 'fs';
-
 
 const OPENAI_API_KEY = process.env['OPENAI_API_KEY'];
 
@@ -22,20 +29,28 @@ const PROJECT_CONFIG_PATH = join(WORKING_DIR, 'project.json');
 const projectConfig = readJson(PROJECT_CONFIG_PATH);
 
 function localeFileName(code: string) {
-  return `messages.${code}.xlf`;
+  return concat('.', 'messages', code, 'xlf');
 }
-function translation(appName: string, code: string) {
+function translationFilePath(appName: string, code: string) {
   return `apps/${appName}/src/locale/${localeFileName(code)}`;
 }
 
-const localeConfigurationArray = () =>
-  localeList().map(({ name, code }) => {
-    return { name, code, translation: translation(PROJECT_NAME, code) };
+const localeConfigurationArray = () => {
+  const list = localeList().map(({ name, code }) => {
+    return { name, code, translation: translationFilePath(PROJECT_NAME, code) };
   });
+  list.unshift({
+    name: 'Default',
+    code: '',
+    translation: translationFilePath(PROJECT_NAME, ''),
+  });
+
+  return list;
+};
 
 const localeConfigurationObject = objectify(localeConfigurationArray(), 'code');
 
-projectConfig['i18n']['locales'] = localeConfigurationObject;
+addProperty(projectConfig, localeConfigurationObject, 'i18n', 'locales');
 
 writeJson(PROJECT_CONFIG_PATH, projectConfig);
 
