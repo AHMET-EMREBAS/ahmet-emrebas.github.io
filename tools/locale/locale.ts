@@ -13,6 +13,7 @@ import {
 } from '../utils';
 import { localeList } from './locale-list';
 import { readFileSync, writeFileSync } from 'fs';
+import { splitGet } from '../utils/split-get';
 
 const OPENAI_API_KEY = process.env['OPENAI_API_KEY'];
 
@@ -48,9 +49,19 @@ const localeConfigurationArray = () => {
   return list;
 };
 
-const localeConfigurationObject = objectify(localeConfigurationArray(), 'code');
+function preparedLocaleConfigurationArrayForFile() {
+  const list = localeConfigurationArray().map((e) => {
+    return { ...e, code: splitGet(e.code, '_') };
+  });
+  const localeConfigurationObject = objectify(list, 'code');
+}
 
-addProperty(projectConfig, localeConfigurationObject, 'i18n', 'locales');
+addProperty(
+  projectConfig,
+  preparedLocaleConfigurationArrayForFile(),
+  'i18n',
+  'locales'
+);
 
 writeJson(PROJECT_CONFIG_PATH, projectConfig);
 
