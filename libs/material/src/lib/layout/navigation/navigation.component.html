@@ -6,24 +6,32 @@
 
   <div class="flex gap-2 border-dashed-1 gap-2 p-2 w-100 h-100 grow-1">
     <!-- Sidenav -->
-    <div class="border-dashed-1 gap-2 p-2 w-16" *ngIf="isSidenavOpen">
+    <div
+      class="border-dashed-1 gap-2 p-2"
+      style="width: 200px"
+      *ngIf="isSidenavOpen"
+    >
       <ng-container *ngTemplateOutlet="sidenav.templateRef"></ng-container>
     </div>
 
     <!-- content -->
-    <div class="flex column border-dashed-1 gap-2 p-2 w-100">
-      <mat-toolbar>
+    <div class="flex column border-dashed-1 gap-2 p-2 grow-1">
+      <!-- <mat-toolbar>
         <ng-container *ngTemplateOutlet="toolbar.templateRef"></ng-container>
-      </mat-toolbar>
+      </mat-toolbar> -->
 
       <!-- Content -->
-      <div class="flex column grow-1 gap-2 p-2 border-dashed-1">
+      <div class="flex column grow-1">
         <ng-container *ngTemplateOutlet="content.templateRef"></ng-container>
       </div>
 
       <!-- Status bar -->
       <mat-toolbar>
-        <ng-container *ngTemplateOutlet="statusbar.templateRef"></ng-container>
+        <div class="flex row gap-2 justify-flex-end w-100 border-dashed-1" >
+          <ng-container
+            *ngTemplateOutlet="statusbar.templateRef"
+          ></ng-container>
+        </div>
       </mat-toolbar>
     </div>
   </div>

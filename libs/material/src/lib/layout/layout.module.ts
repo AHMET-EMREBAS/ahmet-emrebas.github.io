@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MobileNavigationComponent } from './mobile-navigation/mobile-navigation.component';
-import { NavigationComponent } from './navigation/navigation.component';
 
 import { LayoutComponent } from './layout.component';
 import { MaterialModule } from '../material';
@@ -10,9 +8,11 @@ import {
   LayoutToolbarDirective,
   LayoutStatusbarDirective,
   LayoutSidenavDirective,
+  LayoutContentDirective,
+  ToggleFullscreenDirective,
 } from './directives';
-
-import { LayoutContentDirective } from './directives/layout-content.directive';
+import { MobileNavigationComponent } from './mobile-navigation';
+import { NavigationComponent } from './navigation';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { LayoutContentDirective } from './directives/layout-content.directive';
     LayoutStatusbarDirective,
     LayoutSidenavDirective,
     LayoutContentDirective,
+    ToggleFullscreenDirective,
   ],
   imports: [CommonModule, MaterialModule],
   exports: [
