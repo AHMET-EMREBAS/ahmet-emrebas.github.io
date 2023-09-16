@@ -53,7 +53,8 @@ function preparedLocaleConfigurationArrayForFile() {
   const list = localeConfigurationArray().map((e) => {
     return { ...e, code: splitGet(e.code, '_') };
   });
-  const localeConfigurationObject = objectify(list, 'code');
+  const result = objectify(list, 'code');
+  return result;
 }
 
 addProperty(

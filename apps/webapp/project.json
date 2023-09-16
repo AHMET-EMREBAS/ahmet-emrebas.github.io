@@ -8,25 +8,19 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/webapp",
         "index": "apps/webapp/src/index.html",
         "main": "apps/webapp/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/webapp/tsconfig.app.json",
         "assets": [
           "apps/webapp/src/favicon.ico",
           "apps/webapp/src/assets",
           "apps/webapp/src/manifest.webmanifest"
         ],
-        "styles": [
-          "apps/webapp/src/sass/index.scss"
-        ],
+        "styles": ["apps/webapp/src/sass/index.scss"],
         "scripts": [],
         "serviceWorker": true,
         "ngswConfigPath": "apps/webapp/ngsw-config.json"
@@ -63,12 +57,8 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
-        "production": {
-          "browserTarget": "webapp:build:production"
-        },
-        "development": {
-          "browserTarget": "webapp:build:development"
-        }
+        "production": { "browserTarget": "webapp:build:production" },
+        "development": { "browserTarget": "webapp:build:development" }
       },
       "defaultConfiguration": "development"
     },
@@ -81,37 +71,23 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/webapp/**/*.ts",
-          "apps/webapp/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/webapp/**/*.ts", "apps/webapp/**/*.html"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/webapp/jest.config.ts",
         "passWithNoTests": true
       },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
+      "configurations": { "ci": { "ci": true, "codeCoverage": true } }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
-      "options": {
-        "buildTarget": "webapp:build"
-      }
+      "options": { "buildTarget": "webapp:build" }
     }
   },
   "i18n": {
@@ -120,83 +96,83 @@
         "name": "Default",
         "translation": "apps/webapp/src/locale/messages.xlf"
       },
-      "en_US": {
+      "en": {
         "name": "English (United States)",
         "translation": "apps/webapp/src/locale/messages.en_US.xlf"
       },
-      "es_ES": {
+      "es": {
         "name": "Spanish (Spain)",
         "translation": "apps/webapp/src/locale/messages.es_ES.xlf"
       },
-      "zh_CN": {
+      "zh": {
         "name": "Mandarin Chinese (Simplified)",
         "translation": "apps/webapp/src/locale/messages.zh_CN.xlf"
       },
-      "hi_IN": {
+      "hi": {
         "name": "Hindi (India)",
         "translation": "apps/webapp/src/locale/messages.hi_IN.xlf"
       },
-      "ar_EG": {
+      "ar": {
         "name": "Arabic (Egypt)",
         "translation": "apps/webapp/src/locale/messages.ar_EG.xlf"
       },
-      "fr_FR": {
+      "fr": {
         "name": "French (France)",
         "translation": "apps/webapp/src/locale/messages.fr_FR.xlf"
       },
-      "ru_RU": {
+      "ru": {
         "name": "Russian (Russia)",
         "translation": "apps/webapp/src/locale/messages.ru_RU.xlf"
       },
-      "pt_PT": {
+      "pt": {
         "name": "Portuguese (Portugal)",
         "translation": "apps/webapp/src/locale/messages.pt_PT.xlf"
       },
-      "bn_IN": {
+      "bn": {
         "name": "Bengali (India)",
         "translation": "apps/webapp/src/locale/messages.bn_IN.xlf"
       },
-      "ur_PK": {
+      "ur": {
         "name": "Urdu (Pakistan)",
         "translation": "apps/webapp/src/locale/messages.ur_PK.xlf"
       },
-      "de_DE": {
+      "de": {
         "name": "German (Germany)",
         "translation": "apps/webapp/src/locale/messages.de_DE.xlf"
       },
-      "ja_JP": {
+      "ja": {
         "name": "Japanese (Japan)",
         "translation": "apps/webapp/src/locale/messages.ja_JP.xlf"
       },
-      "ko_KR": {
+      "ko": {
         "name": "Korean (South Korea)",
         "translation": "apps/webapp/src/locale/messages.ko_KR.xlf"
       },
-      "it_IT": {
+      "it": {
         "name": "Italian (Italy)",
         "translation": "apps/webapp/src/locale/messages.it_IT.xlf"
       },
-      "tr_TR": {
+      "tr": {
         "name": "Turkish (Turkey)",
         "translation": "apps/webapp/src/locale/messages.tr_TR.xlf"
       },
-      "nl_NL": {
+      "nl": {
         "name": "Dutch (Netherlands)",
         "translation": "apps/webapp/src/locale/messages.nl_NL.xlf"
       },
-      "fa_IR": {
+      "fa": {
         "name": "Persian (Iran)",
         "translation": "apps/webapp/src/locale/messages.fa_IR.xlf"
       },
-      "pl_PL": {
+      "pl": {
         "name": "Polish (Poland)",
         "translation": "apps/webapp/src/locale/messages.pl_PL.xlf"
       },
-      "vi_VN": {
+      "vi": {
         "name": "Vietnamese (Vietnam)",
         "translation": "apps/webapp/src/locale/messages.vi_VN.xlf"
       },
-      "ms_MY": {
+      "ms": {
         "name": "Malay (Malaysia)",
         "translation": "apps/webapp/src/locale/messages.ms_MY.xlf"
       }

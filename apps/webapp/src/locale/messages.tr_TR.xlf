@@ -18,6 +18,7 @@
       </trans-unit>
       <trans-unit id="489844404897890427" datatype="html">
         <source>Fullscreen</source>
+        <target>Tam Ekran</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material/src/lib/layout/navigation/navigation.component.html</context>
           <context context-type="linenumber">38</context>

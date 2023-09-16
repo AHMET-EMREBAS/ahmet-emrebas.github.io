@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Togglable } from '../api';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'techbir-sidenav-toggle',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatTooltipModule],
   templateUrl: './sidenav-toggle.component.html',
   styleUrls: ['./sidenav-toggle.component.scss'],
 })

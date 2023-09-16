@@ -44,7 +44,9 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { DialogModule } from '@angular/cdk/dialog';
 
 /**
  * NgModule that includes all Material modules.
@@ -62,7 +64,12 @@ import { HttpClientModule } from '@angular/common/http';
     CdkTableModule,
     CdkTreeModule,
     DragDropModule,
+    CdkAccordionModule,
+    ClipboardModule,
+    DialogModule,
+
     // Material
+    MatTooltipModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
@@ -94,7 +101,6 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
     MatTreeModule,
 
     // Forms

@@ -1,11 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ContentChild,
-} from '@angular/core';
+import { Component, ContentChild } from '@angular/core';
 import {
   LayoutContentDirective,
   LayoutSidenavDirective,
@@ -24,6 +18,4 @@ export class NavigationComponent implements Togglable {
   @ContentChild(LayoutContentDirective) content!: LayoutContentDirective;
 
   toggleValue = true;
-
-  constructor(protected readonly cd: ChangeDetectorRef) {}
 }
