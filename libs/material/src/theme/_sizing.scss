@@ -33,6 +33,10 @@ $oneUnit: math.div(100, 12);
   @for $size from 1 through 12 {
     --padding-#{$size}: #{paddingSize($size)};
     --margin-#{$size}: #{marginSize($size)};
+    @each $side in (top, right, bottom, left) {
+      --padding-#{$side}-#{$size}: #{paddingSize($size)};
+      --margin-#{$side}-#{$size}: #{marginSize($size)};
+    }
   }
 }
 

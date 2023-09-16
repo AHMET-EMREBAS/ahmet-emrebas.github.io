@@ -107,3 +107,41 @@ $alignContent: (
     gap: #{$g * 1.618}px;
   }
 }
+
+@each $g in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .grow-#{$g} {
+    flex-grow: #{$g};
+  }
+}
+
+.inline-container {
+  @extend .flex;
+  @extend .row;
+  @extend .grow-1;
+  @extend .gap-2;
+}
+
+
+
+.container {
+  @extend .flex;
+  @extend .column;
+  @extend .grow-1;
+  @extend .gap-2;
+}
+
+.table-container {
+  @extend .flex;
+  @extend .row;
+  @extend .justify-space-between;
+  @extend .grow-1;
+  @extend .gap-2;
+}
+
+.card-container {
+  @extend .flex;
+  @extend .row;
+  @extend .justify-space-around;
+  @extend .grow-1;
+  @extend .gap-2;
+}

@@ -1,35 +1,10 @@
 @forward './flexbox';
+@forward './font-sizes';
 @forward './fonts';
-@forward './sizing';
-@forward './titles';
+@forward './position';
 @forward './scroll';
-@forward './positions';
+@forward './sizing';
+@forward './html';
+@forward './override-material';
 @forward './border';
 
-* {
-  box-sizing: border-box;
-}
-
-.clear-default {
-  margin: 0px;
-  padding: 0px;
-  border: none;
-}
-
-.full-container {
-  width: 100vw;
-  height: 100vh;
-}
-.full-relative-container {
-  width: 100%;
-  height: 100%;
-}
-
-html {
-  @extend .clear-default;
-  @extend .full-container;
-}
-body {
-  @extend .clear-default;
-  @extend .full-relative-container;
-}

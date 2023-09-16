@@ -9,7 +9,7 @@ $positions: (absolute, fixed, sticky, static);
 $sides: (top, right, bottom, left);
 
 @each $side in $sides {
-  .#{$side} {
+  .#{$side}-0 {
     #{$side}: 0px;
   }
 }
