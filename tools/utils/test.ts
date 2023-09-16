@@ -1,5 +1,5 @@
+import { _GREEN, _RED, _WHITE } from './colors';
 import { input } from './input';
-import { green, white, red } from 'colors';
 
 const testCases: [string, () => void][] = [];
 
@@ -8,10 +8,10 @@ export function test(description: string, handler: () => void) {
 }
 
 const passed = (message: string) =>
-  console.log(green('✅ passed ' + white(message)));
+  console.log(_GREEN('✅ passed ' + _WHITE(message)));
 
 const failed = (message: string) =>
-  console.log(red('🤣 failed ' + white(message)));
+  console.log(_RED('🤣 failed ' + _WHITE(message)));
 
 export function describe(name: string, init: () => void) {
   if (input(1) === 'test') {

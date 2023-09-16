@@ -1,6 +1,6 @@
 import { appendFileSync } from 'fs';
 import { join } from 'path';
-import { red, green, white } from 'colors';
+import { _GREEN, _WHITE, _RED } from './colors';
 
 const LOG_DIR = join(__dirname, '../../tmp/logs');
 export class Logger {
@@ -16,16 +16,18 @@ export class Logger {
   }
 
   buildMessage(message: string) {
-    return `[${this.context}] ${new Date().toLocaleString()} ${white(message)}`;
+    return `[${this.context}] ${new Date().toLocaleString()} ${_WHITE(
+      message
+    )}`;
   }
 
   log(message: string) {
-    console.log(green(this.buildMessage(message)));
+    console.log(_GREEN(this.buildMessage(message)));
     this.write(message);
   }
 
   error(message: string) {
-    console.error(red(this.buildMessage(message)));
+    console.error(_RED(this.buildMessage(message)));
   }
 }
 
