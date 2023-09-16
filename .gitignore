@@ -45,3 +45,5 @@ Thumbs.db
 /libs/material/src/**/*.css
 /libs/material/src/**/*.css.map
 /libs/material/documentation.json
+/apps/**/*.css
+/apps/**/*.css.map

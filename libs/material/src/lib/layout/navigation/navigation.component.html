@@ -1,0 +1,30 @@
+<div
+  class="flex column border-dashed-1 gap-2 p-2 grow-1"
+  style="width: 100vw; height: 100vh"
+>
+  <ng-content select="[main-toolbar]"></ng-content>
+
+  <div class="flex gap-2 border-dashed-1 gap-2 p-2 w-100 h-100 grow-1">
+    <!-- Sidenav -->
+    <div class="border-dashed-1 gap-2 p-2 w-16" *ngIf="isSidenavOpen">
+      <ng-container *ngTemplateOutlet="sidenav.templateRef"></ng-container>
+    </div>
+
+    <!-- content -->
+    <div class="flex column border-dashed-1 gap-2 p-2 w-100">
+      <mat-toolbar>
+        <ng-container *ngTemplateOutlet="toolbar.templateRef"></ng-container>
+      </mat-toolbar>
+
+      <!-- Content -->
+      <div class="flex column grow-1 gap-2 p-2 border-dashed-1">
+        <ng-container *ngTemplateOutlet="content.templateRef"></ng-container>
+      </div>
+
+      <!-- Status bar -->
+      <mat-toolbar>
+        <ng-container *ngTemplateOutlet="statusbar.templateRef"></ng-container>
+      </mat-toolbar>
+    </div>
+  </div>
+</div>

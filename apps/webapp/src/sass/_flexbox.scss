@@ -1,0 +1,115 @@
+$displays: (
+  block,
+  contents,
+  flex,
+  flexbox,
+  flow-root,
+  grid,
+  inline,
+  inline-block,
+  inline-flex,
+  inline-flexbox,
+  inline-table,
+  list-item,
+  none,
+  ruby,
+  ruby-base,
+  ruby-base-container,
+  ruby-text,
+  run-in,
+  table,
+  table-caption,
+  table-cell,
+  table-column,
+  table-column-group,
+  table-footer-group,
+  table-header-group,
+  table-row,
+  table-row-group
+);
+
+@each $d in $displays {
+  .#{$d} {
+    display: $d;
+  }
+}
+
+$flexDirections: (column, column-reverse, row, row-reverse);
+
+@each $fd in $flexDirections {
+  .flex.#{$fd} {
+    flex-direction: $fd;
+  }
+}
+
+$justifyContent: (
+  baseline,
+  center,
+  end,
+  first baseline,
+  flex-end,
+  flex-start,
+  last baseline,
+  left,
+  right,
+  safe,
+  space-around,
+  space-between,
+  space-evenly,
+  start,
+  stretch,
+  unsafe
+);
+
+@each $jc in $justifyContent {
+  .flex.justify-#{$jc} {
+    justify-content: $jc;
+  }
+}
+
+$alignItems: (
+  stretch,
+  flex-start,
+  flex-end,
+  center,
+  baseline,
+  first baseline,
+  last baseline
+);
+
+@each $ai in $alignItems {
+  .flex.align-#{$ai} {
+    align-items: $ai;
+  }
+}
+
+$alignContent: (
+  stretch,
+  flex-start,
+  flex-end,
+  center,
+  space-between,
+  space-around,
+  space-evenly,
+  start,
+  end,
+  baseline
+);
+
+@each $ac in $alignContent {
+  .flex.align-content-#{$ac} {
+    align-content: $ac;
+  }
+}
+
+@each $g in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .gap-#{$g} {
+    gap: #{$g * 1.618}px;
+  }
+}
+
+@each $g in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .grow-#{$g} {
+    flex-grow: #{$g};
+  }
+}

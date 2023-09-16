@@ -62,7 +62,7 @@ $justifyContent: (
 );
 
 @each $jc in $justifyContent {
-  .flex.#{$jc} {
+  .flex.justify-#{$jc} {
     justify-content: $jc;
   }
 }
@@ -78,7 +78,7 @@ $alignItems: (
 );
 
 @each $ai in $alignItems {
-  .flex.#{$ai} {
+  .flex.align-#{$ai} {
     align-items: $ai;
   }
 }
@@ -97,7 +97,7 @@ $alignContent: (
 );
 
 @each $ac in $alignContent {
-  .flex.#{$ac} {
+  .flex.align-content-#{$ac} {
     align-content: $ac;
   }
 }

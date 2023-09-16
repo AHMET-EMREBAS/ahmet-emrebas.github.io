@@ -1,0 +1,37 @@
+/* Style the scrollbar track */
+::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+    height: 6px;
+  }
+  
+  /* Style the scrollbar thumb (the draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the thumb */
+  }
+  
+  /* Style the scrollbar track when the mouse is hovering over it */
+  ::-webkit-scrollbar-track:hover {
+    background: #ccc; /* Background color on hover */
+  }
+  
+  /* Style the scrollbar thumb when the mouse is hovering over it */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Thumb color on hover */
+  }
+  
+  /* Style the scrollbar track when it's in an active state (e.g., when scrolling) */
+  ::-webkit-scrollbar-track:active {
+    background: #ddd; /* Background color when active */
+  }
+  
+  /* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
+  ::-webkit-scrollbar-thumb:active {
+    background: #333; /* Thumb color when active */
+  }
+  
+  /* Style the scrollbar corner (the intersection between the horizontal and vertical scrollbars) */
+  ::-webkit-scrollbar-corner {
+    background: #f0f0f0; /* Color of the scrollbar corner */
+  }
+  
