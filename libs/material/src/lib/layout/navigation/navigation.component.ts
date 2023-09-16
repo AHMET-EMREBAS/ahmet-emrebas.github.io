@@ -10,30 +10,20 @@ import {
   LayoutContentDirective,
   LayoutSidenavDirective,
   LayoutStatusbarDirective,
-  LayoutToolbarDirective,
 } from '../directives';
+import { Togglable } from '../../api';
 
 @Component({
   selector: 'techbir-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavigationComponent implements AfterViewInit {
+export class NavigationComponent implements Togglable {
   @ContentChild(LayoutSidenavDirective) sidenav!: LayoutSidenavDirective;
-  @ContentChild(LayoutToolbarDirective) toolbar!: LayoutSidenavDirective;
   @ContentChild(LayoutStatusbarDirective) statusbar!: LayoutSidenavDirective;
   @ContentChild(LayoutContentDirective) content!: LayoutContentDirective;
-  isSidenavOpen = true;
+
+  toggleValue = true;
 
   constructor(protected readonly cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit(): void {
-    this.cd.detectChanges();
-  }
-
-  toggleSidenav() {
-    this.isSidenavOpen = !this.isSidenavOpen;
-    this.cd.detectChanges();
-  }
 }

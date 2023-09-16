@@ -13,6 +13,9 @@ import {
 } from './directives';
 import { MobileNavigationComponent } from './mobile-navigation';
 import { NavigationComponent } from './navigation';
+import { LogoComponent } from '../logo/logo.component';
+import { SidenavToggleComponent } from '../sidenav-toggle/sidenav-toggle.component';
+import { ToolbarComponent } from '../toolbar';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,13 @@ import { NavigationComponent } from './navigation';
     LayoutContentDirective,
     ToggleFullscreenDirective,
   ],
-  imports: [CommonModule, MaterialModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    LogoComponent,
+    SidenavToggleComponent,
+    ToolbarComponent,
+  ],
   exports: [
     LayoutComponent,
     MobileNavigationComponent,

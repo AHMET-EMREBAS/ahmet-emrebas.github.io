@@ -1,0 +1,12 @@
+<mat-nav-list *ngFor="let group of navlist">
+  <div mat-subheader class="subtitle-3">{{ group.label }}</div>
+  <mat-list-item
+    [routerLink]="[item.path]"
+    routerLinkActive="router-link-active"
+    *ngFor="let item of group.items"
+    class="content-4"
+  >
+    <div matListItemTitle i18n>{{ item.label }}</div>
+    <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
+  </mat-list-item>
+</mat-nav-list>

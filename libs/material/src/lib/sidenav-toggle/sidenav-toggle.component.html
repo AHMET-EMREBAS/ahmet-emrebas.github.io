@@ -1,0 +1,10 @@
+<button
+  mat-icon-button
+  (click)="toggle()"
+  i18n-matTooltip
+  matTooltip="Sidenav toggle"
+  aria-label="Toggle sidenav"
+>
+  <mat-icon *ngIf="isOpen()">menu_open</mat-icon>
+  <mat-icon *ngIf="!isOpen()">menu</mat-icon>
+</button>

@@ -1,16 +1,7 @@
 <techbir-layout>
   <!-- Layout sidenav -->
   <ng-template techbirLayoutSidenav>
-    <mat-nav-list>
-      <mat-list-item
-        [routerLink]="[item.path]"
-        routerLinkActive="router-link-active"
-        *ngFor="let item of navitems"
-      >
-        <div matListItemTitle i18n>{{ item.label }}</div>
-        <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
-      </mat-list-item>
-    </mat-nav-list>
+    <techbir-nav-list [navlist]="navlist"></techbir-nav-list>
   </ng-template>
 
   <ng-template techbirLayoutContent>
@@ -19,12 +10,6 @@
 
   <!-- Status bar -->
   <ng-template techbirLayoutStatusbar>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
+    <!--  -->
   </ng-template>
 </techbir-layout>
