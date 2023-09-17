@@ -1,0 +1,13 @@
+<div class="flex row gap-4 align-center pl-2 pr-2" *ngIf="icons || lables">
+  <ng-container
+    [ngComponentOutlet]="listIconComponent"
+    [ngComponentOutletInputs]="{
+      icon: getIcon()
+    }"
+  ></ng-container>
+
+  <ng-container
+    [ngComponentOutlet]="listLabelComponent"
+    [ngComponentOutletInputs]="{ label: getLabel() }"
+  ></ng-container>
+</div>

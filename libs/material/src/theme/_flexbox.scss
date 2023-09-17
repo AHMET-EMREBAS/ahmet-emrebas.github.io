@@ -102,16 +102,31 @@ $alignContent: (
   }
 }
 
-@each $g in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
-  .gap-#{$g} {
-    gap: #{$g * 1.618}px;
+// Min: 0.05em
+// Max: 5em
+@for $size from 1 through 100 {
+  .gap-#{$size} {
+    gap: #{$size * 0.05}em;
   }
 }
 
-@each $g in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
-  .grow-#{$g} {
-    flex-grow: #{$g};
+@for $order from 1 through 100 {
+  .order-#{$order} {
+    order: #{$order};
   }
+}
+
+@for $size from 1 through 100 {
+  .grow-#{$size} {
+    flex-grow: #{$size};
+  }
+}
+
+.flex.wrap {
+  flex-wrap: wrap;
+}
+.flex.nowrap {
+  flex-wrap: nowrap;
 }
 
 .inline-container {
@@ -120,8 +135,6 @@ $alignContent: (
   @extend .grow-1;
   @extend .gap-2;
 }
-
-
 
 .container {
   @extend .flex;

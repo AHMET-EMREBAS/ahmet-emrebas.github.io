@@ -1,0 +1,9 @@
+<div class="flex column gap-2">
+  <div *ngFor="let value of children">
+    <ng-container
+      [ngComponentOutlet]="listItemComponent"
+      [ngComponentOutletInputs]="{ icon: value.icons, label: value.lables }"
+    >
+    </ng-container>
+  </div>
+</div>

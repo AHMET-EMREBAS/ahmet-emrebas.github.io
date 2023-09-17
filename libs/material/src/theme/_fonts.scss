@@ -115,23 +115,3 @@ $fontList: (
 .icon.fill {
   font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
 }
-
-mat-icon {
-  @extend .icon;
-}
-
-// Font sizes
-:root {
-  @for $size from 1 through 12 {
-    --font-size-#{$size}: #{(0.6 + $size * 0.4)}rem;
-    --line-height-#{$size}: #{(0.6 + $size * 0.4) * 1.618}rem;
-  }
-}
-
-@for $size from 1 through 12 {
-  .fs-#{$size} {
-    font-size: var(--font-size-#{$size});
-    line-height: var(--line-height-#{$size});
-    letter-spacing: 0.3em;
-  }
-}

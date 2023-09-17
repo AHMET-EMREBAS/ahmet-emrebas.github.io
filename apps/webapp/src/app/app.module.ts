@@ -1,5 +1,4 @@
 import { NgModule, isDevMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
@@ -11,13 +10,11 @@ import { entityConfig } from './entity-metadata';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { A11yModule } from '@angular/cdk/a11y';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
-    BrowserModule,
-    A11yModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {
       useHash: true,
       initialNavigation: 'enabledBlocking',
@@ -32,7 +29,6 @@ import { A11yModule } from '@angular/cdk/a11y';
     StoreModule.forRoot({}, {}),
     EntityDataModule.forRoot(entityConfig),
     EffectsModule.forRoot([]),
-    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

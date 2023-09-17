@@ -1,19 +1,40 @@
+:root {
+  --root-font-size: 12pt;
+  --root-font-family: Roboto, Arial;
+  --root-width: 100%;
+  --root-height: 100%;
+  --root-padding: 0px;
+  --root-margin: 0px;
+  --root-position: relative;
+  --root-overflow: hidden;
+}
+
 * {
   box-sizing: border-box;
 }
 html,
 body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding: 0px;
-  margin: 0px;
-  position: relative;
-  font-size: 12pt;
-  font-family: Roboto, cursive;
-  background-color: white;
+  width: var(--root-width);
+  height: var(--root-height);
+  overflow: var(--root-overflow);
+  padding: var(--root-padding);
+  margin: var(--root-margin);
+  position: var(--root-position);
+  font-size: var(--root-font-size);
+  font-family: var(--root-font-family);
+  background-color: var(--light);
 }
 
 :fullscreen {
-  background-color: white;
+  background-color: var(--light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :fullscreen {
+    background-color: var(--dark);
+  }
+  html,
+  body {
+    background-color: var(--dark);
+  }
 }

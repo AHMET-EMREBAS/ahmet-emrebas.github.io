@@ -23,7 +23,7 @@
       </div>
 
       <!-- Status bar -->
-      <mat-toolbar>
+      <div>
         <div class="flex row gap-2 justify-flex-end w-100">
           <ng-container
             *ngTemplateOutlet="statusbar.templateRef"
@@ -31,16 +31,14 @@
 
           <!-- Fullscreen -->
           <button
-            mat-icon-button
             [techbirToggleFullscreen]="mainContainer"
-            matTooltip="Fullscreen"
             i18n-aria-label
             aria-label="Fullscreen"
           >
-            <mat-icon>fullscreen</mat-icon>
+            <span class="icon">fullscreen</span>
           </button>
         </div>
-      </mat-toolbar>
+      </div>
     </div>
   </div>
 </div>

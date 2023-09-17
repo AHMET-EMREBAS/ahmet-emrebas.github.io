@@ -1,11 +1,19 @@
 <techbir-layout>
   <!-- Layout sidenav -->
   <ng-template techbirLayoutSidenav>
-    <techbir-nav-list [navlist]="navlist"></techbir-nav-list>
+    <techbir-list>
+      <techbir-list-item>
+        <techbir-list-label label="First"></techbir-list-label>
+        <techbir-list-icon icon="home"></techbir-list-icon>
+      </techbir-list-item>
+      <techbir-list-item>
+        <techbir-list-icon icon="info"></techbir-list-icon>
+        <techbir-list-label label="info"></techbir-list-label>
+      </techbir-list-item>
+    </techbir-list>
   </ng-template>
 
   <ng-template techbirLayoutContent>
-
     <h1 class="content-3">Hello world</h1>
     <router-outlet></router-outlet>
   </ng-template>

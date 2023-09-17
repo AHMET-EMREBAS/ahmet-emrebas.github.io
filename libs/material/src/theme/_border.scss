@@ -1,7 +1,35 @@
-@each $size in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
-  @each $style in (dashed, solid, double) {
-    .border-#{$style}-#{$size} {
-      border: #{$size}px #{$style} gray;
+@use './_vars' as vars;
+
+@for $size from 1 through 12 {
+  .border-#{$size} {
+    border-width: #{$size}px;
+  }
+}
+
+@each $style in (dashed, solid, double) {
+  .border-#{$style} {
+    border-style: #{$style};
+  }
+}
+
+@each $color in vars.$colorNames {
+  .border-#{$color} {
+    border-color: #{var(--#{$color}-dark)};
+  }
+}
+
+// Border radius
+@for $size from 1 through 12 {
+  $radius: #{$size * 1.618}px;
+  .radius-#{$size} {
+    border-radius: #{$radius};
+  }
+
+  @each $side in (top, bottom) {
+    @each $sidex in (right, left) {
+      .radius-#{$side}-#{$sidex}-#{$size} {
+        border-#{$side}-#{$sidex}-radius: #{$radius};
+      }
     }
   }
 }

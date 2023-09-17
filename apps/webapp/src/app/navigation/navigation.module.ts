@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation.component';
-import { MaterialModule } from '../app-material.module';
 import { RouterModule } from '@angular/router';
 import { SampleModule } from '../sample/sample.module';
 import { LayoutModule } from '@techbir/material/layout';
-import { NavListModule } from '@techbir/material/nav-list';
+import { ListComponent, ListModule } from '@techbir/material/list';
 @NgModule({
   declarations: [NavigationComponent],
   imports: [
     CommonModule,
-    MaterialModule,
     LayoutModule,
-    NavListModule,
+    ListModule,
     RouterModule.forChild([
       {
         path: '',

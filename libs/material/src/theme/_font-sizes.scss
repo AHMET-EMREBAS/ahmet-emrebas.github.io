@@ -1,44 +1,28 @@
 @use 'sass:list';
 @use 'sass:math';
 
-$titles: (1, 2, 3, 4, 5, 6);
-
-@function titleSize($t) {
-  @return math.div(6, ($t * 1.618)) * 1.618;
-}
-
 @function subtitleSize($t) {
   @return titleSize($t) * 0.6;
 }
 
-:root {
-  @each $t in $titles {
-    --title-#{$t}: #{titleSize($t)}rem;
-    --subtitle-#{$t}: #{subtitleSize($t)}rem;
-    --content-#{$t}: #{math.div(titleSize($t), 1.618)}rem;
-  }
-}
+@for $size from 1 through 6 {
+  $titleSize: 1 + $size * 0.4;
+  $subtitleSize: #{$titleSize * 0.6};
+  $contentSize: #{$titleSize * 0.5};
 
-@each $t in $titles {
-  .title-#{$t} {
-    font-size: var(--title-#{$t});
+  .title-#{$size} {
+    font-size: #{$titleSize}rem;
+    line-height: #{$titleSize}rem;
   }
-  .subtitle-#{$t} {
-    font-size: var(--subtitle-#{$t});
-    line-height: var(--subtitle-#{$t});
+  .subtitle-#{$size} {
+    font-size: #{$subtitleSize}rem;
+    line-height: #{$subtitleSize}rem;
     font-weight: 200;
   }
 
-  .content-#{$t} {
-    font-size: var(--content-#{$t});
-    line-height: var(--content-#{$t});
+  .content-#{$size} {
+    font-size: #{$contentSize}rem;
+    line-height: #{$contentSize}rem;
     font-weight: 300;
-  }
-
-  h#{$t} {
-    @extend .title-#{$t};
-    margin: 0px;
-    padding: 0px;
-    padding-bottom: 0.1em;
   }
 }
