@@ -17,24 +17,27 @@
 @for $size from 1 through 100 {
   $value: #{$size * 0.05} + 'em';
 
-  .p-#{$size} {
+  .padding-#{$size} {
     padding: #{$value};
   }
-  .m-#{$size} {
+  .margin-#{$size} {
     margin: #{$value};
   }
 
   @each $side in (top, right, bottom, left) {
-    .p#{firstLetter($side)}-#{$size} {
+    .padding-#{$side}-#{$size} {
       padding-#{$side}: #{$value};
     }
 
-    .m#{firstLetter($side)}-#{$size} {
+    .margin-#{$side}-#{$size} {
       margin-#{$side}: #{$value};
     }
   }
 
-  .w-#{$size} {
+  .width-#{$size} {
     width: #{$size}#{'%'};
+  }
+  .height-#{$size} {
+    height: #{$size}#{'%'};
   }
 }

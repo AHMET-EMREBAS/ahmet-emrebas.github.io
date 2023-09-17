@@ -1,6 +1,4 @@
 :root {
-  --root-font-size: 12pt;
-  --root-font-family: Roboto, Arial;
   --root-width: 100%;
   --root-height: 100%;
   --root-padding: 0px;
@@ -20,8 +18,8 @@ body {
   padding: var(--root-padding);
   margin: var(--root-margin);
   position: var(--root-position);
-  font-size: var(--root-font-size);
-  font-family: var(--root-font-family);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
   background-color: var(--light);
 }
 

@@ -1,0 +1,19 @@
+<div class="flex row gap-10">
+  <div class="flex column gap-3">
+    <button [routerLink]="['border']">border</button>
+    <button [routerLink]="['button']">button</button>
+    <button [routerLink]="['color']">color</button>
+    <button [routerLink]="['flexbox']">flexbox</button>
+    <button [routerLink]="['font']">font</button>
+    <button [routerLink]="['icon']">icon</button>
+    <button [routerLink]="['input']">input</button>
+    <button [routerLink]="['layout']">layout</button>
+    <button [routerLink]="['position']">position</button>
+    <button [routerLink]="['sizing']">sizing</button>
+
+    <button [routerLink]="['list']">list</button>
+  </div>
+  <div class="flex column">
+    <router-outlet></router-outlet>
+  </div>
+</div>

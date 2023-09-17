@@ -66,23 +66,23 @@
 }
 
 $fontList: (
-  'tourney': 'Tourney',
-  'special-elite': 'Special Elite',
-  'rubik-iso': 'Rubik Iso',
-  'rubik-dirt': 'Rubik Dirt',
-  'roboto': 'Roboto',
-  'material-icon': 'Material Icons',
-  'lobster': 'Lobster',
-  'josefin-sans': 'Josefin Sans',
-  'dancing-script': 'Dancing Script',
-  'concert-one': 'Concert One',
-  'comfortaa': 'Comfortaa',
-  'black-ops-one': 'Black Ops One',
+  'tourney': 'Tourney, cursive',
+  'special-elite': 'Special Elite, cursive',
+  'rubik-iso': 'Rubik Iso, cursive',
+  'rubik-dirt': 'Rubik Dirt, cursive',
+  'roboto': 'Roboto, cursive',
+  'material-icon': 'Material Icons, cursive',
+  'lobster': 'Lobster, cursive',
+  'josefin-sans': 'Josefin Sans, cursive',
+  'dancing-script': 'Dancing Script, cursive',
+  'concert-one': 'Concert One, cursive',
+  'comfortaa': 'Comfortaa, cursive',
+  'black-ops-one': 'Black Ops One, cursive',
 );
 
 :root {
-  --font-family: Roboto, cursive;
-  --font-size: 16px;
+  --font-family: Josefin Sans, cursive;
+  --font-size: 16pt;
 }
 
 @each $key, $value in $fontList {

@@ -1,1 +1,3 @@
-@use './theme/index.scss';
+@use './theme/index.scss' as theme;
+
+@include theme.selectTheme(pastel);
