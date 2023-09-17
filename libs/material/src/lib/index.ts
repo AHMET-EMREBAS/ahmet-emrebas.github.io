@@ -1,10 +1,3 @@
 // @index(['./*', '!./**/*.spec.ts', '!./**/index.ts'], f => `export * from '${f.path}'`)
-export * from './api'
-export * from './auth'
-export * from './icon'
-export * from './layout'
-export * from './list'
-export * from './logo'
-export * from './sidenav-toggle'
-export * from './theme'
-export * from './toolbar'
+export * from './api';
+export * from './auth';

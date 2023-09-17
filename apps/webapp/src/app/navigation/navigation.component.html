@@ -1,25 +1,41 @@
-<techbir-layout>
-  <!-- Layout sidenav -->
-  <ng-template techbirLayoutSidenav>
-    <techbir-list>
-      <techbir-list-item>
-        <techbir-list-label label="First"></techbir-list-label>
-        <techbir-list-icon icon="home"></techbir-list-icon>
-      </techbir-list-item>
-      <techbir-list-item>
-        <techbir-list-icon icon="info"></techbir-list-icon>
-        <techbir-list-label label="info"></techbir-list-label>
-      </techbir-list-item>
-    </techbir-list>
-  </ng-template>
+<h1>Buttons</h1>
 
-  <ng-template techbirLayoutContent>
-    <h1 class="content-3">Hello world</h1>
-    <router-outlet></router-outlet>
-  </ng-template>
+<div class="flex column gap-3">
+  <div class="flex row gap-10 wrap">
+    <button class="tb-flat-button primary">flat</button>
+    <button class="tb-flat-button secondary">flat</button>
+    <button class="tb-flat-button accent">flat</button>
+    <button class="tb-flat-button warn">flat</button>
+    <button class="tb-flat-button red">flat</button>
+    <button class="tb-flat-button green">flat</button>
+    <button class="tb-flat-button black">flat</button>
+    <button class="tb-flat-button white">flat</button>
 
-  <!-- Status bar -->
-  <ng-template techbirLayoutStatusbar>
-    <!--  -->
-  </ng-template>
-</techbir-layout>
+    <button class="tb-raised-button primary">raised</button>
+    <button class="tb-raised-button secondary">raised</button>
+    <button class="tb-raised-button accent">raised</button>
+    <button class="tb-raised-button warn">raised</button>
+    <button class="tb-raised-button red">raised</button>
+    <button class="tb-raised-button green">raised</button>
+    <button class="tb-raised-button black">raised</button>
+    <button class="tb-raised-button white">raised</button>
+
+    <button class="tb-text-button primary">text</button>
+    <button class="tb-text-button secondary">text</button>
+    <button class="tb-text-button accent">text</button>
+    <button class="tb-text-button warn">text</button>
+    <button class="tb-text-button red">text</button>
+    <button class="tb-text-button green">text</button>
+    <button class="tb-text-button black">text</button>
+    <button class="tb-text-button white">text</button>
+  </div>
+
+  <div class="flex row gap-10 wrap">
+    <div class="list flex column gap-10">
+      <div class="list-item bg-primary primary-face">List Item</div>
+      <div class="list-item bg-secondary secondary-face">List Item</div>
+      <div class="list-item bg-accent accent-face">List Item</div>
+      <div class="list-item bg-warn warn-face">List Item</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+
+:root {
+  --tb-button-border-radius: 0.6em;
+  --tb-button-min-width: 100px;
+  --tb-button-min-height: 2.2em;
+  --tb-button-font-size: 0.8rem;
+}
+.common-button-style {
+  box-sizing: border-box;
+  border: 3px double transparent;
+  outline: none;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  border-radius: var(--tb-button-border-radius);
+
+  padding-left: 1em;
+  padding-right: 1em;
+  min-width: var(--tb-button-min-width);
+  min-height: var(--tb-button-min-height);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  font-size: var(--tb-button-font-size);
+  cursor: pointer;
+}
+
+.tb-flat-button {
+  @extend .common-button-style;
+}
+
+.tb-raised-button {
+  @extend .common-button-style;
+}
+
+.tb-text-button {
+  @extend .common-button-style;
+}
+
+.tb-icon-button {
+  border-radius: 100%;
+  border: 3px double transparent;
+  outline: 0px;
+  margin: 0px;
+  padding: 0px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  font-family: Material Icon;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+// raised
+// flat
+// icon
+// text
+
+@each $colorName in $colorNames {
+  .tb-raised-button.#{$colorName} {
+    box-shadow: 0px 0px 5px #{var(--#{$colorName}-dark)};
+  }
+
+  .tb-icon-button.#{$colorName} {
+    box-shadow: 0px 0px 5px #{var(--#{$colorName}-dark)};
+  }
+
+  .tb-text-button.#{$colorName} {
+    color: var(--#{$colorName}) !important;
+    background-color: transparent !important;
+  }
+
+  @each $buttonName in (flat, raised, text, icon) {
+    .tb-#{$buttonName}-button.#{$colorName} {
+      color: var(--#{$colorName}-face);
+      background-color: var(--#{$colorName});
+    }
+    .tb-#{$buttonName}-button.#{$colorName}:hover {
+      background-color: var(--#{$colorName}-dark);
+      color: var(--#{$colorName}-dark-face);
+      border-color: var(--#{$colorName}-lighter);
+    }
+
+    .tb-#{$buttonName}-button.#{$colorName}:active {
+      background-color: var(--#{$colorName}-darker);
+      color: var(--#{$colorName}-darker-face);
+      border-color: var(--#{$colorName});
+      box-shadow: inset 0px 0px 3px var(--#{$colorName}-light);
+    }
+  }
+}
