@@ -1,0 +1,72 @@
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+
+.common-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.list {
+  @extend .common-list;
+}
+
+.common-list-item {
+  //   height: 50px;
+
+  min-width: 150px;
+  min-height: 50px;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0.3em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 20px;
+
+  border: 3px double transparent;
+  border-radius: 3px;
+
+  font-size: 1rem;
+  //   line-height: 0.8rem;
+}
+
+.list-item {
+  @extend .common-list-item;
+}
+
+.nav-list-item {
+  @extend .common-list-item;
+  user-select: none;
+  cursor: pointer;
+}
+
+@each $colorName in $colorNames {
+  .list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+  .nav-list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+}
+
+@each $colorName in $colorNames {
+  .nav-list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+
+  .nav-list-item.#{$colorName}:hover,
+  .nav-list-item.#{$colorName}:focus {
+    background-color: var(--#{$colorName}-dark);
+  }
+
+  .nav-list-item.#{$colorName}:active {
+    border: 3px double var(--#{$colorName}-lighter);
+  }
+}

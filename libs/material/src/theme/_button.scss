@@ -24,7 +24,12 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   align-items: center;
   justify-content: center;
 
+  font-family: var(--font-family);
   font-size: var(--tb-button-font-size);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  vertical-align: middle;
   cursor: pointer;
 }
 
@@ -79,7 +84,8 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
       color: var(--#{$colorName}-face);
       background-color: var(--#{$colorName});
     }
-    .tb-#{$buttonName}-button.#{$colorName}:hover {
+    .tb-#{$buttonName}-button.#{$colorName}:hover,
+    .tb-#{$buttonName}-button.#{$colorName}:focus {
       background-color: var(--#{$colorName}-dark);
       color: var(--#{$colorName}-dark-face);
       border-color: var(--#{$colorName}-lighter);
