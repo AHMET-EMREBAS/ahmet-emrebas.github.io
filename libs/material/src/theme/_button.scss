@@ -1,11 +1,5 @@
 $colorNames: (primary, secondary, accent, warn, red, green, black, white);
 
-:root {
-  --tb-button-border-radius: 0.6em;
-  --tb-button-min-width: 100px;
-  --tb-button-min-height: 2.2em;
-  --tb-button-font-size: 0.8rem;
-}
 .common-button-style {
   box-sizing: border-box;
   border: 3px double transparent;

@@ -1,3 +1,5 @@
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+
 @for $size from 1 through 12 {
   .border-#{$size} {
     border-width: #{$size}px;
@@ -10,7 +12,7 @@
   }
 }
 
-@each $color in (primary, secondary, accent, warn, red, green, black, white) {
+@each $color in $colorNames {
   .border-#{$color} {
     border-color: #{var(--#{$color})};
   }

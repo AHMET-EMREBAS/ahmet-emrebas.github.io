@@ -14,24 +14,24 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
 .common-list-item {
   //   height: 50px;
 
-  min-width: 150px;
-  min-height: 50px;
-
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 0.3em;
+  min-width: var(--tb-list-min-width); // 150px;
+  min-height: var(--tb-list-min-height); // 50px;
+  padding-left: var(--tb-list-padding-left); // 10px;
+  padding-right: var(--tb-list-padding-right); // 10px;
+  padding-bottom: var(--tb-list-padding-bottom); //  0.3em;
 
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: 20px;
+  gap: var(--tb-list-gap); // 20px;
 
-  border: 3px double transparent;
-  border-radius: 3px;
+  border-style: double;
+  border-color: transparent;
+  border-width: var(--tb-list-border-width);
+  border-radius: var(--tb-list-border-radius);
 
-  font-size: 1rem;
-  //   line-height: 0.8rem;
+  font-size: var(--tb-list-font-size);
 }
 
 .list-item {
@@ -67,6 +67,6 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   }
 
   .nav-list-item.#{$colorName}:active {
-    border: 3px double var(--#{$colorName}-lighter);
+    border: var(--tb-list-border-width) double var(--#{$colorName}-lighter);
   }
 }
