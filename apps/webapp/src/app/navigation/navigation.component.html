@@ -1,27 +1,39 @@
-<div class="flex column w-100 ">
+<div class="flex column w-100">
   <h1>Inputs</h1>
-  <div class="flex column justify-center padding-100 gap-10 w-100 border-1  border-double">
-    <form class="tb-form border-1 border-double border-primary radius-12 padding-30 w-100">
-      <div class="tb-form-field bg-black black-face ">
-        <label for="">Input Label </label>
-        <input type="text" value="Hello there! Let's add long input here" />
+  <div
+    class="flex column justify-center padding-100 gap-10 w-100 border-1 border-double"
+  >
+    <form
+      class="tb-form border-1 border-double border-primary radius-12 padding-30 w-100"
+    >
+      <div class="tb-form-field-container white">
+        <label class="tb-form-field-label" for="">Input Label </label>
+        <div class="tb-form-field">
+          <input
+            type="text"
+            class="tb-form-field-input"
+            value="Hello there! Let's add long input here"
+          />
+          <div class="icon tb-form-field-icon">info</div>
+        </div>
       </div>
 
-      <div class="tb-form-field">
-        <label for="">Form field label</label>
-        <input type="text" value="Hello there! Let's add long input here" />
-      </div>
-      <div class="tb-form-field">
-        <label for="">Form field label</label>
-        <input type="text" value="Hello there! Let's add long input here" />
-      </div>
-      <div class="tb-form-field">
-        <label for="">Form field label</label>
-        <input type="text" value="Hello there! Let's add long input here" />
-      </div>
-      <div class="tb-form-field">
-        <label for="">Form field label</label>
-        <input type="text" value="Hello there! Let's add long input here" />
+      <div class="tb-form-field-container warn">
+        <label class="tb-form-field-label">Input Label </label>
+
+        <div class="tb-form-field">
+          <div formFieldIcon class="icon tb-form-field-icon">info</div>
+          <input
+            type="text"
+            class="tb-form-field-input"
+            value="Hello there! Let's add long input here"
+          />
+        </div>
+
+        <div class="tb-form-field-error">
+          <div class="icon white">close</div>
+          <span>Error message</span>
+        </div>
       </div>
 
       <div class="tb-actions w-100">
@@ -33,8 +45,8 @@
   <h1>Contents</h1>
   <div class="flex column">
     <div class="bg-primary primary-face">
-      <div class="title-1">Title 1</div>
-      <div class="subtitle-1">Subtitle 1</div>
+      <h1 class="title-1">Title 1</h1>
+      <h2 class="subtitle-1">Subtitle 1</h2>
       <p class="content-1">
         Very long content co text goes here. Let's see how it looks like. I
         actually like it.
@@ -148,14 +160,27 @@
     <button class="tb-icon-button icon black">home</button>
     <button class="tb-icon-button icon white">home</button>
 
-    <button class="tb-icon-button fill icon primary">home</button>
-    <button class="tb-icon-button fill icon secondary">home</button>
-    <button class="tb-icon-button fill icon accent">home</button>
-    <button class="tb-icon-button fill icon warn">home</button>
-    <button class="tb-icon-button fill icon red">home</button>
-    <button class="tb-icon-button fill icon green">home</button>
-    <button class="tb-icon-button fill icon black">home</button>
-    <button class="tb-icon-button fill icon white">home</button>
+    <div style="font-size: 1rem">
+      <button class="tb-icon-button fill icon primary">home</button>
+      <button class="tb-icon-button fill icon secondary">home</button>
+      <button class="tb-icon-button fill icon accent">home</button>
+      <button class="tb-icon-button fill icon warn">home</button>
+      <button class="tb-icon-button fill icon red">home</button>
+      <button class="tb-icon-button fill icon green">home</button>
+      <button class="tb-icon-button fill icon black">home</button>
+      <button class="tb-icon-button fill icon white">home</button>
+    </div>
+
+    <div style="font-size: 1em">
+      <button class="tb-flat-icon-button fill icon primary">home</button>
+      <button class="tb-flat-icon-button icon secondary">home</button>
+      <button class="tb-flat-icon-button fill icon accent">home</button>
+      <button class="tb-flat-icon-button icon warn">home</button>
+      <button class="tb-flat-icon-button fill icon red">home</button>
+      <button class="tb-flat-icon-button icon green">home</button>
+      <button class="tb-flat-icon-button fill icon black">home</button>
+      <button class="tb-flat-icon-button icon white">home</button>
+    </div>
   </div>
 
   <div class="flex row gap-10 wrap">

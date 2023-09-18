@@ -67,6 +67,7 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   }
 
   .nav-list-item.#{$colorName}:active {
-    border: var(--tb-list-border-width) double var(--#{$colorName}-lighter);
+    background-color: var(--#{$colorName}-light);
+    // border: var(--tb-list-border-width) double var(--#{$colorName}-lighter);
   }
 }

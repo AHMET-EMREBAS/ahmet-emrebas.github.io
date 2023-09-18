@@ -21,7 +21,7 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   font-family: var(--font-family);
   font-size: var(--tb-button-font-size);
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.1em;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -41,19 +41,33 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   @extend .common-button-style;
 }
 
-.tb-icon-button {
-  border-radius: 100%;
-  border: 3px double transparent;
+.common-icon-button {
   outline: 0px;
   margin: 0px;
   padding: 0px;
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
-  min-height: 50px;
-  font-family: Material Icon;
-  font-size: 2rem;
+
   cursor: pointer;
+}
+
+.tb-icon-button {
+  @extend .common-icon-button;
+  border-radius: var(--tb-icon-button-border-radius);
+  border: var(--tb-icon-button-border);
+  font-size: var(--tb-icon-button-font-size);
+  min-width: var(--tb-icon-button-min-width);
+  min-height: var(--tb-icon-button-min-height);
+  width: var(--tb-icon-button-width);
+  height: var(--tb-icon-button-height);
+}
+
+.tb-flat-icon-button {
+  @extend .common-icon-button;
+  border: none;
+  font-size: var(--tb-flat-icon-button-font-size);
+  min-width: var(--tb-flat-icon-button-min-width);
+  min-height: var(--tb-flat-icon-button-min-height);
+  width: var(--tb-flat-icon-button-width);
+  height: var(--tb-flat-icon-button-height);
 }
 
 // raised
@@ -93,5 +107,19 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
       border-color: var(--#{$colorName});
       box-shadow: inset 0px 0px 3px var(--#{$colorName}-light);
     }
+  }
+
+  .tb-flat-icon-button.#{$colorName} {
+    color: var(--#{$colorName});
+    background-color: transparent;
+  }
+
+  .tb-flat-icon-button.#{$colorName}:hover,
+  .tb-flat-icon-button.#{$colorName}:focus {
+    color: var(--#{$colorName}-dark);
+  }
+
+  .tb-flat-icon-button.#{$colorName}:active {
+    color: var(--#{$colorName}-darker);
   }
 }

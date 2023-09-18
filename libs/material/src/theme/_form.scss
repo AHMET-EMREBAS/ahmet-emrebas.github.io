@@ -1,62 +1,149 @@
-// .tb-input {
-//   max-height: 50px;
-//   height: 50px;
-//   border: 3px double var(--primary);
-//   outline: none;
-//   min-width: 200px;
-//   max-width: 100%;
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
 
-//   border-radius: 0.3em;
-//   font-size: 1rem;
-//   background-color: var(--white);
-//   padding-left: 10px;
-//   padding-right: 10px;
-// }
-
-.tb-form {
+@mixin __column($gap) {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: #{$gap};
+}
+
+@mixin __row($gap) {
+  display: flex;
+  flex-direction: row;
+  gap: #{$gap};
+}
+
+@mixin __borderRadius() {
+  border-radius: var(--tb-form-field-radius);
+}
+
+@mixin __containerPadding() {
+  padding: var(--tb-form-field-container-padding);
+}
+
+@mixin __inputFieldPadding() {
+  padding: var(--tb-form-field-padding);
+}
+
+@mixin __lightFont() {
+  font-family: var(--font-family);
+  font-size: var(--tb-form-field-input-font-size);
+  font-weight: var(--tb-form-field-input-font-weight);
+}
+
+@mixin __boldFont() {
+  @include __lightFont();
+  font-weight: 600;
+}
+
+@mixin __columnCenter() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.tb-form {
+  @include __column(20px);
+}
+
+.tb-form-field-container {
+  @include __column(10px);
+  @include __containerPadding();
+  @include __borderRadius();
+  @include __containerPadding();
+
+  min-width: 200px;
+}
+
+.tb-form-field-label {
+  @include __boldFont();
+  padding-left: var(--tb-form-field-padding);
 }
 
 .tb-form-field {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  min-width: 200px;
-  padding-top: 10px;
-  gap: 10px;
-  border-radius: 10px;
+  @include __row(0px);
+  @include __borderRadius();
+}
 
-  input {
-    width: 100%;
+.tb-form-field-input {
+  @include __lightFont();
+  @include __inputFieldPadding();
+  @include __borderRadius();
+  height: var(--tb-form-field-input-height);
+  width: 100%;
 
-    font-size: 0.7em;
-    font-family: Roboto, Courier, monospace;
-    font-weight: 200;
+  outline: none;
+}
 
-    min-height: 60px;
+@mixin commonFormFieldIcon($side) {
+  @include __columnCenter();
+  height: var(--tb-form-field-input-height);
 
-    min-width: 200px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px;
+  border-top-#{$side}-radius: var(--tb-form-field-radius);
+  border-bottom-#{$side}-radius: var(--tb-form-field-radius);
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
-    border: 3px solid var(--primary);
-    outline: 0px solid transparent;
+.tb-form-field:has(.tb-form-field-icon:last-child) {
+  .tb-form-field-input {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
-  input:focus,
-  input:active {
-  }
-  label {
-    width: 100%;
-    font-size: 0.7em;
-    font-weight: 500;
-    padding-left: 10px;
+
+  .tb-form-field-icon {
+    @include commonFormFieldIcon(right);
   }
 }
-.tb-form-field:has(input:active),
-.tb-form-field:has(input:focus) {
-  outline: 3px solid var(--accent);
-  transition: outline-width ease 100ms;
+
+.tb-form-field:has(.tb-form-field-icon:first-child) {
+  .tb-form-field-input {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+  }
+
+  .tb-form-field-icon {
+    @include commonFormFieldIcon(left);
+  }
+}
+
+.tb-form-field-error {
+  @include __row(20px);
+  @include __borderRadius();
+  @include __lightFont();
+
+  @include __inputFieldPadding();
+  align-items: center;
+  background-color: var(--red);
+  color: var(--red-face);
+}
+
+@each $colorName in $colorNames {
+  .tb-form-field-container.#{$colorName} {
+    background-color: var(--#{$colorName});
+    color: var(--#{$colorName}-face);
+    // background-color: var(--white);
+    // color: var(--black);
+
+    .tb-form-field-input:active,
+    .tb-form-field-input:focus {
+      border: 3px solid var(--#{$colorName}-dark);
+    }
+
+    .tb-form-field-icon {
+      background-color: var(--#{$colorName}-dark);
+      color: var(--#{$colorName}-face);
+    }
+  }
+
+  .tb-form-field-container.#{$colorName}:has(input:active),
+  .tb-form-field-container.#{$colorName}:has(input:focus) {
+    outline: 3px solid var(--#{$colorName}-darker);
+    transition: outline-width ease 100ms;
+  }
+
+  .tb-form-field-input.#{$colorName} {
+    border: 3px double var(--#{$colorName}-dark);
+  }
 }

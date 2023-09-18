@@ -12,7 +12,8 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   gap: var(--tb-alert-gap);
 
   min-height: var(--tb-alert-min-height);
-  border-radius: var(--tb-border-radius);
+  max-height: var(--tb-alert-max-height);
+  border-radius: var(--tb-alert-border-radius);
   width: var(--tb-alert-width);
   max-width: var(--tb-alert-max-width);
 }
