@@ -1,10 +1,16 @@
-.toolbar {
-  height: 50px;
-  max-height: 50px;
-  padding: 0.3rem;
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+
+.tb-toolbar {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   gap: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
+  height: fit-content;
+}
+
+@each $colorName in $colorNames {
+  .tb-toolbar.#{$colorName} {
+    background-color: var(--#{$colorName});
+  }
 }

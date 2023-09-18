@@ -14,4 +14,6 @@
 @use './shapes';
 @use './sizing';
 @use './toolbar';
+@use './icon';
+@use './tooltip';
 @forward './themes';

@@ -91,26 +91,3 @@ $fontList: (
     font-family: #{$value};
   }
 }
-
-@font-face {
-  font-family: Material Icons;
-  font-style: normal;
-  font-weight: 100 700;
-  src: url('./fonts/material-symbols.woff2') format('woff2');
-}
-
-.icon,
-.material-icon {
-  font-family: Material Icons;
-  font-weight: normal;
-  font-style: normal;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
-.icon.fill {
-  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
-}

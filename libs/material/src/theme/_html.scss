@@ -5,6 +5,8 @@
   --root-margin: 0px;
   --root-position: relative;
   --root-overflow: visible;
+  --root-surface: white;
+  --root-face: black;
 }
 
 * {
@@ -20,7 +22,8 @@ body {
   position: var(--root-position);
   font-size: var(--font-size);
   font-family: var(--font-family);
-  background-color: var(--light);
+  background-color: var(--root-surface);
+  color: var(--root-face);
 }
 
 :fullscreen {
@@ -35,4 +38,8 @@ body {
   body {
     background-color: var(--dark);
   }
+}
+
+.surface-1 {
+  background-color: var(--root-surface);
 }

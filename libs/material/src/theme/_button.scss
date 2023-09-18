@@ -68,6 +68,7 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   min-height: var(--tb-flat-icon-button-min-height);
   width: var(--tb-flat-icon-button-width);
   height: var(--tb-flat-icon-button-height);
+  background-color: transparent;
 }
 
 // raised

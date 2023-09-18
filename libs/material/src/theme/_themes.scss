@@ -7,10 +7,6 @@
   }
 }
 
-.asdf {
-  color: hsl(0, 12%, 32%);
-}
-
 @function faceColor($color) {
   $light: lightness($color);
   $saturation: saturation($color);
