@@ -1,0 +1,62 @@
+// .tb-input {
+//   max-height: 50px;
+//   height: 50px;
+//   border: 3px double var(--primary);
+//   outline: none;
+//   min-width: 200px;
+//   max-width: 100%;
+
+//   border-radius: 0.3em;
+//   font-size: 1rem;
+//   background-color: var(--white);
+//   padding-left: 10px;
+//   padding-right: 10px;
+// }
+
+.tb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tb-form-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 200px;
+  padding-top: 10px;
+  gap: 10px;
+  border-radius: 10px;
+
+  input {
+    width: 100%;
+
+    font-size: 0.7em;
+    font-family: Roboto, Courier, monospace;
+    font-weight: 200;
+
+    min-height: 60px;
+
+    min-width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+
+    border: 3px solid var(--primary);
+    outline: 0px solid transparent;
+  }
+  input:focus,
+  input:active {
+  }
+  label {
+    width: 100%;
+    font-size: 0.7em;
+    font-weight: 500;
+    padding-left: 10px;
+  }
+}
+.tb-form-field:has(input:active),
+.tb-form-field:has(input:focus) {
+  outline: 3px solid var(--accent);
+  transition: outline-width ease 100ms;
+}

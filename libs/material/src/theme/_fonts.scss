@@ -1,4 +1,9 @@
 @font-face {
+  font-family: Handjet;
+  src: url('./fonts/Handjet/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
+}
+
+@font-face {
   font-family: Roboto;
   src: url('./fonts/Roboto_Flex/RobotoFlex.ttf');
 }
@@ -78,12 +83,8 @@ $fontList: (
   'concert-one': 'Concert One, cursive',
   'comfortaa': 'Comfortaa, cursive',
   'black-ops-one': 'Black Ops One, cursive',
+  'handjet': 'Handjet, cursive',
 );
-
-:root {
-  --font-family: Josefin Sans, cursive;
-  --font-size: 16pt;
-}
 
 @each $key, $value in $fontList {
   .font-#{$key} {

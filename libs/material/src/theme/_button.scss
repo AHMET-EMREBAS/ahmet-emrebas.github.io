@@ -25,6 +25,8 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
+
+  user-select: none;
 }
 
 .tb-flat-button {

@@ -16,22 +16,22 @@
   .title-#{$size} {
     @extend .clear-margins;
     font-size: #{$titleSize}rem;
-    line-height: #{$titleSize}rem;
-    font-weight: 400;
-    letter-spacing: 0.1em
+    line-height: #{$titleSize * 1.618}rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
   }
   .subtitle-#{$size} {
     @extend .clear-margins;
     font-size: #{$subtitleSize}rem;
-    line-height: #{$subtitleSize}rem;
-    font-weight: 100;
+    line-height: #{$subtitleSize * 1.618}rem;
+    font-weight: 400;
     letter-spacing: 0.1em;
   }
 
   .content-#{$size} {
     @extend .clear-margins;
     font-size: #{$contentSize}rem;
-    line-height: #{$contentSize}rem;
+    line-height: #{$contentSize * 1.618}rem;
     font-weight: 300;
   }
 }
