@@ -1,29 +1,51 @@
 :root {
   --tb-button-border-radius: 0.6em;
-  --tb-button-min-width: 100px;
-  --tb-button-min-height: 2.2em;
-  --tb-button-font-size: 0.8rem;
+  --tb-button-min-width: 150px;
+  --tb-button-min-height: 50px;
+  --tb-button-font-size: 1rem;
 
+  // Alert variables
   --tb-alert-font-size: 1rem;
-  --tb-alert-border-radius: 0.6em;
-  --tb-alert-min-height: 50px;
-  --tb-alert-padding-bottom: 0.3em;
-  --tb-alert-padding-left: 0.3em;
-  --tb-alert-padding-right:0.3em;
-  --tb-alert-gap: 20px;
-
-  --tb-alert-min-height: 50px;
-  --tb-border-radius: 3px;
   --tb-alert-width: 100%;
   --tb-alert-max-width: 100%;
+  --tb-alert-padding-bottom: 0.3em;
+  --tb-alert-padding-left: 0.3em;
+  --tb-alert-padding-right: 0.3em;
+  --tb-alert-min-height: 50px;
+  --tb-alert-border-radius: 0.6em;
+  --tb-alert-min-height: 50px;
+  --tb-alert-gap: 20px;
 
+  // Alert variables
+
+  // List variables
   --tb-list-font-size: 1rem;
   --tb-list-min-width: 150px;
+  --tb-list-max-width: 100%;
   --tb-list-min-height: 50px;
+  --tb-list-max-height: 50px;
   --tb-list-padding-left: 10px;
   --tb-list-padding-right: 10px;
   --tb-list-padding-bottom: 0.3em;
   --tb-list-gap: 20px;
   --tb-list-border-width: 3px;
   --tb-list-border-radius: 3px;
+
+  // Avatar variables
+  --tb-avatar-width: 50px;
+  --tb-avatar-height: 50px;
+  --tb-avatar-min-width: 50px;
+  --tb-avatar-min-height: 50px;
+  --tb-avatar-max-width: 50px;
+  --tb-avatar-max-height: 50px;
+  --tb-avatar-border-radius: 100%;
+
+  // Profile
+  --tb-profile-min-width: 200px;
+  --tb-profile-gap: 1em;
+  --tb-profile-title-font-size: 0.8em;
+  --tb-profile-title-font-weight: 400;
+  --tb-profile-subtitle-font-size: 0.6em;
+  --tb-profile-subtitle-font-weight: 200;
+  --tb-profile-subtitle-letter-spacing: 0.2em;
 }
