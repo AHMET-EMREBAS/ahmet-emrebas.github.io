@@ -25,18 +25,18 @@
 
     <div class="tb-dropdown-menu bottom bring-forward">
       <button class="tb-raised-button primary ">Dropdown button</button>
-      <div class="tb-dropdown-items ">
+      <div class="tb-dropdown-items border-top-6">
         <ng-container *ngTemplateOutlet="dropdownMenu"></ng-container>
       </div>
     </div>
 
     <div class="tb-dropdown-menu bottom bring-forward">
       <button class="tb-raised-button primary ">Dropdown button</button>
-      <div class="tb-dropdown-items padding-top-20">
+      <div class="tb-dropdown-items border-top-6 ">
         <div class="tb-dropdown-menu right">
           <div class="tb-nav-list-item primary">Open Right Menu</div>
 
-          <div class=" tb-dropdown-items border-left-10 ">
+          <div class=" tb-dropdown-items border-left-12">
             <ng-container *ngTemplateOutlet="dropdownMenu"></ng-container>
           </div>
         </div>
@@ -271,20 +271,24 @@
 
   <div class="flex row gap-10 wrap">
     <div class="tb-list">
-      <button class="tb-nav-list-item primary" fucusable>
-        <div class="icon">home</div>
+      <button class="tb-nav-list-item primary">
+        <div class="icon " style="font-size: 2rem;">home</div>
+        <span>List Item</span>
+      </button>
+      <button class="tb-nav-list-item primary">
+        <div class="icon " style="font-size: 2rem;">home</div>
         <span>List Item</span>
       </button>
       <div class="tb-list-item secondary">
-        <span>List Item</span>
         <div class="icon">home</div>
+        <span>List Item</span>
       </div>
       <div class="tb-list-item accent">
         <span>List Item</span>
       </div>
       <div class="tb-list-item warn">
         <span>List Item</span>
-        <div class="icon">home</div>
+        <div class="icon ">home</div>
       </div>
       <div class="tb-list-item black">
         <span>List Item</span>

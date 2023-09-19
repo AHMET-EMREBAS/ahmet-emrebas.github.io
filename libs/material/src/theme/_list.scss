@@ -24,6 +24,7 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
+
   gap: var(--tb-list-gap); // 20px;
 
   border-style: double;
@@ -32,10 +33,17 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   border-radius: var(--tb-list-border-radius);
 
   font-size: var(--tb-list-font-size);
+  font-size: 1em;
 }
 
 .tb-list-item {
   @extend .___common-list-item;
+}
+
+.tb-list-item > .icon,
+.tb-nav-list-item > .icon {
+  font-size: 2em;
+  line-height: 1em;
 }
 
 .tb-nav-list-item {

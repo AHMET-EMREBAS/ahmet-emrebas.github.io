@@ -4,6 +4,13 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   .border-#{$size} {
     border-width: #{$size}px;
   }
+  @each $side in (top, right, bottom, left) {
+    .border-#{$side}-#{$size} {
+      border-#{$side}-width: #{$size}px;
+      border-#{$side}-style: solid;
+      border-#{$side}-color: transparent;
+    }
+  }
 }
 
 @each $style in (dashed, solid, double) {
@@ -40,10 +47,10 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   }
 }
 
-@for $size from 1 through 12 {
-  @each $side in (top, right, bottom, left) {
-    .border-#{$side}-#{$size} {
-      border-#{$side}: #{$size}px solid transparent;
-    }
-  }
-}
+// @for $size from 1 through 12 {
+//   @each $side in (top, right, bottom, left) {
+//     .border-#{$side}-#{$size} {
+//       border-#{$side}: #{$size}px solid transparent;
+//     }
+//   }
+// }
