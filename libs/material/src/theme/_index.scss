@@ -16,4 +16,6 @@
 @use './toolbar';
 @use './icon';
 @use './tooltip';
+@use './dropdown';
+@use './utils';
 @forward './themes';

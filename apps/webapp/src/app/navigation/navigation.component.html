@@ -1,19 +1,68 @@
 <div class="flex column gap-20 padding-20 width-100">
+
+  <h1>Dropdown</h1>
+
+  <div class="flex row gap-2">
+    <ng-template #dropdownMenu>
+
+      <div class="tb-nav-list ">
+        <div class="tb-nav-list-item primary "> List item 1</div>
+      </div>
+      <div class="tb-nav-list ">
+        <div class="tb-nav-list-item secondary "> List item 1</div>
+      </div>
+      <div class="tb-nav-list ">
+        <div class="tb-nav-list-item accent"> List item 1</div>
+      </div>
+      <div class="tb-nav-list ">
+        <div class="tb-nav-list-item warn"> List item 1</div>
+      </div>
+
+    </ng-template>
+
+
+
+
+    <div class="tb-dropdown-menu bottom bring-forward">
+      <button class="tb-raised-button primary ">Dropdown button</button>
+      <div class="tb-dropdown-items ">
+        <ng-container *ngTemplateOutlet="dropdownMenu"></ng-container>
+      </div>
+    </div>
+
+    <div class="tb-dropdown-menu bottom bring-forward">
+      <button class="tb-raised-button primary ">Dropdown button</button>
+      <div class="tb-dropdown-items padding-top-20">
+        <div class="tb-dropdown-menu right">
+          <div class="tb-nav-list-item primary">Open Right Menu</div>
+
+          <div class=" tb-dropdown-items border-left-10 ">
+            <ng-container *ngTemplateOutlet="dropdownMenu"></ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
   <h1>Toolbars</h1>
 
   <div class="flex column gap-2">
     <div class="tb-toolbar primary">
-      <button class="tb-flat-icon-button white" aria-label="Top" tooltip-position="bottom">
+
+      <button class="tb-flat-icon-button white" aria-label="Top" tooltip-position="top">
         <span class="icon">phone</span>
       </button>
-      <button class="tb-flat-icon-button white" aria-label="Right" tooltip-position="bottom">
+      <button class="tb-flat-icon-button white" aria-label="Right" tooltip-position="right">
         <span class="icon">business</span>
       </button>
       <button class="tb-flat-icon-button white" aria-label="Bottom" tooltip-position="bottom">
         <span class="icon">person</span>
       </button>
 
-      <button class="tb-flat-icon-button white" aria-label="LEft" tooltip-position="bottom">
+      <button class="tb-flat-icon-button white" aria-label="Left" tooltip-position="left">
         <span class="icon">email</span>
       </button>
     </div>
@@ -221,27 +270,27 @@
   </div>
 
   <div class="flex row gap-10 wrap">
-    <div class="list">
-      <button class="nav-list-item primary" fucusable>
+    <div class="tb-list">
+      <button class="tb-nav-list-item primary" fucusable>
         <div class="icon">home</div>
         <span>List Item</span>
       </button>
-      <div class="list-item secondary">
+      <div class="tb-list-item secondary">
         <span>List Item</span>
         <div class="icon">home</div>
       </div>
-      <div class="list-item accent">
+      <div class="tb-list-item accent">
         <span>List Item</span>
       </div>
-      <div class="list-item warn">
-        <span>List Item</span>
-        <div class="icon">home</div>
-      </div>
-      <div class="list-item black">
+      <div class="tb-list-item warn">
         <span>List Item</span>
         <div class="icon">home</div>
       </div>
-      <div class="list-item white">
+      <div class="tb-list-item black">
+        <span>List Item</span>
+        <div class="icon">home</div>
+      </div>
+      <div class="tb-list-item white">
         <span>Very long list text. Check the behaviour</span>
         <div class="icon">home</div>
       </div>

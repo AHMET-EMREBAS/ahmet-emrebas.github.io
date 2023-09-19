@@ -23,7 +23,6 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
 [aria-label][tooltip-position]::before {
   content: attr(aria-label);
   background-color: var(--tooltip-color);
-  color: white;
   padding: 0.5em;
   border-radius: 0.3em;
   width: max-content;
@@ -49,72 +48,78 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
     scale(var(--scale));
 }
 
-// Right configuratoin
+/** Right  */
 
 [aria-label][tooltip-position='right']::before {
   --translate-x: calc(100% + var(--arrow-size));
   --translate-y: -50%;
-  left: 0px;
+  right: 0px;
   top: 50%;
   transform-origin: left center;
 }
 
 [aria-label][tooltip-position='right']::after {
-  --translate-x: calc(var(--arrow-size) - 20%);
+  --translate-x: calc(var(--arrow-size));
   --translate-y: -50%;
+  right: 0px;
   top: 50%;
   border-right-color: var(--tooltip-color);
   transform-origin: left center;
 }
 
-// Bottom configuratoin
+/** Bottom  */
 
 [aria-label][tooltip-position='bottom']::before {
-  --translate-y: calc(100% + var(--arrow-size));
   --translate-x: -50%;
+  --translate-y: calc(100% + var(--arrow-size));
+  bottom: 0px;
   left: 50%;
   transform-origin: top center;
 }
 
 [aria-label][tooltip-position='bottom']::after {
-  --translate-y: calc(120% + var(--arrow-size));
   --translate-x: -50%;
+  --translate-y: calc(var(--arrow-size));
   left: 50%;
+  bottom: 0px;
   border-bottom-color: var(--tooltip-color);
   transform-origin: top center;
 }
 
-// Top configuration
+/** Top */
 
 [aria-label][tooltip-position='top']::before {
-  --translate-y: calc(-100% - var(--arrow-size));
+  position: absolute;
   --translate-x: -50%;
+  --translate-y: calc(-100% - var(--arrow-size));
+  top: 0px;
   left: 50%;
   transform-origin: bottom center;
 }
 
 [aria-label][tooltip-position='top']::after {
-  --translate-y: calc(-1 * var(--arrow-size));
   --translate-x: -50%;
+  --translate-y: calc(-1 * var(--arrow-size));
+  top: 0px;
   left: 50%;
   border-top-color: var(--tooltip-color);
   transform-origin: bottom center;
 }
 
-// left configuratoin
+/** Left */
 
 [aria-label][tooltip-position='left']::before {
+  --translate-x: calc(-100% - var(--arrow-size));
   --translate-y: -50%;
-  --translate-x: 0%;
-  left: calc(-50% - var(--arrow-size));
+  left: 0px;
   top: 50%;
   transform-origin: right center;
 }
 
 [aria-label][tooltip-position='left']::after {
-  --translate-y: calc(-1 * var(--arrow-size));
-  --translate-x: 0%;
-  left: calc(var(--arrow-size));
+  --translate-x: calc(-1 * var(--arrow-size));
+  --translate-y: -50%;
+  left: 0px;
   top: 50%;
   border-left-color: var(--tooltip-color);
   transform-origin: right center;

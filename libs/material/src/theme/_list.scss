@@ -1,17 +1,17 @@
 $colorNames: (primary, secondary, accent, warn, red, green, black, white);
 
-.common-list {
+.___common-list {
   display: flex;
   flex-direction: column;
   gap: 3px;
   flex-wrap: wrap;
 }
 
-.list {
-  @extend .common-list;
+.tb-list {
+  @extend .___common-list;
 }
 
-.common-list-item {
+.___common-list-item {
   //   height: 50px;
 
   min-width: var(--tb-list-min-width); // 150px;
@@ -34,39 +34,39 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   font-size: var(--tb-list-font-size);
 }
 
-.list-item {
-  @extend .common-list-item;
+.tb-list-item {
+  @extend .___common-list-item;
 }
 
-.nav-list-item {
-  @extend .common-list-item;
+.tb-nav-list-item {
+  @extend .___common-list-item;
   user-select: none;
   cursor: pointer;
 }
 
 @each $colorName in $colorNames {
-  .list-item.#{$colorName} {
+  .tb-list-item.#{$colorName} {
     background-color: #{var(--#{$colorName})};
     color: #{var(--#{$colorName}-face)};
   }
-  .nav-list-item.#{$colorName} {
+  .tb-nav-list-item.#{$colorName} {
     background-color: #{var(--#{$colorName})};
     color: #{var(--#{$colorName}-face)};
   }
 }
 
 @each $colorName in $colorNames {
-  .nav-list-item.#{$colorName} {
+  .tb-nav-list-item.#{$colorName} {
     background-color: #{var(--#{$colorName})};
     color: #{var(--#{$colorName}-face)};
   }
 
-  .nav-list-item.#{$colorName}:hover,
-  .nav-list-item.#{$colorName}:focus {
+  .tb-nav-list-item.#{$colorName}:hover,
+  .tb-nav-list-item.#{$colorName}:focus {
     background-color: var(--#{$colorName}-dark);
   }
 
-  .nav-list-item.#{$colorName}:active {
+  .tb-nav-list-item.#{$colorName}:active {
     background-color: var(--#{$colorName}-light);
     // border: var(--tb-list-border-width) double var(--#{$colorName}-lighter);
   }
