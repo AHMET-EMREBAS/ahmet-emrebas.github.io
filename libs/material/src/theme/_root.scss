@@ -1,6 +1,14 @@
 :root {
-  --font-family: Josefin Sans, cursive;
-  --font-size: 12pt;
+  --root-width: 100%;
+  --root-height: 100%;
+  --root-padding: 0px;
+  --root-margin: 0px;
+  --root-position: relative;
+  --root-overflow: visible;
+  --root-face: rgb(26, 25, 25);
+  --root-surface: rgb(246, 250, 246);
+  --root-font-family: Josefin Sans, cursive;
+  --root-font-size: 16px;
 
   // Buttons
   --tb-button-border-radius: 0.3em;

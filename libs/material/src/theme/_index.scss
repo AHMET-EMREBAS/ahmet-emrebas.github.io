@@ -21,5 +21,7 @@
 @use 'utils';
 @use 'vars';
 @use 'zindex';
+@use 'shadow';
+
 
 @forward './themes';
