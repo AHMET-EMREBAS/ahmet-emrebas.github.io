@@ -5,7 +5,7 @@
 
   <h1>Dropdown Menu</h1>
 
-  <div class="flex row gap-100  width-fit-content">
+  <div class="flex row gap-100 margin-top-100  width-fit-content">
     <ng-template #dropdownMenu let-position="position">
       <div [classList]="['tb-dropdown-menu',position].join(' ')">
         <div class="tb-flat-button primary">{{position}} Menu</div>
@@ -24,7 +24,16 @@
 
 
     <div class="tb-dropdown-menu bottom">
-      <div class="tb-flat-button primary">First Menu</div>
+      <button class="tb-flat-button primary">Flat bottom</button>
+      <div class="tb-dropdown-items warn">
+        <div class="tb-nav-list-item primary">Nav List item</div>
+        <div class="tb-nav-list-item primary">Nav List item</div>
+        <div class="tb-nav-list-item primary">Nav List item</div>
+        <div class="tb-nav-list-item primary">Nav List item</div>
+      </div>
+    </div>
+    <div class="tb-dropdown-menu bottom">
+      <button class="tb-icon-button primary icon">home</button>
       <div class="tb-dropdown-items warn">
         <div class="tb-nav-list-item primary">Nav List item</div>
         <div class="tb-nav-list-item primary">Nav List item</div>
