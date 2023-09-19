@@ -1,48 +1,25 @@
-$colorNames: (primary, secondary, accent, warn, red, green, black, white);
-
-@for $size from 1 through 12 {
-  .border-#{$size} {
-    border-width: #{$size}px;
-  }
-  @each $side in (top, right, bottom, left) {
-    .border-#{$side}-#{$size} {
-      border-#{$side}-width: #{$size}px;
-      border-#{$side}-style: solid;
-      border-#{$side}-color: transparent;
-    }
-  }
-}
+@import 'vars';
+@import 'utils';
 
 @each $style in (dashed, solid, double) {
-  .border-#{$style} {
-    border-style: #{$style};
-  }
+  @include c(b + '-' + $style, 'border-style', $style);
 }
 
 @each $color in $colorNames {
-  .border-#{$color} {
-    border-color: #{var(--#{$color})};
-  }
-  .border-#{$color}-dark {
-    border-color: #{var(--#{$color}-dark)};
-  }
-  .border-#{$color}-light {
-    border-color: #{var(--#{$color}-light)};
-  }
-}
-
-// Border radius
-@for $size from 1 through 12 {
-  $radius: #{$size * 1.618}px;
-  .radius-#{$size} {
-    border-radius: #{$radius};
-  }
-
-  @each $side in (top, bottom) {
-    @each $sidex in (right, left) {
-      .radius-#{$side}-#{$sidex}-#{$size} {
-        border-#{$side}-#{$sidex}-radius: #{$radius};
-      }
-    }
+  @include c(b + '-' + #{$color}, border-color, var(--#{color}));
+  @include c(b + '-' + #{$color} + dark, border-color, var(--#{color-dark}));
+  @include c(b + '-' + #{$color} + light, border-color, var(--#{color-light}));
+  @each $side in $sides {
+    @include c(b + '-' + #{$color}, border-#{$side}-color, var(--#{color}));
+    @include c(
+      b + '-' + #{$color} + dark,
+      border-#{$side}-color,
+      var(--#{color-dark})
+    );
+    @include c(
+      b + '-' + #{$color} + light,
+      border-#{$side}-color,
+      var(--#{color-light})
+    );
   }
 }

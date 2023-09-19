@@ -4,28 +4,28 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--active-theme-accent-dark);
+  background: var(--accent-dark);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-track:hover {
-  background: var(--active-theme-primary-light);
+  background: var(--primary-light);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--active-theme-primary-light);
+  background: var(--primary-light);
 }
 
 ::-webkit-scrollbar-track:active {
-  background: var(--active-theme-accent-dark);
+  background: var(--accent-dark);
 }
 
 /* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
 ::-webkit-scrollbar-thumb:active {
-  background: var(--active-theme-primary-dark);
+  background: var(--primary-dark);
 }
 
 /* Style the scrollbar corner (the intersection between the horizontal and vertical scrollbars) */
 ::-webkit-scrollbar-corner {
-  background: var(--active-theme-primary-dark);
+  background: var(--primary-dark);
 }

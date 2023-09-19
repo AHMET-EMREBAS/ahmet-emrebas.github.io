@@ -1,20 +1,22 @@
 @import 'vars';
 
-
-.bring-forward {
-  z-index: 100;
+/** Get first letter */
+@function fl($string) {
+  @return str-slice($string, 1, 1);
 }
 
-// Dividers
-@each $colorName in $colorNames {
-  .#{$colorName}.inline-divider {
-    display: inline;
-    height: 100%;
-    border-left: 0.1em solid var(--#{$colorName});
+/** create a class with single property */
+@mixin c($className, $property, $value) {
+  .#{$className} {
+    #{$property}: #{$value};
   }
-  .#{$colorName}.block-divider {
-    display: block;
-    width: 100%;
-    border-top: 0.1em solid var(--#{$colorName});
+}
+
+/** create classes with n number of suffix  */
+@mixin n($className, $property, $unit, $count) {
+  @for $c from 1 through $count {
+    .#{$className}-#{$c} {
+      #{$property}: #{$c + #{$unit}};
+    }
   }
 }

@@ -1,4 +1,5 @@
-$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+@import 'vars'; 
+
 
 @mixin __column($gap) {
   display: flex;

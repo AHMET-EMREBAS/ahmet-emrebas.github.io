@@ -5,8 +5,10 @@
   --root-margin: 0px;
   --root-position: relative;
   --root-overflow: visible;
-  --root-surface: white;
-  --root-face: black;
+  --root-surface: rgb(233, 243, 233);
+  --root-face: rgb(34, 34, 34);
+  --root-font-family: Josefin Sans, cursive;
+  --root-font-size: 16px;
 }
 
 * {
@@ -20,8 +22,8 @@ body {
   padding: var(--root-padding);
   margin: var(--root-margin);
   position: var(--root-position);
-  font-size: var(--font-size);
-  font-family: var(--font-family);
+  font-size: var(--root-font-size);
+  font-family: var(--root-font-family);
   background-color: var(--root-surface);
   color: var(--root-face);
 }
@@ -38,8 +40,4 @@ body {
   body {
     background-color: var(--dark);
   }
-}
-
-.surface-1 {
-  background-color: var(--root-surface);
 }
