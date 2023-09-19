@@ -46,11 +46,3 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
     }
   }
 }
-
-// @for $size from 1 through 12 {
-//   @each $side in (top, right, bottom, left) {
-//     .border-#{$side}-#{$size} {
-//       border-#{$side}: #{$size}px solid transparent;
-//     }
-//   }
-// }

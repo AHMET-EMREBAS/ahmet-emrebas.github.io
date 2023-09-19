@@ -1,17 +1,20 @@
+@import 'vars';
+
+
 .bring-forward {
   z-index: 100;
 }
-$colorNames: (primary, secondary, accent, warn, red, green, black, white);
 
+// Dividers
 @each $colorName in $colorNames {
   .#{$colorName}.inline-divider {
     display: inline;
     height: 100%;
-    border-left: 3px solid var(--white);
+    border-left: 0.1em solid var(--#{$colorName});
   }
   .#{$colorName}.block-divider {
     display: block;
     width: 100%;
-    border-top: 3px solid var(--#{$colorName});
+    border-top: 0.1em solid var(--#{$colorName});
   }
 }

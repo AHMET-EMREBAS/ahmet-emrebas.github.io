@@ -1,4 +1,13 @@
-$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+$colorNames: (
+  primary,
+  secondary,
+  accent,
+  warn,
+  red,
+  green,
+  black,
+  white
+);
 
 .common-button-style {
   box-sizing: border-box;
@@ -15,8 +24,9 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
   display: flex;
   flex-direction: row;
   gap: 10px;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
 
   font-family: var(--font-family);
   font-size: var(--tb-button-font-size);
@@ -38,6 +48,10 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
 }
 
 .tb-text-button {
+  @extend .common-button-style;
+}
+
+.tb-flat-icon-button {
   @extend .common-button-style;
 }
 
@@ -78,49 +92,56 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
 
 @each $colorName in $colorNames {
   .tb-raised-button.#{$colorName} {
-    box-shadow: 0px 0px 5px #{var(--#{$colorName}-dark)};
+    box-shadow: 0px 0px 5px #{var(--#{$colorName}-dark)
   }
 
-  .tb-icon-button.#{$colorName} {
-    box-shadow: 0px 0px 5px #{var(--#{$colorName}-dark)};
+  ;
+}
+
+.tb-icon-button.#{$colorName} {
+  box-shadow: 0px 0px 5px #{var(--#{$colorName}-dark)
+}
+
+;
+}
+
+.tb-text-button.#{$colorName} {
+  color: var(--#{$colorName}) !important;
+  background-color: transparent !important;
+}
+
+@each $buttonName in (flat, raised, text, icon) {
+  .tb-#{$buttonName}-button.#{$colorName} {
+    color: var(--#{$colorName}-face);
+    background-color: var(--#{$colorName});
   }
 
-  .tb-text-button.#{$colorName} {
-    color: var(--#{$colorName}) !important;
-    background-color: transparent !important;
+  .tb-#{$buttonName}-button.#{$colorName}:hover,
+  .tb-#{$buttonName}-button.#{$colorName}:focus {
+    background-color: var(--#{$colorName}-dark);
+    color: var(--#{$colorName}-dark-face);
+    border-color: var(--#{$colorName}-lighter);
   }
 
-  @each $buttonName in (flat, raised, text, icon) {
-    .tb-#{$buttonName}-button.#{$colorName} {
-      color: var(--#{$colorName}-face);
-      background-color: var(--#{$colorName});
-    }
-    .tb-#{$buttonName}-button.#{$colorName}:hover,
-    .tb-#{$buttonName}-button.#{$colorName}:focus {
-      background-color: var(--#{$colorName}-dark);
-      color: var(--#{$colorName}-dark-face);
-      border-color: var(--#{$colorName}-lighter);
-    }
-
-    .tb-#{$buttonName}-button.#{$colorName}:active {
-      background-color: var(--#{$colorName}-darker);
-      color: var(--#{$colorName}-darker-face);
-      border-color: var(--#{$colorName});
-      box-shadow: inset 0px 0px 3px var(--#{$colorName}-light);
-    }
+  .tb-#{$buttonName}-button.#{$colorName}:active {
+    background-color: var(--#{$colorName}-darker);
+    color: var(--#{$colorName}-darker-face);
+    border-color: var(--#{$colorName});
+    box-shadow: inset 0px 0px 3px var(--#{$colorName}-light);
   }
+}
 
-  .tb-flat-icon-button.#{$colorName} {
-    color: var(--#{$colorName});
-    background-color: transparent;
-  }
+.tb-flat-icon-button.#{$colorName} {
+  color: var(--#{$colorName});
+  background-color: transparent;
+}
 
-  .tb-flat-icon-button.#{$colorName}:hover,
-  .tb-flat-icon-button.#{$colorName}:focus {
-    color: var(--#{$colorName}-dark);
-  }
+.tb-flat-icon-button.#{$colorName}:hover,
+.tb-flat-icon-button.#{$colorName}:focus {
+  color: var(--#{$colorName}-dark);
+}
 
-  .tb-flat-icon-button.#{$colorName}:active {
-    color: var(--#{$colorName}-darker);
-  }
+.tb-flat-icon-button.#{$colorName}:active {
+  color: var(--#{$colorName}-darker);
+}
 }

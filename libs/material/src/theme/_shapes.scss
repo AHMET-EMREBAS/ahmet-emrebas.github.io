@@ -1,6 +1,14 @@
 @for $size from 1 through 100 {
   .square-#{$size} {
-    width: #{$size}px;
-    height: #{$size}px;
+    width: #{$size*0.1}em;
+    height: #{$size*0.1}em;
+  }
+}
+
+
+@for $size from 1 through 100 {
+  .gold-rectangle-#{$size} {
+    width: #{$size * 1.618}em;
+    height: #{$size}em;
   }
 }

@@ -1,3 +1,6 @@
+@use 'sass:list';
+@use 'sass:math';
+
 @font-face {
   font-family: Handjet;
   src: url('./fonts/Handjet/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
@@ -89,5 +92,51 @@ $fontList: (
 @each $key, $value in $fontList {
   .font-#{$key} {
     font-family: #{$value};
+  }
+}
+
+
+
+.clear-margins {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+@for $size from 1 through 6 {
+  $titleSize: math.div(6, $size);
+  $subtitleSize: $titleSize * 0.6;
+  $contentSize: $titleSize * 0.5;
+
+  .title-#{$size} {
+    @extend .clear-margins;
+    font-size: #{$titleSize}em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .subtitle-#{$size} {
+    @extend .clear-margins;
+    font-size: #{$subtitleSize}em;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    padding-left: 0.2em;
+  }
+
+  .content-#{$size} {
+    @extend .clear-margins;
+    font-size: #{$contentSize}em;
+    font-weight: 300;
+    // line-height: #{$contentSize * 1}em;
+    line-height: 1.3em;
+    text-indent: 0.2em;
+  }
+}
+
+@for $size from 1 through 100 {
+  .tb-font-size-#{$size} {
+    font-size: #{$size * 0.3}em;
   }
 }

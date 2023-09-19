@@ -1,44 +1,62 @@
 @use 'sass:math';
+@import 'vars';
 
-@function paddingSize($padding) {
-  @return #{$padding * 0.1}em;
+
+@function fl($string) {
+  @return str-slice($string, 1, 1);
 }
 
-@function marginSize($margin) {
-  @return #{$margin * 0.1}em;
-}
+@for $s from 1 through 100 {
+  $vals: (
+    em: #{$s * 0.1}em,
+    rem: #{$s * 0.1}rem,
+    px: #{$s}px,
+    vw: #{$s}vw,
+    vh: #{$s}vh,
+    per: #{$s + '%'},
+  );
 
-@function firstLetter($text) {
-  // @return str-slice($text, 1, 1);
-  @return $text;
-}
+  @each $u in $units {
+    $suffix: $s + $u;
+    $value: map-get($vals, $u);
 
-// Margin padding width classes
-@for $size from 1 through 100 {
-  $value: #{$size * 0.05} + 'em';
-
-  .padding-#{$size} {
-    padding: #{$value};
-  }
-  .margin-#{$size} {
-    margin: #{$value};
-  }
-
-  @each $side in (top, right, bottom, left) {
-    .padding-#{$side}-#{$size} {
-      padding-#{$side}: #{$value};
+    @each $p in (width, height) {
+      $prefix: fl($p);
+      .#{$prefix}-#{$suffix} {
+        #{$p}: #{$value};
+      }
     }
 
-    .margin-#{$side}-#{$size} {
-      margin-#{$side}: #{$value};
-    }
-  }
+    @each $p in (margin, padding) {
+      $prefix: fl($p);
 
-  .width-#{$size} {
-    width: #{$size}#{'%'};
-  }
-  .height-#{$size} {
-    height: #{$size}#{'%'};
+      .#{$prefix}-#{$suffix} {
+        #{$p}: #{$value};
+      }
+      @each $sd in $sides {
+        .#{$prefix}#{fl($sd)}-#{$suffix} {
+          #{$p}-#{$sd}: #{$value};
+        }
+      }
+    }
+
+    // Sides
+    @each $sd in $sides {
+      .#{fl($sd)}-#{$suffix} {
+        #{$sd}: #{$value};
+      }
+    }
+
+    .b-#{$suffix} {
+      border: #{$value} solid transparent;
+    }
+
+    // border sizes
+    @each $sd in $sides {
+      .b#{fl($sd)}-#{$suffix} {
+        border-#{$sd}: #{$value};
+      }
+    }
   }
 }
 
@@ -47,11 +65,11 @@
 }
 
 @each $value in (fit-content, max-content, min-content, auto) {
-  .width-#{$value} {
+  .w-#{$value} {
     width: #{$value};
   }
 }
 
-.width-full {
+.w-full {
   width: 100%;
 }
