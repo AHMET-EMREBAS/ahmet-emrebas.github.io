@@ -41,3 +41,17 @@
     height: #{$size}#{'%'};
   }
 }
+
+.margin-auto {
+  margin: auto;
+}
+
+@each $value in (fit-content, max-content, min-content, auto) {
+  .width-#{$value} {
+    width: #{$value};
+  }
+}
+
+.width-full {
+  width: 100%;
+}

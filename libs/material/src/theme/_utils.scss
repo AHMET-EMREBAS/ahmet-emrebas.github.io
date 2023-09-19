@@ -1,3 +1,17 @@
 .bring-forward {
   z-index: 100;
 }
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+
+@each $colorName in $colorNames {
+  .#{$colorName}.inline-divider {
+    display: inline;
+    height: 100%;
+    border-left: 3px solid var(--white);
+  }
+  .#{$colorName}.block-divider {
+    display: block;
+    width: 100%;
+    border-top: 3px solid var(--#{$colorName});
+  }
+}
