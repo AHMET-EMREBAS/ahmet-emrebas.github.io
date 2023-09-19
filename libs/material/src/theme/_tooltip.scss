@@ -39,7 +39,7 @@ $colorNames: (primary, secondary, accent, warn, red, green, black, white);
 
 [aria-label][tooltip-position]::before,
 [aria-label][tooltip-position]::after {
-  --tooltip-color: var(--accent-darker);
+  --tooltip-color: var(--primary-dark);
   --arrow-size: 0.5rem;
   --scale: 0;
 
