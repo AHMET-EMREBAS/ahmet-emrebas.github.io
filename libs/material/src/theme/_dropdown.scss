@@ -17,6 +17,7 @@ $colorNames: (
 
 .tb-dropdown-menu {
   position: relative;
+  align-self: flex-start;
 }
 
 .tb-dropdown-items {
@@ -27,6 +28,7 @@ $colorNames: (
   transform: translate(var(--x), var(--y)) scale(var(--scale));
   width: fit-content;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .tb-dropdown-menu:hover>.tb-dropdown-items {
