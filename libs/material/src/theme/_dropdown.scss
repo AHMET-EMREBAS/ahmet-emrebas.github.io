@@ -21,12 +21,12 @@ $colorNames: (
 
 .tb-dropdown-items {
   --scale: 0;
+  visibility: collapse;
   position: absolute;
   opacity: 0;
-  transform: translate(var(--x, --y)) scale(var(--scale));
+  transform: translate(var(--x), var(--y)) scale(var(--scale));
   width: fit-content;
   box-sizing: border-box;
-
 }
 
 .tb-dropdown-menu:hover>.tb-dropdown-items {
@@ -38,10 +38,12 @@ $colorNames: (
 .bottom.tb-dropdown-menu:hover>.tb-dropdown-items {
   --scale: 1;
   --x: -50%;
-  --y: 100% bottom;
+  --y: 100%;
   left: 50%;
+  bottom: 0px;
   border-top: 1em solid transparent;
   transform-origin: top center;
+  visibility: visible;
 }
 
 .right.tb-dropdown-menu:hover>.tb-dropdown-items {
@@ -52,6 +54,7 @@ $colorNames: (
   right: 0px;
   border-left: 1em solid transparent;
   transform-origin: left center;
+  visibility: visible;
 }
 
 .left.tb-dropdown-menu:hover>.tb-dropdown-items {
@@ -62,16 +65,18 @@ $colorNames: (
   left: 0px;
   border-right: 1em solid transparent;
   transform-origin: right center;
+  visibility: visible;
 }
 
 .top.tb-dropdown-menu:hover>.tb-dropdown-items {
   --scale: 1;
   --x: -50%;
-  --y: 200%;
-  // top: 0%;
+  --y: -100%;
   left: 50%;
+  top: 0px;
   border-bottom: 1em solid transparent;
   transform-origin: bottom center;
+  visibility: visible;
 }
 
 /** Arrow */
