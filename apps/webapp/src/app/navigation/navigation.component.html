@@ -3,14 +3,18 @@
 
   <div class="flex column gap-2">
     <div class="tb-toolbar primary">
-      <button class="tb-flat-icon-button white">
+      <button class="tb-flat-icon-button white" aria-label="Top" tooltip-position="top">
         <span class="icon">phone</span>
       </button>
-      <button class="tb-flat-icon-button white">
+      <button class="tb-flat-icon-button white" aria-label="Right" tooltip-position="right">
         <span class="icon">business</span>
       </button>
-      <button class="tb-flat-icon-button white">
+      <button class="tb-flat-icon-button white" aria-label="Bottom" tooltip-position="bottom">
         <span class="icon">person</span>
+      </button>
+
+      <button class="tb-flat-icon-button white" aria-label="LEft" tooltip-position="left">
+        <span class="icon">email</span>
       </button>
     </div>
     <div class="tb-toolbar secondary">
@@ -54,11 +58,7 @@
       <div class="tb-form-field-container white">
         <label class="tb-form-field-label" for="">Input Label </label>
         <div class="tb-form-field">
-          <input
-            type="text"
-            class="tb-form-field-input"
-            value="Hello there! Let's add long input here"
-          />
+          <input type="text" class="tb-form-field-input" value="Hello there! Let's add long input here" />
           <div class="icon tb-form-field-icon">info</div>
         </div>
       </div>
@@ -68,11 +68,7 @@
 
         <div class="tb-form-field">
           <div formFieldIcon class="icon tb-form-field-icon">info</div>
-          <input
-            type="text"
-            class="tb-form-field-input"
-            value="Hello there! Let's add long input here"
-          />
+          <input type="text" class="tb-form-field-input" value="Hello there! Let's add long input here" />
         </div>
 
         <div class="tb-form-field-error">
@@ -136,11 +132,7 @@
 
   <h1 class="title-6">Profile</h1>
   <div class="profile">
-    <img
-      class="avatar"
-      src="/assets/icons/icon-512x512.png"
-      alt="Profile picture"
-    />
+    <img class="avatar" src="/assets/icons/icon-512x512.png" alt="Profile picture" />
     <div class="profile-content">
       <div class="profile-title">Ahmet Emrebas</div>
       <div class="profile-subtitle">Fullstack Engineer</div>
