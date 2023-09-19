@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 type LogObjectMessage = Record<string, any>[];
 
 export class Logger {

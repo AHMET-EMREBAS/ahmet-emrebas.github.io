@@ -1,149 +1,93 @@
 @font-face {
+  font-family: Handjet;
+  src: url('./fonts/Handjet/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
+}
+
+@font-face {
   font-family: Roboto;
-  src: url('./assets/fonts/Roboto_Flex/RobotoFlex.ttf');
+  src: url('./fonts/Roboto_Flex/RobotoFlex.ttf');
 }
 
 @font-face {
   font-family: Special Elite;
-  src: url('./assets/fonts/Special_Elite/SpecialElite-Regular.ttf');
+  src: url('./fonts/Special_Elite/SpecialElite-Regular.ttf');
 }
 
 @font-face {
   font-family: Josefin Sans;
-  src: url(./assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+  src: url(./fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: Josefin Sans;
   font-style: italic;
-  src: url(./assets/fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
+  src: url(./fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: Lobster;
-  src: url('./assets/fonts/Lobster/Lobster-Regular.ttf');
+  src: url('./fonts/Lobster/Lobster-Regular.ttf');
 }
 
 @font-face {
   font-family: Comfortaa;
-  src: url(./assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+  src: url(./fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: Rubik Dirt;
-  src: url(./assets/fonts/Rubik_Dirt/RubikDirt-Regular.ttf);
+  src: url(./fonts/Rubik_Dirt/RubikDirt-Regular.ttf);
 }
 
 @font-face {
   font-family: Rubik Iso;
-  src: url('./assets/fonts/Rubik_Iso/RubikIso-Regular.ttf');
+  src: url('./fonts/Rubik_Iso/RubikIso-Regular.ttf');
 }
 
 @font-face {
   font-family: Black Ops One;
-  src: url('./assets/fonts/Black_Ops_One/BlackOpsOne-Regular.ttf');
+  src: url('./fonts/Black_Ops_One/BlackOpsOne-Regular.ttf');
 }
 
 @font-face {
   font-family: Concert One;
-  src: url('./assets/fonts/Concert_One/ConcertOne-Regular.ttf');
+  src: url('./fonts/Concert_One/ConcertOne-Regular.ttf');
 }
 
 @font-face {
   font-family: Tourney;
-  src: url('./assets/fonts/Tourney/Tourney-VariableFont_wdth.ttf');
+  src: url('./fonts/Tourney/Tourney-VariableFont_wdth.ttf');
 }
 
 @font-face {
   font-family: Tourney;
   font-style: italic;
-  src: url('./assets/fonts/Tourney/Tourney-Italic-VariableFont_wdth.ttf');
+  src: url('./fonts/Tourney/Tourney-Italic-VariableFont_wdth.ttf');
 }
 
 @font-face {
   font-family: Dancing Script;
-  src: url('./assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
+  src: url('./fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
 }
 
-:root {
-  --font-family: Roboto, cursive;
-  --font-size: 16px;
-}
+$fontList: (
+  'tourney': 'Tourney, cursive',
+  'special-elite': 'Special Elite, cursive',
+  'rubik-iso': 'Rubik Iso, cursive',
+  'rubik-dirt': 'Rubik Dirt, cursive',
+  'roboto': 'Roboto, cursive',
+  'material-icon': 'Material Icons, cursive',
+  'lobster': 'Lobster, cursive',
+  'josefin-sans': 'Josefin Sans, cursive',
+  'dancing-script': 'Dancing Script, cursive',
+  'concert-one': 'Concert One, cursive',
+  'comfortaa': 'Comfortaa, cursive',
+  'black-ops-one': 'Black Ops One, cursive',
+  'handjet': 'Handjet, cursive',
+);
 
-.roboto {
-  font-family: Roboto;
-}
-.special_elite {
-  font-family: Special Elite;
-}
-.josefin_sans {
-  font-family: Josefin Sans;
-}
-.josefin_sans {
-  font-family: Josefin Sans;
-}
-.lobster {
-  font-family: Lobster;
-}
-.comfortaa {
-  font-family: Comfortaa;
-}
-.rubik_dirt {
-  font-family: Rubik Dirt;
-}
-.rubik_iso {
-  font-family: Rubik Iso;
-}
-.black_ops one {
-  font-family: Black Ops One;
-}
-.concert_one {
-  font-family: Concert One;
-}
-.tourney {
-  font-family: Tourney;
-}
-.tourney {
-  font-family: Tourney;
-}
-.dancing_script {
-  font-family: Dancing Script;
-}
-
-@font-face {
-  font-family: 'Material Symbols Rounded';
-  font-style: normal;
-  font-weight: 100 700;
-  src: url('./assets/fonts/material-symbols.woff2') format('woff2');
-}
-
-.icon {
-  font-family: 'Material Symbols Rounded';
-  font-weight: normal;
-  font-style: normal;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
-.icon.fill {
-  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
-}
-
-// Font sizes
-:root {
-  @for $size from 1 through 12 {
-    --font-size-#{$size}: #{(0.6 + $size * 0.4)}rem;
-    --line-height-#{$size}: #{(0.6 + $size * 0.4) * 1.618}rem;
-  }
-}
-
-@for $size from 1 through 12 {
-  .fs-#{$size} {
-    font-size: var(--font-size-#{$size});
-    line-height: var(--line-height-#{$size});
-    letter-spacing:0.3em;
+@each $key, $value in $fontList {
+  .font-#{$key} {
+    font-family: #{$value};
   }
 }

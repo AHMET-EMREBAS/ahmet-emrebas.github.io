@@ -1,0 +1,16 @@
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+
+.tb-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  height: fit-content;
+}
+
+@each $colorName in $colorNames {
+  .tb-toolbar.#{$colorName} {
+    background-color: var(--#{$colorName});
+  }
+}

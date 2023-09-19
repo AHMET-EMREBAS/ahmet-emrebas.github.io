@@ -1,0 +1,45 @@
+:root {
+  --root-width: 100%;
+  --root-height: 100%;
+  --root-padding: 0px;
+  --root-margin: 0px;
+  --root-position: relative;
+  --root-overflow: visible;
+  --root-surface: white;
+  --root-face: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  width: var(--root-width);
+  height: var(--root-height);
+  overflow: var(--root-overflow);
+  padding: var(--root-padding);
+  margin: var(--root-margin);
+  position: var(--root-position);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  background-color: var(--root-surface);
+  color: var(--root-face);
+}
+
+:fullscreen {
+  background-color: var(--light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :fullscreen {
+    background-color: var(--dark);
+  }
+  html,
+  body {
+    background-color: var(--dark);
+  }
+}
+
+.surface-1 {
+  background-color: var(--root-surface);
+}

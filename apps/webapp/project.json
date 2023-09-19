@@ -1,0 +1,181 @@
+{
+  "name": "webapp",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "website",
+  "sourceRoot": "apps/webapp/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/webapp",
+        "index": "apps/webapp/src/index.html",
+        "main": "apps/webapp/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/webapp/tsconfig.app.json",
+        "assets": [
+          "apps/webapp/src/favicon.ico",
+          "apps/webapp/src/assets",
+          "apps/webapp/src/manifest.webmanifest"
+        ],
+        "styles": ["apps/webapp/src/sass/index.scss"],
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/webapp/ngsw-config.json"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "localize": true,
+          "i18nMissingTranslation": "error"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": { "browserTarget": "webapp:build:production" },
+        "development": { "browserTarget": "webapp:build:development" }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "webapp:build",
+        "outputPath": "apps/webapp/src/locale"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/webapp/**/*.ts", "apps/webapp/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/webapp/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": { "ci": { "ci": true, "codeCoverage": true } }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": { "buildTarget": "webapp:build" }
+    }
+  },
+  "i18n": {
+    "locales": {
+      "": {
+        "name": "Default",
+        "translation": "apps/webapp/src/locale/messages.xlf"
+      },
+      "en": {
+        "name": "English (United States)",
+        "translation": "apps/webapp/src/locale/messages.en_US.xlf"
+      },
+      "es": {
+        "name": "Spanish (Spain)",
+        "translation": "apps/webapp/src/locale/messages.es_ES.xlf"
+      },
+      "zh": {
+        "name": "Mandarin Chinese (Simplified)",
+        "translation": "apps/webapp/src/locale/messages.zh_CN.xlf"
+      },
+      "hi": {
+        "name": "Hindi (India)",
+        "translation": "apps/webapp/src/locale/messages.hi_IN.xlf"
+      },
+      "ar": {
+        "name": "Arabic (Egypt)",
+        "translation": "apps/webapp/src/locale/messages.ar_EG.xlf"
+      },
+      "fr": {
+        "name": "French (France)",
+        "translation": "apps/webapp/src/locale/messages.fr_FR.xlf"
+      },
+      "ru": {
+        "name": "Russian (Russia)",
+        "translation": "apps/webapp/src/locale/messages.ru_RU.xlf"
+      },
+      "pt": {
+        "name": "Portuguese (Portugal)",
+        "translation": "apps/webapp/src/locale/messages.pt_PT.xlf"
+      },
+      "bn": {
+        "name": "Bengali (India)",
+        "translation": "apps/webapp/src/locale/messages.bn_IN.xlf"
+      },
+      "ur": {
+        "name": "Urdu (Pakistan)",
+        "translation": "apps/webapp/src/locale/messages.ur_PK.xlf"
+      },
+      "de": {
+        "name": "German (Germany)",
+        "translation": "apps/webapp/src/locale/messages.de_DE.xlf"
+      },
+      "ja": {
+        "name": "Japanese (Japan)",
+        "translation": "apps/webapp/src/locale/messages.ja_JP.xlf"
+      },
+      "ko": {
+        "name": "Korean (South Korea)",
+        "translation": "apps/webapp/src/locale/messages.ko_KR.xlf"
+      },
+      "it": {
+        "name": "Italian (Italy)",
+        "translation": "apps/webapp/src/locale/messages.it_IT.xlf"
+      },
+      "tr": {
+        "name": "Turkish (Turkey)",
+        "translation": "apps/webapp/src/locale/messages.tr_TR.xlf"
+      },
+      "nl": {
+        "name": "Dutch (Netherlands)",
+        "translation": "apps/webapp/src/locale/messages.nl_NL.xlf"
+      },
+      "fa": {
+        "name": "Persian (Iran)",
+        "translation": "apps/webapp/src/locale/messages.fa_IR.xlf"
+      },
+      "pl": {
+        "name": "Polish (Poland)",
+        "translation": "apps/webapp/src/locale/messages.pl_PL.xlf"
+      },
+      "vi": {
+        "name": "Vietnamese (Vietnam)",
+        "translation": "apps/webapp/src/locale/messages.vi_VN.xlf"
+      },
+      "ms": {
+        "name": "Malay (Malaysia)",
+        "translation": "apps/webapp/src/locale/messages.ms_MY.xlf"
+      }
+    }
+  }
+}

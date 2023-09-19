@@ -1,0 +1,78 @@
+:root {
+  --font-family: Josefin Sans, cursive;
+  --font-size: 12pt;
+
+  // Buttons
+  --tb-button-border-radius: 0.3em;
+  --tb-button-min-width: 4em;
+  --tb-button-min-height: 2em;
+  --tb-button-font-size: 1em;
+
+  // Icon buttons
+
+  --tb-icon-button-border-radius: 100%;
+  --tb-icon-button-border: 3px double transparent;
+  --tb-icon-button-font-size: 2em;
+  --tb-icon-button-min-width: 2em;
+  --tb-icon-button-min-height: 2em;
+  --tb-icon-button-width: 2em;
+  --tb-icon-button-height: 2em;
+
+  // Flat icon buttons;
+  --tb-flat-icon-button-font-size: 2em;
+  --tb-flat-icon-button-min-width: 2em;
+  --tb-flat-icon-button-min-height: 2em;
+  --tb-flat-icon-button-width: 2em;
+  --tb-flat-icon-button-height: 2em;
+
+  // Alert variables
+  --tb-alert-font-size: 1em;
+  --tb-alert-width: 100%;
+  --tb-alert-min-height: 2.5em;
+  --tb-alert-max-height: 2.5em;
+  --tb-alert-max-width: 100%;
+  --tb-alert-padding-bottom: 0.66em;
+  --tb-alert-padding-left: 2em;
+  --tb-alert-padding-right: 2em;
+  --tb-alert-border-radius: 0.3em;
+  --tb-alert-gap: 1em;
+
+  // List variables
+  --tb-list-font-size: 1em;
+  --tb-list-min-width: 150px;
+  --tb-list-max-width: 100%;
+  --tb-list-min-height: 50px;
+  --tb-list-max-height: 50px;
+  --tb-list-padding-left: 10px;
+  --tb-list-padding-right: 10px;
+  --tb-list-padding-bottom: 0.5em;
+  --tb-list-gap: 20px;
+  --tb-list-border-width: 3px;
+  --tb-list-border-radius: 0px;
+
+  // Avatar variables
+  --tb-avatar-width: 2.2em;
+  --tb-avatar-height: 2.2em;
+  --tb-avatar-min-width: 2.2em;
+  --tb-avatar-min-height: 2.2em;
+  --tb-avatar-max-width: 2.2em;
+  --tb-avatar-max-height: 2.2em;
+  --tb-avatar-border-radius: 100%;
+
+  // Profile
+  --tb-profile-min-width: 200px;
+  --tb-profile-gap: 1em;
+  --tb-profile-title-font-size: 1em;
+  --tb-profile-title-font-weight: 400;
+  --tb-profile-subtitle-font-size: 0.6em;
+  --tb-profile-subtitle-font-weight: 200;
+  --tb-profile-subtitle-letter-spacing: 0.3em;
+
+  // form field
+  --tb-form-field-input-height: 2.5em;
+  --tb-form-field-input-font-size: 1em;
+  --tb-form-field-input-font-weight: 400;
+  --tb-form-field-radius: 0.6em;
+  --tb-form-field-padding: 0.5em;
+  --tb-form-field-container-padding: 1em;
+}

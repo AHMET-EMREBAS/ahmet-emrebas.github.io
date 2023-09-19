@@ -1,8 +1,9 @@
 export type Colors =
   | 'primary'
   | 'secondary'
+  | 'accent'
   | 'warn'
   | 'error'
   | 'info'
-  | 'dark'
-  | 'light';
+  | 'surface'
+  | 'face';

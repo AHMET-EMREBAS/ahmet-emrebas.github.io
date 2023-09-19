@@ -1,20 +1,3 @@
-@use './theme' as techbir;
+@use './theme/index.scss' as theme;
 
-$lightness: 60%;
-$primary: hsl(219, 70%, $lightness);
-$secondary: hsl(298, 73%, $lightness);
-$warn: hsl(19, 66%, $lightness);
-$error: hsl(0, 63%, $lightness);
-$info: hsl(199, 100%, $lightness);
-$dark: hsl(0, 0%, 5%);
-$light: hsl(0, 0%, 100%);
-
-@include techbir.configure(
-  $primary,
-  $secondary,
-  $warn,
-  $error,
-  $info,
-  $dark,
-  $light
-);
+@include theme.selectTheme(pastel);

@@ -1,9 +1,81 @@
-:root {
-  --list-item-height: 40px;
-  --list-items-gap: 3px;
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+
+.___common-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-wrap: wrap;
 }
 
+.tb-list {
+  @extend .___common-list;
+}
 
-$listDir:(row, column); 
+.___common-list-item {
+  //   height: 50px;
 
+  min-width: var(--tb-list-min-width); // 150px;
+  min-height: var(--tb-list-min-height); // 50px;
+  padding-left: var(--tb-list-padding-left); // 10px;
+  padding-right: var(--tb-list-padding-right); // 10px;
+  padding-bottom: var(--tb-list-padding-bottom); //  0.3em;
 
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  gap: var(--tb-list-gap); // 20px;
+
+  border-style: double;
+  border-color: transparent;
+  border-width: var(--tb-list-border-width);
+  border-radius: var(--tb-list-border-radius);
+
+  font-size: var(--tb-list-font-size);
+  font-size: 1em;
+}
+
+.tb-list-item {
+  @extend .___common-list-item;
+}
+
+.tb-list-item > .icon,
+.tb-nav-list-item > .icon {
+  font-size: 2em;
+  line-height: 1em;
+}
+
+.tb-nav-list-item {
+  @extend .___common-list-item;
+  user-select: none;
+  cursor: pointer;
+}
+
+@each $colorName in $colorNames {
+  .tb-list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+  .tb-nav-list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+}
+
+@each $colorName in $colorNames {
+  .tb-nav-list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+
+  .tb-nav-list-item.#{$colorName}:hover,
+  .tb-nav-list-item.#{$colorName}:focus {
+    background-color: var(--#{$colorName}-dark);
+  }
+
+  .tb-nav-list-item.#{$colorName}:active {
+    background-color: var(--#{$colorName}-light);
+    // border: var(--tb-list-border-width) double var(--#{$colorName}-lighter);
+  }
+}

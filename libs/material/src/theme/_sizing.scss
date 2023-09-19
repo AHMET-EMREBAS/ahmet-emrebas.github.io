@@ -1,61 +1,57 @@
 @use 'sass:math';
 
-$oneUnit: math.div(100, 12);
-
-// Hight width
-:root {
-  @for $size from 1 through 100 {
-    --h-#{$size}: #{$size}#{'%'};
-    --w-#{$size}: #{$size}#{'%'};
-  }
-}
-
-// Box sizing
-:root {
-  @for $size from 1 through 12 {
-    --box-size-#{$size}: #{($size * $oneUnit * 4)}px;
-  }
-}
-
 @function paddingSize($padding) {
-  @return #{$padding * 0.15}em;
+  @return #{$padding * 0.1}em;
 }
 
 @function marginSize($margin) {
-  @return #{$margin}px;
+  @return #{$margin * 0.1}em;
 }
 
 @function firstLetter($text) {
-  @return str-slice($text, 1, 1);
-}
-// Margin and padding
-:root {
-  @for $size from 1 through 12 {
-    --padding-#{$size}: #{paddingSize($size)};
-    --margin-#{$size}: #{marginSize($size)};
-  }
+  // @return str-slice($text, 1, 1);
+  @return $text;
 }
 
 // Margin padding width classes
 @for $size from 1 through 100 {
-  .p-#{$size} {
-    padding: var(--padding-#{$size});
+  $value: #{$size * 0.05} + 'em';
+
+  .padding-#{$size} {
+    padding: #{$value};
   }
-  .m-#{$size} {
-    margin: var(--margin-#{$size});
+  .margin-#{$size} {
+    margin: #{$value};
   }
 
   @each $side in (top, right, bottom, left) {
-    .p#{firstLetter($side)}-#{$size} {
-      padding-#{$side}: var(--padding-#{$side}-#{$size});
+    .padding-#{$side}-#{$size} {
+      padding-#{$side}: #{$value};
     }
 
-    .m#{firstLetter($side)}-#{$size} {
-      margin-#{$side}: var(--margin-#{$side}-#{$size});
+    .margin-#{$side}-#{$size} {
+      margin-#{$side}: #{$value};
     }
   }
 
-  .w-#{$size} {
+  .width-#{$size} {
     width: #{$size}#{'%'};
   }
+  .height-#{$size} {
+    height: #{$size}#{'%'};
+  }
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+@each $value in (fit-content, max-content, min-content, auto) {
+  .width-#{$value} {
+    width: #{$value};
+  }
+}
+
+.width-full {
+  width: 100%;
 }

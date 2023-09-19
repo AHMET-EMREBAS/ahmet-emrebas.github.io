@@ -1,23 +1,56 @@
-@use './colors' as colors;
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
 
-$borderStyles: (solid, dashed, double, dotted);
-
-:root {
-  --border-radius: 0.5em;
-
-  @for $size from 1 through 12 {
-    --border-radius-#{$size}: #{$size}px;
-    --border-size-#{$size}: #{$size}px;
+@for $size from 1 through 12 {
+  .border-#{$size} {
+    border-width: #{$size}px;
+  }
+  @each $side in (top, right, bottom, left) {
+    .border-#{$side}-#{$size} {
+      border-#{$side}-width: #{$size}px;
+      border-#{$side}-style: solid;
+      border-#{$side}-color: transparent;
+    }
   }
 }
 
-// Border color classes
-@each $colorName in colors.$colorNames {
-  @each $style in $borderStyles {
-    @for $size from 1 through 12 {
-      .border-#{$colorName}-#{$style}-#{$size} {
-        border: var(--border-size-#{$size}) #{$style} var(--#{$colorName});
+@each $style in (dashed, solid, double) {
+  .border-#{$style} {
+    border-style: #{$style};
+  }
+}
+
+@each $color in $colorNames {
+  .border-#{$color} {
+    border-color: #{var(--#{$color})};
+  }
+  .border-#{$color}-dark {
+    border-color: #{var(--#{$color}-dark)};
+  }
+  .border-#{$color}-light {
+    border-color: #{var(--#{$color}-light)};
+  }
+}
+
+// Border radius
+@for $size from 1 through 12 {
+  $radius: #{$size * 1.618}px;
+  .radius-#{$size} {
+    border-radius: #{$radius};
+  }
+
+  @each $side in (top, bottom) {
+    @each $sidex in (right, left) {
+      .radius-#{$side}-#{$sidex}-#{$size} {
+        border-#{$side}-#{$sidex}-radius: #{$radius};
       }
     }
   }
 }
+
+// @for $size from 1 through 12 {
+//   @each $side in (top, right, bottom, left) {
+//     .border-#{$side}-#{$size} {
+//       border-#{$side}: #{$size}px solid transparent;
+//     }
+//   }
+// }

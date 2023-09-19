@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="8223360144115005191" datatype="html">
+        <source>Ahmet Emrebas </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/webapp/src/app/app.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8712110865741234386" datatype="html">
+        <source>webapp <x id="PH" equiv-text="this.name"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/webapp/src/app/app.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="489844404897890427" datatype="html">
+        <source>Fullscreen</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material/src/lib/layout/navigation/navigation.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ item.label }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material/src/lib/nav-list/nav-list.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7079253523828894003" datatype="html">
+        <source>Sidenav toggle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material/src/lib/sidenav-toggle/sidenav-toggle.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

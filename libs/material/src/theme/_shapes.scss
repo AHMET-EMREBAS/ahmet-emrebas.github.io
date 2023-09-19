@@ -1,0 +1,6 @@
+@for $size from 1 through 100 {
+  .square-#{$size} {
+    width: #{$size}px;
+    height: #{$size}px;
+  }
+}

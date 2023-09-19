@@ -1,0 +1,14 @@
+@use 'libs/material/src/theme' as theme;
+
+// pastel
+// vintage
+// retro
+// neon
+// gold
+// light
+// dark
+// warm
+// cold
+// summer
+
+@include theme.selectTheme(retro);
