@@ -14,7 +14,7 @@
   min-height: var(--tb-button-min-height);
   display: flex;
   flex-direction: row;
-  gap: 0.2em;
+  gap: 1em;
   justify-content: center;
   align-items: center;
 
@@ -43,6 +43,16 @@
 
 .tb-flat-icon-button {
   @extend .common-button-style;
+}
+
+
+.tb-flat-button,
+.tb-raised-button ,
+.tb-text-button ,
+.tb-flat-icon-button {
+  .icon{ 
+    font-size: 2em;
+  }
 }
 
 .common-icon-button {
