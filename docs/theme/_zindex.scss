@@ -1,0 +1,7 @@
+@import 'utils';
+
+.bring-forward {
+  z-index: 100;
+}
+
+@include n(z, 'z-index', '', 100);

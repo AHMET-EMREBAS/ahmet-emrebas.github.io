@@ -1,9 +1,14 @@
 import { Route } from '@angular/router';
+import { SampleModule } from './sample/sample.module';
+import { NavigationModule } from './navigation/navigation.module';
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    loadChildren: () =>
-      import('./navigation/navigation.module').then((m) => m.NavigationModule),
+    loadChildren: () => NavigationModule,
+  },
+  {
+    path: 'sample',
+    loadChildren: () => SampleModule,
   },
 ];

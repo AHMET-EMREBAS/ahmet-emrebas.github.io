@@ -8,10 +8,11 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    // "resolveJsonModule": true
+    "resolveJsonModule": true
   },
   "files": [],
   "include": [],
+
   "references": [
     {
       "path": "./tsconfig.lib.json"

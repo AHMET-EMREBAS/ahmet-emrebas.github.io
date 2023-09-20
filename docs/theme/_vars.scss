@@ -1,0 +1,113 @@
+$colorNames: (primary, secondary, accent, warn, red, green, black, white);
+$colorVariants: (dark, light, darker, lighter, face);
+
+$units: (em, rem, px, vw, vh, per);
+$sides: (top, right, bottom, left);
+$commonColors: (
+  black: hsl(0, 2%, 12%),
+  white: hsl(0, 0%, 95%),
+  red: hsl(348, 83%, 47%),
+  green: hsl(120, 71%, 67%),
+);
+
+$themes: (
+  pastel: (
+    primary: hsl(0, 97%, 77%),
+    secondary: hsl(65, 80%, 84%),
+    accent: hsl(180, 31%, 74%),
+    warn: #9ea1d4,
+  ),
+  vintage: (
+    primary: hsl(44, 39%, 87%),
+    secondary: hsl(60, 1%, 70%),
+    accent: hsl(206, 53%, 32%),
+    warn: hsl(22, 97%, 46%),
+  ),
+  retro: (
+    primary: hsl(200, 61%, 29%),
+    secondary: hsl(189, 37%, 43%),
+    accent: hsl(0, 82%, 66%),
+    warn: hsl(30, 86%, 66%),
+  ),
+  neon: (
+    primary: hsl(210, 69%, 25%),
+    secondary: hsl(0, 89%, 64%),
+    accent: hsl(37, 99%, 61%),
+    warn: hsl(60, 90%, 63%),
+  ),
+  gold: (
+    primary: hsl(14, 100%, 66%),
+    secondary: hsl(29, 100%, 71%),
+    accent: hsl(43, 100%, 72%),
+    warn: hsl(68, 23%, 51%),
+  ),
+  light: (
+    primary: hsl(170, 54%, 87%),
+    secondary: #f9f9f9,
+    accent: #ecc5fb,
+    warn: #faf4b7,
+  ),
+  dark: (
+    primary: #040d12,
+    secondary: #183d3d,
+    accent: #5c8374,
+    warn: #93b1a6,
+  ),
+  warm: (
+    primary: #454545,
+    secondary: #ff6000,
+    accent: #ffa559,
+    warn: #ffe6c7,
+  ),
+  cold: (
+    primary: #f1f6f9,
+    secondary: #394867,
+    accent: #212a3e,
+    warn: #9ba4b5,
+  ),
+  summer: (
+    primary: #1d5d9b,
+    secondary: #75c2f6,
+    accent: #f4d160,
+    warn: #fbeeac,
+  ),
+);
+
+
+
+$cursors: (
+  alias,
+  all-scroll,
+  auto,
+  cell,
+  col-resize,
+  context-menu,
+  copy,
+  crosshair,
+  default,
+  e-resize,
+  ew-resize,
+  grab,
+  help,
+  move,
+  n-resize,
+  ne-resize,
+  nesw-resize,
+  no-drop,
+  none,
+  not-allowed,
+  ns-resize,
+  nw-resize,
+  nwse-resize,
+  zoom-out,
+  zoom-in,
+  pointer,
+  progress,
+  row-resize,
+  s-resize,
+  se-resize,
+  sw-resize,
+  text,
+  vertical-text,
+  unset
+);

@@ -1,6 +1,11 @@
-<div class="flex column gap-2 pt-2">
-  <div color="primary">
-    <span>Sample</span>
+<div class="flex column">
+  <div class="tb-toolbar primary">
+      <div class="tb-flat-icon-button icon white" [routerLink]="['']" routerLinkActive="router-link-active"> table
+      </div>
+      <div class="tb-flat-icon-button icon white" [routerLink]="['create']" routerLinkActive="router-link-active"> add
+      </div>
+      <div class="tb-flat-icon-button icon white" [routerLink]="['update']" routerLinkActive="router-link-active">
+          edit </div>
   </div>
-  <router-outlet> </router-outlet>
 </div>
+<router-outlet></router-outlet>
