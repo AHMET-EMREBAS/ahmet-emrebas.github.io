@@ -1,4 +1,5 @@
-<div class="tb-nav-list-item {{color}}" (click)="emit(uname)">
+<div class="tb-nav-list-item {{color}}" [attr.aria-label]="tooltip" [attr.tooltip-position]="tooltipPosition"
+    (click)="emit({type:'click', target:uname})">
     <span class="icon">{{icon}}</span>
     <span>{{label}}</span>
 </div>

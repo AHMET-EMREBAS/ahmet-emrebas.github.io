@@ -272,7 +272,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
@@ -321,11 +321,11 @@
             ],
             "stylesData": "",
             "extends": "CommonComponent",
-            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit($event)\" (dblclick)=\"emit($event)\"\n    [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\" [attr.tooltip-color]=\"color\">\n    {{label | titlecase}}\n</button>"
+            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit($event)\" (dblclick)=\"emit($event)\"\n    [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\" [attr.tooltip-color]=\"color\">\n    <div class=\"icon\">{{icon}}</div>\n    <span> {{label | titlecase}} </span>\n</button>"
         },
         {
             "name": "CheckboxInputComponent",
-            "id": "component-CheckboxInputComponent-6c225c91e6ab6c9c8e0a423b1a2e342c14f3509befaa40254611a2f9011aec5a70504569cfbcf9f8af6006f055a9feaf16a091aa1a1dddaf10c12e80869a3a8c",
+            "id": "component-CheckboxInputComponent-7cd1d12012e6cd877fd0e1cc0141876539dc611b4a44f81c35cad8e7ff52a3961cd780cd4cc0ae6835650cab2d774461a9701a2a14bf5ee2a1bf97dbc50df573",
             "file": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -459,6 +459,40 @@
             ],
             "methodsClass": [
                 {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        161
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
                     "name": "parseEvent",
                     "args": [
                         {
@@ -492,39 +526,6 @@
                     "inheritance": {
                         "file": "CommonInputComponent"
                     }
-                },
-                {
-                    "name": "emit",
-                    "args": [
-                        {
-                            "name": "__event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 49,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nEmit element events as they are",
-                    "description": "<p>Emit element events as they are</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": "__event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
                 }
             ],
             "deprecated": false,
@@ -541,7 +542,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonInputComponent } from '../common';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent extends CommonInputComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonInputComponent } from '../common';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent extends CommonInputComponent {\n  override emit(__event: Event): void {\n    this.inputValue = !this.inputValue;\n    super.emit(__event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -555,7 +556,7 @@
         },
         {
             "name": "CommonComponent",
-            "id": "component-CommonComponent-57d88e80dd6bae69ba88128ed7e692169d593b52bc461601a8afdb65d451736c4904704b32e2b541f326fca9e850834669f2236333dad955672a7de2ef3028d1",
+            "id": "component-CommonComponent-90fff84ef01277bb1ce4929d765a9a2f1ab38a6130695cb4ff9023451e3679cf1859f7749cb9f50cceb001d403d265eceaa840fc71bea645ad6ed7906dd2793f",
             "file": "libs/material/src/lib/components/common/common/common.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -662,7 +663,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
@@ -689,7 +690,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport {\n  Colors,\n  EventObject,\n  EventService,\n  Icon,\n  TooltipPosition,\n} from '../../../api';\n\n@Component({\n  selector: 'tb-common',\n  standalone: true,\n  template: '',\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = 'Uname not set';\n\n  /** Descriptive text for the element */\n  @Input() label = 'Label';\n\n  @Input() icon: Icon = 'info';\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** Listen any event in the component. Event name is passed as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  constructor(protected readonly eventService: EventService) {}\n\n  /** @ignore */\n  protected parseEvent(event: Event): EventObject {\n    return { target: this.uname, type: event.type };\n  }\n\n  /** @ignore */\n  protected createEvent(event: EventObject) {\n    return { type: event.type, target: this.uname };\n  }\n\n  /** Emit element events as they are */\n  emit(__event: Event) {\n    const event = this.createEvent(this.parseEvent(__event));\n    this.eventService.$events.next(event);\n    this.listen.emit(event);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport {\n  Colors,\n  EventObject,\n  EventService,\n  Icon,\n  TooltipPosition,\n} from '../../../api';\n\n@Component({\n  selector: 'tb-common',\n  standalone: true,\n  template: '',\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = 'Uname not set';\n\n  /** Descriptive text for the element */\n  @Input() label = 'Label';\n\n  @Input() icon: Icon = 'info';\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** Listen any event in the component. Event name is passed as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  constructor(protected readonly eventService: EventService) {}\n\n  /** @ignore */\n  protected parseEvent(event: Event): EventObject {\n    return { target: this.uname, type: event.type };\n  }\n\n  /** Emit element events as they are */\n  emit(__event: Event) {\n    const event = this.parseEvent(__event);\n    this.eventService.$events.next(event);\n    this.listen.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -722,7 +723,7 @@
         },
         {
             "name": "CommonHostComponent",
-            "id": "component-CommonHostComponent-b1098acdf040a2eae14257c8bed8acdb515ad9085b17676c5186fe66658cad43bcf615f712a16dcf170c0778c256cc6345c5b4803ec8896da6f7b83a2f6c2b5f",
+            "id": "component-CommonHostComponent-be3fc667f60f42c80caab80f6a3b853c6c5ca7078a7caad23d19033dba3b2f2ed61eb95ac540f671d2b9336a0bfe087eb1949b2cac73dd8e969fe5a1c7d6a467",
             "file": "libs/material/src/lib/components/common/common-host/common-host.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -739,17 +740,54 @@
             "inputsClass": [
                 {
                     "name": "data",
-                    "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 9,
-                    "type": "T[]",
+                    "line": 11,
+                    "type": "T",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "listen",
+                    "defaultValue": "new EventEmitter<EventObject>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -759,7 +797,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'tb-common-host',\n  standalone: true,\n  template: '',\n})\nexport class CommonHostComponent<T = any> {\n  @Input() data: T[] = [];\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { EventObject } from '../../../api';\n\n@Component({\n  selector: 'tb-common-host',\n  standalone: true,\n  template: '',\n})\nexport class CommonHostComponent<T = any> {\n  @Output() listen = new EventEmitter<EventObject>();\n  @Input() data?: T;\n\n  emit(event: EventObject) {\n    this.listen.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -938,7 +976,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
@@ -1175,7 +1213,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
@@ -1325,7 +1363,7 @@
         },
         {
             "name": "ListComponent",
-            "id": "component-ListComponent-f8043b5e9a4160f212b3d8deef321b61bad59182e597daa06435f92c049ab94742d6835ed33f3a6ae70cfdaa73ff158ae85faed5a9533ae0edffb93f10540546",
+            "id": "component-ListComponent-609141156107eadc0d583eeaeeab5c192ad0fe7de9323f4e7beb7263184c59ffdd1b18b5fc49be1d26bb77b15cdcabbeef9c10f2b6eeb9dfceaf4197bf76b287",
             "file": "libs/material/src/lib/components/list/list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1345,7 +1383,7 @@
             "inputsClass": [
                 {
                     "name": "data",
-                    "defaultValue": "[\n    { label: 'List item 1', icon: 'info', color: 'primary' },\n    { label: 'List item 2', icon: 'apps', color: 'secondary' },\n    { label: 'List item 3', icon: '10k', color: 'accent' },\n    { label: 'List item 4', icon: 'email', color: 'warn' },\n    { label: 'List item 5', icon: 'store', color: 'red' },\n    { label: 'List item 6', icon: 'house', color: 'black' },\n    { label: 'List item 7', icon: '5k', color: 'white' },\n  ]",
+                    "defaultValue": "[\n    { label: 'List item 1', icon: 'info', color: 'primary' },\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nList items",
@@ -1376,7 +1414,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ListItem } from '../../api';\nimport { ListItemComponent } from '../list-item/list-item.component';\n\n@Component({\n  selector: 'tb-list',\n  standalone: true,\n  imports: [CommonModule, ListItemComponent],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent {\n  /** List items  */\n  @Input() data: ListItem[] = [\n    { label: 'List item 1', icon: 'info', color: 'primary' },\n    { label: 'List item 2', icon: 'apps', color: 'secondary' },\n    { label: 'List item 3', icon: '10k', color: 'accent' },\n    { label: 'List item 4', icon: 'email', color: 'warn' },\n    { label: 'List item 5', icon: 'store', color: 'red' },\n    { label: 'List item 6', icon: 'house', color: 'black' },\n    { label: 'List item 7', icon: '5k', color: 'white' },\n  ];\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ListItem } from '../../api';\nimport { ListItemComponent } from '../list-item/list-item.component';\n\n@Component({\n  selector: 'tb-list',\n  standalone: true,\n  imports: [CommonModule, ListItemComponent],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent {\n  /** List items  */\n  @Input() data: ListItem[] = [\n    { label: 'List item 1', icon: 'info', color: 'primary' },\n  ];\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1471,7 +1509,7 @@
         },
         {
             "name": "MenuComponent",
-            "id": "component-MenuComponent-4769d7dbb9dc8e640b8e68ac0ceef4fae515ef6072dd069140c5d937383a70282c3fb6db67b87d3f695a53e6415eff038bb14f4535225124cfcd9debebd4ec5b",
+            "id": "component-MenuComponent-132ade4dd94cb0989dd607ea1ea8e06ffd12663ada36dc4a9e2b1060a1829a568d983a492a54207e84424cbdabbaef6d7a416e5a42b4def5eb38c34510367718",
             "file": "libs/material/src/lib/components/menu/menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1491,22 +1529,28 @@
             "inputsClass": [
                 {
                     "name": "data",
-                    "defaultValue": "{\n    uname: 'main',\n    label: 'Menu',\n    color: 'primary',\n    icon: 'menu_book',\n    direction: 'bottom',\n    children: [\n      {\n        uname: 'item 1',\n        label: 'item 1',\n        color: 'primary',\n        icon: 'info',\n      },\n\n      {\n        uname: 'item 2',\n        label: 'item 2',\n        color: 'accent',\n        icon: 'pin_drop',\n        direction: 'right',\n        children: [\n          { uname: 'item 3', label: 'item 3', color: 'primary' },\n\n          {\n            uname: 'item 4',\n            label: 'item 4',\n            color: 'accent',\n            icon: 'pin_drop',\n            direction: 'right',\n            children: [\n              {\n                uname: 'item 5',\n                label: 'item 5',\n                color: 'accent',\n                icon: 'info',\n                direction: 'top',\n                children: [\n                  {\n                    uname: 'item 8',\n                    label: 'item 8',\n                    color: 'accent',\n                    icon: 'warning',\n                    direction: 'top',\n                    children: [\n                      {\n                        uname: 'item 9',\n                        label: 'item 9',\n                        color: 'accent',\n                        icon: '10k',\n                        direction: 'left',\n                        children: [\n                          {\n                            uname: 'item 10',\n                            label: 'item 10',\n                            color: 'primary',\n                            icon: '30fps_select',\n                          },\n                          {\n                            uname: 'item 10',\n                            label: 'item 10',\n                            color: 'primary',\n                            icon: '30fps_select',\n                          },\n                        ],\n                      },\n                      {\n                        uname: 'item 10',\n                        label: 'item 10',\n                        color: 'primary',\n                        icon: '10k',\n                      },\n                    ],\n                  },\n                ],\n              },\n              {\n                uname: 'item 6',\n                label: 'item 6',\n                color: 'primary',\n                icon: 'info',\n              },\n            ],\n          },\n          { uname: 'item 7', label: 'item 7', color: 'warn', icon: 'warning' },\n        ],\n      },\n    ],\n  }",
+                    "defaultValue": "{\n    label: 'Menu',\n    uname: 'menu',\n    color: 'primary',\n    icon: 'menu',\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "MenuItem",
-                    "decorators": []
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
                 }
             ],
             "outputsClass": [
                 {
                     "name": "listen",
-                    "defaultValue": "new EventEmitter()",
+                    "defaultValue": "new EventEmitter<EventObject>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
-                    "type": "EventEmitter"
+                    "line": 10,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
                 }
             ],
             "propertiesClass": [],
@@ -1515,8 +1559,8 @@
                     "name": "emit",
                     "args": [
                         {
-                            "name": "uname",
-                            "type": "string",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1524,20 +1568,23 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 104,
+                    "line": 13,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "uname",
-                            "type": "string",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
                                 "text": "param"
                             }
                         }
-                    ]
+                    ],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
                 }
             ],
             "deprecated": false,
@@ -1554,7 +1601,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MenuItem } from '../../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './menu.component.html',\n  styleUrls: ['./menu.component.scss'],\n})\nexport class MenuComponent {\n  @Output() listen = new EventEmitter();\n\n  @Input() data: MenuItem = {\n    uname: 'main',\n    label: 'Menu',\n    color: 'primary',\n    icon: 'menu_book',\n    direction: 'bottom',\n    children: [\n      {\n        uname: 'item 1',\n        label: 'item 1',\n        color: 'primary',\n        icon: 'info',\n      },\n\n      {\n        uname: 'item 2',\n        label: 'item 2',\n        color: 'accent',\n        icon: 'pin_drop',\n        direction: 'right',\n        children: [\n          { uname: 'item 3', label: 'item 3', color: 'primary' },\n\n          {\n            uname: 'item 4',\n            label: 'item 4',\n            color: 'accent',\n            icon: 'pin_drop',\n            direction: 'right',\n            children: [\n              {\n                uname: 'item 5',\n                label: 'item 5',\n                color: 'accent',\n                icon: 'info',\n                direction: 'top',\n                children: [\n                  {\n                    uname: 'item 8',\n                    label: 'item 8',\n                    color: 'accent',\n                    icon: 'warning',\n                    direction: 'top',\n                    children: [\n                      {\n                        uname: 'item 9',\n                        label: 'item 9',\n                        color: 'accent',\n                        icon: '10k',\n                        direction: 'left',\n                        children: [\n                          {\n                            uname: 'item 10',\n                            label: 'item 10',\n                            color: 'primary',\n                            icon: '30fps_select',\n                          },\n                          {\n                            uname: 'item 10',\n                            label: 'item 10',\n                            color: 'primary',\n                            icon: '30fps_select',\n                          },\n                        ],\n                      },\n                      {\n                        uname: 'item 10',\n                        label: 'item 10',\n                        color: 'primary',\n                        icon: '10k',\n                      },\n                    ],\n                  },\n                ],\n              },\n              {\n                uname: 'item 6',\n                label: 'item 6',\n                color: 'primary',\n                icon: 'info',\n              },\n            ],\n          },\n          { uname: 'item 7', label: 'item 7', color: 'warn', icon: 'warning' },\n        ],\n      },\n    ],\n  };\n\n  emit(uname: string) {\n    this.listen.emit({ type: 'click', target: uname });\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { EventObject, MenuItem } from '../../api';\nimport { CommonHostComponent } from '../common';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './menu.component.html',\n  styleUrls: ['./menu.component.scss'],\n})\nexport class MenuComponent extends CommonHostComponent<MenuItem> {\n  @Input() override data: MenuItem = {\n    label: 'Menu',\n    uname: 'menu',\n    color: 'primary',\n    icon: 'menu',\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1563,11 +1610,12 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<ng-template #menuItem let-data=\"data\">\n    <div class=\"tb-nav-list-item {{data.color}}\" (click)=\"emit(data.uname)\">\n        <span class=\"icon\">{{data.icon}}</span>\n        <span>{{data.label}}</span>\n    </div>\n</ng-template>\n\n\n<ng-template #menu let-data=\"data\">\n\n\n    <div class=\"tb-dropdown-menu {{data.direction}} \">\n\n        <ng-container *ngTemplateOutlet=\"menuItem;context:{data:data}\"></ng-container>\n\n        <div class=\"tb-dropdown-items\">\n\n            <ng-container *ngFor=\"let child of data.children\">\n\n\n                <ng-container *ngIf=\"child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menu;context:{data:child}\"></ng-container>\n                </ng-container>\n\n                <ng-container *ngIf=\"!child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menuItem;context:{data:child}\"></ng-container>\n                </ng-container>\n\n\n            </ng-container>\n\n        </div>\n\n    </div>\n</ng-template>\n\n\n<ng-container *ngTemplateOutlet=\"menu;context:{data}\"></ng-container>"
+            "extends": "CommonHostComponent",
+            "templateData": "<ng-template #menuItem let-data=\"data\">\n    <div class=\"tb-nav-list-item {{data.color}}\" (click)=\"emit({type:'click', target:data.uname})\">\n        <span class=\"icon\">{{data.icon}}</span>\n        <span>{{data.label}}</span>\n    </div>\n</ng-template>\n\n\n<ng-template #menu let-data=\"data\">\n\n\n    <div class=\"tb-dropdown-menu {{data.direction}} \">\n\n        <ng-container *ngTemplateOutlet=\"menuItem;context:{data:data}\"></ng-container>\n\n        <div class=\"tb-dropdown-items\">\n\n            <ng-container *ngFor=\"let child of data.children\">\n\n\n                <ng-container *ngIf=\"child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menu;context:{data:child}\"></ng-container>\n                </ng-container>\n\n                <ng-container *ngIf=\"!child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menuItem;context:{data:child}\"></ng-container>\n                </ng-container>\n\n\n            </ng-container>\n\n        </div>\n\n    </div>\n</ng-template>\n\n\n<ng-container *ngTemplateOutlet=\"menu;context:{data}\"></ng-container>"
         },
         {
             "name": "MenuItemComponent",
-            "id": "component-MenuItemComponent-122da14e92e461d5eb211c6dae6c44e8b6b963e546c7df83ddba8cfa96601a9c449c282a959e5fcd2dbcd732bc04185ca0651ab6d15a0f562231833bf98164c1",
+            "id": "component-MenuItemComponent-2e38f3993ac6f92da5c6e9f21b229b855f3dc7d02fe7e445c4f6e57682d76f750d14c13b346150aaa4cd50a03b4a09e69914119e81520365784f9c3423d4cc5c",
             "file": "libs/material/src/lib/components/menu-item/menu-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1584,10 +1632,141 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nElement color",
+                    "description": "<p>Element color</p>\n",
+                    "line": 25,
+                    "type": "Colors",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDescriptive text for the element",
+                    "description": "<p>Descriptive text for the element</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHelp user to understand this element",
+                    "description": "<p>Help user to understand this element</p>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow tooltip at a specific location.",
+                    "description": "<p>Show tooltip at a specific location.</p>\n",
+                    "line": 31,
+                    "type": "TooltipPosition",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "'Uname not set'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "listen",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
+                    "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
+                    "line": 34,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmit element events as they are",
+                    "description": "<p>Emit element events as they are</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1602,7 +1781,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-menu-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './menu-item.component.html',\n  styleUrls: ['./menu-item.component.scss'],\n})\nexport class MenuItemComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\n\n@Component({\n  selector: 'tb-menu-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './menu-item.component.html',\n  styleUrls: ['./menu-item.component.scss'],\n})\nexport class MenuItemComponent extends CommonComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1611,11 +1790,12 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>menu-item works!</p>\n"
+            "extends": "CommonComponent",
+            "templateData": "<div class=\"tb-nav-list-item {{color}}\" (click)=\"emit(uname)\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
         },
         {
             "name": "NavListComponent",
-            "id": "component-NavListComponent-3c6d6141af45401bb9069a7b884e865182091feeabff996f31ada94d239b3ac6b5160ac6d09b8f444f38101a01acbe240d475d94d2038c81480c1cd4d45ad5ba",
+            "id": "component-NavListComponent-ccca960810fae73990fa09f4b1a6939a02b722d0dc88f8b2aa2e475ffb0951f6640ea575480ab03aa354c40ae4a976df8eccc813047cff24fa586e6d96a3f78d",
             "file": "libs/material/src/lib/components/nav-list/nav-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1632,10 +1812,66 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "T",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "listen",
+                    "defaultValue": "new EventEmitter<EventObject>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1645,12 +1881,16 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "NavListItemComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-nav-list',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './nav-list.component.html',\n  styleUrls: ['./nav-list.component.scss'],\n})\nexport class NavListComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonHostComponent } from '../common';\nimport { NavListItemComponent } from '../nav-list-item/nav-list-item.component';\n\n@Component({\n  selector: 'tb-nav-list',\n  standalone: true,\n  imports: [CommonModule, NavListItemComponent],\n  templateUrl: './nav-list.component.html',\n  styleUrls: ['./nav-list.component.scss'],\n})\nexport class NavListComponent extends CommonHostComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1659,11 +1899,12 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>nav-list works!</p>\n"
+            "extends": "CommonHostComponent",
+            "templateData": "<div class=\"tb-nav-list\">\n    <tb-nav-list-item *ngFor=\"let item of data\" [color]=\"item.color\" [icon]=\"item.icon\" [label]=\"item.label\"\n        (listen)=\"emit($event)\"></tb-nav-list-item>\n</div>"
         },
         {
             "name": "NavListItemComponent",
-            "id": "component-NavListItemComponent-b3d5aa7cfa8c3c4a06931ae93ad48d3a074951691eda07aa6f5c0914be5e1e1304d99bd8b54c483f8e8430b0e021442b5bc49702b7e276736751c3de0e4c21ff",
+            "id": "component-NavListItemComponent-73b145879492ebc9bd8fbf2db49efb780b2eb58dd2def681951d2b3107640b9ab488631a6604be2f2da94166a5e7503e66e663d94033a0ae3bd5f169b2e18c9e",
             "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1680,10 +1921,141 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nElement color",
+                    "description": "<p>Element color</p>\n",
+                    "line": 25,
+                    "type": "Colors",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDescriptive text for the element",
+                    "description": "<p>Descriptive text for the element</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHelp user to understand this element",
+                    "description": "<p>Help user to understand this element</p>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow tooltip at a specific location.",
+                    "description": "<p>Show tooltip at a specific location.</p>\n",
+                    "line": 31,
+                    "type": "TooltipPosition",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "'Uname not set'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "listen",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
+                    "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
+                    "line": 34,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmit element events as they are",
+                    "description": "<p>Emit element events as they are</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1698,7 +2070,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-nav-list-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './nav-list-item.component.html',\n  styleUrls: ['./nav-list-item.component.scss'],\n})\nexport class NavListItemComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\n\n@Component({\n  selector: 'tb-nav-list-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './nav-list-item.component.html',\n  styleUrls: ['./nav-list-item.component.scss'],\n})\nexport class NavListItemComponent extends CommonComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1707,7 +2079,8 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>nav-list-item works!</p>\n"
+            "extends": "CommonComponent",
+            "templateData": "<div class=\"tb-nav-list-item {{color}}\" (click)=\"emit({type:'click', target:uname})\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
         },
         {
             "name": "NumberInputComponent",
@@ -1855,7 +2228,7 @@
         },
         {
             "name": "SwitchInputComponent",
-            "id": "component-SwitchInputComponent-4fcec0cd609f327382fd208c6097616ed20bd0550a41701a4ccced2229ed8a616245e5855dd8528a479962ededfeeb4dc7e0c9bc920c8b98b8ee80f07f3f8739",
+            "id": "component-SwitchInputComponent-fc093ebae820c933810a1f4a10464c31a8dd01639efd2ec7d165e766c90aaf64f0cdc7c58a4125c9bfa4a52e2f9e4cb9bcc31011efca41550e19500814508445",
             "file": "libs/material/src/lib/components/switch-input/switch-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1872,10 +2245,191 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nElement color",
+                    "description": "<p>Element color</p>\n",
+                    "line": 25,
+                    "type": "Colors",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDescriptive text for the element",
+                    "description": "<p>Descriptive text for the element</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHelp user to understand this element",
+                    "description": "<p>Help user to understand this element</p>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow tooltip at a specific location.",
+                    "description": "<p>Show tooltip at a specific location.</p>\n",
+                    "line": 31,
+                    "type": "TooltipPosition",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "'Uname not set'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "listen",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
+                    "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
+                    "line": 34,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "inputValue",
+                    "defaultValue": "'' as any",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "T",
+                    "optional": false,
+                    "description": "<p>Input value</p>\n",
+                    "line": 14,
+                    "rawdescription": "\nInput value",
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "parseEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "EventObject",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        122,
+                        161
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmit element events as they are",
+                    "description": "<p>Emit element events as they are</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1890,7 +2444,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-switch-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './switch-input.component.html',\n  styleUrls: ['./switch-input.component.scss'],\n})\nexport class SwitchInputComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonInputComponent } from '../common';\n\n@Component({\n  selector: 'tb-switch-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './switch-input.component.html',\n  styleUrls: ['./switch-input.component.scss'],\n})\nexport class SwitchInputComponent extends CommonInputComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1899,7 +2453,8 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>switch-input works!</p>\n"
+            "extends": "CommonInputComponent",
+            "templateData": "<div class=\"tb-form-field-container primary row  align-flex-start\">\n    <div class=\"flex row justify-flex-start gap-10 align-center\">\n        <div class=\"icon tb-form-checkbox\" (click)=\"emit({type:'click', payload:inputValue});\"\n            [class.green]=\"inputValue\">{{inputValue ? 'check_box' :\n            'check_box_outline_blank'}}</div>\n        <div class=\"tb-form-field-label\">{{uname}}</div>\n    </div>\n</div>"
         },
         {
             "name": "TextInputComponent",
@@ -2082,7 +2637,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
@@ -2391,6 +2946,26 @@
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
+                "name": "ListSample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/list/list-sample.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ListItem[]",
+                "defaultValue": "[\r\n  { label: 'List item 2', icon: 'apps', color: 'secondary' },\r\n  { label: 'List item 3', icon: '10k', color: 'accent' },\r\n  { label: 'List item 4', icon: 'email', color: 'warn' },\r\n  { label: 'List item 5', icon: 'store', color: 'red' },\r\n  { label: 'List item 6', icon: 'house', color: 'black' },\r\n  { label: 'List item 7', icon: '5k', color: 'white' },\r\n]"
+            },
+            {
+                "name": "MenuSample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/menu/menu-sample.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "MenuItem",
+                "defaultValue": "{\r\n  uname: 'main',\r\n  label: 'Menu',\r\n  color: 'primary',\r\n  icon: 'menu_book',\r\n  direction: 'bottom',\r\n  children: [\r\n    {\r\n      uname: 'item 1',\r\n      label: 'item 1',\r\n      color: 'primary',\r\n      icon: 'info',\r\n    },\r\n\r\n    {\r\n      uname: 'item 2',\r\n      label: 'item 2',\r\n      color: 'accent',\r\n      icon: 'pin_drop',\r\n      direction: 'right',\r\n      children: [\r\n        { uname: 'item 3', label: 'item 3', color: 'primary' },\r\n\r\n        {\r\n          uname: 'item 4',\r\n          label: 'item 4',\r\n          color: 'accent',\r\n          icon: 'pin_drop',\r\n          direction: 'right',\r\n          children: [\r\n            {\r\n              uname: 'item 5',\r\n              label: 'item 5',\r\n              color: 'accent',\r\n              icon: 'info',\r\n              direction: 'top',\r\n              children: [\r\n                {\r\n                  uname: 'item 8',\r\n                  label: 'item 8',\r\n                  color: 'accent',\r\n                  icon: 'warning',\r\n                  direction: 'top',\r\n                  children: [\r\n                    {\r\n                      uname: 'item 9',\r\n                      label: 'item 9',\r\n                      color: 'accent',\r\n                      icon: '10k',\r\n                      direction: 'left',\r\n                      children: [\r\n                        {\r\n                          uname: 'item 10',\r\n                          label: 'item 10',\r\n                          color: 'primary',\r\n                          icon: '30fps_select',\r\n                        },\r\n                        {\r\n                          uname: 'item 10',\r\n                          label: 'item 10',\r\n                          color: 'primary',\r\n                          icon: '30fps_select',\r\n                        },\r\n                      ],\r\n                    },\r\n                    {\r\n                      uname: 'item 10',\r\n                      label: 'item 10',\r\n                      color: 'primary',\r\n                      icon: '10k',\r\n                    },\r\n                  ],\r\n                },\r\n              ],\r\n            },\r\n            {\r\n              uname: 'item 6',\r\n              label: 'item 6',\r\n              color: 'primary',\r\n              icon: 'info',\r\n            },\r\n          ],\r\n        },\r\n        { uname: 'item 7', label: 'item 7', color: 'warn', icon: 'warning' },\r\n      ],\r\n    },\r\n  ],\r\n}"
+            },
+            {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2551,6 +3126,16 @@
                 "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
             },
             {
+                "name": "NavListSample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/nav-list/nav-list-sample.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ListItem[]",
+                "defaultValue": "[\r\n  {\r\n    uname: 'List item 1',\r\n    label: 'List item 1',\r\n    icon: 'apps',\r\n    color: 'primary',\r\n  },\r\n  {\r\n    uname: 'List item 2',\r\n    label: 'List item 2',\r\n    icon: 'apps',\r\n    color: 'secondary',\r\n  },\r\n  { uname: 'List item 3', label: 'List item 3', icon: '10k', color: 'accent' },\r\n  { uname: 'List item 4', label: 'List item 4', icon: 'email', color: 'warn' },\r\n  { uname: 'List item 5', label: 'List item 5', icon: 'store', color: 'red' },\r\n  { uname: 'List item 6', label: 'List item 6', icon: 'house', color: 'black' },\r\n  { uname: 'List item 7', label: 'List item 7', icon: '5k', color: 'white' },\r\n]"
+            },
+            {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2598,7 +3183,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    data: ListSample,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -2618,7 +3203,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    data: MenuSample,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -2638,7 +3223,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    data: NavListSample,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3236,7 +3821,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    data: ListSample,\n  },\n}"
                 }
             ],
             "libs/material/src/lib/components/list-item/list-item.component.stories.ts": [
@@ -3300,7 +3885,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    data: MenuSample,\n  },\n}"
                 }
             ],
             "libs/material/src/lib/components/menu-item/menu-item.component.stories.ts": [
@@ -3364,7 +3949,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    data: NavListSample,\n  },\n}"
                 }
             ],
             "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts": [
@@ -3589,6 +4174,42 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/components/list/list-sample.ts": [
+                {
+                    "name": "ListSample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/list/list-sample.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ListItem[]",
+                    "defaultValue": "[\r\n  { label: 'List item 2', icon: 'apps', color: 'secondary' },\r\n  { label: 'List item 3', icon: '10k', color: 'accent' },\r\n  { label: 'List item 4', icon: 'email', color: 'warn' },\r\n  { label: 'List item 5', icon: 'store', color: 'red' },\r\n  { label: 'List item 6', icon: 'house', color: 'black' },\r\n  { label: 'List item 7', icon: '5k', color: 'white' },\r\n]"
+                }
+            ],
+            "libs/material/src/lib/components/menu/menu-sample.ts": [
+                {
+                    "name": "MenuSample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/menu/menu-sample.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem",
+                    "defaultValue": "{\r\n  uname: 'main',\r\n  label: 'Menu',\r\n  color: 'primary',\r\n  icon: 'menu_book',\r\n  direction: 'bottom',\r\n  children: [\r\n    {\r\n      uname: 'item 1',\r\n      label: 'item 1',\r\n      color: 'primary',\r\n      icon: 'info',\r\n    },\r\n\r\n    {\r\n      uname: 'item 2',\r\n      label: 'item 2',\r\n      color: 'accent',\r\n      icon: 'pin_drop',\r\n      direction: 'right',\r\n      children: [\r\n        { uname: 'item 3', label: 'item 3', color: 'primary' },\r\n\r\n        {\r\n          uname: 'item 4',\r\n          label: 'item 4',\r\n          color: 'accent',\r\n          icon: 'pin_drop',\r\n          direction: 'right',\r\n          children: [\r\n            {\r\n              uname: 'item 5',\r\n              label: 'item 5',\r\n              color: 'accent',\r\n              icon: 'info',\r\n              direction: 'top',\r\n              children: [\r\n                {\r\n                  uname: 'item 8',\r\n                  label: 'item 8',\r\n                  color: 'accent',\r\n                  icon: 'warning',\r\n                  direction: 'top',\r\n                  children: [\r\n                    {\r\n                      uname: 'item 9',\r\n                      label: 'item 9',\r\n                      color: 'accent',\r\n                      icon: '10k',\r\n                      direction: 'left',\r\n                      children: [\r\n                        {\r\n                          uname: 'item 10',\r\n                          label: 'item 10',\r\n                          color: 'primary',\r\n                          icon: '30fps_select',\r\n                        },\r\n                        {\r\n                          uname: 'item 10',\r\n                          label: 'item 10',\r\n                          color: 'primary',\r\n                          icon: '30fps_select',\r\n                        },\r\n                      ],\r\n                    },\r\n                    {\r\n                      uname: 'item 10',\r\n                      label: 'item 10',\r\n                      color: 'primary',\r\n                      icon: '10k',\r\n                    },\r\n                  ],\r\n                },\r\n              ],\r\n            },\r\n            {\r\n              uname: 'item 6',\r\n              label: 'item 6',\r\n              color: 'primary',\r\n              icon: 'info',\r\n            },\r\n          ],\r\n        },\r\n        { uname: 'item 7', label: 'item 7', color: 'warn', icon: 'warning' },\r\n      ],\r\n    },\r\n  ],\r\n}"
+                }
+            ],
+            "libs/material/src/lib/components/nav-list/nav-list-sample.ts": [
+                {
+                    "name": "NavListSample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/nav-list/nav-list-sample.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ListItem[]",
+                    "defaultValue": "[\r\n  {\r\n    uname: 'List item 1',\r\n    label: 'List item 1',\r\n    icon: 'apps',\r\n    color: 'primary',\r\n  },\r\n  {\r\n    uname: 'List item 2',\r\n    label: 'List item 2',\r\n    icon: 'apps',\r\n    color: 'secondary',\r\n  },\r\n  { uname: 'List item 3', label: 'List item 3', icon: '10k', color: 'accent' },\r\n  { uname: 'List item 4', label: 'List item 4', icon: 'email', color: 'warn' },\r\n  { uname: 'List item 5', label: 'List item 5', icon: 'store', color: 'red' },\r\n  { uname: 'List item 6', label: 'List item 6', icon: 'house', color: 'black' },\r\n  { uname: 'List item 7', label: 'List item 7', icon: '5k', color: 'white' },\r\n]"
                 }
             ]
         },
@@ -3978,7 +4599,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 8,
+        "count": 11,
         "status": "low",
         "files": [
             {
@@ -4112,8 +4733,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxInputComponent",
-                "coveragePercent": 72,
-                "coverageCount": "8/11",
+                "coveragePercent": 63,
+                "coverageCount": "7/11",
                 "status": "good"
             },
             {
@@ -4122,7 +4743,7 @@
                 "linktype": "component",
                 "name": "CommonHostComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -4261,6 +4882,16 @@
                 "status": "good"
             },
             {
+                "filePath": "libs/material/src/lib/components/list/list-sample.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ListSample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/lib/components/list/list.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -4334,6 +4965,16 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "MenuItemComponent",
+                "coveragePercent": 77,
+                "coverageCount": "7/9",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/menu/menu-sample.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "MenuSample",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -4412,6 +5053,16 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "NavListItemComponent",
+                "coveragePercent": 77,
+                "coverageCount": "7/9",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/nav-list/nav-list-sample.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NavListSample",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -4452,7 +5103,7 @@
                 "linktype": "component",
                 "name": "NavListComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -4607,9 +5258,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SwitchInputComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
+                "coveragePercent": 72,
+                "coverageCount": "8/11",
+                "status": "good"
             },
             {
                 "filePath": "libs/material/src/lib/components/text-input/text-input.component.stories.ts",
