@@ -2266,6 +2266,7 @@ export type Range100 =
   | 100;
 
 export type ListItem = {
+  uname?: string;
   label: string;
   icon?: Icon;
   color?: Colors;

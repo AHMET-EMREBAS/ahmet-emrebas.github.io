@@ -12,7 +12,13 @@ export default meta;
 type Story = StoryObj<NavListItemComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    uname: 'Nav list item',
+    icon: 'home',
+    color: 'accent',
+    tooltip: 'Tooltip',
+    tooltipPosition: 'bottom',
+  },
 };
 
 export const Heading: Story = {

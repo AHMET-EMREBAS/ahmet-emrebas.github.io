@@ -12,7 +12,14 @@ export default meta;
 type Story = StoryObj<MenuItemComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    uname: 'menu',
+    icon: 'info',
+    color: 'primary',
+    label: 'Menu item',
+    tooltip: 'Tooltip',
+    tooltipPosition: 'bottom',
+  },
 };
 
 export const Heading: Story = {
