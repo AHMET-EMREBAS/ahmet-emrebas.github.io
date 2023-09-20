@@ -1,0 +1,22 @@
+@import 'vars';
+
+/** Get first letter */
+@function fl($string) {
+  @return str-slice($string, 1, 1);
+}
+
+/** create a class with single property */
+@mixin c($className, $property, $value) {
+  .#{$className} {
+    #{$property}: #{$value};
+  }
+}
+
+/** create classes with n number of suffix  */
+@mixin n($className, $property, $unit, $count) {
+  @for $c from 1 through $count {
+    .#{$className}-#{$c} {
+      #{$property}: #{$c + #{$unit}};
+    }
+  }
+}

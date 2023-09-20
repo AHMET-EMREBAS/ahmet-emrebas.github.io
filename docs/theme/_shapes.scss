@@ -1,0 +1,14 @@
+@for $size from 1 through 100 {
+  .sqr-#{$size} {
+    width: #{$size*0.1}em;
+    height: #{$size*0.1}em;
+  }
+}
+
+
+@for $size from 1 through 100 {
+  .gold-rect-#{$size} {
+    width: #{$size * 1.618}em;
+    height: #{$size}em;
+  }
+}
