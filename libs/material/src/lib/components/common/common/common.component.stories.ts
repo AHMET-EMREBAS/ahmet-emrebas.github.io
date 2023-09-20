@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { CommonComponent } from './_-common.component';
+import { CommonComponent } from './common.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
@@ -13,7 +13,9 @@ type Story = StoryObj<CommonComponent>;
 
 export const Primary: Story = {
   args: {
-    uname: '',
+    uname: 'Uname not set',
+    label: 'Label',
+    icon: 'info',
     color: 'primary',
     tooltip: '',
     tooltipPosition: 'bottom',
@@ -22,13 +24,15 @@ export const Primary: Story = {
 
 export const Heading: Story = {
   args: {
-    uname: '',
+    uname: 'Uname not set',
+    label: 'Label',
+    icon: 'info',
     color: 'primary',
     tooltip: '',
     tooltipPosition: 'bottom',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/_-common works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/common works!/gi)).toBeTruthy();
   },
 };

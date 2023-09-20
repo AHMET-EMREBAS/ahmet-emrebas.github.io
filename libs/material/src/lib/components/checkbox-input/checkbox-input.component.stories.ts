@@ -13,12 +13,14 @@ export default meta;
 type Story = StoryObj<CheckboxInputComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    uname: 'Checkbox Label',
+  },
 };
 
 export const Heading: Story = {
   args: {
-    uname:'Do you feel good today?'
+    uname: 'Do you feel good today?',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

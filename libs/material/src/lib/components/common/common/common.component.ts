@@ -1,6 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Colors, EventService, TooltipPosition } from '../../api';
+import {
+  Colors,
+  EventObject,
+  EventService,
+  Icon,
+  TooltipPosition,
+} from '../../../api';
 
 @Component({
   selector: 'tb---common',
@@ -11,13 +17,15 @@ import { Colors, EventService, TooltipPosition } from '../../api';
 })
 export class CommonComponent {
   /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/
-  @Input() uname = '';
+  @Input() uname = 'Uname not set';
+
+  /** Descriptive text for the element */
+  @Input() label = 'Label';
+
+  @Input() icon: Icon = 'info';
 
   /** Element color */
   @Input() color: Colors = 'primary';
-
-  /** Listen any event in the component. Event name is padded as property of the object. */
-  @Output() listen = new EventEmitter();
 
   /** Help user to understand this element */
   @Input() tooltip = '';
@@ -25,16 +33,23 @@ export class CommonComponent {
   /** Show tooltip at a specific location. */
   @Input() tooltipPosition: TooltipPosition = 'bottom';
 
+  /** @ignore Listen any event in the component. Event name is padded as property of the object. */
+  @Output() listen = new EventEmitter();
+
   constructor(protected readonly eventService: EventService) {}
 
-  private createEvent(e: any) {
-    return { [this.uname]: e };
+  protected parseEvent(event: Event): EventObject {
+    return event;
+  }
+
+  protected createEvent(event: EventObject) {
+    return { [this.uname]: event };
   }
 
   /** Emit element events as they are */
-  emit(event: any) {
-    const e = this.createEvent(event);
-    this.eventService.$events.next(e);
-    this.listen.emit(e);
+  emit(__event: Event) {
+    const event = this.createEvent(this.parseEvent(__event));
+    this.eventService.$events.next(event);
+    this.listen.emit(event);
   }
 }

@@ -8,10 +8,14 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@techbir/api": ["/libs/material/src/lib/api"]
+    }
   },
   "files": [],
   "include": [],
+
   "references": [
     {
       "path": "./tsconfig.lib.json"
