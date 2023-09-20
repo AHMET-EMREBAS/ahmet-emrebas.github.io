@@ -22,6 +22,6 @@ export const Heading: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/checkbox-input works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Do you feel good today?/gi)).toBeTruthy();
   },
 };

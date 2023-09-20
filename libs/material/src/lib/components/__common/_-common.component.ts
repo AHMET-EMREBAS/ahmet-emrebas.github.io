@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Colors, EventService, StringType, TooltipPosition } from '../../api';
+import { Colors, EventService, TooltipPosition } from '../../api';
 
 @Component({
   selector: 'tb---common',
@@ -11,7 +11,7 @@ import { Colors, EventService, StringType, TooltipPosition } from '../../api';
 })
 export class CommonComponent {
   /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/
-  @Input() uname = StringType;
+  @Input() uname = '';
 
   /** Element color */
   @Input() color: Colors = 'primary';

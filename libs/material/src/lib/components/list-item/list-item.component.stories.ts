@@ -1,16 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { CurrencyInputComponent } from './currency-input.component';
+import { ListItemComponent } from './list-item.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<CurrencyInputComponent> = {
-  component: CurrencyInputComponent,
-  title: 'CurrencyInputComponent',
-  tags: ['autodocs'],
+const meta: Meta<ListItemComponent> = {
+  component: ListItemComponent,
+  title: 'ListItemComponent',
 };
 export default meta;
-type Story = StoryObj<CurrencyInputComponent>;
+type Story = StoryObj<ListItemComponent>;
 
 export const Primary: Story = {
   args: {},
@@ -20,6 +19,6 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/currency-input works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/list-item works!/gi)).toBeTruthy();
   },
 };

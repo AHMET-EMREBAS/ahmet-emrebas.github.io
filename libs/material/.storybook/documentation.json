@@ -3,6 +3,33 @@
     "interfaces": [],
     "injectables": [
         {
+            "name": "EventService",
+            "id": "injectable-EventService-e701702799be8714ee33036840e187cb2fe80b2afdebafa6f2661c470d687085e836cc5fb7ff6a93132212e8a6760a246f0a880ebdd395afd827d2bee2f3f88c",
+            "file": "libs/material/src/lib/api/services/event.service.ts",
+            "properties": [
+                {
+                    "name": "$events",
+                    "defaultValue": "new BehaviorSubject<EventObject>({})",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        146
+                    ]
+                }
+            ],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\nexport type EventObject<T = any> = {\r\n  [name: string]: {\r\n    type: string;\r\n    payload?: T;\r\n  };\r\n};\r\n\r\n@Injectable({ providedIn: 'root' })\r\nexport class EventService {\r\n  readonly $events = new BehaviorSubject<EventObject>({});\r\n}\r\n",
+            "type": "injectable"
+        },
+        {
             "name": "LoggerService",
             "id": "injectable-LoggerService-1dc9ea3616d04914b984975dc55843f052b0cb346b0ca1e91e3f1073d03e13a1719a5993fd1bfca1728517366c508b6ddb4b63d33a4d3fbe01403181edc81d56",
             "file": "libs/material/src/lib/api/services/logger.service.ts",
@@ -114,7 +141,7 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-62fff1290a89b31fe151794d381fafceb2a8dc5e64f74d7a20b2d8db0abe3cef6a342317abfeec132ea433a3a5b145eb616cdc43d133c43fcfbaa34a616a2d80",
+            "id": "component-ButtonComponent-cfef0936173660f0b45868f8f5cc53f237b39fb97e3e1651279c033cbe73b50aa5316c8793217a91213a0f004586e1b0f57aca856839ea4bba5da92a5d6690c3",
             "file": "libs/material/src/lib/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -176,13 +203,13 @@
                 },
                 {
                     "name": "uname",
-                    "defaultValue": "StringType",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
                     "line": 14,
-                    "type": "any",
+                    "type": "string",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -207,11 +234,45 @@
             "propertiesClass": [],
             "methodsClass": [
                 {
+                    "name": "createEvent",
+                    "args": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{ [x: string]: any; }",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
                     "name": "emit",
                     "args": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -219,7 +280,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
@@ -227,7 +288,208 @@
                     "jsdoctags": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "SharedModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from './../__common/_-common.component';\nimport { SharedModule } from '../../api';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, SharedModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent extends CommonComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": "CommonComponent",
+            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit($event)\" (dblclick)=\"emit($event)\"\n    [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\" [attr.tooltip-color]=\"color\">{{uname |\n    titlecase}}</button>"
+        },
+        {
+            "name": "CheckboxInputComponent",
+            "id": "component-CheckboxInputComponent-964182eae2e4b76af71b581931daf5097521f432375e60a8d245bfb4a9932cc5ea45a4b3d8b4ec2e701be5752633e4ce74c444d8fa19176d9b02ff10771226df",
+            "file": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-checkbox-input",
+            "styleUrls": [
+                "./checkbox-input.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox-input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "checked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nElement color",
+                    "description": "<p>Element color</p>\n",
+                    "line": 17,
+                    "type": "Colors",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHelp user to understand this element",
+                    "description": "<p>Help user to understand this element</p>\n",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow tooltip at a specific location.",
+                    "description": "<p>Show tooltip at a specific location.</p>\n",
+                    "line": 26,
+                    "type": "TooltipPosition",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "listen",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nListen any event in the component. Event name is padded as property of the object.",
+                    "description": "<p>Listen any event in the component. Event name is padded as property of the object.</p>\n",
+                    "line": 20,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "createEvent",
+                    "args": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{ [x: string]: any; }",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmit element events as they are",
+                    "description": "<p>Emit element events as they are</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -254,56 +516,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from './../__common/_-common.component';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent extends CommonComponent {}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./button.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "extends": "CommonComponent",
-            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit($event)\" (dblclick)=\"emit($event)\"\n    [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\" [attr.tooltip-color]=\"color\">{{uname |\n    titlecase}}</button>"
-        },
-        {
-            "name": "CheckboxInputComponent",
-            "id": "component-CheckboxInputComponent-61e78642994bc339f1ca9ac71ee7e6ee0d8b3e94cd0627b9ed176f5610def40632a6770b3a462ec0c491611a4df3c59865a97c0403a7a3323dac98c2123ddfb5",
-            "file": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "tb-checkbox-input",
-            "styleUrls": [
-                "./checkbox-input.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./checkbox-input.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../__common/_-common.component';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent extends CommonComponent {\n  @Input() checked = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -312,11 +525,12 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>checkbox-input works!</p>\n"
+            "extends": "CommonComponent",
+            "templateData": "<div class=\"tb-form-field-container primary row  align-flex-start\">\n    <div class=\"flex row justify-flex-start gap-10 align-center\">\n        <div class=\"icon font-size-30 cursor-pointer\" (click)=\"checked=!checked; emit($event);\" [class.green]=\"checked\">{{checked ? 'check_box' :\n            'check_box_outline_blank'}}</div>\n        <div class=\"tb-form-field-label\">{{uname}}</div>\n    </div>\n</div>"
         },
         {
             "name": "CommonComponent",
-            "id": "component-CommonComponent-904a55a2d6d33984a57d94f086aff3e5705eecd62eae06fe317d5d1eeb870ec65694577f0383242a2e5e1b6caab6718bceb05e707cad242676815dfa3d2ce823",
+            "id": "component-CommonComponent-dff3416c303f24cdd2510adcc122def92bb63ac694e6b1c7a04cce3a17fe681be0bae7cdd3917510bdc8789670c449eecf48ca4f93114f7f14466e6f3fcba2a3",
             "file": "libs/material/src/lib/components/__common/_-common.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -369,13 +583,13 @@
                 },
                 {
                     "name": "uname",
-                    "defaultValue": "StringType",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
                     "line": 14,
-                    "type": "any",
+                    "type": "string",
                     "decorators": []
                 }
             ],
@@ -394,11 +608,42 @@
             "propertiesClass": [],
             "methodsClass": [
                 {
+                    "name": "createEvent",
+                    "args": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{ [x: string]: any; }",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "emit",
                     "args": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -406,7 +651,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
@@ -414,7 +659,7 @@
                     "jsdoctags": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -438,7 +683,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Colors, StringType, TooltipPosition } from '../../api';\n\n@Component({\n  selector: 'tb---common',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './_-common.component.html',\n  styleUrls: ['./_-common.component.scss'],\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = StringType;\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Listen any event in the component. Event name is padded as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** Emit element events as they are */\n  emit(event: Event) {\n    this.listen.emit({ [this.uname]: { type: event.type } });\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Colors, EventService, TooltipPosition } from '../../api';\n\n@Component({\n  selector: 'tb---common',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './_-common.component.html',\n  styleUrls: ['./_-common.component.scss'],\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = '';\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Listen any event in the component. Event name is padded as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  constructor(protected readonly eventService: EventService) {}\n\n  private createEvent(e: any) {\n    return { [this.uname]: e };\n  }\n\n  /** Emit element events as they are */\n  emit(event: any) {\n    const e = this.createEvent(event);\n    this.eventService.$events.next(e);\n    this.listen.emit(e);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -447,6 +692,32 @@
                 }
             ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "eventService",
+                        "type": "EventService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 26,
+                "jsdoctags": [
+                    {
+                        "name": "eventService",
+                        "type": "EventService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "templateData": "<p>_-common works!</p>\n"
         },
         {
@@ -1158,6 +1429,46 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "SharedModule",
+            "id": "module-SharedModule-1b94619be332c0cfb9ca39e80bb0ef24feadcffe566be2af07d2c0f8397bbdc555c8e33cdf3a56b6eba880ebef00699fcf3ee22d8492d0d442af237a7e7f3e35",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/material/src/lib/api/modules/shared-module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { EventService } from '../services';\r\n\r\n@NgModule({\r\n  providers: [EventService],\r\n})\r\nexport class SharedModule {}\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": [
+                        {
+                            "name": "EventService"
+                        }
+                    ]
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
@@ -1200,7 +1511,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkbox-input works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    uname:'Do you feel good today?'\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkbox-input works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/common-host works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1221,6 +1542,46 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/icon works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/list works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/list-item works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list-item works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1283,6 +1644,26 @@
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/text-input works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/_-common works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1300,7 +1681,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CheckboxInputComponent>",
-                "defaultValue": "{\n  component: CheckboxInputComponent,\n  title: 'CheckboxInputComponent',\n}"
+                "defaultValue": "{\n  component: CheckboxInputComponent,\n  title: 'CheckboxInputComponent',\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CommonHostComponent>",
+                "defaultValue": "{\n  component: CommonHostComponent,\n  title: 'CommonHostComponent',\n}"
             },
             {
                 "name": "meta",
@@ -1310,7 +1701,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CurrencyInputComponent>",
-                "defaultValue": "{\n  component: CurrencyInputComponent,\n  title: 'CurrencyInputComponent',\n}"
+                "defaultValue": "{\n  component: CurrencyInputComponent,\n  title: 'CurrencyInputComponent',\n  tags: ['autodocs'],\n}"
             },
             {
                 "name": "meta",
@@ -1321,6 +1712,46 @@
                 "deprecationMessage": "",
                 "type": "Meta<IconComponent>",
                 "defaultValue": "{\n  component: IconComponent,\n  title: 'IconComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ListComponent>",
+                "defaultValue": "{\n  component: ListComponent,\n  title: 'ListComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ListItemComponent>",
+                "defaultValue": "{\n  component: ListItemComponent,\n  title: 'ListItemComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<NavListComponent>",
+                "defaultValue": "{\n  component: NavListComponent,\n  title: 'NavListComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<NavListItemComponent>",
+                "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n}"
             },
             {
                 "name": "meta",
@@ -1383,14 +1814,24 @@
                 "defaultValue": "{\n  component: TextInputComponent,\n  title: 'TextInputComponent',\n}"
             },
             {
-                "name": "NumberType",
+                "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/api/types.ts",
+                "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Number.MAX_SAFE_INTEGER"
+                "type": "Meta<ToolbarComponent>",
+                "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CommonComponent>",
+                "defaultValue": "{\n  component: CommonComponent,\n  title: 'CommonComponent',\n}"
             },
             {
                 "name": "Primary",
@@ -1416,6 +1857,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/lib/components/currency-input/currency-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1427,6 +1878,46 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/src/lib/components/icon/icon.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1493,14 +1984,24 @@
                 "defaultValue": "{\n  args: {},\n}"
             },
             {
-                "name": "StringType",
+                "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/api/types.ts",
+                "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'Undefined'"
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n}"
             }
         ],
         "functions": [
@@ -1561,6 +2062,17 @@
                 "kind": 189
             },
             {
+                "name": "EventObject",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/src/lib/api/services/event.service.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -1586,6 +2098,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<CommonHostComponent>",
+                "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<CurrencyInputComponent>",
                 "file": "libs/material/src/lib/components/currency-input/currency-input.component.stories.ts",
                 "deprecated": false,
@@ -1599,6 +2122,50 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<IconComponent>",
                 "file": "libs/material/src/lib/components/icon/icon.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ListComponent>",
+                "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ListItemComponent>",
+                "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<NavListComponent>",
+                "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<NavListItemComponent>",
+                "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1665,6 +2232,28 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<TextInputComponent>",
                 "file": "libs/material/src/lib/components/text-input/text-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ToolbarComponent>",
+                "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<CommonComponent>",
+                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1747,7 +2336,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkbox-input works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    uname:'Do you feel good today?'\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkbox-input works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -1757,13 +2346,45 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CheckboxInputComponent>",
-                    "defaultValue": "{\n  component: CheckboxInputComponent,\n  title: 'CheckboxInputComponent',\n}"
+                    "defaultValue": "{\n  component: CheckboxInputComponent,\n  title: 'CheckboxInputComponent',\n  tags: ['autodocs'],\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/components/common-host/common-host.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/common-host works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CommonHostComponent>",
+                    "defaultValue": "{\n  component: CommonHostComponent,\n  title: 'CommonHostComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1789,7 +2410,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CurrencyInputComponent>",
-                    "defaultValue": "{\n  component: CurrencyInputComponent,\n  title: 'CurrencyInputComponent',\n}"
+                    "defaultValue": "{\n  component: CurrencyInputComponent,\n  title: 'CurrencyInputComponent',\n  tags: ['autodocs'],\n}"
                 },
                 {
                     "name": "Primary",
@@ -1828,6 +2449,134 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/lib/components/icon/icon.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/components/list/list.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/list works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ListComponent>",
+                    "defaultValue": "{\n  component: ListComponent,\n  title: 'ListComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/components/list-item/list-item.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/list-item works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ListItemComponent>",
+                    "defaultValue": "{\n  component: ListItemComponent,\n  title: 'ListItemComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<NavListComponent>",
+                    "defaultValue": "{\n  component: NavListComponent,\n  title: 'NavListComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list-item works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<NavListItemComponent>",
+                    "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -2026,26 +2775,68 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/lib/api/types.ts": [
+            "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts": [
                 {
-                    "name": "NumberType",
+                    "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/api/types.ts",
+                    "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Number.MAX_SAFE_INTEGER"
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
-                    "name": "StringType",
+                    "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/api/types.ts",
+                    "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'Undefined'"
+                    "type": "Meta<ToolbarComponent>",
+                    "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/components/__common/_-common.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/_-common works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CommonComponent>",
+                    "defaultValue": "{\n  component: CommonComponent,\n  title: 'CommonComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n}"
                 }
             ]
         },
@@ -2122,6 +2913,19 @@
                     "kind": 189
                 }
             ],
+            "libs/material/src/lib/api/services/event.service.ts": [
+                {
+                    "name": "EventObject",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/src/lib/api/services/event.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "libs/material/src/lib/components/button/button.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2148,6 +2952,19 @@
                     "kind": 180
                 }
             ],
+            "libs/material/src/lib/components/common-host/common-host.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CommonHostComponent>",
+                    "file": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "libs/material/src/lib/components/currency-input/currency-input.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2168,6 +2985,58 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<IconComponent>",
                     "file": "libs/material/src/lib/components/icon/icon.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/components/list/list.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ListComponent>",
+                    "file": "libs/material/src/lib/components/list/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/components/list-item/list-item.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ListItemComponent>",
+                    "file": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<NavListComponent>",
+                    "file": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<NavListItemComponent>",
+                    "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2251,12 +3120,38 @@
                     "description": "",
                     "kind": 180
                 }
+            ],
+            "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ToolbarComponent>",
+                    "file": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/components/__common/_-common.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CommonComponent>",
+                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
             ]
         }
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -2289,30 +3184,19 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/lib/api/services/event.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "EventService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/lib/api/services/logger.service.ts",
                 "type": "injectable",
                 "linktype": "injectable",
                 "name": "LoggerService",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/api/types.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "NumberType",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/api/types.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "StringType",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2328,13 +3212,43 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/lib/components/__common/_-common.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "CommonComponent",
-                "coveragePercent": 85,
-                "coverageCount": "6/7",
-                "status": "very-good"
+                "coveragePercent": 66,
+                "coverageCount": "6/9",
+                "status": "good"
             },
             {
                 "filePath": "libs/material/src/lib/components/button/button.component.stories.ts",
@@ -2371,9 +3285,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 85,
-                "coverageCount": "6/7",
-                "status": "very-good"
+                "coveragePercent": 75,
+                "coverageCount": "6/8",
+                "status": "good"
             },
             {
                 "filePath": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.stories.ts",
@@ -2410,6 +3324,36 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxInputComponent",
+                "coveragePercent": 66,
+                "coverageCount": "6/9",
+                "status": "good"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2502,10 +3446,70 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/lib/components/list-item/list-item.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ListItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/list/list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/list/list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/list/list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2520,10 +3524,70 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "NavListItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2767,6 +3831,36 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TextInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/toolbar/toolbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

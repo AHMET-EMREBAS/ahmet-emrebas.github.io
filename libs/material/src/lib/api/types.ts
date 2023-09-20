@@ -10,6 +10,4 @@ export type Colors =
 
 export type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
-export const StringType = 'Undefined';
-export const NumberType = Number.MAX_SAFE_INTEGER;
 
