@@ -1791,7 +1791,7 @@
             ],
             "stylesData": "",
             "extends": "CommonComponent",
-            "templateData": "<div class=\"tb-nav-list-item {{color}}\" (click)=\"emit(uname)\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
+            "templateData": "<div class=\"tb-nav-list-item {{color}}\" [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\"\n    (click)=\"emit(uname)\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
         },
         {
             "name": "NavListComponent",
@@ -1900,7 +1900,7 @@
             ],
             "stylesData": "",
             "extends": "CommonHostComponent",
-            "templateData": "<div class=\"tb-nav-list\">\n    <tb-nav-list-item *ngFor=\"let item of data\" [color]=\"item.color\" [icon]=\"item.icon\" [label]=\"item.label\"\n        (listen)=\"emit($event)\"></tb-nav-list-item>\n</div>"
+            "templateData": "<div class=\"tb-nav-list\">\n    <tb-nav-list-item *ngFor=\"let item of data\" [uname]=\"item.uname\" [color]=\"item.color\" [icon]=\"item.icon\" [label]=\"item.label\"\n        (listen)=\"emit($event)\"></tb-nav-list-item>\n</div>"
         },
         {
             "name": "NavListItemComponent",
@@ -2080,7 +2080,7 @@
             ],
             "stylesData": "",
             "extends": "CommonComponent",
-            "templateData": "<div class=\"tb-nav-list-item {{color}}\" (click)=\"emit({type:'click', target:uname})\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
+            "templateData": "<div class=\"tb-nav-list-item {{color}}\" [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\"\n    (click)=\"emit({type:'click', target:uname})\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
         },
         {
             "name": "NumberInputComponent",
@@ -3133,7 +3133,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ListItem[]",
-                "defaultValue": "[\r\n  {\r\n    uname: 'List item 1',\r\n    label: 'List item 1',\r\n    icon: 'apps',\r\n    color: 'primary',\r\n  },\r\n  {\r\n    uname: 'List item 2',\r\n    label: 'List item 2',\r\n    icon: 'apps',\r\n    color: 'secondary',\r\n  },\r\n  { uname: 'List item 3', label: 'List item 3', icon: '10k', color: 'accent' },\r\n  { uname: 'List item 4', label: 'List item 4', icon: 'email', color: 'warn' },\r\n  { uname: 'List item 5', label: 'List item 5', icon: 'store', color: 'red' },\r\n  { uname: 'List item 6', label: 'List item 6', icon: 'house', color: 'black' },\r\n  { uname: 'List item 7', label: 'List item 7', icon: '5k', color: 'white' },\r\n]"
+                "defaultValue": "[\r\n  {\r\n    uname: 'Nav list item 1',\r\n    label: 'Nav list item 1',\r\n    icon: 'apps',\r\n    color: 'primary',\r\n  },\r\n  {\r\n    uname: 'Nav list item 2',\r\n    label: 'Nav list item 2',\r\n    icon: 'apps',\r\n    color: 'secondary',\r\n  },\r\n  { uname: 'Nav list item 3', label: 'Nav list item 3', icon: '10k', color: 'accent' },\r\n  { uname: 'Nav list item 4', label: 'Nav list item 4', icon: 'email', color: 'warn' },\r\n  { uname: 'Nav list item 5', label: 'Nav list item 5', icon: 'store', color: 'red' },\r\n  { uname: 'Nav list item 6', label: 'Nav list item 6', icon: 'house', color: 'black' },\r\n  { uname: 'Nav list item 7', label: 'Nav list item 7', icon: '5k', color: 'white' },\r\n]"
             },
             {
                 "name": "Primary",
@@ -3213,7 +3213,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    uname: 'menu',\n    icon: 'info',\n    color: 'primary',\n    label: 'Menu item',\n    tooltip: 'Tooltip',\n    tooltipPosition: 'bottom',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3233,7 +3233,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    uname: 'Nav list item',\n    icon: 'home',\n    color: 'accent',\n    tooltip: 'Tooltip',\n    tooltipPosition: 'bottom',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3917,7 +3917,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    uname: 'menu',\n    icon: 'info',\n    color: 'primary',\n    label: 'Menu item',\n    tooltip: 'Tooltip',\n    tooltipPosition: 'bottom',\n  },\n}"
                 }
             ],
             "libs/material/src/lib/components/nav-list/nav-list.component.stories.ts": [
@@ -3981,7 +3981,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    uname: 'Nav list item',\n    icon: 'home',\n    color: 'accent',\n    tooltip: 'Tooltip',\n    tooltipPosition: 'bottom',\n  },\n}"
                 }
             ],
             "libs/material/src/lib/components/number-input/number-input.component.stories.ts": [
@@ -4209,7 +4209,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ListItem[]",
-                    "defaultValue": "[\r\n  {\r\n    uname: 'List item 1',\r\n    label: 'List item 1',\r\n    icon: 'apps',\r\n    color: 'primary',\r\n  },\r\n  {\r\n    uname: 'List item 2',\r\n    label: 'List item 2',\r\n    icon: 'apps',\r\n    color: 'secondary',\r\n  },\r\n  { uname: 'List item 3', label: 'List item 3', icon: '10k', color: 'accent' },\r\n  { uname: 'List item 4', label: 'List item 4', icon: 'email', color: 'warn' },\r\n  { uname: 'List item 5', label: 'List item 5', icon: 'store', color: 'red' },\r\n  { uname: 'List item 6', label: 'List item 6', icon: 'house', color: 'black' },\r\n  { uname: 'List item 7', label: 'List item 7', icon: '5k', color: 'white' },\r\n]"
+                    "defaultValue": "[\r\n  {\r\n    uname: 'Nav list item 1',\r\n    label: 'Nav list item 1',\r\n    icon: 'apps',\r\n    color: 'primary',\r\n  },\r\n  {\r\n    uname: 'Nav list item 2',\r\n    label: 'Nav list item 2',\r\n    icon: 'apps',\r\n    color: 'secondary',\r\n  },\r\n  { uname: 'Nav list item 3', label: 'Nav list item 3', icon: '10k', color: 'accent' },\r\n  { uname: 'Nav list item 4', label: 'Nav list item 4', icon: 'email', color: 'warn' },\r\n  { uname: 'Nav list item 5', label: 'Nav list item 5', icon: 'store', color: 'red' },\r\n  { uname: 'Nav list item 6', label: 'Nav list item 6', icon: 'house', color: 'black' },\r\n  { uname: 'Nav list item 7', label: 'Nav list item 7', icon: '5k', color: 'white' },\r\n]"
                 }
             ]
         },

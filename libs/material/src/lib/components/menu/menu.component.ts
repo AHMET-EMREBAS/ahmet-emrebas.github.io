@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EventObject, MenuItem } from '../../api';
+import { MenuItem } from '../../api';
 import { CommonHostComponent } from '../common';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'tb-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })

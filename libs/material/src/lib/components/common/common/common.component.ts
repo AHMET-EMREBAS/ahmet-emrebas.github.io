@@ -1,8 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
+  AfterEmit,
+  Any,
+  BeforeEmit,
   Colors,
   EventObject,
   EventService,
+  EventType,
   Icon,
   TooltipPosition,
 } from '../../../api';
@@ -12,7 +16,10 @@ import {
   standalone: true,
   template: '',
 })
-export class CommonComponent {
+export class CommonComponent implements BeforeEmit, AfterEmit {
+  /** Input/Condition/state value will be attached to the event payload  */
+  value: Any = '';
+
   /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/
   @Input() uname = 'Uname not set';
 
@@ -20,6 +27,9 @@ export class CommonComponent {
   @Input() label = 'Label';
 
   @Input() icon: Icon = 'info';
+
+  /** Position the icon right or left */
+  @Input() iconPosition: 'right' | 'left' = 'left';
 
   /** Element color */
   @Input() color: Colors = 'primary';
@@ -35,15 +45,25 @@ export class CommonComponent {
 
   constructor(protected readonly eventService: EventService) {}
 
-  /** @ignore */
-  protected parseEvent(event: Event): EventObject {
-    return { target: this.uname, type: event.type };
+  beforeEmit(event: EventObject) {
+    return;
+  }
+
+  afterEmit(event: EventObject) {
+    return;
   }
 
   /** Emit element events as they are */
-  emit(__event: Event) {
-    const event = this.parseEvent(__event);
+  emit(type: EventType) {
+    const event: EventObject = {
+      type,
+      target: this.uname,
+      payload: { value: this.value },
+    };
+    this.beforeEmit(event);
     this.eventService.$events.next(event);
+
     this.listen.emit(event);
+    this.afterEmit(event);
   }
 }

@@ -72,10 +72,18 @@
   @include __borderRadius();
   height: var(--tb-form-field-input-height);
   width: 100%;
+  order: 2;
 
   outline: none;
 }
 
+@function iconOrder($side) {
+  @if $side == right {
+    @return 3;
+  } @else {
+    @return 1;
+  }
+}
 @mixin commonFormFieldIcon($side) {
   @include __columnCenter();
   height: var(--tb-form-field-input-height);
@@ -84,9 +92,10 @@
   border-bottom-#{$side}-radius: var(--tb-form-field-radius);
   padding-left: 10px;
   padding-right: 10px;
+  order: iconOrder($side);
 }
 
-.tb-form-field:has(.tb-form-field-icon:last-child) {
+.tb-form-field[icon-position='right'] {
   .tb-form-field-input {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -97,7 +106,7 @@
   }
 }
 
-.tb-form-field:has(.tb-form-field-icon:first-child) {
+.tb-form-field[icon-position='left'] {
   .tb-form-field-input {
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;

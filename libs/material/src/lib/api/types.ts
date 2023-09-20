@@ -2282,3 +2282,16 @@ export type MenuItem = {
   direction?: Direction;
   children?: MenuItem[];
 };
+
+export type Any = string | number | Date | boolean;
+
+export type Ignore = 'ignore';
+export type EventType = 'click' | 'dbclick' | 'input' | Ignore;
+export type Payload = {
+  value: any;
+};
+export type EventObject<T = any> = {
+  type: EventType;
+  target: string | Ignore;
+  payload?: Payload;
+};

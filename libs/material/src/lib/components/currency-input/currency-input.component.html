@@ -1,8 +1,8 @@
 <!-- <link rel="stylesheet" href="/libs/material/src/style.css"> -->
 <div class="tb-form-field-container {{color}}">
     <div class="tb-form-field-label">{{label}}</div>
-    <div class="tb-form-field">
-        <input [(ngModel)]="inputValue" class="tb-form-field-input" type="text" (input)="emit($event)" />
-        <span class="tb-form-field-icon icon">{{icon}}</span>
+    <div class="tb-form-field" [attr.icon-position]="iconPosition">
+        <input [(ngModel)]="value" class="tb-form-field-input" type="text" (input)="emit('input')" />
+        <tb-icon class="tb-form-field-icon" [icon]="icon" [bgColor]="color"></tb-icon>
     </div>
 </div>

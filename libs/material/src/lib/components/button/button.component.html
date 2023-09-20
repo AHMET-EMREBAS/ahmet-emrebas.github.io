@@ -1,5 +1,5 @@
-<button classList="tb-flat-button {{color}}" (click)="emit($event)" (dblclick)="emit($event)"
+<button classList="tb-flat-button {{color}}" (click)="emit('click')" (dblclick)="emit('dblclick')"
     [attr.aria-label]="tooltip" [attr.tooltip-position]="tooltipPosition" [attr.tooltip-color]="color">
-    <div class="icon">{{icon}}</div>
+    <tb-icon [icon]="icon" [bgColor]="color"></tb-icon>
     <span> {{label | titlecase}} </span>
 </button>

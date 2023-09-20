@@ -1,13 +1,11 @@
 <ng-template #menuItem let-data="data">
-    <div class="tb-nav-list-item {{data.color}}" (click)="emit({type:'click', target:data.uname})">
-        <span class="icon">{{data.icon}}</span>
+    <div class="tb-nav-list-item {{data.color}}" (click)="emit('click')">
+        <tb-icon [icon]="data.icon" [bgColor]="data.color"></tb-icon>
         <span>{{data.label}}</span>
     </div>
 </ng-template>
 
-
 <ng-template #menu let-data="data">
-
 
     <div class="tb-dropdown-menu {{data.direction}} ">
 
@@ -17,11 +15,12 @@
 
             <ng-container *ngFor="let child of data.children">
 
-
+                <!-- Has children? -->
                 <ng-container *ngIf="child?.children">
                     <ng-container *ngTemplateOutlet="menu;context:{data:child}"></ng-container>
                 </ng-container>
 
+                <!-- Not have children? -->
                 <ng-container *ngIf="!child?.children">
                     <ng-container *ngTemplateOutlet="menuItem;context:{data:child}"></ng-container>
                 </ng-container>

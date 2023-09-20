@@ -45,12 +45,11 @@
   @extend .common-button-style;
 }
 
-
 .tb-flat-button,
-.tb-raised-button ,
-.tb-text-button ,
+.tb-raised-button,
+.tb-text-button,
 .tb-flat-icon-button {
-  .icon{ 
+  > .icon {
     font-size: 2em;
   }
 }
