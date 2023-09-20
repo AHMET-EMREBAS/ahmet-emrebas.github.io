@@ -8,10 +8,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@techbir/api": ["/libs/material/src/lib/api"]
-    }
+    "resolveJsonModule": true
   },
   "files": [],
   "include": [],

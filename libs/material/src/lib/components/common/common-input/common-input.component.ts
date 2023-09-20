@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonComponent } from '../common/common.component';
-import { EventObject } from '@techbir/api';
+import { CommonComponent } from '../common';
+import { EventObject } from '../../../api';
 
 @Component({
   selector: 'tb-common-input',

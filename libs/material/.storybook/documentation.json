@@ -141,7 +141,7 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-da3921ffd0050160fb37456467d1ff848e55f141f29e46382d20527eec544d77d4d384dbcd74099df59f47d1539f4a89d8101964cb0723e2b4cde31cee6563b6",
+            "id": "component-ButtonComponent-12118c131e78c7ff2348affda9a60bcbf231622693941e5401e02ca868156b65ca652c6988796dca84306c046f6fc9f341d836f34cb68ec67b83a23bb3c2ca47",
             "file": "libs/material/src/lib/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -206,7 +206,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 34,
+                    "line": 31,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -220,7 +220,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 37,
+                    "line": 34,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -242,21 +242,7 @@
                     }
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "listen",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nListen any event in the component. Event name is padded as property of the object.",
-                    "description": "<p>Listen any event in the component. Event name is padded as property of the object.</p>\n",
-                    "line": 31,
-                    "type": "EventEmitter",
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
                 {
@@ -310,7 +296,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        121
+                        122
                     ],
                     "jsdoctags": [
                         {
@@ -379,7 +365,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from './../__common/_-common.component';\nimport { SharedModule } from '../../api';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, SharedModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent extends CommonComponent {\n  override parseEvent(event: Event) {\n    return { type: event.type };\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SharedModule } from '../../api';\nimport { CommonComponent } from '../common';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, SharedModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent extends CommonComponent {\n  override parseEvent(event: Event) {\n    return { type: event.type };\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -393,7 +379,7 @@
         },
         {
             "name": "CheckboxInputComponent",
-            "id": "component-CheckboxInputComponent-39eeadad1b7cc28fc21964bf5e0d8e642984dc8a63551bc80875d0791ccc36e84a8008df9e916799f78086f3730d5ad53659f334eae51ad31c0abf9b91cf39ea",
+            "id": "component-CheckboxInputComponent-ee40d31873108ee4f023a8b32d320e1857889cbba180d46c49e2fa11bc03d84e591f87f1ff0184b94302d759118d7ed617b121c9ebd9c30de8ac563275df7eb6",
             "file": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -467,7 +453,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 34,
+                    "line": 31,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -481,7 +467,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 37,
+                    "line": 34,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -503,21 +489,7 @@
                     }
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "listen",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nListen any event in the component. Event name is padded as property of the object.",
-                    "description": "<p>Listen any event in the component. Event name is padded as property of the object.</p>\n",
-                    "line": 31,
-                    "type": "EventEmitter",
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
                 {
@@ -585,7 +557,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        121
+                        122
                     ],
                     "jsdoctags": [
                         {
@@ -650,7 +622,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../__common/_-common.component';\nimport { EventObject } from '../../api';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent extends CommonComponent {\n  @Input() checked = false;\n\n  private toggleValue() {\n    this.checked = !this.checked;\n  }\n\n  protected override parseEvent(event: Event): EventObject {\n    this.toggleValue();\n    return { type: event.type, payload: this.checked };\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonInputComponent } from '../common';\nimport { EventObject } from '../../api';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent extends CommonInputComponent {\n  @Input() checked = false;\n\n  private toggleValue() {\n    this.checked = !this.checked;\n  }\n\n  protected override parseEvent(event: Event): EventObject {\n    this.toggleValue();\n    return { type: event.type, payload: this.checked };\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -659,25 +631,25 @@
                 }
             ],
             "stylesData": "",
-            "extends": "CommonComponent",
+            "extends": "CommonInputComponent",
             "templateData": "<div class=\"tb-form-field-container primary row  align-flex-start\">\n    <div class=\"flex row justify-flex-start gap-10 align-center\">\n        <div class=\"icon font-size-30 cursor-pointer\" (click)=\"emit({type:'click', payload:checked});\"\n            [class.green]=\"checked\">{{checked ? 'check_box' :\n            'check_box_outline_blank'}}</div>\n        <div class=\"tb-form-field-label\">{{uname}}</div>\n    </div>\n</div>"
         },
         {
             "name": "CommonComponent",
-            "id": "component-CommonComponent-1a7758aea9cac2c1149375caf78edc599d2030755776cb64f7dabea1bb85eb63d2c79ab8eb07fffe5bf106bacc48e84cd8c8e4b84fffd2f1c66f151141ccf54e",
-            "file": "libs/material/src/lib/components/__common/_-common.component.ts",
+            "id": "component-CommonComponent-ab12a4999322c349071e204dd15119215681bc82fa40da17b2ffb9c33b16c23e660b4970a0cb9d7d2c4917d7f799cbbd5ea07ebfedf3179ca570f67b1c8ec7ec",
+            "file": "libs/material/src/lib/components/common/common/common.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb---common",
+            "selector": "tb-common",
             "styleUrls": [
-                "./_-common.component.scss"
+                "./common.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./_-common.component.html"
+                "./common.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -720,7 +692,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 34,
+                    "line": 31,
                     "type": "string",
                     "decorators": []
                 },
@@ -731,7 +703,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 37,
+                    "line": 34,
                     "type": "TooltipPosition",
                     "decorators": []
                 },
@@ -747,18 +719,7 @@
                     "decorators": []
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "listen",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nListen any event in the component. Event name is padded as property of the object.",
-                    "description": "<p>Listen any event in the component. Event name is padded as property of the object.</p>\n",
-                    "line": 31,
-                    "type": "EventEmitter"
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
                 {
@@ -778,7 +739,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        121
+                        122
                     ],
                     "jsdoctags": [
                         {
@@ -868,12 +829,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  Colors,\n  EventObject,\n  EventService,\n  Icon,\n  TooltipPosition,\n} from '../../api';\n\n@Component({\n  selector: 'tb---common',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './_-common.component.html',\n  styleUrls: ['./_-common.component.scss'],\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = 'Uname not set';\n\n  /** Descriptive text for the element */\n  @Input() label = 'Label';\n\n  @Input() icon: Icon = 'info';\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Listen any event in the component. Event name is padded as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  constructor(protected readonly eventService: EventService) {}\n\n  protected parseEvent(event: Event): EventObject {\n    return event;\n  }\n\n  private createEvent(event: EventObject) {\n    return { [this.uname]: event };\n  }\n\n  /** Emit element events as they are */\n  emit(__event: Event) {\n    const event = this.createEvent(this.parseEvent(__event));\n    this.eventService.$events.next(event);\n    this.listen.emit(event);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  Colors,\n  EventObject,\n  EventService,\n  Icon,\n  TooltipPosition,\n} from '../../../api';\n\n@Component({\n  selector: 'tb-common',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './common.component.html',\n  styleUrls: ['./common.component.scss'],\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = 'Uname not set';\n\n  /** Descriptive text for the element */\n  @Input() label = 'Label';\n\n  @Input() icon: Icon = 'info';\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** @ignore Listen any event in the component. Event name is padded as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  constructor(protected readonly eventService: EventService) {}\n\n  protected parseEvent(event: Event): EventObject {\n    return event;\n  }\n\n  protected createEvent(event: EventObject) {\n    return { [this.uname]: event };\n  }\n\n  /** Emit element events as they are */\n  emit(__event: Event) {\n    const event = this.createEvent(this.parseEvent(__event));\n    this.eventService.$events.next(event);\n    this.listen.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
                     "data": "",
-                    "styleUrl": "./_-common.component.scss"
+                    "styleUrl": "./common.component.scss"
                 }
             ],
             "stylesData": "",
@@ -903,7 +864,7 @@
                     }
                 ]
             },
-            "templateData": "<p>This component contains the common features of components</p>"
+            "templateData": "<p>common works!</p>\n"
         },
         {
             "name": "CommonHostComponent",
@@ -954,37 +915,25 @@
             "templateData": "<p>This component contains common features of host components</p>\n"
         },
         {
-            "name": "CurrencyInputComponent",
-            "id": "component-CurrencyInputComponent-562f25af94f2324cf16209f4f69129c21613654c2bd8d85065706cacd60ca3accec0726dbbd0cc6326cbf63b8bc375f0df2450056cb6e3996bceb02a4b049961",
-            "file": "libs/material/src/lib/components/currency-input/currency-input.component.ts",
+            "name": "CommonInputComponent",
+            "id": "component-CommonInputComponent-1fc930c2af55d8cafce042f09fc015c5094825ecb1d81c3d171c7e56550c4d17479aa687893c21f2fe1937e67d1983e8826a90cd718820494b266ebfffa14442",
+            "file": "libs/material/src/lib/components/common/common-input/common-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb-currency-input",
+            "selector": "tb-common-input",
             "styleUrls": [
-                "./currency-input.component.scss"
+                "./common-input.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./currency-input.component.html"
+                "./common-input.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
-                {
-                    "name": "icon",
-                    "defaultValue": "`attach_money`",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 14,
-                    "type": "Icon",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
                 {
                     "name": "color",
                     "defaultValue": "'primary'",
@@ -994,6 +943,18 @@
                     "description": "<p>Element color</p>\n",
                     "line": 28,
                     "type": "Colors",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "Icon",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -1020,7 +981,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 34,
+                    "line": 31,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1034,7 +995,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 37,
+                    "line": 34,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -1056,21 +1017,7 @@
                     }
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "listen",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nListen any event in the component. Event name is padded as property of the object.",
-                    "description": "<p>Listen any event in the component. Event name is padded as property of the object.</p>\n",
-                    "line": 31,
-                    "type": "EventEmitter",
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
                 {
@@ -1078,7 +1025,7 @@
                     "args": [
                         {
                             "name": "event",
-                            "type": "InputEvent",
+                            "type": "Event",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1086,7 +1033,7 @@
                     "optional": false,
                     "returnType": "EventObject",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 17,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1096,7 +1043,7 @@
                     "jsdoctags": [
                         {
                             "name": "event",
-                            "type": "InputEvent",
+                            "type": "Event",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1125,7 +1072,242 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        121
+                        122
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmit element events as they are",
+                    "description": "<p>Emit element events as they are</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "__event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\nimport { EventObject } from '../../../api';\n\n@Component({\n  selector: 'tb-common-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './common-input.component.html',\n  styleUrls: ['./common-input.component.scss'],\n})\nexport class CommonInputComponent extends CommonComponent {\n  /** @ignore store the value  */\n  inputValue = '';\n\n  protected override parseEvent(event: Event): EventObject {\n    return {\n      type: 'input',\n      payload: this.inputValue,\n    };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./common-input.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": "CommonComponent",
+            "templateData": "<p>common-input works!</p>\n"
+        },
+        {
+            "name": "CurrencyInputComponent",
+            "id": "component-CurrencyInputComponent-850a407644d66c66b82ee0f5320a72f124a8a9d67cfe874630aa5a2bf7854e6100e6cd8b91b655a65e5b501603184fc01d043a2e938c0a873b00de9cbb37a090",
+            "file": "libs/material/src/lib/components/currency-input/currency-input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-currency-input",
+            "styleUrls": [
+                "./currency-input.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./currency-input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nElement color",
+                    "description": "<p>Element color</p>\n",
+                    "line": 28,
+                    "type": "Colors",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDescriptive text for the element",
+                    "description": "<p>Descriptive text for the element</p>\n",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHelp user to understand this element",
+                    "description": "<p>Help user to understand this element</p>\n",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow tooltip at a specific location.",
+                    "description": "<p>Show tooltip at a specific location.</p>\n",
+                    "line": 34,
+                    "type": "TooltipPosition",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "'Uname not set'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "parseEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "EventObject",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        122,
+                        161
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "createEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{ [x: string]: EventObject; }",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        122
                     ],
                     "jsdoctags": [
                         {
@@ -1198,7 +1380,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../__common/_-common.component';\nimport { EventObject, Icon } from '../../api';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n@Component({\n  selector: 'tb-currency-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule],\n  templateUrl: './currency-input.component.html',\n  styleUrls: ['./currency-input.component.scss'],\n})\nexport class CurrencyInputComponent extends CommonComponent {\n  @Input() override icon: Icon = `attach_money`;\n\n  /** @ignore */\n  value = '';\n\n  protected override parseEvent(event: InputEvent): EventObject {\n    return {\n      type: 'input',\n      payload: event.data!,\n    };\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { CommonInputComponent } from '../common/';\n\n@Component({\n  selector: 'tb-currency-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule],\n  templateUrl: './currency-input.component.html',\n  styleUrls: ['./currency-input.component.scss'],\n})\nexport class CurrencyInputComponent extends CommonInputComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1207,8 +1389,8 @@
                 }
             ],
             "stylesData": "",
-            "extends": "CommonComponent",
-            "templateData": "<!-- <link rel=\"stylesheet\" href=\"/libs/material/src/style.css\"> -->\n<div class=\"tb-form-field-container {{color}}\">\n\n    <div class=\"tb-form-field-label\">{{label}}</div>\n\n    <div class=\"tb-form-field\">\n        <input [(ngModel)]=\"value\" class=\"tb-form-field-input\" type=\"text\" (input)=\"emit($event)\" />\n        <span class=\"tb-form-field-icon icon\">{{icon}}</span>\n    </div>\n</div>"
+            "extends": "CommonInputComponent",
+            "templateData": "<!-- <link rel=\"stylesheet\" href=\"/libs/material/src/style.css\"> -->\n<div class=\"tb-form-field-container {{color}}\">\n    <div class=\"tb-form-field-label\">{{label}}</div>\n    <div class=\"tb-form-field\">\n        <input [(ngModel)]=\"inputValue\" class=\"tb-form-field-input\" type=\"text\" (input)=\"emit($event)\" />\n        <span class=\"tb-form-field-icon icon\">{{icon}}</span>\n    </div>\n</div>"
         },
         {
             "name": "IconComponent",
@@ -1829,7 +2011,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>toolbar works!</p>\n"
+            "templateData": "<div class=\"tb-toolbar\">\n    <ng-content></ng-content>\n</div>"
         }
     ],
     "modules": [
@@ -2096,11 +2278,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/_-common works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    uname: 'Uname not set',\n    label: 'Label',\n    icon: 'info',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/common works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/common-input works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "meta",
@@ -2266,11 +2458,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CommonComponent>",
                 "defaultValue": "{\n  component: CommonComponent,\n  title: 'CommonComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CommonInputComponent>",
+                "defaultValue": "{\n  component: CommonInputComponent,\n  title: 'CommonInputComponent',\n}"
             },
             {
                 "name": "Primary",
@@ -2436,11 +2638,21 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    uname: 'Uname not set',\n    label: 'Label',\n    icon: 'info',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             }
         ],
         "functions": [
@@ -2747,7 +2959,18 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<CommonComponent>",
-                "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<CommonInputComponent>",
+                "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3301,22 +3524,22 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/lib/components/__common/_-common.component.stories.ts": [
+            "libs/material/src/lib/components/common/common/common.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/_-common works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    uname: 'Uname not set',\n    label: 'Label',\n    icon: 'info',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/common works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CommonComponent>",
@@ -3326,11 +3549,43 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    uname: '',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    uname: 'Uname not set',\n    label: 'Label',\n    icon: 'info',\n    color: 'primary',\n    tooltip: '',\n    tooltipPosition: 'bottom',\n  },\n}"
+                }
+            ],
+            "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/common-input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CommonInputComponent>",
+                    "defaultValue": "{\n  component: CommonInputComponent,\n  title: 'CommonInputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
                 }
             ]
         },
@@ -3683,13 +3938,26 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/lib/components/__common/_-common.component.stories.ts": [
+            "libs/material/src/lib/components/common/common/common.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CommonComponent>",
-                    "file": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
+                    "file": "libs/material/src/lib/components/common/common/common.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CommonInputComponent>",
+                    "file": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3761,45 +4029,6 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/components/__common/_-common.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/components/__common/_-common.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "CommonComponent",
-                "coveragePercent": 58,
-                "coverageCount": "7/12",
-                "status": "good"
-            },
-            {
                 "filePath": "libs/material/src/lib/components/button/button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -3834,8 +4063,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 63,
-                "coverageCount": "7/11",
+                "coveragePercent": 60,
+                "coverageCount": "6/10",
                 "status": "good"
             },
             {
@@ -3873,9 +4102,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxInputComponent",
-                "coveragePercent": 53,
-                "coverageCount": "7/13",
-                "status": "good"
+                "coveragePercent": 50,
+                "coverageCount": "6/12",
+                "status": "medium"
             },
             {
                 "filePath": "libs/material/src/lib/components/common-host/common-host.component.stories.ts",
@@ -3917,6 +4146,84 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common/common-input/common-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common/common-input/common-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CommonInputComponent",
+                "coveragePercent": 60,
+                "coverageCount": "6/10",
+                "status": "good"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common/common/common.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common/common/common.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common/common/common.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/common/common/common.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CommonComponent",
+                "coveragePercent": 54,
+                "coverageCount": "6/11",
+                "status": "good"
+            },
+            {
                 "filePath": "libs/material/src/lib/components/currency-input/currency-input.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -3951,8 +4258,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CurrencyInputComponent",
-                "coveragePercent": 63,
-                "coverageCount": "7/11",
+                "coveragePercent": 60,
+                "coverageCount": "6/10",
                 "status": "good"
             },
             {

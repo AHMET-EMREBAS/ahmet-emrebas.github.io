@@ -9,11 +9,11 @@ import {
 } from '../../../api';
 
 @Component({
-  selector: 'tb---common',
+  selector: 'tb-common',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './_-common.component.html',
-  styleUrls: ['./_-common.component.scss'],
+  templateUrl: './common.component.html',
+  styleUrls: ['./common.component.scss'],
 })
 export class CommonComponent {
   /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/
