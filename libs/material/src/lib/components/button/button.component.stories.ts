@@ -7,7 +7,7 @@ import { expect } from '@storybook/jest';
 const meta: Meta<ButtonComponent> = {
   component: ButtonComponent,
   title: 'ButtonComponent',
-  tags:["autodocs"]
+  tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<ButtonComponent>;
@@ -18,13 +18,13 @@ export const Primary: Story = {
 
 export const Heading: Story = {
   args: {
-    color:'primary', 
-    name:'Click', 
-    tooltip:'Click Me', 
-    tooltipPosition:'right'
+    color: 'primary',
+    uname: 'submit',
+    tooltip: 'Submit form',
+    tooltipPosition: 'right',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/button works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/submit/gi)).toBeTruthy();
   },
 };

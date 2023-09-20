@@ -1,7 +1,6 @@
 @use 'sass:math';
 @import 'vars';
 
-
 @function fl($string) {
   @return str-slice($string, 1, 1);
 }
@@ -55,6 +54,18 @@
     @each $sd in $sides {
       .b#{fl($sd)}-#{$suffix} {
         border-#{$sd}: #{$value};
+      }
+    }
+
+    .brad-#{$suffix} {
+      border-radius: #{$value};
+    }
+
+    @each $tb in (top, bottom) {
+      @each $rl in (right, left) {
+        .brad-#{fl($tb)}#{fl($rl)}-#{$suffix} {
+          border-#{$tb}-#{$rl}-radius: #{$value};
+        }
       }
     }
   }

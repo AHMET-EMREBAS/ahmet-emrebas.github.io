@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Colors, TooltipPosition } from '../../api';
+import { Colors, EventService, StringType, TooltipPosition } from '../../api';
 
 @Component({
   selector: 'tb---common',
@@ -10,13 +10,13 @@ import { Colors, TooltipPosition } from '../../api';
   styleUrls: ['./_-common.component.scss'],
 })
 export class CommonComponent {
-  /** Unique name in context */
-  @Input() name = 'Undefined';
+  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/
+  @Input() uname = StringType;
 
   /** Element color */
-  @Input() color: Colors = 'accent';
+  @Input() color: Colors = 'primary';
 
-  /** EventEmitter */
+  /** Listen any event in the component. Event name is padded as property of the object. */
   @Output() listen = new EventEmitter();
 
   /** Help user to understand this element */
@@ -25,8 +25,16 @@ export class CommonComponent {
   /** Show tooltip at a specific location. */
   @Input() tooltipPosition: TooltipPosition = 'bottom';
 
+  constructor(protected readonly eventService: EventService) {}
+
+  private createEvent(e: any) {
+    return { [this.uname]: e };
+  }
+
   /** Emit element events as they are */
-  emit(event: Event) {
-    this.listen.emit(event);
+  emit(event: any) {
+    const e = this.createEvent(event);
+    this.eventService.$events.next(e);
+    this.listen.emit(e);
   }
 }

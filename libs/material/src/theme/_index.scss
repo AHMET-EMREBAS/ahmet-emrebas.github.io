@@ -1,6 +1,7 @@
 @use 'alert';
 @use 'border';
 @use 'button';
+@use 'cursor';
 @use 'divider';
 @use 'dropdown';
 @use 'flexbox';
@@ -14,6 +15,7 @@
 @use 'profile';
 @use 'root';
 @use 'scroll';
+@use 'shadow';
 @use 'shapes';
 @use 'sizing';
 @use 'toolbar';
@@ -21,7 +23,5 @@
 @use 'utils';
 @use 'vars';
 @use 'zindex';
-@use 'shadow';
-
 
 @forward './themes';

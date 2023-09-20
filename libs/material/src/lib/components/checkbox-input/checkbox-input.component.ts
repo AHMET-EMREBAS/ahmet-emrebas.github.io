@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CommonComponent } from '../__common/_-common.component';
 
 @Component({
   selector: 'tb-checkbox-input',
@@ -8,4 +9,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './checkbox-input.component.html',
   styleUrls: ['./checkbox-input.component.scss'],
 })
-export class CheckboxInputComponent {}
+export class CheckboxInputComponent extends CommonComponent {
+  @Input() checked = false;
+}

@@ -1,0 +1,7 @@
+@import 'vars';
+
+@each $cursor in $cursors {
+  .cursor-#{$cursor} {
+    cursor: $cursor;
+  }
+}

@@ -7,6 +7,7 @@ import { expect } from '@storybook/jest';
 const meta: Meta<CheckboxInputComponent> = {
   component: CheckboxInputComponent,
   title: 'CheckboxInputComponent',
+  tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<CheckboxInputComponent>;
@@ -16,7 +17,9 @@ export const Primary: Story = {
 };
 
 export const Heading: Story = {
-  args: {},
+  args: {
+    uname:'Do you feel good today?'
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText(/checkbox-input works!/gi)).toBeTruthy();

@@ -37,7 +37,7 @@ $displays: (
 $flexDirections: (column, column-reverse, row, row-reverse);
 
 @each $fd in $flexDirections {
-  .flex.#{$fd} {
+  .#{$fd} {
     flex-direction: $fd;
   }
 }
@@ -62,7 +62,7 @@ $justifyContent: (
 );
 
 @each $jc in $justifyContent {
-  .flex.justify-#{$jc} {
+  .justify-#{$jc} {
     justify-content: $jc;
   }
 }
@@ -78,7 +78,7 @@ $alignItems: (
 );
 
 @each $ai in $alignItems {
-  .flex.align-#{$ai} {
+  .align-#{$ai} {
     align-items: $ai;
   }
 }
@@ -97,7 +97,7 @@ $alignContent: (
 );
 
 @each $ac in $alignContent {
-  .flex.align-content-#{$ac} {
+  .align-content-#{$ac} {
     align-content: $ac;
   }
 }
@@ -122,10 +122,10 @@ $alignContent: (
   }
 }
 
-.flex.wrap {
+.wrap {
   flex-wrap: wrap;
 }
-.flex.nowrap {
+.nowrap {
   flex-wrap: nowrap;
 }
 

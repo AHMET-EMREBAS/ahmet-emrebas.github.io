@@ -136,7 +136,7 @@ $fontList: (
 }
 
 @for $size from 1 through 100 {
-  .tb-font-size-#{$size} {
-    font-size: #{$size * 0.3}em;
+  .font-size-#{$size} {
+    font-size: #{$size * 0.1}em;
   }
 }

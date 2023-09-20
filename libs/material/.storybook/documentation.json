@@ -134,27 +134,13 @@
             "inputsClass": [
                 {
                     "name": "color",
-                    "defaultValue": "'accent'",
+                    "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
                     "line": 17,
                     "type": "Colors",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
-                {
-                    "name": "name",
-                    "defaultValue": "'Undefined'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nUnique name in context",
-                    "description": "<p>Unique name in context</p>\n",
-                    "line": 14,
-                    "type": "string",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -187,6 +173,20 @@
                     "inheritance": {
                         "file": "CommonComponent"
                     }
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "StringType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 14,
+                    "type": "any",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
                 }
             ],
             "outputsClass": [
@@ -195,8 +195,8 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nEventEmitter",
-                    "description": "<p>EventEmitter</p>\n",
+                    "rawdescription": "\nListen any event in the component. Event name is padded as property of the object.",
+                    "description": "<p>Listen any event in the component. Event name is padded as property of the object.</p>\n",
                     "line": 20,
                     "type": "EventEmitter",
                     "inheritance": {
@@ -264,7 +264,7 @@
             ],
             "stylesData": "",
             "extends": "CommonComponent",
-            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit($event)\" (dbclick)=\"emit($event)\" [attr.aria-label]=\"tooltip\"\n    [attr.tooltip-position]=\"tooltipPosition\" [attr.tooltip-color]=\"color\">Button</button>"
+            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit($event)\" (dblclick)=\"emit($event)\"\n    [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\" [attr.tooltip-color]=\"color\">{{uname |\n    titlecase}}</button>"
         },
         {
             "name": "CheckboxInputComponent",
@@ -316,7 +316,7 @@
         },
         {
             "name": "CommonComponent",
-            "id": "component-CommonComponent-d1cf2edffdb5f60af305152c5341eb3cc13fa0d6fa1c9947dc584d6d51d550851e3d294a2be4905a43cc81746c1b24632f129d634dc16297587c79c22fafc8db",
+            "id": "component-CommonComponent-904a55a2d6d33984a57d94f086aff3e5705eecd62eae06fe317d5d1eeb870ec65694577f0383242a2e5e1b6caab6718bceb05e707cad242676815dfa3d2ce823",
             "file": "libs/material/src/lib/components/__common/_-common.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -336,24 +336,13 @@
             "inputsClass": [
                 {
                     "name": "color",
-                    "defaultValue": "'accent'",
+                    "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
                     "line": 17,
                     "type": "Colors",
-                    "decorators": []
-                },
-                {
-                    "name": "name",
-                    "defaultValue": "'Undefined'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nUnique name in context",
-                    "description": "<p>Unique name in context</p>\n",
-                    "line": 14,
-                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -377,6 +366,17 @@
                     "line": 26,
                     "type": "TooltipPosition",
                     "decorators": []
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "StringType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 14,
+                    "type": "any",
+                    "decorators": []
                 }
             ],
             "outputsClass": [
@@ -385,8 +385,8 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nEventEmitter",
-                    "description": "<p>EventEmitter</p>\n",
+                    "rawdescription": "\nListen any event in the component. Event name is padded as property of the object.",
+                    "description": "<p>Listen any event in the component. Event name is padded as property of the object.</p>\n",
                     "line": 20,
                     "type": "EventEmitter"
                 }
@@ -438,7 +438,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Colors, TooltipPosition } from '../../api';\n\n@Component({\n  selector: 'tb---common',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './_-common.component.html',\n  styleUrls: ['./_-common.component.scss'],\n})\nexport class CommonComponent {\n  /** Unique name in context */\n  @Input() name = 'Undefined';\n\n  /** Element color */\n  @Input() color: Colors = 'accent';\n\n  /** EventEmitter */\n  @Output() listen = new EventEmitter();\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** Emit element events as they are */\n  emit(event: Event) {\n    this.listen.emit(event);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Colors, StringType, TooltipPosition } from '../../api';\n\n@Component({\n  selector: 'tb---common',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './_-common.component.html',\n  styleUrls: ['./_-common.component.scss'],\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = StringType;\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Listen any event in the component. Event name is padded as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** Emit element events as they are */\n  emit(event: Event) {\n    this.listen.emit({ [this.uname]: { type: event.type } });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1190,7 +1190,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    color:'primary', \n    name:'Click', \n    tooltip:'Click Me', \n    tooltipPosition:'right'\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    color: 'primary',\n    uname: 'submit',\n    tooltip: 'Submit form',\n    tooltipPosition: 'right',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/submit/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1290,7 +1290,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n  tags:[\"autodocs\"]\n}"
+                "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n  tags: ['autodocs'],\n}"
             },
             {
                 "name": "meta",
@@ -1381,6 +1381,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<TextInputComponent>",
                 "defaultValue": "{\n  component: TextInputComponent,\n  title: 'TextInputComponent',\n}"
+            },
+            {
+                "name": "NumberType",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Number.MAX_SAFE_INTEGER"
             },
             {
                 "name": "Primary",
@@ -1481,6 +1491,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "StringType",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'Undefined'"
             }
         ],
         "functions": [
@@ -1695,7 +1715,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    color:'primary', \n    name:'Click', \n    tooltip:'Click Me', \n    tooltipPosition:'right'\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    color: 'primary',\n    uname: 'submit',\n    tooltip: 'Submit form',\n    tooltipPosition: 'right',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/submit/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -1705,7 +1725,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n  tags:[\"autodocs\"]\n}"
+                    "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n  tags: ['autodocs'],\n}"
                 },
                 {
                     "name": "Primary",
@@ -2005,6 +2025,28 @@
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
+            ],
+            "libs/material/src/lib/api/types.ts": [
+                {
+                    "name": "NumberType",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Number.MAX_SAFE_INTEGER"
+                },
+                {
+                    "name": "StringType",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'Undefined'"
+                }
             ]
         },
         "groupedFunctions": {
@@ -2251,6 +2293,26 @@
                 "type": "injectable",
                 "linktype": "injectable",
                 "name": "LoggerService",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/api/types.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NumberType",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/api/types.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "StringType",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

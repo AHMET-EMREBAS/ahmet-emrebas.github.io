@@ -8,21 +8,23 @@
   border-radius: 6px;
 }
 
-::-webkit-scrollbar-track:hover {
-  background: var(--primary-light);
-}
-
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-light);
+  background: var(--accent-darker);
 }
-
-::-webkit-scrollbar-track:active {
+/* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
+::-webkit-scrollbar-thumb:active {
   background: var(--accent-dark);
 }
 
-/* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
-::-webkit-scrollbar-thumb:active {
+::-webkit-scrollbar-track{ 
+  background-color: var(--primary);
+}
+
+::-webkit-scrollbar-track:active {
   background: var(--primary-dark);
+}
+::-webkit-scrollbar-track:hover {
+  background: var(--primary-light);
 }
 
 /* Style the scrollbar corner (the intersection between the horizontal and vertical scrollbars) */
