@@ -2,7 +2,7 @@
   "name": "material",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/material/src",
-  "prefix": "techbir",
+  "prefix": "tb",
   "tags": [],
   "projectType": "library",
   "targets": {
@@ -64,7 +64,9 @@
           "-e",
           "json",
           "-d",
-          "libs/material"
+          "libs/material/.storybook", 
+          "-p", 
+          "libs/material/tsconfig.json"
         ],
         "assets": [
           "libs/material/src/assets",

@@ -5,6 +5,12 @@
   letter-spacing: 0.1rem;
 }
 
+[aria-label=''][tooltip-position]::before,
+[aria-label=''][tooltip-position]::after {
+  visibility: hidden !important;
+  position: absolute !important;
+}
+
 [aria-label][tooltip-position]::before,
 [aria-label][tooltip-position]::after {
   --scale: 0;
@@ -46,6 +52,13 @@
   font-size: 1rem;
   transform: translate(var(--translate-x), var(--translate-y))
     scale(var(--scale));
+}
+
+@each $colorName in $colorNames {
+  .#{$colorName}[aria-label][tooltip-position]::before,
+  .#{$colorName}[aria-label][tooltip-position]::after {
+    --tooltip-color: var(--#{$colorName}-dark);
+  }
 }
 
 /** Right  */

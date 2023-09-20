@@ -1,3 +1,7 @@
 @use './theme/index.scss' as theme;
 
-@include theme.selectTheme(pastel);
+@include theme.selectTheme(retro);
+
+.docs-story {
+  padding: 30px;
+}
