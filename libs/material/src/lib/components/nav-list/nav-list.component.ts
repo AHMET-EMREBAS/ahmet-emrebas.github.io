@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CommonHostComponent } from '../common';
 
 @Component({
   selector: 'tb-nav-list',
@@ -8,4 +9,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './nav-list.component.html',
   styleUrls: ['./nav-list.component.scss'],
 })
-export class NavListComponent {}
+export class NavListComponent extends CommonHostComponent {}

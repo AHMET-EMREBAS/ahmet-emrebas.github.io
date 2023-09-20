@@ -147,3 +147,8 @@
     border: 3px double var(--#{$colorName}-dark);
   }
 }
+
+.tb-form-checkbox {
+  font-size: 2em;
+  cursor: pointer;
+}

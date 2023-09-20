@@ -1,6 +1,13 @@
 @use './theme/index.scss' as theme;
+@include theme.selectTheme(neon);
 
-@include theme.selectTheme(retro);
+.sb-main-padded.sb-show-main {
+  padding: 0px;
+  margin: 0px;
+}
 
-.docs-story {
+
+.docs-story > div:first-child{ 
+  min-height: 400px;
+
 }

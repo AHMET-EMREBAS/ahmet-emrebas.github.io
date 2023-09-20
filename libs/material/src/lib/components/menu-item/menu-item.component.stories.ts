@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { CommonHostComponent } from './common-host.component';
+import { MenuItemComponent } from './menu-item.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<CommonHostComponent> = {
-  component: CommonHostComponent,
-  title: 'CommonHostComponent',
+const meta: Meta<MenuItemComponent> = {
+  component: MenuItemComponent,
+  title: 'MenuItemComponent',
 };
 export default meta;
-type Story = StoryObj<CommonHostComponent>;
+type Story = StoryObj<MenuItemComponent>;
 
 export const Primary: Story = {
   args: {},
@@ -19,6 +19,6 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/common-host works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/menu-item works!/gi)).toBeTruthy();
   },
 };

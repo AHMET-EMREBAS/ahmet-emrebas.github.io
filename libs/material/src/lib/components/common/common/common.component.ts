@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
   Colors,
   EventObject,
@@ -11,9 +10,7 @@ import {
 @Component({
   selector: 'tb-common',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './common.component.html',
-  styleUrls: ['./common.component.scss'],
+  template: '',
 })
 export class CommonComponent {
   /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/
@@ -33,22 +30,19 @@ export class CommonComponent {
   /** Show tooltip at a specific location. */
   @Input() tooltipPosition: TooltipPosition = 'bottom';
 
-  /** @ignore Listen any event in the component. Event name is padded as property of the object. */
+  /** Listen any event in the component. Event name is passed as property of the object. */
   @Output() listen = new EventEmitter();
 
   constructor(protected readonly eventService: EventService) {}
 
+  /** @ignore */
   protected parseEvent(event: Event): EventObject {
-    return event;
-  }
-
-  protected createEvent(event: EventObject) {
-    return { [this.uname]: event };
+    return { target: this.uname, type: event.type };
   }
 
   /** Emit element events as they are */
   emit(__event: Event) {
-    const event = this.createEvent(this.parseEvent(__event));
+    const event = this.parseEvent(__event);
     this.eventService.$events.next(event);
     this.listen.emit(event);
   }

@@ -7,16 +7,16 @@ import { EventObject } from '../../../api';
   selector: 'tb-common-input',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './common-input.component.html',
-  styleUrls: ['./common-input.component.scss'],
+  template: '',
 })
-export class CommonInputComponent extends CommonComponent {
-  /** @ignore store the value  */
-  inputValue = '';
+export class CommonInputComponent<T = any> extends CommonComponent {
+  /** Input value  */
+  inputValue: T = '' as any;
 
   protected override parseEvent(event: Event): EventObject {
     return {
       type: 'input',
+      target: this.uname,
       payload: this.inputValue,
     };
   }

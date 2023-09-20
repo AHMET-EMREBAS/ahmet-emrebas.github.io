@@ -16,9 +16,11 @@ export const Primary: Story = {
 };
 
 export const Heading: Story = {
-  args: {},
+  args: {
+    label: 'Label',
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/currency-input works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Label/gi)).toBeTruthy();
   },
 };

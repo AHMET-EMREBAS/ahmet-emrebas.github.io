@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CommonInputComponent } from '../common';
 
 @Component({
   selector: 'tb-switch-input',
@@ -8,4 +9,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './switch-input.component.html',
   styleUrls: ['./switch-input.component.scss'],
 })
-export class SwitchInputComponent {}
+export class SwitchInputComponent extends CommonInputComponent {}

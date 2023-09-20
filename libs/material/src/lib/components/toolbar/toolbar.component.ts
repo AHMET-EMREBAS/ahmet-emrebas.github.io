@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CommonComponent } from '../common';
 
 @Component({
   selector: 'tb-toolbar',
@@ -8,4 +9,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
 })
-export class ToolbarComponent {}
+export class ToolbarComponent extends CommonComponent {}

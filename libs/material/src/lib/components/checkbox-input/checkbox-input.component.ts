@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommonInputComponent } from '../common';
-import { EventObject } from '../../api';
 
 @Component({
   selector: 'tb-checkbox-input',
@@ -11,14 +10,8 @@ import { EventObject } from '../../api';
   styleUrls: ['./checkbox-input.component.scss'],
 })
 export class CheckboxInputComponent extends CommonInputComponent {
-  @Input() checked = false;
-
-  private toggleValue() {
-    this.checked = !this.checked;
-  }
-
-  protected override parseEvent(event: Event): EventObject {
-    this.toggleValue();
-    return { type: event.type, payload: this.checked };
+  override emit(__event: Event): void {
+    this.inputValue = !this.inputValue;
+    super.emit(__event);
   }
 }

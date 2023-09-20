@@ -10,8 +10,4 @@ import { CommonComponent } from '../common';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent extends CommonComponent {
-  override parseEvent(event: Event) {
-    return { type: event.type };
-  }
-}
+export class ButtonComponent extends CommonComponent {}

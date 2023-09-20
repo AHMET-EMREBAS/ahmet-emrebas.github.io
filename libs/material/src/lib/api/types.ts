@@ -2264,3 +2264,20 @@ export type Range100 =
   | 98
   | 99
   | 100;
+
+export type ListItem = {
+  label: string;
+  icon?: Icon;
+  color?: Colors;
+};
+
+export type Direction = 'top' | 'right' | 'bottom' | 'left';
+
+export type MenuItem = {
+  uname: string;
+  label: string;
+  icon?: Icon;
+  color?: Colors;
+  direction?: Direction;
+  children?: MenuItem[];
+};
