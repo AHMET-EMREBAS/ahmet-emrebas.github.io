@@ -1,21 +1,106 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "AfterEmit",
+            "id": "interface-AfterEmit-8eb38808ffeb0e5820047f3c381cb0b1e923e0627c93a982b6445ff1c58b5667abefc5b5cbb68c0521bf49a290f3db9afca005d08962a5e1a84cf900ba484834",
+            "file": "libs/material/src/lib/api/interfaces/event-life-cycle.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { EventObject } from '../types';\r\n\r\nexport interface BeforeEmit {\r\n  beforeEmit(event: EventObject): void;\r\n}\r\n\r\nexport interface AfterEmit {\r\n  afterEmit(event: EventObject): void;\r\n}\r\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 170,
+            "methods": [
+                {
+                    "name": "afterEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 8,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeforeEmit",
+            "id": "interface-BeforeEmit-8eb38808ffeb0e5820047f3c381cb0b1e923e0627c93a982b6445ff1c58b5667abefc5b5cbb68c0521bf49a290f3db9afca005d08962a5e1a84cf900ba484834",
+            "file": "libs/material/src/lib/api/interfaces/event-life-cycle.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { EventObject } from '../types';\r\n\r\nexport interface BeforeEmit {\r\n  beforeEmit(event: EventObject): void;\r\n}\r\n\r\nexport interface AfterEmit {\r\n  afterEmit(event: EventObject): void;\r\n}\r\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 170,
+            "methods": [
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 4,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "injectables": [
         {
             "name": "EventService",
-            "id": "injectable-EventService-26871f33d449882d3fc5ae852ed9fd6c804091bccfdbf8348ce6674f19f99dc5e8bf6a9a95d4f24a2a77a2e42f704eb98bb9543dbb19d97c57a28b63765970cb",
+            "id": "injectable-EventService-295576d332bcf41a0d09bc16e46bb7d3b8f23d7722b45684f3e4e1eb691a11315740ab6821bd2285dd83bd45fb704ee00ccdb177260059cbf15cd1c9214795f4",
             "file": "libs/material/src/lib/api/services/event.service.ts",
             "properties": [
                 {
                     "name": "$events",
-                    "defaultValue": "new BehaviorSubject<EventObject>({ type: '', target: '' })",
+                    "defaultValue": "new BehaviorSubject<EventObject>({ type: 'ignore', target: '' })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 12,
+                    "line": 9,
                     "modifierKind": [
                         146
                     ]
@@ -26,7 +111,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\nexport type EventObject<T = any> = {\r\n  type: string;\r\n  target: string;\r\n  payload?: T;\r\n};\r\n\r\n@Injectable({ providedIn: 'root' })\r\nexport class EventService {\r\n  readonly $events = new BehaviorSubject<EventObject>({ type: '', target: '' });\r\n}\r\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\nimport { EventObject } from '../types';\r\n\r\n\r\n\r\n@Injectable({ providedIn: 'root' })\r\nexport class EventService {\r\n  readonly $events = new BehaviorSubject<EventObject>({ type: 'ignore', target: '' });\r\n}\r\n",
             "type": "injectable"
         },
         {
@@ -79,7 +164,7 @@
         {
             "name": "EvenetControllerDirective",
             "id": "directive-EvenetControllerDirective-8ec9ee52cce9eef64a171d84391670a1530ea0692e4fd6429ef471d5a9d00bc309a77fe6d919394a767a3dd1a2b78b04b124c73d70a965939b9503f25aafcc6a",
-            "file": "libs/material/src/lib/directives/event-controller.directive.ts",
+            "file": "libs/material/src/lib/shared/directives/event-controller.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -136,12 +221,101 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "TooltipDirective",
+            "id": "directive-TooltipDirective-4dd9c9f7c91238dc6252eae07797c7dd1eec51b92b0c3ce422f73762b158f07e9ee27b5157e6e7f4c91bd4cec27cfcba22e23a585f0de87f4b9bfe1951932f54",
+            "file": "libs/material/src/lib/shared/directives/tooltip.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';\r\nimport { Colors, TooltipPosition } from '../../api';\r\n\r\n@Directive({ selector: '[tbTooltip]' })\r\nexport class TooltipDirective implements AfterViewInit {\r\n  @Input() tbTooltip = '';\r\n  @Input() tbTooltipPosition: TooltipPosition = 'bottom';\r\n  @Input() tbHostColor: Colors = 'accent';\r\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\r\n  ngAfterViewInit(): void {\r\n    const e = this.elementRef.nativeElement;\r\n    e.setAttribute('tooltip-position', this.tbTooltipPosition);\r\n    e.setAttribute('tooltip-color', this.tbTooltipPosition);\r\n    e.setAttribute('aria-label', this.tbTooltip);\r\n  }\r\n}\r\n",
+            "selector": "[tbTooltip]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [
+                {
+                    "name": "tbHostColor",
+                    "defaultValue": "'accent'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 8,
+                    "type": "Colors",
+                    "decorators": []
+                },
+                {
+                    "name": "tbTooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 6,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "tbTooltipPosition",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 7,
+                    "type": "TooltipPosition",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         }
     ],
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-972f905cce423d8e935ee2a04d84f024e6d733ef21243d509ce696cfdf82d42a1d08ace2c1ea088f72c612ca2e99ae6a4b28cf8e14b09244bc1dd3bc3fa338c2",
+            "id": "component-ButtonComponent-e70c9abfdc5938ad9f26f43125cf0399170e160e30be44d1ef39efa59aec0c335c2e62af41cc50566f91ea5d526982f77a14cbc04f44f947ab61a8608a0d7638",
             "file": "libs/material/src/lib/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -166,7 +340,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": [],
                     "inheritance": {
@@ -178,8 +352,22 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -192,7 +380,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -206,7 +394,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -220,7 +408,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -234,7 +422,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -250,21 +438,36 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonComponent"
                     }
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Any",
+                    "optional": false,
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "emit",
+                    "name": "afterEmit",
                     "args": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -272,15 +475,353 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent extends CommonComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": "CommonComponent",
+            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit('click')\" (dblclick)=\"emit('dblclick')\"\n    [attr.icon-position]=\"iconPosition\">\n    <tb-icon class=\"tb-button-icon\" [icon]=\"icon\" [bgColor]=\"color\"></tb-icon>\n    <span class=\"tb-button-label\"> {{label | titlecase}} </span>\n</button>\n\n<!-- [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\"\n    [attr.tooltip-color]=\"color\" -->"
+        },
+        {
+            "name": "CheckboxInputComponent",
+            "id": "component-CheckboxInputComponent-1029c5745a1b48ce59077b9826c43f3952b3c09ea383e7b1fd7def951a1ed9a53dfc49b7cdb90f64626323acf34e8de11f838dead110a8bac26e78758e6d12ff",
+            "file": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-checkbox-input",
+            "styleUrls": [
+                "./checkbox-input.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox-input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nElement color",
+                    "description": "<p>Element color</p>\n",
+                    "line": 35,
+                    "type": "Colors",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDescriptive text for the element",
+                    "description": "<p>Descriptive text for the element</p>\n",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHelp user to understand this element",
+                    "description": "<p>Help user to understand this element</p>\n",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow tooltip at a specific location.",
+                    "description": "<p>Show tooltip at a specific location.</p>\n",
+                    "line": 41,
+                    "type": "TooltipPosition",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "uname",
+                    "defaultValue": "'Uname not set'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
+                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "listen",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
+                    "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
+                    "line": 44,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        161
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        161
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "afterEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmit element events as they are",
+                    "description": "<p>Emit element events as they are</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -311,238 +852,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SharedModule } from '../../api';\nimport { CommonComponent } from '../common';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, SharedModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent extends CommonComponent {}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./button.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "extends": "CommonComponent",
-            "templateData": "<button classList=\"tb-flat-button {{color}}\" (click)=\"emit($event)\" (dblclick)=\"emit($event)\"\n    [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\" [attr.tooltip-color]=\"color\">\n    <div class=\"icon\">{{icon}}</div>\n    <span> {{label | titlecase}} </span>\n</button>"
-        },
-        {
-            "name": "CheckboxInputComponent",
-            "id": "component-CheckboxInputComponent-7cd1d12012e6cd877fd0e1cc0141876539dc611b4a44f81c35cad8e7ff52a3961cd780cd4cc0ae6835650cab2d774461a9701a2a14bf5ee2a1bf97dbc50df573",
-            "file": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "tb-checkbox-input",
-            "styleUrls": [
-                "./checkbox-input.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./checkbox-input.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "color",
-                    "defaultValue": "'primary'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nElement color",
-                    "description": "<p>Element color</p>\n",
-                    "line": 25,
-                    "type": "Colors",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
-                {
-                    "name": "icon",
-                    "defaultValue": "'info'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 22,
-                    "type": "Icon",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Label'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nDescriptive text for the element",
-                    "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
-                {
-                    "name": "tooltip",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nHelp user to understand this element",
-                    "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
-                {
-                    "name": "tooltipPosition",
-                    "defaultValue": "'bottom'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nShow tooltip at a specific location.",
-                    "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
-                    "type": "TooltipPosition",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
-                {
-                    "name": "uname",
-                    "defaultValue": "'Uname not set'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
-                    "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "listen",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
-                    "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
-                    "type": "EventEmitter",
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                }
-            ],
-            "propertiesClass": [
-                {
-                    "name": "inputValue",
-                    "defaultValue": "'' as any",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "T",
-                    "optional": false,
-                    "description": "<p>Input value</p>\n",
-                    "line": 14,
-                    "rawdescription": "\nInput value",
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "emit",
-                    "args": [
-                        {
-                            "name": "__event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 13,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        161
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "__event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "CommonComponent"
-                    }
-                },
-                {
-                    "name": "parseEvent",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "EventObject",
-                    "typeParameters": [],
-                    "line": 16,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        122,
-                        161
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonInputComponent } from '../common';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent extends CommonInputComponent {\n  override emit(__event: Event): void {\n    this.inputValue = !this.inputValue;\n    super.emit(__event);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonInputComponent } from '../common';\nimport { EventObject, SharedModule } from '../../api';\n\n@Component({\n  selector: 'tb-checkbox-input',\n  standalone: true,\n  imports: [CommonModule, SharedModule],\n  templateUrl: './checkbox-input.component.html',\n  styleUrls: ['./checkbox-input.component.scss'],\n})\nexport class CheckboxInputComponent extends CommonInputComponent {\n  override value = false;\n\n  override beforeEmit(event: EventObject): void {\n    this.value = !this.value;\n    event.payload = { value: this.value };\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -552,11 +862,11 @@
             ],
             "stylesData": "",
             "extends": "CommonInputComponent",
-            "templateData": "<div class=\"tb-form-field-container primary row  align-flex-start\">\n    <div class=\"flex row justify-flex-start gap-10 align-center\">\n        <div class=\"icon tb-form-checkbox\" (click)=\"emit({type:'click', payload:inputValue});\"\n            [class.green]=\"inputValue\">{{inputValue ? 'check_box' :\n            'check_box_outline_blank'}}</div>\n        <div class=\"tb-form-field-label\">{{uname}}</div>\n    </div>\n</div>"
+            "templateData": "<div class=\"tb-form-field-container primary row  align-flex-start\">\n    <div class=\"flex row justify-flex-start gap-10 align-center\">\n        <div class=\"icon tb-form-checkbox\" (click)=\"emit('input');\" [class.green]=\"value\">{{value ? 'check_box' :\n            'check_box_outline_blank'}}</div>\n        <div class=\"tb-form-field-label\">{{uname}}</div>\n    </div>\n</div>                  "
         },
         {
             "name": "CommonComponent",
-            "id": "component-CommonComponent-90fff84ef01277bb1ce4929d765a9a2f1ab38a6130695cb4ff9023451e3679cf1859f7749cb9f50cceb001d403d265eceaa840fc71bea645ad6ed7906dd2793f",
+            "id": "component-CommonComponent-b46b5e16b2c05755de14b7c18a30d4204c561591f9df16ee5d9a7fb498cc5b8afb0907d4e31ebcc3820ccb8e6fbd429d86e8e7386f786d85009a2a3cdf63a934",
             "file": "libs/material/src/lib/components/common/common/common.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -578,7 +888,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": []
                 },
@@ -587,8 +897,19 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": []
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": []
                 },
                 {
@@ -598,7 +919,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": []
                 },
@@ -609,7 +930,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 },
@@ -620,7 +941,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": []
                 },
@@ -631,7 +952,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 }
@@ -644,18 +965,30 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter"
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Any",
+                    "optional": false,
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload"
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "emit",
+                    "name": "afterEmit",
                     "args": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -663,15 +996,71 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -690,7 +1079,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport {\n  Colors,\n  EventObject,\n  EventService,\n  Icon,\n  TooltipPosition,\n} from '../../../api';\n\n@Component({\n  selector: 'tb-common',\n  standalone: true,\n  template: '',\n})\nexport class CommonComponent {\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = 'Uname not set';\n\n  /** Descriptive text for the element */\n  @Input() label = 'Label';\n\n  @Input() icon: Icon = 'info';\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** Listen any event in the component. Event name is passed as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  constructor(protected readonly eventService: EventService) {}\n\n  /** @ignore */\n  protected parseEvent(event: Event): EventObject {\n    return { target: this.uname, type: event.type };\n  }\n\n  /** Emit element events as they are */\n  emit(__event: Event) {\n    const event = this.parseEvent(__event);\n    this.eventService.$events.next(event);\n    this.listen.emit(event);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport {\n  AfterEmit,\n  Any,\n  BeforeEmit,\n  Colors,\n  EventObject,\n  EventService,\n  EventType,\n  Icon,\n  TooltipPosition,\n} from '../../../api';\n\n@Component({\n  selector: 'tb-common',\n  standalone: true,\n  template: '',\n})\nexport class CommonComponent implements BeforeEmit, AfterEmit {\n  /** Input/Condition/state value will be attached to the event payload  */\n  value: Any = '';\n\n  /** Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name*/\n  @Input() uname = 'Uname not set';\n\n  /** Descriptive text for the element */\n  @Input() label = 'Label';\n\n  @Input() icon: Icon = 'info';\n\n  /** Position the icon right or left */\n  @Input() iconPosition: 'right' | 'left' = 'left';\n\n  /** Element color */\n  @Input() color: Colors = 'primary';\n\n  /** Help user to understand this element */\n  @Input() tooltip = '';\n\n  /** Show tooltip at a specific location. */\n  @Input() tooltipPosition: TooltipPosition = 'bottom';\n\n  /** Listen any event in the component. Event name is passed as property of the object. */\n  @Output() listen = new EventEmitter();\n\n  constructor(protected readonly eventService: EventService) {}\n\n  beforeEmit(event: EventObject) {\n    return;\n  }\n\n  afterEmit(event: EventObject) {\n    return;\n  }\n\n  /** Emit element events as they are */\n  emit(type: EventType) {\n    const event: EventObject = {\n      type,\n      target: this.uname,\n      payload: { value: this.value },\n    };\n    this.beforeEmit(event);\n    this.eventService.$events.next(event);\n\n    this.listen.emit(event);\n    this.afterEmit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -707,7 +1096,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 34,
+                "line": 44,
                 "jsdoctags": [
                     {
                         "name": "eventService",
@@ -719,11 +1108,15 @@
                         }
                     }
                 ]
-            }
+            },
+            "implements": [
+                "BeforeEmit",
+                "AfterEmit"
+            ]
         },
         {
             "name": "CommonHostComponent",
-            "id": "component-CommonHostComponent-be3fc667f60f42c80caab80f6a3b853c6c5ca7078a7caad23d19033dba3b2f2ed61eb95ac540f671d2b9336a0bfe087eb1949b2cac73dd8e969fe5a1c7d6a467",
+            "id": "component-CommonHostComponent-6a10d2ecca5bb85a58dac37a764e38faf458e9cdee336393e0b21ae0fb6a149c71da1cd7a5f180bbcf3e43d6994cb836e5c528a4af31a8236da7887733d2a587",
             "file": "libs/material/src/lib/components/common/common-host/common-host.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -742,7 +1135,9 @@
                     "name": "data",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "rawdescription": "\nChildren data",
+                    "description": "<p>Children data</p>\n",
+                    "line": 14,
                     "type": "T",
                     "decorators": []
                 }
@@ -753,12 +1148,70 @@
                     "defaultValue": "new EventEmitter<EventObject>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "rawdescription": "\nListenn any event from host and child",
+                    "description": "<p>Listenn any event from host and child</p>\n",
+                    "line": 11,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [],
             "methodsClass": [
+                {
+                    "name": "afterEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "emit",
                     "args": [
@@ -772,7 +1225,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 13,
+                    "line": 16,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -797,14 +1250,18 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { EventObject } from '../../../api';\n\n@Component({\n  selector: 'tb-common-host',\n  standalone: true,\n  template: '',\n})\nexport class CommonHostComponent<T = any> {\n  @Output() listen = new EventEmitter<EventObject>();\n  @Input() data?: T;\n\n  emit(event: EventObject) {\n    this.listen.emit(event);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { AfterEmit, BeforeEmit, EventObject } from '../../../api';\n\n@Component({\n  selector: 'tb-common-host',\n  standalone: true,\n  template: '',\n})\nexport class CommonHostComponent<T = any> implements BeforeEmit, AfterEmit {\n  /** Listenn any event from host and child */\n  @Output() listen = new EventEmitter<EventObject>();\n\n  /** Children data */\n  @Input() data?: T;\n\n  emit(event: EventObject) {\n    this.listen.emit(event);\n  }\n  beforeEmit(event: EventObject): void {\n    return;\n  }\n  afterEmit(event: EventObject): void {\n    return;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": ""
+            "stylesData": "",
+            "implements": [
+                "BeforeEmit",
+                "AfterEmit"
+            ]
         },
         {
             "name": "CommonInputComponent",
-            "id": "component-CommonInputComponent-a634c63c3e874b88df7af4f336987ac5bbe24f4da140216a8d39bc5817025a9b9d8b38845cb0dea2007fd76fc8e35735920bbc104187c3f2e800f3e1418f7493",
+            "id": "component-CommonInputComponent-37496251c8db7538eb6e53dbd1622c334370f71d0c3914e979f6fd4566ff448fcabc913a11b7d59eb11e2b55053f6fcc2bbc175ffcba85e9e727a2304b440ffe",
             "file": "libs/material/src/lib/components/common/common-input/common-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -826,7 +1283,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": [],
                     "inheritance": {
@@ -838,8 +1295,22 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -852,7 +1323,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -866,7 +1337,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -880,7 +1351,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -894,7 +1365,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -910,7 +1381,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonComponent"
@@ -919,56 +1390,27 @@
             ],
             "propertiesClass": [
                 {
-                    "name": "inputValue",
-                    "defaultValue": "'' as any",
+                    "name": "value",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "T",
+                    "type": "Any",
                     "optional": false,
-                    "description": "<p>Input value</p>\n",
-                    "line": 14,
-                    "rawdescription": "\nInput value"
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "parseEvent",
+                    "name": "afterEmit",
                     "args": [
                         {
                             "name": "event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "EventObject",
-                    "typeParameters": [],
-                    "line": 16,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        122,
-                        161
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "emit",
-                    "args": [
-                        {
-                            "name": "__event",
-                            "type": "Event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -976,15 +1418,77 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1011,7 +1515,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\nimport { EventObject } from '../../../api';\n\n@Component({\n  selector: 'tb-common-input',\n  standalone: true,\n  imports: [CommonModule],\n  template: '',\n})\nexport class CommonInputComponent<T = any> extends CommonComponent {\n  /** Input value  */\n  inputValue: T = '' as any;\n\n  protected override parseEvent(event: Event): EventObject {\n    return {\n      type: 'input',\n      target: this.uname,\n      payload: this.inputValue,\n    };\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\n\n@Component({\n  selector: 'tb-common-input',\n  standalone: true,\n  imports: [CommonModule],\n  template: '',\n})\nexport class CommonInputComponent<T = any> extends CommonComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1019,7 +1523,7 @@
         },
         {
             "name": "CurrencyInputComponent",
-            "id": "component-CurrencyInputComponent-f5e1acc20c65c92dad3eeae64111286e4861f6e3d14591b531e8c70795f3ad61bb21571df8ffb1fb2005bf2ddbc004d4ead6848454258533b81e6404db7cccd9",
+            "id": "component-CurrencyInputComponent-f14a2cd3c12191e22cc1447e87b76a4733a0a4a4aa52d2fadd125c47a374946437621d9bae270d7bc1a8ca2f0b1bc70680e008452b44d811d511b185a566abbc",
             "file": "libs/material/src/lib/components/currency-input/currency-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1044,7 +1548,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": [],
                     "inheritance": {
@@ -1056,8 +1560,22 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -1070,7 +1588,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1084,7 +1602,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1098,7 +1616,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -1112,7 +1630,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1128,7 +1646,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonComponent"
@@ -1144,51 +1662,47 @@
                     "type": "Icon",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 22,
                     "modifierKind": [
                         161
                     ]
                 },
                 {
-                    "name": "inputValue",
-                    "defaultValue": "'' as any",
+                    "name": "value",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "T",
+                    "type": "Any",
                     "optional": false,
-                    "description": "<p>Input value</p>\n",
-                    "line": 14,
-                    "rawdescription": "\nInput value",
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload",
                     "inheritance": {
-                        "file": "CommonInputComponent"
+                        "file": "CommonComponent"
                     }
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "parseEvent",
+                    "name": "afterEmit",
                     "args": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
                     ],
                     "optional": false,
-                    "returnType": "EventObject",
+                    "returnType": "void",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "modifierKind": [
-                        122,
-                        161
-                    ],
                     "jsdoctags": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1197,15 +1711,15 @@
                         }
                     ],
                     "inheritance": {
-                        "file": "CommonInputComponent"
+                        "file": "CommonComponent"
                     }
                 },
                 {
-                    "name": "emit",
+                    "name": "beforeEmit",
                     "args": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1213,15 +1727,46 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1245,6 +1790,14 @@
                     "type": "module"
                 },
                 {
+                    "name": "SharedModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                },
+                {
                     "name": "FormsModule",
                     "type": "module"
                 },
@@ -1256,7 +1809,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { CommonInputComponent } from '../common/';\nimport { Icon } from '../../api';\n\n@Component({\n  selector: 'tb-currency-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule],\n  templateUrl: './currency-input.component.html',\n  styleUrls: ['./currency-input.component.scss'],\n})\nexport class CurrencyInputComponent extends CommonInputComponent {\n  override icon: Icon = 'attach_money';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { CommonInputComponent } from '../common/';\nimport { Icon, SharedModule } from '../../api';\nimport { IconComponent } from '../icon';\n\n@Component({\n  selector: 'tb-currency-input',\n  standalone: true,\n  imports: [\n    CommonModule,\n    SharedModule,\n    IconComponent,\n    FormsModule,\n    ReactiveFormsModule,\n  ],\n  templateUrl: './currency-input.component.html',\n  styleUrls: ['./currency-input.component.scss'],\n})\nexport class CurrencyInputComponent extends CommonInputComponent {\n  override icon: Icon = 'attach_money';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1266,11 +1819,11 @@
             ],
             "stylesData": "",
             "extends": "CommonInputComponent",
-            "templateData": "<!-- <link rel=\"stylesheet\" href=\"/libs/material/src/style.css\"> -->\n<div class=\"tb-form-field-container {{color}}\">\n    <div class=\"tb-form-field-label\">{{label}}</div>\n    <div class=\"tb-form-field\">\n        <input [(ngModel)]=\"inputValue\" class=\"tb-form-field-input\" type=\"text\" (input)=\"emit($event)\" />\n        <span class=\"tb-form-field-icon icon\">{{icon}}</span>\n    </div>\n</div>"
+            "templateData": "<!-- <link rel=\"stylesheet\" href=\"/libs/material/src/style.css\"> -->\n<div class=\"tb-form-field-container {{color}}\">\n    <div class=\"tb-form-field-label\">{{label}}</div>\n    <div class=\"tb-form-field\" [attr.icon-position]=\"iconPosition\">\n        <input [(ngModel)]=\"value\" class=\"tb-form-field-input\" type=\"text\" (input)=\"emit('input')\" />\n        <tb-icon class=\"tb-form-field-icon\" [icon]=\"icon\" [bgColor]=\"color\"></tb-icon>\n    </div>\n</div>"
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-b361de9e498d14e0cf7370debee9a1a2443f079994aa8ef38db878884aa4b6cdde4b2eb0248a936d60ff187994a0580e8e7792f858d2864b7c6dc256b0fefdb8",
+            "id": "component-IconComponent-8f7ea29f681372a5f3f81c5089e49bc9b2d53bcce09f64d3d9dc994e8916e620c11e2de0c728bd44c844446bc3f7f9be7c81bc3e4c5d36456416fe1150554dbc",
             "file": "libs/material/src/lib/components/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1289,13 +1842,24 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "bgColor",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSelect face color automatically from bgColor",
+                    "description": "<p>Select face color automatically from bgColor</p>\n",
+                    "line": 19,
+                    "type": "Colors",
+                    "decorators": []
+                },
+                {
                     "name": "color",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nIcon color",
                     "description": "<p>Icon color</p>\n",
-                    "line": 15,
+                    "line": 16,
                     "type": "Colors",
                     "decorators": []
                 },
@@ -1306,7 +1870,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nIcon style fill or flat",
                     "description": "<p>Icon style fill or flat</p>\n",
-                    "line": 17,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1315,20 +1879,20 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nIcon naem",
-                    "description": "<p>Icon naem</p>\n",
+                    "rawdescription": "\nIcon name",
+                    "description": "<p>Icon name</p>\n",
                     "line": 13,
                     "type": "Icon",
                     "decorators": []
                 },
                 {
                     "name": "size",
-                    "defaultValue": "10",
+                    "defaultValue": "18",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nicon size within the range of 1 to 100. 1=0.1em 100=10em",
                     "description": "<p>icon size within the range of 1 to 100. 1=0.1em 100=10em</p>\n",
-                    "line": 19,
+                    "line": 25,
                     "type": "Range100",
                     "decorators": []
                 }
@@ -1350,7 +1914,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Colors, Icon, Range100 } from '../../api';\n@Component({\n  selector: 'tb-icon',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  /** Icon naem */\n  @Input() icon: Icon = 'info';\n  /** Icon color */\n  @Input() color: Colors = 'primary';\n  /** Icon style fill or flat */\n  @Input() fill = false;\n  /** icon size within the range of 1 to 100. 1=0.1em 100=10em*/\n  @Input() size: Range100 = 10;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Colors, Icon, Range100 } from '../../api';\n@Component({\n  selector: 'tb-icon',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  /** Icon name */\n  @Input() icon: Icon = 'info';\n\n  /** Icon color */\n  @Input() color: Colors = 'primary';\n\n  /** Select face color automatically from bgColor */\n  @Input() bgColor: Colors = 'primary';\n\n  /** Icon style fill or flat */\n  @Input() fill = false;\n\n  /** icon size within the range of 1 to 100. 1=0.1em 100=10em*/\n  @Input() size: Range100 = 18;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1359,7 +1923,55 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div classList=\"icon {{color}} {{fill  ? 'fill' : ''}} {{size ? 'font-size-' + size : ''}}\">{{icon}}</div>"
+            "templateData": "<div [style.order]=\"position\"\r\n    classList=\"icon {{bgColor ? bgColor + 'face' : color}} {{fill  ? 'fill' : ''}} {{size ? 'font-size-' + size : ''}}\">\r\n\r\n    {{icon}}\r\n</div>"
+        },
+        {
+            "name": "InputComponent",
+            "id": "component-InputComponent-dea64932e978e5e8c1b121c856c33c0f1e2c25ce5ed206bb1fd42ca56f241b553780fec799baa1d6d7ce216d58cd232e11a4b8f490b026e7d85e1fd481a4cd20",
+            "file": "libs/material/src/lib/components/input/input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-input",
+            "styleUrls": [
+                "./input.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n})\nexport class InputComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./input.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<p>input works!</p>\n"
         },
         {
             "name": "ListComponent",
@@ -1505,11 +2117,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"tb-list-item {{color}}\">\n    <div class=\"icon\">{{icon}}</div>\n    <span>{{label}}</span>\n</div>"
+            "templateData": "<div class=\"tb-list-item {{color}}\">\n    \n    <div class=\"icon\">{{icon}}</div>\n    <span>{{label}}</span>\n</div>"
         },
         {
             "name": "MenuComponent",
-            "id": "component-MenuComponent-132ade4dd94cb0989dd607ea1ea8e06ffd12663ada36dc4a9e2b1060a1829a568d983a492a54207e84424cbdabbaef6d7a416e5a42b4def5eb38c34510367718",
+            "id": "component-MenuComponent-4c76c8e80cb489a96012cd65eb4b52a590147a0f566b009eb818c779e79073adf75eafc1afe72b70c9231edbe740fd88db5d3771258272653c70fce354b642ae",
             "file": "libs/material/src/lib/components/menu/menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1532,7 +2144,7 @@
                     "defaultValue": "{\n    label: 'Menu',\n    uname: 'menu',\n    color: 'primary',\n    icon: 'menu',\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "MenuItem",
                     "decorators": [],
                     "inheritance": {
@@ -1546,7 +2158,9 @@
                     "defaultValue": "new EventEmitter<EventObject>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "rawdescription": "\nListenn any event from host and child",
+                    "description": "<p>Listenn any event from host and child</p>\n",
+                    "line": 11,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonHostComponent"
@@ -1555,6 +2169,68 @@
             ],
             "propertiesClass": [],
             "methodsClass": [
+                {
+                    "name": "afterEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
+                },
                 {
                     "name": "emit",
                     "args": [
@@ -1568,7 +2244,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 13,
+                    "line": 16,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1596,12 +2272,16 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { EventObject, MenuItem } from '../../api';\nimport { CommonHostComponent } from '../common';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './menu.component.html',\n  styleUrls: ['./menu.component.scss'],\n})\nexport class MenuComponent extends CommonHostComponent<MenuItem> {\n  @Input() override data: MenuItem = {\n    label: 'Menu',\n    uname: 'menu',\n    color: 'primary',\n    icon: 'menu',\n  };\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MenuItem } from '../../api';\nimport { CommonHostComponent } from '../common';\nimport { IconComponent } from '../icon/icon.component';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './menu.component.html',\n  styleUrls: ['./menu.component.scss'],\n})\nexport class MenuComponent extends CommonHostComponent<MenuItem> {\n  @Input() override data: MenuItem = {\n    label: 'Menu',\n    uname: 'menu',\n    color: 'primary',\n    icon: 'menu',\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1611,7 +2291,7 @@
             ],
             "stylesData": "",
             "extends": "CommonHostComponent",
-            "templateData": "<ng-template #menuItem let-data=\"data\">\n    <div class=\"tb-nav-list-item {{data.color}}\" (click)=\"emit({type:'click', target:data.uname})\">\n        <span class=\"icon\">{{data.icon}}</span>\n        <span>{{data.label}}</span>\n    </div>\n</ng-template>\n\n\n<ng-template #menu let-data=\"data\">\n\n\n    <div class=\"tb-dropdown-menu {{data.direction}} \">\n\n        <ng-container *ngTemplateOutlet=\"menuItem;context:{data:data}\"></ng-container>\n\n        <div class=\"tb-dropdown-items\">\n\n            <ng-container *ngFor=\"let child of data.children\">\n\n\n                <ng-container *ngIf=\"child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menu;context:{data:child}\"></ng-container>\n                </ng-container>\n\n                <ng-container *ngIf=\"!child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menuItem;context:{data:child}\"></ng-container>\n                </ng-container>\n\n\n            </ng-container>\n\n        </div>\n\n    </div>\n</ng-template>\n\n\n<ng-container *ngTemplateOutlet=\"menu;context:{data}\"></ng-container>"
+            "templateData": "<ng-template #menuItem let-data=\"data\">\n    <div class=\"tb-nav-list-item {{data.color}}\" (click)=\"emit('click')\">\n        <tb-icon [icon]=\"data.icon\" [bgColor]=\"data.color\"></tb-icon>\n        <span>{{data.label}}</span>\n    </div>\n</ng-template>\n\n<ng-template #menu let-data=\"data\">\n\n    <div class=\"tb-dropdown-menu {{data.direction}} \">\n\n        <ng-container *ngTemplateOutlet=\"menuItem;context:{data:data}\"></ng-container>\n\n        <div class=\"tb-dropdown-items\">\n\n            <ng-container *ngFor=\"let child of data.children\">\n\n                <!-- Has children? -->\n                <ng-container *ngIf=\"child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menu;context:{data:child}\"></ng-container>\n                </ng-container>\n\n                <!-- Not have children? -->\n                <ng-container *ngIf=\"!child?.children\">\n                    <ng-container *ngTemplateOutlet=\"menuItem;context:{data:child}\"></ng-container>\n                </ng-container>\n\n\n            </ng-container>\n\n        </div>\n\n    </div>\n</ng-template>\n\n\n<ng-container *ngTemplateOutlet=\"menu;context:{data}\"></ng-container>"
         },
         {
             "name": "MenuItemComponent",
@@ -1640,7 +2320,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": [],
                     "inheritance": {
@@ -1652,8 +2332,22 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -1666,7 +2360,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1680,7 +2374,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1694,7 +2388,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -1708,7 +2402,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1724,21 +2418,36 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonComponent"
                     }
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Any",
+                    "optional": false,
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "emit",
+                    "name": "afterEmit",
                     "args": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1746,15 +2455,77 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1791,7 +2562,7 @@
             ],
             "stylesData": "",
             "extends": "CommonComponent",
-            "templateData": "<div class=\"tb-nav-list-item {{color}}\" [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\"\n    (click)=\"emit(uname)\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
+            "templateData": "<div class=\"tb-nav-list-item {{color}}\" [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\"\n    (click)=\"emit('click')\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
         },
         {
             "name": "NavListComponent",
@@ -1817,7 +2588,9 @@
                     "name": "data",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "rawdescription": "\nChildren data",
+                    "description": "<p>Children data</p>\n",
+                    "line": 14,
                     "type": "T",
                     "decorators": [],
                     "inheritance": {
@@ -1831,7 +2604,9 @@
                     "defaultValue": "new EventEmitter<EventObject>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "rawdescription": "\nListenn any event from host and child",
+                    "description": "<p>Listenn any event from host and child</p>\n",
+                    "line": 11,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonHostComponent"
@@ -1840,6 +2615,68 @@
             ],
             "propertiesClass": [],
             "methodsClass": [
+                {
+                    "name": "afterEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonHostComponent"
+                    }
+                },
                 {
                     "name": "emit",
                     "args": [
@@ -1853,7 +2690,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 13,
+                    "line": 16,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1900,11 +2737,11 @@
             ],
             "stylesData": "",
             "extends": "CommonHostComponent",
-            "templateData": "<div class=\"tb-nav-list\">\n    <tb-nav-list-item *ngFor=\"let item of data\" [uname]=\"item.uname\" [color]=\"item.color\" [icon]=\"item.icon\" [label]=\"item.label\"\n        (listen)=\"emit($event)\"></tb-nav-list-item>\n</div>"
+            "templateData": "<div class=\"tb-nav-list\">\n    <tb-nav-list-item *ngFor=\"let item of data\" [uname]=\"item.uname\" [color]=\"item.color\" [icon]=\"item.icon\"\n        [label]=\"item.label\" (listen)=\"emit($event)\"></tb-nav-list-item>\n</div>"
         },
         {
             "name": "NavListItemComponent",
-            "id": "component-NavListItemComponent-73b145879492ebc9bd8fbf2db49efb780b2eb58dd2def681951d2b3107640b9ab488631a6604be2f2da94166a5e7503e66e663d94033a0ae3bd5f169b2e18c9e",
+            "id": "component-NavListItemComponent-b5f95ebc170011ad49f431f6462406891aa1ed1f19f68e93fe8e836a3deaee0448f9fbd6cb71ee5129f75e254c6d576be98b6599c72d30e907d1e928e37992e3",
             "file": "libs/material/src/lib/components/nav-list-item/nav-list-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1929,7 +2766,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": [],
                     "inheritance": {
@@ -1941,8 +2778,22 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -1955,7 +2806,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1969,7 +2820,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1983,7 +2834,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -1997,7 +2848,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2013,21 +2864,36 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonComponent"
                     }
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Any",
+                    "optional": false,
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "emit",
+                    "name": "afterEmit",
                     "args": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2035,15 +2901,77 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2065,12 +2993,16 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\n\n@Component({\n  selector: 'tb-nav-list-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './nav-list-item.component.html',\n  styleUrls: ['./nav-list-item.component.scss'],\n})\nexport class NavListItemComponent extends CommonComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonComponent } from '../common';\nimport { IconComponent } from '../icon/icon.component';\n\n@Component({\n  selector: 'tb-nav-list-item',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './nav-list-item.component.html',\n  styleUrls: ['./nav-list-item.component.scss'],\n})\nexport class NavListItemComponent extends CommonComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2080,7 +3012,7 @@
             ],
             "stylesData": "",
             "extends": "CommonComponent",
-            "templateData": "<div class=\"tb-nav-list-item {{color}}\" [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\"\n    (click)=\"emit({type:'click', target:uname})\">\n    <span class=\"icon\">{{icon}}</span>\n    <span>{{label}}</span>\n</div>"
+            "templateData": "<div class=\"tb-nav-list-item {{color}}\" [attr.aria-label]=\"tooltip\" [attr.tooltip-position]=\"tooltipPosition\"\n    (click)=\"emit('click')\">\n    <tb-icon [icon]=\"icon\"></tb-icon>\n    <span>{{label}}</span>\n</div>"
         },
         {
             "name": "NumberInputComponent",
@@ -2253,7 +3185,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": [],
                     "inheritance": {
@@ -2265,8 +3197,22 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -2279,7 +3225,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2293,7 +3239,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2307,7 +3253,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -2321,7 +3267,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2337,7 +3283,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonComponent"
@@ -2346,45 +3292,41 @@
             ],
             "propertiesClass": [
                 {
-                    "name": "inputValue",
-                    "defaultValue": "'' as any",
+                    "name": "value",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "T",
+                    "type": "Any",
                     "optional": false,
-                    "description": "<p>Input value</p>\n",
-                    "line": 14,
-                    "rawdescription": "\nInput value",
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload",
                     "inheritance": {
-                        "file": "CommonInputComponent"
+                        "file": "CommonComponent"
                     }
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "parseEvent",
+                    "name": "afterEmit",
                     "args": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
                     ],
                     "optional": false,
-                    "returnType": "EventObject",
+                    "returnType": "void",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "modifierKind": [
-                        122,
-                        161
-                    ],
                     "jsdoctags": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2393,15 +3335,15 @@
                         }
                     ],
                     "inheritance": {
-                        "file": "CommonInputComponent"
+                        "file": "CommonComponent"
                     }
                 },
                 {
-                    "name": "emit",
+                    "name": "beforeEmit",
                     "args": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2409,15 +3351,46 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2454,7 +3427,7 @@
             ],
             "stylesData": "",
             "extends": "CommonInputComponent",
-            "templateData": "<div class=\"tb-form-field-container primary row  align-flex-start\">\n    <div class=\"flex row justify-flex-start gap-10 align-center\">\n        <div class=\"icon tb-form-checkbox\" (click)=\"emit({type:'click', payload:inputValue});\"\n            [class.green]=\"inputValue\">{{inputValue ? 'check_box' :\n            'check_box_outline_blank'}}</div>\n        <div class=\"tb-form-field-label\">{{uname}}</div>\n    </div>\n</div>"
+            "templateData": "<div class=\"tb-form-field-container primary row  align-flex-start\">\n    <div class=\"flex row justify-flex-start gap-10 align-center\">\n        <div class=\"icon tb-form-checkbox\" (click)=\"emit('click');\" [class.green]=\"value\">{{value ? 'check_box' :\n            'check_box_outline_blank'}}</div>\n        <div class=\"tb-form-field-label\">{{uname}}</div>\n    </div>\n</div>"
         },
         {
             "name": "TextInputComponent",
@@ -2502,7 +3475,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>text-input works!</p>\n"
+            "templateData": "<!-- <link rel=\"stylesheet\" href=\"/libs/material/src/style.css\"> -->\n<div class=\"tb-form-field-container {{color}}\">\n    <div class=\"tb-form-field-label\">{{label}}</div>\n    <div class=\"tb-form-field\" [attr.icon-position]=\"iconPosition\">\n        <input [(ngModel)]=\"value\" class=\"tb-form-field-input\" type=\"text\" (input)=\"emit('input')\" />\n        <tb-icon class=\"tb-form-field-icon\" [icon]=\"icon\" [bgColor]=\"color\"></tb-icon>\n    </div>\n</div>"
         },
         {
             "name": "ToolbarComponent",
@@ -2531,7 +3504,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nElement color",
                     "description": "<p>Element color</p>\n",
-                    "line": 25,
+                    "line": 35,
                     "type": "Colors",
                     "decorators": [],
                     "inheritance": {
@@ -2543,8 +3516,22 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 29,
                     "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPosition the icon right or left",
+                    "description": "<p>Position the icon right or left</p>\n",
+                    "line": 32,
+                    "type": "\"right\" | \"left\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonComponent"
@@ -2557,7 +3544,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDescriptive text for the element",
                     "description": "<p>Descriptive text for the element</p>\n",
-                    "line": 20,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2571,7 +3558,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nHelp user to understand this element",
                     "description": "<p>Help user to understand this element</p>\n",
-                    "line": 28,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2585,7 +3572,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow tooltip at a specific location.",
                     "description": "<p>Show tooltip at a specific location.</p>\n",
-                    "line": 31,
+                    "line": 41,
                     "type": "TooltipPosition",
                     "decorators": [],
                     "inheritance": {
@@ -2599,7 +3586,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name",
                     "description": "<p>Unique name in context. This name is also for event emitter. Any event happened in this component will be fired by this name</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2615,21 +3602,36 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nListen any event in the component. Event name is passed as property of the object.",
                     "description": "<p>Listen any event in the component. Event name is passed as property of the object.</p>\n",
-                    "line": 34,
+                    "line": 44,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "CommonComponent"
                     }
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Any",
+                    "optional": false,
+                    "description": "<p>Input/Condition/state value will be attached to the event payload</p>\n",
+                    "line": 21,
+                    "rawdescription": "\nInput/Condition/state value will be attached to the event payload",
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "emit",
+                    "name": "afterEmit",
                     "args": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "event",
+                            "type": "EventObject",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2637,15 +3639,77 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "beforeEmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "EventObject",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "EventType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit element events as they are",
                     "description": "<p>Emit element events as they are</p>\n",
                     "jsdoctags": [
                         {
-                            "name": "__event",
-                            "type": "Event",
+                            "name": "type",
+                            "type": "EventType",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2724,13 +3788,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-1b94619be332c0cfb9ca39e80bb0ef24feadcffe566be2af07d2c0f8397bbdc555c8e33cdf3a56b6eba880ebef00699fcf3ee22d8492d0d442af237a7e7f3e35",
+            "id": "module-SharedModule-cb81a0c6c0e7ed66cdd8fc6be329f32b267deea1a55da54687854d86af4852e30e2f3c786756eb0320b6fc9dade8ad6f507561465689308aa09beb5b9f763675",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "libs/material/src/lib/api/modules/shared-module.ts",
+            "file": "libs/material/src/lib/shared/shared-module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { EventService } from '../services';\r\n\r\n@NgModule({\r\n  providers: [EventService],\r\n})\r\nexport class SharedModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { EventService } from '../api/services';\r\nimport { TooltipDirective } from './directives';\r\n@NgModule({\r\n  imports: [TooltipDirective],\r\n  providers: [EventService],\r\n})\r\nexport class SharedModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -2746,7 +3810,11 @@
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "TooltipDirective"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -3343,6 +4411,17 @@
         ],
         "typealiases": [
             {
+                "name": "Any",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "string | number | Date | boolean",
+                "file": "libs/material/src/lib/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
+            },
+            {
                 "name": "Colors",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -3369,11 +4448,22 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "literal type",
-                "file": "libs/material/src/lib/api/services/event.service.ts",
+                "file": "libs/material/src/lib/api/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 184
+            },
+            {
+                "name": "EventType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"click\" | \"dbclick\" | \"input\" | Ignore",
+                "file": "libs/material/src/lib/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
             },
             {
                 "name": "Icon",
@@ -3385,6 +4475,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 189
+            },
+            {
+                "name": "Ignore",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "libs/material/src/lib/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 198
             },
             {
                 "name": "ListItem",
@@ -3399,6 +4500,17 @@
             },
             {
                 "name": "MenuItem",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/src/lib/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Payload",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "literal type",
@@ -4264,6 +5376,17 @@
         "groupedTypeAliases": {
             "libs/material/src/lib/api/types.ts": [
                 {
+                    "name": "Any",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "string | number | Date | boolean",
+                    "file": "libs/material/src/lib/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                },
+                {
                     "name": "Colors",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
@@ -4286,6 +5409,28 @@
                     "kind": 189
                 },
                 {
+                    "name": "EventObject",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/src/lib/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                },
+                {
+                    "name": "EventType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"click\" | \"dbclick\" | \"input\" | Ignore",
+                    "file": "libs/material/src/lib/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                },
+                {
                     "name": "Icon",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
@@ -4295,6 +5440,17 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 189
+                },
+                {
+                    "name": "Ignore",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "libs/material/src/lib/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 198
                 },
                 {
                     "name": "ListItem",
@@ -4309,6 +5465,17 @@
                 },
                 {
                     "name": "MenuItem",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/src/lib/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                },
+                {
+                    "name": "Payload",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "literal type",
@@ -4372,19 +5539,6 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 189
-                }
-            ],
-            "libs/material/src/lib/api/services/event.service.ts": [
-                {
-                    "name": "EventObject",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "literal type",
-                    "file": "libs/material/src/lib/api/services/event.service.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
                 }
             ],
             "libs/material/src/lib/components/button/button.component.stories.ts": [
@@ -4603,6 +5757,24 @@
         "status": "low",
         "files": [
             {
+                "filePath": "libs/material/src/lib/api/interfaces/event-life-cycle.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AfterEmit",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/api/interfaces/event-life-cycle.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "BeforeEmit",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/lib/api/interfaces/togglable.ts",
                 "type": "class",
                 "linktype": "classe",
@@ -4694,9 +5866,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 77,
-                "coverageCount": "7/9",
-                "status": "very-good"
+                "coveragePercent": 69,
+                "coverageCount": "9/13",
+                "status": "good"
             },
             {
                 "filePath": "libs/material/src/lib/components/checkbox-input/checkbox-input.component.stories.ts",
@@ -4733,8 +5905,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxInputComponent",
-                "coveragePercent": 63,
-                "coverageCount": "7/11",
+                "coveragePercent": 61,
+                "coverageCount": "8/13",
                 "status": "good"
             },
             {
@@ -4742,17 +5914,17 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CommonHostComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
-                "status": "low"
+                "coveragePercent": 33,
+                "coverageCount": "2/6",
+                "status": "medium"
             },
             {
                 "filePath": "libs/material/src/lib/components/common/common-input/common-input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "CommonInputComponent",
-                "coveragePercent": 72,
-                "coverageCount": "8/11",
+                "coveragePercent": 69,
+                "coverageCount": "9/13",
                 "status": "good"
             },
             {
@@ -4760,8 +5932,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CommonComponent",
-                "coveragePercent": 70,
-                "coverageCount": "7/10",
+                "coveragePercent": 64,
+                "coverageCount": "9/14",
                 "status": "good"
             },
             {
@@ -4799,8 +5971,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CurrencyInputComponent",
-                "coveragePercent": 66,
-                "coverageCount": "8/12",
+                "coveragePercent": 64,
+                "coverageCount": "9/14",
                 "status": "good"
             },
             {
@@ -4838,9 +6010,18 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "IconComponent",
-                "coveragePercent": 80,
-                "coverageCount": "4/5",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
                 "status": "very-good"
+            },
+            {
+                "filePath": "libs/material/src/lib/components/input/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "libs/material/src/lib/components/list-item/list-item.component.stories.ts",
@@ -4965,9 +6146,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "MenuItemComponent",
-                "coveragePercent": 77,
-                "coverageCount": "7/9",
-                "status": "very-good"
+                "coveragePercent": 69,
+                "coverageCount": "9/13",
+                "status": "good"
             },
             {
                 "filePath": "libs/material/src/lib/components/menu/menu-sample.ts",
@@ -5014,8 +6195,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "MenuComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coveragePercent": 16,
+                "coverageCount": "1/6",
                 "status": "low"
             },
             {
@@ -5053,9 +6234,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "NavListItemComponent",
-                "coveragePercent": 77,
-                "coverageCount": "7/9",
-                "status": "very-good"
+                "coveragePercent": 69,
+                "coverageCount": "9/13",
+                "status": "good"
             },
             {
                 "filePath": "libs/material/src/lib/components/nav-list/nav-list-sample.ts",
@@ -5102,9 +6283,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "NavListComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
-                "status": "low"
+                "coveragePercent": 33,
+                "coverageCount": "2/6",
+                "status": "medium"
             },
             {
                 "filePath": "libs/material/src/lib/components/number-input/number-input.component.stories.ts",
@@ -5258,8 +6439,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SwitchInputComponent",
-                "coveragePercent": 72,
-                "coverageCount": "8/11",
+                "coveragePercent": 69,
+                "coverageCount": "9/13",
                 "status": "good"
             },
             {
@@ -5336,17 +6517,26 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ToolbarComponent",
-                "coveragePercent": 77,
-                "coverageCount": "7/9",
-                "status": "very-good"
+                "coveragePercent": 69,
+                "coverageCount": "9/13",
+                "status": "good"
             },
             {
-                "filePath": "libs/material/src/lib/directives/event-controller.directive.ts",
+                "filePath": "libs/material/src/lib/shared/directives/event-controller.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "EvenetControllerDirective",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/shared/directives/tooltip.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "TooltipDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
                 "status": "low"
             }
         ]

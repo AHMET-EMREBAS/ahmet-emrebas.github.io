@@ -12,14 +12,17 @@
   padding-right: 1em;
   min-width: var(--tb-button-min-width);
   min-height: var(--tb-button-min-height);
+
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  // gap: 1em;
+  gap: 0.3em;
   justify-content: center;
   align-items: center;
 
   font-family: var(--font-family);
   font-size: var(--tb-button-font-size);
+
   font-weight: 700;
   letter-spacing: 0.1em;
   text-align: center;
@@ -43,15 +46,6 @@
 
 .tb-flat-icon-button {
   @extend .common-button-style;
-}
-
-.tb-flat-button,
-.tb-raised-button,
-.tb-text-button,
-.tb-flat-icon-button {
-  > .icon {
-    font-size: 2em;
-  }
 }
 
 .common-icon-button {
@@ -82,6 +76,36 @@
   width: var(--tb-flat-icon-button-width);
   height: var(--tb-flat-icon-button-height);
   background-color: transparent;
+}
+
+.tb-flat-button,
+.tb-raised-button,
+.tb-text-button {
+  > .icon {
+    font-size: 2em;
+  }
+  > .tb-button-label {
+    order: 2;
+  }
+}
+
+.tb-flat-button[icon-position='right'],
+.tb-raised-button[icon-position='right'],
+.tb-text-button[icon-position='right'] {
+  justify-content: space-between;
+  .tb-button-icon {
+    order: 3;
+  }
+}
+
+.tb-flat-button[icon-position='left'],
+.tb-raised-button[icon-position='left'],
+.tb-text-butto[icon-position='left'] {
+  justify-content: flex-start;
+  gap: 0.6em;
+  .tb-button-icon {
+    order: 1;
+  }
 }
 
 // raised
