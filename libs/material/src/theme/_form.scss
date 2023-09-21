@@ -95,7 +95,7 @@
   order: iconOrder($side);
 }
 
-.tb-form-field[icon-position='right'] {
+.tb-form-field.icon-position-right {
   .tb-form-field-input {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -106,7 +106,7 @@
   }
 }
 
-.tb-form-field[icon-position='left'] {
+.tb-form-field.icon-position-left {
   .tb-form-field-input {
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;

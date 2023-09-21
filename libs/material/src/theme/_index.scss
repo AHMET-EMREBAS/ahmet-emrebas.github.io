@@ -1,7 +1,7 @@
 @use 'alert';
 @use 'border';
-@use 'button';
 @use 'cursor';
+@use './button/index';
 @use 'divider';
 @use 'dropdown';
 @use 'flexbox';
@@ -10,6 +10,7 @@
 @use 'html';
 @use 'icon';
 @use 'list';
+@use 'nbutton';
 @use 'overflow';
 @use 'position';
 @use 'profile';
@@ -23,5 +24,4 @@
 @use 'utils';
 @use 'vars';
 @use 'zindex';
-
 @forward './themes';

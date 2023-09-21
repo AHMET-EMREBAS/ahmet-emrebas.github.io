@@ -2,7 +2,7 @@
 
 
 @font-face {
-  font-family: Material Icons;
+  font-family: $iconFontName;
   font-style: normal;
   font-weight: 100 700;
   src: url('./fonts/material-symbols.woff2') format('woff2');
@@ -10,7 +10,7 @@
 
 .__common-icon {
   position: relative;
-  font-family: Material Icons;
+  font-family: $iconFontName;
   font-weight: normal;
   font-style: normal;
   white-space: nowrap;

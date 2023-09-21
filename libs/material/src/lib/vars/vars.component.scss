@@ -4,6 +4,7 @@ $iconFontName: Icon;
 
 $units: (em, rem, px, vw, vh, per);
 $sides: (top, right, bottom, left);
+
 $commonColors: (
   black: hsl(0, 2%, 12%),
   white: hsl(0, 0%, 95%),
@@ -73,6 +74,10 @@ $themes: (
     warn: #fbeeac,
   ),
 );
+
+@function createNewTheme($newtheme) {
+  $themes: append($themes, $newtheme);
+}
 
 $cursors: (
   alias,

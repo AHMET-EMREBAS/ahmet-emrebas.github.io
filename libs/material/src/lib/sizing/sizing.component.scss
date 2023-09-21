@@ -1,0 +1,87 @@
+@use 'sass:math';
+@import '../vars/vars.component.scss';
+@import '../flexbox/flexbox.component.scss';
+
+@function fl($string) {
+  @return str-slice($string, 1, 1);
+}
+
+@for $s from 1 through 100 {
+  $vals: (
+    em: #{$s * 0.1}em,
+    rem: #{$s * 0.1}rem,
+    px: #{$s}px,
+    vw: #{$s}vw,
+    vh: #{$s}vh,
+    per: #{$s + '%'},
+  );
+
+  @each $u in $units {
+    $suffix: $s + $u;
+    $value: map-get($vals, $u);
+
+    @each $p in (width, height) {
+      $prefix: fl($p);
+      .#{$prefix}-#{$suffix} {
+        #{$p}: #{$value};
+      }
+    }
+
+    @each $p in (margin, padding) {
+      $prefix: fl($p);
+
+      .#{$prefix}-#{$suffix} {
+        #{$p}: #{$value};
+      }
+      @each $sd in $sides {
+        .#{$prefix}#{fl($sd)}-#{$suffix} {
+          #{$p}-#{$sd}: #{$value};
+        }
+      }
+    }
+
+    // Sides
+    @each $sd in $sides {
+      .#{fl($sd)}-#{$suffix} {
+        #{$sd}: #{$value};
+      }
+    }
+
+    .b-#{$suffix} {
+      border: #{$value} solid transparent;
+    }
+
+    // border sizes
+    @each $sd in $sides {
+      .b#{fl($sd)}-#{$suffix} {
+        border-#{$sd}: #{$value};
+      }
+    }
+
+    .brad-#{$suffix} {
+      border-radius: #{$value};
+    }
+
+    @each $tb in (top, bottom) {
+      @each $rl in (right, left) {
+        .brad-#{fl($tb)}#{fl($rl)}-#{$suffix} {
+          border-#{$tb}-#{$rl}-radius: #{$value};
+        }
+      }
+    }
+  }
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+@each $value in (fit-content, max-content, min-content, auto) {
+  .w-#{$value} {
+    width: #{$value};
+  }
+}
+
+.w-full {
+  width: 100%;
+}

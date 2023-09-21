@@ -43,6 +43,10 @@
 
   --#{$name}-lighter: #{lighten($color, 20%)};
   --#{$name}-lighter-face: #{faceColor(lighten($color, 20%))};
+
+  @for $opacity from 1 to 10 {
+    --#{$name}-opacity-#{$opacity}: #{rgba($color, $opacity * 0.1)};
+  }
 }
 
 // Select theme by name

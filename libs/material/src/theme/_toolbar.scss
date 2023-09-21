@@ -1,8 +1,7 @@
 @import 'vars';
 @import 'flexbox';
 
-
-.tb-toolbar {
+.toolbar {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -23,7 +22,7 @@
 }
 
 @each $colorName in $colorNames {
-  .tb-toolbar.#{$colorName} {
+  .toolbar.#{$colorName} {
     background-color: var(--#{$colorName});
     color: var(--#{$colorName}-face);
   }

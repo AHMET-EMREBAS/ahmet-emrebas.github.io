@@ -1,13 +1,15 @@
-@use './theme/index.scss' as theme;
-@include theme.selectTheme(neon);
+@use './lib/vars/vars.component.scss';
+@use './lib/color/color.component.scss';
+@use './lib/flexbox/flexbox.component.scss';
+@use './lib/button/button.component.scss';
+@use './lib/fonts/fonts.component.scss';
+@use './lib/sizing/sizing.component.scss';
 
 .sb-main-padded.sb-show-main {
   padding: 0px;
   margin: 0px;
 }
 
-
-.docs-story > div:first-child{ 
+.docs-story > div:first-child {
   min-height: 400px;
-
 }
