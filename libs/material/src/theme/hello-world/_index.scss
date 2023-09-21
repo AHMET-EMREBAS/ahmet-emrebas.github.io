@@ -1,0 +1,5 @@
+@import '../common';
+
+.hello-world::before {
+  content: $helloWorld;
+}

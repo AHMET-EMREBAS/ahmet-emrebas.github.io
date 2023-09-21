@@ -1,9 +1,12 @@
-@use './lib/vars/vars.component.scss';
-@use './lib/color/color.component.scss';
-@use './lib/flexbox/flexbox.component.scss';
-@use './lib/button/button.component.scss';
-@use './lib/fonts/fonts.component.scss';
-@use './lib/sizing/sizing.component.scss';
+@use './theme' as theme;
+
+@include theme.build(
+  (
+    primary: blue,
+    accent: purple,
+    warn: orange,
+  )
+);
 
 .sb-main-padded.sb-show-main {
   padding: 0px;

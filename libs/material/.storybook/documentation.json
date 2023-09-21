@@ -4,282 +4,13 @@
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [
-        {
-            "name": "Colors",
-            "id": "class-Colors-67f9f0116b88c5bd0efeeebd5cedc75c9d68ff4d7aa305027a77e87a4eee9a7c44300d8095ef554e3eeb45cb6b806d21749ccf05db53c4c382b947edf1dd6223",
-            "file": "libs/material/src/lib/color/color.component.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "class",
-            "sourceCode": "import { AfterViewInit, Component, Input, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport class Colors {\n  readonly primary = 'primary';\n  readonly secondary = 'secondary';\n  readonly accent = 'accent';\n  readonly warn = 'warn';\n  readonly red = 'red';\n  readonly green = 'green';\n  readonly black = 'black';\n  readonly white = 'white';\n}\n\nexport type ColorType = keyof Colors;\n\nexport const ColorList = Object.keys(new Colors()) as ColorType[];\n\nexport class Themes {\n  readonly pastel = 'pastel';\n  readonly vintage = 'vintage';\n  readonly retro = 'retro';\n  readonly neon = 'neon';\n  readonly gold = 'gold';\n  readonly light = 'light';\n  readonly dark = 'dark';\n  readonly warm = 'warm';\n  readonly cold = 'cold';\n  readonly summer = 'summer';\n}\n\nexport type ThemeType =\n  | 'pastel'\n  | 'vintage'\n  | 'retro'\n  | 'neon'\n  | 'gold'\n  | 'light'\n  | 'dark'\n  | 'warm'\n  | 'cold'\n  | 'summer';\n\nexport const ThemeList = Object.keys(new Themes()) as ThemeType[];\n\n@Component({\n  selector: 'tb-color',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './color.component.html',\n  styleUrls: ['./color.component.scss'],\n})\nexport class ColorComponent {\n  /** Select theme */\n  @Input() theme: ThemeType = 'retro';\n\n  /** @ignore */\n  readonly colors = ColorList;\n}\n",
-            "properties": [
-                {
-                    "name": "accent",
-                    "defaultValue": "'accent'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 7,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "black",
-                    "defaultValue": "'black'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 11,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "green",
-                    "defaultValue": "'green'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 10,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "'primary'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 5,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "red",
-                    "defaultValue": "'red'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 9,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "secondary",
-                    "defaultValue": "'secondary'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 6,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "warn",
-                    "defaultValue": "'warn'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 8,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "white",
-                    "defaultValue": "'white'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "modifierKind": [
-                        146
-                    ]
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": []
-        },
-        {
-            "name": "Themes",
-            "id": "class-Themes-67f9f0116b88c5bd0efeeebd5cedc75c9d68ff4d7aa305027a77e87a4eee9a7c44300d8095ef554e3eeb45cb6b806d21749ccf05db53c4c382b947edf1dd6223",
-            "file": "libs/material/src/lib/color/color.component.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "class",
-            "sourceCode": "import { AfterViewInit, Component, Input, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport class Colors {\n  readonly primary = 'primary';\n  readonly secondary = 'secondary';\n  readonly accent = 'accent';\n  readonly warn = 'warn';\n  readonly red = 'red';\n  readonly green = 'green';\n  readonly black = 'black';\n  readonly white = 'white';\n}\n\nexport type ColorType = keyof Colors;\n\nexport const ColorList = Object.keys(new Colors()) as ColorType[];\n\nexport class Themes {\n  readonly pastel = 'pastel';\n  readonly vintage = 'vintage';\n  readonly retro = 'retro';\n  readonly neon = 'neon';\n  readonly gold = 'gold';\n  readonly light = 'light';\n  readonly dark = 'dark';\n  readonly warm = 'warm';\n  readonly cold = 'cold';\n  readonly summer = 'summer';\n}\n\nexport type ThemeType =\n  | 'pastel'\n  | 'vintage'\n  | 'retro'\n  | 'neon'\n  | 'gold'\n  | 'light'\n  | 'dark'\n  | 'warm'\n  | 'cold'\n  | 'summer';\n\nexport const ThemeList = Object.keys(new Themes()) as ThemeType[];\n\n@Component({\n  selector: 'tb-color',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './color.component.html',\n  styleUrls: ['./color.component.scss'],\n})\nexport class ColorComponent {\n  /** Select theme */\n  @Input() theme: ThemeType = 'retro';\n\n  /** @ignore */\n  readonly colors = ColorList;\n}\n",
-            "properties": [
-                {
-                    "name": "cold",
-                    "defaultValue": "'cold'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 28,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "dark",
-                    "defaultValue": "'dark'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 26,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "gold",
-                    "defaultValue": "'gold'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 24,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "light",
-                    "defaultValue": "'light'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 25,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "neon",
-                    "defaultValue": "'neon'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 23,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "pastel",
-                    "defaultValue": "'pastel'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 20,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "retro",
-                    "defaultValue": "'retro'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 22,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "summer",
-                    "defaultValue": "'summer'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 29,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "vintage",
-                    "defaultValue": "'vintage'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 21,
-                    "modifierKind": [
-                        146
-                    ]
-                },
-                {
-                    "name": "warm",
-                    "defaultValue": "'warm'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 27,
-                    "modifierKind": [
-                        146
-                    ]
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": []
-        }
-    ],
+    "classes": [],
     "directives": [],
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-0915e471aeca5e2f41617498adddb916fec0548ba1ae824de1e45daececd5732e68823029257109f1966ba3f59ac1fba72d01da99fab655d794277e0586d79e8",
-            "file": "libs/material/src/lib/button/button.component.ts",
+            "id": "component-ButtonComponent-b504762c30ed290fa5cb720c41cb8d6bb3d8e0ec11741ca9fab77d792ca955fef23820381aa25895e37a21a33f379350b45b8fc36267238139774d5054ae7b3a",
+            "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -295,17 +26,7 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "type",
-                    "defaultValue": "'basic'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 21,
-                    "type": "ButtonType",
-                    "decorators": []
-                }
-            ],
+            "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -323,93 +44,31 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonType =\n  | 'basic'\n  | 'raised'\n  | 'stroked'\n  | 'flat'\n  | 'icon'\n  | 'fab'\n  | 'mini-fab';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {\n  @Input() type: ButtonType = 'basic';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/** Button classes are allowed to use button  element only */\r\n@import '../vars/vars.component.scss';\r\n\r\n$buttonTypes: (basic, raised, stroked, flat, icon, fab, mini-fab);\r\n\r\n/** Buttons should be relative for managing before and after pesudo elements. We are getting rid of default button values */\r\n.common-btn {\r\n  position: relative;\r\n  overflow: hidden;\r\n  border: none;\r\n  border-radius: none;\r\n  outline: none;\r\n  cursor: pointer;\r\n  font-family: var(--root-font-family);\r\n  text-transform: capitalize;\r\n}\r\n\r\nbutton.basic-btn {\r\n  @extend .common-btn;\r\n  height: 3rem;\r\n  min-width: 6rem;\r\n  background-color: transparent;\r\n}\r\n\r\n@keyframes bubble {\r\n  0% {\r\n    width: 0;\r\n    height: 0;\r\n  }\r\n  100% {\r\n    width: 400px;\r\n    height: 400px;\r\n  }\r\n}\r\n@mixin btnAnimations($color) {\r\n  button.#{$color}:hover {\r\n    background-color: #{var(--#{$color}-opacity-3)};\r\n    transition: background-color 400ms ease;\r\n  }\r\n\r\n  button.#{$color}:active::before {\r\n    position: absolute;\r\n    content: '';\r\n    width: 400px;\r\n    height: 400px;\r\n    left: 50%;\r\n    top: 50%;\r\n    z-index: 1;\r\n    border-radius: 100%;\r\n\r\n    background-color: var(--#{$color}-opacity-3);\r\n    transform: translateX(-50%) translateY(-50%);\r\n    box-shadow: 0px 0px 10px var(--#{$color}-opacity-6),\r\n      0px 0px 20px var(--#{$color}-opacity-3),\r\n      0px 0px 30px var(--#{$color}-opacity-6);\r\n    animation-name: bubble;\r\n    animation-duration: 600ms;\r\n    animation-timing-function: ease;\r\n  }\r\n}\r\n\r\n@each $colorName in $colorNames {\r\n  button.#{$colorName} {\r\n    color: var(--#{$colorName});\r\n  }\r\n\r\n  @include btnAnimations($colorName);\r\n}\r\n",
+                    "data": "",
                     "styleUrl": "./button.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>button works!</p>\n"
+            "templateData": "<div class=\"flex row align-flex-start gap-2 wrap\">\n  <div class=\"clock-svg w-100px h-100px\"></div>\n  <div class=\"cube-svg w-100px h-100px\"></div>\n  <div class=\"error-svg w-100px h-100px\"></div>\n  <div class=\"finger-print-svg w-100px h-100px\"></div>\n  <div class=\"inventory-svg w-100px h-100px\"></div>\n  <div class=\"key-svg w-100px h-100px\"></div>\n  <div class=\"placeholder-svg w-100px h-100px\"></div>\n  <div class=\"planning-svg w-100px h-100px\"></div>\n  <div class=\"play-svg w-100px h-100px\"></div>\n  <div class=\"profile-svg w-100px h-100px\"></div>\n  <div class=\"store-svg w-100px h-100px\"></div>\n  <div class=\"study-svg w-100px h-100px\"></div>\n  <div class=\"talk-svg w-100px h-100px\"></div>\n  <div class=\"speak-svg w-100px h-100px\"></div>\n</div>\n"
         },
         {
-            "name": "ColorComponent",
-            "id": "component-ColorComponent-67f9f0116b88c5bd0efeeebd5cedc75c9d68ff4d7aa305027a77e87a4eee9a7c44300d8095ef554e3eeb45cb6b806d21749ccf05db53c4c382b947edf1dd6223",
-            "file": "libs/material/src/lib/color/color.component.ts",
+            "name": "GoodbyeWorldComponent",
+            "id": "component-GoodbyeWorldComponent-90e6a7c149ae4761e21207dd9719795f2b42fe3b397c42607d0dc76275da83433fa91bfe52b6821d489d7831ccc2b57e48f263cbfeed576a2f29ee6ff8aeb391",
+            "file": "libs/material/src/goodbye-world/goodbye-world.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb-color",
-            "styleUrls": [
-                "./color.component.scss"
-            ],
+            "selector": "tb-goodbye-world",
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./color.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "theme",
-                    "defaultValue": "'retro'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nSelect theme",
-                    "description": "<p>Select theme</p>\n",
-                    "line": 55,
-                    "type": "ThemeType",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport class Colors {\n  readonly primary = 'primary';\n  readonly secondary = 'secondary';\n  readonly accent = 'accent';\n  readonly warn = 'warn';\n  readonly red = 'red';\n  readonly green = 'green';\n  readonly black = 'black';\n  readonly white = 'white';\n}\n\nexport type ColorType = keyof Colors;\n\nexport const ColorList = Object.keys(new Colors()) as ColorType[];\n\nexport class Themes {\n  readonly pastel = 'pastel';\n  readonly vintage = 'vintage';\n  readonly retro = 'retro';\n  readonly neon = 'neon';\n  readonly gold = 'gold';\n  readonly light = 'light';\n  readonly dark = 'dark';\n  readonly warm = 'warm';\n  readonly cold = 'cold';\n  readonly summer = 'summer';\n}\n\nexport type ThemeType =\n  | 'pastel'\n  | 'vintage'\n  | 'retro'\n  | 'neon'\n  | 'gold'\n  | 'light'\n  | 'dark'\n  | 'warm'\n  | 'cold'\n  | 'summer';\n\nexport const ThemeList = Object.keys(new Themes()) as ThemeType[];\n\n@Component({\n  selector: 'tb-color',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './color.component.html',\n  styleUrls: ['./color.component.scss'],\n})\nexport class ColorComponent {\n  /** Select theme */\n  @Input() theme: ThemeType = 'retro';\n\n  /** @ignore */\n  readonly colors = ColorList;\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "@import '../vars/vars.component.scss';\r\n@import '../flexbox/flexbox.component.scss';\r\n@import '../sizing/sizing.component.scss';\r\n@import '../fonts//fonts.component.scss';\r\n\r\n@function isDarkHue($color) {\r\n  $hue: hue($color);\r\n  @if $hue <=25 or $hue >190 {\r\n    @return true;\r\n  } @else {\r\n    @return false;\r\n  }\r\n}\r\n\r\n@function faceColor($themeName, $color) {\r\n  $light: lightness($color);\r\n  $saturation: saturation($color);\r\n  $hue: hue($color);\r\n  @if isDarkHue($color) ==true {\r\n    @if $light >65 {\r\n      @return var(--#{$themeName}-black);\r\n    } @else {\r\n      @return var(--#{$themeName}-white);\r\n    }\r\n  } @else {\r\n    @if $light >40 {\r\n      @return var(--#{$themeName}-black);\r\n    } @else {\r\n      @return var(--#{$themeName}-white);\r\n    }\r\n  }\r\n}\r\n\r\n@mixin createColorGlobals($themeName, $name, $color) {\r\n  --#{$themeName}-#{$name}: #{$color};\r\n  --#{$themeName}-#{$name}-face: #{faceColor($themeName, $color)};\r\n\r\n  --#{$themeName}-#{$name}-dark: #{darken($color, 10%)};\r\n  --#{$themeName}-#{$name}-dark-face: #{faceColor($themeName, darken($color, 10%))};\r\n\r\n  --#{$themeName}-#{$name}-darker: #{darken($color, 20%)};\r\n  --#{$themeName}-#{$name}-darker-face: #{faceColor($themeName, darken($color, 20%))};\r\n\r\n  --#{$themeName}-#{$name}-light: #{lighten($color, 10%)};\r\n  --#{$themeName}-#{$name}-light-face: #{faceColor($themeName, lighten($color, 10%))};\r\n\r\n  --#{$themeName}-#{$name}-lighter: #{lighten($color, 20%)};\r\n  --#{$themeName}-#{$name}-lighter-face: #{faceColor($themeName, lighten($color, 20%))};\r\n\r\n  @for $opacity from 1 to 10 {\r\n    --#{$themeName}-#{$name}-opacity-#{$opacity}: #{rgba(\r\n        $color,\r\n        $opacity * 0.1\r\n      )};\r\n  }\r\n}\r\n\r\n// Select theme by name\r\n@mixin selectTheme($themeName) {\r\n  $theme: map-get($themes, $themeName);\r\n  :root {\r\n    @each $name, $color in map-merge($theme, $commonColors) {\r\n      @include createColorGlobals($themeName, $name, $color);\r\n    }\r\n  }\r\n}\r\n\r\n// Common color classes\r\n\r\n@each $themeName, $___ in $themes {\r\n  @each $colorName, $__ in $commonColors {\r\n    .#{$themeName} .#{$colorName} {\r\n      color: var(--#{$themeName}-#{$colorName});\r\n    }\r\n    .#{$themeName} .bg-#{$colorName} {\r\n      background-color: var(--#{$themeName}-#{$colorName});\r\n    }\r\n    @each $variant in (dark, darker, light, lighter, face) {\r\n      .#{$themeName} .bg-#{$colorName}-#{$variant} {\r\n        background-color: var(--#{$themeName}-#{$colorName}-#{$variant});\r\n      }\r\n\r\n      .#{$themeName} .#{$colorName}-#{$variant} {\r\n        color: var(--#{$themeName}-#{$colorName}-#{$variant});\r\n      }\r\n    }\r\n    @for $opacity from 1 to 10 {\r\n      .#{$themeName} .#{$colorName}-opacity-#{$opacity} {\r\n        color: var(--#{$themeName}-#{$colorName}-opacity-#{$opacity});\r\n      }\r\n      .#{$themeName} .bg-#{$colorName}-opacity-#{$opacity} {\r\n        background-color: var(\r\n          --#{$themeName}-#{$colorName}-opacity-#{$opacity}\r\n        );\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@each $themeName, $___ in $themes {\r\n  // Color classes\r\n  @each $colorName in $colorNames {\r\n    .#{$themeName} .#{$colorName} {\r\n      color: var(--#{$themeName}-#{$colorName});\r\n    }\r\n    .#{$themeName} .bg-#{$colorName} {\r\n      background-color: var(--#{$themeName}-#{$colorName});\r\n    }\r\n\r\n    @each $variant in (dark, darker, light, lighter, face) {\r\n      .#{$themeName} .bg-#{$colorName}-#{$variant} {\r\n        background-color: var(--#{$themeName}-#{$colorName}-#{$variant});\r\n      }\r\n\r\n      .#{$themeName} .#{$colorName}-#{$variant} {\r\n        color: var(--#{$themeName}-#{$colorName}-#{$variant});\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@each $themeName, $__ in $themes {\r\n  @include selectTheme($themeName);\r\n}\r\n",
-                    "styleUrl": "./color.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "templateData": "<div class=\"flex row gap-20 wrap justify-center {{theme}}\">\n  <div\n    class=\"w-16vw h-16vw flex column justify-center align-center font-size-30  font-tourney  bg-{{\n      color\n    }} {{ color }}-face\"\n    *ngFor=\"let color of colors\"\n  >\n    {{ color }}\n  </div>\n</div>\n"
-        },
-        {
-            "name": "FlexboxComponent",
-            "id": "component-FlexboxComponent-f9c328359124d070ceb09bd0211f6ebd2f1fe89bf9a764c5604d66df82dfdcdd6f34e52cdd641037dd48b7e373073b9e9e7bf7e4640940465fb09b4703493596",
-            "file": "libs/material/src/lib/flexbox/flexbox.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "tb-flexbox",
-            "styleUrls": [
-                "./flexbox.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./flexbox.component.html"
+                "./goodbye-world.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -431,93 +90,26 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-flexbox',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './flexbox.component.html',\n  styleUrls: ['./flexbox.component.scss'],\n})\nexport class FlexboxComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-goodbye-world',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './goodbye-world.component.html',\n  styles: [],\n})\nexport class GoodbyeWorldComponent {}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "$displays: (\r\n  block,\r\n  contents,\r\n  flex,\r\n  flexbox,\r\n  flow-root,\r\n  grid,\r\n  inline,\r\n  inline-block,\r\n  inline-flex,\r\n  inline-flexbox,\r\n  inline-table,\r\n  list-item,\r\n  none,\r\n  ruby,\r\n  ruby-base,\r\n  ruby-base-container,\r\n  ruby-text,\r\n  run-in,\r\n  table,\r\n  table-caption,\r\n  table-cell,\r\n  table-column,\r\n  table-column-group,\r\n  table-footer-group,\r\n  table-header-group,\r\n  table-row,\r\n  table-row-group\r\n);\r\n\r\n@each $d in $displays {\r\n  .#{$d} {\r\n    display: $d;\r\n  }\r\n}\r\n\r\n$flexDirections: (column, column-reverse, row, row-reverse);\r\n\r\n@each $fd in $flexDirections {\r\n  .#{$fd} {\r\n    flex-direction: $fd;\r\n  }\r\n}\r\n\r\n$justifyContent: (\r\n  baseline,\r\n  center,\r\n  end,\r\n  first baseline,\r\n  flex-end,\r\n  flex-start,\r\n  last baseline,\r\n  left,\r\n  right,\r\n  safe,\r\n  space-around,\r\n  space-between,\r\n  space-evenly,\r\n  start,\r\n  stretch,\r\n  unsafe\r\n);\r\n\r\n@each $jc in $justifyContent {\r\n  .justify-#{$jc} {\r\n    justify-content: $jc;\r\n  }\r\n}\r\n\r\n$alignItems: (\r\n  stretch,\r\n  flex-start,\r\n  flex-end,\r\n  center,\r\n  baseline,\r\n  first baseline,\r\n  last baseline\r\n);\r\n\r\n@each $ai in $alignItems {\r\n  .align-#{$ai} {\r\n    align-items: $ai;\r\n  }\r\n}\r\n\r\n$alignContent: (\r\n  stretch,\r\n  flex-start,\r\n  flex-end,\r\n  center,\r\n  space-between,\r\n  space-around,\r\n  space-evenly,\r\n  start,\r\n  end,\r\n  baseline\r\n);\r\n\r\n@each $ac in $alignContent {\r\n  .align-content-#{$ac} {\r\n    align-content: $ac;\r\n  }\r\n}\r\n\r\n// Min: 0.05em\r\n// Max: 5em\r\n@for $size from 1 through 100 {\r\n  .gap-#{$size} {\r\n    row-gap: #{$size * 0.05}em;\r\n    column-gap: #{$size * 0.05}em;\r\n  }\r\n}\r\n\r\n@for $order from 1 through 100 {\r\n  .order-#{$order} {\r\n    order: #{$order};\r\n  }\r\n}\r\n\r\n@for $size from 1 through 100 {\r\n  .grow-#{$size} {\r\n    flex-grow: #{$size};\r\n  }\r\n}\r\n\r\n.wrap {\r\n  flex-wrap: wrap;\r\n}\r\n.nowrap {\r\n  flex-wrap: nowrap;\r\n}\r\n\r\n.inline-container {\r\n  @extend .flex;\r\n  @extend .row;\r\n  @extend .grow-1;\r\n  @extend .gap-2;\r\n}\r\n\r\n.container {\r\n  @extend .flex;\r\n  @extend .column;\r\n  @extend .grow-1;\r\n  @extend .gap-2;\r\n}\r\n\r\n.table-container {\r\n  @extend .flex;\r\n  @extend .row;\r\n  @extend .justify-space-between;\r\n  @extend .grow-1;\r\n  @extend .gap-2;\r\n}\r\n\r\n.card-container {\r\n  @extend .flex;\r\n  @extend .row;\r\n  @extend .justify-space-around;\r\n  @extend .grow-1;\r\n  @extend .gap-2;\r\n}\r\n",
-                    "styleUrl": "./flexbox.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p>flexbox works!</p>\n"
+            "templateData": "<p class=\"goodbye-world\"></p>\n"
         },
         {
-            "name": "FontsComponent",
-            "id": "component-FontsComponent-e5bf05d46431ae6fd133b090783119bbfa2716dc66f42b94c05dd8e99c51e710c6dfab0a61ed5edfb427723ae2b18c736e49b4a3bd01cea39c591da59281a468",
-            "file": "libs/material/src/lib/fonts/fonts.component.ts",
+            "name": "HelloWorldComponent",
+            "id": "component-HelloWorldComponent-7ef47406f0a00bc74550a1e8ab332bc92ea0a7a482ffa07c64783a0492e72625d0740224770a2cce502952ab22e58a6db09bdf0b43b6a0f21b86cac8794f6b7f",
+            "file": "libs/material/src/hello-world/hello-world.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb-fonts",
-            "styleUrls": [
-                "./fonts.component.scss"
-            ],
+            "selector": "tb-hello-world",
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./fonts.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "font",
-                    "defaultValue": "'black-ops-one'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nSupporting fonts",
-                    "description": "<p>Supporting fonts</p>\n",
-                    "line": 28,
-                    "type": "Font",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type Font =\n  | 'tourney'\n  | 'special-elite'\n  | 'rubik-iso'\n  | 'rubik-dirt'\n  | 'roboto'\n  | 'material-icon'\n  | 'lobster'\n  | 'josefin-sans'\n  | 'dancing-script'\n  | 'concert-one'\n  | 'comfortaa'\n  | 'black-ops-one'\n  | 'handjet';\n\n@Component({\n  selector: 'tb-fonts',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './fonts.component.html',\n  styleUrls: ['./fonts.component.scss'],\n})\nexport class FontsComponent {\n  /** Supporting fonts */\n  @Input() font: Font = 'black-ops-one';\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "@use 'sass:list';\r\n@use 'sass:math';\r\n\r\n@font-face {\r\n  font-family: Handjet;\r\n  src: url('./fonts/Handjet/Handjet-VariableFont.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Roboto;\r\n  src: url('./fonts/Roboto_Flex/RobotoFlex.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Special Elite;\r\n  src: url('./fonts/Special_Elite/SpecialElite-Regular.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Josefin Sans;\r\n  src: url('./fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Josefin Sans;\r\n  font-style: italic;\r\n  src: url('./fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Lobster;\r\n  src: url('./fonts/Lobster/Lobster-Regular.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Comfortaa;\r\n  src: url('./fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Rubik Dirt;\r\n  src: url('./fonts/Rubik_Dirt/RubikDirt-Regular.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Rubik Iso;\r\n  src: url('./fonts/Rubik_Iso/RubikIso-Regular.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Black Ops One;\r\n  src: url('./fonts/Black_Ops_One/BlackOpsOne-Regular.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Concert One;\r\n  src: url('./fonts/Concert_One/ConcertOne-Regular.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Tourney;\r\n  src: url('./fonts/Tourney/Tourney-VariableFont_wdth.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Tourney;\r\n  font-style: italic;\r\n  src: url('./fonts/Tourney/Tourney-Italic-VariableFont_wdth.ttf');\r\n}\r\n\r\n@font-face {\r\n  font-family: Dancing Script;\r\n  src: url('./fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');\r\n}\r\n\r\n$fontList: (\r\n  'tourney': 'Tourney, cursive',\r\n  'special-elite': 'Special Elite, cursive',\r\n  'rubik-iso': 'Rubik Iso, cursive',\r\n  'rubik-dirt': 'Rubik Dirt, cursive',\r\n  'roboto': 'Roboto, cursive',\r\n  'material-icon': 'Material Icons, cursive',\r\n  'lobster': 'Lobster, cursive',\r\n  'josefin-sans': 'Josefin Sans, cursive',\r\n  'dancing-script': 'Dancing Script, cursive',\r\n  'concert-one': 'Concert One, cursive',\r\n  'comfortaa': 'Comfortaa, cursive',\r\n  'black-ops-one': 'Black Ops One, cursive',\r\n  'handjet': 'Handjet, cursive',\r\n);\r\n\r\n@each $key, $value in $fontList {\r\n  .font-#{$key} {\r\n    font-family: #{$value};\r\n  }\r\n}\r\n\r\n.clear-margins {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n  padding-top: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n\r\n@for $size from 1 through 6 {\r\n  $titleSize: math.div(6, $size);\r\n  $subtitleSize: $titleSize * 0.6;\r\n  $contentSize: $titleSize * 0.5;\r\n\r\n  .title-#{$size} {\r\n    @extend .clear-margins;\r\n    font-size: #{$titleSize}em;\r\n    font-weight: 600;\r\n    letter-spacing: 0.1em;\r\n  }\r\n  .subtitle-#{$size} {\r\n    @extend .clear-margins;\r\n    font-size: #{$subtitleSize}em;\r\n    font-weight: 200;\r\n    letter-spacing: 0.2em;\r\n    padding-left: 0.2em;\r\n  }\r\n\r\n  .content-#{$size} {\r\n    @extend .clear-margins;\r\n    font-size: #{$contentSize}em;\r\n    font-weight: 300;\r\n    // line-height: #{$contentSize * 1}em;\r\n    line-height: 1.3em;\r\n    text-indent: 0.2em;\r\n  }\r\n}\r\n\r\n@for $size from 1 through 100 {\r\n  .font-size-#{$size} {\r\n    font-size: #{$size * 0.1}em;\r\n  }\r\n}\r\n",
-                    "styleUrl": "./fonts.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "templateData": "<h1 class=\"font-{{ font }}\">{{ font | titlecase }}</h1>\n"
-        },
-        {
-            "name": "SizingComponent",
-            "id": "component-SizingComponent-326c89a4167163467f44515cfa55fa7c9ad6aca9012c0b18a6b11bdf420688e261f852f5acad0f1e6f5db22cc234c44beb767cc1fd42e01d3525768f8696e3c5",
-            "file": "libs/material/src/lib/sizing/sizing.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "tb-sizing",
-            "styleUrls": [
-                "./sizing.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./sizing.component.html"
+                "./hello-world.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -539,94 +131,21 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-sizing',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './sizing.component.html',\n  styleUrls: ['./sizing.component.scss'],\n})\nexport class SizingComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-hello-world',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './hello-world.component.html',\n  styles: [],\n})\nexport class HelloWorldComponent {}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "@use 'sass:math';\r\n@import '../vars/vars.component.scss';\r\n@import '../flexbox/flexbox.component.scss';\r\n\r\n@function fl($string) {\r\n  @return str-slice($string, 1, 1);\r\n}\r\n\r\n@for $s from 1 through 100 {\r\n  $vals: (\r\n    em: #{$s * 0.1}em,\r\n    rem: #{$s * 0.1}rem,\r\n    px: #{$s}px,\r\n    vw: #{$s}vw,\r\n    vh: #{$s}vh,\r\n    per: #{$s + '%'},\r\n  );\r\n\r\n  @each $u in $units {\r\n    $suffix: $s + $u;\r\n    $value: map-get($vals, $u);\r\n\r\n    @each $p in (width, height) {\r\n      $prefix: fl($p);\r\n      .#{$prefix}-#{$suffix} {\r\n        #{$p}: #{$value};\r\n      }\r\n    }\r\n\r\n    @each $p in (margin, padding) {\r\n      $prefix: fl($p);\r\n\r\n      .#{$prefix}-#{$suffix} {\r\n        #{$p}: #{$value};\r\n      }\r\n      @each $sd in $sides {\r\n        .#{$prefix}#{fl($sd)}-#{$suffix} {\r\n          #{$p}-#{$sd}: #{$value};\r\n        }\r\n      }\r\n    }\r\n\r\n    // Sides\r\n    @each $sd in $sides {\r\n      .#{fl($sd)}-#{$suffix} {\r\n        #{$sd}: #{$value};\r\n      }\r\n    }\r\n\r\n    .b-#{$suffix} {\r\n      border: #{$value} solid transparent;\r\n    }\r\n\r\n    // border sizes\r\n    @each $sd in $sides {\r\n      .b#{fl($sd)}-#{$suffix} {\r\n        border-#{$sd}: #{$value};\r\n      }\r\n    }\r\n\r\n    .brad-#{$suffix} {\r\n      border-radius: #{$value};\r\n    }\r\n\r\n    @each $tb in (top, bottom) {\r\n      @each $rl in (right, left) {\r\n        .brad-#{fl($tb)}#{fl($rl)}-#{$suffix} {\r\n          border-#{$tb}-#{$rl}-radius: #{$value};\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.margin-auto {\r\n  margin: auto;\r\n}\r\n\r\n@each $value in (fit-content, max-content, min-content, auto) {\r\n  .w-#{$value} {\r\n    width: #{$value};\r\n  }\r\n}\r\n\r\n.w-full {\r\n  width: 100%;\r\n}\r\n",
-                    "styleUrl": "./sizing.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p>sizing works!</p>\n"
-        },
-        {
-            "name": "VarsComponent",
-            "id": "component-VarsComponent-aa2b792f26fba5a20f969b1c71cc62accb278f08cdb52400e58d741415a29fc12920ea6c7182412b7952f05cb1f229a8d83ac67b2ba426d9879025083e829665",
-            "file": "libs/material/src/lib/vars/vars.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "tb-vars",
-            "styleUrls": [
-                "./vars.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./vars.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-vars',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './vars.component.html',\n  styleUrls: ['./vars.component.scss'],\n})\nexport class VarsComponent {}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "$colorNames: (primary, secondary, accent, warn, red, green, black, white);\r\n$colorVariants: (dark, light, darker, lighter, face);\r\n$iconFontName: Icon;\r\n\r\n$units: (em, rem, px, vw, vh, per);\r\n$sides: (top, right, bottom, left);\r\n\r\n$commonColors: (\r\n  black: hsl(0, 2%, 12%),\r\n  white: hsl(0, 0%, 95%),\r\n  red: hsl(348, 83%, 47%),\r\n  green: hsl(120, 71%, 67%),\r\n);\r\n\r\n$themes: (\r\n  pastel: (\r\n    primary: hsl(0, 97%, 77%),\r\n    secondary: hsl(65, 80%, 84%),\r\n    accent: hsl(180, 31%, 74%),\r\n    warn: #9ea1d4,\r\n  ),\r\n  vintage: (\r\n    primary: hsl(44, 39%, 87%),\r\n    secondary: hsl(60, 1%, 70%),\r\n    accent: hsl(206, 53%, 32%),\r\n    warn: hsl(22, 97%, 46%),\r\n  ),\r\n  retro: (\r\n    primary: hsl(200, 61%, 29%),\r\n    secondary: hsl(189, 37%, 43%),\r\n    accent: hsl(0, 82%, 66%),\r\n    warn: hsl(30, 86%, 66%),\r\n  ),\r\n  neon: (\r\n    primary: hsl(210, 69%, 25%),\r\n    secondary: hsl(0, 89%, 64%),\r\n    accent: hsl(37, 99%, 61%),\r\n    warn: hsl(60, 90%, 63%),\r\n  ),\r\n  gold: (\r\n    primary: hsl(14, 100%, 66%),\r\n    secondary: hsl(29, 100%, 71%),\r\n    accent: hsl(43, 100%, 72%),\r\n    warn: hsl(68, 23%, 51%),\r\n  ),\r\n  light: (\r\n    primary: hsl(170, 54%, 87%),\r\n    secondary: #f9f9f9,\r\n    accent: #ecc5fb,\r\n    warn: #faf4b7,\r\n  ),\r\n  dark: (\r\n    primary: #040d12,\r\n    secondary: #183d3d,\r\n    accent: #5c8374,\r\n    warn: #93b1a6,\r\n  ),\r\n  warm: (\r\n    primary: #454545,\r\n    secondary: #ff6000,\r\n    accent: #ffa559,\r\n    warn: #ffe6c7,\r\n  ),\r\n  cold: (\r\n    primary: #f1f6f9,\r\n    secondary: #394867,\r\n    accent: #212a3e,\r\n    warn: #9ba4b5,\r\n  ),\r\n  summer: (\r\n    primary: #1d5d9b,\r\n    secondary: #75c2f6,\r\n    accent: #f4d160,\r\n    warn: #fbeeac,\r\n  ),\r\n);\r\n\r\n@function createNewTheme($newtheme) {\r\n  $themes: append($themes, $newtheme);\r\n}\r\n\r\n$cursors: (\r\n  alias,\r\n  all-scroll,\r\n  auto,\r\n  cell,\r\n  col-resize,\r\n  context-menu,\r\n  copy,\r\n  crosshair,\r\n  default,\r\n  e-resize,\r\n  ew-resize,\r\n  grab,\r\n  help,\r\n  move,\r\n  n-resize,\r\n  ne-resize,\r\n  nesw-resize,\r\n  no-drop,\r\n  none,\r\n  not-allowed,\r\n  ns-resize,\r\n  nw-resize,\r\n  nwse-resize,\r\n  zoom-out,\r\n  zoom-in,\r\n  pointer,\r\n  progress,\r\n  row-resize,\r\n  s-resize,\r\n  se-resize,\r\n  sw-resize,\r\n  text,\r\n  vertical-text,\r\n  unset\r\n);\r\n",
-                    "styleUrl": "./vars.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "templateData": "<p>vars works!</p>\n"
+            "templateData": "<p class=\"hello-world\"></p>\n"
         }
     ],
     "modules": [],
     "miscellaneous": {
         "variables": [
             {
-                "name": "___lib___",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/index.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'library'"
-            },
-            {
-                "name": "ColorList",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/color/color.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Object.keys(new Colors()) as ColorType[]"
-            },
-            {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/button/button.component.stories.ts",
+                "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -636,57 +155,27 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/color/color.component.stories.ts",
+                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/color works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/goodbye-world works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/flexbox works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sizing works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/vars/vars.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/vars works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/hello-world works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/button/button.component.stories.ts",
+                "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
@@ -696,57 +185,27 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/color/color.component.stories.ts",
+                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<ColorComponent>",
-                "defaultValue": "{\n  component: ColorComponent,\n  title: 'ColorComponent',\n}"
+                "type": "Meta<GoodbyeWorldComponent>",
+                "defaultValue": "{\n  component: GoodbyeWorldComponent,\n  title: 'GoodbyeWorldComponent',\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<FlexboxComponent>",
-                "defaultValue": "{\n  component: FlexboxComponent,\n  title: 'FlexboxComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FontsComponent>",
-                "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<SizingComponent>",
-                "defaultValue": "{\n  component: SizingComponent,\n  title: 'SizingComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/vars/vars.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<VarsComponent>",
-                "defaultValue": "{\n  component: VarsComponent,\n  title: 'VarsComponent',\n}"
+                "type": "Meta<HelloWorldComponent>",
+                "defaultValue": "{\n  component: HelloWorldComponent,\n  title: 'HelloWorldComponent',\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/button/button.component.stories.ts",
+                "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -756,7 +215,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/color/color.component.stories.ts",
+                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -766,94 +225,21 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/vars/vars.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "ThemeList",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/lib/color/color.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Object.keys(new Themes()) as ThemeType[]"
             }
         ],
         "functions": [],
         "typealiases": [
             {
-                "name": "ButtonType",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "\"basic\" | \"raised\" | \"stroked\" | \"flat\" | \"icon\" | \"fab\" | \"mini-fab\"",
-                "file": "libs/material/src/lib/button/button.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 189
-            },
-            {
-                "name": "ColorType",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "",
-                "file": "libs/material/src/lib/color/color.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 195
-            },
-            {
-                "name": "Font",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "\"tourney\" | \"special-elite\" | \"rubik-iso\" | \"rubik-dirt\" | \"roboto\" | \"material-icon\" | \"lobster\" | \"josefin-sans\" | \"dancing-script\" | \"concert-one\" | \"comfortaa\" | \"black-ops-one\" | \"handjet\"",
-                "file": "libs/material/src/lib/fonts/fonts.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 189
-            },
-            {
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<ButtonComponent>",
-                "file": "libs/material/src/lib/button/button.component.stories.ts",
+                "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -863,8 +249,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ColorComponent>",
-                "file": "libs/material/src/lib/color/color.component.stories.ts",
+                "rawtype": "StoryObj<GoodbyeWorldComponent>",
+                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -874,100 +260,22 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FlexboxComponent>",
-                "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                "rawtype": "StoryObj<HelloWorldComponent>",
+                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 180
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<FontsComponent>",
-                "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 180
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<SizingComponent>",
-                "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 180
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<VarsComponent>",
-                "file": "libs/material/src/lib/vars/vars.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 180
-            },
-            {
-                "name": "ThemeType",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "\"pastel\" | \"vintage\" | \"retro\" | \"neon\" | \"gold\" | \"light\" | \"dark\" | \"warm\" | \"cold\" | \"summer\"",
-                "file": "libs/material/src/lib/color/color.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 189
             }
         ],
         "enumerations": [],
         "groupedVariables": {
-            "libs/material/src/lib/index.ts": [
-                {
-                    "name": "___lib___",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/index.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'library'"
-                }
-            ],
-            "libs/material/src/lib/color/color.component.ts": [
-                {
-                    "name": "ColorList",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/color/color.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Object.keys(new Colors()) as ColorType[]"
-                },
-                {
-                    "name": "ThemeList",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/color/color.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Object.keys(new Themes()) as ThemeType[]"
-                }
-            ],
-            "libs/material/src/lib/button/button.component.stories.ts": [
+            "libs/material/src/button/button.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/button/button.component.stories.ts",
+                    "file": "libs/material/src/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -977,7 +285,7 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/button/button.component.stories.ts",
+                    "file": "libs/material/src/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
@@ -987,167 +295,71 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/button/button.component.stories.ts",
+                    "file": "libs/material/src/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/lib/color/color.component.stories.ts": [
+            "libs/material/src/goodbye-world/goodbye-world.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/color/color.component.stories.ts",
+                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/color works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/goodbye-world works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/color/color.component.stories.ts",
+                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<ColorComponent>",
-                    "defaultValue": "{\n  component: ColorComponent,\n  title: 'ColorComponent',\n}"
+                    "type": "Meta<GoodbyeWorldComponent>",
+                    "defaultValue": "{\n  component: GoodbyeWorldComponent,\n  title: 'GoodbyeWorldComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/color/color.component.stories.ts",
+                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/lib/flexbox/flexbox.component.stories.ts": [
+            "libs/material/src/hello-world/hello-world.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/flexbox works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/hello-world works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<FlexboxComponent>",
-                    "defaultValue": "{\n  component: FlexboxComponent,\n  title: 'FlexboxComponent',\n}"
+                    "type": "Meta<HelloWorldComponent>",
+                    "defaultValue": "{\n  component: HelloWorldComponent,\n  title: 'HelloWorldComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/src/lib/fonts/fonts.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FontsComponent>",
-                    "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/src/lib/sizing/sizing.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sizing works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<SizingComponent>",
-                    "defaultValue": "{\n  component: SizingComponent,\n  title: 'SizingComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/src/lib/vars/vars.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/vars/vars.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/vars works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/vars/vars.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<VarsComponent>",
-                    "defaultValue": "{\n  component: VarsComponent,\n  title: 'VarsComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/lib/vars/vars.component.stories.ts",
+                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1158,128 +370,39 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "libs/material/src/lib/button/button.component.ts": [
-                {
-                    "name": "ButtonType",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "\"basic\" | \"raised\" | \"stroked\" | \"flat\" | \"icon\" | \"fab\" | \"mini-fab\"",
-                    "file": "libs/material/src/lib/button/button.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 189
-                }
-            ],
-            "libs/material/src/lib/color/color.component.ts": [
-                {
-                    "name": "ColorType",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "",
-                    "file": "libs/material/src/lib/color/color.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 195
-                },
-                {
-                    "name": "ThemeType",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "\"pastel\" | \"vintage\" | \"retro\" | \"neon\" | \"gold\" | \"light\" | \"dark\" | \"warm\" | \"cold\" | \"summer\"",
-                    "file": "libs/material/src/lib/color/color.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 189
-                }
-            ],
-            "libs/material/src/lib/fonts/fonts.component.ts": [
-                {
-                    "name": "Font",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "\"tourney\" | \"special-elite\" | \"rubik-iso\" | \"rubik-dirt\" | \"roboto\" | \"material-icon\" | \"lobster\" | \"josefin-sans\" | \"dancing-script\" | \"concert-one\" | \"comfortaa\" | \"black-ops-one\" | \"handjet\"",
-                    "file": "libs/material/src/lib/fonts/fonts.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 189
-                }
-            ],
-            "libs/material/src/lib/button/button.component.stories.ts": [
+            "libs/material/src/button/button.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ButtonComponent>",
-                    "file": "libs/material/src/lib/button/button.component.stories.ts",
+                    "file": "libs/material/src/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 180
                 }
             ],
-            "libs/material/src/lib/color/color.component.stories.ts": [
+            "libs/material/src/goodbye-world/goodbye-world.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<ColorComponent>",
-                    "file": "libs/material/src/lib/color/color.component.stories.ts",
+                    "rawtype": "StoryObj<GoodbyeWorldComponent>",
+                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 180
                 }
             ],
-            "libs/material/src/lib/flexbox/flexbox.component.stories.ts": [
+            "libs/material/src/hello-world/hello-world.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<FlexboxComponent>",
-                    "file": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
-            "libs/material/src/lib/fonts/fonts.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FontsComponent>",
-                    "file": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
-            "libs/material/src/lib/sizing/sizing.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<SizingComponent>",
-                    "file": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
-            "libs/material/src/lib/vars/vars.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<VarsComponent>",
-                    "file": "libs/material/src/lib/vars/vars.component.stories.ts",
+                    "rawtype": "StoryObj<HelloWorldComponent>",
+                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1290,11 +413,11 @@
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 0,
         "status": "low",
         "files": [
             {
-                "filePath": "libs/material/src/lib/button/button.component.stories.ts",
+                "filePath": "libs/material/src/button/button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1304,7 +427,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/button/button.component.stories.ts",
+                "filePath": "libs/material/src/button/button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1314,7 +437,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/button/button.component.stories.ts",
+                "filePath": "libs/material/src/button/button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1324,16 +447,16 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/button/button.component.ts",
+                "filePath": "libs/material/src/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/color/color.component.stories.ts",
+                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1343,7 +466,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/color/color.component.stories.ts",
+                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1353,7 +476,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/color/color.component.stories.ts",
+                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1363,54 +486,16 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/color/color.component.ts",
+                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ColorComponent",
-                "coveragePercent": 50,
-                "coverageCount": "1/2",
-                "status": "medium"
-            },
-            {
-                "filePath": "libs/material/src/lib/color/color.component.ts",
-                "type": "class",
-                "linktype": "classe",
-                "name": "Colors",
-                "coveragePercent": 0,
-                "coverageCount": "0/9",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/color/color.component.ts",
-                "type": "class",
-                "linktype": "classe",
-                "name": "Themes",
-                "coveragePercent": 0,
-                "coverageCount": "0/11",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/color/color.component.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ColorList",
+                "name": "GoodbyeWorldComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/color/color.component.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ThemeList",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                "filePath": "libs/material/src/hello-world/hello-world.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1420,7 +505,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                "filePath": "libs/material/src/hello-world/hello-world.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1430,7 +515,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/flexbox/flexbox.component.stories.ts",
+                "filePath": "libs/material/src/hello-world/hello-world.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1440,137 +525,10 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/flexbox/flexbox.component.ts",
+                "filePath": "libs/material/src/hello-world/hello-world.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "FlexboxComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/fonts/fonts.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/fonts/fonts.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "FontsComponent",
-                "coveragePercent": 50,
-                "coverageCount": "1/2",
-                "status": "medium"
-            },
-            {
-                "filePath": "libs/material/src/lib/index.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "___lib___",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/sizing/sizing.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/sizing/sizing.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "SizingComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/vars/vars.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/vars/vars.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/vars/vars.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/lib/vars/vars.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "VarsComponent",
+                "name": "HelloWorldComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

@@ -3,5 +3,17 @@
   "dest": "../../dist/libs/material",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "assets": [
+    {
+      "input": "src/theme",
+      "glob": "**/*",
+      "output": "theme"
+    },
+    {
+      "input": "src/assets",
+      "glob": "**/*",
+      "output": "assets"
+    },
+  ]
 }

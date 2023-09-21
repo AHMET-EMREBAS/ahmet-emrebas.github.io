@@ -1,0 +1,30 @@
+.common-svg {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top; 
+}
+
+$svgs: (
+  clock,
+  cube,
+  error,
+  finger-print,
+  inventory,
+  key,
+  placeholder,
+  planning,
+  play,
+  profile,
+  store,
+  study,
+  talk,
+  speak
+);
+
+@each $s in $svgs {
+  $url: './../../assets/imgs/' + $s + '.svg';
+  .#{$s}-svg {
+    @extend .common-svg;
+    background-image: url($url);
+  }
+}

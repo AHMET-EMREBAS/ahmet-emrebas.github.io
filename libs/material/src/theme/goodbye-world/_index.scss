@@ -1,0 +1,12 @@
+@use '../common' as common;
+.goodbye-world {
+  font-size: 30pt;
+}
+
+.goodbye-world::before {
+  content: $goodbyeWorld;
+}
+
+.goodbye-world:hover {
+  background-color: var(--primary-opacity-3);
+}
