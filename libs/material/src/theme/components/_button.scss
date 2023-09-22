@@ -85,3 +85,23 @@
     background-color: var(--#{$colorName}-1);
   }
 }
+
+@each $colorName in $colorNames {
+  .#{$colorName}.flat-button {
+    @include commonButton();
+    background-color: var(--#{$colorName});
+    color: var(--#{$colorName}-face);
+    transition: background-color 100ms ease-in-out,
+      outline-color 100ms ease-in-out;
+  }
+
+  .#{$colorName}.flat-button:hover {
+    background-color: var(--#{$colorName}-dark);
+  }
+  .#{$colorName}.flat-button:focus {
+    outline-color: var(--#{$colorName}-dark);
+  }
+  .#{$colorName}.flat-button:active {
+    background-color: var(--#{$colorName}-darker);
+  }
+}
