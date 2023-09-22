@@ -1,12 +1,26 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent, ButtonEvent } from '../button/button.component';
 
 @Component({
   selector: 'tb-button-doc',
   standalone: true,
   imports: [CommonModule, ButtonComponent],
-  templateUrl: './button-doc.component.html',
+  template: `
+    <tb-button
+      buttonType="raised"
+      color="primary"
+      [label]="label + ' ' + clickCounter"
+      (clickEvent)="handleEvent($event)"
+    ></tb-button>
+  `,
   styles: [
     `
       pre {
@@ -14,10 +28,19 @@ import { ButtonComponent } from '../button/button.component';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonDocComponent {
-  basicButton = `<tb-basic-button color='primary|secondary|accent|warn|red|green|black|white'></tb-basic-button>`;
-  raisedButton = `<tb-raised-button color='primary|secondary|accent|warn|red|green|black|white'></tb-raised-button>`;
-  flatButton = `<tb-flat-button color='primary|secondary|accent|warn|red|green|black|white'></tb-flat-button>`;
-  strokedButton = `<tb-stroked-button color='primary|secondary|accent|warn|red|green|black|white'></tb-stroked-button>`;
+  @Output() clickEvent = new EventEmitter<ButtonEvent>();
+
+  @Input() label = 'Button';
+  @Input() clickCounter = 0;
+
+  constructor(private readonly changeDetection: ChangeDetectorRef) {}
+
+  handleEvent(event: ButtonEvent) {
+    this.clickCounter += 1;
+    this.changeDetection.detectChanges();
+    this.clickEvent.emit(event);
+  }
 }

@@ -9,27 +9,81 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-3968c477b23a9ec500050fd0c0698e09418e3cecdaeb339a7d549857f0ceb6616c45c95c1c237af31e8acf40a7f14a1f21a724fc331158126e8ab013e8e0ae95",
+            "id": "component-ButtonComponent-8d0d6a0c8bac179014cdff3d1e08f74afe5a1f7a4c2e43af000a316afd166e9d37ce15ba272e703323b6740ca4a2fee343c15681d7e88e3e028f9fc740c8d492",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "[tb-basic-button],[tb-raised-button],[tb-stroked-button],[tb-flat-button]",
-            "styleUrls": [
-                "./button.component.scss"
-            ],
+            "selector": "tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button]",
+            "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./button.component.html"
-            ],
+            "template": "<ng-container *ngIf=\"buttonType\">\n  <button #button (click)=\"emit()\">\n    {{ label }}\n  </button>\n</ng-container>\n<ng-content></ng-content>\n",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "buttonType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nButton type",
+                    "description": "<p>Button type</p>\n",
+                    "line": 41,
+                    "type": "ButtonType",
+                    "decorators": []
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nButton color",
+                    "description": "<p>Button color</p>\n",
+                    "line": 44,
+                    "type": "ColorType",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nButton label",
+                    "description": "<p>Button label</p>\n",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "clickEvent",
+                    "defaultValue": "new EventEmitter<ButtonEvent>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nClick Event",
+                    "description": "<p>Click Event</p>\n",
+                    "line": 47,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "emit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmit click event",
+                    "description": "<p>Emit click event</p>\n"
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -44,20 +98,43 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: '[tb-basic-button],[tb-raised-button],[tb-stroked-button],[tb-flat-button]',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonType, ColorType } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { type: 'click'; payload: string };\n\n@Component({\n  selector:\n    'tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button]',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <ng-container *ngIf=\"buttonType\">\n      <button #button (click)=\"emit()\">\n        {{ label }}\n      </button>\n    </ng-container>\n    <ng-content></ng-content>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  /** Button label */\n  @Input() label = 'Button';\n\n  /** Button type */\n  @Input() buttonType?: ButtonType;\n\n  /** Button color */\n  @Input() color: ColorType = 'primary';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  constructor(private readonly detection: ChangeDetectorRef) {}\n  /** @ignore */\n  ngAfterViewInit(): void {\n    if (this.buttonType) {\n      this.addClass(this.color);\n\n      if (this.buttonType) {\n        this.checkAdd(this.buttonType === 'basic', 'basic-button');\n        this.checkAdd(this.buttonType === 'flat', 'flat-button');\n        this.checkAdd(this.buttonType === 'raised', 'raised-button');\n        this.checkAdd(this.buttonType === 'stroked', 'stroked-button');\n        this.checkAdd(this.buttonType === 'icon', 'icon-button');\n        this.checkAdd(this.buttonType === 'fab', 'fab-button');\n        this.checkAdd(this.buttonType === 'mini-fab', 'mini-fab-button');\n      }\n    }\n  }\n\n  /** @ignore */\n  private addClass(className: string) {\n    this.button?.nativeElement.classList.add(className);\n  }\n\n  /** @ignore */\n  private checkAdd(condition: boolean, className: string) {\n    if (condition) {\n      this.addClass(className);\n    }\n  }\n\n  /** Emit click event */\n  emit() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./button.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<ng-content></ng-content>\n"
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "detection",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 47,
+                "jsdoctags": [
+                    {
+                        "name": "detection",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "AfterViewInit"
+            ]
         },
         {
             "name": "ButtonDocComponent",
-            "id": "component-ButtonDocComponent-3a8caa1bf25e20341595761a34ff75fc0dcbe2dcca4b52509e337cfa6e1498435bbd4482506bf38fadf117afd329ce5670d7064acc24b9a18e9a414b1921829d",
+            "id": "component-ButtonDocComponent-46fd734e700f8d928a127877c899dde9d85b873500e47b6957e736ddc2dba6d981ddbc394e5cef106882362979eb8d5986df1188ddb55a9f1650ec5b41fc5758",
             "file": "libs/material/src/button-doc/button-doc.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -66,16 +143,67 @@
             "providers": [],
             "selector": "tb-button-doc",
             "styleUrls": [],
-            "styles": [],
+            "styles": [
+                "\n      pre {\n        font-size: 0.7em;\n      }\n    "
+            ],
             "templateUrl": [
                 "./button-doc.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "outputsClass": [
+                {
+                    "name": "clickEvent",
+                    "defaultValue": "new EventEmitter<ButtonEvent>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "counter",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ButtonEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ButtonEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -94,11 +222,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../button/button.component';\n\n@Component({\n  selector: 'tb-button-doc',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './button-doc.component.html',\n  styles: [],\n})\nexport class ButtonDocComponent {}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  EventEmitter,\n  Input,\n  Output,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button/button.component';\n\n@Component({\n  selector: 'tb-button-doc',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './button-doc.component.html',\n  styles: [\n    `\n      pre {\n        font-size: 0.7em;\n      }\n    `,\n  ],\n})\nexport class ButtonDocComponent {\n  @Output() clickEvent = new EventEmitter<ButtonEvent>();\n  /** @ignore */\n  @Input() label = 'Button';\n  counter = 0;\n  handleEvent(event: ButtonEvent) {\n    this.counter += 1;\n    this.clickEvent.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
-            "templateData": "<div class=\"flex column gap-12 wrap\">\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-basic-button\">\n      Basic Button\n    </h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-basic-button color=\"primary\">basic primary</button>\n      <button tb-basic-button color=\"secondary\">basic secondary</button>\n      <button tb-basic-button color=\"accent\">basic accent</button>\n      <button tb-basic-button color=\"warn\">basic warn</button>\n      <button tb-basic-button color=\"red\">basic red</button>\n      <button tb-basic-button color=\"green\">basic green</button>\n      <button tb-basic-button color=\"black\">basic black</button>\n      <button tb-basic-button color=\"white\">basic white</button>\n    </div>\n  </div>\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-raised-button\">\n      raised Button\n    </h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-raised-button color=\"primary\">raised primary</button>\n      <button tb-raised-button color=\"secondary\">raised secondary</button>\n      <button tb-raised-button color=\"accent\">raised accent</button>\n      <button tb-raised-button color=\"warn\">raised warn</button>\n      <button tb-raised-button color=\"red\">raised red</button>\n      <button tb-raised-button color=\"green\">raised green</button>\n      <button tb-raised-button color=\"black\">raised black</button>\n      <button tb-raised-button color=\"white\">raised white</button>\n    </div>\n  </div>\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-flat-button\">flat Button</h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-flat-button color=\"primary\">flat primary</button>\n      <button tb-flat-button color=\"secondary\">flat secondary</button>\n      <button tb-flat-button color=\"accent\">flat accent</button>\n      <button tb-flat-button color=\"warn\">flat warn</button>\n      <button tb-flat-button color=\"red\">flat red</button>\n      <button tb-flat-button color=\"green\">flat green</button>\n      <button tb-flat-button color=\"black\">flat black</button>\n      <button tb-flat-button color=\"white\">flat white</button>\n    </div>\n  </div>\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-basic-button\">\n      stroked Button\n    </h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-stroked-button color=\"primary\">stroked primary</button>\n      <button tb-stroked-button color=\"secondary\">stroked secondary</button>\n      <button tb-stroked-button color=\"accent\">stroked accent</button>\n      <button tb-stroked-button color=\"warn\">stroked warn</button>\n      <button tb-stroked-button color=\"red\">stroked red</button>\n      <button tb-stroked-button color=\"green\">stroked green</button>\n      <button tb-stroked-button color=\"black\">stroked black</button>\n      <button tb-stroked-button color=\"white\">stroked white</button>\n    </div>\n  </div>\n</div>\n"
+            "stylesData": "\n      pre {\n        font-size: 0.7em;\n      }\n    \n",
+            "templateData": "<tb-button\n  buttonType=\"raised\"\n  color=\"primary\"\n  [label]=\"label + ' ' + counter\"\n  (clickEvent)=\"emit($event)\"\n></tb-button>\n"
         },
         {
             "name": "ColorsComponent",
@@ -215,7 +343,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Label',\n  },\n  play: async ({ canvasElement, args }) => {\n    const canvas = within(canvasElement);\n    const button = () => canvas.getByText(/Label/gi);\n\n    expect(button()).toBeTruthy();\n    expect(button().innerText).toBe('Label 0');\n\n    userEvent.click(button(), { delay: 1000 });\n    userEvent.click(button(), { delay: 2000 });\n    userEvent.click(button(), { delay: 3000 });\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -241,21 +379,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ButtonDocComponent>",
-                "defaultValue": "{\n  component: ButtonDocComponent,\n  title: 'ButtonDocComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
                 "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonDocComponent>",
+                "defaultValue": "{\n  component: ButtonDocComponent,\n  title: 'ButtonDocComponent',\n}"
             },
             {
                 "name": "meta",
@@ -285,6 +423,16 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'raised',\n    color: 'primary',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
             },
             {
@@ -311,11 +459,55 @@
         "functions": [],
         "typealiases": [
             {
+                "name": "ButtonEvent",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/src/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "ButtonType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"icon\" | \"fab\" | \"mini-fab\"",
+                "file": "libs/material/src/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
+            },
+            {
+                "name": "ColorType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"primary\" | \"secondary\" | \"accent\" | \"warn\" | \"red\" | \"green\" | \"black\" | \"white\"",
+                "file": "libs/material/src/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
+            },
+            {
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<ButtonComponent>",
                 "file": "libs/material/src/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonDocComponent>",
+                "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -355,7 +547,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/button works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -372,6 +564,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'raised',\n    color: 'primary',\n  },\n}"
+                }
+            ],
+            "libs/material/src/button-doc/button-doc.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Label',\n  },\n  play: async ({ canvasElement, args }) => {\n    const canvas = within(canvasElement);\n    const button = () => canvas.getByText(/Label/gi);\n\n    expect(button()).toBeTruthy();\n    expect(button().innerText).toBe('Label 0');\n\n    userEvent.click(button(), { delay: 1000 });\n    userEvent.click(button(), { delay: 2000 });\n    userEvent.click(button(), { delay: 3000 });\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ButtonDocComponent>",
+                    "defaultValue": "{\n  component: ButtonDocComponent,\n  title: 'ButtonDocComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -441,23 +665,48 @@
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
-            ],
-            "libs/material/src/button-doc/button-doc.component.stories.ts": [
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ButtonDocComponent>",
-                    "defaultValue": "{\n  component: ButtonDocComponent,\n  title: 'ButtonDocComponent',\n}"
-                }
             ]
         },
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "libs/material/src/button/button.component.ts": [
+                {
+                    "name": "ButtonEvent",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/src/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "libs/material/src/api/types.ts": [
+                {
+                    "name": "ButtonType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"icon\" | \"fab\" | \"mini-fab\"",
+                    "file": "libs/material/src/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                },
+                {
+                    "name": "ColorType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"primary\" | \"secondary\" | \"accent\" | \"warn\" | \"red\" | \"green\" | \"black\" | \"white\"",
+                    "file": "libs/material/src/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                }
+            ],
             "libs/material/src/button/button.component.stories.ts": [
                 {
                     "name": "Story",
@@ -465,6 +714,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ButtonComponent>",
                     "file": "libs/material/src/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/button-doc/button-doc.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonDocComponent>",
+                    "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -501,9 +763,19 @@
     },
     "routes": [],
     "coverage": {
-        "count": 0,
+        "count": 4,
         "status": "low",
         "files": [
+            {
+                "filePath": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "libs/material/src/button-doc/button-doc.component.stories.ts",
                 "type": "variable",
@@ -515,12 +787,22 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/button-doc/button-doc.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonDocComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -558,9 +840,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
+                "coveragePercent": 71,
+                "coverageCount": "5/7",
+                "status": "good"
             },
             {
                 "filePath": "libs/material/src/colors/colors.component.stories.ts",
