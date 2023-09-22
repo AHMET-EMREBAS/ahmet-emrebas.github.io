@@ -1,77 +1,77 @@
 @use 'sass:list';
 @use 'sass:math';
-$fontsRoot: '../../assets/fonts';
+$_fontsRoot: '../../assets/fonts';
 
 @font-face {
   font-family: Handjet;
-  src: url(./#{$fontsRoot}/Handjet/Handjet-VariableFont.ttf);
+  src: url(./#{$_fontsRoot}/Handjet/Handjet-VariableFont.ttf);
 }
 
 @font-face {
   font-family: Roboto;
-  src: url(./#{$fontsRoot}/Roboto_Flex/RobotoFlex.ttf);
+  src: url(./#{$_fontsRoot}/Roboto_Flex/RobotoFlex.ttf);
 }
 
 @font-face {
   font-family: Special Elite;
-  src: url(./#{$fontsRoot}/Special_Elite/SpecialElite-Regular.ttf);
+  src: url(./#{$_fontsRoot}/Special_Elite/SpecialElite-Regular.ttf);
 }
 
 @font-face {
   font-family: Josefin Sans;
-  src: url(./#{$fontsRoot}/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+  src: url(./#{$_fontsRoot}/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: Josefin Sans;
   font-style: italic;
-  src: url(./#{$fontsRoot}/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
+  src: url(./#{$_fontsRoot}/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: Lobster;
-  src: url(./#{$fontsRoot}/Lobster/Lobster-Regular.ttf);
+  src: url(./#{$_fontsRoot}/Lobster/Lobster-Regular.ttf);
 }
 
 @font-face {
   font-family: Comfortaa;
-  src: url(./#{$fontsRoot}/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+  src: url(./#{$_fontsRoot}/Comfortaa/Comfortaa-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: Rubik Dirt;
-  src: url(./#{$fontsRoot}/Rubik_Dirt/RubikDirt-Regular.ttf);
+  src: url(./#{$_fontsRoot}/Rubik_Dirt/RubikDirt-Regular.ttf);
 }
 
 @font-face {
   font-family: Rubik Iso;
-  src: url(./#{$fontsRoot}/Rubik_Iso/RubikIso-Regular.ttf);
+  src: url(./#{$_fontsRoot}/Rubik_Iso/RubikIso-Regular.ttf);
 }
 
 @font-face {
   font-family: Black Ops One;
-  src: url(./#{$fontsRoot}/Black_Ops_One/BlackOpsOne-Regular.ttf);
+  src: url(./#{$_fontsRoot}/Black_Ops_One/BlackOpsOne-Regular.ttf);
 }
 
 @font-face {
   font-family: Concert One;
-  src: url(./#{$fontsRoot}/Concert_One/ConcertOne-Regular.ttf);
+  src: url(./#{$_fontsRoot}/Concert_One/ConcertOne-Regular.ttf);
 }
 
 @font-face {
   font-family: Tourney;
-  src: url(./#{$fontsRoot}/Tourney/Tourney-VariableFont_wdth.ttf);
+  src: url(./#{$_fontsRoot}/Tourney/Tourney-VariableFont_wdth.ttf);
 }
 
 @font-face {
   font-family: Tourney;
   font-style: italic;
-  src: url(./#{$fontsRoot}/Tourney/Tourney-Italic-VariableFont_wdth.ttf);
+  src: url(./#{$_fontsRoot}/Tourney/Tourney-Italic-VariableFont_wdth.ttf);
 }
 
 @font-face {
   font-family: Dancing Script;
-  src: url(./#{$fontsRoot}/Dancing_Script/DancingScript-VariableFont_wght.ttf);
+  src: url(./#{$_fontsRoot}/Dancing_Script/DancingScript-VariableFont_wght.ttf);
 }
 
 $fontList: (
@@ -89,6 +89,11 @@ $fontList: (
   'black-ops-one': 'Black Ops One, cursive',
   'handjet': 'Handjet, cursive',
 );
+
+:root {
+  --title-font: Comfortaa;
+  --content-font: Roboto;
+}
 
 @each $key, $value in $fontList {
   .#{$key} {
@@ -139,11 +144,12 @@ $fontList: (
 .title-2,
 .subtitle-1,
 .subtitle-2 {
-  font-family: Comfortaa;
+  font-family: var(--title-font);
   position: relative;
   margin: 0px;
   padding: 0px;
   margin-bottom: 1.3em;
+  text-transform: capitalize;
 }
 
 .title-1,
@@ -195,8 +201,8 @@ $fontList: (
 .content-1,
 .content-2 {
   line-height: 1.6;
-  font-weight: 200;
-  font-family: Roboto;
+  font-weight: 300;
+  font-family: var(--content-font);
   letter-spacing: 0.1em;
   max-width: 40em;
   text-justify: distribute;

@@ -1,4 +1,5 @@
 @import '../common/utils';
+@import '../common/variables';
 
 $commonColors: (
   white: rgb(255, 255, 255),
@@ -64,13 +65,17 @@ $commonColors: (
   }
 }
 
+@each $colorName in $colorNames {
+  @for $opacity from 1 through 10 {
+    $name: #{$colorName}-#{$opacity};
+
+    .#{$name} {
+      color: var(--#{$name});
+    }
+    .bg-#{$name} {
+      background-color: var(--#{$name});
+    }
+  }
+}
+
 @include build($commonColors);
-// @for $opacity from 1 through 10 {
-//   $name: #{$colorName}-opacity-#{$opacity};
-//   .#{$name} {
-//     color: var(--#{$name});
-//   }
-//   .bg-#{$name} {
-//     background-color: var(--#{$name});
-//   }
-// }

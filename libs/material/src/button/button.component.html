@@ -1,4 +1,38 @@
-<div class="flex row align-flex-start gap-2 wrap">
+<div class="flex column gap-12 wrap">
+  <div
+    class="flex column gap-1"
+    *ngFor="let buttonType of ['basic', 'raised', 'stroked', 'flat']"
+  >
+    <h1
+      class="title-2 text-center"
+      [attr.substring]="'.' + buttonType + '-' + 'button'"
+    >
+      {{ buttonType }} Button
+    </h1>
+    <div class="flex row gap-3 wrap">
+      <button
+        class="{{ buttonType }}-button {{ color }}"
+        style="font-size: 16px"
+        *ngFor="
+          let color of [
+            'primary',
+            'secondary',
+            'accent',
+            'red',
+            'green',
+            'black',
+            'white'
+          ]
+        "
+      >
+        {{ color }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="flex row align-flex-start gap-2 wrap">
+  
   <div class="clock-svg w-100px h-100px"></div>
   <div class="cube-svg w-100px h-100px"></div>
   <div class="error-svg w-100px h-100px"></div>
@@ -13,4 +47,4 @@
   <div class="study-svg w-100px h-100px"></div>
   <div class="talk-svg w-100px h-100px"></div>
   <div class="speak-svg w-100px h-100px"></div>
-</div>
+</div> -->

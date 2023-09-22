@@ -1,5 +1,6 @@
 @use '../core' as theme;
 @import '../common';
+@import '../components/';
 
 $pastel: (
   primary: hsl(0, 97%, 77%),

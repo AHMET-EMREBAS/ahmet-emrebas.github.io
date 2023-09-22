@@ -8,7 +8,7 @@ $iconFontAssets: '../../assets/fonts';
   src: url(./#{$iconFontAssets}/material-symbols.woff2) format('woff2');
 }
 
-.__common-icon {
+.icon {
   position: relative;
   font-family: Icon;
   font-weight: normal;
@@ -19,30 +19,16 @@ $iconFontAssets: '../../assets/fonts';
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
-[icon],
-.icon {
-  @extend .__common-icon;
-}
-.icon::before,
-[icon]::before {
-  content: attr(icon);
-}
 
 @each $colorName in $colorNames {
-  .icon[color='#{$colorName}'],
-  [icon][color='#{$colorName}'] {
+  .icon[color='#{$colorName}'] {
     color: var(--#{$colorName});
   }
 
-  .icon.fill,
-  .icon[fill],
-  [icon][fill] {
+  .icon.fill {
     font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
   }
-  .icon.#{$colorName}.raised,
-  .icon.#{$colorName}[raised],
-  .icon[color='#{$colorName}'][raised],
-  [icon][color='#{$colorName}'][raised] {
+  .icon[color='#{$colorName}'].raised {
     text-shadow: 0px 0px 3px var(--#{$colorName}-darker);
   }
 }
