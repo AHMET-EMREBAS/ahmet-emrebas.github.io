@@ -56,25 +56,46 @@
             "templateData": "<div class=\"flex row align-flex-start gap-2 wrap\">\n  <div class=\"clock-svg w-100px h-100px\"></div>\n  <div class=\"cube-svg w-100px h-100px\"></div>\n  <div class=\"error-svg w-100px h-100px\"></div>\n  <div class=\"finger-print-svg w-100px h-100px\"></div>\n  <div class=\"inventory-svg w-100px h-100px\"></div>\n  <div class=\"key-svg w-100px h-100px\"></div>\n  <div class=\"placeholder-svg w-100px h-100px\"></div>\n  <div class=\"planning-svg w-100px h-100px\"></div>\n  <div class=\"play-svg w-100px h-100px\"></div>\n  <div class=\"profile-svg w-100px h-100px\"></div>\n  <div class=\"store-svg w-100px h-100px\"></div>\n  <div class=\"study-svg w-100px h-100px\"></div>\n  <div class=\"talk-svg w-100px h-100px\"></div>\n  <div class=\"speak-svg w-100px h-100px\"></div>\n</div>\n"
         },
         {
-            "name": "GoodbyeWorldComponent",
-            "id": "component-GoodbyeWorldComponent-90e6a7c149ae4761e21207dd9719795f2b42fe3b397c42607d0dc76275da83433fa91bfe52b6821d489d7831ccc2b57e48f263cbfeed576a2f29ee6ff8aeb391",
-            "file": "libs/material/src/goodbye-world/goodbye-world.component.ts",
+            "name": "ColorsComponent",
+            "id": "component-ColorsComponent-a5d61e926051bcd4f4a4054ec35b829b69a9bd762e27ff61980ee495c740cf83cf6789be4a15df4b4ed7a09b16570b6f1da3e0ec123f552419c688afab917f98",
+            "file": "libs/material/src/colors/colors.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb-goodbye-world",
+            "selector": "tb-colors",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./goodbye-world.component.html"
+                "./colors.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "colors",
+                    "defaultValue": "[\n    'primary',\n    'secondary',\n    'accent',\n    'warn',\n    'red',\n    'green',\n    'black',\n    'white',\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "colorVariants",
+                    "defaultValue": "this.colors.map((e) => [\n    e,\n    ...['light', 'lighter', 'dark', 'darker'].map((v) => e + '-' + v),\n  ])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -90,26 +111,26 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-goodbye-world',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './goodbye-world.component.html',\n  styles: [],\n})\nexport class GoodbyeWorldComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-colors',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './colors.component.html',\n  styles: [],\n})\nexport class ColorsComponent {\n  colors = [\n    'primary',\n    'secondary',\n    'accent',\n    'warn',\n    'red',\n    'green',\n    'black',\n    'white',\n  ];\n  colorVariants = this.colors.map((e) => [\n    e,\n    ...['light', 'lighter', 'dark', 'darker'].map((v) => e + '-' + v),\n  ]);\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p class=\"goodbye-world\"></p>\n"
+            "templateData": "<div\n  class=\"flex row gap-10 wrap center font-size-10 comfortaa relative\"\n  *ngFor=\"let variants of colorVariants\"\n>\n  <div\n    class=\"w-3vw h-20vw bg-{{ color }} {{ color }}-face relative\"\n    *ngFor=\"let color of variants\"\n  >\n    <span\n      class=\"font-weight-1000 letter-spacing-3 z-1 rotate-270 w-100per absolute\"\n      style=\"border: 3px solid red; width: 100%\"\n    >\n      .{{ color }}\n    </span>\n  </div>\n</div>\n"
         },
         {
-            "name": "HelloWorldComponent",
-            "id": "component-HelloWorldComponent-7ef47406f0a00bc74550a1e8ab332bc92ea0a7a482ffa07c64783a0492e72625d0740224770a2cce502952ab22e58a6db09bdf0b43b6a0f21b86cac8794f6b7f",
-            "file": "libs/material/src/hello-world/hello-world.component.ts",
+            "name": "FontsComponent",
+            "id": "component-FontsComponent-b16a2345b36ea2504dc4073f7f4717bd752e3ae060dcda6fcb60804c0c3fdb6c8ab58bdf9ef33904eeae8519754753b39112aa7bc02039b0f1d0ad1061771784",
+            "file": "libs/material/src/fonts/fonts.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb-hello-world",
+            "selector": "tb-fonts",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./hello-world.component.html"
+                "./fonts.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -131,11 +152,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-hello-world',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './hello-world.component.html',\n  styles: [],\n})\nexport class HelloWorldComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-fonts',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './fonts.component.html',\n  styles: [],\n})\nexport class FontsComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p class=\"hello-world\"></p>\n"
+            "templateData": "<div class=\"title-1\">Welcome to techbir angular material</div>\n<div class=\"subtitle-1\">Built by Ahmet Emrebas</div>"
         }
     ],
     "modules": [],
@@ -155,21 +176,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/goodbye-world works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/hello-world works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "meta",
@@ -185,21 +206,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<GoodbyeWorldComponent>",
-                "defaultValue": "{\n  component: GoodbyeWorldComponent,\n  title: 'GoodbyeWorldComponent',\n}"
+                "type": "Meta<ColorsComponent>",
+                "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<HelloWorldComponent>",
-                "defaultValue": "{\n  component: HelloWorldComponent,\n  title: 'HelloWorldComponent',\n}"
+                "type": "Meta<FontsComponent>",
+                "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
             },
             {
                 "name": "Primary",
@@ -215,7 +236,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -225,7 +246,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -249,8 +270,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GoodbyeWorldComponent>",
-                "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                "rawtype": "StoryObj<ColorsComponent>",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -260,8 +281,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<HelloWorldComponent>",
-                "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                "rawtype": "StoryObj<FontsComponent>",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -302,64 +323,64 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/goodbye-world/goodbye-world.component.stories.ts": [
+            "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/goodbye-world works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<GoodbyeWorldComponent>",
-                    "defaultValue": "{\n  component: GoodbyeWorldComponent,\n  title: 'GoodbyeWorldComponent',\n}"
+                    "type": "Meta<ColorsComponent>",
+                    "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/hello-world/hello-world.component.stories.ts": [
+            "libs/material/src/fonts/fonts.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/hello-world works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<HelloWorldComponent>",
-                    "defaultValue": "{\n  component: HelloWorldComponent,\n  title: 'HelloWorldComponent',\n}"
+                    "type": "Meta<FontsComponent>",
+                    "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -383,26 +404,26 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/goodbye-world/goodbye-world.component.stories.ts": [
+            "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<GoodbyeWorldComponent>",
-                    "file": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                    "rawtype": "StoryObj<ColorsComponent>",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 180
                 }
             ],
-            "libs/material/src/hello-world/hello-world.component.stories.ts": [
+            "libs/material/src/fonts/fonts.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<HelloWorldComponent>",
-                    "file": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                    "rawtype": "StoryObj<FontsComponent>",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -456,7 +477,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                "filePath": "libs/material/src/colors/colors.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -466,7 +487,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                "filePath": "libs/material/src/colors/colors.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -476,7 +497,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.stories.ts",
+                "filePath": "libs/material/src/colors/colors.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -486,16 +507,16 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/goodbye-world/goodbye-world.component.ts",
+                "filePath": "libs/material/src/colors/colors.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "GoodbyeWorldComponent",
+                "name": "ColorsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                "filePath": "libs/material/src/fonts/fonts.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -505,7 +526,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                "filePath": "libs/material/src/fonts/fonts.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -515,7 +536,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/hello-world/hello-world.component.stories.ts",
+                "filePath": "libs/material/src/fonts/fonts.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -525,10 +546,10 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/hello-world/hello-world.component.ts",
+                "filePath": "libs/material/src/fonts/fonts.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "HelloWorldComponent",
+                "name": "FontsComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

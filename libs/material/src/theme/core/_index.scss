@@ -1,0 +1,76 @@
+@import '../common/utils';
+
+$commonColors: (
+  white: rgb(255, 255, 255),
+  black: hsl(0, 0%, 0%),
+  green: hsl(120, 83%, 42%),
+  red: hsl(348, 83%, 47%),
+);
+
+/** colors: primary, accent, warn */
+@mixin build($colors) {
+  :root {
+    @each $colorName, $color in $colors {
+      --#{$colorName}: #{$color};
+      --#{$colorName}-face: #{faceColor($color)};
+
+      --#{$colorName}-dark: #{darken($color, 10%)};
+      --#{$colorName}-dark-face: #{faceColor(darken($color, 10%))};
+
+      --#{$colorName}-darker: #{darken($color, 20%)};
+      --#{$colorName}-darker-face: #{faceColor(darken($color, 20%))};
+
+      --#{$colorName}-light: #{lighten($color, 10%)};
+      --#{$colorName}-light-face: #{faceColor(lighten($color, 10%))};
+
+      --#{$colorName}-lighter: #{lighten($color, 20%)};
+      --#{$colorName}-lighter-face: #{faceColor(lighten($color, 20%))};
+
+      @for $opacity from 1 through 10 {
+        --#{$colorName}-#{$opacity}: #{rgba($color, $opacity * 0.1)};
+      }
+    }
+  }
+
+  @each $colorName, $__ in $colors {
+    .#{$colorName} {
+      color: var(--#{$colorName});
+    }
+    .bg-#{$colorName} {
+      background-color: var(--#{$colorName});
+    }
+    @each $variant
+      in (
+        face,
+        dark,
+        dark-face,
+        darker,
+        darker-face,
+        light,
+        light-face,
+        lighter,
+        lighter-face
+      )
+    {
+      $name: #{$colorName}-#{$variant};
+
+      .#{$name} {
+        color: var(--#{$name});
+      }
+      .bg-#{$name} {
+        background-color: var(--#{$name});
+      }
+    }
+  }
+}
+
+@include build($commonColors);
+// @for $opacity from 1 through 10 {
+//   $name: #{$colorName}-opacity-#{$opacity};
+//   .#{$name} {
+//     color: var(--#{$name});
+//   }
+//   .bg-#{$name} {
+//     background-color: var(--#{$name});
+//   }
+// }

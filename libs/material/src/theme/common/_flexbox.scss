@@ -1,0 +1,127 @@
+$displays: (
+  block,
+  flex,
+  grid,
+  inline,
+  inline-block,
+);
+
+@each $d in $displays {
+  .#{$d} {
+    display: $d;
+  }
+}
+
+$flexDirections: (column, column-reverse, row, row-reverse);
+
+@each $fd in $flexDirections {
+  .#{$fd} {
+    flex-direction: $fd;
+  }
+}
+
+$justifyContent: (
+  baseline,
+  center,
+  end,
+  first baseline,
+  flex-end,
+  flex-start,
+  last baseline,
+  left,
+  right,
+  safe,
+  space-around,
+  space-between,
+  space-evenly,
+  start,
+  stretch,
+  unsafe
+);
+
+@each $jc in $justifyContent {
+  .justify-#{$jc} {
+    justify-content: $jc;
+  }
+}
+
+$alignItems: (
+  stretch,
+  flex-start,
+  flex-end,
+  center,
+  baseline,
+  first baseline,
+  last baseline
+);
+
+@each $ai in $alignItems {
+  .align-#{$ai} {
+    align-items: $ai;
+  }
+}
+
+$alignContent: (
+  stretch,
+  flex-start,
+  flex-end,
+  center,
+  space-between,
+  space-around,
+  space-evenly,
+  start,
+  end,
+  baseline
+);
+
+@each $ac in $alignContent {
+  .align-content-#{$ac} {
+    align-content: $ac;
+  }
+}
+
+// Min: 0.5em
+// Max: 5em
+@for $size from 1 through 12{
+  .gap-#{$size} {
+    row-gap: #{$size * 0.5}em;
+    column-gap: #{$size * 0.5}em;
+  }
+
+  .row-gap-#{$size} {
+    row-gap: #{$size * 0.5}em;
+  }
+  .column-gap-#{$size} {
+    column-gap: #{$size * 0.5}em;
+  }
+}
+
+@for $order from 1 through 12{
+  .order-#{$order} {
+    order: #{$order};
+  }
+}
+
+@for $size from 1 through 12{
+  .grow-#{$size} {
+    flex-grow: #{$size};
+  }
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex.center {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.text-center {
+  text-align: center;
+  vertical-align: center;
+}

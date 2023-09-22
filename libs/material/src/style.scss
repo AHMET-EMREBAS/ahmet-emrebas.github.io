@@ -1,12 +1,6 @@
-@use './theme' as theme;
+@use './theme/builtin-themes' as bt;
 
-@include theme.build(
-  (
-    primary: blue,
-    accent: purple,
-    warn: orange,
-  )
-);
+@include bt.retro();
 
 .sb-main-padded.sb-show-main {
   padding: 0px;

@@ -1,0 +1,16 @@
+<div
+  class="flex row gap-10 wrap center font-size-10 comfortaa relative"
+  *ngFor="let variants of colorVariants"
+>
+  <div
+    class="w-3vw h-20vw bg-{{ color }} {{ color }}-face relative"
+    *ngFor="let color of variants"
+  >
+    <span
+      class="font-weight-1000 letter-spacing-3 z-1 rotate-270 w-100per absolute"
+      style="border: 3px solid red; width: 100%"
+    >
+      .{{ color }}
+    </span>
+  </div>
+</div>

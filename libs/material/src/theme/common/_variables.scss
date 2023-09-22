@@ -1,2 +1,4 @@
-$helloWorld: 'hello world';
-$goodbyeWorld: 'goodbye world';
+$units: (em, rem, px, vw, vh, per);
+$sides: (top, right, bottom, left);
+$colorNames: (primary, secondary, accent, warn, black, white, red, green);
+$positions: (static, relative, absolute, fixed, sticky);

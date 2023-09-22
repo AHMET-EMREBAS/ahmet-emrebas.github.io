@@ -1,0 +1,13 @@
+@import 'variables';
+
+@each $pos in $positions {
+  .#{$pos} {
+    position: $pos;
+  }
+}
+
+@for $size from 0 through 8 {
+  .z-#{$size} {
+    z-index: $size;
+  }
+}

@@ -1,0 +1,13 @@
+@for $rotate from 0 through 12 {
+  .rotate-#{$rotate} {
+    transform: rotate(#{$rotate * 30}deg);
+  }
+}
+
+@each $y in (top, bottom) {
+  @each $x in (right, left) {
+    .origin-#{$y}-#{$x} {
+      transform-origin: #{$y} #{$x};
+    }
+  }
+}
