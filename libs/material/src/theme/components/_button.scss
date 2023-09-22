@@ -2,48 +2,60 @@
 
 /** $_buttonTypes: (basic, raised, stroked, flat, icon, fab, mini-fab); */
 @mixin commonButton() {
+  cursor: pointer;
+
   padding: 0px;
+  padding-left: 1em;
+  padding-right: 1em;
   margin: 0px;
   height: 3em;
   min-width: 80px;
-  padding-left: 1em;
-  padding-right: 1em;
-  cursor: pointer;
+
   background-color: transparent;
   color: transparent;
   font-size: 1em;
+
   border: none;
+  border-radius: 0.2em;
+
   outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
   outline-style: double;
-  border-radius: 0.2em;
 
-  text-transform: capitalize;
   font-family: var(--content-font);
   letter-spacing: 0.1em;
   font-weight: 800;
+  text-transform: capitalize;
+
+  user-select: none;
+  text-align: center;
+  vertical-align: middle;
 }
 
-@each $colorName in $colorNames {
-  .#{$colorName}.basic-button {
+@function createButtonSelector($colorName, $buttonName) {
+  @return '.' + $colorName + '.' + $buttonName;
+}
+
+@mixin basicButton($colorName, $className) {
+  #{$className} {
     @include commonButton();
     color: var(--#{$colorName});
     transition: background-color 100ms ease-in-out,
       outline-color 100ms ease-in-out;
   }
-  .#{$colorName}.basic-button:hover {
+  #{$className}:hover {
     background-color: var(--#{$colorName}-3);
   }
-  .#{$colorName}.basic-button:focus {
+  #{$className}:focus {
     outline-color: var(--#{$colorName}-3);
   }
-  .#{$colorName}.basic-button:active {
+  #{$className}:active {
     outline-color: var(--#{$colorName}-8);
   }
 }
 
-@each $colorName in $colorNames {
-  .#{$colorName}.raised-button {
+@mixin raisedButton($colorName, $selector) {
+  #{$selector} {
     @include commonButton();
     background-color: var(--#{$colorName});
     color: var(--#{$colorName}-face);
@@ -53,21 +65,21 @@
 
     box-shadow: 0px 0px 3px var(--#{$colorName}-8);
   }
-  .#{$colorName}.raised-button:hover {
+  #{$selector}:hover {
     background-color: var(--#{$colorName}-dark);
     box-shadow: -1px 1px 5px var(--#{$colorName}-8),
       0px 0px 7px var(--#{$colorName}-8);
   }
-  .#{$colorName}.raised-button:focus {
+  #{$selector}:focus {
     outline-color: var(--#{$colorName}-dark);
   }
-  .#{$colorName}.raised-button:active {
+  #{$selector}:active {
     background-color: var(--#{$colorName}-light);
   }
 }
 
-@each $colorName in $colorNames {
-  .#{$colorName}.stroked-button {
+@mixin strokedButton($colorName, $className) {
+  #{$className} {
     @include commonButton();
     color: var(--#{$colorName});
     transition: background-color 100ms ease-in-out,
@@ -75,19 +87,19 @@
     border: 0.1em solid var(--#{$colorName}-lighter);
   }
 
-  .#{$colorName}.stroked-button:hover {
+  #{$className}:hover {
     background-color: var(--#{$colorName}-3);
   }
-  .#{$colorName}.stroked-button:focus {
+  #{$className}:focus {
     outline-color: var(--#{$colorName}-3);
   }
-  .#{$colorName}.stroked-button:active {
+  #{$className}:active {
     background-color: var(--#{$colorName}-1);
   }
 }
 
-@each $colorName in $colorNames {
-  .#{$colorName}.flat-button {
+@mixin flatButton($colorName, $className) {
+  #{$className} {
     @include commonButton();
     background-color: var(--#{$colorName});
     color: var(--#{$colorName}-face);
@@ -95,13 +107,79 @@
       outline-color 100ms ease-in-out;
   }
 
-  .#{$colorName}.flat-button:hover {
+  #{$className}:hover {
     background-color: var(--#{$colorName}-dark);
   }
-  .#{$colorName}.flat-button:focus {
+  #{$className}:focus {
     outline-color: var(--#{$colorName}-dark);
   }
-  .#{$colorName}.flat-button:active {
+  #{$className}:active {
     background-color: var(--#{$colorName}-darker);
   }
+}
+
+@each $colorName in $colorNames {
+  .icon-button {
+  }
+}
+
+@each $colorName in $colorNames {
+  .fab-button {
+  }
+}
+@each $colorName in $colorNames {
+  .mini-fab-button {
+  }
+}
+
+@function colorAttr($colorName) {
+  @return '[color="' + $colorName + '"]';
+}
+
+@include basicButton(primary, '.basic-button');
+@include raisedButton(primary, '.raised-button');
+@include flatButton(primary, '.flat-button');
+@include strokedButton(primary, '.stroked-button');
+
+@include basicButton(primary, '[tb-basic-button]');
+@include raisedButton(primary, '[tb-raised-button]');
+@include strokedButton(primary, '[tb-stroked-button]');
+@include flatButton(primary, '[tb-flat-button]');
+
+@each $colorName in $colorNames {
+  /** Button selectors  */
+  @include basicButton($colorName, '[tb-basic-button]' + colorAttr($colorName));
+
+  @include raisedButton(
+    $colorName,
+    '[tb-raised-button]' + colorAttr($colorName)
+  );
+
+  @include flatButton($colorName, '[tb-flat-button]' + colorAttr($colorName));
+
+  @include strokedButton(
+    $colorName,
+    '[tb-stroked-button]' + colorAttr($colorName)
+  );
+
+  /** Button classes  */
+  @include basicButton(
+    $colorName,
+    createButtonSelector($colorName, 'basic-button')
+  );
+
+  @include raisedButton(
+    $colorName,
+    createButtonSelector($colorName, 'raised-button')
+  );
+
+  @include strokedButton(
+    $colorName,
+    createButtonSelector($colorName, 'stroked-button')
+  );
+
+  @include flatButton(
+    $colorName,
+    createButtonSelector($colorName, 'flat-button')
+  );
 }

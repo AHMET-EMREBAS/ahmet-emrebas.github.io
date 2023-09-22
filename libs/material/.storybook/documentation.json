@@ -9,14 +9,14 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-b504762c30ed290fa5cb720c41cb8d6bb3d8e0ec11741ca9fab77d792ca955fef23820381aa25895e37a21a33f379350b45b8fc36267238139774d5054ae7b3a",
+            "id": "component-ButtonComponent-3968c477b23a9ec500050fd0c0698e09418e3cecdaeb339a7d549857f0ceb6616c45c95c1c237af31e8acf40a7f14a1f21a724fc331158126e8ab013e8e0ae95",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb-button",
+            "selector": "[tb-basic-button],[tb-raised-button],[tb-stroked-button],[tb-flat-button]",
             "styleUrls": [
                 "./button.component.scss"
             ],
@@ -44,7 +44,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: '[tb-basic-button],[tb-raised-button],[tb-stroked-button],[tb-flat-button]',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -53,11 +53,56 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"flex row align-flex-start gap-2 wrap\">\n  <div class=\"clock-svg w-100px h-100px\"></div>\n  <div class=\"cube-svg w-100px h-100px\"></div>\n  <div class=\"error-svg w-100px h-100px\"></div>\n  <div class=\"finger-print-svg w-100px h-100px\"></div>\n  <div class=\"inventory-svg w-100px h-100px\"></div>\n  <div class=\"key-svg w-100px h-100px\"></div>\n  <div class=\"placeholder-svg w-100px h-100px\"></div>\n  <div class=\"planning-svg w-100px h-100px\"></div>\n  <div class=\"play-svg w-100px h-100px\"></div>\n  <div class=\"profile-svg w-100px h-100px\"></div>\n  <div class=\"store-svg w-100px h-100px\"></div>\n  <div class=\"study-svg w-100px h-100px\"></div>\n  <div class=\"talk-svg w-100px h-100px\"></div>\n  <div class=\"speak-svg w-100px h-100px\"></div>\n</div>\n"
+            "templateData": "<ng-content></ng-content>\n"
+        },
+        {
+            "name": "ButtonDocComponent",
+            "id": "component-ButtonDocComponent-3a8caa1bf25e20341595761a34ff75fc0dcbe2dcca4b52509e337cfa6e1498435bbd4482506bf38fadf117afd329ce5670d7064acc24b9a18e9a414b1921829d",
+            "file": "libs/material/src/button-doc/button-doc.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-button-doc",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./button-doc.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../button/button.component';\n\n@Component({\n  selector: 'tb-button-doc',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './button-doc.component.html',\n  styles: [],\n})\nexport class ButtonDocComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<div class=\"flex column gap-12 wrap\">\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-basic-button\">\n      Basic Button\n    </h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-basic-button color=\"primary\">basic primary</button>\n      <button tb-basic-button color=\"secondary\">basic secondary</button>\n      <button tb-basic-button color=\"accent\">basic accent</button>\n      <button tb-basic-button color=\"warn\">basic warn</button>\n      <button tb-basic-button color=\"red\">basic red</button>\n      <button tb-basic-button color=\"green\">basic green</button>\n      <button tb-basic-button color=\"black\">basic black</button>\n      <button tb-basic-button color=\"white\">basic white</button>\n    </div>\n  </div>\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-raised-button\">\n      raised Button\n    </h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-raised-button color=\"primary\">raised primary</button>\n      <button tb-raised-button color=\"secondary\">raised secondary</button>\n      <button tb-raised-button color=\"accent\">raised accent</button>\n      <button tb-raised-button color=\"warn\">raised warn</button>\n      <button tb-raised-button color=\"red\">raised red</button>\n      <button tb-raised-button color=\"green\">raised green</button>\n      <button tb-raised-button color=\"black\">raised black</button>\n      <button tb-raised-button color=\"white\">raised white</button>\n    </div>\n  </div>\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-flat-button\">flat Button</h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-flat-button color=\"primary\">flat primary</button>\n      <button tb-flat-button color=\"secondary\">flat secondary</button>\n      <button tb-flat-button color=\"accent\">flat accent</button>\n      <button tb-flat-button color=\"warn\">flat warn</button>\n      <button tb-flat-button color=\"red\">flat red</button>\n      <button tb-flat-button color=\"green\">flat green</button>\n      <button tb-flat-button color=\"black\">flat black</button>\n      <button tb-flat-button color=\"white\">flat white</button>\n    </div>\n  </div>\n  <div class=\"flex column gap-4\">\n    <h1 class=\"title-2 text-center\" substring=\".tb-basic-button\">\n      stroked Button\n    </h1>\n    <div class=\"flex row gap-3 wrap\">\n      <button tb-stroked-button color=\"primary\">stroked primary</button>\n      <button tb-stroked-button color=\"secondary\">stroked secondary</button>\n      <button tb-stroked-button color=\"accent\">stroked accent</button>\n      <button tb-stroked-button color=\"warn\">stroked warn</button>\n      <button tb-stroked-button color=\"red\">stroked red</button>\n      <button tb-stroked-button color=\"green\">stroked green</button>\n      <button tb-stroked-button color=\"black\">stroked black</button>\n      <button tb-stroked-button color=\"white\">stroked white</button>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "ColorsComponent",
-            "id": "component-ColorsComponent-a5d61e926051bcd4f4a4054ec35b829b69a9bd762e27ff61980ee495c740cf83cf6789be4a15df4b4ed7a09b16570b6f1da3e0ec123f552419c688afab917f98",
+            "id": "component-ColorsComponent-9c22d8b09f86288424faad85b5cd673d5e0ae49eb239082cb6dd47891e1eb5f83c7ef5c3bf3650ca383e1df4cd8b1d5b04ad179338a1da358a3b1df5cf5f07fa",
             "file": "libs/material/src/colors/colors.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -87,7 +132,7 @@
                 },
                 {
                     "name": "colorVariants",
-                    "defaultValue": "this.colors.map((e) => [\n    e,\n    ...['light', 'lighter', 'dark', 'darker'].map((v) => e + '-' + v),\n  ])",
+                    "defaultValue": "this.colors.map((e) => [\n    e,\n    ...[\n      'light',\n      'lighter',\n      'dark',\n      'darker',\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7,\n      8,\n      9,\n      10,\n    ].map((v) => e + '-' + v),\n  ])",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -111,11 +156,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-colors',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './colors.component.html',\n  styles: [],\n})\nexport class ColorsComponent {\n  colors = [\n    'primary',\n    'secondary',\n    'accent',\n    'warn',\n    'red',\n    'green',\n    'black',\n    'white',\n  ];\n  colorVariants = this.colors.map((e) => [\n    e,\n    ...['light', 'lighter', 'dark', 'darker'].map((v) => e + '-' + v),\n  ]);\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-colors',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './colors.component.html',\n  styles: [],\n})\nexport class ColorsComponent {\n  colors = [\n    'primary',\n    'secondary',\n    'accent',\n    'warn',\n    'red',\n    'green',\n    'black',\n    'white',\n  ];\n  colorVariants = this.colors.map((e) => [\n    e,\n    ...[\n      'light',\n      'lighter',\n      'dark',\n      'darker',\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7,\n      8,\n      9,\n      10,\n    ].map((v) => e + '-' + v),\n  ]);\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div\n  class=\"flex row gap-10 wrap center font-size-10 comfortaa relative\"\n  *ngFor=\"let variants of colorVariants\"\n>\n  <div\n    class=\"w-3vw h-20vw bg-{{ color }} {{ color }}-face relative\"\n    *ngFor=\"let color of variants\"\n  >\n    <span\n      class=\"font-weight-1000 letter-spacing-3 z-1 rotate-270 w-100per absolute\"\n      style=\"border: 3px solid red; width: 100%\"\n    >\n      .{{ color }}\n    </span>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"flex column gap-3 center\">\n  <div\n    class=\"flex gap-3 wrap\"\n    *ngFor=\"let variants of colorVariants\"\n  >\n    <div\n      class=\"flex  bg-{{ color }} {{ color }}-face text-center center\"\n      *ngFor=\"let color of variants\"\n      style=\"width: 100px; height: 100px\"\n    >\n      <span> .{{ color }} </span>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "FontsComponent",
@@ -156,7 +201,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div class=\"title-1\">Welcome to techbir angular material</div>\n<div class=\"subtitle-1\">Built by Ahmet Emrebas</div>"
+            "templateData": "<article style=\"font-size: 16px\">\n  <h1 class=\"title-1\" substring=\"Built by Ahmet Emrebas\">\n    Welcome to techbir angular material\n  </h1>\n\n  <div class=\"subtitle-1\">Let's learn how to structure our project.</div>\n\n  <div class=\"content-1\">\n    First is first. Let's install required tools and configure them. First is\n    first. Let's install required tools and configure them. First is first.\n    Let's install required tools and configure them. First is first. Let's\n    install required tools and configure them. First is first. Let's install\n    required tools and configure them.\n  </div>\n\n  <hr />\n  <h1 class=\"title-2\" substring=\"Built by Ahmet Emrebas\">\n    Welcome to techbir angular material\n  </h1>\n\n  <div class=\"subtitle-2\">Let's learn how to structure our project.</div>\n\n  <div class=\"content-2\">\n    First is first. Let's install required tools and configure them. First is\n    first. Let's install required tools and configure them. First is first.\n    Let's install required tools and configure them. First is first. Let's\n    install required tools and configure them. First is first. Let's install\n    required tools and configure them.\n  </div>\n</article>\n"
         }
     ],
     "modules": [],
@@ -191,6 +236,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonDocComponent>",
+                "defaultValue": "{\n  component: ButtonDocComponent,\n  title: 'ButtonDocComponent',\n}"
             },
             {
                 "name": "meta",
@@ -386,6 +441,18 @@
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
+            ],
+            "libs/material/src/button-doc/button-doc.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ButtonDocComponent>",
+                    "defaultValue": "{\n  component: ButtonDocComponent,\n  title: 'ButtonDocComponent',\n}"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -437,6 +504,25 @@
         "count": 0,
         "status": "low",
         "files": [
+            {
+                "filePath": "libs/material/src/button-doc/button-doc.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/button-doc/button-doc.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonDocComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "libs/material/src/button/button.component.stories.ts",
                 "type": "variable",

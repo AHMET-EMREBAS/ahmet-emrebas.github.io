@@ -1,11 +1,10 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'tb-button',
+  selector:
+    'button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button]',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  template: '<ng-content ></ng-content>',
 })
 export class ButtonComponent {}
