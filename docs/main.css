@@ -1,0 +1,3323 @@
+/** colors: primary, accent, warn */
+:root {
+  --white: rgb(255, 255, 255);
+  --white-face: var(--black);
+  --white-dark: #e6e6e6;
+  --white-dark-face: var(--black);
+  --white-darker: #cccccc;
+  --white-darker-face: var(--black);
+  --white-light: white;
+  --white-light-face: var(--black);
+  --white-lighter: white;
+  --white-lighter-face: var(--black);
+  --white-1: rgba(255, 255, 255, 0.1);
+  --white-2: rgba(255, 255, 255, 0.2);
+  --white-3: rgba(255, 255, 255, 0.3);
+  --white-4: rgba(255, 255, 255, 0.4);
+  --white-5: rgba(255, 255, 255, 0.5);
+  --white-6: rgba(255, 255, 255, 0.6);
+  --white-7: rgba(255, 255, 255, 0.7);
+  --white-8: rgba(255, 255, 255, 0.8);
+  --white-9: rgba(255, 255, 255, 0.9);
+  --white-10: white;
+  --black: hsl(0, 0%, 0%);
+  --black-face: var(--white);
+  --black-dark: black;
+  --black-dark-face: var(--white);
+  --black-darker: black;
+  --black-darker-face: var(--white);
+  --black-light: #1a1a1a;
+  --black-light-face: var(--white);
+  --black-lighter: #333333;
+  --black-lighter-face: var(--white);
+  --black-1: rgba(0, 0, 0, 0.1);
+  --black-2: rgba(0, 0, 0, 0.2);
+  --black-3: rgba(0, 0, 0, 0.3);
+  --black-4: rgba(0, 0, 0, 0.4);
+  --black-5: rgba(0, 0, 0, 0.5);
+  --black-6: rgba(0, 0, 0, 0.6);
+  --black-7: rgba(0, 0, 0, 0.7);
+  --black-8: rgba(0, 0, 0, 0.8);
+  --black-9: rgba(0, 0, 0, 0.9);
+  --black-10: black;
+  --green: hsl(120, 83%, 42%);
+  --green-face: var(--black);
+  --green-dark: #0e950e;
+  --green-dark-face: var(--white);
+  --green-darker: #0a670a;
+  --green-darker-face: var(--white);
+  --green-light: #1fea1f;
+  --green-light-face: var(--black);
+  --green-lighter: #4eef4e;
+  --green-lighter-face: var(--black);
+  --green-1: rgba(18, 196, 18, 0.1);
+  --green-2: rgba(18, 196, 18, 0.2);
+  --green-3: rgba(18, 196, 18, 0.3);
+  --green-4: rgba(18, 196, 18, 0.4);
+  --green-5: rgba(18, 196, 18, 0.5);
+  --green-6: rgba(18, 196, 18, 0.6);
+  --green-7: rgba(18, 196, 18, 0.7);
+  --green-8: rgba(18, 196, 18, 0.8);
+  --green-9: rgba(18, 196, 18, 0.9);
+  --green-10: #12c412;
+  --red: hsl(348, 83%, 47%);
+  --red-face: var(--white);
+  --red-dark: #ad102f;
+  --red-dark-face: var(--white);
+  --red-darker: #7e0c23;
+  --red-darker-face: var(--white);
+  --red-light: #ec365b;
+  --red-light-face: var(--white);
+  --red-lighter: #f16581;
+  --red-lighter-face: var(--black);
+  --red-1: rgba(219, 20, 60, 0.1);
+  --red-2: rgba(219, 20, 60, 0.2);
+  --red-3: rgba(219, 20, 60, 0.3);
+  --red-4: rgba(219, 20, 60, 0.4);
+  --red-5: rgba(219, 20, 60, 0.5);
+  --red-6: rgba(219, 20, 60, 0.6);
+  --red-7: rgba(219, 20, 60, 0.7);
+  --red-8: rgba(219, 20, 60, 0.8);
+  --red-9: rgba(219, 20, 60, 0.9);
+  --red-10: #db143c;
+}
+
+.not.primary {
+  background-color: var(--secondary) !important;
+  color: var(--secondary-face) !important;
+}
+
+.not.secondary {
+  background-color: var(--primary) !important;
+  color: var(--primary-face) !important;
+}
+
+.not.accent {
+  background-color: var(--primary) !important;
+  color: var(--primary-face) !important;
+}
+
+.not.white {
+  background-color: var(--black) !important;
+  color: var(--black-face) !important;
+}
+
+.not.black {
+  background-color: var(--white) !important;
+  color: var(--white-face) !important;
+}
+
+.not.red {
+  background-color: var(--white) !important;
+  color: var(--white-face) !important;
+}
+
+.not.green {
+  background-color: var(--black) !important;
+  color: var(--black-face) !important;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.column-reverse {
+  flex-direction: column-reverse;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.justify-baseline {
+  justify-content: baseline;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.justify-first baseline {
+  justify-content: first baseline;
+}
+
+.justify-flex-end {
+  justify-content: flex-end;
+}
+
+.justify-flex-start {
+  justify-content: flex-start;
+}
+
+.justify-last baseline {
+  justify-content: last baseline;
+}
+
+.justify-left {
+  justify-content: left;
+}
+
+.justify-right {
+  justify-content: right;
+}
+
+.justify-safe {
+  justify-content: safe;
+}
+
+.justify-space-around {
+  justify-content: space-around;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
+.justify-stretch {
+  justify-content: stretch;
+}
+
+.justify-unsafe {
+  justify-content: unsafe;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+.align-flex-start {
+  align-items: flex-start;
+}
+
+.align-flex-end {
+  align-items: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-baseline {
+  align-items: baseline;
+}
+
+.align-first baseline {
+  align-items: first baseline;
+}
+
+.align-last baseline {
+  align-items: last baseline;
+}
+
+.align-content-stretch {
+  align-content: stretch;
+}
+
+.align-content-flex-start {
+  align-content: flex-start;
+}
+
+.align-content-flex-end {
+  align-content: flex-end;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.align-content-space-between {
+  align-content: space-between;
+}
+
+.align-content-space-around {
+  align-content: space-around;
+}
+
+.align-content-space-evenly {
+  align-content: space-evenly;
+}
+
+.align-content-start {
+  align-content: start;
+}
+
+.align-content-end {
+  align-content: end;
+}
+
+.align-content-baseline {
+  align-content: baseline;
+}
+
+.gap-1 {
+  row-gap: 0.5em;
+  column-gap: 0.5em;
+}
+
+.row-gap-1 {
+  row-gap: 0.5em;
+}
+
+.column-gap-1 {
+  column-gap: 0.5em;
+}
+
+.gap-2 {
+  row-gap: 1em;
+  column-gap: 1em;
+}
+
+.row-gap-2 {
+  row-gap: 1em;
+}
+
+.column-gap-2 {
+  column-gap: 1em;
+}
+
+.gap-3 {
+  row-gap: 1.5em;
+  column-gap: 1.5em;
+}
+
+.row-gap-3 {
+  row-gap: 1.5em;
+}
+
+.column-gap-3 {
+  column-gap: 1.5em;
+}
+
+.gap-4 {
+  row-gap: 2em;
+  column-gap: 2em;
+}
+
+.row-gap-4 {
+  row-gap: 2em;
+}
+
+.column-gap-4 {
+  column-gap: 2em;
+}
+
+.gap-5 {
+  row-gap: 2.5em;
+  column-gap: 2.5em;
+}
+
+.row-gap-5 {
+  row-gap: 2.5em;
+}
+
+.column-gap-5 {
+  column-gap: 2.5em;
+}
+
+.gap-6 {
+  row-gap: 3em;
+  column-gap: 3em;
+}
+
+.row-gap-6 {
+  row-gap: 3em;
+}
+
+.column-gap-6 {
+  column-gap: 3em;
+}
+
+.gap-7 {
+  row-gap: 3.5em;
+  column-gap: 3.5em;
+}
+
+.row-gap-7 {
+  row-gap: 3.5em;
+}
+
+.column-gap-7 {
+  column-gap: 3.5em;
+}
+
+.gap-8 {
+  row-gap: 4em;
+  column-gap: 4em;
+}
+
+.row-gap-8 {
+  row-gap: 4em;
+}
+
+.column-gap-8 {
+  column-gap: 4em;
+}
+
+.gap-9 {
+  row-gap: 4.5em;
+  column-gap: 4.5em;
+}
+
+.row-gap-9 {
+  row-gap: 4.5em;
+}
+
+.column-gap-9 {
+  column-gap: 4.5em;
+}
+
+.gap-10 {
+  row-gap: 5em;
+  column-gap: 5em;
+}
+
+.row-gap-10 {
+  row-gap: 5em;
+}
+
+.column-gap-10 {
+  column-gap: 5em;
+}
+
+.gap-11 {
+  row-gap: 5.5em;
+  column-gap: 5.5em;
+}
+
+.row-gap-11 {
+  row-gap: 5.5em;
+}
+
+.column-gap-11 {
+  column-gap: 5.5em;
+}
+
+.gap-12 {
+  row-gap: 6em;
+  column-gap: 6em;
+}
+
+.row-gap-12 {
+  row-gap: 6em;
+}
+
+.column-gap-12 {
+  column-gap: 6em;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
+.order-4 {
+  order: 4;
+}
+
+.order-5 {
+  order: 5;
+}
+
+.order-6 {
+  order: 6;
+}
+
+.order-7 {
+  order: 7;
+}
+
+.order-8 {
+  order: 8;
+}
+
+.order-9 {
+  order: 9;
+}
+
+.order-10 {
+  order: 10;
+}
+
+.order-11 {
+  order: 11;
+}
+
+.order-12 {
+  order: 12;
+}
+
+.grow-1 {
+  flex-grow: 1;
+}
+
+.grow-2 {
+  flex-grow: 2;
+}
+
+.grow-3 {
+  flex-grow: 3;
+}
+
+.grow-4 {
+  flex-grow: 4;
+}
+
+.grow-5 {
+  flex-grow: 5;
+}
+
+.grow-6 {
+  flex-grow: 6;
+}
+
+.grow-7 {
+  flex-grow: 7;
+}
+
+.grow-8 {
+  flex-grow: 8;
+}
+
+.grow-9 {
+  flex-grow: 9;
+}
+
+.grow-10 {
+  flex-grow: 10;
+}
+
+.grow-11 {
+  flex-grow: 11;
+}
+
+.grow-12 {
+  flex-grow: 12;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex.center {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.text-center {
+  text-align: center;
+  vertical-align: center;
+}
+
+@font-face {
+  font-family: Handjet;
+  src: url('Handjet-VariableFont.ttf');
+}
+@font-face {
+  font-family: Roboto;
+  src: url('RobotoFlex.ttf');
+}
+@font-face {
+  font-family: Special Elite;
+  src: url('SpecialElite-Regular.ttf');
+}
+@font-face {
+  font-family: Josefin Sans;
+  src: url('JosefinSans-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family: Josefin Sans;
+  font-style: italic;
+  src: url('JosefinSans-Italic-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family: Lobster;
+  src: url('Lobster-Regular.ttf');
+}
+@font-face {
+  font-family: Comfortaa;
+  src: url('Comfortaa-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family: Rubik Dirt;
+  src: url('RubikDirt-Regular.ttf');
+}
+@font-face {
+  font-family: Rubik Iso;
+  src: url('RubikIso-Regular.ttf');
+}
+@font-face {
+  font-family: Black Ops One;
+  src: url('BlackOpsOne-Regular.ttf');
+}
+@font-face {
+  font-family: Concert One;
+  src: url('ConcertOne-Regular.ttf');
+}
+@font-face {
+  font-family: Tourney;
+  src: url('Tourney-VariableFont_wdth.ttf');
+}
+@font-face {
+  font-family: Tourney;
+  font-style: italic;
+  src: url('Tourney-Italic-VariableFont_wdth.ttf');
+}
+@font-face {
+  font-family: Dancing Script;
+  src: url('DancingScript-VariableFont_wght.ttf');
+}
+:root {
+  --font-title: Comfortaa, Verdana;
+  --font-content: Roboto, Verdana;
+  --font-button: Roboto, Verdana;
+  --font-alert: Comfortaa, Roboto, Verdana;
+}
+
+/** Fonts */
+:root {
+  --font-roboto: $value;
+  --font-comfortaa: $value;
+  --font-josefin-sans: $value;
+  --font-concert-one: $value;
+  --font-special-elite: $value;
+  --font-tourney: $value;
+  --font-rubik-iso: $value;
+  --font-rubik-dirt: $value;
+  --font-lobster: $value;
+  --font-dancing-script: $value;
+  --font-black-ops-one: $value;
+  --font-handjet: $value;
+  --font-icon: $value;
+}
+
+.clear-margins {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bolder {
+  font-weight: bolder;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.overline {
+  text-decoration: overline;
+}
+
+.dashed {
+  -webkit-text-decoration: dashed;
+          text-decoration: dashed;
+}
+
+.font-weight-100 {
+  font-weight: 100;
+}
+
+.font-weight-200 {
+  font-weight: 200;
+}
+
+.font-weight-300 {
+  font-weight: 300;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-weight-700 {
+  font-weight: 700;
+}
+
+.font-weight-800 {
+  font-weight: 800;
+}
+
+.font-weight-900 {
+  font-weight: 900;
+}
+
+.font-weight-1000 {
+  font-weight: 1000;
+}
+
+.title-1,
+.title-2,
+.subtitle-1,
+.subtitle-2 {
+  font-family: var(--title-font);
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 1.3em;
+  text-transform: capitalize;
+}
+
+.title-1,
+.title-2 {
+  font-weight: 800;
+}
+
+.title-1 {
+  font-size: 2.25em;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+
+.title-2 {
+  font-size: 1.5em;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+
+.title-1::before,
+.title-2::before {
+  content: attr(substring);
+  position: absolute;
+  left: 0.2em;
+  bottom: 0px;
+  font-size: 0.6em;
+  font-weight: 300;
+  opacity: 0.6;
+  letter-spacing: 0.3em;
+  transform: translateY(100%);
+}
+
+.subtitle-1,
+.subtitle-2 {
+  font-weight: 500;
+}
+
+.subtitle-1 {
+  font-size: 1.5em;
+  line-height: 1.2;
+  letter-spacing: 0.3em;
+}
+
+.subtitle-2 {
+  font-size: 1em;
+  line-height: 1.2;
+  letter-spacing: 0.3em;
+}
+
+.content-1,
+.content-2 {
+  line-height: 1.6;
+  font-weight: 300;
+  font-family: var(--content-font);
+  letter-spacing: 0.1em;
+  max-width: 40em;
+  text-justify: distribute;
+  text-align: justify;
+  text-indent: 3em;
+}
+
+.content-1 {
+  font-size: 1.2em;
+}
+
+.contenet-2 {
+  font-size: 0.6em;
+}
+
+@font-face {
+  font-family: Icon;
+  font-style: normal;
+  font-weight: 100 700;
+  src: url('material-symbols.woff2') format("woff2");
+}
+.icon {
+  position: relative;
+  font-family: Icon;
+  font-weight: normal;
+  font-style: normal;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.icon.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.w-1 {
+  width: 8.3333333333%;
+}
+
+.w-2 {
+  width: 16.6666666667%;
+}
+
+.w-3 {
+  width: 25%;
+}
+
+.w-4 {
+  width: 33.3333333333%;
+}
+
+.w-5 {
+  width: 41.6666666667%;
+}
+
+.w-6 {
+  width: 50%;
+}
+
+.w-7 {
+  width: 58.3333333333%;
+}
+
+.w-8 {
+  width: 66.6666666667%;
+}
+
+.w-9 {
+  width: 75%;
+}
+
+.w-10 {
+  width: 83.3333333333%;
+}
+
+.w-11 {
+  width: 91.6666666667%;
+}
+
+.w-12 {
+  width: 100%;
+}
+
+.rotate-0 {
+  transform: rotate(0deg);
+}
+
+.rotate-1 {
+  transform: rotate(30deg);
+}
+
+.rotate-2 {
+  transform: rotate(60deg);
+}
+
+.rotate-3 {
+  transform: rotate(90deg);
+}
+
+.rotate-4 {
+  transform: rotate(120deg);
+}
+
+.rotate-5 {
+  transform: rotate(150deg);
+}
+
+.rotate-6 {
+  transform: rotate(180deg);
+}
+
+.rotate-7 {
+  transform: rotate(210deg);
+}
+
+.rotate-8 {
+  transform: rotate(240deg);
+}
+
+.rotate-9 {
+  transform: rotate(270deg);
+}
+
+.rotate-10 {
+  transform: rotate(300deg);
+}
+
+.rotate-11 {
+  transform: rotate(330deg);
+}
+
+.rotate-12 {
+  transform: rotate(360deg);
+}
+
+.origin-top-right {
+  transform-origin: top right;
+}
+
+.origin-top-left {
+  transform-origin: top left;
+}
+
+.origin-bottom-right {
+  transform-origin: bottom right;
+}
+
+.origin-bottom-left {
+  transform-origin: bottom left;
+}
+
+.static {
+  position: static;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-3 {
+  z-index: 3;
+}
+
+.z-4 {
+  z-index: 4;
+}
+
+.z-5 {
+  z-index: 5;
+}
+
+.z-6 {
+  z-index: 6;
+}
+
+.z-7 {
+  z-index: 7;
+}
+
+.z-8 {
+  z-index: 8;
+}
+
+.z-9 {
+  z-index: 9;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-11 {
+  z-index: 11;
+}
+
+.z-12 {
+  z-index: 12;
+}
+
+:root {
+  --box-border-radius: 0.3em;
+  --button-border-radius: 0.3em;
+  --button-shadow: -1px 1px 2px 1px;
+}
+
+/** Initial value */
+.basic {
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--primary);
+  border: none;
+}
+
+.inbox {
+  color: var(--primary-face);
+  background-color: var(--primary);
+  box-shadow: var(--button-shadow) var(--primary-face);
+  border: none;
+}
+
+/** Initial value */
+.raised {
+  color: var(--primary-face);
+  background-color: var(--primary);
+  box-shadow: var(--button-shadow) var(--primary-dark);
+  border: none;
+}
+
+/** Initial value */
+.flat {
+  background-color: var(--primary);
+  color: var(--primary-face);
+  border: none;
+}
+
+/** Initial value */
+.stroked {
+  color: var(--primary);
+  background-color: hsla(0, 0%, 0%, 0);
+  border: 1px solid var(--primary-6);
+}
+
+/** Initial value */
+.button {
+  cursor: pointer;
+  padding: 0px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0px;
+  height: 3em;
+  width: max-content;
+  font-size: 1em;
+  border-radius: var(--button-border-radius);
+  outline-width: 0.3em;
+  outline-color: rgba(255, 255, 255, 0);
+  letter-spacing: 0.1em;
+  font-family: var(--font-button);
+  font-weight: bolder;
+  text-transform: capitalize;
+  -webkit-user-select: none;
+          user-select: none;
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 200ms ease-in-out, outline-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+/** Initial value */
+.icon-button {
+  cursor: pointer;
+  padding: 0px;
+  margin: 0px;
+  outline-width: 0.3em;
+  outline-color: rgba(255, 255, 255, 0);
+  font-family: Icon;
+  font-size: 2em;
+  padding: 0.2em;
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 100%;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+          user-select: none;
+  transition: background-color 200ms ease-in-out, outline-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.combined-button {
+  cursor: pointer;
+  padding: 0px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0px;
+  height: 3em;
+  width: max-content;
+  font-size: 1em;
+  border-radius: var(--button-border-radius);
+  outline-width: 0.3em;
+  outline-color: rgba(255, 255, 255, 0);
+  letter-spacing: 0.1em;
+  font-family: var(--font-button);
+  font-weight: bolder;
+  text-transform: capitalize;
+  -webkit-user-select: none;
+          user-select: none;
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 200ms ease-in-out, outline-color 200ms ease-in-out, color 200ms ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.combined-button .icon {
+  font-size: 1.3em;
+}
+
+/** For each color */
+.button.stroked.primary,
+.button.basic.primary {
+  color: var(--primary);
+}
+
+.button.flat.primary,
+.button.raised.primary {
+  background-color: var(--primary);
+  color: var(--primary-face);
+}
+
+.button.raised.primary {
+  box-shadow: var(--button-shadow) var(--primary-dark);
+}
+
+.button.inbox.primary {
+  box-shadow: 0px 0px 2px 1px var(--primary-darker);
+  background-color: var(--primary-face);
+  color: var(--primary-darker);
+}
+
+.button.stroked.primary {
+  border-color: var(--primary-6);
+}
+
+.primary.basic:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.basic:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.basic:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.flat:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.flat:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.flat:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.raised:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.raised:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.raised:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.stroked:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.stroked:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.stroked:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.inbox:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.inbox:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.inbox:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.button.stroked.secondary,
+.button.basic.secondary {
+  color: var(--secondary);
+}
+
+.button.flat.secondary,
+.button.raised.secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-face);
+}
+
+.button.raised.secondary {
+  box-shadow: var(--button-shadow) var(--secondary-dark);
+}
+
+.button.inbox.secondary {
+  box-shadow: 0px 0px 2px 1px var(--secondary-darker);
+  background-color: var(--secondary-face);
+  color: var(--secondary-darker);
+}
+
+.button.stroked.secondary {
+  border-color: var(--secondary-6);
+}
+
+.secondary.basic:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.basic:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.basic:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.flat:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.flat:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.flat:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.raised:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.raised:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.raised:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.stroked:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.stroked:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.stroked:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.inbox:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.inbox:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.inbox:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.button.stroked.accent,
+.button.basic.accent {
+  color: var(--accent);
+}
+
+.button.flat.accent,
+.button.raised.accent {
+  background-color: var(--accent);
+  color: var(--accent-face);
+}
+
+.button.raised.accent {
+  box-shadow: var(--button-shadow) var(--accent-dark);
+}
+
+.button.inbox.accent {
+  box-shadow: 0px 0px 2px 1px var(--accent-darker);
+  background-color: var(--accent-face);
+  color: var(--accent-darker);
+}
+
+.button.stroked.accent {
+  border-color: var(--accent-6);
+}
+
+.accent.basic:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.basic:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.basic:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.flat:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.flat:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.flat:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.raised:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.raised:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.raised:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.stroked:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.stroked:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.stroked:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.inbox:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.inbox:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.inbox:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.button.stroked.warn,
+.button.basic.warn {
+  color: var(--warn);
+}
+
+.button.flat.warn,
+.button.raised.warn {
+  background-color: var(--warn);
+  color: var(--warn-face);
+}
+
+.button.raised.warn {
+  box-shadow: var(--button-shadow) var(--warn-dark);
+}
+
+.button.inbox.warn {
+  box-shadow: 0px 0px 2px 1px var(--warn-darker);
+  background-color: var(--warn-face);
+  color: var(--warn-darker);
+}
+
+.button.stroked.warn {
+  border-color: var(--warn-6);
+}
+
+.warn.basic:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.basic:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.basic:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.flat:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.flat:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.flat:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.raised:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.raised:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.raised:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.stroked:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.stroked:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.stroked:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.inbox:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.inbox:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.inbox:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.button.stroked.black,
+.button.basic.black {
+  color: var(--black);
+}
+
+.button.flat.black,
+.button.raised.black {
+  background-color: var(--black);
+  color: var(--black-face);
+}
+
+.button.raised.black {
+  box-shadow: var(--button-shadow) var(--black-dark);
+}
+
+.button.inbox.black {
+  box-shadow: 0px 0px 2px 1px var(--black-darker);
+  background-color: var(--black-face);
+  color: var(--black-darker);
+}
+
+.button.stroked.black {
+  border-color: var(--black-6);
+}
+
+.black.basic:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.basic:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.basic:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.flat:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.flat:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.flat:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.raised:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.raised:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.raised:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.stroked:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.stroked:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.stroked:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.inbox:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.inbox:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.inbox:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.button.stroked.white,
+.button.basic.white {
+  color: var(--white);
+}
+
+.button.flat.white,
+.button.raised.white {
+  background-color: var(--white);
+  color: var(--white-face);
+}
+
+.button.raised.white {
+  box-shadow: var(--button-shadow) var(--white-dark);
+}
+
+.button.inbox.white {
+  box-shadow: 0px 0px 2px 1px var(--white-darker);
+  background-color: var(--white-face);
+  color: var(--white-darker);
+}
+
+.button.stroked.white {
+  border-color: var(--white-6);
+}
+
+.white.basic:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.basic:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.basic:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.flat:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.flat:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.flat:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.raised:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.raised:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.raised:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.stroked:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.stroked:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.stroked:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.inbox:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.inbox:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.inbox:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.button.stroked.red,
+.button.basic.red {
+  color: var(--red);
+}
+
+.button.flat.red,
+.button.raised.red {
+  background-color: var(--red);
+  color: var(--red-face);
+}
+
+.button.raised.red {
+  box-shadow: var(--button-shadow) var(--red-dark);
+}
+
+.button.inbox.red {
+  box-shadow: 0px 0px 2px 1px var(--red-darker);
+  background-color: var(--red-face);
+  color: var(--red-darker);
+}
+
+.button.stroked.red {
+  border-color: var(--red-6);
+}
+
+.red.basic:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.basic:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.basic:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.flat:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.flat:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.flat:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.raised:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.raised:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.raised:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.stroked:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.stroked:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.stroked:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.inbox:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.inbox:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.inbox:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.button.stroked.green,
+.button.basic.green {
+  color: var(--green);
+}
+
+.button.flat.green,
+.button.raised.green {
+  background-color: var(--green);
+  color: var(--green-face);
+}
+
+.button.raised.green {
+  box-shadow: var(--button-shadow) var(--green-dark);
+}
+
+.button.inbox.green {
+  box-shadow: 0px 0px 2px 1px var(--green-darker);
+  background-color: var(--green-face);
+  color: var(--green-darker);
+}
+
+.button.stroked.green {
+  border-color: var(--green-6);
+}
+
+.green.basic:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.basic:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.basic:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.flat:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.flat:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.flat:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.raised:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.raised:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.raised:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.stroked:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.stroked:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.stroked:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.inbox:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.inbox:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.inbox:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+/** For each color */
+.icon-button.stroked.primary,
+.icon-button.basic.primary {
+  color: var(--primary);
+}
+
+.icon-button.flat.primary,
+.icon-button.raised.primary {
+  background-color: var(--primary);
+  color: var(--primary-face);
+}
+
+.icon-button.raised.primary {
+  box-shadow: var(--button-shadow) var(--primary-dark);
+}
+
+.icon-button.inbox.primary {
+  box-shadow: 0px 0px 2px 1px var(--primary-darker);
+  background-color: var(--primary-face);
+  color: var(--primary-darker);
+}
+
+.icon-button.stroked.primary {
+  border-color: var(--primary-6);
+}
+
+.primary.basic:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.basic:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.basic:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.flat:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.flat:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.flat:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.raised:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.raised:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.raised:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.stroked:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.stroked:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.stroked:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.primary.inbox:hover:active {
+  background-color: var(--primary-light);
+  color: var(--primary-face);
+}
+
+.primary.inbox:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
+}
+
+.primary.inbox:focus {
+  outline: 3px solid var(--primary-lighter);
+}
+
+.icon-button.stroked.secondary,
+.icon-button.basic.secondary {
+  color: var(--secondary);
+}
+
+.icon-button.flat.secondary,
+.icon-button.raised.secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-face);
+}
+
+.icon-button.raised.secondary {
+  box-shadow: var(--button-shadow) var(--secondary-dark);
+}
+
+.icon-button.inbox.secondary {
+  box-shadow: 0px 0px 2px 1px var(--secondary-darker);
+  background-color: var(--secondary-face);
+  color: var(--secondary-darker);
+}
+
+.icon-button.stroked.secondary {
+  border-color: var(--secondary-6);
+}
+
+.secondary.basic:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.basic:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.basic:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.flat:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.flat:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.flat:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.raised:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.raised:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.raised:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.stroked:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.stroked:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.stroked:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.secondary.inbox:hover:active {
+  background-color: var(--secondary-light);
+  color: var(--secondary-face);
+}
+
+.secondary.inbox:hover {
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
+}
+
+.secondary.inbox:focus {
+  outline: 3px solid var(--secondary-lighter);
+}
+
+.icon-button.stroked.accent,
+.icon-button.basic.accent {
+  color: var(--accent);
+}
+
+.icon-button.flat.accent,
+.icon-button.raised.accent {
+  background-color: var(--accent);
+  color: var(--accent-face);
+}
+
+.icon-button.raised.accent {
+  box-shadow: var(--button-shadow) var(--accent-dark);
+}
+
+.icon-button.inbox.accent {
+  box-shadow: 0px 0px 2px 1px var(--accent-darker);
+  background-color: var(--accent-face);
+  color: var(--accent-darker);
+}
+
+.icon-button.stroked.accent {
+  border-color: var(--accent-6);
+}
+
+.accent.basic:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.basic:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.basic:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.flat:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.flat:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.flat:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.raised:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.raised:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.raised:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.stroked:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.stroked:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.stroked:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.accent.inbox:hover:active {
+  background-color: var(--accent-light);
+  color: var(--accent-face);
+}
+
+.accent.inbox:hover {
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
+}
+
+.accent.inbox:focus {
+  outline: 3px solid var(--accent-lighter);
+}
+
+.icon-button.stroked.warn,
+.icon-button.basic.warn {
+  color: var(--warn);
+}
+
+.icon-button.flat.warn,
+.icon-button.raised.warn {
+  background-color: var(--warn);
+  color: var(--warn-face);
+}
+
+.icon-button.raised.warn {
+  box-shadow: var(--button-shadow) var(--warn-dark);
+}
+
+.icon-button.inbox.warn {
+  box-shadow: 0px 0px 2px 1px var(--warn-darker);
+  background-color: var(--warn-face);
+  color: var(--warn-darker);
+}
+
+.icon-button.stroked.warn {
+  border-color: var(--warn-6);
+}
+
+.warn.basic:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.basic:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.basic:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.flat:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.flat:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.flat:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.raised:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.raised:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.raised:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.stroked:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.stroked:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.stroked:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.warn.inbox:hover:active {
+  background-color: var(--warn-light);
+  color: var(--warn-face);
+}
+
+.warn.inbox:hover {
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
+}
+
+.warn.inbox:focus {
+  outline: 3px solid var(--warn-lighter);
+}
+
+.icon-button.stroked.black,
+.icon-button.basic.black {
+  color: var(--black);
+}
+
+.icon-button.flat.black,
+.icon-button.raised.black {
+  background-color: var(--black);
+  color: var(--black-face);
+}
+
+.icon-button.raised.black {
+  box-shadow: var(--button-shadow) var(--black-dark);
+}
+
+.icon-button.inbox.black {
+  box-shadow: 0px 0px 2px 1px var(--black-darker);
+  background-color: var(--black-face);
+  color: var(--black-darker);
+}
+
+.icon-button.stroked.black {
+  border-color: var(--black-6);
+}
+
+.black.basic:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.basic:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.basic:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.flat:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.flat:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.flat:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.raised:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.raised:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.raised:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.stroked:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.stroked:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.stroked:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.black.inbox:hover:active {
+  background-color: var(--black-light);
+  color: var(--black-face);
+}
+
+.black.inbox:hover {
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
+}
+
+.black.inbox:focus {
+  outline: 3px solid var(--black-lighter);
+}
+
+.icon-button.stroked.white,
+.icon-button.basic.white {
+  color: var(--white);
+}
+
+.icon-button.flat.white,
+.icon-button.raised.white {
+  background-color: var(--white);
+  color: var(--white-face);
+}
+
+.icon-button.raised.white {
+  box-shadow: var(--button-shadow) var(--white-dark);
+}
+
+.icon-button.inbox.white {
+  box-shadow: 0px 0px 2px 1px var(--white-darker);
+  background-color: var(--white-face);
+  color: var(--white-darker);
+}
+
+.icon-button.stroked.white {
+  border-color: var(--white-6);
+}
+
+.white.basic:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.basic:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.basic:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.flat:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.flat:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.flat:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.raised:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.raised:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.raised:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.stroked:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.stroked:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.stroked:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.white.inbox:hover:active {
+  background-color: var(--white-light);
+  color: var(--white-face);
+}
+
+.white.inbox:hover {
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
+}
+
+.white.inbox:focus {
+  outline: 3px solid var(--white-lighter);
+}
+
+.icon-button.stroked.red,
+.icon-button.basic.red {
+  color: var(--red);
+}
+
+.icon-button.flat.red,
+.icon-button.raised.red {
+  background-color: var(--red);
+  color: var(--red-face);
+}
+
+.icon-button.raised.red {
+  box-shadow: var(--button-shadow) var(--red-dark);
+}
+
+.icon-button.inbox.red {
+  box-shadow: 0px 0px 2px 1px var(--red-darker);
+  background-color: var(--red-face);
+  color: var(--red-darker);
+}
+
+.icon-button.stroked.red {
+  border-color: var(--red-6);
+}
+
+.red.basic:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.basic:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.basic:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.flat:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.flat:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.flat:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.raised:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.raised:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.raised:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.stroked:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.stroked:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.stroked:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.red.inbox:hover:active {
+  background-color: var(--red-light);
+  color: var(--red-face);
+}
+
+.red.inbox:hover {
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
+}
+
+.red.inbox:focus {
+  outline: 3px solid var(--red-lighter);
+}
+
+.icon-button.stroked.green,
+.icon-button.basic.green {
+  color: var(--green);
+}
+
+.icon-button.flat.green,
+.icon-button.raised.green {
+  background-color: var(--green);
+  color: var(--green-face);
+}
+
+.icon-button.raised.green {
+  box-shadow: var(--button-shadow) var(--green-dark);
+}
+
+.icon-button.inbox.green {
+  box-shadow: 0px 0px 2px 1px var(--green-darker);
+  background-color: var(--green-face);
+  color: var(--green-darker);
+}
+
+.icon-button.stroked.green {
+  border-color: var(--green-6);
+}
+
+.green.basic:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.basic:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.basic:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.flat:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.flat:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.flat:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.raised:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.raised:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.raised:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.stroked:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.stroked:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.stroked:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.green.inbox:hover:active {
+  background-color: var(--green-light);
+  color: var(--green-face);
+}
+
+.green.inbox:hover {
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
+}
+
+.green.inbox:focus {
+  outline: 3px solid var(--green-lighter);
+}
+
+.small.icon-button {
+  font-size: 1em;
+}
+
+.small.button {
+  font-size: 0.8em;
+}
+
+.big.icon-button {
+  font-size: 3em;
+}
+
+.big.button {
+  font-size: 3em;
+}
+
+[role=alert] {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  letter-spacing: 2px;
+  font-family: var(--font-alert);
+  font-size: 1.3em;
+  line-height: 2.6em;
+  background-color: var(--primary);
+  color: var(--primary-face);
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+[role=alert] > .icon {
+  font-size: 1.3em;
+}
+
+.primary[role=alert] {
+  background-color: var(--primary);
+  color: var(--primary-face);
+}
+
+.secondary[role=alert] {
+  background-color: var(--secondary);
+  color: var(--secondary-face);
+}
+
+.accent[role=alert] {
+  background-color: var(--accent);
+  color: var(--accent-face);
+}
+
+.warn[role=alert] {
+  background-color: var(--warn);
+  color: var(--warn-face);
+}
+
+.black[role=alert] {
+  background-color: var(--black);
+  color: var(--black-face);
+}
+
+.white[role=alert] {
+  background-color: var(--white);
+  color: var(--white-face);
+}
+
+.red[role=alert] {
+  background-color: var(--red);
+  color: var(--red-face);
+}
+
+.green[role=alert] {
+  background-color: var(--green);
+  color: var(--green-face);
+}
+
+[aria-label][tooltip-position] {
+  position: relative;
+}
+
+[aria-label=""][tooltip-position]::before,
+[aria-label=""][tooltip-position]::after {
+  visibility: hidden !important;
+  position: absolute !important;
+}
+
+[aria-label][tooltip-position]::before,
+[aria-label][tooltip-position]::after {
+  --scale: 0;
+  position: absolute;
+  font-size: 1em;
+  line-height: 1em;
+  transition: transform 100ms;
+  transition-timing-function: linear;
+  font-family: var(--font-content) !important;
+}
+
+[aria-label][tooltip-position]:hover::before,
+[aria-label][tooltip-position]:hover::after {
+  --scale: 1;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.45, 1.93);
+}
+
+[aria-label][tooltip-position]::before {
+  content: attr(aria-label);
+  background-color: var(--tooltip-color);
+  color: var(--tooltip-color-face);
+  padding: 0.5em;
+  border-radius: 0.3em;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-wrap: nowrap;
+  text-align: center;
+  transform: scale(0);
+}
+
+[aria-label][tooltip-position]::after {
+  content: "";
+  border: var(--arrow-size) solid transparent;
+}
+
+[aria-label][tooltip-position]::before,
+[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--primary-dark);
+  --arrow-size: 0.5rem;
+  --scale: 0;
+  z-index: 1;
+  font-size: 1rem;
+  transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
+}
+
+/** Right  */
+[aria-label][tooltip-position=right]::before {
+  --translate-x: calc(100% + var(--arrow-size));
+  --translate-y: -50%;
+  right: 0px;
+  top: 50%;
+  transform-origin: left center;
+}
+
+[aria-label][tooltip-position=right]::after {
+  --translate-x: calc(var(--arrow-size));
+  --translate-y: -50%;
+  right: 0px;
+  top: 50%;
+  border-right-color: var(--tooltip-color);
+  transform-origin: left center;
+}
+
+/** Bottom  */
+[aria-label][tooltip-position=bottom]::before {
+  --translate-x: -50%;
+  --translate-y: calc(100% + var(--arrow-size));
+  bottom: 0px;
+  left: 50%;
+  transform-origin: top center;
+}
+
+[aria-label][tooltip-position=bottom]::after {
+  --translate-x: -50%;
+  --translate-y: calc(var(--arrow-size));
+  left: 50%;
+  bottom: 0px;
+  border-bottom-color: var(--tooltip-color);
+  transform-origin: top center;
+}
+
+/** Top */
+[aria-label][tooltip-position=top]::before {
+  position: absolute;
+  --translate-x: -50%;
+  --translate-y: calc(-100% - var(--arrow-size));
+  top: 0px;
+  left: 50%;
+  transform-origin: bottom center;
+}
+
+[aria-label][tooltip-position=top]::after {
+  --translate-x: -50%;
+  --translate-y: calc(-1 * var(--arrow-size));
+  top: 0px;
+  left: 50%;
+  border-top-color: var(--tooltip-color);
+  transform-origin: bottom center;
+}
+
+/** Left */
+[aria-label][tooltip-position=left]::before {
+  --translate-x: calc(-100% - var(--arrow-size));
+  --translate-y: -50%;
+  left: 0px;
+  top: 50%;
+  transform-origin: right center;
+}
+
+[aria-label][tooltip-position=left]::after {
+  --translate-x: calc(-1 * var(--arrow-size));
+  --translate-y: -50%;
+  left: 0px;
+  top: 50%;
+  border-left-color: var(--tooltip-color);
+  transform-origin: right center;
+}
+
+.primary[aria-label][tooltip-position]::before,
+.primary[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--primary-dark);
+  --tooltip-color-face:var(--primary-face);
+}
+
+.secondary[aria-label][tooltip-position]::before,
+.secondary[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--secondary-dark);
+  --tooltip-color-face:var(--secondary-face);
+}
+
+.accent[aria-label][tooltip-position]::before,
+.accent[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--accent-dark);
+  --tooltip-color-face:var(--accent-face);
+}
+
+.warn[aria-label][tooltip-position]::before,
+.warn[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--warn-dark);
+  --tooltip-color-face:var(--warn-face);
+}
+
+.black[aria-label][tooltip-position]::before,
+.black[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--black-dark);
+  --tooltip-color-face:var(--black-face);
+}
+
+.white[aria-label][tooltip-position]::before,
+.white[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--white-dark);
+  --tooltip-color-face:var(--white-face);
+}
+
+.red[aria-label][tooltip-position]::before,
+.red[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--red-dark);
+  --tooltip-color-face:var(--red-face);
+}
+
+.green[aria-label][tooltip-position]::before,
+.green[aria-label][tooltip-position]::after {
+  --tooltip-color: var(--green-dark);
+  --tooltip-color-face:var(--green-face);
+}
+
+.dropdown {
+  position: relative;
+  align-self: flex-start;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.dropdown-items {
+  --scale: 0;
+  visibility: collapse;
+  position: absolute;
+  opacity: 0;
+  transform: translate(var(--x), var(--y)) scale(var(--scale));
+  width: -moz-fit-content;
+  width: fit-content;
+  box-sizing: border-box;
+  z-index: 1;
+  gap: 0.3em;
+  transition: transform 400ms cubic-bezier(0.075, 0.82, 0.165, 1), opacity 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.dropdown-items.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown-items.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  opacity: 1;
+}
+
+.bottom.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: -50%;
+  --y: 100%;
+  left: 50%;
+  bottom: 0px;
+  border-top: 1em solid transparent;
+  transform-origin: top center;
+  visibility: visible;
+}
+
+.right.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: 100%;
+  --y: 0%;
+  top: 0px;
+  right: 0px;
+  border-left: 1em solid transparent;
+  transform-origin: left center;
+  visibility: visible;
+}
+
+.left.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: -100%;
+  --y: 0%;
+  top: 0px;
+  left: 0px;
+  border-right: 1em solid transparent;
+  transform-origin: right center;
+  visibility: visible;
+}
+
+.top.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: -50%;
+  --y: -100%;
+  left: 50%;
+  top: 0px;
+  border-bottom: 1em solid transparent;
+  transform-origin: bottom center;
+  visibility: visible;
+}
+
+/** Arrow */
+.bottom.dropdown > .dropdown-items::before {
+  content: "";
+  position: absolute;
+  border: 0.4em solid transparent;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transform-origin: top center;
+}
+
+.top.dropdown > .dropdown-items::before {
+  content: "";
+  position: absolute;
+  border: 0.4em solid transparent;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  transform-origin: bottom center;
+}
+
+.right.dropdown > .dropdown-items::before {
+  content: "";
+  position: absolute;
+  border: 0.4em solid transparent;
+  top: 0px;
+  left: 0px;
+  transform: translate(-100%, 1em);
+  transform-origin: left center;
+}
+
+.left.dropdown > .dropdown-items::before {
+  content: "";
+  position: absolute;
+  border: 0.4em solid transparent;
+  top: 0px;
+  right: 0px;
+  transform: translate(100%, 1em);
+  transform-origin: right center;
+}
+
+.top.dropdown.primary > .dropdown-items::before {
+  border-top-color: var(--primary) !important;
+}
+
+.right.dropdown.primary > .dropdown-items::before {
+  border-right-color: var(--primary) !important;
+}
+
+.bottom.dropdown.primary > .dropdown-items::before {
+  border-bottom-color: var(--primary) !important;
+}
+
+.left.dropdown.primary > .dropdown-items::before {
+  border-left-color: var(--primary) !important;
+}
+
+.top.dropdown.secondary > .dropdown-items::before {
+  border-top-color: var(--secondary) !important;
+}
+
+.right.dropdown.secondary > .dropdown-items::before {
+  border-right-color: var(--secondary) !important;
+}
+
+.bottom.dropdown.secondary > .dropdown-items::before {
+  border-bottom-color: var(--secondary) !important;
+}
+
+.left.dropdown.secondary > .dropdown-items::before {
+  border-left-color: var(--secondary) !important;
+}
+
+.top.dropdown.accent > .dropdown-items::before {
+  border-top-color: var(--accent) !important;
+}
+
+.right.dropdown.accent > .dropdown-items::before {
+  border-right-color: var(--accent) !important;
+}
+
+.bottom.dropdown.accent > .dropdown-items::before {
+  border-bottom-color: var(--accent) !important;
+}
+
+.left.dropdown.accent > .dropdown-items::before {
+  border-left-color: var(--accent) !important;
+}
+
+.top.dropdown.warn > .dropdown-items::before {
+  border-top-color: var(--warn) !important;
+}
+
+.right.dropdown.warn > .dropdown-items::before {
+  border-right-color: var(--warn) !important;
+}
+
+.bottom.dropdown.warn > .dropdown-items::before {
+  border-bottom-color: var(--warn) !important;
+}
+
+.left.dropdown.warn > .dropdown-items::before {
+  border-left-color: var(--warn) !important;
+}
+
+.top.dropdown.black > .dropdown-items::before {
+  border-top-color: var(--black) !important;
+}
+
+.right.dropdown.black > .dropdown-items::before {
+  border-right-color: var(--black) !important;
+}
+
+.bottom.dropdown.black > .dropdown-items::before {
+  border-bottom-color: var(--black) !important;
+}
+
+.left.dropdown.black > .dropdown-items::before {
+  border-left-color: var(--black) !important;
+}
+
+.top.dropdown.white > .dropdown-items::before {
+  border-top-color: var(--white) !important;
+}
+
+.right.dropdown.white > .dropdown-items::before {
+  border-right-color: var(--white) !important;
+}
+
+.bottom.dropdown.white > .dropdown-items::before {
+  border-bottom-color: var(--white) !important;
+}
+
+.left.dropdown.white > .dropdown-items::before {
+  border-left-color: var(--white) !important;
+}
+
+.top.dropdown.red > .dropdown-items::before {
+  border-top-color: var(--red) !important;
+}
+
+.right.dropdown.red > .dropdown-items::before {
+  border-right-color: var(--red) !important;
+}
+
+.bottom.dropdown.red > .dropdown-items::before {
+  border-bottom-color: var(--red) !important;
+}
+
+.left.dropdown.red > .dropdown-items::before {
+  border-left-color: var(--red) !important;
+}
+
+.top.dropdown.green > .dropdown-items::before {
+  border-top-color: var(--green) !important;
+}
+
+.right.dropdown.green > .dropdown-items::before {
+  border-right-color: var(--green) !important;
+}
+
+.bottom.dropdown.green > .dropdown-items::before {
+  border-bottom-color: var(--green) !important;
+}
+
+.left.dropdown.green > .dropdown-items::before {
+  border-left-color: var(--green) !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-dark);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-darker);
+}
+
+/* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent-dark);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--primary);
+}
+
+::-webkit-scrollbar-track:active {
+  background: var(--primary-dark);
+}
+
+::-webkit-scrollbar-track:hover {
+  background: var(--primary-light);
+}
+
+/* Style the scrollbar corner (the intersection between the horizontal and vertical scrollbars) */
+::-webkit-scrollbar-corner {
+  background: var(--primary-dark);
+}
+
+* {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  font-family: var(--font-content);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+:root {
+  --primary: hsl(200, 61%, 29%);
+  --primary-face: var(--white);
+  --primary-dark: #133a4e;
+  --primary-dark-face: var(--white);
+  --primary-darker: #091c25;
+  --primary-darker-face: var(--white);
+  --primary-light: #2778a0;
+  --primary-light-face: var(--white);
+  --primary-lighter: #3196c9;
+  --primary-lighter-face: var(--white);
+  --primary-1: rgba(29, 89, 119, 0.1);
+  --primary-2: rgba(29, 89, 119, 0.2);
+  --primary-3: rgba(29, 89, 119, 0.3);
+  --primary-4: rgba(29, 89, 119, 0.4);
+  --primary-5: rgba(29, 89, 119, 0.5);
+  --primary-6: rgba(29, 89, 119, 0.6);
+  --primary-7: rgba(29, 89, 119, 0.7);
+  --primary-8: rgba(29, 89, 119, 0.8);
+  --primary-9: rgba(29, 89, 119, 0.9);
+  --primary-10: #1d5977;
+  --secondary: hsl(189, 37%, 43%);
+  --secondary-face: var(--black);
+  --secondary-dark: #356a73;
+  --secondary-dark-face: var(--white);
+  --secondary-darker: #254a50;
+  --secondary-darker-face: var(--white);
+  --secondary-light: #5ba6b3;
+  --secondary-light-face: var(--black);
+  --secondary-lighter: #7eb9c4;
+  --secondary-lighter-face: var(--black);
+  --secondary-1: rgba(69, 138, 150, 0.1);
+  --secondary-2: rgba(69, 138, 150, 0.2);
+  --secondary-3: rgba(69, 138, 150, 0.3);
+  --secondary-4: rgba(69, 138, 150, 0.4);
+  --secondary-5: rgba(69, 138, 150, 0.5);
+  --secondary-6: rgba(69, 138, 150, 0.6);
+  --secondary-7: rgba(69, 138, 150, 0.7);
+  --secondary-8: rgba(69, 138, 150, 0.8);
+  --secondary-9: rgba(69, 138, 150, 0.9);
+  --secondary-10: #458a96;
+  --accent: hsl(0, 82%, 66%);
+  --accent-face: var(--black);
+  --accent-dark: #eb3333;
+  --accent-dark-face: var(--white);
+  --accent-darker: #d51515;
+  --accent-darker-face: var(--white);
+  --accent-light: #f49090;
+  --accent-light-face: var(--black);
+  --accent-lighter: #f9bebe;
+  --accent-lighter-face: var(--black);
+  --accent-1: rgba(239, 97, 97, 0.1);
+  --accent-2: rgba(239, 97, 97, 0.2);
+  --accent-3: rgba(239, 97, 97, 0.3);
+  --accent-4: rgba(239, 97, 97, 0.4);
+  --accent-5: rgba(239, 97, 97, 0.5);
+  --accent-6: rgba(239, 97, 97, 0.6);
+  --accent-7: rgba(239, 97, 97, 0.7);
+  --accent-8: rgba(239, 97, 97, 0.8);
+  --accent-9: rgba(239, 97, 97, 0.9);
+  --accent-10: #ef6161;
+  --warn: hsl(30, 86%, 66%);
+  --warn-face: var(--black);
+  --warn-dark: #ef8f2e;
+  --warn-dark-face: var(--black);
+  --warn-darker: #da7510;
+  --warn-darker-face: var(--black);
+  --warn-light: #f6c28d;
+  --warn-light-face: var(--black);
+  --warn-lighter: #fadbbd;
+  --warn-lighter-face: var(--black);
+  --warn-1: rgba(243, 168, 94, 0.1);
+  --warn-2: rgba(243, 168, 94, 0.2);
+  --warn-3: rgba(243, 168, 94, 0.3);
+  --warn-4: rgba(243, 168, 94, 0.4);
+  --warn-5: rgba(243, 168, 94, 0.5);
+  --warn-6: rgba(243, 168, 94, 0.6);
+  --warn-7: rgba(243, 168, 94, 0.7);
+  --warn-8: rgba(243, 168, 94, 0.8);
+  --warn-9: rgba(243, 168, 94, 0.9);
+  --warn-10: #f3a85e;
+}
+
+.sb-main-padded.sb-show-main {
+  padding: 0px;
+  margin: 0px;
+}
+
+.docs-story > div:first-child {
+  min-height: 600px;
+}
+
+#storybook-root {
+  padding: 20px;
+}

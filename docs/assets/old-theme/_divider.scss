@@ -1,0 +1,15 @@
+// Dividers
+@import 'vars';
+
+@each $colorName in $colorNames {
+  .#{$colorName}.inline-divider {
+    display: inline;
+    height: 100%;
+    border-left: 0.1em solid var(--#{$colorName});
+  }
+  .#{$colorName}.block-divider {
+    display: block;
+    width: 100%;
+    border-top: 0.1em solid var(--#{$colorName});
+  }
+}
