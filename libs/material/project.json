@@ -12,11 +12,11 @@
         "{workspaceRoot}/dist/{projectRoot}"
       ],
       "options": {
-        "project": "libs/material/ng-package.json"
+        "project": "libs/material/ng-package.json",
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/material/tsconfig.lib.prod.json"
+          "tsConfig": "libs/material/tsconfig.lib.prod.json",
         },
         "development": {
           "tsConfig": "libs/material/tsconfig.lib.json"
@@ -64,8 +64,8 @@
           "-e",
           "json",
           "-d",
-          "libs/material/.storybook", 
-          "-p", 
+          "libs/material/.storybook",
+          "-p",
           "libs/material/tsconfig.json"
         ],
         "assets": [

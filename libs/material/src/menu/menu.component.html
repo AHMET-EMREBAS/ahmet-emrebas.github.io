@@ -1,0 +1,24 @@
+<div class="dropdown {{ position }} {{ color }}">
+  <tb-button
+    [color]="color"
+    [label]="label"
+    [type]="type"
+    [variant]="variant"
+    (clickEvent)="emitClickEvent()"
+    [icon]="icon"
+    [size]="size"
+    [tooltip]="tooltip"
+    [tooltipPosition]="tooltipPosition"
+  ></tb-button>
+
+  <div
+    class="dropdown-items {{ showAs }}"
+    *ngIf="children && children.length > 0"
+  >
+    <ng-container *ngFor="let child of children">
+      <ng-container
+        *ngComponentOutlet="componentType; inputs: childValue(child)"
+      ></ng-container>
+    </ng-container>
+  </div>
+</div>

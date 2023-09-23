@@ -1,0 +1,221 @@
+@use 'sass:list';
+@use 'sass:math';
+$_fontsRoot: '../../assets/fonts';
+
+@font-face {
+  font-family: Handjet;
+  src: url(./#{$_fontsRoot}/Handjet/Handjet-VariableFont.ttf);
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(./#{$_fontsRoot}/Roboto_Flex/RobotoFlex.ttf);
+}
+
+@font-face {
+  font-family: Special Elite;
+  src: url(./#{$_fontsRoot}/Special_Elite/SpecialElite-Regular.ttf);
+}
+
+@font-face {
+  font-family: Josefin Sans;
+  src: url(./#{$_fontsRoot}/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Josefin Sans;
+  font-style: italic;
+  src: url(./#{$_fontsRoot}/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Lobster;
+  src: url(./#{$_fontsRoot}/Lobster/Lobster-Regular.ttf);
+}
+
+@font-face {
+  font-family: Comfortaa;
+  src: url(./#{$_fontsRoot}/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Rubik Dirt;
+  src: url(./#{$_fontsRoot}/Rubik_Dirt/RubikDirt-Regular.ttf);
+}
+
+@font-face {
+  font-family: Rubik Iso;
+  src: url(./#{$_fontsRoot}/Rubik_Iso/RubikIso-Regular.ttf);
+}
+
+@font-face {
+  font-family: Black Ops One;
+  src: url(./#{$_fontsRoot}/Black_Ops_One/BlackOpsOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: Concert One;
+  src: url(./#{$_fontsRoot}/Concert_One/ConcertOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: Tourney;
+  src: url(./#{$_fontsRoot}/Tourney/Tourney-VariableFont_wdth.ttf);
+}
+
+@font-face {
+  font-family: Tourney;
+  font-style: italic;
+  src: url(./#{$_fontsRoot}/Tourney/Tourney-Italic-VariableFont_wdth.ttf);
+}
+
+@font-face {
+  font-family: Dancing Script;
+  src: url(./#{$_fontsRoot}/Dancing_Script/DancingScript-VariableFont_wght.ttf);
+}
+
+$fontList: (
+  'roboto': 'Roboto,  Verdana',
+  'comfortaa': 'Comfortaa,  Verdana',
+  'josefin-sans': 'Josefin Sans,  Verdana',
+  'concert-one': 'Concert One,  Verdana',
+  'special-elite': 'Special Elite,  Verdana',
+  'tourney': 'Tourney,  Verdana',
+  'rubik-iso': 'Rubik Iso,  Verdana',
+  'rubik-dirt': 'Rubik Dirt,  Verdana',
+  'lobster': 'Lobster,  Verdana',
+  'dancing-script': 'Dancing Script,  Verdana',
+  'black-ops-one': 'Black Ops One,  Verdana',
+  'handjet': 'Handjet,  Verdana',
+  'icon': 'Material Icons,  Verdana',
+);
+
+:root {
+  --font-title: Comfortaa, Verdana;
+  --font-content: Roboto, Verdana;
+  --font-button: Roboto, Verdana;
+  --font-alert: Comfortaa, Roboto, Verdana;
+}
+
+/** Fonts */
+:root {
+  @each $key, $value in $fontList {
+    --font-#{$key}: $value;
+  }
+}
+
+.clear-margins {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bolder {
+  font-weight: bolder;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.overline {
+  text-decoration: overline;
+}
+
+.dashed {
+  text-decoration: dashed;
+}
+
+@for $size from 1 through 10 {
+  .font-weight-#{$size * 100} {
+    font-weight: $size * 100;
+  }
+}
+
+.title-1,
+.title-2,
+.subtitle-1,
+.subtitle-2 {
+  font-family: var(--title-font);
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 1.3em;
+  text-transform: capitalize;
+}
+
+.title-1,
+.title-2 {
+  font-weight: 800;
+}
+
+.title-1 {
+  font-size: 2.25em;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+.title-2 {
+  font-size: 1.5em;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+
+.title-1::before,
+.title-2::before {
+  content: attr(substring);
+  position: absolute;
+  left: 0.2em;
+  bottom: 0px;
+  font-size: 0.6em;
+  font-weight: 300;
+  opacity: 0.6;
+  letter-spacing: 0.3em;
+  transform: translateY(100%);
+}
+
+.subtitle-1,
+.subtitle-2 {
+  font-weight: 500;
+}
+
+.subtitle-1 {
+  font-size: 1.5em;
+  line-height: 1.2;
+  letter-spacing: 0.3em;
+}
+
+.subtitle-2 {
+  font-size: 1em;
+  line-height: 1.2;
+  letter-spacing: 0.3em;
+}
+
+.content-1,
+.content-2 {
+  line-height: 1.6;
+  font-weight: 300;
+  font-family: var(--content-font);
+  letter-spacing: 0.1em;
+  max-width: 40em;
+  text-justify: distribute;
+  text-align: justify;
+  text-indent: 3em;
+}
+.content-1 {
+  font-size: 1.2em;
+}
+
+.contenet-2 {
+  font-size: 0.6em;
+}

@@ -1,13 +1,16 @@
-@use './theme/index.scss' as theme;
-@include theme.selectTheme(neon);
+@use './theme' as tb;
+
+@include tb.retro();
 
 .sb-main-padded.sb-show-main {
   padding: 0px;
   margin: 0px;
 }
 
+.docs-story > div:first-child {
+  min-height: 600px;
+}
 
-.docs-story > div:first-child{ 
-  min-height: 400px;
-
+#storybook-root {
+  padding: 20px;
 }

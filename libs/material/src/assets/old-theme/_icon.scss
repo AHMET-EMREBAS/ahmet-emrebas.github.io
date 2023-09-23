@@ -1,0 +1,51 @@
+@import 'vars'; 
+
+
+@font-face {
+  font-family: $iconFontName;
+  font-style: normal;
+  font-weight: 100 700;
+  src: url('./fonts/material-symbols.woff2') format('woff2');
+}
+
+.__common-icon {
+  position: relative;
+  font-family: $iconFontName;
+  font-weight: normal;
+  font-style: normal;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+[icon],
+.icon {
+  @extend .__common-icon;
+}
+.icon::before,
+[icon]::before {
+  content: attr(icon);
+}
+
+@each $colorName in $colorNames {
+  .icon[color='#{$colorName}'],
+  [icon][color='#{$colorName}'] {
+    color: var(--#{$colorName});
+  }
+
+  .icon.fill,
+  .icon[fill],
+  [icon][fill] {
+    font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+  }
+  .icon.#{$colorName}.raised,
+  .icon.#{$colorName}[raised],
+  .icon[color='#{$colorName}'][raised],
+  [icon][color='#{$colorName}'][raised] {
+    text-shadow: 0px 0px 3px var(--#{$colorName}-darker);
+  }
+}
+
+
+

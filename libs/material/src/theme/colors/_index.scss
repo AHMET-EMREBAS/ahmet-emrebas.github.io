@@ -1,0 +1,98 @@
+$colorNames: (primary, secondary, accent, warn, black, white, red, green);
+
+@function isDarkHue($color) {
+  $hue: hue($color);
+  @if $hue <=25 or $hue >190 {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function faceColor($color) {
+  $light: lightness($color);
+  $saturation: saturation($color);
+  $hue: hue($color);
+  @if isDarkHue($color) ==true {
+    @if $light >65 {
+      @return var(--black);
+    } @else {
+      @return var(--white);
+    }
+  } @else {
+    @if $light >40 {
+      @return var(--black);
+    } @else {
+      @return var(--white);
+    }
+  }
+}
+
+$commonColors: (
+  white: rgb(255, 255, 255),
+  black: hsl(0, 0%, 0%),
+  green: hsl(120, 83%, 42%),
+  red: hsl(348, 83%, 47%),
+);
+
+/** colors: primary, accent, warn */
+@mixin build($colors) {
+  :root {
+    @each $colorName, $color in $colors {
+      --#{$colorName}: #{$color};
+      --#{$colorName}-face: #{faceColor($color)};
+
+      --#{$colorName}-dark: #{darken($color, 10%)};
+      --#{$colorName}-dark-face: #{faceColor(darken($color, 10%))};
+
+      --#{$colorName}-darker: #{darken($color, 20%)};
+      --#{$colorName}-darker-face: #{faceColor(darken($color, 20%))};
+
+      --#{$colorName}-light: #{lighten($color, 10%)};
+      --#{$colorName}-light-face: #{faceColor(lighten($color, 10%))};
+
+      --#{$colorName}-lighter: #{lighten($color, 20%)};
+      --#{$colorName}-lighter-face: #{faceColor(lighten($color, 20%))};
+
+      @for $opacity from 1 through 10 {
+        --#{$colorName}-#{$opacity}: #{rgba($color, $opacity * 0.1)};
+      }
+    }
+  }
+}
+
+@include build($commonColors);
+
+.not.primary {
+  background-color: var(--secondary) !important;
+  color: var(--secondary-face) !important;
+}
+
+.not.secondary {
+  background-color: var(--primary) !important;
+  color: var(--primary-face) !important;
+}
+
+.not.accent {
+  background-color: var(--primary) !important;
+  color: var(--primary-face) !important;
+}
+
+.not.white {
+  background-color: var(--black) !important;
+  color: var(--black-face) !important;
+}
+.not.black {
+  background-color: var(--white) !important;
+  color: var(--white-face) !important;
+}
+
+.not.red {
+  background-color: var(--white) !important;
+  color: var(--white-face) !important;
+}
+
+.not.green {
+  background-color: var(--black) !important;
+  color: var(--black-face) !important;
+}

@@ -20,6 +20,7 @@
       "@techbir/gen": ["libs/gen/src/index.ts"],
       "@techbir/gen/*": ["libs/gen/src/*"],
       "@techbir/material": ["libs/material/src"],
+      "@techbir/material-api": ["libs/material-api/src/index.ts"],
       "@techbir/material/*": ["libs/material/src/lib/*"],
       "@techbir/services": ["libs/services/src/index.ts"],
       "@techbir/services/*": ["libs/services/src/lib/*"]

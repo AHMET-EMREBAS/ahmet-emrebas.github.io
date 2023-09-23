@@ -1,0 +1,29 @@
+@import 'vars';
+@import 'flexbox';
+
+.toolbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  height: fit-content;
+  min-height: 50px;
+  min-width: 50vw;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 0px;
+  border: none;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+@each $colorName in $colorNames {
+  .toolbar.#{$colorName} {
+    background-color: var(--#{$colorName});
+    color: var(--#{$colorName}-face);
+  }
+}

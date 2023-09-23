@@ -17,7 +17,7 @@
   "workspaceLayout": {
     "projectNameAndRootFormat": "derived",
     "appsDir": "apps",
-    "libsDir": "libs"
+    "libsDir": "libs",
   },
   "targetDefaults": {
     "build": {
@@ -91,7 +91,21 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
-      "style": "scss"
+      "style": "scss",
+      "project": "material",
+      "inlineStyle": true,
+      "export": true,
+      "standalone": true
+    },
+    "@nx/angular:directive": {
+      "project": "material",
+      "export": true,
+      "standalone": true,
+      "flat": false
+    },
+    "@nx/angular:stories": {
+      "name": "material",
+      "interactionTests": true
     }
   },
   "defaultProject": "material"
