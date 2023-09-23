@@ -5,7 +5,7 @@ import {
   ContentChildren,
   QueryList,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { TabComponent } from '../tab.component';
 
 @Component({
@@ -14,14 +14,12 @@ import { TabComponent } from '../tab.component';
   imports: [CommonModule, TabComponent],
   templateUrl: './tab-container.component.html',
   styles: [],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabContainerComponent {
   @ContentChildren(TabComponent) children?: QueryList<Partial<TabComponent>>;
 
   componentType = TabComponent;
 
-  constructor(private readonly detector: ChangeDetectorRef) {}
   childValue(child: Partial<TabComponent>): Partial<TabComponent> {
     return { label: child.label, active: child.active };
   }
@@ -36,7 +34,6 @@ export class TabContainerComponent {
 
         this.children?.reset([...updated]);
         this.children?.setDirty();
-        this.detector.detectChanges();
       }
     }
   }

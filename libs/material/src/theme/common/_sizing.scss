@@ -13,7 +13,7 @@
     }
 
     @each $side in (top, right, bottom, left) {
-      .#{utils.fl($property)}#{utils.fl($side)} {
+      .#{utils.fl($property)}#{utils.fl($side)}-#{$size} {
         #{$property}-#{$side}: #{$size * 0.2}em;
       }
     }

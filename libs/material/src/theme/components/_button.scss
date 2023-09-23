@@ -36,12 +36,6 @@
   border: 1px solid var(--primary-6);
 }
 
-.tab {
-  background-color: var(--primary-face);
-  color: var(--primary);
-  border: none;
-}
-
 @mixin active($buttonStyle, $colorName) {
   .#{$colorName}.#{$buttonStyle}:hover:active {
     background-color: var(--#{$colorName}-light);
@@ -89,18 +83,7 @@
       border-color: var(--#{$colorName}-6);
     }
 
-    .#{$className}.tab.#{$colorName} {
-      border: none;
-      border-color: transparent;
-    }
-
-    @each $side in (top, right, bottom, left) {
-      #{$side}.#{$className}.tab.#{$colorName} {
-        border-#{$side}: 3px solid var(--#{$colorName});
-      }
-    }
-
-    @each $buttonStyle in (basic, flat, raised, stroked, inbox, tab) {
+    @each $buttonStyle in (basic, flat, raised, stroked, inbox) {
       @include active($buttonStyle, $colorName);
       @include hover($buttonStyle, $colorName);
       @include focus($buttonStyle, $colorName);
@@ -176,7 +159,6 @@
   @include button();
   display: flex;
   align-items: center;
-
   gap: 1em;
   .icon {
     font-size: 1.3em;

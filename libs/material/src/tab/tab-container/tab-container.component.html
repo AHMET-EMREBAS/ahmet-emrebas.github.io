@@ -1,6 +1,12 @@
-<div class="flex row gap-2 w-100">
+<div class="flex row gap-2 w-100 ox-auto pb-3">
   <ng-container *ngFor="let child of children">
-    <button class="button tab primary bottom" (click)="activate(child)">{{ child.label }}</button>
+    <button
+      class="tab-button primary bottom"
+      (click)="activate(child)"
+      [attr.data-active]="child.active"
+    >
+      {{ child.label }}
+    </button>
   </ng-container>
 </div>
 <ng-container *ngFor="let child of children">
@@ -8,5 +14,6 @@
     [ngComponentOutlet]="componentType"
     [ngComponentOutletInputs]="childValue(child)"
   >
+    <ng-content></ng-content>
   </ng-container>
 </ng-container>
