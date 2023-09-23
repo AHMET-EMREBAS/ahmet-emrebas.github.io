@@ -13,6 +13,7 @@ type Story = StoryObj<ButtonComponent>;
 
 export const Primary: Story = {
   args: {
+    uuid: '1',
     label: 'home',
     type: 'button',
     variant: 'basic',
@@ -22,6 +23,7 @@ export const Primary: Story = {
 
 export const Heading: Story = {
   args: {
+    uuid:'1',
     label: 'Button',
     type: 'button',
     variant: 'raised',

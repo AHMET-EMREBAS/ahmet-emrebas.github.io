@@ -204,7 +204,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-79051e1e07fa983fef0807731ecc479feee28ae6701de474ef35cb629dd6d7aa8238dd9489ec7ce637f0921ccf41ca0079cf26ed259b27347251a71146c2867b",
+            "id": "component-ButtonComponent-277d234256cda72ab873faf9fdb84d30dddde6f7bd029c3e11470d8d1ed20e2e59642288170aa5eb74406d1872f8177666fd1492ad67a8d31585b61887c98d50",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -214,7 +214,7 @@
             "selector": "tb-button",
             "styleUrls": [],
             "styles": [],
-            "template": "<button #button (click)=\"emitClickEvent()\">\n  <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n  <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{\n    icon\n  }}</span>\n</button>\n",
+            "template": "<button #button (click)=\"emitClickEvent()\">\n  <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n  <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -224,7 +224,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 36,
                     "type": "ColorType",
                     "decorators": []
                 },
@@ -233,7 +233,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": []
                 },
@@ -242,7 +242,7 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 },
@@ -251,7 +251,7 @@
                     "defaultValue": "'regular'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 33,
                     "type": "\"small\" | \"regular\" | \"big\"",
                     "decorators": []
                 },
@@ -260,7 +260,7 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 35,
                     "type": "ButtonType",
                     "decorators": []
                 },
@@ -269,7 +269,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 34,
                     "type": "buttonStyle",
                     "decorators": []
                 }
@@ -282,7 +282,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClick Event",
                     "description": "<p>Click Event</p>\n",
-                    "line": 43,
+                    "line": 41,
                     "type": "EventEmitter"
                 }
             ],
@@ -294,7 +294,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -313,7 +313,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { buttonStyle, ButtonType, ColorType, Icon } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { id?: string; type: 'click'; payload: string };\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button #button (click)=\"emitClickEvent()\">\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{\n        icon\n      }}</span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() variant: buttonStyle = 'basic';\n  @Input() type: ButtonType = 'button';\n  @Input() color: ColorType = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(\n      this.size,\n      this.variant,\n      this.type,\n      this.color\n    );\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { buttonStyle, ButtonType, ColorType, Icon } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { id?: string; type: 'click'; payload: string };\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button #button (click)=\"emitClickEvent()\">\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() variant: buttonStyle = 'basic';\n  @Input() type: ButtonType = 'button';\n  @Input() color: ColorType = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -446,8 +446,9 @@
         },
         {
             "name": "MenuComponent",
-            "id": "component-MenuComponent-9d80e1566c978cf4dcc7cb59fe64e9bd3e7645b6baa361d0b76a12e31ee0cbc13c3f167d3d3de4563e9f06ffda4a76d845cb66c643983d212ee6e298f73f8c02",
+            "id": "component-MenuComponent-303dfb466e359ed26cb2f868e858b88267a35cbe7a848da0d9eaad7ed84fc20650088e2d0d22f0d94143d06ca21fd560cc161ce7e64f808f2d33bd3d8be773cf",
             "file": "libs/material/src/menu/menu.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -466,17 +467,40 @@
                     "name": "childrenViaInput",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
-                    "type": "QueryList<MenuComponent>",
+                    "line": 34,
+                    "type": "MenuComponent[]",
                     "decorators": []
+                },
+                {
+                    "name": "clickEvent",
+                    "defaultValue": "new EventEmitter<ButtonEvent>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "EventEmitter<ButtonEvent>",
+                    "decorators": [
+                        {
+                            "name": "Output",
+                            "stringifiedArguments": ""
+                        }
+                    ]
                 },
                 {
                     "name": "position",
                     "defaultValue": "'none'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 38,
                     "type": "Position",
+                    "decorators": []
+                },
+                {
+                    "name": "showAs",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "\"row\" | \"column\"",
                     "decorators": []
                 },
                 {
@@ -484,7 +508,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 36,
                     "type": "ColorType",
                     "decorators": [],
                     "inheritance": {
@@ -496,7 +520,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -508,7 +532,7 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -520,7 +544,7 @@
                     "defaultValue": "'regular'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 33,
                     "type": "\"small\" | \"regular\" | \"big\"",
                     "decorators": [],
                     "inheritance": {
@@ -532,7 +556,7 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 35,
                     "type": "ButtonType",
                     "decorators": [],
                     "inheritance": {
@@ -544,7 +568,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 34,
                     "type": "buttonStyle",
                     "decorators": [],
                     "inheritance": {
@@ -560,7 +584,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClick Event",
                     "description": "<p>Click Event</p>\n",
-                    "line": 43,
+                    "line": 41,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -572,10 +596,10 @@
                     "name": "children",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "QueryList<MenuComponent>",
+                    "type": "MenuComponent[]",
                     "optional": true,
                     "description": "",
-                    "line": 25
+                    "line": 36
                 },
                 {
                     "name": "childrenViaContent",
@@ -584,7 +608,7 @@
                     "type": "QueryList<MenuComponent>",
                     "optional": true,
                     "description": "",
-                    "line": 23,
+                    "line": 32,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -598,55 +622,17 @@
             ],
             "methodsClass": [
                 {
-                    "name": "childValue",
-                    "args": [
-                        {
-                            "name": "child",
-                            "type": "MenuComponent",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "{ type: any; variant: any; color: any; size: any; childrenViaInput: QueryList<MenuComponent>; label: any; position: Position; }",
-                    "typeParameters": [],
-                    "line": 33,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "child",
-                            "type": "MenuComponent",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 29,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        161
-                    ]
-                },
-                {
                     "name": "emitClickEvent",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 71,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "modifierKind": [
+                        161
+                    ],
                     "inheritance": {
                         "file": "ButtonComponent"
                     }
@@ -670,12 +656,41 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ContentChildren,\n  Input,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../button';\nimport { Position } from '../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './menu.component.html',\n  styles: [],\n})\nexport class MenuComponent extends ButtonComponent {\n  /** @ignore */\n  readonly componentType = MenuComponent;\n\n  @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;\n  @Input() childrenViaInput?: QueryList<MenuComponent>;\n  children?: QueryList<MenuComponent>;\n\n  @Input() position: Position = 'none';\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this.children = this.childrenViaInput || this.childrenViaContent;\n  }\n  childValue(child: MenuComponent) {\n    const { type, variant, color, size, children, label, position } = child;\n    if (label === 'Triger 2') {\n      console.log(children);\n    }\n    return {\n      type,\n      variant,\n      color,\n      size,\n      childrenViaInput: children,\n      label,\n      position,\n    };\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { Position } from '../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './menu.component.html',\n  styles: [],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class MenuComponent extends ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  readonly componentType = MenuComponent;\n\n  @Input()\n  @Output()\n  override clickEvent: EventEmitter<ButtonEvent> = new EventEmitter<ButtonEvent>();\n\n  @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;\n\n  @Input() childrenViaInput?: MenuComponent[];\n\n  children?: MenuComponent[];\n\n  @Input() position: Position = 'none';\n\n  @Input() showAs: 'row' | 'column' = 'column';\n\n  constructor(private readonly detector: ChangeDetectorRef) {\n    super();\n  }\n\n  /** @ignore */\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this.children = this.childrenViaInput || this.childrenViaContent?.toArray();\n    this.detector.detectChanges();\n  }\n\n  /** @ignore */\n  childValue(child: MenuComponent) {\n    const { type, variant, color, size, children, label, position, showAs } =\n      child;\n\n    return {\n      type,\n      variant,\n      color,\n      size,\n      childrenViaInput: children,\n      label,\n      position,\n      showAs,\n      clickEvent: this.clickEvent,\n    };\n  }\n\n  override emitClickEvent(): void {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "detector",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 40,
+                "jsdoctags": [
+                    {
+                        "name": "detector",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": "ButtonComponent",
-            "templateData": "<div class=\"dropdown {{ position }} {{color}}\">\n  <tb-button\n    [color]=\"color\"\n    [label]=\"label\"\n    [type]=\"type\"\n    [variant]=\"variant\"\n  ></tb-button>\n\n  <div\n    classList=\"dropdown-items {{ color }}\"\n    *ngIf=\"children && children.length > 0\"\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <ng-container\n        *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n      ></ng-container>\n    </ng-container>\n  </div>\n</div>\n"
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"dropdown {{ position }} {{ color }}\">\n  <tb-button\n    [color]=\"color\"\n    [label]=\"label\"\n    [type]=\"type\"\n    [variant]=\"variant\"\n    (clickEvent)=\"emitClickEvent()\"\n  ></tb-button>\n\n  <div\n    class=\"dropdown-items {{ showAs }}\"\n    *ngIf=\"children && children.length > 0\"\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <ng-container\n        *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n      ></ng-container>\n    </ng-container>\n  </div>\n</div>\n"
         },
         {
             "name": "NotificationComponent",
@@ -720,7 +735,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-f3b91e6bf6cc0c2f8d2858730d4d2694569b4125b8178c2be4ef4a343c6e15f4c5eb1c732ea5654daef2671c0b53e1a0ba3696d5fdc6641740afade7fb2589aa",
+            "id": "component-ShowcaseComponent-f2ee5928174b1c7aa256bd2a86cf4197d658f711e5afb4802465943f5b6a163b16dbb736457009017e36945c18819a046eb4896a9a3daf78023d7fdcc6c9cf02",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -730,7 +745,7 @@
             "selector": "tb-showcase",
             "styleUrls": [],
             "styles": [
-                "\n      .container {\n        min-height:2000px;\n      }\n    "
+                "\n      .container {\n        min-height: 2000px;\n      }\n    "
             ],
             "templateUrl": [
                 "./showcase.component.html"
@@ -740,7 +755,36 @@
             "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "handle",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ButtonEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ButtonEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -763,11 +807,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, MenuComponent],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height:2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, MenuComponent],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n      .container {\n        min-height:2000px;\n      }\n    \n",
-            "templateData": "<div class=\"container\">\n  <h1 class=\"title-1\">Showcase</h1>\n\n  <h2 class=\"title-2\">Menu</h2>\n\n  <tb-menu type=\"button\" label=\"Triger 1\" color=\"accent\" position=\"bottom\">\n    <tb-menu type=\"button\" label=\"Label 1\" color=\"accent\"></tb-menu>\n    <tb-menu type=\"button\" label=\"Triger 2\" color=\"accent\" position=\"right\">\n      <tb-menu type=\"button\" label=\"Sub Label 1\" color=\"accent\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Sub Label 2\" color=\"accent\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Sub Label 3\" color=\"accent\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Triger 2\" color=\"accent\" position=\"right\">\n        <tb-menu type=\"button\" label=\"Sub Label 1\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 2\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 3\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 4\" color=\"accent\"></tb-menu>\n      </tb-menu>\n    </tb-menu>\n    <tb-menu type=\"button\" label=\"Label\"></tb-menu>\n  </tb-menu>\n</div>\n"
+            "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
+            "templateData": "<div class=\"container\">\n  <h1 class=\"title-1\">Showcase</h1>\n\n  <h2 class=\"title-2\">Menu</h2>\n\n  <tb-menu\n    type=\"button\"\n    label=\"Triger 1\"\n    color=\"primary\"\n    position=\"bottom\"\n    (clickEvent)=\"handle($event)\"\n  >\n    <tb-menu type=\"button\" label=\"Label 1\" color=\"warn\"></tb-menu>\n    <tb-menu type=\"button\" label=\"Triger 2\" color=\"secondary\" position=\"right\">\n      <tb-menu type=\"button\" label=\"Sub Label 1\" color=\"secondary\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Sub Label 2\" color=\"secondary\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Sub Label 3\" color=\"secondary\"></tb-menu>\n      <tb-menu\n        type=\"button\"\n        label=\"Triger 2\"\n        color=\"accent\"\n        position=\"right\"\n        showAs=\"row\"\n      >\n        <tb-menu type=\"button\" label=\"Sub Label 1\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 2\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 3\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 4\" color=\"accent\"></tb-menu>\n      </tb-menu>\n    </tb-menu>\n    <tb-menu type=\"button\" label=\"Label\"></tb-menu>\n  </tb-menu>\n</div>\n"
         },
         {
             "name": "StepperComponent",
@@ -920,21 +964,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -954,7 +998,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/menu works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: { label: 'Triger 1' },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Triger 1!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1030,21 +1074,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FontsComponent>",
-                "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ColorsComponent>",
                 "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FontsComponent>",
+                "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
             },
             {
                 "name": "meta",
@@ -1140,7 +1184,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1150,7 +1194,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1174,7 +1218,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -1321,8 +1365,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FontsComponent>",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "rawtype": "StoryObj<ColorsComponent>",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1332,8 +1376,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ColorsComponent>",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "rawtype": "StoryObj<FontsComponent>",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1483,38 +1527,6 @@
                     "defaultValue": "{\n  args: {\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
-            "libs/material/src/fonts/fonts.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FontsComponent>",
-                    "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
             "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -1541,6 +1553,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/fonts/fonts.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FontsComponent>",
+                    "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1588,7 +1632,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/menu works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: { label: 'Triger 1' },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Triger 1!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -1608,7 +1652,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n  },\n}"
                 }
             ],
             "libs/material/src/notification/notification.component.stories.ts": [
@@ -1873,19 +1917,6 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/fonts/fonts.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FontsComponent>",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
             "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Story",
@@ -1893,6 +1924,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ColorsComponent>",
                     "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/fonts/fonts.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FontsComponent>",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2306,7 +2350,7 @@
                 "linktype": "component",
                 "name": "MenuComponent",
                 "coveragePercent": 6,
-                "coverageCount": "1/15",
+                "coverageCount": "1/16",
                 "status": "low"
             },
             {
@@ -2384,7 +2428,7 @@
                 "linktype": "component",
                 "name": "ShowcaseComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

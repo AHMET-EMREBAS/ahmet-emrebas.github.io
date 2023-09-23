@@ -36,6 +36,11 @@ export class AlertComponent {
   @Input() closable = true;
 
   close() {
-    this.closeEvent.emit({ type: 'click', payload: 'close' });
+    this.closeEvent.emit({
+      type: 'click',
+      payload: {
+        label: 'Closed alert',
+      },
+    });
   }
 }

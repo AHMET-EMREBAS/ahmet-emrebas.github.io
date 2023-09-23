@@ -31,9 +31,9 @@ export class MenuComponent extends ButtonComponent implements AfterViewInit {
 
   @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;
 
-  @Input() childrenViaInput?: QueryList<MenuComponent>;
+  @Input() childrenViaInput?: Partial<MenuComponent>[];
 
-  children?: QueryList<MenuComponent>;
+  children?: Partial<MenuComponent>[];
 
   @Input() position: Position = 'none';
 
@@ -46,29 +46,41 @@ export class MenuComponent extends ButtonComponent implements AfterViewInit {
   /** @ignore */
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
-    this.children = this.childrenViaInput || this.childrenViaContent;
+    if (!this.children)
+      this.children =
+        this.childrenViaInput || this.childrenViaContent?.toArray();
     this.detector.detectChanges();
   }
 
   /** @ignore */
-  childValue(child: MenuComponent) {
-    const { type, variant, color, size, children, label, position, showAs } =
-      child;
-
-    return {
+  childValue(child: Partial<MenuComponent>) {
+    const {
       type,
       variant,
       color,
       size,
-      childrenViaInput: children,
+      children,
       label,
       position,
       showAs,
+      icon,
+      tooltip,
+      tooltipPosition,
+    } = child;
+
+    return {
+      type: type || this.type,
+      variant: variant || this.variant,
+      color: color || this.color,
+      size: size || this.size,
+      childrenViaInput: children,
+      label,
+      tooltip,
+      tooltipPosition,
+      position: position || this.position,
+      showAs: showAs || this.showAs,
+      icon,
       clickEvent: this.clickEvent,
     };
-  }
-
-  override emitClickEvent(): void {
-    this.clickEvent.emit({ type: 'click', payload: this.label });
   }
 }

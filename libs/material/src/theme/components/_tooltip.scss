@@ -18,6 +18,7 @@
   line-height: 1em;
   transition: transform 100ms;
   transition-timing-function: linear;
+  font-family: var(--font-content) !important;
 }
 
 [aria-label][tooltip-position]:hover::before,
@@ -29,10 +30,11 @@
 [aria-label][tooltip-position]::before {
   content: attr(aria-label);
   background-color: var(--tooltip-color);
+  color: var(--tooltip-color-face);
   padding: 0.5em;
   border-radius: 0.3em;
-  width: max-content;
-  max-width: 100%;
+  width: fit-content;
+  text-wrap: nowrap;
   text-align: center;
   transform: scale(0);
 }
@@ -132,8 +134,10 @@
 }
 
 @each $colorName in colors.$colorNames {
-  [color='#{$colorName}'][aria-label][tooltip-position]::before,
-  [color='#{$colorName}'][aria-label][tooltip-position]::after {
+  .#{$colorName}[aria-label][tooltip-position]::before,
+  .#{$colorName}[aria-label][tooltip-position]::after {
     --tooltip-color: var(--#{$colorName}-dark);
+    --tooltip-color-face:var(--#{$colorName}-face);
   }
 }
+// font-family: var(--font-content) !important;

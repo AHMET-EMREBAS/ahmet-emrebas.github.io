@@ -8,17 +8,31 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { buttonStyle, ButtonType, ColorType, Icon } from '../api';
+import { buttonStyle, ButtonType, ColorType, Icon, Position } from '../api';
 import { CommonModule } from '@angular/common';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 
-export type ButtonEvent = { id?: string; type: 'click'; payload: string };
+export type ButtonEvent = {
+  id?: string;
+  type: 'click';
+  payload: {
+    uuid?: string;
+    label?: string;
+    message?: string;
+  };
+};
 
 @Component({
   selector: 'tb-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TooltipDirective],
   template: `
-    <button #button (click)="emitClickEvent()">
+    <button
+      #button
+      (click)="emitClickEvent()"
+      [tbTooltip]="tooltip"
+      [tbTooltipPosition]="tooltipPosition"
+    >
       <span class="button-label" *ngIf="type !== 'icon-button'">
         {{ label }}
       </span>
@@ -29,13 +43,15 @@ export type ButtonEvent = { id?: string; type: 'click'; payload: string };
 export class ButtonComponent implements AfterViewInit {
   /** @ignore */
   @ViewChild('button') button?: ElementRef<HTMLButtonElement>;
-
-  @Input() size: 'small' | 'regular' | 'big' = 'regular';
-  @Input() variant: buttonStyle = 'basic';
-  @Input() type: ButtonType = 'button';
   @Input() color: ColorType = 'primary';
   @Input() icon: Icon = 'info';
   @Input() label = 'Button';
+  @Input() size: 'small' | 'regular' | 'big' = 'regular';
+  @Input() tooltip = '';
+  @Input() tooltipPosition: Position = 'top';
+  @Input() type: ButtonType = 'button';
+  @Input() uuid = 'Id not set!';
+  @Input() variant: buttonStyle = 'basic';
 
   /** Click Event  */
   @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();
@@ -51,6 +67,12 @@ export class ButtonComponent implements AfterViewInit {
   }
 
   emitClickEvent() {
-    this.clickEvent.emit({ type: 'click', payload: this.label });
+    this.clickEvent.emit({
+      type: 'click',
+      payload: {
+        label: this.label,
+        uuid: this.uuid,
+      },
+    });
   }
 }
