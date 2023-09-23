@@ -1,8 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector */
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -10,10 +8,10 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ButtonStyleType, ButtonType, ColorType } from '../api';
+import { buttonStyle, ButtonType, ColorType, Icon } from '../api';
 import { CommonModule } from '@angular/common';
 
-export type ButtonEvent = { type: 'click'; payload: string };
+export type ButtonEvent = { id?: string; type: 'click'; payload: string };
 
 @Component({
   selector:
@@ -23,10 +21,13 @@ export type ButtonEvent = { type: 'click'; payload: string };
   template: `
     <button
       #button
-      class="{{ color }} {{ buttonType }}-button"
+      class="{{ color }} {{ buttonSize }} {{ buttonType }}"
       (click)="emit()"
     >
-      {{ label }}
+      <span class="button-label" *ngIf="buttonType !== 'icon-button'">
+        {{ label }}
+      </span>
+      <span class="icon" *ngIf="buttonType !== 'button'">{{ icon }}</span>
     </button>
   `,
 })
@@ -37,10 +38,15 @@ export class ButtonComponent implements AfterViewInit {
   /** Button label */
   @Input() label = 'Button';
 
+  @Input() icon: Icon = 'info';
+
   /** Button type */
   @Input() buttonType: ButtonType = 'button';
+
+  @Input() buttonSize: 'small' | 'regular' | 'big' = 'regular';
+
   /** Button style type */
-  @Input() buttonStyleType: ButtonStyleType = 'basic';
+  @Input() buttonStyleType: buttonStyle = 'basic';
 
   /** Button color */
   @Input() color: ColorType = 'primary';

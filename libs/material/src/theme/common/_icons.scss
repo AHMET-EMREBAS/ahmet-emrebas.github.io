@@ -21,14 +21,7 @@ $iconFontAssets: '../../assets/fonts';
 }
 
 @each $colorName in colors.$colorNames {
-  .icon[color='#{$colorName}'] {
-    color: var(--#{$colorName});
-  }
-
   .icon.fill {
     font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
-  }
-  .icon[color='#{$colorName}'].raised {
-    text-shadow: 0px 0px 3px var(--#{$colorName}-darker);
   }
 }

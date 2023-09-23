@@ -75,29 +75,32 @@ $_fontsRoot: '../../assets/fonts';
 }
 
 $fontList: (
-  'tourney': 'Tourney, cursive',
-  'special-elite': 'Special Elite, cursive',
-  'rubik-iso': 'Rubik Iso, cursive',
-  'rubik-dirt': 'Rubik Dirt, cursive',
-  'roboto': 'Roboto, cursive',
-  'material-icon': 'Material Icons, cursive',
-  'lobster': 'Lobster, cursive',
-  'josefin-sans': 'Josefin Sans, cursive',
-  'dancing-script': 'Dancing Script, cursive',
-  'concert-one': 'Concert One, cursive',
-  'comfortaa': 'Comfortaa, cursive',
-  'black-ops-one': 'Black Ops One, cursive',
-  'handjet': 'Handjet, cursive',
+  'roboto': 'Roboto,  Verdana',
+  'comfortaa': 'Comfortaa,  Verdana',
+  'josefin-sans': 'Josefin Sans,  Verdana',
+  'concert-one': 'Concert One,  Verdana',
+  'special-elite': 'Special Elite,  Verdana',
+  'tourney': 'Tourney,  Verdana',
+  'rubik-iso': 'Rubik Iso,  Verdana',
+  'rubik-dirt': 'Rubik Dirt,  Verdana',
+  'lobster': 'Lobster,  Verdana',
+  'dancing-script': 'Dancing Script,  Verdana',
+  'black-ops-one': 'Black Ops One,  Verdana',
+  'handjet': 'Handjet,  Verdana',
+  'icon': 'Material Icons,  Verdana',
 );
 
 :root {
-  --title-font: Comfortaa;
-  --content-font: Roboto;
+  --font-title: Comfortaa, Verdana;
+  --font-content: Roboto, Verdana;
+  --font-button: Roboto, Verdana;
+  --font-alert: Comfortaa, Roboto, Verdana;
 }
 
-@each $key, $value in $fontList {
-  .#{$key} {
-    font-family: #{$value};
+/** Fonts */
+:root {
+  @each $key, $value in $fontList {
+    --font-#{$key}: $value;
   }
 }
 

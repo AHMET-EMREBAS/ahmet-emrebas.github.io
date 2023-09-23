@@ -1,0 +1,27 @@
+@use '../colors' as colors;
+
+[role='alert'] {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  letter-spacing: 2px;
+  font-family: var(--font-alert);
+  font-size: 1.3em;
+  line-height: 2.6em;
+
+  background-color: var(--primary);
+  color: var(--primary-face);
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+[role='alert'] > .icon {
+  font-size: 1.3em;
+}
+
+@each $colorName in colors.$colorNames {
+  .#{$colorName}[role='alert'] {
+    background-color: var(--#{$colorName});
+    color: var(--#{$colorName}-face);
+  }
+}

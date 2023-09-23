@@ -1,8 +1,43 @@
 @use '../colors' as colors;
 
+/** Initial value */
+.basic {
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--primary);
+  border: none;
+}
+
+.inbox {
+  color: var(--primary-face);
+  background-color: var(--primary);
+  box-shadow: var(--button-shadow) var(--primary-face);
+  border: none;
+}
+
+/** Initial value */
+.raised {
+  color: var(--primary-face);
+  background-color: var(--primary);
+  box-shadow: var(--button-shadow) var(--primary-dark);
+  border: none;
+}
+
+/** Initial value */
+.flat {
+  background-color: var(--primary);
+  color: var(--primary-face);
+  border: none;
+}
+
+/** Initial value */
+.stroked {
+  color: var(--primary);
+  background-color: hsla(0, 0%, 0%, 0);
+  border: 1px solid var(--primary-6);
+}
+
 @mixin active($buttonStyle, $colorName) {
   .#{$colorName}.#{$buttonStyle}:hover:active {
-    outline: 3px double var(--#{$colorName});
     background-color: var(--#{$colorName}-light);
     color: var(--#{$colorName}-face);
   }
@@ -10,7 +45,7 @@
 
 @mixin focus($buttonStyle, $colorName) {
   .#{$colorName}.#{$buttonStyle}:focus {
-    outline: 3px double var(--#{$colorName});
+    outline: 3px solid var(--#{$colorName}-lighter);
   }
 }
 
@@ -18,6 +53,41 @@
   .#{$colorName}.#{$buttonStyle}:hover {
     background-color: var(--#{$colorName}-dark);
     color: var(--#{$colorName}-dark-face);
+  }
+}
+
+@mixin creaetButtonVariants($className) {
+  /** For each color */
+  @each $colorName in colors.$colorNames {
+    .#{$className}.stroked.#{$colorName},
+    .#{$className}.basic.#{$colorName} {
+      color: var(--#{$colorName});
+    }
+
+    .#{$className}.flat.#{$colorName},
+    .#{$className}.raised.#{$colorName} {
+      background-color: var(--#{$colorName});
+      color: var(--#{$colorName}-face);
+    }
+
+    .#{$className}.raised.#{$colorName} {
+      box-shadow: var(--button-shadow) var(--#{$colorName}-dark);
+    }
+    .#{$className}.inbox.#{$colorName} {
+      box-shadow: 0px 0px 2px 1px var(--#{$colorName}-darker);
+      background-color: var(--#{$colorName}-face);
+      color: var(--#{$colorName}-darker);
+    }
+
+    .#{$className}.stroked.#{$colorName} {
+      border-color: var(--#{$colorName}-6);
+    }
+
+    @each $buttonStyle in (basic, flat, raised, stroked, inbox) {
+      @include active($buttonStyle, $colorName);
+      @include hover($buttonStyle, $colorName);
+      @include focus($buttonStyle, $colorName);
+    }
   }
 }
 
@@ -33,24 +103,22 @@
 
   font-size: 1em;
 
-  border: none;
-  border-radius: 0.2em;
+  border-radius: var(--button-border-radius);
 
   outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
-  outline-style: double;
 
-  font-family: var(--content-font);
   letter-spacing: 0.1em;
-  font-weight: 800;
+  font-family: var(--font-button);
+  font-weight: bolder;
   text-transform: capitalize;
 
   user-select: none;
   text-align: center;
   vertical-align: middle;
 
-  transition: background-color 100ms ease-in-out,
-    outline-color 100ms ease-in-out, color 100ms ease-in-out;
+  transition: background-color 200ms ease-in-out,
+    outline-color 200ms ease-in-out, color 200ms ease-in-out;
 }
 
 @mixin icon() {
@@ -59,15 +127,10 @@
   padding: 0px;
   margin: 0px;
 
-  border: none;
-
-  // outline-width: 0.3em;
+  outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
-  outline-style: double;
 
   font-family: Icon;
-  user-select: none;
-
   font-size: 2em;
   padding: 0.2em;
   width: 1.8em;
@@ -75,69 +138,47 @@
   border-radius: 100%;
   text-align: center;
   vertical-align: middle;
-  transition: background-color 100ms ease-in-out,
-    outline-color 100ms ease-in-out, color 100ms ease-in-out;
+
+  user-select: none;
+  transition: background-color 200ms ease-in-out,
+    outline-color 200ms ease-in-out, color 200ms ease-in-out;
 }
+
 /** Initial value */
 .button {
   @include button();
 }
+
 /** Initial value */
 .icon-button {
   @include icon();
 }
 
-/** Initial value */
-.basic {
-  background-color: rgba(0, 0, 0, 0);
-  color: var(--primary);
+.combined-button {
+  @include button();
+  display: flex; 
+  align-items: center;
+  gap: 1em;
+  .icon{ 
+    font-size: 1.3em;
+  }
 }
 
-/** Initial value */
-.raised {
-  background-color: var(--primary);
-  color: var(--primary-face);
-  box-shadow: 0px 0px 3px var(--primary-8);
+@include creaetButtonVariants('button');
+@include creaetButtonVariants('icon-button');
+
+.small.icon-button {
+  font-size: 1em;
 }
 
-/** Initial value */
-.flat {
-  background-color: var(--primary);
-  color: var(--primary-face);
+.small.button {
+  font-size: 0.8em;
 }
 
-/** Initial value */
-.stroked {
-  color: var(--primary);
-  background-color: hsla(0, 0%, 0%, 0);
-  border: 1px solid var(--primary-1);
+.big.icon-button {
+  font-size: 3em;
 }
 
-/** For each color */
-@each $colorName in colors.$colorNames {
-  .button.stroked.#{$colorName},
-  .button.basic.#{$colorName},
-  .icon-button.stroked.#{$colorName},
-  .icon-button.basic.#{$colorName} {
-    color: var(--#{$colorName});
-  }
-
-  .button.flat.#{$colorName},
-  .button.raised.#{$colorName},
-  .icon-button.flat.#{$colorName},
-  .icon-button.raised.#{$colorName} {
-    background-color: var(--#{$colorName});
-    color: var(--#{$colorName}-face);
-  }
-
-  .button.stroked.#{$colorName},
-  .icon-button.stroked.#{$colorName} {
-    border-color: var(--#{$colorName}-1);
-  }
-
-  @each $buttonStyle in (basic, flat, raised, stroked) {
-    @include active($buttonStyle, $colorName);
-    @include hover($buttonStyle, $colorName);
-    @include focus($buttonStyle, $colorName);
-  }
+.big.button {
+  font-size: 3em;
 }

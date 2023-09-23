@@ -12,3 +12,5 @@ export * from './alert/alert.component';
 export * from './notification/notification.component';
 
 export * from './toolbar/toolbar.component';
+
+export * from './alert/alert.component';

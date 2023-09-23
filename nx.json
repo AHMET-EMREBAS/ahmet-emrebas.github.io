@@ -97,6 +97,12 @@
       "export": true,
       "standalone": true
     },
+    "@nx/angular:directive": {
+      "project": "material",
+      "export": true,
+      "standalone": true,
+      "flat": false
+    },
     "@nx/angular:stories": {
       "name": "material",
       "interactionTests": true

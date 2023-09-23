@@ -8,6 +8,8 @@ export type ColorType =
   | 'black'
   | 'white';
 
-export type ButtonType = 'button' | 'icon';
+export type ButtonType = 'button' | 'icon-button' | 'combined-button';
 
-export type ButtonStyleType = 'basic' | 'raised' | 'flat' | 'stroked';
+export type buttonStyle = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox';
+
+export type Position = 'top' | 'right' | 'bottom' | 'left';
