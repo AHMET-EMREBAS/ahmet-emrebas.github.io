@@ -50,7 +50,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-ede1105647b3954f799ddce9690d2461b5aedf34db6bdd39b1c496ae59e697e10166e22278dcea2c54443feb28063b71838e812f8c17952a0d1d259efbd66ee5",
+            "id": "component-ButtonComponent-ec2bb4fa6be75c9ae0dc458ba63ddf4d26e63812c6d3ca0e431857842a016b1f194df5d9e72183399507759fc471bdb56cb963eff60464cd1a7425e3b7a84eae",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -60,7 +60,7 @@
             "selector": "tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button],button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]",
             "styleUrls": [],
             "styles": [],
-            "template": "<button #button class=\"{{ color }} {{ buttonType }}-button\">\n  {{ label }}\n</button>\n",
+            "template": "<button\n  #button\n  class=\"{{ color }} {{ buttonType }}-button\"\n  (click)=\"emit()\"\n>\n  {{ label }}\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -72,7 +72,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nButton style type",
                     "description": "<p>Button style type</p>\n",
-                    "line": 39,
+                    "line": 43,
                     "type": "ButtonStyleType",
                     "decorators": []
                 },
@@ -83,7 +83,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nButton type",
                     "description": "<p>Button type</p>\n",
-                    "line": 37,
+                    "line": 41,
                     "type": "ButtonType",
                     "decorators": []
                 },
@@ -94,7 +94,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nButton color",
                     "description": "<p>Button color</p>\n",
-                    "line": 42,
+                    "line": 46,
                     "type": "ColorType",
                     "decorators": []
                 },
@@ -105,7 +105,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nButton label",
                     "description": "<p>Button label</p>\n",
-                    "line": 34,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 }
@@ -118,7 +118,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClick Event",
                     "description": "<p>Click Event</p>\n",
-                    "line": 45,
+                    "line": 49,
                     "type": "EventEmitter"
                 }
             ],
@@ -130,7 +130,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nEmit click event",
@@ -151,7 +151,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonStyleType, ButtonType, ColorType, Icon } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { type: 'click'; payload: string };\n// button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]\n@Component({\n  selector:\n    'tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button],button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button #button class=\"{{ color }} {{ buttonType }}-button\">\n      {{ label }}\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  /** Button label */\n  @Input() label = 'Button';\n\n  /** Button type */\n  @Input() buttonType: ButtonType = 'button';\n  /** Button style type */\n  @Input() buttonStyleType: ButtonStyleType = 'basic';\n\n  /** Button color */\n  @Input() color: ColorType = 'primary';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClass(this.buttonType);\n    this.addClass(this.color);\n    this.addClass(this.buttonStyleType);\n  }\n\n  /** @ignore */\n  private addClass(className: string) {\n    this.button?.nativeElement.classList.add(className);\n  }\n\n  /** Emit click event */\n  emit() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonStyleType, ButtonType, ColorType } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { type: 'click'; payload: string };\n\n@Component({\n  selector:\n    'tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button],button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button\n      #button\n      class=\"{{ color }} {{ buttonType }}-button\"\n      (click)=\"emit()\"\n    >\n      {{ label }}\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  /** Button label */\n  @Input() label = 'Button';\n\n  /** Button type */\n  @Input() buttonType: ButtonType = 'button';\n  /** Button style type */\n  @Input() buttonStyleType: ButtonStyleType = 'basic';\n\n  /** Button color */\n  @Input() color: ColorType = 'primary';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClass(this.buttonType);\n    this.addClass(this.color);\n    this.addClass(this.buttonStyleType);\n  }\n\n  /** @ignore */\n  private addClass(className: string) {\n    this.button?.nativeElement.classList.add(className);\n  }\n\n  /** Emit click event */\n  emit() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -161,7 +161,7 @@
         },
         {
             "name": "ColorsComponent",
-            "id": "component-ColorsComponent-9c22d8b09f86288424faad85b5cd673d5e0ae49eb239082cb6dd47891e1eb5f83c7ef5c3bf3650ca383e1df4cd8b1d5b04ad179338a1da358a3b1df5cf5f07fa",
+            "id": "component-ColorsComponent-d09453123e60ae49fb410f134057636028aaa7b21691efbecbe3200a8c96740d6d368f843339033e8fc9974d3099ba040d3f9330e7429d8c3897438382542987",
             "file": "libs/material/src/colors/colors.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -178,28 +178,7 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "colors",
-                    "defaultValue": "[\n    'primary',\n    'secondary',\n    'accent',\n    'warn',\n    'red',\n    'green',\n    'black',\n    'white',\n  ]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 12
-                },
-                {
-                    "name": "colorVariants",
-                    "defaultValue": "this.colors.map((e) => [\n    e,\n    ...[\n      'light',\n      'lighter',\n      'dark',\n      'darker',\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7,\n      8,\n      9,\n      10,\n    ].map((v) => e + '-' + v),\n  ])",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 22
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -215,11 +194,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-colors',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './colors.component.html',\n  styles: [],\n})\nexport class ColorsComponent {\n  colors = [\n    'primary',\n    'secondary',\n    'accent',\n    'warn',\n    'red',\n    'green',\n    'black',\n    'white',\n  ];\n  colorVariants = this.colors.map((e) => [\n    e,\n    ...[\n      'light',\n      'lighter',\n      'dark',\n      'darker',\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7,\n      8,\n      9,\n      10,\n    ].map((v) => e + '-' + v),\n  ]);\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-colors',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './colors.component.html',\n  styles: [],\n})\nexport class ColorsComponent {\n  /** @ignore */\n  colors = [\n    'primary',\n    'secondary',\n    'accent',\n    'warn',\n    'red',\n    'green',\n    'black',\n    'white',\n  ];\n\n  /** @ignore */\n  colorVariants = this.colors.map((e) => [\n    e,\n    ...[\n      'light',\n      'lighter',\n      'dark',\n      'darker',\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7,\n      8,\n      9,\n      10,\n    ].map((v) => e + '-' + v),\n  ]);\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div class=\"flex column gap-3 center\">\n  <div\n    class=\"flex gap-3 wrap\"\n    *ngFor=\"let variants of colorVariants\"\n  >\n    <div\n      class=\"flex  bg-{{ color }} {{ color }}-face text-center center\"\n      *ngFor=\"let color of variants\"\n      style=\"width: 100px; height: 100px\"\n    >\n      <span> .{{ color }} </span>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"flex column gap-3 center\">\n  <div class=\"flex gap-3 wrap\" *ngFor=\"let variants of colorVariants\">\n    <div\n      class=\"flex text-center center\"\n      style=\"\n      background-color: var(--{{ color }}); \n      color:var(--{{ color }}-face)\n      \"\n      *ngFor=\"let color of variants\"\n      style=\"width: 100px; height: 100px\"\n    >\n      <span> .{{ color }} </span>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "FontsComponent",
@@ -905,7 +884,7 @@
                 "linktype": "component",
                 "name": "ColorsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

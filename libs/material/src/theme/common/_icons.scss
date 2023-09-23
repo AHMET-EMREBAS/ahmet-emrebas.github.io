@@ -1,4 +1,4 @@
-@import 'variables';
+@use '../colors' as colors;
 
 $iconFontAssets: '../../assets/fonts';
 @font-face {
@@ -20,7 +20,7 @@ $iconFontAssets: '../../assets/fonts';
   -webkit-font-smoothing: antialiased;
 }
 
-@each $colorName in $colorNames {
+@each $colorName in colors.$colorNames {
   .icon[color='#{$colorName}'] {
     color: var(--#{$colorName});
   }

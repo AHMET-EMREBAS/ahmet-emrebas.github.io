@@ -1,6 +1,6 @@
-@use './theme/builtin-themes' as bt;
+@use './theme' as tb;
 
-@include bt.retro();
+@include tb.retro();
 
 .sb-main-padded.sb-show-main {
   padding: 0px;

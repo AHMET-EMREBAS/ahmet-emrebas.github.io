@@ -1,11 +1,13 @@
 @use 'sass:math';
-@import 'variables';
+@use 'utils' as utils;
 
-// @for $boxSizes from 1 through 12 {
-//   @each $property in (width, height){ 
-
-//   }
-// }
+@for $boxSize from 1 through 12 {
+  @each $property in (width) {
+    .#{utils.fl($property)}-#{$boxSize} {
+      width: #{(math.div(100, 12) * $boxSize)} + '%';
+    }
+  }
+}
 
 // @function fl($string) {
 //   @return str-slice($string, 1, 1);

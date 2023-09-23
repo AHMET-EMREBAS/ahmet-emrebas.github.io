@@ -1,4 +1,4 @@
-$colorNames: (primary, secondary, accent, warn, green, red, white, black);
+@use '../colors' as colors;
 
 @mixin active($buttonStyle, $colorName) {
   .#{$colorName}.#{$buttonStyle}:hover:active {
@@ -61,7 +61,7 @@ $colorNames: (primary, secondary, accent, warn, green, red, white, black);
 
   border: none;
 
-  outline-width: 0.3em;
+  // outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
   outline-style: double;
 
@@ -114,7 +114,7 @@ $colorNames: (primary, secondary, accent, warn, green, red, white, black);
 }
 
 /** For each color */
-@each $colorName in $colorNames {
+@each $colorName in colors.$colorNames {
   .button.stroked.#{$colorName},
   .button.basic.#{$colorName},
   .icon-button.stroked.#{$colorName},
