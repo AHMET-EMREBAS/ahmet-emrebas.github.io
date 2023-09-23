@@ -1,0 +1,13 @@
+$positions: (static, relative, absolute, fixed, sticky);
+
+@each $pos in $positions {
+  .#{$pos} {
+    position: $pos;
+  }
+}
+
+@for $size from 0 through 12 {
+  .z-#{$size} {
+    z-index: $size;
+  }
+}

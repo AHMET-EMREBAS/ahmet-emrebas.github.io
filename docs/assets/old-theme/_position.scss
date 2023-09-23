@@ -1,0 +1,15 @@
+$positions: (absolute, fixed, sticky, static);
+
+@each $pos in $positions {
+  .#{$pos} {
+    position: #{$pos};
+  }
+}
+
+$sides: (top, right, bottom, left);
+
+@each $side in $sides {
+  .#{$side}-0 {
+    #{$side}: 0px;
+  }
+}

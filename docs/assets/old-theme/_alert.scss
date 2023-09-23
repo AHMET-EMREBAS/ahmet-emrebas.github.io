@@ -1,0 +1,26 @@
+@import 'vars';
+
+.alert {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  padding-bottom: var(--tb-alert-padding-bottom);
+  padding-left: var(--tb-alert-padding-left);
+  padding-right: var(--tb-alert-padding-right);
+  gap: var(--tb-alert-gap);
+
+  min-height: var(--tb-alert-min-height);
+  max-height: var(--tb-alert-max-height);
+  border-radius: var(--tb-alert-border-radius);
+  width: var(--tb-alert-width);
+  max-width: var(--tb-alert-max-width);
+}
+
+@each $colorName in $colorNames {
+  .alert.#{$colorName} {
+    background-color: var(--#{$colorName});
+    color: var(--#{$colorName}-face);
+  }
+}

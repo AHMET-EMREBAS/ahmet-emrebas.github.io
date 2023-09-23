@@ -1,0 +1,142 @@
+@use 'sass:list';
+@use 'sass:math';
+
+@font-face {
+  font-family: Handjet;
+  src: url('./fonts/Handjet/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('./fonts/Roboto_Flex/RobotoFlex.ttf');
+}
+
+@font-face {
+  font-family: Special Elite;
+  src: url('./fonts/Special_Elite/SpecialElite-Regular.ttf');
+}
+
+@font-face {
+  font-family: Josefin Sans;
+  src: url(./fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Josefin Sans;
+  font-style: italic;
+  src: url(./fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Lobster;
+  src: url('./fonts/Lobster/Lobster-Regular.ttf');
+}
+
+@font-face {
+  font-family: Comfortaa;
+  src: url(./fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Rubik Dirt;
+  src: url(./fonts/Rubik_Dirt/RubikDirt-Regular.ttf);
+}
+
+@font-face {
+  font-family: Rubik Iso;
+  src: url('./fonts/Rubik_Iso/RubikIso-Regular.ttf');
+}
+
+@font-face {
+  font-family: Black Ops One;
+  src: url('./fonts/Black_Ops_One/BlackOpsOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: Concert One;
+  src: url('./fonts/Concert_One/ConcertOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: Tourney;
+  src: url('./fonts/Tourney/Tourney-VariableFont_wdth.ttf');
+}
+
+@font-face {
+  font-family: Tourney;
+  font-style: italic;
+  src: url('./fonts/Tourney/Tourney-Italic-VariableFont_wdth.ttf');
+}
+
+@font-face {
+  font-family: Dancing Script;
+  src: url('./fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
+}
+
+$fontList: (
+  'tourney': 'Tourney, cursive',
+  'special-elite': 'Special Elite, cursive',
+  'rubik-iso': 'Rubik Iso, cursive',
+  'rubik-dirt': 'Rubik Dirt, cursive',
+  'roboto': 'Roboto, cursive',
+  'material-icon': 'Material Icons, cursive',
+  'lobster': 'Lobster, cursive',
+  'josefin-sans': 'Josefin Sans, cursive',
+  'dancing-script': 'Dancing Script, cursive',
+  'concert-one': 'Concert One, cursive',
+  'comfortaa': 'Comfortaa, cursive',
+  'black-ops-one': 'Black Ops One, cursive',
+  'handjet': 'Handjet, cursive',
+);
+
+@each $key, $value in $fontList {
+  .font-#{$key} {
+    font-family: #{$value};
+  }
+}
+
+
+
+.clear-margins {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+@for $size from 1 through 6 {
+  $titleSize: math.div(6, $size);
+  $subtitleSize: $titleSize * 0.6;
+  $contentSize: $titleSize * 0.5;
+
+  .title-#{$size} {
+    @extend .clear-margins;
+    font-size: #{$titleSize}em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .subtitle-#{$size} {
+    @extend .clear-margins;
+    font-size: #{$subtitleSize}em;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    padding-left: 0.2em;
+  }
+
+  .content-#{$size} {
+    @extend .clear-margins;
+    font-size: #{$contentSize}em;
+    font-weight: 300;
+    // line-height: #{$contentSize * 1}em;
+    line-height: 1.3em;
+    text-indent: 0.2em;
+  }
+}
+
+@for $size from 1 through 100 {
+  .font-size-#{$size} {
+    font-size: #{$size * 0.1}em;
+  }
+}

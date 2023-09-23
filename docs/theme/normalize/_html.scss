@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  font-family: var(--font-content);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+

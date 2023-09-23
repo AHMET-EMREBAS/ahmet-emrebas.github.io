@@ -1,0 +1,133 @@
+@use '../colors' as colors;
+
+.dropdown {
+  position: relative;
+  align-self: flex-start;
+  width: fit-content;
+}
+
+.dropdown-items {
+  --scale: 0;
+  visibility: collapse;
+  position: absolute;
+  opacity: 0;
+  transform: translate(var(--x), var(--y)) scale(var(--scale));
+  width: fit-content;
+  box-sizing: border-box;
+  z-index: 1;
+  gap: 0.3em;
+  transition: transform 400ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.dropdown-items.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown-items.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  opacity: 1;
+}
+
+.bottom.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: -50%;
+  --y: 100%;
+  left: 50%;
+  bottom: 0px;
+  border-top: 1em solid transparent;
+  transform-origin: top center;
+  visibility: visible;
+}
+
+.right.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: 100%;
+  --y: 0%;
+  top: 0px;
+  right: 0px;
+  border-left: 1em solid transparent;
+  transform-origin: left center;
+  visibility: visible;
+}
+
+.left.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: -100%;
+  --y: 0%;
+  top: 0px;
+  left: 0px;
+  border-right: 1em solid transparent;
+  transform-origin: right center;
+  visibility: visible;
+}
+
+.top.dropdown:hover > .dropdown-items {
+  --scale: 1;
+  --x: -50%;
+  --y: -100%;
+  left: 50%;
+  top: 0px;
+  border-bottom: 1em solid transparent;
+  transform-origin: bottom center;
+  visibility: visible;
+}
+
+/** Arrow */
+
+.bottom.dropdown > .dropdown-items::before {
+  content: '';
+  position: absolute;
+  border: 0.4em solid transparent;
+
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transform-origin: top center;
+}
+
+.top.dropdown > .dropdown-items::before {
+  content: '';
+  position: absolute;
+  border: 0.4em solid transparent;
+
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  transform-origin: bottom center;
+}
+
+.right.dropdown > .dropdown-items::before {
+  content: '';
+  position: absolute;
+  border: 0.4em solid transparent;
+
+  top: 0px;
+  left: 0px;
+  transform: translate(-100%, 1em);
+  transform-origin: left center;
+}
+
+.left.dropdown > .dropdown-items::before {
+  content: '';
+  position: absolute;
+  border: 0.4em solid transparent;
+
+  top: 0px;
+  right: 0px;
+  transform: translate(100%, 1em);
+  transform-origin: right center;
+}
+@each $colorName in colors.$colorNames {
+  @each $side in (top, right, bottom, left) {
+    .#{$side}.dropdown.#{$colorName} > .dropdown-items::before {
+      border-#{$side}-color: var(--#{$colorName}) !important;
+    }
+  }
+}

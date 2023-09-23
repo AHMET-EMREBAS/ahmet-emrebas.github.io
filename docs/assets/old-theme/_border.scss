@@ -1,0 +1,25 @@
+@import 'vars';
+@import 'utils';
+
+@each $style in (dashed, solid, double) {
+  @include c(b + '-' + $style, 'border-style', $style);
+}
+
+@each $color in $colorNames {
+  @include c(b + '-' + #{$color}, border-color, var(--#{color}));
+  @include c(b + '-' + #{$color} + dark, border-color, var(--#{color-dark}));
+  @include c(b + '-' + #{$color} + light, border-color, var(--#{color-light}));
+  @each $side in $sides {
+    @include c(b + '-' + #{$color}, border-#{$side}-color, var(--#{color}));
+    @include c(
+      b + '-' + #{$color} + dark,
+      border-#{$side}-color,
+      var(--#{color-dark})
+    );
+    @include c(
+      b + '-' + #{$color} + light,
+      border-#{$side}-color,
+      var(--#{color-light})
+    );
+  }
+}
