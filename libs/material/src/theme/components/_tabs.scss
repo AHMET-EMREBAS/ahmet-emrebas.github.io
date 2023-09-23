@@ -1,0 +1,17 @@
+.tabs-container {
+  position: relative;
+}
+
+.tabs-container > .tab {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+}
+
+.tabs-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}

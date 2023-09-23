@@ -113,16 +113,23 @@
   </tb-menu>
 </tb-toolbar>
 
-<div class="flex column gap-2 p-12">
+<tb-tab-container>
+  <tb-tab label="Tab 1" [active]="true">  <span  tabContent>Tab 1 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 2" [active]="false"> <span  tabContent> Tab 2 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 3" [active]="false"> <span  tabContent> Tab 3 Content Goes here </span></tb-tab>
+</tb-tab-container>
+<!-- <ng-container [ngTemplateOutlet]="" [ngTemplateOutletContext]=""></ng-container> -->
+<!-- <div class="flex column gap-2 p-12">
   <div class="title-1" substring="you can add [substring] attribute to titles">
     Title 1 with substring attribute
   </div>
   <div class="title-2" substring="you can add [substring] attribute to titles">
     Title 2 with substring attribute
   </div>
-</div>
+</div> -->
 
+<!-- 
 <p>
   <span class="icon">copyright</span>
   <span> All rights are reserved. </span>
-</p>
+</p> -->
