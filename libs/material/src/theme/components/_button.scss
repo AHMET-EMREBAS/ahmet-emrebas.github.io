@@ -99,8 +99,8 @@
   padding-right: 1em;
   margin: 0px;
   height: 3em;
-  min-width: 80px;
 
+  width: max-content;
   font-size: 1em;
 
   border-radius: var(--button-border-radius);
@@ -156,10 +156,10 @@
 
 .combined-button {
   @include button();
-  display: flex; 
+  display: flex;
   align-items: center;
   gap: 1em;
-  .icon{ 
+  .icon {
     font-size: 1.3em;
   }
 }

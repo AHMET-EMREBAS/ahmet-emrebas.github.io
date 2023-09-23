@@ -14,8 +14,8 @@ type Story = StoryObj<ButtonComponent>;
 export const Primary: Story = {
   args: {
     label: 'home',
-    buttonType: 'button',
-    buttonStyleType: 'basic',
+    type: 'button',
+    variant: 'basic',
     color: 'primary',
   },
 };
@@ -23,8 +23,8 @@ export const Primary: Story = {
 export const Heading: Story = {
   args: {
     label: 'Button',
-    buttonType: 'button',
-    buttonStyleType: 'raised',
+    type: 'button',
+    variant: 'raised',
     color: 'primary',
   },
   play: async ({ canvasElement }) => {

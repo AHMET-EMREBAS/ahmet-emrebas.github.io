@@ -14,20 +14,15 @@ import { CommonModule } from '@angular/common';
 export type ButtonEvent = { id?: string; type: 'click'; payload: string };
 
 @Component({
-  selector:
-    'tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button],button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]',
+  selector: 'tb-button',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <button
-      #button
-      class="{{ color }} {{ buttonSize }} {{ buttonType }}"
-      (click)="emit()"
-    >
-      <span class="button-label" *ngIf="buttonType !== 'icon-button'">
+    <button #button (click)="emitClickEvent()">
+      <span class="button-label" *ngIf="type !== 'icon-button'">
         {{ label }}
       </span>
-      <span class="icon" *ngIf="buttonType !== 'button'">{{ icon }}</span>
+      <span class="button-icon icon" *ngIf="type !== 'button'">{{ icon }}</span>
     </button>
   `,
 })
@@ -35,39 +30,27 @@ export class ButtonComponent implements AfterViewInit {
   /** @ignore */
   @ViewChild('button') button?: ElementRef<HTMLButtonElement>;
 
-  /** Button label */
-  @Input() label = 'Button';
-
-  @Input() icon: Icon = 'info';
-
-  /** Button type */
-  @Input() buttonType: ButtonType = 'button';
-
-  @Input() buttonSize: 'small' | 'regular' | 'big' = 'regular';
-
-  /** Button style type */
-  @Input() buttonStyleType: buttonStyle = 'basic';
-
-  /** Button color */
+  @Input() size: 'small' | 'regular' | 'big' = 'regular';
+  @Input() variant: buttonStyle = 'basic';
+  @Input() type: ButtonType = 'button';
   @Input() color: ColorType = 'primary';
+  @Input() icon: Icon = 'info';
+  @Input() label = 'Button';
 
   /** Click Event  */
   @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();
 
   /** @ignore */
   ngAfterViewInit(): void {
-    this.addClass(this.buttonType);
-    this.addClass(this.color);
-    this.addClass(this.buttonStyleType);
+    this.addClasses(this.size, this.variant, this.type, this.color);
   }
 
   /** @ignore */
-  private addClass(className: string) {
-    this.button?.nativeElement.classList.add(className);
+  private addClasses(...className: string[]) {
+    this.button?.nativeElement.classList.add(...className);
   }
 
-  /** Emit click event */
-  emit() {
+  emitClickEvent() {
     this.clickEvent.emit({ type: 'click', payload: this.label });
   }
 }

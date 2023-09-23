@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="title-1">Showcase</h1>
+
+  <h2 class="title-2">Menu</h2>
+
+  <tb-menu
+    type="button"
+    label="Triger 1"
+    color="primary"
+    position="bottom"
+    (clickEvent)="handle($event)"
+  >
+    <tb-menu type="button" label="Label 1" color="warn"></tb-menu>
+    <tb-menu type="button" label="Triger 2" color="secondary" position="right">
+      <tb-menu type="button" label="Sub Label 1" color="secondary"></tb-menu>
+      <tb-menu type="button" label="Sub Label 2" color="secondary"></tb-menu>
+      <tb-menu type="button" label="Sub Label 3" color="secondary"></tb-menu>
+      <tb-menu
+        type="button"
+        label="Triger 2"
+        color="accent"
+        position="right"
+        showAs="row"
+      >
+        <tb-menu type="button" label="Sub Label 1" color="accent"></tb-menu>
+        <tb-menu type="button" label="Sub Label 2" color="accent"></tb-menu>
+        <tb-menu type="button" label="Sub Label 3" color="accent"></tb-menu>
+        <tb-menu type="button" label="Sub Label 4" color="accent"></tb-menu>
+      </tb-menu>
+    </tb-menu>
+    <tb-menu type="button" label="Label"></tb-menu>
+  </tb-menu>
+</div>

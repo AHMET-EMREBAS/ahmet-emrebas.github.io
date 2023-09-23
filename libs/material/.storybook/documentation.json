@@ -204,60 +204,27 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-6bf37b5b8d0031d9cd2c7b847a825d0039c0db34f8db103a46c8ccd89921bb5b60e5ca920a2127bfb575a19e5763884c5c879bc7acbb395e7cfac4325514bab9",
+            "id": "component-ButtonComponent-79051e1e07fa983fef0807731ecc479feee28ae6701de474ef35cb629dd6d7aa8238dd9489ec7ce637f0921ccf41ca0079cf26ed259b27347251a71146c2867b",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button],button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]",
+            "selector": "tb-button",
             "styleUrls": [],
             "styles": [],
-            "template": "<button\n  #button\n  class=\"{{ color }} {{ buttonSize }} {{ buttonType }}\"\n  (click)=\"emit()\"\n>\n  <span *ngIf=\"buttonType !== 'icon-button'\"> {{ label }} </span>\n  <span class=\"icon\" *ngIf=\"buttonType !== 'button'\">{{ icon }}</span>\n</button>\n",
+            "template": "<button #button (click)=\"emitClickEvent()\">\n  <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n  <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{\n    icon\n  }}</span>\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "buttonSize",
-                    "defaultValue": "'regular'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 44,
-                    "type": "\"small\" | \"regular\" | \"big\"",
-                    "decorators": []
-                },
-                {
-                    "name": "buttonStyleType",
-                    "defaultValue": "'basic'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nButton style type",
-                    "description": "<p>Button style type</p>\n",
-                    "line": 47,
-                    "type": "ButtonStyleType",
-                    "decorators": []
-                },
-                {
-                    "name": "buttonType",
-                    "defaultValue": "'button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nButton type",
-                    "description": "<p>Button type</p>\n",
-                    "line": 42,
-                    "type": "ButtonType",
-                    "decorators": []
-                },
-                {
                     "name": "color",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nButton color",
-                    "description": "<p>Button color</p>\n",
-                    "line": 50,
+                    "line": 38,
                     "type": "ColorType",
                     "decorators": []
                 },
@@ -275,10 +242,35 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nButton label",
-                    "description": "<p>Button label</p>\n",
-                    "line": 37,
+                    "line": 40,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'regular'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "\"small\" | \"regular\" | \"big\"",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "ButtonType",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "buttonStyle",
                     "decorators": []
                 }
             ],
@@ -290,23 +282,21 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClick Event",
                     "description": "<p>Click Event</p>\n",
-                    "line": 53,
+                    "line": 43,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "emit",
+                    "name": "emitClickEvent",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 60,
                     "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nEmit click event",
-                    "description": "<p>Emit click event</p>\n"
+                    "deprecationMessage": ""
                 }
             ],
             "deprecated": false,
@@ -323,7 +313,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonStyleType, ButtonType, ColorType, Icon } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { id?: string; type: 'click'; payload: string };\n\n@Component({\n  selector:\n    'tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button],button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button\n      #button\n      class=\"{{ color }} {{ buttonSize }} {{ buttonType }}\"\n      (click)=\"emit()\"\n    >\n      <span *ngIf=\"buttonType !== 'icon-button'\"> {{ label }} </span>\n      <span class=\"icon\" *ngIf=\"buttonType !== 'button'\">{{ icon }}</span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  /** Button label */\n  @Input() label = 'Button';\n\n  @Input() icon: Icon = 'info';\n\n  /** Button type */\n  @Input() buttonType: ButtonType = 'button';\n\n  @Input() buttonSize: 'small' | 'regular' | 'big' = 'regular';\n\n  /** Button style type */\n  @Input() buttonStyleType: ButtonStyleType = 'basic';\n\n  /** Button color */\n  @Input() color: ColorType = 'primary';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClass(this.buttonType);\n    this.addClass(this.color);\n    this.addClass(this.buttonStyleType);\n  }\n\n  /** @ignore */\n  private addClass(className: string) {\n    this.button?.nativeElement.classList.add(className);\n  }\n\n  /** Emit click event */\n  emit() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { buttonStyle, ButtonType, ColorType, Icon } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { id?: string; type: 'click'; payload: string };\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button #button (click)=\"emitClickEvent()\">\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{\n        icon\n      }}</span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() variant: buttonStyle = 'basic';\n  @Input() type: ButtonType = 'button';\n  @Input() color: ColorType = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(\n      this.size,\n      this.variant,\n      this.type,\n      this.color\n    );\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -456,7 +446,7 @@
         },
         {
             "name": "MenuComponent",
-            "id": "component-MenuComponent-29c886fbd6d502e147b9e72e052cceb8dd3ac7d5cb51b1dfd446e570332f07fd6c0d4eacb35de9b6dcacab7170e9df3907f69868b7ddcc6e1c868ab801b2901a",
+            "id": "component-MenuComponent-9d80e1566c978cf4dcc7cb59fe64e9bd3e7645b6baa361d0b76a12e31ee0cbc13c3f167d3d3de4563e9f06ffda4a76d845cb66c643983d212ee6e298f73f8c02",
             "file": "libs/material/src/menu/menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -471,10 +461,197 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "childrenViaInput",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "QueryList<MenuComponent>",
+                    "decorators": []
+                },
+                {
+                    "name": "position",
+                    "defaultValue": "'none'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "Position",
+                    "decorators": []
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "ColorType",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 39,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'regular'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "\"small\" | \"regular\" | \"big\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "ButtonType",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "buttonStyle",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "clickEvent",
+                    "defaultValue": "new EventEmitter<ButtonEvent>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nClick Event",
+                    "description": "<p>Click Event</p>\n",
+                    "line": 43,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "children",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<MenuComponent>",
+                    "optional": true,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "childrenViaContent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<MenuComponent>",
+                    "optional": true,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "MenuComponent"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "childValue",
+                    "args": [
+                        {
+                            "name": "child",
+                            "type": "MenuComponent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{ type: any; variant: any; color: any; size: any; childrenViaInput: QueryList<MenuComponent>; label: any; position: Position; }",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "child",
+                            "type": "MenuComponent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        161
+                    ]
+                },
+                {
+                    "name": "emitClickEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -484,16 +661,21 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './menu.component.html',\n  styles: [],\n})\nexport class MenuComponent {}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ContentChildren,\n  Input,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../button';\nimport { Position } from '../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './menu.component.html',\n  styles: [],\n})\nexport class MenuComponent extends ButtonComponent {\n  /** @ignore */\n  readonly componentType = MenuComponent;\n\n  @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;\n  @Input() childrenViaInput?: QueryList<MenuComponent>;\n  children?: QueryList<MenuComponent>;\n\n  @Input() position: Position = 'none';\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this.children = this.childrenViaInput || this.childrenViaContent;\n  }\n  childValue(child: MenuComponent) {\n    const { type, variant, color, size, children, label, position } = child;\n    if (label === 'Triger 2') {\n      console.log(children);\n    }\n    return {\n      type,\n      variant,\n      color,\n      size,\n      childrenViaInput: children,\n      label,\n      position,\n    };\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p>menu works!</p>\n"
+            "extends": "ButtonComponent",
+            "templateData": "<div class=\"dropdown {{ position }} {{color}}\">\n  <tb-button\n    [color]=\"color\"\n    [label]=\"label\"\n    [type]=\"type\"\n    [variant]=\"variant\"\n  ></tb-button>\n\n  <div\n    classList=\"dropdown-items {{ color }}\"\n    *ngIf=\"children && children.length > 0\"\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <ng-container\n        *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n      ></ng-container>\n    </ng-container>\n  </div>\n</div>\n"
         },
         {
             "name": "NotificationComponent",
@@ -535,6 +717,139 @@
             "styleUrlsData": "",
             "stylesData": "",
             "templateData": "<p>notification works!</p>\n"
+        },
+        {
+            "name": "ShowcaseComponent",
+            "id": "component-ShowcaseComponent-f3b91e6bf6cc0c2f8d2858730d4d2694569b4125b8178c2be4ef4a343c6e15f4c5eb1c732ea5654daef2671c0b53e1a0ba3696d5fdc6641740afade7fb2589aa",
+            "file": "libs/material/src/showcase/showcase.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-showcase",
+            "styleUrls": [],
+            "styles": [
+                "\n      .container {\n        min-height:2000px;\n      }\n    "
+            ],
+            "templateUrl": [
+                "./showcase.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MenuComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, MenuComponent],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height:2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n      .container {\n        min-height:2000px;\n      }\n    \n",
+            "templateData": "<div class=\"container\">\n  <h1 class=\"title-1\">Showcase</h1>\n\n  <h2 class=\"title-2\">Menu</h2>\n\n  <tb-menu type=\"button\" label=\"Triger 1\" color=\"accent\" position=\"bottom\">\n    <tb-menu type=\"button\" label=\"Label 1\" color=\"accent\"></tb-menu>\n    <tb-menu type=\"button\" label=\"Triger 2\" color=\"accent\" position=\"right\">\n      <tb-menu type=\"button\" label=\"Sub Label 1\" color=\"accent\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Sub Label 2\" color=\"accent\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Sub Label 3\" color=\"accent\"></tb-menu>\n      <tb-menu type=\"button\" label=\"Triger 2\" color=\"accent\" position=\"right\">\n        <tb-menu type=\"button\" label=\"Sub Label 1\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 2\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 3\" color=\"accent\"></tb-menu>\n        <tb-menu type=\"button\" label=\"Sub Label 4\" color=\"accent\"></tb-menu>\n      </tb-menu>\n    </tb-menu>\n    <tb-menu type=\"button\" label=\"Label\"></tb-menu>\n  </tb-menu>\n</div>\n"
+        },
+        {
+            "name": "StepperComponent",
+            "id": "component-StepperComponent-81ee66b5ca55a1812ac403263adc9250453b313090a453cc03bd136ba53ea6d925156d1682daed49dcfc3bedc5a638ade395c804c62dbed1feb0b3f675a778c0",
+            "file": "libs/material/src/lib/stepper/stepper.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-stepper",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./stepper.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-stepper',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './stepper.component.html',\n  styles: [],\n})\nexport class StepperComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<p>stepper works!</p>\n"
+        },
+        {
+            "name": "TabsComponent",
+            "id": "component-TabsComponent-7002b879be54adcb3898b16567032e1c9b90d20740d01052bf14e6fe5f066cc3aa1e454079e9d1792778e47dbeb3396c43160850f3c10c3cbb6a61f5acd7a2b3",
+            "file": "libs/material/src/lib/tabs/tabs.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-tabs",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./tabs.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-tabs',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './tabs.component.html',\n  styles: [],\n})\nexport class TabsComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<p>tabs works!</p>\n"
         },
         {
             "name": "ToolbarComponent",
@@ -599,17 +914,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'button',\n    buttonStyleType: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -620,6 +925,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -655,11 +970,41 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/showcase works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/stepper works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tabs works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "meta",
@@ -685,21 +1030,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ColorsComponent>",
-                "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<FontsComponent>",
                 "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ColorsComponent>",
+                "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
             },
             {
                 "name": "meta",
@@ -735,11 +1080,41 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ShowcaseComponent>",
+                "defaultValue": "{\n  component: ShowcaseComponent,\n  title: 'ShowcaseComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ToolbarComponent>",
                 "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<StepperComponent>",
+                "defaultValue": "{\n  component: StepperComponent,\n  title: 'StepperComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TabsComponent>",
+                "defaultValue": "{\n  component: TabsComponent,\n  title: 'TabsComponent',\n}"
             },
             {
                 "name": "Primary",
@@ -759,13 +1134,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'home',\n    buttonType: 'button',\n    buttonStyleType: 'basic',\n    color: 'primary',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -775,7 +1150,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -815,7 +1190,37 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -836,7 +1241,7 @@
                 "kind": 184
             },
             {
-                "name": "ButtonStyleType",
+                "name": "buttonStyle",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"inbox\"",
@@ -883,7 +1288,7 @@
                 "name": "Position",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+                "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"none\"",
                 "file": "libs/material/src/api/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -916,8 +1321,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ColorsComponent>",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "rawtype": "StoryObj<FontsComponent>",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -927,8 +1332,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FontsComponent>",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "rawtype": "StoryObj<ColorsComponent>",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -971,8 +1376,41 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<ShowcaseComponent>",
+                "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<ToolbarComponent>",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<StepperComponent>",
+                "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TabsComponent>",
+                "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1022,7 +1460,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'button',\n    buttonStyleType: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -1042,39 +1480,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'home',\n    buttonType: 'button',\n    buttonStyleType: 'basic',\n    color: 'primary',\n  },\n}"
-                }
-            ],
-            "libs/material/src/colors/colors.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ColorsComponent>",
-                    "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
             "libs/material/src/fonts/fonts.component.stories.ts": [
@@ -1103,6 +1509,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/colors/colors.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ColorsComponent>",
+                    "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1205,6 +1643,38 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
+            "libs/material/src/showcase/showcase.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/showcase works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ShowcaseComponent>",
+                    "defaultValue": "{\n  component: ShowcaseComponent,\n  title: 'ShowcaseComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/material/src/toolbar/toolbar.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -1236,6 +1706,70 @@
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
+            ],
+            "libs/material/src/lib/stepper/stepper.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/stepper works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<StepperComponent>",
+                    "defaultValue": "{\n  component: StepperComponent,\n  title: 'StepperComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/lib/tabs/tabs.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tabs works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TabsComponent>",
+                    "defaultValue": "{\n  component: TabsComponent,\n  title: 'TabsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -1256,7 +1790,7 @@
             ],
             "libs/material/src/api/types.ts": [
                 {
-                    "name": "ButtonStyleType",
+                    "name": "buttonStyle",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"inbox\"",
@@ -1292,7 +1826,7 @@
                     "name": "Position",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+                    "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"none\"",
                     "file": "libs/material/src/api/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1339,19 +1873,6 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/colors/colors.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ColorsComponent>",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
             "libs/material/src/fonts/fonts.component.stories.ts": [
                 {
                     "name": "Story",
@@ -1359,6 +1880,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FontsComponent>",
                     "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/colors/colors.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ColorsComponent>",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1404,6 +1938,19 @@
                     "kind": 180
                 }
             ],
+            "libs/material/src/showcase/showcase.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ShowcaseComponent>",
+                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "libs/material/src/toolbar/toolbar.component.stories.ts": [
                 {
                     "name": "Story",
@@ -1416,12 +1963,38 @@
                     "description": "",
                     "kind": 180
                 }
+            ],
+            "libs/material/src/lib/stepper/stepper.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<StepperComponent>",
+                    "file": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/lib/tabs/tabs.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TabsComponent>",
+                    "file": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
             ]
         }
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -1498,9 +2071,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 66,
-                "coverageCount": "6/9",
-                "status": "good"
+                "coveragePercent": 11,
+                "coverageCount": "1/9",
+                "status": "low"
             },
             {
                 "filePath": "libs/material/src/colors/colors.component.stories.ts",
@@ -1581,6 +2154,84 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/stepper/stepper.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/stepper/stepper.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "StepperComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/tabs/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/lib/tabs/tabs.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/list/list.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -1654,8 +2305,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "MenuComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 6,
+                "coverageCount": "1/15",
                 "status": "low"
             },
             {
@@ -1693,6 +2344,45 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "NotificationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/showcase/showcase.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/showcase/showcase.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/showcase/showcase.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/showcase/showcase.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ShowcaseComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
