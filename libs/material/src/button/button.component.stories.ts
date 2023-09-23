@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 
-import { fireEvent, userEvent, within } from '@storybook/testing-library';
+import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 const meta: Meta<ButtonComponent> = {
@@ -13,8 +13,9 @@ type Story = StoryObj<ButtonComponent>;
 
 export const Primary: Story = {
   args: {
-    label: 'Button',
-    buttonType: 'raised',
+    label: 'home',
+    buttonType: 'button',
+    buttonStyleType: 'basic',
     color: 'primary',
   },
 };
@@ -22,7 +23,8 @@ export const Primary: Story = {
 export const Heading: Story = {
   args: {
     label: 'Button',
-    buttonType: 'raised',
+    buttonType: 'button',
+    buttonStyleType: 'raised',
     color: 'primary',
   },
   play: async ({ canvasElement }) => {

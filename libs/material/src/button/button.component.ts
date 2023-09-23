@@ -7,27 +7,27 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
-import { ButtonType, ColorType } from '../api';
+import { ButtonStyleType, ButtonType, ColorType } from '../api';
 import { CommonModule } from '@angular/common';
 
 export type ButtonEvent = { type: 'click'; payload: string };
 
 @Component({
   selector:
-    'tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button]',
+    'tb-button,button[tb-basic-button],button[tb-raised-button],button[tb-stroked-button],button[tb-flat-button],button[tb-basic-icon-button],button[tb-raised-icon-button],button[tb-stroked-icon-button],button[tb-flat-icon-button]',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <ng-container *ngIf="buttonType">
-      <button #button (click)="emit()">
-        {{ label }}
-      </button>
-    </ng-container>
-    <ng-content></ng-content>
+    <button
+      #button
+      class="{{ color }} {{ buttonType }}-button"
+      (click)="emit()"
+    >
+      {{ label }}
+    </button>
   `,
 })
 export class ButtonComponent implements AfterViewInit {
@@ -38,7 +38,9 @@ export class ButtonComponent implements AfterViewInit {
   @Input() label = 'Button';
 
   /** Button type */
-  @Input() buttonType?: ButtonType;
+  @Input() buttonType: ButtonType = 'button';
+  /** Button style type */
+  @Input() buttonStyleType: ButtonStyleType = 'basic';
 
   /** Button color */
   @Input() color: ColorType = 'primary';
@@ -46,34 +48,16 @@ export class ButtonComponent implements AfterViewInit {
   /** Click Event  */
   @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();
 
-  constructor(private readonly detection: ChangeDetectorRef) {}
   /** @ignore */
   ngAfterViewInit(): void {
-    if (this.buttonType) {
-      this.addClass(this.color);
-
-      if (this.buttonType) {
-        this.checkAdd(this.buttonType === 'basic', 'basic-button');
-        this.checkAdd(this.buttonType === 'flat', 'flat-button');
-        this.checkAdd(this.buttonType === 'raised', 'raised-button');
-        this.checkAdd(this.buttonType === 'stroked', 'stroked-button');
-        this.checkAdd(this.buttonType === 'icon', 'icon-button');
-        this.checkAdd(this.buttonType === 'fab', 'fab-button');
-        this.checkAdd(this.buttonType === 'mini-fab', 'mini-fab-button');
-      }
-    }
+    this.addClass(this.buttonType);
+    this.addClass(this.color);
+    this.addClass(this.buttonStyleType);
   }
 
   /** @ignore */
   private addClass(className: string) {
     this.button?.nativeElement.classList.add(className);
-  }
-
-  /** @ignore */
-  private checkAdd(condition: boolean, className: string) {
-    if (condition) {
-      this.addClass(className);
-    }
   }
 
   /** Emit click event */

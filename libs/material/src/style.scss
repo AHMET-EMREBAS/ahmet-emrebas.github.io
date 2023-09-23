@@ -1,6 +1,6 @@
 @use './theme/builtin-themes' as bt;
 
-@include bt.summer();
+@include bt.retro();
 
 .sb-main-padded.sb-show-main {
   padding: 0px;
@@ -8,7 +8,7 @@
 }
 
 .docs-story > div:first-child {
-  min-height: 400px;
+  // min-height: 200px;
 }
 
 #storybook-root {

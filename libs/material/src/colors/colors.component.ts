@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   styles: [],
 })
 export class ColorsComponent {
+  /** @ignore */
   colors = [
     'primary',
     'secondary',
@@ -19,6 +20,8 @@ export class ColorsComponent {
     'black',
     'white',
   ];
+
+  /** @ignore */
   colorVariants = this.colors.map((e) => [
     e,
     ...[

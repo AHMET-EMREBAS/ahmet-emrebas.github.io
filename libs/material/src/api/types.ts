@@ -8,11 +8,6 @@ export type ColorType =
   | 'black'
   | 'white';
 
-export type ButtonType =
-  | 'basic'
-  | 'raised'
-  | 'flat'
-  | 'stroked'
-  | 'icon'
-  | 'fab'
-  | 'mini-fab';
+export type ButtonType = 'button' | 'icon';
+
+export type ButtonStyleType = 'basic' | 'raised' | 'flat' | 'stroked';

@@ -1,10 +1,11 @@
 <div class="flex column gap-3 center">
-  <div
-    class="flex gap-3 wrap"
-    *ngFor="let variants of colorVariants"
-  >
+  <div class="flex gap-3 wrap" *ngFor="let variants of colorVariants">
     <div
-      class="flex  bg-{{ color }} {{ color }}-face text-center center"
+      class="flex text-center center"
+      style="
+      background-color: var(--{{ color }}); 
+      color:var(--{{ color }}-face)
+      "
       *ngFor="let color of variants"
       style="width: 100px; height: 100px"
     >
