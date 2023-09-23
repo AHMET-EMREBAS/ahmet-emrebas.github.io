@@ -8,12 +8,12 @@
     "directives": [
         {
             "name": "TooltipDirective",
-            "id": "directive-TooltipDirective-b03817c79f32962ca45a8915c17f7cc32d06a6375f2824ba631c48e7d1011b032399ad8f7e632ac15316ecd8eac0eee627402e56364f71a78064ed56371c5523",
+            "id": "directive-TooltipDirective-2912878901d9c45c3d6372a61cd27460e97077fe997a555476d407e8da89e732bfa8f63d1f1e2686434b417720ac010214cb0376cec314e92d0a3c0f7655ed6d",
             "file": "libs/material/src/tooltip/tooltip.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';\nimport { Position } from '../api';\n\n@Directive({\n  selector: '[tbTooltip]',\n  standalone: true,\n})\nexport class TooltipDirective implements AfterViewInit {\n  @Input() tbTooltip = '';\n  @Input() tbTooltipPosition: Position = 'bottom';\n  constructor(private readonly elementRef?: ElementRef<HTMLButtonElement>) {}\n\n  ngAfterViewInit(): void {\n    if (!this.elementRef) return;\n\n    const e = this.elementRef.nativeElement;\n    e.setAttribute('aria-label', this.tbTooltip);\n    e.setAttribute('tooltip-position', this.tbTooltipPosition);\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';\nimport { Position } from '../api';\n\n@Directive({\n  selector: '[tbTooltip]',\n  standalone: true,\n})\nexport class TooltipDirective implements AfterViewInit {\n  @Input() tbTooltip = '';\n  @Input() tbTooltipPosition: Position = 'bottom';\n\n  constructor(private readonly elementRef?: ElementRef<HTMLButtonElement>) {}\n\n  ngAfterViewInit(): void {\n    if (!this.elementRef) return;\n    if (this.tbTooltip?.trim().length > 0) {\n      const e = this.elementRef.nativeElement;\n      e.setAttribute('aria-label', this.tbTooltip);\n      e.setAttribute('tooltip-position', this.tbTooltipPosition);\n    }\n  }\n}\n",
             "selector": "[tbTooltip]",
             "providers": [],
             "hostDirectives": [],
@@ -51,7 +51,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 13,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -92,7 +92,7 @@
     "components": [
         {
             "name": "AlertComponent",
-            "id": "component-AlertComponent-d5623e8c75d409469bfcccf5a57d72cbeaf946e01110973c244698f253d5f88441c7b83b02ed96cdad3b435198311ab454023cfd39457e63e37269294724e227",
+            "id": "component-AlertComponent-d8589e769906e1a9f5186040eba662e1f10881b1e1601e99bdc28c6f09587ea83486d8e6036fb1fe5b8a4cc5507ce9dd7baac08e889fd8dbcc0647e135ba4ea3",
             "file": "libs/material/src/alert/alert.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -197,14 +197,14 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ColorType, Icon } from '../api';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\n@Component({\n  selector: 'tb-alert',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, TooltipDirective],\n  template: ` <div class=\" {{ color }}\" role=\"alert\">\n    <span class=\"icon\">{{ icon }}</span>\n    <span>{{ message }}</span>\n    <div class=\"grow-1\"></div>\n    <tb-button\n      buttonType=\"icon-button\"\n      buttonSize=\"small\"\n      buttonStyleType=\"inbox\"\n      [color]=\"color\"\n      icon=\"close\"\n    ></tb-button>\n  </div>`,\n})\nexport class AlertComponent {\n  /** Close event */\n  @Output() closeEvent = new EventEmitter<ButtonEvent>();\n  /** Alert color */\n  @Input() color: ColorType = 'primary';\n\n  /** Alert icon */\n  @Input() icon: Icon = 'info';\n\n  /** Alert message */\n  @Input() message = 'Message';\n\n  @Input() closable = true;\n\n  close() {\n    this.closeEvent.emit({ type: 'click', payload: 'close' });\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ColorType, Icon } from '../api';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\n@Component({\n  selector: 'tb-alert',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, TooltipDirective],\n  template: ` <div class=\" {{ color }}\" role=\"alert\">\n    <span class=\"icon\">{{ icon }}</span>\n    <span>{{ message }}</span>\n    <div class=\"grow-1\"></div>\n    <tb-button\n      buttonType=\"icon-button\"\n      buttonSize=\"small\"\n      buttonStyleType=\"inbox\"\n      [color]=\"color\"\n      icon=\"close\"\n    ></tb-button>\n  </div>`,\n})\nexport class AlertComponent {\n  /** Close event */\n  @Output() closeEvent = new EventEmitter<ButtonEvent>();\n  /** Alert color */\n  @Input() color: ColorType = 'primary';\n\n  /** Alert icon */\n  @Input() icon: Icon = 'info';\n\n  /** Alert message */\n  @Input() message = 'Message';\n\n  @Input() closable = true;\n\n  close() {\n    this.closeEvent.emit({\n      type: 'click',\n      payload: {\n        label: 'Closed alert',\n      },\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-277d234256cda72ab873faf9fdb84d30dddde6f7bd029c3e11470d8d1ed20e2e59642288170aa5eb74406d1872f8177666fd1492ad67a8d31585b61887c98d50",
+            "id": "component-ButtonComponent-e44ac5b3b265c72d1ff973ecf377ac8e5ae451fa7103ebb32026af263988430bdaf6a8bead73ae3eca546eff6f922a7f05a3328274608f9e581a58a612783a1c",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -214,7 +214,7 @@
             "selector": "tb-button",
             "styleUrls": [],
             "styles": [],
-            "template": "<button #button (click)=\"emitClickEvent()\">\n  <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n  <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n</button>\n",
+            "template": "<button\n  #button\n  (click)=\"emitClickEvent()\"\n  [tbTooltip]=\"tooltip\"\n  [tbTooltipPosition]=\"tooltipPosition\"\n>\n  <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n  <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -224,7 +224,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 45,
                     "type": "ColorType",
                     "decorators": []
                 },
@@ -233,7 +233,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 46,
                     "type": "Icon",
                     "decorators": []
                 },
@@ -242,7 +242,7 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 47,
                     "type": "string",
                     "decorators": []
                 },
@@ -251,8 +251,26 @@
                     "defaultValue": "'regular'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 48,
                     "type": "\"small\" | \"regular\" | \"big\"",
+                    "decorators": []
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'top'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "Position",
                     "decorators": []
                 },
                 {
@@ -260,8 +278,17 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 51,
                     "type": "ButtonType",
+                    "decorators": []
+                },
+                {
+                    "name": "uuid",
+                    "defaultValue": "'Id not set!'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -269,7 +296,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 53,
                     "type": "buttonStyle",
                     "decorators": []
                 }
@@ -282,7 +309,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClick Event",
                     "description": "<p>Click Event</p>\n",
-                    "line": 41,
+                    "line": 56,
                     "type": "EventEmitter"
                 }
             ],
@@ -294,7 +321,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 68,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -308,12 +335,16 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "TooltipDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { buttonStyle, ButtonType, ColorType, Icon } from '../api';\nimport { CommonModule } from '@angular/common';\n\nexport type ButtonEvent = { id?: string; type: 'click'; payload: string };\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button #button (click)=\"emitClickEvent()\">\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() variant: buttonStyle = 'basic';\n  @Input() type: ButtonType = 'button';\n  @Input() color: ColorType = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { buttonStyle, ButtonType, ColorType, Icon, Position } from '../api';\nimport { CommonModule } from '@angular/common';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\nexport type ButtonEvent = {\n  id?: string;\n  type: 'click';\n  payload: {\n    uuid?: string;\n    label?: string;\n    message?: string;\n  };\n};\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, TooltipDirective],\n  template: `\n    <button\n      #button\n      (click)=\"emitClickEvent()\"\n      [tbTooltip]=\"tooltip\"\n      [tbTooltipPosition]=\"tooltipPosition\"\n    >\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n  @Input() color: ColorType = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() tooltip = '';\n  @Input() tooltipPosition: Position = 'top';\n  @Input() type: ButtonType = 'button';\n  @Input() uuid = 'Id not set!';\n  @Input() variant: buttonStyle = 'basic';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({\n      type: 'click',\n      payload: {\n        label: this.label,\n        uuid: this.uuid,\n      },\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -446,7 +477,7 @@
         },
         {
             "name": "MenuComponent",
-            "id": "component-MenuComponent-303dfb466e359ed26cb2f868e858b88267a35cbe7a848da0d9eaad7ed84fc20650088e2d0d22f0d94143d06ca21fd560cc161ce7e64f808f2d33bd3d8be773cf",
+            "id": "component-MenuComponent-e6e5b895cbe15f452850f16e127c36a5accd1bf8931a6306ebfa010985fba7e594748a8cd1a387dc2520214308790154a405d9d4ae4730da72fc88a9db8c5a1a",
             "file": "libs/material/src/menu/menu.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -468,7 +499,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 34,
-                    "type": "MenuComponent[]",
+                    "type": "Partial<MenuComponent>[]",
                     "decorators": []
                 },
                 {
@@ -508,7 +539,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 45,
                     "type": "ColorType",
                     "decorators": [],
                     "inheritance": {
@@ -520,7 +551,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 46,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -532,7 +563,7 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 47,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -544,8 +575,32 @@
                     "defaultValue": "'regular'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 48,
                     "type": "\"small\" | \"regular\" | \"big\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "tooltip",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'top'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "Position",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -556,8 +611,20 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 51,
                     "type": "ButtonType",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "uuid",
+                    "defaultValue": "'Id not set!'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "string",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -568,7 +635,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 53,
                     "type": "buttonStyle",
                     "decorators": [],
                     "inheritance": {
@@ -584,7 +651,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClick Event",
                     "description": "<p>Click Event</p>\n",
-                    "line": 41,
+                    "line": 56,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -596,7 +663,7 @@
                     "name": "children",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "MenuComponent[]",
+                    "type": "Partial<MenuComponent>[]",
                     "optional": true,
                     "description": "",
                     "line": 36
@@ -627,12 +694,9 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 71,
+                    "line": 68,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "modifierKind": [
-                        161
-                    ],
                     "inheritance": {
                         "file": "ButtonComponent"
                     }
@@ -656,7 +720,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { Position } from '../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './menu.component.html',\n  styles: [],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class MenuComponent extends ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  readonly componentType = MenuComponent;\n\n  @Input()\n  @Output()\n  override clickEvent: EventEmitter<ButtonEvent> = new EventEmitter<ButtonEvent>();\n\n  @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;\n\n  @Input() childrenViaInput?: MenuComponent[];\n\n  children?: MenuComponent[];\n\n  @Input() position: Position = 'none';\n\n  @Input() showAs: 'row' | 'column' = 'column';\n\n  constructor(private readonly detector: ChangeDetectorRef) {\n    super();\n  }\n\n  /** @ignore */\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    this.children = this.childrenViaInput || this.childrenViaContent?.toArray();\n    this.detector.detectChanges();\n  }\n\n  /** @ignore */\n  childValue(child: MenuComponent) {\n    const { type, variant, color, size, children, label, position, showAs } =\n      child;\n\n    return {\n      type,\n      variant,\n      color,\n      size,\n      childrenViaInput: children,\n      label,\n      position,\n      showAs,\n      clickEvent: this.clickEvent,\n    };\n  }\n\n  override emitClickEvent(): void {\n    this.clickEvent.emit({ type: 'click', payload: this.label });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { Position } from '../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './menu.component.html',\n  styles: [],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class MenuComponent extends ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  readonly componentType = MenuComponent;\n\n  @Input()\n  @Output()\n  override clickEvent: EventEmitter<ButtonEvent> = new EventEmitter<ButtonEvent>();\n\n  @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;\n\n  @Input() childrenViaInput?: Partial<MenuComponent>[];\n\n  children?: Partial<MenuComponent>[];\n\n  @Input() position: Position = 'none';\n\n  @Input() showAs: 'row' | 'column' = 'column';\n\n  constructor(private readonly detector: ChangeDetectorRef) {\n    super();\n  }\n\n  /** @ignore */\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    if (!this.children)\n      this.children =\n        this.childrenViaInput || this.childrenViaContent?.toArray();\n    this.detector.detectChanges();\n  }\n\n  /** @ignore */\n  childValue(child: Partial<MenuComponent>) {\n    const {\n      type,\n      variant,\n      color,\n      size,\n      children,\n      label,\n      position,\n      showAs,\n      icon,\n      tooltip,\n      tooltipPosition,\n    } = child;\n\n    return {\n      type: type || this.type,\n      variant: variant || this.variant,\n      color: color || this.color,\n      size: size || this.size,\n      childrenViaInput: children,\n      label,\n      tooltip,\n      tooltipPosition,\n      position: position || this.position,\n      showAs: showAs || this.showAs,\n      icon,\n      clickEvent: this.clickEvent,\n    };\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -690,7 +754,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<div class=\"dropdown {{ position }} {{ color }}\">\n  <tb-button\n    [color]=\"color\"\n    [label]=\"label\"\n    [type]=\"type\"\n    [variant]=\"variant\"\n    (clickEvent)=\"emitClickEvent()\"\n  ></tb-button>\n\n  <div\n    class=\"dropdown-items {{ showAs }}\"\n    *ngIf=\"children && children.length > 0\"\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <ng-container\n        *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n      ></ng-container>\n    </ng-container>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"dropdown {{ position }} {{ color }}\">\n  <tb-button\n    [color]=\"color\"\n    [label]=\"label\"\n    [type]=\"type\"\n    [variant]=\"variant\"\n    (clickEvent)=\"emitClickEvent()\"\n    [icon]=\"icon\"\n    [size]=\"size\"\n    [tooltip]=\"tooltip\"\n    [tooltipPosition]=\"tooltipPosition\"\n  ></tb-button>\n\n  <div\n    class=\"dropdown-items {{ showAs }}\"\n    *ngIf=\"children && children.length > 0\"\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <ng-container\n        *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n      ></ng-container>\n    </ng-container>\n  </div>\n</div>\n"
         },
         {
             "name": "NotificationComponent",
@@ -897,7 +961,7 @@
         },
         {
             "name": "ToolbarComponent",
-            "id": "component-ToolbarComponent-9b60548eb38a56ed6b926c9ef47fd1447dee56dda7d1ebf152660a8c65c4b41c08015126b1e96b2e2aac0be70264d168c7f78f03b5f00e9c1af94da21f0e3299",
+            "id": "component-ToolbarComponent-4af4acd07c1d9dd11c328174f8a221065b843df1c27c9c68f976dbeaf8d8d4a8ab47a59ad3037b2536a8a70b3cb00c4561946dd8aaa850d2787f451966d81b02",
             "file": "libs/material/src/toolbar/toolbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -907,9 +971,8 @@
             "selector": "tb-toolbar",
             "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./toolbar.component.html"
-            ],
+            "template": "<div class=\"toolbar\">\n  <ng-content></ng-content>\n</div>\n",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
@@ -930,11 +993,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-toolbar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './toolbar.component.html',\n  styles: [],\n})\nexport class ToolbarComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-toolbar',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"toolbar\">\n      <ng-content></ng-content>\n    </div>\n  `,\n})\nexport class ToolbarComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
-            "templateData": "<p>toolbar works!</p>\n"
+            "stylesData": ""
         }
     ],
     "modules": [],
@@ -958,7 +1020,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -998,7 +1060,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: { label: 'Triger 1' },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Triger 1!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: { label: 'Triger 1' },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Triger 1/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1178,7 +1240,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -1218,7 +1280,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        type: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        type: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -1504,7 +1566,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -1524,7 +1586,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
             "libs/material/src/colors/colors.component.stories.ts": [
@@ -1632,7 +1694,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: { label: 'Triger 1' },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Triger 1!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: { label: 'Triger 1' },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Triger 1/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -1652,7 +1714,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        type: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        type: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
                 }
             ],
             "libs/material/src/notification/notification.component.stories.ts": [
@@ -2115,8 +2177,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 11,
-                "coverageCount": "1/9",
+                "coveragePercent": 8,
+                "coverageCount": "1/12",
                 "status": "low"
             },
             {
@@ -2349,8 +2411,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "MenuComponent",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 5,
+                "coverageCount": "1/19",
                 "status": "low"
             },
             {

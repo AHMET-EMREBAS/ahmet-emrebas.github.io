@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Color } from '../api';
 
 @Component({
   selector: 'tb-toolbar',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './toolbar.component.html',
-  styles: [],
+  template: `
+    <div class="toolbar {{ color }}">
+      <ng-content></ng-content>
+    </div>
+  `,
 })
-export class ToolbarComponent {}
+export class ToolbarComponent {
+  @Input() color: Color = 'primary';
+}

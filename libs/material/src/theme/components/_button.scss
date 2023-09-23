@@ -100,7 +100,8 @@
   margin: 0px;
   height: 3em;
 
-  width: max-content;
+  width: 100%;
+  text-wrap: nowrap;
   font-size: 1em;
 
   border-radius: var(--button-border-radius);
@@ -158,6 +159,7 @@
   @include button();
   display: flex;
   align-items: center;
+
   gap: 1em;
   .icon {
     font-size: 1.3em;
