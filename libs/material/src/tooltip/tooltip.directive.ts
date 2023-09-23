@@ -6,17 +6,19 @@ import { Position } from '../api';
   standalone: true,
 })
 export class TooltipDirective implements AfterViewInit {
-  @Input() tbTooltip = '';
-  @Input() tbTooltipPosition: Position = 'bottom';
+  @Input() tbTooltip?: string = '';
+  @Input() tbTooltipPosition?: Position = 'bottom';
 
   constructor(private readonly elementRef?: ElementRef<HTMLButtonElement>) {}
 
   ngAfterViewInit(): void {
     if (!this.elementRef) return;
-    if (this.tbTooltip?.trim().length > 0) {
-      const e = this.elementRef.nativeElement;
-      e.setAttribute('aria-label', this.tbTooltip);
-      e.setAttribute('tooltip-position', this.tbTooltipPosition);
-    }
+    if (this.tbTooltip)
+      if (this.tbTooltip?.trim().length > 0) {
+        const e = this.elementRef.nativeElement;
+        e.setAttribute('aria-label', this.tbTooltip);
+        if (this.tbTooltipPosition)
+          e.setAttribute('tooltip-position', this.tbTooltipPosition);
+      }
   }
 }

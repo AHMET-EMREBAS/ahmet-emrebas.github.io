@@ -168,6 +168,7 @@
 
 @include creaetButtonVariants('button');
 @include creaetButtonVariants('icon-button');
+@include creaetButtonVariants('combined-button');
 
 .small.icon-button {
   font-size: 1em;

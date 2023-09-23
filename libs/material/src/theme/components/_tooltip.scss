@@ -33,8 +33,10 @@
   color: var(--tooltip-color-face);
   padding: 0.5em;
   border-radius: 0.3em;
-  width: fit-content;
+  max-width: 20em;
+  text-overflow: ellipsis;
   text-wrap: nowrap;
+  overflow: hidden;
   text-align: center;
   transform: scale(0);
 }
@@ -137,7 +139,7 @@
   .#{$colorName}[aria-label][tooltip-position]::before,
   .#{$colorName}[aria-label][tooltip-position]::after {
     --tooltip-color: var(--#{$colorName}-dark);
-    --tooltip-color-face:var(--#{$colorName}-face);
+    --tooltip-color-face: var(--#{$colorName}-face);
   }
 }
 // font-family: var(--font-content) !important;

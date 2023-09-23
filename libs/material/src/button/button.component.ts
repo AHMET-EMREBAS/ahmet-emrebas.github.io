@@ -46,8 +46,8 @@ export class ButtonComponent implements AfterViewInit {
   @Input() icon: Icon = 'info';
   @Input() label = 'Button';
   @Input() size: 'small' | 'regular' | 'big' = 'regular';
-  @Input() tooltip = '';
-  @Input() tooltipPosition: Position = 'top';
+  @Input() tooltip?: string;
+  @Input() tooltipPosition?: Position;
   @Input() type: ButtonType = 'button';
   @Input() uuid = 'Id not set!';
   @Input() variant: buttonStyle = 'basic';

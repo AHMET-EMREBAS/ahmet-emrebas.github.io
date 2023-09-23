@@ -65,7 +65,7 @@
   transform-origin: top center;
   visibility: visible;
 }
-
+.right.dropdown:has(*:focus) > .dropdown-items,
 .right.dropdown:hover > .dropdown-items {
   --scale: 1;
   --x: 100%;
@@ -76,7 +76,7 @@
   transform-origin: left center;
   visibility: visible;
 }
-
+.left.dropdown:has(*:focus) > .dropdown-items,
 .left.dropdown:hover > .dropdown-items {
   --scale: 1;
   --x: -100%;
@@ -88,6 +88,7 @@
   visibility: visible;
 }
 
+.top.dropdown:has(*:focus) > .dropdown-items,
 .top.dropdown:hover > .dropdown-items {
   --scale: 1;
   --x: -50%;
