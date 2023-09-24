@@ -5151,8 +5151,6 @@
 
 * {
   box-sizing: border-box !important;
-  scroll-behavior: smooth;
-  scroll-snap-type: none;
 }
 
 html,
