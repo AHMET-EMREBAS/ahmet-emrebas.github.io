@@ -8,12 +8,12 @@
     "directives": [
         {
             "name": "ScrollDirectionDirective",
-            "id": "directive-ScrollDirectionDirective-5c0b0bea4759f1e20ce7bead251f01fb4904f90d97eb170e99c1f8a057442abac5368cacc8bf78af1ca2d3e10101377a2ac492041ec476da0cfb579070def6d8",
+            "id": "directive-ScrollDirectionDirective-25bbb3a0ce9a0a35817a1c299058034401f2818d32d3962a7c945da766d5a017eb62346c46e062ca8de1d29dc7794c5454420567bb9ec5907b4769848e290a9c",
             "file": "libs/material/src/scroll-direction/scroll-direction.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { AfterViewInit, Directive, ElementRef } from '@angular/core';\n\n@Directive({\n  selector: '[tbScrollX]',\n  standalone: true,\n})\nexport class ScrollDirectionDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}\n\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.addEventListener('wheel', (e) => {\n      e.preventDefault();\n      this.elementRef.nativeElement.scrollBy({\n        left: e.deltaY,\n        behavior: 'smooth',\n      });\n    });\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';\nimport {\n  BehaviorSubject,\n  Subscription,\n  debounceTime,\n  every,\n  fromEvent,\n} from 'rxjs';\n@Directive({\n  selector: '[tbScrollX]',\n  standalone: true,\n})\nexport class ScrollDirectionDirective implements AfterViewInit {\n  timeout: any;\n  constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}\n\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.onwheel = (event: WheelEvent) => {\n      if (event.shiftKey) {\n        return;\n      }\n      event.preventDefault();\n      const options: ScrollToOptions = {\n        left: event.deltaY,\n        behavior: 'smooth',\n      };\n      this.elementRef.nativeElement.scrollBy(options);\n    };\n  }\n}\n",
             "selector": "[tbScrollX]",
             "providers": [],
             "hostDirectives": [],
@@ -24,7 +24,17 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "timeout",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "ngAfterViewInit",
@@ -32,7 +42,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 10,
+                    "line": 17,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -53,7 +63,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 7,
+                "line": 14,
                 "jsdoctags": [
                     {
                         "name": "elementRef",
@@ -1333,7 +1343,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div\n  #container\n  class=\"flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative\"\n  tbScrollX\n>\n  <ng-container *ngFor=\"let child of children\">\n    <button\n      class=\"tab-button primary bottom\"\n      (click)=\"activate(child)\"\n      [attr.data-active]=\"child.active\"\n    >\n      {{ child.label }}\n    </button>\n  </ng-container>\n</div>\n<ng-container *ngFor=\"let child of children\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"childValue(child)\"\n  >\n    <ng-content></ng-content>\n  </ng-container>\n</ng-container>\n"
+            "templateData": "<div\n  #container\n  class=\"flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative inset-x\"\n  tbScrollX\n>\n  <ng-container *ngFor=\"let child of children\">\n    <button\n      class=\"tab-button primary bottom\"\n      (click)=\"activate(child)\"\n      [attr.data-active]=\"child.active\"\n    >\n      {{ child.label }}\n    </button>\n  </ng-container>\n</div>\n<ng-container *ngFor=\"let child of children\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"childValue(child)\"\n  >\n    <ng-content></ng-content>\n  </ng-container>\n</ng-container>\n"
         },
         {
             "name": "ToolbarComponent",
@@ -2682,7 +2692,7 @@
                 "linktype": "directive",
                 "name": "ScrollDirectionDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
