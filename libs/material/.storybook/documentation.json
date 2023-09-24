@@ -8,12 +8,12 @@
     "directives": [
         {
             "name": "ScrollDirectionDirective",
-            "id": "directive-ScrollDirectionDirective-26040c7efd95d04285cb7a689f829599ea55a83b1c6d1e12225d7d090b343fe3770f43f60722a1cac56c5422963fd19c55b75f3082f94227ab8e5c15bd5a1c92",
+            "id": "directive-ScrollDirectionDirective-839bbe17a8688c64413100c7b9f524a2df78d9bd88b55e58f70b717731521682b725791be4c19ea24c0961cd343c6a73ff3f8fea6c18126bfcd1aa546efe3798",
             "file": "libs/material/src/scroll-direction/scroll-direction.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';\nimport { Subscription, debounceTime, fromEvent } from 'rxjs';\n@Directive({\n  selector: '[tbScrollX]',\n  standalone: true,\n})\nexport class ScrollDirectionDirective implements AfterViewInit, OnDestroy {\n  subscription?: Subscription;\n\n  constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}\n  ngOnDestroy(): void {\n    this.subscription?.unsubscribe();\n  }\n\n  ngAfterViewInit(): void {\n    this.subscription = fromEvent<WheelEvent>(\n      this.elementRef.nativeElement,\n      'wheel'\n    )\n      .pipe(debounceTime(200))\n      .subscribe((e) => {\n        if (!e.shiftKey)\n          this.elementRef.nativeElement.scrollBy({\n            left: e.deltaY,\n            behavior: 'smooth',\n          });\n      });\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';\nimport { Subscription, debounceTime, fromEvent } from 'rxjs';\n@Directive({\n  selector: '[tbScrollX]',\n  standalone: true,\n})\nexport class ScrollDirectionDirective implements AfterViewInit, OnDestroy {\n  subscription?: Subscription;\n\n  constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}\n  ngOnDestroy(): void {\n    this.subscription?.unsubscribe();\n  }\n\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.onwheel = (event) => {\n      if (!event.shiftKey) {\n        event.preventDefault();\n      }\n    };\n    this.subscription = fromEvent<WheelEvent>(\n      this.elementRef.nativeElement,\n      'wheel'\n    )\n      .pipe(debounceTime(100))\n      .subscribe((e) => {\n        if (!e.shiftKey)\n          this.elementRef.nativeElement.scrollBy({\n            left: e.deltaY * 2,\n            behavior: 'smooth',\n          });\n      });\n  }\n}\n",
             "selector": "[tbScrollX]",
             "providers": [],
             "hostDirectives": [],
@@ -346,7 +346,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-712d0f87e437efaa3e0ba109f3639acd7d36dd099881657569240b648b745ec9606d0e0f4fbd5b3e03f36cd6acd3d5fb757f8bf98e6d92285c4f2f1bf255a710",
+            "id": "component-ButtonComponent-87a121f476ed896164d716b737b431170bb08c2b1a7e9bfff688fe2a49c003891d578fb94105c6c7ecdee01546fd3b54f9e302b5538431fb10546bddb7922db4",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -437,7 +437,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 53,
-                    "type": "buttonStyle",
+                    "type": "ButtonVariant",
                     "decorators": []
                 }
             ],
@@ -484,7 +484,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { buttonStyle, ButtonType, Color, Icon, Position } from '../api';\nimport { CommonModule } from '@angular/common';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\nexport type ButtonEvent = {\n  id?: string;\n  type: 'click';\n  payload: {\n    uuid?: string;\n    label?: string;\n    message?: string;\n  };\n};\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, TooltipDirective],\n  template: `\n    <button\n      #button\n      (click)=\"emitClickEvent()\"\n      [tbTooltip]=\"tooltip\"\n      [tbTooltipPosition]=\"tooltipPosition\"\n    >\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() tooltip?: string;\n  @Input() tooltipPosition?: Position;\n  @Input() type: ButtonType = 'button';\n  @Input() uuid = 'Id not set!';\n  @Input() variant: buttonStyle = 'basic';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({\n      type: 'click',\n      payload: {\n        label: this.label,\n        uuid: this.uuid,\n      },\n    });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonVariant, ButtonType, Color, Icon, Position } from '../api';\nimport { CommonModule } from '@angular/common';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\nexport type ButtonEvent = {\n  id?: string;\n  type: 'click';\n  payload: {\n    uuid?: string;\n    label?: string;\n    message?: string;\n  };\n};\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, TooltipDirective],\n  template: `\n    <button\n      #button\n      (click)=\"emitClickEvent()\"\n      [tbTooltip]=\"tooltip\"\n      [tbTooltipPosition]=\"tooltipPosition\"\n    >\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() tooltip?: string;\n  @Input() tooltipPosition?: Position;\n  @Input() type: ButtonType = 'button';\n  @Input() uuid = 'Id not set!';\n  @Input() variant: ButtonVariant = 'basic';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({\n      type: 'click',\n      payload: {\n        label: this.label,\n        uuid: this.uuid,\n      },\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -576,7 +576,7 @@
         },
         {
             "name": "ListComponent",
-            "id": "component-ListComponent-1b417ed91b6f9414942a29d62e28dd5058c2e6c6dee909f7f26b950ef9cdb398fd7ea96f690d0933f7b22c96a380d254f2362de5ac2339e82bb0e10550f3a6b6",
+            "id": "component-ListComponent-7ba9273f994579f9cc77cea2886382473ec99dd48846af0ffa8292043480f54bea5c195c6a1331cd141733172bc2d2efcbe62d4848a4f8a9f2a7e54a59a38637",
             "file": "libs/material/src/list/list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -591,7 +591,128 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "Icon",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "children",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<ListItemComponent>",
+                    "optional": true,
+                    "description": "",
+                    "line": 15,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "ListItemComponent"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                },
+                {
+                    "name": "componentType",
+                    "defaultValue": "ListItemComponent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ListItemComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ContentChildren, Input, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ListItemComponent } from './list-item/list-item.component';\nimport { Color, Icon } from '../api';\n\n@Component({\n  selector: 'tb-list',\n  standalone: true,\n  imports: [CommonModule, ListItemComponent],\n  templateUrl: './list.component.html',\n  styles: [],\n})\nexport class ListComponent {\n  componentType = ListItemComponent;\n  @ContentChildren(ListItemComponent) children?: QueryList<ListItemComponent>;\n\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<div class=\"list\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"{\n      label: child.label,\n      icon: child.icon || icon,\n      color: child.color || color\n    }\"\n    *ngFor=\"let child of children\"\n  ></ng-container>\n</div>\n"
+        },
+        {
+            "name": "ListItemComponent",
+            "id": "component-ListItemComponent-b0b74eb07256ccc22121a3bb698f97b4c0752959dc9f97b7cbdc82aedb2733ba766c583c941bf8e78dd29160d3c7683058446b692312359933ada329dba66c33",
+            "file": "libs/material/src/list/list-item/list-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-list-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./list-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Icon",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -609,11 +730,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-list',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './list.component.html',\n  styles: [],\n})\nexport class ListComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Color, Icon } from '../../api';\n\n@Component({\n  selector: 'tb-list-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './list-item.component.html',\n  styles: [],\n})\nexport class ListItemComponent {\n  @Input() label = '';\n  @Input() color: Color = 'primary';\n  @Input() icon?: Icon  = 'info';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p>list works!</p>\n"
+            "templateData": "<div class=\"list-item {{ color }}\">\n  <span class=\"icon\">{{ icon }}</span>\n  <span>{{ label }}</span>\n</div>\n"
         },
         {
             "name": "MenuComponent",
@@ -774,7 +895,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 53,
-                    "type": "buttonStyle",
+                    "type": "ButtonVariant",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -895,6 +1016,164 @@
             "templateData": "<div class=\"dropdown {{ position }} {{ color }}\">\n  <tb-button\n    [color]=\"color\"\n    [label]=\"label\"\n    [type]=\"type\"\n    [variant]=\"variant\"\n    (clickEvent)=\"emitClickEvent()\"\n    [icon]=\"icon\"\n    [size]=\"size\"\n    [tooltip]=\"tooltip\"\n    [tooltipPosition]=\"tooltipPosition\"\n  ></tb-button>\n\n  <div\n    class=\"dropdown-items {{ showAs }}\"\n    *ngIf=\"children && children.length > 0\"\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <ng-container\n        *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n      ></ng-container>\n    </ng-container>\n  </div>\n</div>\n"
         },
         {
+            "name": "NavListComponent",
+            "id": "component-NavListComponent-49534da823ae2f178bbe0b91abc9794cff200aaf04159627edd528cc089c169329aef0aff96066e1fd45279c92c1acccb47f89b38fb074454ee153621b0b88ad",
+            "file": "libs/material/src/nav-list/nav-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-nav-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./nav-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "Icon",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "children",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<NavListItemComponent>",
+                    "optional": true,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "NavListItemComponent"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                },
+                {
+                    "name": "componentType",
+                    "defaultValue": "NavListItemComponent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ContentChildren, Input, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { NavListItemComponent } from './nav-list-item/nav-list-item.component';\nimport { Color, Icon } from '../api';\n\n@Component({\n  selector: 'tb-nav-list',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './nav-list.component.html',\n  styles: [],\n})\nexport class NavListComponent {\n  componentType = NavListItemComponent;\n  @ContentChildren(NavListItemComponent)\n  children?: QueryList<NavListItemComponent>;\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<div class=\"nav-list\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"{\n      label: child.label,\n      icon: child.icon || icon,\n      color: child.color || color,\n    }\"\n    *ngFor=\"let child of children\"\n  ></ng-container>\n</div>\n"
+        },
+        {
+            "name": "NavListItemComponent",
+            "id": "component-NavListItemComponent-3429d03e9995e29493d36ee8b2c70961e59cd809a5a91362f6548b1ec379131949c242b2b273e13127e690e1333413aced5e47f26164a41aad3a8fdcbf29563a",
+            "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-nav-list-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./nav-list-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Icon",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Color, Icon } from '../../api';\n\n@Component({\n  selector: 'tb-nav-list-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './nav-list-item.component.html',\n  styles: [],\n})\nexport class NavListItemComponent {\n  @Input() label = '';\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<button class=\"nav-list-item {{ color }}\">\n  <span class=\"icon\" *ngIf=\"icon\">{{ icon }}</span>\n  <span *ngIf=\"label\">{{ label }}</span>\n</button>\n"
+        },
+        {
             "name": "NotificationComponent",
             "id": "component-NotificationComponent-553379e7005c9d01453242576e3de3e25cb63ab886961cb5d7412b85d2cfbbe15806b93d06342611491bc98fa078134043ecb8350d84e5f607f5fe5cecbce0d6",
             "file": "libs/material/src/notification/notification.component.ts",
@@ -937,7 +1216,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-7f1bcbbc0700989c3af241f093cc5eeac09f307bda5a4159f900218bf602d0b36b8b732542870cdc0b60d562e14c615892bb00dad401d1b40ab9013c7310927b",
+            "id": "component-ShowcaseComponent-3a7bed166f94a82bf77325e7d949938da330004f95ec831649a4a9e9410fa5ca767feac40ce758a73feef6e19b84c5c9bac3cfbae93ef96ee72c530e07170db8",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -956,7 +1235,58 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "__buttons",
+                    "defaultValue": "this.buttonColors.map((color) => {\n    return this.buttonTypes.map((type) => {\n      return this.buttonVariants.map((variant) => {\n        const obj: Partial<ButtonComponent> = { color, type, variant };\n        this.buttons.push({ ...obj, label: `${type} ${variant}` });\n        return obj;\n      });\n    });\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44
+                },
+                {
+                    "name": "buttonColors",
+                    "defaultValue": "['primary', 'secondary', 'accent', 'warn'] as Color[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "buttons",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Partial<ButtonComponent>[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 43
+                },
+                {
+                    "name": "buttonTypes",
+                    "defaultValue": "['button', 'icon-button', 'combined-button'] as ButtonType[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "buttonVariants",
+                    "defaultValue": "[\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "handle",
@@ -971,7 +1301,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 30,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1021,11 +1351,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  buttons: Partial<ButtonComponent>[] = [];\n  __buttons = this.buttonColors.map((color) => {\n    return this.buttonTypes.map((type) => {\n      return this.buttonVariants.map((variant) => {\n        const obj: Partial<ButtonComponent> = { color, type, variant };\n        this.buttons.push({ ...obj, label: `${type} ${variant}` });\n        return obj;\n      });\n    });\n  });\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
-            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab label=\"Tab 1\" [active]=\"true\">  <span >Tab 1 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 2\" [active]=\"false\"> <span > Tab 2 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 3\" [active]=\"false\"> <span > Tab 3 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 4\" [active]=\"false\"> <span > Tab 4 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 5\" [active]=\"false\"> <span > Tab 5 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 6\" [active]=\"false\"> <span > Tab 6 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 7\" [active]=\"false\"> <span > Tab 7 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 8\" [active]=\"false\"> <span > Tab 8 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 9\" [active]=\"false\"> <span > Tab 9 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 10\" [active]=\"false\"> <span > Tab 10 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 11\" [active]=\"false\"> <span > Tab 11 Content Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 12\" [active]=\"false\"> <span > Tab 12ontent Goes here </span></tb-tab>\n  <tb-tab label=\"Tab 13\" [active]=\"false\"> <span > Tab 13 Content Goes here </span></tb-tab>\n</tb-tab-container>\n<!-- <ng-container [ngTemplateOutlet]=\"\" [ngTemplateOutletContext]=\"\"></ng-container> -->\n<!-- <div class=\"flex column gap-2 p-12\">\n  <div class=\"title-1\" substring=\"you can add [substring] attribute to titles\">\n    Title 1 with substring attribute\n  </div>\n  <div class=\"title-2\" substring=\"you can add [substring] attribute to titles\">\n    Title 2 with substring attribute\n  </div>\n</div> -->\n\n<!-- \n<p>\n  <span class=\"icon\">copyright</span>\n  <span> All rights are reserved. </span>\n</p> -->\n"
+            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab label=\"Buttons\" [active]=\"true\">\n    <div class=\"flex row wrap gap-3 \">\n      <tb-button\n        *ngFor=\"let b of buttons\"\n        [label]=\"b.label!\"\n        [color]=\"b.color!\"\n        [type]=\"b.type!\"\n        [variant]=\"b.variant!\"\n      ></tb-button>\n    </div>\n  </tb-tab>\n</tb-tab-container>\n<!-- <ng-container [ngTemplateOutlet]=\"\" [ngTemplateOutletContext]=\"\"></ng-container> -->\n<!-- <div class=\"flex column gap-2 p-12\">\n  <div class=\"title-1\" substring=\"you can add [substring] attribute to titles\">\n    Title 1 with substring attribute\n  </div>\n  <div class=\"title-2\" substring=\"you can add [substring] attribute to titles\">\n    Title 2 with substring attribute\n  </div>\n</div> -->\n\n<!-- \n<p>\n  <span class=\"icon\">copyright</span>\n  <span> All rights are reserved. </span>\n</p> -->\n"
         },
         {
             "name": "StepperComponent",
@@ -1423,21 +1753,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/button/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1473,21 +1803,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/notification/notification.component.stories.ts",
+                "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/notification works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    color: 'primary',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                "file": "libs/material/src/notification/notification.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/showcase works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/notification works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1503,11 +1833,51 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/list-item works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list-item works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab-container works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "meta",
@@ -1523,21 +1893,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/button/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ColorsComponent>",
                 "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonComponent>",
+                "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n}"
             },
             {
                 "name": "meta",
@@ -1573,6 +1943,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<NavListComponent>",
+                "defaultValue": "{\n  component: NavListComponent,\n  title: 'NavListComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/notification/notification.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1587,7 +1967,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ShowcaseComponent>",
-                "defaultValue": "{\n  component: ShowcaseComponent,\n  title: 'ShowcaseComponent',\n}"
+                "defaultValue": "{\n  component: ShowcaseComponent,\n  title: '🤔',\n}"
             },
             {
                 "name": "meta",
@@ -1603,6 +1983,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TabComponent>",
+                "defaultValue": "{\n  component: TabComponent,\n  title: 'TabComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1610,10 +2000,50 @@
                 "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
             },
             {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ListItemComponent>",
+                "defaultValue": "{\n  component: ListItemComponent,\n  title: 'ListItemComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<NavListItemComponent>",
+                "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TabContainerComponent>",
+                "defaultValue": "{\n  component: TabContainerComponent,\n  title: 'TabContainerComponent',\n}"
+            },
+            {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/src/alert/alert.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1633,16 +2063,6 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1657,7 +2077,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    color: 'warn',\n    icon: 'home',\n    children: [\n      { label: 'List 1', icon: 'apps', color: 'primary' },\n      { label: 'List 2' },\n      { label: 'List 3', color: 'primary' },\n      { label: 'List 4' },\n    ] as any,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -1668,6 +2088,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        type: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        type: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    color: 'primary',\n    icon: 'info',\n    children: [\n      { label: 'Home', icon: 'home' },\n      { label: 'Apps', icon: 'apps' },\n      { label: 'Store', icon: 'store' },\n      { label: 'Inventory', icon: 'inventory' },\n      { label: 'Profile', icon: 'person' },\n    ] as any,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -1703,7 +2133,47 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1724,10 +2194,10 @@
                 "kind": 184
             },
             {
-                "name": "buttonStyle",
+                "name": "ButtonType",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"inbox\"",
+                "rawtype": "\"button\" | \"icon-button\" | \"combined-button\"",
                 "file": "libs/material/src/api/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1735,10 +2205,10 @@
                 "kind": 189
             },
             {
-                "name": "ButtonType",
+                "name": "ButtonVariant",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"button\" | \"icon-button\" | \"combined-button\"",
+                "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"inbox\"",
                 "file": "libs/material/src/api/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1793,8 +2263,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonComponent>",
-                "file": "libs/material/src/button/button.component.stories.ts",
+                "rawtype": "StoryObj<ColorsComponent>",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1804,8 +2274,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ColorsComponent>",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1848,6 +2318,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<NavListComponent>",
+                "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<NotificationComponent>",
                 "file": "libs/material/src/notification/notification.component.stories.ts",
                 "deprecated": false,
@@ -1881,8 +2362,52 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<TabComponent>",
+                "file": "libs/material/src/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<ToolbarComponent>",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ListItemComponent>",
+                "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<NavListItemComponent>",
+                "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TabContainerComponent>",
+                "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1923,38 +2448,6 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/button/button.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
-                }
-            ],
             "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -1985,6 +2478,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/button/button.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ButtonComponent>",
+                    "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
             "libs/material/src/fonts/fonts.component.stories.ts": [
@@ -2048,7 +2573,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    color: 'warn',\n    icon: 'home',\n    children: [\n      { label: 'List 1', icon: 'apps', color: 'primary' },\n      { label: 'List 2' },\n      { label: 'List 3', color: 'primary' },\n      { label: 'List 4' },\n    ] as any,\n  },\n}"
                 }
             ],
             "libs/material/src/menu/menu.component.stories.ts": [
@@ -2083,6 +2608,38 @@
                     "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        type: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        type: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
                 }
             ],
+            "libs/material/src/nav-list/nav-list.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    color: 'primary',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<NavListComponent>",
+                    "defaultValue": "{\n  component: NavListComponent,\n  title: 'NavListComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    color: 'primary',\n    icon: 'info',\n    children: [\n      { label: 'Home', icon: 'home' },\n      { label: 'Apps', icon: 'apps' },\n      { label: 'Store', icon: 'store' },\n      { label: 'Inventory', icon: 'inventory' },\n      { label: 'Profile', icon: 'person' },\n    ] as any,\n  },\n}"
+                }
+            ],
             "libs/material/src/notification/notification.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -2109,38 +2666,6 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/notification/notification.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/src/showcase/showcase.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/showcase works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ShowcaseComponent>",
-                    "defaultValue": "{\n  component: ShowcaseComponent,\n  title: 'ShowcaseComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -2179,6 +2704,38 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
+            "libs/material/src/tab/tab.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TabComponent>",
+                    "defaultValue": "{\n  component: TabComponent,\n  title: 'TabComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n}"
+                }
+            ],
             "libs/material/src/toolbar/toolbar.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -2210,6 +2767,124 @@
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
+            ],
+            "libs/material/src/list/list-item/list-item.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/list-item works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ListItemComponent>",
+                    "defaultValue": "{\n  component: ListItemComponent,\n  title: 'ListItemComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n}"
+                }
+            ],
+            "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/nav-list-item works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<NavListItemComponent>",
+                    "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: '',\n    color: 'primary',\n    icon: 'info',\n  },\n}"
+                }
+            ],
+            "libs/material/src/tab/tab-container/tab-container.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab-container works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TabContainerComponent>",
+                    "defaultValue": "{\n  component: TabContainerComponent,\n  title: 'TabContainerComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/showcase/showcase.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ShowcaseComponent>",
+                    "defaultValue": "{\n  component: ShowcaseComponent,\n  title: '🤔',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/showcase/showcase.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -2230,10 +2905,10 @@
             ],
             "libs/material/src/api/types.ts": [
                 {
-                    "name": "buttonStyle",
+                    "name": "ButtonType",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"inbox\"",
+                    "rawtype": "\"button\" | \"icon-button\" | \"combined-button\"",
                     "file": "libs/material/src/api/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2241,10 +2916,10 @@
                     "kind": 189
                 },
                 {
-                    "name": "ButtonType",
+                    "name": "ButtonVariant",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "\"button\" | \"icon-button\" | \"combined-button\"",
+                    "rawtype": "\"basic\" | \"raised\" | \"flat\" | \"stroked\" | \"inbox\"",
                     "file": "libs/material/src/api/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2300,19 +2975,6 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/button/button.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ButtonComponent>",
-                    "file": "libs/material/src/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
             "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2320,6 +2982,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ColorsComponent>",
                     "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/button/button.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonComponent>",
+                    "file": "libs/material/src/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2365,6 +3040,19 @@
                     "kind": 180
                 }
             ],
+            "libs/material/src/nav-list/nav-list.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<NavListComponent>",
+                    "file": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "libs/material/src/notification/notification.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2404,6 +3092,19 @@
                     "kind": 180
                 }
             ],
+            "libs/material/src/tab/tab.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TabComponent>",
+                    "file": "libs/material/src/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "libs/material/src/toolbar/toolbar.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2411,6 +3112,45 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ToolbarComponent>",
                     "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/list/list-item/list-item.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ListItemComponent>",
+                    "file": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<NavListItemComponent>",
+                    "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/tab/tab-container/tab-container.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TabContainerComponent>",
+                    "file": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2581,6 +3321,45 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/list/list-item/list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/list/list-item/list-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ListItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/list/list.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -2616,7 +3395,7 @@
                 "linktype": "component",
                 "name": "ListComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -2656,6 +3435,84 @@
                 "name": "MenuComponent",
                 "coveragePercent": 5,
                 "coverageCount": "1/19",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavListItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/nav-list/nav-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -2711,16 +3568,6 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/showcase/showcase.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
                 "name": "meta",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -2742,7 +3589,7 @@
                 "linktype": "component",
                 "name": "ShowcaseComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -2785,12 +3632,72 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/tab/tab-container/tab-container.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/tab/tab-container/tab-container.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "TabContainerComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
