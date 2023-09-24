@@ -1647,6 +1647,9 @@
           user-select: none;
   transition: background-color 200ms ease-in-out, outline-color 200ms ease-in-out, color 200ms ease-in-out;
 }
+.icon-button .icon {
+  display: block;
+}
 
 .combined-button {
   cursor: pointer;
@@ -1696,8 +1699,8 @@
 
 .button.inbox.primary {
   box-shadow: 0px 0px 2px 1px var(--primary-darker);
-  background-color: var(--primary-face);
-  color: var(--primary-darker);
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
 }
 
 .button.stroked.primary {
@@ -1791,8 +1794,8 @@
 
 .button.inbox.secondary {
   box-shadow: 0px 0px 2px 1px var(--secondary-darker);
-  background-color: var(--secondary-face);
-  color: var(--secondary-darker);
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
 }
 
 .button.stroked.secondary {
@@ -1886,8 +1889,8 @@
 
 .button.inbox.accent {
   box-shadow: 0px 0px 2px 1px var(--accent-darker);
-  background-color: var(--accent-face);
-  color: var(--accent-darker);
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
 }
 
 .button.stroked.accent {
@@ -1981,8 +1984,8 @@
 
 .button.inbox.warn {
   box-shadow: 0px 0px 2px 1px var(--warn-darker);
-  background-color: var(--warn-face);
-  color: var(--warn-darker);
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
 }
 
 .button.stroked.warn {
@@ -2076,8 +2079,8 @@
 
 .button.inbox.black {
   box-shadow: 0px 0px 2px 1px var(--black-darker);
-  background-color: var(--black-face);
-  color: var(--black-darker);
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
 }
 
 .button.stroked.black {
@@ -2171,8 +2174,8 @@
 
 .button.inbox.white {
   box-shadow: 0px 0px 2px 1px var(--white-darker);
-  background-color: var(--white-face);
-  color: var(--white-darker);
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
 }
 
 .button.stroked.white {
@@ -2266,8 +2269,8 @@
 
 .button.inbox.red {
   box-shadow: 0px 0px 2px 1px var(--red-darker);
-  background-color: var(--red-face);
-  color: var(--red-darker);
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
 }
 
 .button.stroked.red {
@@ -2361,8 +2364,8 @@
 
 .button.inbox.green {
   box-shadow: 0px 0px 2px 1px var(--green-darker);
-  background-color: var(--green-face);
-  color: var(--green-darker);
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
 }
 
 .button.stroked.green {
@@ -2457,8 +2460,8 @@
 
 .icon-button.inbox.primary {
   box-shadow: 0px 0px 2px 1px var(--primary-darker);
-  background-color: var(--primary-face);
-  color: var(--primary-darker);
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
 }
 
 .icon-button.stroked.primary {
@@ -2552,8 +2555,8 @@
 
 .icon-button.inbox.secondary {
   box-shadow: 0px 0px 2px 1px var(--secondary-darker);
-  background-color: var(--secondary-face);
-  color: var(--secondary-darker);
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
 }
 
 .icon-button.stroked.secondary {
@@ -2647,8 +2650,8 @@
 
 .icon-button.inbox.accent {
   box-shadow: 0px 0px 2px 1px var(--accent-darker);
-  background-color: var(--accent-face);
-  color: var(--accent-darker);
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
 }
 
 .icon-button.stroked.accent {
@@ -2742,8 +2745,8 @@
 
 .icon-button.inbox.warn {
   box-shadow: 0px 0px 2px 1px var(--warn-darker);
-  background-color: var(--warn-face);
-  color: var(--warn-darker);
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
 }
 
 .icon-button.stroked.warn {
@@ -2837,8 +2840,8 @@
 
 .icon-button.inbox.black {
   box-shadow: 0px 0px 2px 1px var(--black-darker);
-  background-color: var(--black-face);
-  color: var(--black-darker);
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
 }
 
 .icon-button.stroked.black {
@@ -2932,8 +2935,8 @@
 
 .icon-button.inbox.white {
   box-shadow: 0px 0px 2px 1px var(--white-darker);
-  background-color: var(--white-face);
-  color: var(--white-darker);
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
 }
 
 .icon-button.stroked.white {
@@ -3027,8 +3030,8 @@
 
 .icon-button.inbox.red {
   box-shadow: 0px 0px 2px 1px var(--red-darker);
-  background-color: var(--red-face);
-  color: var(--red-darker);
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
 }
 
 .icon-button.stroked.red {
@@ -3122,8 +3125,8 @@
 
 .icon-button.inbox.green {
   box-shadow: 0px 0px 2px 1px var(--green-darker);
-  background-color: var(--green-face);
-  color: var(--green-darker);
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
 }
 
 .icon-button.stroked.green {
@@ -3218,8 +3221,8 @@
 
 .combined-button.inbox.primary {
   box-shadow: 0px 0px 2px 1px var(--primary-darker);
-  background-color: var(--primary-face);
-  color: var(--primary-darker);
+  background-color: var(--primary-dark);
+  color: var(--primary-dark-face);
 }
 
 .combined-button.stroked.primary {
@@ -3313,8 +3316,8 @@
 
 .combined-button.inbox.secondary {
   box-shadow: 0px 0px 2px 1px var(--secondary-darker);
-  background-color: var(--secondary-face);
-  color: var(--secondary-darker);
+  background-color: var(--secondary-dark);
+  color: var(--secondary-dark-face);
 }
 
 .combined-button.stroked.secondary {
@@ -3408,8 +3411,8 @@
 
 .combined-button.inbox.accent {
   box-shadow: 0px 0px 2px 1px var(--accent-darker);
-  background-color: var(--accent-face);
-  color: var(--accent-darker);
+  background-color: var(--accent-dark);
+  color: var(--accent-dark-face);
 }
 
 .combined-button.stroked.accent {
@@ -3503,8 +3506,8 @@
 
 .combined-button.inbox.warn {
   box-shadow: 0px 0px 2px 1px var(--warn-darker);
-  background-color: var(--warn-face);
-  color: var(--warn-darker);
+  background-color: var(--warn-dark);
+  color: var(--warn-dark-face);
 }
 
 .combined-button.stroked.warn {
@@ -3598,8 +3601,8 @@
 
 .combined-button.inbox.black {
   box-shadow: 0px 0px 2px 1px var(--black-darker);
-  background-color: var(--black-face);
-  color: var(--black-darker);
+  background-color: var(--black-dark);
+  color: var(--black-dark-face);
 }
 
 .combined-button.stroked.black {
@@ -3693,8 +3696,8 @@
 
 .combined-button.inbox.white {
   box-shadow: 0px 0px 2px 1px var(--white-darker);
-  background-color: var(--white-face);
-  color: var(--white-darker);
+  background-color: var(--white-dark);
+  color: var(--white-dark-face);
 }
 
 .combined-button.stroked.white {
@@ -3788,8 +3791,8 @@
 
 .combined-button.inbox.red {
   box-shadow: 0px 0px 2px 1px var(--red-darker);
-  background-color: var(--red-face);
-  color: var(--red-darker);
+  background-color: var(--red-dark);
+  color: var(--red-dark-face);
 }
 
 .combined-button.stroked.red {
@@ -3883,8 +3886,8 @@
 
 .combined-button.inbox.green {
   box-shadow: 0px 0px 2px 1px var(--green-darker);
-  background-color: var(--green-face);
-  color: var(--green-darker);
+  background-color: var(--green-dark);
+  color: var(--green-dark-face);
 }
 
 .combined-button.stroked.green {
@@ -4033,6 +4036,12 @@
 .green[role=alert] {
   background-color: var(--green);
   color: var(--green-face);
+}
+
+[aria-label][tooltip-postion][tooltip-active=false] {
+  --scale: 0;
+  visibility: hidden !important;
+  position: absolute !important;
 }
 
 [aria-label][tooltip-position] {
@@ -5115,6 +5124,232 @@
 .green.left.tab-button:focus,
 .green.left.tab-button[data-active=true] {
   border-left: 0.3em solid var(--green);
+}
+
+.common-list, .list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.common-list-item, .nav-list-item, .list-item {
+  min-height: 50px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0.3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  border-style: double;
+  border-color: transparent;
+  font-size: 1em;
+}
+
+.list-item > .icon,
+.nav-list-item > .icon {
+  font-size: 2em;
+  line-height: 1em;
+}
+
+.nav-list-item {
+  -webkit-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.list-item.primary {
+  background-color: var(--primary);
+  color: var(--primary-face);
+}
+
+.nav-list-item.primary {
+  background-color: var(--primary);
+  color: var(--primary-face);
+}
+
+.list-item.secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-face);
+}
+
+.nav-list-item.secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-face);
+}
+
+.list-item.accent {
+  background-color: var(--accent);
+  color: var(--accent-face);
+}
+
+.nav-list-item.accent {
+  background-color: var(--accent);
+  color: var(--accent-face);
+}
+
+.list-item.warn {
+  background-color: var(--warn);
+  color: var(--warn-face);
+}
+
+.nav-list-item.warn {
+  background-color: var(--warn);
+  color: var(--warn-face);
+}
+
+.list-item.black {
+  background-color: var(--black);
+  color: var(--black-face);
+}
+
+.nav-list-item.black {
+  background-color: var(--black);
+  color: var(--black-face);
+}
+
+.list-item.white {
+  background-color: var(--white);
+  color: var(--white-face);
+}
+
+.nav-list-item.white {
+  background-color: var(--white);
+  color: var(--white-face);
+}
+
+.list-item.red {
+  background-color: var(--red);
+  color: var(--red-face);
+}
+
+.nav-list-item.red {
+  background-color: var(--red);
+  color: var(--red-face);
+}
+
+.list-item.green {
+  background-color: var(--green);
+  color: var(--green-face);
+}
+
+.nav-list-item.green {
+  background-color: var(--green);
+  color: var(--green-face);
+}
+
+.nav-list-item.primary {
+  background-color: var(--primary);
+  color: var(--primary-face);
+}
+
+.nav-list-item.primary:hover,
+.nav-list-item.primary:focus {
+  background-color: var(--primary-dark);
+}
+
+.nav-list-item.primary:active {
+  background-color: var(--primary-light);
+}
+
+.nav-list-item.secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-face);
+}
+
+.nav-list-item.secondary:hover,
+.nav-list-item.secondary:focus {
+  background-color: var(--secondary-dark);
+}
+
+.nav-list-item.secondary:active {
+  background-color: var(--secondary-light);
+}
+
+.nav-list-item.accent {
+  background-color: var(--accent);
+  color: var(--accent-face);
+}
+
+.nav-list-item.accent:hover,
+.nav-list-item.accent:focus {
+  background-color: var(--accent-dark);
+}
+
+.nav-list-item.accent:active {
+  background-color: var(--accent-light);
+}
+
+.nav-list-item.warn {
+  background-color: var(--warn);
+  color: var(--warn-face);
+}
+
+.nav-list-item.warn:hover,
+.nav-list-item.warn:focus {
+  background-color: var(--warn-dark);
+}
+
+.nav-list-item.warn:active {
+  background-color: var(--warn-light);
+}
+
+.nav-list-item.black {
+  background-color: var(--black);
+  color: var(--black-face);
+}
+
+.nav-list-item.black:hover,
+.nav-list-item.black:focus {
+  background-color: var(--black-dark);
+}
+
+.nav-list-item.black:active {
+  background-color: var(--black-light);
+}
+
+.nav-list-item.white {
+  background-color: var(--white);
+  color: var(--white-face);
+}
+
+.nav-list-item.white:hover,
+.nav-list-item.white:focus {
+  background-color: var(--white-dark);
+}
+
+.nav-list-item.white:active {
+  background-color: var(--white-light);
+}
+
+.nav-list-item.red {
+  background-color: var(--red);
+  color: var(--red-face);
+}
+
+.nav-list-item.red:hover,
+.nav-list-item.red:focus {
+  background-color: var(--red-dark);
+}
+
+.nav-list-item.red:active {
+  background-color: var(--red-light);
+}
+
+.nav-list-item.green {
+  background-color: var(--green);
+  color: var(--green-face);
+}
+
+.nav-list-item.green:hover,
+.nav-list-item.green:focus {
+  background-color: var(--green-dark);
+}
+
+.nav-list-item.green:active {
+  background-color: var(--green-light);
 }
 
 ::-webkit-scrollbar {

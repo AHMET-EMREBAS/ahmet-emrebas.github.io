@@ -7,6 +7,94 @@
     "classes": [],
     "directives": [
         {
+            "name": "BadgeDirective",
+            "id": "directive-BadgeDirective-805838fbabe1638d454a2c2c900143643e599499e3a5276032157c68e2752a73edde283a7039d763f1593315170ec6b7e1917cf8c19f87a454ab892c9a1b8976",
+            "file": "libs/material/src/badge/badge.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';\nimport { Color } from '../api';\n\n@Directive({\n  selector: '[tbBadge]',\n  standalone: true,\n})\nexport class BadgeDirective implements AfterViewInit {\n  @Input() tbBadge?: string;\n  @Input() tbBadgePosition:\n    | 'top-right'\n    | 'top-left'\n    | 'bottom-left'\n    | 'bottom-right' = 'top-right';\n  @Input() tbBadgeColor: Color = 'primary';\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n\n  ngAfterViewInit(): void {\n    if (this.tbBadge) {\n      this.elementRef.nativeElement.setAttribute('data-badge', this.tbBadge);\n      this.elementRef.nativeElement.setAttribute(\n        'data-badge-position',\n        this.tbBadgePosition\n      );\n      this.elementRef.nativeElement.setAttribute(\n        'data-badge-color',\n        this.tbBadgeColor\n      );\n    }\n  }\n}\n",
+            "selector": "[tbBadge]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "tbBadge",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "tbBadgeColor",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "tbBadgePosition",
+                    "defaultValue": "'top-right'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "\"top-right\" | \"top-left\" | \"bottom-left\" | \"bottom-right\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "ScrollDirectionDirective",
             "id": "directive-ScrollDirectionDirective-839bbe17a8688c64413100c7b9f524a2df78d9bd88b55e58f70b717731521682b725791be4c19ea24c0961cd343c6a73ff3f8fea6c18126bfcd1aa546efe3798",
             "file": "libs/material/src/scroll-direction/scroll-direction.directive.ts",
@@ -346,7 +434,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-87a121f476ed896164d716b737b431170bb08c2b1a7e9bfff688fe2a49c003891d578fb94105c6c7ecdee01546fd3b54f9e302b5538431fb10546bddb7922db4",
+            "id": "component-ButtonComponent-49c5ec2707e22e0ad07946dae3fb7b1e98fae57a0c80015dbb3048e512646f9c1bc65433b34fca7b426b62506fb8690abc2c0ac26928aef81d3e5b87470f4a87",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -356,7 +444,7 @@
             "selector": "tb-button",
             "styleUrls": [],
             "styles": [],
-            "template": "<button\n  #button\n  (click)=\"emitClickEvent()\"\n  [tbTooltip]=\"tooltip\"\n  [tbTooltipPosition]=\"tooltipPosition\"\n>\n  <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n  <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n</button>\n",
+            "template": "<button\n  #button\n  (click)=\"emitClickEvent()\"\n  [tbTooltip]=\"tooltip\"\n  [tbTooltipPosition]=\"tooltipPosition\"\n>\n  <span class=\"icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n  <span *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -484,7 +572,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonVariant, ButtonType, Color, Icon, Position } from '../api';\nimport { CommonModule } from '@angular/common';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\nexport type ButtonEvent = {\n  id?: string;\n  type: 'click';\n  payload: {\n    uuid?: string;\n    label?: string;\n    message?: string;\n  };\n};\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, TooltipDirective],\n  template: `\n    <button\n      #button\n      (click)=\"emitClickEvent()\"\n      [tbTooltip]=\"tooltip\"\n      [tbTooltipPosition]=\"tooltipPosition\"\n    >\n      <span class=\"button-icon icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n      <span class=\"button-label\" *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() tooltip?: string;\n  @Input() tooltipPosition?: Position;\n  @Input() type: ButtonType = 'button';\n  @Input() uuid = 'Id not set!';\n  @Input() variant: ButtonVariant = 'basic';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({\n      type: 'click',\n      payload: {\n        label: this.label,\n        uuid: this.uuid,\n      },\n    });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonVariant, ButtonType, Color, Icon, Position } from '../api';\nimport { CommonModule } from '@angular/common';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\nexport type ButtonEvent = {\n  id?: string;\n  type: 'click';\n  payload: {\n    uuid?: string;\n    label?: string;\n    message?: string;\n  };\n};\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, TooltipDirective],\n  template: `\n    <button\n      #button\n      (click)=\"emitClickEvent()\"\n      [tbTooltip]=\"tooltip\"\n      [tbTooltipPosition]=\"tooltipPosition\"\n    >\n      <span class=\"icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n      <span *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() tooltip?: string;\n  @Input() tooltipPosition?: Position;\n  @Input() type: ButtonType = 'button';\n  @Input() uuid = 'Id not set!';\n  @Input() variant: ButtonVariant = 'basic';\n\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({\n      type: 'click',\n      payload: {\n        label: this.label,\n        uuid: this.uuid,\n      },\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1216,7 +1304,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-3a7bed166f94a82bf77325e7d949938da330004f95ec831649a4a9e9410fa5ca767feac40ce758a73feef6e19b84c5c9bac3cfbae93ef96ee72c530e07170db8",
+            "id": "component-ShowcaseComponent-02952be40ceec0cd64d523732eeb5cf70d1dfdcf6db2c5c78240893cf87df8a32e75cc3fc30f844327fc6a85965f652b3fa5eac720c49fcfef633c8f8c9f9cbc",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1237,16 +1325,6 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "__buttons",
-                    "defaultValue": "this.buttonColors.map((color) => {\n    return this.buttonTypes.map((type) => {\n      return this.buttonVariants.map((variant) => {\n        const obj: Partial<ButtonComponent> = { color, type, variant };\n        this.buttons.push({ ...obj, label: `${type} ${variant}` });\n        return obj;\n      });\n    });\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 44
-                },
-                {
                     "name": "buttonColors",
                     "defaultValue": "['primary', 'secondary', 'accent', 'warn'] as Color[]",
                     "deprecated": false,
@@ -1255,16 +1333,6 @@
                     "optional": false,
                     "description": "",
                     "line": 31
-                },
-                {
-                    "name": "buttons",
-                    "defaultValue": "[]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Partial<ButtonComponent>[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 43
                 },
                 {
                     "name": "buttonTypes",
@@ -1301,7 +1369,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1351,11 +1419,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  buttons: Partial<ButtonComponent>[] = [];\n  __buttons = this.buttonColors.map((color) => {\n    return this.buttonTypes.map((type) => {\n      return this.buttonVariants.map((variant) => {\n        const obj: Partial<ButtonComponent> = { color, type, variant };\n        this.buttons.push({ ...obj, label: `${type} ${variant}` });\n        return obj;\n      });\n    });\n  });\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
-            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab label=\"Buttons\" [active]=\"true\">\n    <div class=\"flex row wrap gap-3 \">\n      <tb-button\n        *ngFor=\"let b of buttons\"\n        [label]=\"b.label!\"\n        [color]=\"b.color!\"\n        [type]=\"b.type!\"\n        [variant]=\"b.variant!\"\n      ></tb-button>\n    </div>\n  </tb-tab>\n</tb-tab-container>\n<!-- <ng-container [ngTemplateOutlet]=\"\" [ngTemplateOutletContext]=\"\"></ng-container> -->\n<!-- <div class=\"flex column gap-2 p-12\">\n  <div class=\"title-1\" substring=\"you can add [substring] attribute to titles\">\n    Title 1 with substring attribute\n  </div>\n  <div class=\"title-2\" substring=\"you can add [substring] attribute to titles\">\n    Title 2 with substring attribute\n  </div>\n</div> -->\n\n<!-- \n<p>\n  <span class=\"icon\">copyright</span>\n  <span> All rights are reserved. </span>\n</p> -->\n"
+            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container>\n"
         },
         {
             "name": "StepperComponent",
@@ -1753,21 +1821,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1893,21 +1961,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ColorsComponent>",
-                "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
                 "defaultValue": "{\n  component: ButtonComponent,\n  title: 'ButtonComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ColorsComponent>",
+                "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
             },
             {
                 "name": "meta",
@@ -2043,21 +2111,21 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -2263,8 +2331,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ColorsComponent>",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "libs/material/src/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2274,8 +2342,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonComponent>",
-                "file": "libs/material/src/button/button.component.stories.ts",
+                "rawtype": "StoryObj<ColorsComponent>",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2448,38 +2516,6 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/src/colors/colors.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ColorsComponent>",
-                    "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
             "libs/material/src/button/button.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -2510,6 +2546,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
+                }
+            ],
+            "libs/material/src/colors/colors.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ColorsComponent>",
+                    "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
                 }
             ],
             "libs/material/src/fonts/fonts.component.stories.ts": [
@@ -2975,19 +3043,6 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/colors/colors.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ColorsComponent>",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
             "libs/material/src/button/button.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2995,6 +3050,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ButtonComponent>",
                     "file": "libs/material/src/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/colors/colors.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ColorsComponent>",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3202,6 +3270,15 @@
                 "coveragePercent": 57,
                 "coverageCount": "4/7",
                 "status": "good"
+            },
+            {
+                "filePath": "libs/material/src/badge/badge.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "BadgeDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
             },
             {
                 "filePath": "libs/material/src/button/button.component.stories.ts",
@@ -3589,7 +3666,7 @@
                 "linktype": "component",
                 "name": "ShowcaseComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

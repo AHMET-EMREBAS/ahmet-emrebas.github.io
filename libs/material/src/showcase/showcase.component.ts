@@ -6,6 +6,7 @@ import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TabContainerComponent } from '../tab/tab-container/tab-container.component';
 import { TabComponent } from '../tab/tab.component';
 import { ButtonType, ButtonVariant, Color } from '../api';
+import { BadgeDirective } from '../badge/badge.directive';
 
 @Component({
   selector: 'tb-showcase',
@@ -17,6 +18,7 @@ import { ButtonType, ButtonVariant, Color } from '../api';
     ToolbarComponent,
     TabContainerComponent,
     TabComponent,
+    BadgeDirective,
   ],
   templateUrl: './showcase.component.html',
   styles: [
