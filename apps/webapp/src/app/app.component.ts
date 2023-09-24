@@ -8,6 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   name = $localize`Ahmet Emrebas `;
   title = $localize`webapp ${this.name} `;
-
-  constructor() {}
 }

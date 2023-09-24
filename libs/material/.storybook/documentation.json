@@ -1304,7 +1304,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-02952be40ceec0cd64d523732eeb5cf70d1dfdcf6db2c5c78240893cf87df8a32e75cc3fc30f844327fc6a85965f652b3fa5eac720c49fcfef633c8f8c9f9cbc",
+            "id": "component-ShowcaseComponent-583634a0d3338882ab2cf94c14d0b39ee0720468ba132053b7d68e442eb2b2fe17a51317c0ce020d833f8c7247e6294bc268b5fdab9d2453025c0239c57e6082",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1332,7 +1332,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 33
                 },
                 {
                     "name": "buttonTypes",
@@ -1342,7 +1342,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 35
                 },
                 {
                     "name": "buttonVariants",
@@ -1352,7 +1352,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 37
                 }
             ],
             "methodsClass": [
@@ -1369,7 +1369,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1414,16 +1414,20 @@
                 {
                     "name": "TabComponent",
                     "type": "component"
+                },
+                {
+                    "name": "BadgeDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
-            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container>\n"
+            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n            tbBadge=\"100\"\n            [tbBadgeColor]=\"color\"\n            tbBadgePosition=\"top-right\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container>\n"
         },
         {
             "name": "StepperComponent",
@@ -1831,21 +1835,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1971,21 +1975,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ColorsComponent>",
-                "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<FontsComponent>",
                 "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ColorsComponent>",
+                "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
             },
             {
                 "name": "meta",
@@ -2121,7 +2125,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -2131,7 +2135,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -2342,8 +2346,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ColorsComponent>",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "rawtype": "StoryObj<FontsComponent>",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2353,8 +2357,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FontsComponent>",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "rawtype": "StoryObj<ColorsComponent>",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2548,38 +2552,6 @@
                     "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
-            "libs/material/src/colors/colors.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ColorsComponent>",
-                    "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
             "libs/material/src/fonts/fonts.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -2606,6 +2578,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/colors/colors.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ColorsComponent>",
+                    "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -3056,19 +3060,6 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/colors/colors.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ColorsComponent>",
-                    "file": "libs/material/src/colors/colors.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
             "libs/material/src/fonts/fonts.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3076,6 +3067,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FontsComponent>",
                     "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/colors/colors.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ColorsComponent>",
+                    "file": "libs/material/src/colors/colors.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
