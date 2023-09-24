@@ -17,6 +17,8 @@ export * from './alert/alert.component';
 
 export * from './showcase/showcase.component';
 
-export * from './lib/tabs/tabs.component';
+export * from './stepper/stepper.component';
 
-export * from './lib/stepper/stepper.component';
+export * from './tab/tab.component';
+
+export * from './tab/tab-container/tab-container.component';

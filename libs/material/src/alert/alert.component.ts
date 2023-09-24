@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorType, Icon } from '../api';
+import { Color, Icon } from '../api';
 import { ButtonComponent, ButtonEvent } from '../button';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 
@@ -25,7 +25,7 @@ export class AlertComponent {
   /** Close event */
   @Output() closeEvent = new EventEmitter<ButtonEvent>();
   /** Alert color */
-  @Input() color: ColorType = 'primary';
+  @Input() color: Color = 'primary';
 
   /** Alert icon */
   @Input() icon: Icon = 'info';

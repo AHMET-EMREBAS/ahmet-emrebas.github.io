@@ -1,3 +1,5 @@
+@use './utils' as utils;
+
 $positions: (static, relative, absolute, fixed, sticky);
 
 @each $pos in $positions {
@@ -6,8 +8,31 @@ $positions: (static, relative, absolute, fixed, sticky);
   }
 }
 
+@each $side in (left, right) {
+  .#{utils.fl($side)}-0 {
+    #{$side}: 0px;
+  }
+}
+
 @for $size from 0 through 12 {
   .z-#{$size} {
     z-index: $size;
+  }
+}
+
+.o-auto {
+  overflow: auto;
+}
+
+.ox-hidden {
+  overflow: hidden;
+}
+
+@each $axis in (x, y) {
+  .o#{$axis}-auto {
+    overflow-#{$axis}: auto;
+  }
+  .o#{$axis}-hidden {
+    overflow-#{$axis}: hidden;
   }
 }

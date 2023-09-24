@@ -1,33 +1,145 @@
-<div class="container">
-  <h1 class="title-1">Showcase</h1>
-
-  <h2 class="title-2">Menu</h2>
-
+<tb-toolbar>
   <tb-menu
-    type="button"
-    label="Triger 1"
+    label="Home"
+    icon="home"
+    type="icon-button"
+    variant="flat"
+    color="primary"
+    tooltip="Go to home page"
+    tooltipPosition="bottom"
+  ></tb-menu>
+  <tb-menu
+    label="Home"
+    icon="info"
+    type="icon-button"
+    variant="flat"
+    color="primary"
+    tooltip="About us"
+    tooltipPosition="bottom"
+  ></tb-menu>
+  <tb-menu
+    label="Home"
+    icon="apps"
+    type="icon-button"
+    variant="flat"
     color="primary"
     position="bottom"
-    (clickEvent)="handle($event)"
   >
-    <tb-menu type="button" label="Label 1" color="warn"></tb-menu>
-    <tb-menu type="button" label="Triger 2" color="secondary" position="right">
-      <tb-menu type="button" label="Sub Label 1" color="secondary"></tb-menu>
-      <tb-menu type="button" label="Sub Label 2" color="secondary"></tb-menu>
-      <tb-menu type="button" label="Sub Label 3" color="secondary"></tb-menu>
+    <tb-menu
+      label="Solutions"
+      icon="apps"
+      type="combined-button"
+      variant="raised"
+      color="primary"
+      position="right"
+      showAs="row"
+    >
       <tb-menu
-        type="button"
-        label="Triger 2"
+        label="IM"
+        icon="inventory"
+        type="combined-button"
+        variant="flat"
+        color="red"
+        tooltip="We built a brand new inventory management application that comply with the modern world standards"
+        tooltipPosition="top"
+      ></tb-menu>
+      <tb-menu
+        label="Pos"
+        icon="point_of_sale"
+        type="combined-button"
+        variant="flat"
+        color="secondary"
+        tooltip="Point of sale"
+        tooltipPosition="top"
+      ></tb-menu>
+      <tb-menu
+        label="CMS"
+        icon="point_of_sale"
+        type="combined-button"
+        variant="flat"
         color="accent"
-        position="right"
-        showAs="row"
-      >
-        <tb-menu type="button" label="Sub Label 1" color="accent"></tb-menu>
-        <tb-menu type="button" label="Sub Label 2" color="accent"></tb-menu>
-        <tb-menu type="button" label="Sub Label 3" color="accent"></tb-menu>
-        <tb-menu type="button" label="Sub Label 4" color="accent"></tb-menu>
-      </tb-menu>
+        tooltip="Customer Management"
+        tooltipPosition="top"
+      ></tb-menu>
+      <tb-menu
+        label="Commerce"
+        icon="store"
+        type="combined-button"
+        variant="flat"
+        color="warn"
+        tooltip="Sell with us."
+        tooltipPosition="top"
+      ></tb-menu>
     </tb-menu>
-    <tb-menu type="button" label="Label"></tb-menu>
+    <tb-menu
+      label="Fullstack Development"
+      icon="apps"
+      type="combined-button"
+      variant="raised"
+    ></tb-menu>
   </tb-menu>
-</div>
+  <div class="grow-1"></div>
+
+  <tb-menu
+    type="icon-button"
+    icon="person"
+    variant="inbox"
+    color="primary"
+    position="bottom"
+    showAs="column"
+    tooltipPosition="left"
+  >
+    <tb-menu
+      tooltip="Logout"
+      type="icon-button"
+      icon="logout"
+      variant="raised"
+      color="primary"
+    ></tb-menu>
+    <tb-menu
+      tooltip="Settings"
+      type="icon-button"
+      icon="settings"
+      variant="raised"
+      color="primary"
+    ></tb-menu>
+    <tb-menu
+      tooltip="Inbox"
+      type="icon-button"
+      icon="inbox"
+      variant="raised"
+      color="primary"
+    ></tb-menu>
+  </tb-menu>
+</tb-toolbar>
+
+<tb-tab-container>
+  <tb-tab label="Tab 1" [active]="true">  <span >Tab 1 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 2" [active]="false"> <span > Tab 2 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 3" [active]="false"> <span > Tab 3 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 4" [active]="false"> <span > Tab 4 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 5" [active]="false"> <span > Tab 5 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 6" [active]="false"> <span > Tab 6 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 7" [active]="false"> <span > Tab 7 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 8" [active]="false"> <span > Tab 8 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 9" [active]="false"> <span > Tab 9 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 10" [active]="false"> <span > Tab 10 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 11" [active]="false"> <span > Tab 11 Content Goes here </span></tb-tab>
+  <tb-tab label="Tab 12" [active]="false"> <span > Tab 12ontent Goes here </span></tb-tab>
+  <tb-tab label="Tab 13" [active]="false"> <span > Tab 13 Content Goes here </span></tb-tab>
+</tb-tab-container>
+<!-- <ng-container [ngTemplateOutlet]="" [ngTemplateOutletContext]=""></ng-container> -->
+<!-- <div class="flex column gap-2 p-12">
+  <div class="title-1" substring="you can add [substring] attribute to titles">
+    Title 1 with substring attribute
+  </div>
+  <div class="title-2" substring="you can add [substring] attribute to titles">
+    Title 2 with substring attribute
+  </div>
+</div> -->
+
+<!-- 
+<p>
+  <span class="icon">copyright</span>
+  <span> All rights are reserved. </span>
+</p> -->
