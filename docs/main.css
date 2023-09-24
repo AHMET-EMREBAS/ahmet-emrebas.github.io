@@ -5352,6 +5352,274 @@
   background-color: var(--green-light);
 }
 
+[data-badge] {
+  position: relative;
+}
+
+@keyframes bad-animation {
+  0% {
+    transform: rotate(-1deg) translate(50%, -40%) rotate(20deg);
+  }
+  100% {
+    transform: rotate(1deg) translate(50%, -40%) rotate(20deg);
+  }
+}
+[data-badge][data-badge-color=primary]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--primary-darker);
+  color: var(--primary-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--primary-dark);
+  border-right: 5px solid var(--primary-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
+[data-badge][data-badge-color=secondary]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--secondary-darker);
+  color: var(--secondary-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--secondary-dark);
+  border-right: 5px solid var(--secondary-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
+[data-badge][data-badge-color=accent]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--accent-darker);
+  color: var(--accent-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--accent-dark);
+  border-right: 5px solid var(--accent-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
+[data-badge][data-badge-color=warn]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--warn-darker);
+  color: var(--warn-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--warn-dark);
+  border-right: 5px solid var(--warn-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
+[data-badge][data-badge-color=black]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--black-darker);
+  color: var(--black-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--black-dark);
+  border-right: 5px solid var(--black-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
+[data-badge][data-badge-color=white]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--white-darker);
+  color: var(--white-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--white-dark);
+  border-right: 5px solid var(--white-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
+[data-badge][data-badge-color=red]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--red-darker);
+  color: var(--red-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--red-dark);
+  border-right: 5px solid var(--red-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
+[data-badge][data-badge-color=green]::after {
+  content: attr(data-badge);
+  z-index: 1;
+  position: absolute;
+  background-color: var(--green-darker);
+  color: var(--green-dark-face);
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-button);
+  font-weight: bold;
+  font-size: 0.6em;
+  width: 22px;
+  height: 22px;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -25%) rotate(20deg);
+  border-radius: 100%;
+  pointer-events: all;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white;
+  border-top: 5px solid var(--green-dark);
+  border-right: 5px solid var(--green-dark);
+  animation-name: bad-animation;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom left;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
