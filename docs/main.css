@@ -1557,6 +1557,10 @@
   visibility: visible;
 }
 
+.inset-x {
+  box-shadow: inset -15px 0px 15px rgba(37, 37, 37, 0.5), inset 15px 0px 15px rgba(37, 37, 37, 0.5);
+}
+
 :root {
   --box-border-radius: 0.3em;
   --button-border-radius: 0.3em;
@@ -5151,8 +5155,6 @@
 
 * {
   box-sizing: border-box !important;
-  scroll-behavior: smooth;
-  scroll-snap-type: none;
 }
 
 html,

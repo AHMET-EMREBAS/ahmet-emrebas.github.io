@@ -1,7 +1,7 @@
 <div
   #container
-  class="flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative"
-  (wheel)="scroll($event)"
+  class="flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative inset-x"
+  tbScrollX
 >
   <ng-container *ngFor="let child of children">
     <button

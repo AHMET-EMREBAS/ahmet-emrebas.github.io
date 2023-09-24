@@ -1,0 +1,4 @@
+$_color: rgba(37, 37, 37, 0.5);
+.inset-x {
+  box-shadow: inset -15px 0px 15px $_color, inset 15px 0px 15px $_color;
+}
