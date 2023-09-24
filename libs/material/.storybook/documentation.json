@@ -8,12 +8,12 @@
     "directives": [
         {
             "name": "ScrollDirectionDirective",
-            "id": "directive-ScrollDirectionDirective-25bbb3a0ce9a0a35817a1c299058034401f2818d32d3962a7c945da766d5a017eb62346c46e062ca8de1d29dc7794c5454420567bb9ec5907b4769848e290a9c",
+            "id": "directive-ScrollDirectionDirective-26040c7efd95d04285cb7a689f829599ea55a83b1c6d1e12225d7d090b343fe3770f43f60722a1cac56c5422963fd19c55b75f3082f94227ab8e5c15bd5a1c92",
             "file": "libs/material/src/scroll-direction/scroll-direction.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';\nimport {\n  BehaviorSubject,\n  Subscription,\n  debounceTime,\n  every,\n  fromEvent,\n} from 'rxjs';\n@Directive({\n  selector: '[tbScrollX]',\n  standalone: true,\n})\nexport class ScrollDirectionDirective implements AfterViewInit {\n  timeout: any;\n  constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}\n\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.onwheel = (event: WheelEvent) => {\n      if (event.shiftKey) {\n        return;\n      }\n      event.preventDefault();\n      const options: ScrollToOptions = {\n        left: event.deltaY,\n        behavior: 'smooth',\n      };\n      this.elementRef.nativeElement.scrollBy(options);\n    };\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';\nimport { Subscription, debounceTime, fromEvent } from 'rxjs';\n@Directive({\n  selector: '[tbScrollX]',\n  standalone: true,\n})\nexport class ScrollDirectionDirective implements AfterViewInit, OnDestroy {\n  subscription?: Subscription;\n\n  constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}\n  ngOnDestroy(): void {\n    this.subscription?.unsubscribe();\n  }\n\n  ngAfterViewInit(): void {\n    this.subscription = fromEvent<WheelEvent>(\n      this.elementRef.nativeElement,\n      'wheel'\n    )\n      .pipe(debounceTime(200))\n      .subscribe((e) => {\n        if (!e.shiftKey)\n          this.elementRef.nativeElement.scrollBy({\n            left: e.deltaY,\n            behavior: 'smooth',\n          });\n      });\n  }\n}\n",
             "selector": "[tbScrollX]",
             "providers": [],
             "hostDirectives": [],
@@ -26,13 +26,13 @@
             "hostListeners": [],
             "propertiesClass": [
                 {
-                    "name": "timeout",
+                    "name": "subscription",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
-                    "optional": false,
+                    "type": "Subscription",
+                    "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 8
                 }
             ],
             "methodsClass": [
@@ -42,13 +42,24 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 17,
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
             ],
             "implements": [
-                "AfterViewInit"
+                "AfterViewInit",
+                "OnDestroy"
             ],
             "constructorObj": {
                 "name": "constructor",
@@ -63,7 +74,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 14,
+                "line": 8,
                 "jsdoctags": [
                     {
                         "name": "elementRef",
@@ -2692,7 +2703,7 @@
                 "linktype": "directive",
                 "name": "ScrollDirectionDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

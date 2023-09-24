@@ -1,30 +1,34 @@
 import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';
-import {
-  BehaviorSubject,
-  Subscription,
-  debounceTime,
-  every,
-  fromEvent,
-} from 'rxjs';
+import { Subscription, debounceTime, fromEvent } from 'rxjs';
 @Directive({
   selector: '[tbScrollX]',
   standalone: true,
 })
-export class ScrollDirectionDirective implements AfterViewInit {
-  timeout: any;
+export class ScrollDirectionDirective implements AfterViewInit, OnDestroy {
+  subscription?: Subscription;
+
   constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 
   ngAfterViewInit(): void {
-    this.elementRef.nativeElement.onwheel = (event: WheelEvent) => {
-      if (event.shiftKey) {
-        return;
+    this.elementRef.nativeElement.onwheel = (event) => {
+      if (!event.shiftKey) {
+        event.preventDefault();
       }
-      event.preventDefault();
-      const options: ScrollToOptions = {
-        left: event.deltaY,
-        behavior: 'smooth',
-      };
-      this.elementRef.nativeElement.scrollBy(options);
     };
+    this.subscription = fromEvent<WheelEvent>(
+      this.elementRef.nativeElement,
+      'wheel'
+    )
+      .pipe(debounceTime(100))
+      .subscribe((e) => {
+        if (!e.shiftKey)
+          this.elementRef.nativeElement.scrollBy({
+            left: e.deltaY * 2,
+            behavior: 'smooth',
+          });
+      });
   }
 }
