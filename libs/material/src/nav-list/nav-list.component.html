@@ -1,10 +1,10 @@
-<div class="list">
+<div class="nav-list">
   <ng-container
     [ngComponentOutlet]="componentType"
     [ngComponentOutletInputs]="{
       label: child.label,
       icon: child.icon || icon,
-      color: child.color || color
+      color: child.color || color,
     }"
     *ngFor="let child of children"
   ></ng-container>

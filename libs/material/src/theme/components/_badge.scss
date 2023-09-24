@@ -1,0 +1,52 @@
+@use '../colors' as colors;
+
+[data-badge] {
+  position: relative;
+}
+
+@keyframes bad-animation {
+  0% {
+    transform: rotate(-1deg) translate(50%, -40%) rotate(20deg);
+  }
+
+  100% {
+    transform: rotate(1deg) translate(50%, -40%) rotate(20deg);
+  }
+}
+
+@each $color in colors.$colorNames {
+  [data-badge][data-badge-color='#{$color}']::after {
+    content: attr(data-badge);
+    z-index: 1;
+    position: absolute;
+    background-color: var(--#{$color}-darker);
+    color: var(--#{$color}-dark-face);
+    // box-shadow: 0px 0px 3px var(--#{$color}-light);
+    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-button);
+    font-weight: bold;
+    font-size: 0.6em;
+    width: 22px;
+    height: 22px;
+    right: 0px;
+    top: 0px;
+    transform: translate(50%, -25%) rotate(20deg);
+    border-radius: 100%;
+    pointer-events: all;
+
+    border-bottom: 5px solid white;
+    border-left: 5px solid white;
+    border-top: 5px solid var(--#{$color}-dark);
+    border-right: 5px solid var(--#{$color}-dark);
+
+    animation-name: bad-animation;
+    animation-duration: 400ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: bottom left;
+  }
+}

@@ -12,7 +12,16 @@ export default meta;
 type Story = StoryObj<ListComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    color: 'warn',
+    icon: 'home',
+    children: [
+      { label: 'List 1', icon: 'apps', color: 'primary' },
+      { label: 'List 2' },
+      { label: 'List 3', color: 'primary' },
+      { label: 'List 4' },
+    ] as any,
+  },
 };
 
 export const Heading: Story = {

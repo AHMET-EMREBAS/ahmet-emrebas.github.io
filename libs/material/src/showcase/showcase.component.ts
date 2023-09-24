@@ -5,6 +5,8 @@ import { MenuComponent } from '../menu/menu.component';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TabContainerComponent } from '../tab/tab-container/tab-container.component';
 import { TabComponent } from '../tab/tab.component';
+import { ButtonType, ButtonVariant, Color } from '../api';
+import { BadgeDirective } from '../badge/badge.directive';
 
 @Component({
   selector: 'tb-showcase',
@@ -16,6 +18,7 @@ import { TabComponent } from '../tab/tab.component';
     ToolbarComponent,
     TabContainerComponent,
     TabComponent,
+    BadgeDirective,
   ],
   templateUrl: './showcase.component.html',
   styles: [
@@ -27,6 +30,18 @@ import { TabComponent } from '../tab/tab.component';
   ],
 })
 export class ShowcaseComponent {
+  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];
+
+  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];
+
+  buttonVariants = [
+    'basic',
+    'flat',
+    'inbox',
+    'raised',
+    'stroked',
+  ] as ButtonVariant[];
+
   handle(event: ButtonEvent) {
     console.log(event);
   }

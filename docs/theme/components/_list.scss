@@ -1,0 +1,77 @@
+@use '../colors' as colors;
+
+.common-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.list {
+  @extend .common-list;
+}
+
+.common-list-item {
+  //   height: 50px;
+
+
+  min-height: 50px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0.3em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 20px;
+
+  border-style: double;
+  border-color: transparent;
+  font-size: 1em;
+}
+
+.list-item {
+  @extend .common-list-item;
+}
+
+.list-item > .icon,
+.nav-list-item > .icon {
+  font-size: 2em;
+  line-height: 1em;
+}
+
+.nav-list-item {
+  @extend .common-list-item;
+  user-select: none;
+  cursor: pointer;
+}
+
+@each $colorName in colors.$colorNames {
+  .list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+  .nav-list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+}
+
+@each $colorName in colors.$colorNames {
+  .nav-list-item.#{$colorName} {
+    background-color: #{var(--#{$colorName})};
+    color: #{var(--#{$colorName}-face)};
+  }
+
+  .nav-list-item.#{$colorName}:hover,
+  .nav-list-item.#{$colorName}:focus {
+    background-color: var(--#{$colorName}-dark);
+  }
+
+  .nav-list-item.#{$colorName}:active {
+    background-color: var(--#{$colorName}-light);
+    // border: var(--tb-list-border-width) double var(--#{$colorName}-lighter);
+  }
+}
