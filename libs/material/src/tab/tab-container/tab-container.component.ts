@@ -1,19 +1,18 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ContentChildren,
   ElementRef,
   QueryList,
   ViewChild,
 } from '@angular/core';
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { TabComponent } from '../tab.component';
-import { BehaviorSubject, debounceTime } from 'rxjs';
+import { ScrollDirectionDirective } from '../../scroll-direction/scroll-direction.directive';
+
 @Component({
   selector: 'tb-tab-container',
   standalone: true,
-  imports: [CommonModule, TabComponent],
+  imports: [CommonModule, TabComponent, ScrollDirectionDirective],
   templateUrl: './tab-container.component.html',
   styles: [],
 })
@@ -44,10 +43,7 @@ export class TabContainerComponent {
 
   scroll(event: WheelEvent) {
     event.preventDefault();
-    this.container?.nativeElement.scrollBy({
-      behavior: 'smooth',
-      left: event.deltaY,
-    });
+    this.container?.nativeElement.scrollBy({ left: event.deltaY });
   }
 
   mousemove(event: MouseEvent) {

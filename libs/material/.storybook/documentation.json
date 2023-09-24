@@ -7,6 +7,67 @@
     "classes": [],
     "directives": [
         {
+            "name": "ScrollDirectionDirective",
+            "id": "directive-ScrollDirectionDirective-4c54d9ee77f64ef2fd976be47e185dfc20f81743e7f1a8c4df1cbc952c86fb78c34db5d470a39f44b2a461caae1b5abfda3e48625855419301ea9c00be451f60",
+            "file": "libs/material/src/scroll-direction/scroll-direction.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef } from '@angular/core';\n\n@Directive({\n  selector: '[tbScrollX]',\n  standalone: true,\n})\nexport class ScrollDirectionDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLDivElement>) {}\n\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.addEventListener('wheel', (e) => {\n      e.preventDefault();\n      this.elementRef.nativeElement.scrollBy({ left: e.deltaY });\n    });\n  }\n}\n",
+            "selector": "[tbScrollX]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLDivElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 7,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLDivElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "TabDirective",
             "id": "directive-TabDirective-d576c4f999fb736161d5d9fa6dc980bcacac783c10e7e976f3436fa9976a4344eb3e78b2ab79ad8e7aa77e9a8fa50eaf1965b0feb458cb85f8bb2276754b3b85",
             "file": "libs/material/src/tab/tab.component.ts",
@@ -1067,7 +1128,7 @@
         },
         {
             "name": "TabContainerComponent",
-            "id": "component-TabContainerComponent-846e752fa9549d017d1e59a6a1410b38dccf12ffb831b351c06b42a377c41a9aeb3aaf1ed63a3483df75e6eeb6bbefebbfb2317d829b7dc80db9f4f09156d7ee",
+            "id": "component-TabContainerComponent-478efd5d23f995d8fdefe0c1b7b7e8202c3d80d0c31d6437ffdf1c49b21ec503fdf642f370aee8dd60fbd2126b3b1b7e156be8aed84fda4d60be36c26d91e755",
             "file": "libs/material/src/tab/tab-container/tab-container.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1092,7 +1153,7 @@
                     "type": "QueryList<Partial<TabComponent>>",
                     "optional": true,
                     "description": "",
-                    "line": 19,
+                    "line": 22,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -1111,7 +1172,25 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 24
+                },
+                {
+                    "name": "container",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLDivElement>",
+                    "optional": true,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'container'"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
                 }
             ],
             "methodsClass": [
@@ -1128,7 +1207,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1156,13 +1235,69 @@
                     "optional": false,
                     "returnType": "Partial<TabComponent>",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "child",
                             "type": "Partial<TabComponent>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mousemove",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "scroll",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "WheelEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "WheelEvent",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1185,16 +1320,20 @@
                 {
                     "name": "TabComponent",
                     "type": "component"
+                },
+                {
+                    "name": "ScrollDirectionDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChildren,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule, NgTemplateOutlet } from '@angular/common';\nimport { TabComponent } from '../tab.component';\n\n@Component({\n  selector: 'tb-tab-container',\n  standalone: true,\n  imports: [CommonModule, TabComponent],\n  templateUrl: './tab-container.component.html',\n  styles: [],\n})\nexport class TabContainerComponent {\n  @ContentChildren(TabComponent) children?: QueryList<Partial<TabComponent>>;\n\n  componentType = TabComponent;\n\n  childValue(child: Partial<TabComponent>): Partial<TabComponent> {\n    return { label: child.label, active: child.active };\n  }\n  activate(child: Partial<TabComponent>) {\n    console.log(child);\n    const updated = this.children?.toArray();\n    updated?.forEach((e) => (e.active = false));\n    if (updated) {\n      const found = updated.find((e) => e.label === child.label);\n      if (found) {\n        found.active = true;\n\n        this.children?.reset([...updated]);\n        this.children?.setDirty();\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  ElementRef,\n  QueryList,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabComponent } from '../tab.component';\nimport { ScrollDirectionDirective } from '../../scroll-direction/scroll-direction.directive';\n\n@Component({\n  selector: 'tb-tab-container',\n  standalone: true,\n  imports: [CommonModule, TabComponent, ScrollDirectionDirective],\n  templateUrl: './tab-container.component.html',\n  styles: [],\n})\nexport class TabContainerComponent {\n  @ViewChild('container') container?: ElementRef<HTMLDivElement>;\n\n  @ContentChildren(TabComponent) children?: QueryList<Partial<TabComponent>>;\n\n  componentType = TabComponent;\n\n  childValue(child: Partial<TabComponent>): Partial<TabComponent> {\n    return { label: child.label, active: child.active };\n  }\n  activate(child: Partial<TabComponent>) {\n    console.log(child);\n    const updated = this.children?.toArray();\n    updated?.forEach((e) => (e.active = false));\n    if (updated) {\n      const found = updated.find((e) => e.label === child.label);\n      if (found) {\n        found.active = true;\n\n        this.children?.reset([...updated]);\n        this.children?.setDirty();\n      }\n    }\n  }\n\n  scroll(event: WheelEvent) {\n    event.preventDefault();\n    this.container?.nativeElement.scrollBy({ left: event.deltaY });\n  }\n\n  mousemove(event: MouseEvent) {\n    console.log(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div class=\"flex column gap-2 w-100 ox-auto pb-3\">\n  <ng-container *ngFor=\"let child of children\">\n    <button\n      class=\"tab-button primary bottom\"\n      (click)=\"activate(child)\"\n      [attr.data-active]=\"child.active\"\n    >\n      {{ child.label }}\n    </button>\n  </ng-container>\n</div>\n<ng-container *ngFor=\"let child of children\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"childValue(child)\"\n  >\n    <ng-content></ng-content>\n  </ng-container>\n</ng-container>\n"
+            "templateData": "<div\n  #container\n  class=\"flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative\"\n  tbScrollX\n>\n  <ng-container *ngFor=\"let child of children\">\n    <button\n      class=\"tab-button primary bottom\"\n      (click)=\"activate(child)\"\n      [attr.data-active]=\"child.active\"\n    >\n      {{ child.label }}\n    </button>\n  </ng-container>\n</div>\n<ng-container *ngFor=\"let child of children\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"childValue(child)\"\n  >\n    <ng-content></ng-content>\n  </ng-container>\n</ng-container>\n"
         },
         {
             "name": "ToolbarComponent",
@@ -1273,21 +1412,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/colors works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -1373,21 +1512,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FontsComponent>",
-                "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ColorsComponent>",
                 "defaultValue": "{\n  component: ColorsComponent,\n  title: 'ColorsComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FontsComponent>",
+                "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
             },
             {
                 "name": "meta",
@@ -1473,7 +1612,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1483,7 +1622,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1644,8 +1783,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FontsComponent>",
-                "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                "rawtype": "StoryObj<ColorsComponent>",
+                "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1655,8 +1794,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ColorsComponent>",
-                "file": "libs/material/src/colors/colors.component.stories.ts",
+                "rawtype": "StoryObj<FontsComponent>",
+                "file": "libs/material/src/fonts/fonts.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1795,38 +1934,6 @@
                     "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
-            "libs/material/src/fonts/fonts.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FontsComponent>",
-                    "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
             "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -1853,6 +1960,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/fonts/fonts.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FontsComponent>",
+                    "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -2153,19 +2292,6 @@
                     "kind": 180
                 }
             ],
-            "libs/material/src/fonts/fonts.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FontsComponent>",
-                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
             "libs/material/src/colors/colors.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2173,6 +2299,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ColorsComponent>",
                     "file": "libs/material/src/colors/colors.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/fonts/fonts.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FontsComponent>",
+                    "file": "libs/material/src/fonts/fonts.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2538,6 +2677,15 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/scroll-direction/scroll-direction.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ScrollDirectionDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/showcase/showcase.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -2621,7 +2769,7 @@
                 "linktype": "component",
                 "name": "TabContainerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
