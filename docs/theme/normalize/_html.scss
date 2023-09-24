@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box !important;
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 html,
@@ -10,13 +11,17 @@ body {
   font-family: var(--font-content);
 }
 
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-title);
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: var(--font-title);
+    vertical-align: middle;
+  }
 }
 
+@each $tag in (p, span) {
+  #{$tag},
+  #{$tag} * {
+    font-family: var(--font-content);
+    vertical-align: middle;
+  }
+}

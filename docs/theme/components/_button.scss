@@ -100,7 +100,8 @@
   margin: 0px;
   height: 3em;
 
-  width: max-content;
+  width: 100%;
+  text-wrap: nowrap;
   font-size: 1em;
 
   border-radius: var(--button-border-radius);
@@ -166,6 +167,7 @@
 
 @include creaetButtonVariants('button');
 @include creaetButtonVariants('icon-button');
+@include creaetButtonVariants('combined-button');
 
 .small.icon-button {
   font-size: 1em;

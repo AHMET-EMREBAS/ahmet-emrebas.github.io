@@ -3,11 +3,13 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChildren,
+  ElementRef,
   QueryList,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { TabComponent } from '../tab.component';
-
+import { BehaviorSubject, debounceTime } from 'rxjs';
 @Component({
   selector: 'tb-tab-container',
   standalone: true,
@@ -16,6 +18,8 @@ import { TabComponent } from '../tab.component';
   styles: [],
 })
 export class TabContainerComponent {
+  @ViewChild('container') container?: ElementRef<HTMLDivElement>;
+
   @ContentChildren(TabComponent) children?: QueryList<Partial<TabComponent>>;
 
   componentType = TabComponent;
@@ -36,5 +40,17 @@ export class TabContainerComponent {
         this.children?.setDirty();
       }
     }
+  }
+
+  scroll(event: WheelEvent) {
+    event.preventDefault();
+    this.container?.nativeElement.scrollBy({
+      behavior: 'smooth',
+      left: event.deltaY,
+    });
+  }
+
+  mousemove(event: MouseEvent) {
+    console.log(event);
   }
 }
