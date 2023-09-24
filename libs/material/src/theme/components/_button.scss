@@ -1,13 +1,15 @@
 @use '../colors' as colors;
 
+$buttonTypes: (basic, flat, raised, inbox, stroked);
+
 /** Initial value */
-.basic {
+button.basic {
   background-color: rgba(0, 0, 0, 0);
   color: var(--primary);
   border: none;
 }
 
-.inbox {
+button.inbox {
   color: var(--primary-face);
   background-color: var(--primary);
   box-shadow: var(--button-shadow) var(--primary-face);
@@ -15,7 +17,7 @@
 }
 
 /** Initial value */
-.raised {
+button.raised {
   color: var(--primary-face);
   background-color: var(--primary);
   box-shadow: var(--button-shadow) var(--primary-dark);
@@ -23,34 +25,34 @@
 }
 
 /** Initial value */
-.flat {
+button.flat {
   background-color: var(--primary);
   color: var(--primary-face);
   border: none;
 }
 
 /** Initial value */
-.stroked {
+button.stroked {
   color: var(--primary);
   background-color: hsla(0, 0%, 0%, 0);
   border: 1px solid var(--primary-6);
 }
 
 @mixin active($buttonStyle, $colorName) {
-  .#{$colorName}.#{$buttonStyle}:hover:active {
+  button.#{$colorName}.#{$buttonStyle}:hover:active {
     background-color: var(--#{$colorName}-light);
     color: var(--#{$colorName}-face);
   }
 }
 
 @mixin focus($buttonStyle, $colorName) {
-  .#{$colorName}.#{$buttonStyle}:focus {
+  button.#{$colorName}.#{$buttonStyle}:focus {
     outline: 3px solid var(--#{$colorName}-lighter);
   }
 }
 
 @mixin hover($buttonStyle, $colorName) {
-  .#{$colorName}.#{$buttonStyle}:hover {
+  button.#{$colorName}.#{$buttonStyle}:hover {
     background-color: var(--#{$colorName}-dark);
     color: var(--#{$colorName}-dark-face);
   }
@@ -59,27 +61,27 @@
 @mixin creaetButtonVariants($className) {
   /** For each color */
   @each $colorName in colors.$colorNames {
-    .#{$className}.stroked.#{$colorName},
-    .#{$className}.basic.#{$colorName} {
+    button.#{$className}.stroked.#{$colorName},
+    button.#{$className}.basic.#{$colorName} {
       color: var(--#{$colorName});
     }
 
-    .#{$className}.flat.#{$colorName},
-    .#{$className}.raised.#{$colorName} {
+    button.#{$className}.flat.#{$colorName},
+    button.#{$className}.raised.#{$colorName} {
       background-color: var(--#{$colorName});
       color: var(--#{$colorName}-face);
     }
 
-    .#{$className}.raised.#{$colorName} {
+    button.#{$className}.raised.#{$colorName} {
       box-shadow: var(--button-shadow) var(--#{$colorName}-dark);
     }
-    .#{$className}.inbox.#{$colorName} {
+    button.#{$className}.inbox.#{$colorName} {
       box-shadow: 0px 0px 2px 1px var(--#{$colorName}-darker);
       background-color: var(--#{$colorName}-dark);
       color: var(--#{$colorName}-dark-face);
     }
 
-    .#{$className}.stroked.#{$colorName} {
+    button.#{$className}.stroked.#{$colorName} {
       border-color: var(--#{$colorName}-6);
     }
 
@@ -149,16 +151,16 @@
 }
 
 /** Initial value */
-.button {
+button.button {
   @include button();
 }
 
 /** Initial value */
-.icon-button {
+button.icon-button {
   @include icon();
 }
 
-.combined-button {
+button.combined-button {
   @include button();
   display: flex;
   align-items: center;

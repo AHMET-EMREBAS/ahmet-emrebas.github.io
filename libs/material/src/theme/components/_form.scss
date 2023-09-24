@@ -7,7 +7,6 @@
   .form-actions {
     @include utils.row(1em);
   }
-
 }
 .input-container {
   @include utils.column(0.3em);
@@ -26,8 +25,9 @@
   }
 }
 
-
-input { 
-    
-    border: none;
+input {
+  border: none;
 }
+
+
+
