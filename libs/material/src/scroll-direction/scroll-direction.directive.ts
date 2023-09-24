@@ -1,5 +1,9 @@
 import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
+
+/**
+ * Change scroll direction to x axis
+ */
 @Directive({
   selector: '[tbScrollX]',
   standalone: true,

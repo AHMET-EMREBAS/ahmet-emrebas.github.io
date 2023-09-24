@@ -1,0 +1,33 @@
+@use '../common' as utils;
+.form-container {
+  @include utils.column(1em);
+
+  font-family: var(--font-content);
+  font-size: 1em;
+  .form-actions {
+    @include utils.row(1em);
+  }
+
+}
+.input-container {
+  @include utils.column(0.3em);
+
+  label {
+    padding-left: 1em;
+    font-weight: 600;
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+  }
+  input {
+    @include utils.leftRightPadding(1em);
+    font-size: 1em;
+    min-height: 50px;
+    letter-spacing: 0.1em;
+  }
+}
+
+
+input { 
+    
+    border: none;
+}

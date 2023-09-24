@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent, ButtonEvent } from '../button';
 import { MenuComponent } from '../menu/menu.component';
@@ -45,4 +45,6 @@ export class ShowcaseComponent {
   handle(event: ButtonEvent) {
     console.log(event);
   }
+
+  constructor() {}
 }

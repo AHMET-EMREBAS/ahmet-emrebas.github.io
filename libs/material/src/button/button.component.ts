@@ -27,10 +27,12 @@ export type ButtonEvent = {
   imports: [CommonModule, TooltipDirective],
   template: `
     <button
+      [type]="buttonType"
       #button
       (click)="emitClickEvent()"
       [tbTooltip]="tooltip"
       [tbTooltipPosition]="tooltipPosition"
+      [attr.role]="role"
     >
       <span class="icon" *ngIf="type !== 'button'">{{ icon }}</span>
       <span *ngIf="type !== 'icon-button'">
@@ -51,7 +53,8 @@ export class ButtonComponent implements AfterViewInit {
   @Input() type: ButtonType = 'button';
   @Input() uuid = 'Id not set!';
   @Input() variant: ButtonVariant = 'basic';
-
+  @Input() buttonType?: 'submit' | 'reset' | 'button' = 'button';
+  @Input() role?: 'menubar' | 'menuitem' | 'button' = 'button';
   /** Click Event  */
   @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();
 

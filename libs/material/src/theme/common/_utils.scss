@@ -1,3 +1,43 @@
 @function fl($string) {
   @return str-slice($string, 1, 1);
 }
+
+@mixin column($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin row($gap) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+}
+
+@mixin textCenter() {
+  @include row();
+  justify-content: center;
+  * {
+    text-align: center;
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin leftRightPadding($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin topBottomPadding($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin fontSize($fontSize) {
+  font-size: $fontSize;
+  line-height: 1.2 * $fontSize;
+}
