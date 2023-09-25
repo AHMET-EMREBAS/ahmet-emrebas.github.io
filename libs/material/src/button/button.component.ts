@@ -35,7 +35,7 @@ export type ButtonEvent = {
       [attr.role]="role"
     >
       <span class="icon" *ngIf="type !== 'button'">{{ icon }}</span>
-      <span *ngIf="type !== 'icon-button'">
+      <span *ngIf="buttonType !== 'icon-button'">
         {{ label }}
       </span>
     </button>

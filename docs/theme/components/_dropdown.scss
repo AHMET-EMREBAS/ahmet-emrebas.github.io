@@ -2,6 +2,7 @@
 
 .dropdown {
   position: relative;
+  width: fit-content;
 }
 
 .dropdown-items {
@@ -27,7 +28,7 @@
   flex-direction: column;
 
   button:not(.icon-button) {
-    width: 100%;
+    // width: 100%;
   }
 }
 
