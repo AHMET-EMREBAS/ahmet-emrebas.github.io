@@ -95,14 +95,14 @@
             }
         },
         {
-            "name": "FocusOnCLickDirective",
-            "id": "directive-FocusOnCLickDirective-377d80f249ef61c4f4383e8aa6a231b22f7c09726ad443dac8ca8dcef507ccc436b528b129e4ad5f73f5ea33d1bc1485d77350498e5f67c0ea424c77c1a4b428",
-            "file": "libs/material/src/showcase/showcase.component.ts",
+            "name": "FocusDirective",
+            "id": "directive-FocusDirective-2f12adaecf77456d40a901415b276d25ecc84f2e3a2e1917b5c1cc56dad1d2bb974a85ffca2eb77aea4582510b53a3264b35d0caf2d0d93c38b7a575b45c1008",
+            "file": "libs/material/src/form/focus/focus.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\n\n@Directive({\n  selector: '[focusOnClick]',\n  standalone: true,\n})\nexport class FocusOnCLickDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.setAttribute('tabindex', '0');\n    this.elementRef.nativeElement.addEventListener('click', () => {\n      this.elementRef.nativeElement.focus();\n    });\n  }\n}\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusOnCLickDirective,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  constructor() {}\n}\n",
-            "selector": "[focusOnClick]",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef } from '@angular/core';\n\n@Directive({\n  selector: '[tbFocus]',\n  standalone: true,\n})\nexport class FocusDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.focus();\n  }\n}\n",
+            "selector": "[tbFocus]",
             "providers": [],
             "hostDirectives": [],
             "standalone": true,
@@ -120,7 +120,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 9,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -141,11 +141,159 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 22,
+                "line": 7,
                 "jsdoctags": [
                     {
                         "name": "elementRef",
                         "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "FormActionsDirective",
+            "id": "directive-FormActionsDirective-2dea82d51eb518e8ec678772bf7900b6e21b973b3d4f908279197c87e788b04dade18327a9aa004f3fd6bcfe98cff90250ef6281d5fcbeb42918d01295a6d1a9",
+            "file": "libs/material/src/form/form-actions/form-actions.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, ElementRef } from '@angular/core';\n\n@Directive({\n  selector: '[tbFormActions]',\n  standalone: true,\n})\nexport class FormActionsDirective {\n  constructor(public readonly elementRef: ElementRef<unknown>) {}\n\n}\n",
+            "selector": "[tbFormActions]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "elementRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<>",
+                    "optional": false,
+                    "description": "",
+                    "line": 8,
+                    "modifierKind": [
+                        123,
+                        146
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 7,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "HasValueDirective",
+            "id": "directive-HasValueDirective-1ce2d9ff0c146ce23aa9706b094f3ec3b798c473539927ceef5d11b730023adb73ecae4c001b56ff2ef3c7a976f597bf1ac3ccf81ff1259c0b2134d6bdeb2973",
+            "file": "libs/material/src/form/has-value/has-value.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef } from '@angular/core';\n\n@Directive({\n  selector: '[tbHasValue]',\n  standalone: true,\n})\nexport class HasValueDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLInputElement>) {}\n\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.addEventListener(\n      'input',\n      (event: InputEvent | any) => {\n        const data = event.data;\n        if (data?.length > 0) {\n          this.markAsHasValue();\n        } else {\n          this.markAsHasNovalue();\n        }\n      }\n    );\n  }\n\n  private markAsHasValue() {\n    this.elementRef.nativeElement.setAttribute('has-value', 'true');\n  }\n  private markAsHasNovalue() {\n    this.elementRef.nativeElement.setAttribute('has-value', 'false');\n  }\n}\n",
+            "selector": "[tbHasValue]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "markAsHasNovalue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "markAsHasValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLInputElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 7,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLInputElement>",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -907,13 +1055,18 @@
         },
         {
             "name": "FormComponent",
-            "id": "component-FormComponent-55141f6fe4686386724d7eac692788b2963b1c8fe38dee851e9220c99af658dde05093d10688a04eae51d7e247bb72bf51e3a1757ff89041711443b69701fdc4",
+            "id": "component-FormComponent-eb7f430836199ad7dde49f6e46690d46534a6019ce82a4e1e167ba426fe58517dbc299deb5f1c02ec5e067720d4074f3a4251b509b31f557848ca4a0271bb385",
             "file": "libs/material/src/form/form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "InputComponent",
+                    "type": "component"
+                }
+            ],
             "selector": "tb-form",
             "styleUrls": [],
             "styles": [],
@@ -923,6 +1076,144 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "actionTemplate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<FormActionsDirective>",
+                    "optional": true,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "FormActionsDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                },
+                {
+                    "name": "children",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<InputComponent>",
+                    "optional": true,
+                    "description": "",
+                    "line": 19,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "InputComponent"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                },
+                {
+                    "name": "componentType",
+                    "defaultValue": "InputComponent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ContentChildren, NgModule, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, InputComponent],\n  templateUrl: './form.component.html',\n  styles: [],\n  providers: [InputComponent],\n})\nexport class FormComponent {\n  @ContentChildren(FormActionsDirective)\n  actionTemplate?: QueryList<FormActionsDirective>;\n\n  componentType = InputComponent;\n  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<form class=\"form-container\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentInputs]=\"child\"\n    *ngFor=\"let child of children\"\n  ></ng-container>\n\n  <div class=\"form-actions\">\n    <ng-container\n      *ngTemplateOutlet=\"actionTemplate?.first?.templateRef\"\n    ></ng-container>\n  </div>\n</form>\n"
+        },
+        {
+            "name": "InputComponent",
+            "id": "component-InputComponent-e710a55696729b0dfec9f5824a42a53cfbce9d3650c499b8b18d453ec50fda8bbeba3b393a7b80c28629e29cef995f8974b604a6e074b86f0bcf9d151e633fd6",
+            "file": "libs/material/src/form/input/input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-input",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "Icon",
+                    "decorators": []
+                },
+                {
+                    "name": "inputType",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "InputVariant",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Input Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "InputVariant",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -935,16 +1226,20 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "TextInputComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './form.component.html',\n  styles: [],\n})\nexport class FormComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TextInputComponent } from '../text-input/text-input.component';\nimport { Color, Icon, InputVariant } from '../../api';\n\n@Component({\n  selector: 'tb-input',\n  standalone: true,\n  imports: [CommonModule, TextInputComponent],\n  templateUrl: './input.component.html',\n})\nexport class InputComponent {\n  @Input() inputType: InputVariant = 'basic';\n  @Input() color: Color = 'primary';\n  @Input() label = 'Input Label';\n  @Input() variant: InputVariant = 'basic';\n  @Input() icon: Icon = 'info';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p>form works!</p>\n"
+            "templateData": "<tb-text-input\n  [label]=\"label\"\n  [icon]=\"icon\"\n  [variant]=\"variant\"\n></tb-text-input>\n"
         },
         {
             "name": "ListComponent",
@@ -1653,7 +1948,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-377d80f249ef61c4f4383e8aa6a231b22f7c09726ad443dac8ca8dcef507ccc436b528b129e4ad5f73f5ea33d1bc1485d77350498e5f67c0ea424c77c1a4b428",
+            "id": "component-ShowcaseComponent-bee4cd031c18a1a09e0e5c030f38dfa9f6262e1988a4b11165431d597dd4a5deed605e2aa1fc883eea1bf0c69ab1694e009b346750052a2a61d6b94466ef3e1c",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1681,7 +1976,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 55
+                    "line": 47
                 },
                 {
                     "name": "buttonTypes",
@@ -1691,7 +1986,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 57
+                    "line": 49
                 },
                 {
                     "name": "buttonVariants",
@@ -1701,7 +1996,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 51
                 }
             ],
             "methodsClass": [
@@ -1718,7 +2013,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 59,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1769,14 +2064,22 @@
                     "type": "directive"
                 },
                 {
-                    "name": "FocusOnCLickDirective",
+                    "name": "FocusDirective",
                     "type": "directive"
+                },
+                {
+                    "name": "HasValueDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "FormModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\n\n@Directive({\n  selector: '[focusOnClick]',\n  standalone: true,\n})\nexport class FocusOnCLickDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.setAttribute('tabindex', '0');\n    this.elementRef.nativeElement.addEventListener('click', () => {\n      this.elementRef.nativeElement.focus();\n    });\n  }\n}\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusOnCLickDirective,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  constructor() {}\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\nimport { HasValueDirective } from '../form/has-value/has-value.directive';\nimport { FocusDirective } from '../form/focus/focus.directive';\n\nimport { FormComponent, FormModule } from '../form/form.component';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusDirective,\n    HasValueDirective,\n    FormModule,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  constructor() {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
@@ -1786,9 +2089,9 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 69
+                "line": 61
             },
-            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n            tbBadge=\"100\"\n            [tbBadgeColor]=\"color\"\n            tbBadgePosition=\"top-right\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container>\n\n<form class=\"form-container\">\n  <div class=\"input-container basic\">\n    <label>Text Input </label>\n    <input type=\"text\" class=\"input\" value=\"some value in input\" />\n  </div>\n\n  <div class=\"input-container\">\n    <label>Number Input </label>\n    <input type=\"number\" class=\"input\" value=\"50011231241\" />\n  </div>\n\n  <div class=\"input-container\">\n    <label>Number Input </label>\n    <input type=\"number\" class=\"input\" value=\"50011231241\" />\n  </div>\n\n  <div class=\"input-container\">\n    <label>Number Input </label>\n    <input type=\"number\" class=\"input\" value=\"50011231241\" />\n  </div>\n\n  <div class=\"form-actions\">\n    <tb-button\n      label=\"Submit\"\n      type=\"button\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-button>\n    <tb-button\n      label=\"Reset\"\n      type=\"button\"\n      variant=\"stroked\"\n      color=\"accent\"\n    ></tb-button>\n  </div>\n  <div class=\"decks vertical\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n  <div class=\"decks horizontal\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n</form>\n"
+            "templateData": "<!-- <tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n            tbBadge=\"100\"\n            [tbBadgeColor]=\"color\"\n            tbBadgePosition=\"top-right\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container> -->\n\n<tb-form>\n  <tb-input label=\"First Name\" icon=\"person\" variant=\"basic\"></tb-input>\n</tb-form>\n<!-- <hr />\n  <div class=\"decks vertical\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n  <div class=\"decks horizontal\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n</form> -->\n"
         },
         {
             "name": "StepperComponent",
@@ -1830,6 +2133,47 @@
             "styleUrlsData": "",
             "stylesData": "",
             "templateData": "<p>stepper works!</p>\n"
+        },
+        {
+            "name": "StickyNotesComponent",
+            "id": "component-StickyNotesComponent-dd7e585cdec6aea21f73df42a581fb4140bbbc3c09630a3df457cc8f22332679a73226356efd70e42610c2e3f3d286de0ffd18cc11164988b9efa10a81553536",
+            "file": "libs/material/src/sticky-notes/sticky-notes.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-sticky-notes",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sticky-notes.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-sticky-notes',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './sticky-notes.component.html',\n  styles: [],\n})\nexport class StickyNotesComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<p>sticky-notes works!</p>\n"
         },
         {
             "name": "TabComponent",
@@ -2121,7 +2465,7 @@
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-5da6732db3eb5ec5dae94f40abc6a2881c550b14dbf64df621b2f4c7e5cd1e59ca99773badb6bc0ad575f7f8809a5eaae3f40c215fc64c47e605e0e81d979078",
+            "id": "component-TextInputComponent-e303a95f2c449af91abf6db493016554bd530bd2abbbd508516c44dd10e69a5a7017a4f8474936cde848c7a892bb8b6ad4eaf6a17cf97b8b423f7aefe8fd2a52",
             "file": "libs/material/src/form/text-input/text-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2136,7 +2480,44 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "Icon",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Input Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "InputVariant",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -2149,16 +2530,24 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "HasValueDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "FocusDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './text-input.component.html',\n  styles: [],\n})\nexport class TextInputComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { HasValueDirective } from '../has-value/has-value.directive';\nimport { FocusDirective } from '../focus/focus.directive';\nimport { Color, Icon, InputVariant } from '../../api';\n\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [CommonModule, HasValueDirective, FocusDirective],\n  templateUrl: './text-input.component.html',\n  styles: [],\n})\nexport class TextInputComponent {\n  @Input() color: Color = 'primary';\n  @Input() label = 'Input Label';\n  @Input() variant: InputVariant = 'basic';\n  @Input() icon: Icon = 'info';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<p>text-input works!</p>\n"
+            "templateData": "<div class=\"input-container {{ color }} {{ variant }}\">\n  <span class=\"icon\"> {{ icon }}</span>\n  <label>{{ label }} </label>\n  <input type=\"text\" class=\"input\" tbHasValue />\n</div>\n"
         },
         {
             "name": "ToolbarComponent",
@@ -2210,7 +2599,64 @@
             "stylesData": ""
         }
     ],
-    "modules": [],
+    "modules": [
+        {
+            "name": "FormModule",
+            "id": "module-FormModule-eb7f430836199ad7dde49f6e46690d46534a6019ce82a4e1e167ba426fe58517dbc299deb5f1c02ec5e067720d4074f3a4251b509b31f557848ca4a0271bb385",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/material/src/form/form.component.ts",
+            "methods": [],
+            "sourceCode": "import { Component, ContentChildren, NgModule, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, InputComponent],\n  templateUrl: './form.component.html',\n  styles: [],\n  providers: [InputComponent],\n})\nexport class FormComponent {\n  @ContentChildren(FormActionsDirective)\n  actionTemplate?: QueryList<FormActionsDirective>;\n\n  componentType = InputComponent;\n  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "FormActionsDirective"
+                        },
+                        {
+                            "name": "FormComponent"
+                        },
+                        {
+                            "name": "InputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "FormActionsDirective"
+                        },
+                        {
+                            "name": "FormComponent"
+                        },
+                        {
+                            "name": "InputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
     "miscellaneous": {
         "variables": [
             {
@@ -2710,6 +3156,28 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 189
+            },
+            {
+                "name": "InputType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"text\" | \"number\" | \"boolean\" | \"date\" | \"array\"",
+                "file": "libs/material/src/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
+            },
+            {
+                "name": "InputVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "ButtonVariant",
+                "file": "libs/material/src/api/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
             },
             {
                 "name": "Position",
@@ -3412,6 +3880,28 @@
                     "kind": 189
                 },
                 {
+                    "name": "InputType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"text\" | \"number\" | \"boolean\" | \"date\" | \"array\"",
+                    "file": "libs/material/src/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                },
+                {
+                    "name": "InputVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "ButtonVariant",
+                    "file": "libs/material/src/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                },
+                {
                     "name": "Position",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
@@ -3840,12 +4330,48 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/form/focus/focus.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "FocusDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/form-actions/form-actions.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "FormActionsDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/form/form.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "FormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/has-value/has-value.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "HasValueDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/input/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -3863,7 +4389,7 @@
                 "linktype": "component",
                 "name": "TextInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -4139,15 +4665,6 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/showcase/showcase.component.ts",
-                "type": "directive",
-                "linktype": "directive",
-                "name": "FocusOnCLickDirective",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
                 "filePath": "libs/material/src/stepper/stepper.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -4182,6 +4699,15 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "StepperComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/sticky-notes/sticky-notes.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "StickyNotesComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

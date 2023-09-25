@@ -18,12 +18,15 @@ import { HasValueDirective } from '../form/has-value/has-value.directive';
 import { FocusDirective } from '../form/focus/focus.directive';
 
 import { FormComponent, FormModule } from '../form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'tb-showcase',
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ButtonComponent,
     MenuComponent,
     ToolbarComponent,
@@ -61,4 +64,8 @@ export class ShowcaseComponent {
   }
 
   constructor() {}
+
+  submit(event: any) {
+    console.log(event);
+  }
 }

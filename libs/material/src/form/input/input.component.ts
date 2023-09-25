@@ -10,7 +10,13 @@ import { Color, Icon, InputVariant } from '../../api';
   templateUrl: './input.component.html',
 })
 export class InputComponent {
-  @Input() inputType: InputVariant = 'basic';
+  /** @ignore */
+  @Input() __ngContext__: any;
+  @Input() id = '';
+  @Input() name = '';
+  @Input() value = '';
+  @Input() type: HTMLInputElement['type'] = 'text';
+  @Input() autocomplete: HTMLInputElement['autocomplete'] = 'on';
   @Input() color: Color = 'primary';
   @Input() label = 'Input Label';
   @Input() variant: InputVariant = 'basic';

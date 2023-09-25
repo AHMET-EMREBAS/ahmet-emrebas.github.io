@@ -88,7 +88,8 @@
 }
 
 .input-container:has(:focus),
-.input-container:has(> input[has-value='true']) {
+.input-container:has(> input[has-value='true']),
+.input-container:has(> input:-webkit-autofill) {
   label {
     font-size: 0.8em;
     line-height: 2em;

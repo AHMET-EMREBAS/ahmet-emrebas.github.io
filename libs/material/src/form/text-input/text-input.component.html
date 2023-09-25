@@ -1,5 +1,13 @@
 <div class="input-container {{ color }} {{ variant }}">
   <span class="icon"> {{ icon }}</span>
-  <label>{{ label }} </label>
-  <input type="text" class="input" tbHasValue />
+  <label [for]="label">{{ label }} </label>
+  <input
+    [(ngModel)]="value"
+    ngModel
+    [id]="label"
+    [type]="type"
+    [name]="name"
+    [autocomplete]="autocomplete"
+    tbHasValue
+  />
 </div>

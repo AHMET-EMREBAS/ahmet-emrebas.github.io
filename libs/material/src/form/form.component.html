@@ -1,13 +1,21 @@
-<form class="form-container">
-  <ng-container
-    [ngComponentOutlet]="componentType"
-    [ngComponentInputs]="child"
-    *ngFor="let child of children"
-  ></ng-container>
+<form
+  #form="ngForm"
+  ngForm
+  class="form-container"
+  autocomplete="on"
+  (ngSubmit)="submit(form)"
+  (submit)="submit($event)"
+  novalidate
+>
+  <ng-container *ngFor="let child of children">
+    <ng-container
+      *ngComponentOutlet="componentType; inputs: child"
+    ></ng-container>
+  </ng-container>
 
   <div class="form-actions">
     <ng-container
-      *ngTemplateOutlet="actionTemplate?.first?.templateRef"
+      *ngTemplateOutlet="tbFormActions.first.templateRef"
     ></ng-container>
   </div>
 </form>
