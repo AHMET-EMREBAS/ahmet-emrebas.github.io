@@ -101,7 +101,8 @@
         ],
         "assets": [
           "libs/material/src/assets",
-          "libs/material/src/theme"
+          "libs/material/src/theme",
+          "libs/material/src/favicon.svg"
         ],
         "styles": [
           "libs/material/src/style.scss"
