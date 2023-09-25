@@ -1,5 +1,7 @@
 #!/usr/bin/env ts-node
-
+/**
+ * Generate app icons
+ */
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import sharp from 'sharp';

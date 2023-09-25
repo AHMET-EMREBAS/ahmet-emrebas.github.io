@@ -1,5 +1,7 @@
 #!/usr/bin/env ts-node
-
+/**
+ * Generate locales from source locale and update targets.
+ */
 import { join } from 'path';
 import { cwd } from 'process';
 import {

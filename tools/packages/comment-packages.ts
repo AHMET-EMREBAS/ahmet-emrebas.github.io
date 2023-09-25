@@ -1,4 +1,8 @@
 #!/usr/bin/env ts-node
+/**
+ *
+ * Comment builts
+ */
 
 /**
  *
@@ -84,7 +88,7 @@ const libraryDirs = readdirSync(DIST_ROOT);
 const comment = fileComment('Ahmet Emrebas', 'https://ahmet-emrebas.github.io');
 
 forEachFile(DIST_ROOT, (file: string) => {
-  if (file.endsWith('.js') || file.endsWith('.ts'))
+  if (file.endsWith('.ts') || file.endsWith('.ts'))
     readFile(file, {}, (err, data) => {
       err && error(err.message);
 
