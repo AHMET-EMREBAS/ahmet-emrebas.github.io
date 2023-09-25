@@ -70,6 +70,7 @@
         ],
         "assets": [
           "libs/material/src/assets",
+          "libs/material/src/favicon.svg",
           "libs/material/src/theme"
         ],
         "styles": [

@@ -1,0 +1,49 @@
+.decks {
+  display: block;
+  position: relative;
+  width: max-content;
+  height: max-content;
+
+  min-width: 200px;
+  min-height: 200px;
+  .deck {
+    position: absolute;
+    min-width: 100px;
+    min-height: 100px;
+  }
+}
+
+.decks.vertical {
+  .deck:focus {
+    transform: translate(120%, 0%) !important;
+    transition: transform 400ms ease-in-out;
+  }
+}
+
+.decks.horizontal {
+  .deck:focus {
+    transform: translate(120%, 120%) !important;
+    transition: transform 400ms ease-in-out;
+  }
+}
+
+@each $color in (primary, secondary, accent, warn, red, green) {
+  .#{$color}.deck {
+    background-color: var(--#{$color});
+    box-shadow: 0px 0px 5px var(--#{$color}-dark);
+  }
+}
+
+@for $i from 1 through 100 {
+  .decks.vertical {
+    .deck:nth-child(#{$i}) {
+      transform: translate(($i - 1) * 5%, ($i - 1) * 20%);
+    }
+  }
+
+  .decks.horizontal {
+    .deck:nth-child(#{$i}) {
+      transform: translate(($i - 1) * 20%, ($i - 1) * 5%);
+    }
+  }
+}

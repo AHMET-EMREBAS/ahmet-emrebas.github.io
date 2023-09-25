@@ -1,5 +1,6 @@
 /** colors: primary, accent, warn */
 :root {
+  --surface: white;
   --white: rgb(255, 255, 255);
   --white-face: var(--black);
   --white-dark: #e6e6e6;
@@ -813,34 +814,6 @@
   font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
 }
 
-.icon.fill {
-  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
-}
-
-.icon.fill {
-  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
-}
-
-.icon.fill {
-  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
-}
-
-.icon.fill {
-  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
-}
-
-.icon.fill {
-  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
-}
-
-.icon.fill {
-  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
-}
-
-.icon.fill {
-  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
-}
-
 .w-1 {
   width: 8.3333333333%;
 }
@@ -1373,6 +1346,11 @@
   width: 100%;
 }
 
+.fit-content {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .rotate-0 {
   transform: rotate(0deg);
 }
@@ -1561,60 +1539,53 @@
   box-shadow: inset -15px 0px 15px rgba(37, 37, 37, 0.5), inset 15px 0px 15px rgba(37, 37, 37, 0.5);
 }
 
-:root {
-  --box-border-radius: 0.3em;
-  --button-border-radius: 0.3em;
-  --button-shadow: -1px 1px 2px 1px;
-}
-
 /** Initial value */
-.basic {
+button.basic {
   background-color: rgba(0, 0, 0, 0);
   color: var(--primary);
   border: none;
 }
 
-.inbox {
+button.inbox {
   color: var(--primary-face);
   background-color: var(--primary);
-  box-shadow: var(--button-shadow) var(--primary-face);
+  box-shadow: var(--box-shadow) var(--primary-face);
   border: none;
 }
 
 /** Initial value */
-.raised {
+button.raised {
   color: var(--primary-face);
   background-color: var(--primary);
-  box-shadow: var(--button-shadow) var(--primary-dark);
+  box-shadow: var(--box-shadow) var(--primary-dark);
   border: none;
 }
 
 /** Initial value */
-.flat {
+button.flat {
   background-color: var(--primary);
   color: var(--primary-face);
   border: none;
 }
 
 /** Initial value */
-.stroked {
+button.stroked {
   color: var(--primary);
   background-color: hsla(0, 0%, 0%, 0);
   border: 1px solid var(--primary-6);
 }
 
 /** Initial value */
-.button {
+button.button {
   cursor: pointer;
   padding: 0px;
   padding-left: 1em;
   padding-right: 1em;
   margin: 0px;
   height: 3em;
-  width: 100%;
   text-wrap: nowrap;
   font-size: 1em;
-  border-radius: var(--button-border-radius);
+  border-radius: var(--box-radius);
   outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
   letter-spacing: 0.1em;
@@ -1629,7 +1600,7 @@
 }
 
 /** Initial value */
-.icon-button {
+button.icon-button {
   cursor: pointer;
   padding: 0px;
   margin: 0px;
@@ -1647,21 +1618,20 @@
           user-select: none;
   transition: background-color 200ms ease-in-out, outline-color 200ms ease-in-out, color 200ms ease-in-out;
 }
-.icon-button .icon {
+button.icon-button .icon {
   display: block;
 }
 
-.combined-button {
+button.combined-button {
   cursor: pointer;
   padding: 0px;
   padding-left: 1em;
   padding-right: 1em;
   margin: 0px;
   height: 3em;
-  width: 100%;
   text-wrap: nowrap;
   font-size: 1em;
-  border-radius: var(--button-border-radius);
+  border-radius: var(--box-radius);
   outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
   letter-spacing: 0.1em;
@@ -1677,2290 +1647,2290 @@
   align-items: center;
   gap: 1em;
 }
-.combined-button .icon {
+button.combined-button .icon {
   font-size: 1.3em;
 }
 
 /** For each color */
-.button.stroked.primary,
-.button.basic.primary {
+button.button.stroked.primary,
+button.button.basic.primary {
   color: var(--primary);
 }
 
-.button.flat.primary,
-.button.raised.primary {
+button.button.flat.primary,
+button.button.raised.primary {
   background-color: var(--primary);
   color: var(--primary-face);
 }
 
-.button.raised.primary {
-  box-shadow: var(--button-shadow) var(--primary-dark);
+button.button.raised.primary {
+  box-shadow: var(--box-shadow) var(--primary-dark);
 }
 
-.button.inbox.primary {
+button.button.inbox.primary {
   box-shadow: 0px 0px 2px 1px var(--primary-darker);
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.button.stroked.primary {
+button.button.stroked.primary {
   border-color: var(--primary-6);
 }
 
-.primary.basic:hover:active {
+button.primary.basic:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.basic:hover {
+button.primary.basic:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.basic:focus {
+button.primary.basic:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.flat:hover:active {
+button.primary.flat:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.flat:hover {
+button.primary.flat:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.flat:focus {
+button.primary.flat:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.raised:hover:active {
+button.primary.raised:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.raised:hover {
+button.primary.raised:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.raised:focus {
+button.primary.raised:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.stroked:hover:active {
+button.primary.stroked:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.stroked:hover {
+button.primary.stroked:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.stroked:focus {
+button.primary.stroked:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.inbox:hover:active {
+button.primary.inbox:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.inbox:hover {
+button.primary.inbox:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.inbox:focus {
+button.primary.inbox:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.button.stroked.secondary,
-.button.basic.secondary {
+button.button.stroked.secondary,
+button.button.basic.secondary {
   color: var(--secondary);
 }
 
-.button.flat.secondary,
-.button.raised.secondary {
+button.button.flat.secondary,
+button.button.raised.secondary {
   background-color: var(--secondary);
   color: var(--secondary-face);
 }
 
-.button.raised.secondary {
-  box-shadow: var(--button-shadow) var(--secondary-dark);
+button.button.raised.secondary {
+  box-shadow: var(--box-shadow) var(--secondary-dark);
 }
 
-.button.inbox.secondary {
+button.button.inbox.secondary {
   box-shadow: 0px 0px 2px 1px var(--secondary-darker);
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.button.stroked.secondary {
+button.button.stroked.secondary {
   border-color: var(--secondary-6);
 }
 
-.secondary.basic:hover:active {
+button.secondary.basic:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.basic:hover {
+button.secondary.basic:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.basic:focus {
+button.secondary.basic:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.flat:hover:active {
+button.secondary.flat:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.flat:hover {
+button.secondary.flat:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.flat:focus {
+button.secondary.flat:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.raised:hover:active {
+button.secondary.raised:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.raised:hover {
+button.secondary.raised:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.raised:focus {
+button.secondary.raised:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.stroked:hover:active {
+button.secondary.stroked:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.stroked:hover {
+button.secondary.stroked:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.stroked:focus {
+button.secondary.stroked:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.inbox:hover:active {
+button.secondary.inbox:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.inbox:hover {
+button.secondary.inbox:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.inbox:focus {
+button.secondary.inbox:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.button.stroked.accent,
-.button.basic.accent {
+button.button.stroked.accent,
+button.button.basic.accent {
   color: var(--accent);
 }
 
-.button.flat.accent,
-.button.raised.accent {
+button.button.flat.accent,
+button.button.raised.accent {
   background-color: var(--accent);
   color: var(--accent-face);
 }
 
-.button.raised.accent {
-  box-shadow: var(--button-shadow) var(--accent-dark);
+button.button.raised.accent {
+  box-shadow: var(--box-shadow) var(--accent-dark);
 }
 
-.button.inbox.accent {
+button.button.inbox.accent {
   box-shadow: 0px 0px 2px 1px var(--accent-darker);
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.button.stroked.accent {
+button.button.stroked.accent {
   border-color: var(--accent-6);
 }
 
-.accent.basic:hover:active {
+button.accent.basic:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.basic:hover {
+button.accent.basic:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.basic:focus {
+button.accent.basic:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.flat:hover:active {
+button.accent.flat:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.flat:hover {
+button.accent.flat:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.flat:focus {
+button.accent.flat:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.raised:hover:active {
+button.accent.raised:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.raised:hover {
+button.accent.raised:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.raised:focus {
+button.accent.raised:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.stroked:hover:active {
+button.accent.stroked:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.stroked:hover {
+button.accent.stroked:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.stroked:focus {
+button.accent.stroked:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.inbox:hover:active {
+button.accent.inbox:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.inbox:hover {
+button.accent.inbox:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.inbox:focus {
+button.accent.inbox:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.button.stroked.warn,
-.button.basic.warn {
+button.button.stroked.warn,
+button.button.basic.warn {
   color: var(--warn);
 }
 
-.button.flat.warn,
-.button.raised.warn {
+button.button.flat.warn,
+button.button.raised.warn {
   background-color: var(--warn);
   color: var(--warn-face);
 }
 
-.button.raised.warn {
-  box-shadow: var(--button-shadow) var(--warn-dark);
+button.button.raised.warn {
+  box-shadow: var(--box-shadow) var(--warn-dark);
 }
 
-.button.inbox.warn {
+button.button.inbox.warn {
   box-shadow: 0px 0px 2px 1px var(--warn-darker);
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.button.stroked.warn {
+button.button.stroked.warn {
   border-color: var(--warn-6);
 }
 
-.warn.basic:hover:active {
+button.warn.basic:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.basic:hover {
+button.warn.basic:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.basic:focus {
+button.warn.basic:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.flat:hover:active {
+button.warn.flat:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.flat:hover {
+button.warn.flat:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.flat:focus {
+button.warn.flat:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.raised:hover:active {
+button.warn.raised:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.raised:hover {
+button.warn.raised:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.raised:focus {
+button.warn.raised:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.stroked:hover:active {
+button.warn.stroked:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.stroked:hover {
+button.warn.stroked:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.stroked:focus {
+button.warn.stroked:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.inbox:hover:active {
+button.warn.inbox:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.inbox:hover {
+button.warn.inbox:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.inbox:focus {
+button.warn.inbox:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.button.stroked.black,
-.button.basic.black {
+button.button.stroked.black,
+button.button.basic.black {
   color: var(--black);
 }
 
-.button.flat.black,
-.button.raised.black {
+button.button.flat.black,
+button.button.raised.black {
   background-color: var(--black);
   color: var(--black-face);
 }
 
-.button.raised.black {
-  box-shadow: var(--button-shadow) var(--black-dark);
+button.button.raised.black {
+  box-shadow: var(--box-shadow) var(--black-dark);
 }
 
-.button.inbox.black {
+button.button.inbox.black {
   box-shadow: 0px 0px 2px 1px var(--black-darker);
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.button.stroked.black {
+button.button.stroked.black {
   border-color: var(--black-6);
 }
 
-.black.basic:hover:active {
+button.black.basic:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.basic:hover {
+button.black.basic:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.basic:focus {
+button.black.basic:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.flat:hover:active {
+button.black.flat:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.flat:hover {
+button.black.flat:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.flat:focus {
+button.black.flat:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.raised:hover:active {
+button.black.raised:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.raised:hover {
+button.black.raised:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.raised:focus {
+button.black.raised:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.stroked:hover:active {
+button.black.stroked:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.stroked:hover {
+button.black.stroked:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.stroked:focus {
+button.black.stroked:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.inbox:hover:active {
+button.black.inbox:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.inbox:hover {
+button.black.inbox:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.inbox:focus {
+button.black.inbox:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.button.stroked.white,
-.button.basic.white {
+button.button.stroked.white,
+button.button.basic.white {
   color: var(--white);
 }
 
-.button.flat.white,
-.button.raised.white {
+button.button.flat.white,
+button.button.raised.white {
   background-color: var(--white);
   color: var(--white-face);
 }
 
-.button.raised.white {
-  box-shadow: var(--button-shadow) var(--white-dark);
+button.button.raised.white {
+  box-shadow: var(--box-shadow) var(--white-dark);
 }
 
-.button.inbox.white {
+button.button.inbox.white {
   box-shadow: 0px 0px 2px 1px var(--white-darker);
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.button.stroked.white {
+button.button.stroked.white {
   border-color: var(--white-6);
 }
 
-.white.basic:hover:active {
+button.white.basic:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.basic:hover {
+button.white.basic:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.basic:focus {
+button.white.basic:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.flat:hover:active {
+button.white.flat:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.flat:hover {
+button.white.flat:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.flat:focus {
+button.white.flat:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.raised:hover:active {
+button.white.raised:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.raised:hover {
+button.white.raised:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.raised:focus {
+button.white.raised:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.stroked:hover:active {
+button.white.stroked:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.stroked:hover {
+button.white.stroked:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.stroked:focus {
+button.white.stroked:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.inbox:hover:active {
+button.white.inbox:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.inbox:hover {
+button.white.inbox:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.inbox:focus {
+button.white.inbox:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.button.stroked.red,
-.button.basic.red {
+button.button.stroked.red,
+button.button.basic.red {
   color: var(--red);
 }
 
-.button.flat.red,
-.button.raised.red {
+button.button.flat.red,
+button.button.raised.red {
   background-color: var(--red);
   color: var(--red-face);
 }
 
-.button.raised.red {
-  box-shadow: var(--button-shadow) var(--red-dark);
+button.button.raised.red {
+  box-shadow: var(--box-shadow) var(--red-dark);
 }
 
-.button.inbox.red {
+button.button.inbox.red {
   box-shadow: 0px 0px 2px 1px var(--red-darker);
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.button.stroked.red {
+button.button.stroked.red {
   border-color: var(--red-6);
 }
 
-.red.basic:hover:active {
+button.red.basic:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.basic:hover {
+button.red.basic:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.basic:focus {
+button.red.basic:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.flat:hover:active {
+button.red.flat:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.flat:hover {
+button.red.flat:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.flat:focus {
+button.red.flat:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.raised:hover:active {
+button.red.raised:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.raised:hover {
+button.red.raised:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.raised:focus {
+button.red.raised:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.stroked:hover:active {
+button.red.stroked:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.stroked:hover {
+button.red.stroked:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.stroked:focus {
+button.red.stroked:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.inbox:hover:active {
+button.red.inbox:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.inbox:hover {
+button.red.inbox:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.inbox:focus {
+button.red.inbox:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.button.stroked.green,
-.button.basic.green {
+button.button.stroked.green,
+button.button.basic.green {
   color: var(--green);
 }
 
-.button.flat.green,
-.button.raised.green {
+button.button.flat.green,
+button.button.raised.green {
   background-color: var(--green);
   color: var(--green-face);
 }
 
-.button.raised.green {
-  box-shadow: var(--button-shadow) var(--green-dark);
+button.button.raised.green {
+  box-shadow: var(--box-shadow) var(--green-dark);
 }
 
-.button.inbox.green {
+button.button.inbox.green {
   box-shadow: 0px 0px 2px 1px var(--green-darker);
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.button.stroked.green {
+button.button.stroked.green {
   border-color: var(--green-6);
 }
 
-.green.basic:hover:active {
+button.green.basic:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.basic:hover {
+button.green.basic:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.basic:focus {
+button.green.basic:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.flat:hover:active {
+button.green.flat:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.flat:hover {
+button.green.flat:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.flat:focus {
+button.green.flat:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.raised:hover:active {
+button.green.raised:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.raised:hover {
+button.green.raised:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.raised:focus {
+button.green.raised:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.stroked:hover:active {
+button.green.stroked:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.stroked:hover {
+button.green.stroked:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.stroked:focus {
+button.green.stroked:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.inbox:hover:active {
+button.green.inbox:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.inbox:hover {
+button.green.inbox:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.inbox:focus {
+button.green.inbox:focus {
   outline: 3px solid var(--green-lighter);
 }
 
 /** For each color */
-.icon-button.stroked.primary,
-.icon-button.basic.primary {
+button.icon-button.stroked.primary,
+button.icon-button.basic.primary {
   color: var(--primary);
 }
 
-.icon-button.flat.primary,
-.icon-button.raised.primary {
+button.icon-button.flat.primary,
+button.icon-button.raised.primary {
   background-color: var(--primary);
   color: var(--primary-face);
 }
 
-.icon-button.raised.primary {
-  box-shadow: var(--button-shadow) var(--primary-dark);
+button.icon-button.raised.primary {
+  box-shadow: var(--box-shadow) var(--primary-dark);
 }
 
-.icon-button.inbox.primary {
+button.icon-button.inbox.primary {
   box-shadow: 0px 0px 2px 1px var(--primary-darker);
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.icon-button.stroked.primary {
+button.icon-button.stroked.primary {
   border-color: var(--primary-6);
 }
 
-.primary.basic:hover:active {
+button.primary.basic:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.basic:hover {
+button.primary.basic:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.basic:focus {
+button.primary.basic:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.flat:hover:active {
+button.primary.flat:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.flat:hover {
+button.primary.flat:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.flat:focus {
+button.primary.flat:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.raised:hover:active {
+button.primary.raised:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.raised:hover {
+button.primary.raised:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.raised:focus {
+button.primary.raised:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.stroked:hover:active {
+button.primary.stroked:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.stroked:hover {
+button.primary.stroked:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.stroked:focus {
+button.primary.stroked:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.inbox:hover:active {
+button.primary.inbox:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.inbox:hover {
+button.primary.inbox:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.inbox:focus {
+button.primary.inbox:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.icon-button.stroked.secondary,
-.icon-button.basic.secondary {
+button.icon-button.stroked.secondary,
+button.icon-button.basic.secondary {
   color: var(--secondary);
 }
 
-.icon-button.flat.secondary,
-.icon-button.raised.secondary {
+button.icon-button.flat.secondary,
+button.icon-button.raised.secondary {
   background-color: var(--secondary);
   color: var(--secondary-face);
 }
 
-.icon-button.raised.secondary {
-  box-shadow: var(--button-shadow) var(--secondary-dark);
+button.icon-button.raised.secondary {
+  box-shadow: var(--box-shadow) var(--secondary-dark);
 }
 
-.icon-button.inbox.secondary {
+button.icon-button.inbox.secondary {
   box-shadow: 0px 0px 2px 1px var(--secondary-darker);
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.icon-button.stroked.secondary {
+button.icon-button.stroked.secondary {
   border-color: var(--secondary-6);
 }
 
-.secondary.basic:hover:active {
+button.secondary.basic:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.basic:hover {
+button.secondary.basic:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.basic:focus {
+button.secondary.basic:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.flat:hover:active {
+button.secondary.flat:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.flat:hover {
+button.secondary.flat:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.flat:focus {
+button.secondary.flat:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.raised:hover:active {
+button.secondary.raised:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.raised:hover {
+button.secondary.raised:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.raised:focus {
+button.secondary.raised:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.stroked:hover:active {
+button.secondary.stroked:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.stroked:hover {
+button.secondary.stroked:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.stroked:focus {
+button.secondary.stroked:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.inbox:hover:active {
+button.secondary.inbox:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.inbox:hover {
+button.secondary.inbox:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.inbox:focus {
+button.secondary.inbox:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.icon-button.stroked.accent,
-.icon-button.basic.accent {
+button.icon-button.stroked.accent,
+button.icon-button.basic.accent {
   color: var(--accent);
 }
 
-.icon-button.flat.accent,
-.icon-button.raised.accent {
+button.icon-button.flat.accent,
+button.icon-button.raised.accent {
   background-color: var(--accent);
   color: var(--accent-face);
 }
 
-.icon-button.raised.accent {
-  box-shadow: var(--button-shadow) var(--accent-dark);
+button.icon-button.raised.accent {
+  box-shadow: var(--box-shadow) var(--accent-dark);
 }
 
-.icon-button.inbox.accent {
+button.icon-button.inbox.accent {
   box-shadow: 0px 0px 2px 1px var(--accent-darker);
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.icon-button.stroked.accent {
+button.icon-button.stroked.accent {
   border-color: var(--accent-6);
 }
 
-.accent.basic:hover:active {
+button.accent.basic:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.basic:hover {
+button.accent.basic:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.basic:focus {
+button.accent.basic:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.flat:hover:active {
+button.accent.flat:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.flat:hover {
+button.accent.flat:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.flat:focus {
+button.accent.flat:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.raised:hover:active {
+button.accent.raised:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.raised:hover {
+button.accent.raised:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.raised:focus {
+button.accent.raised:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.stroked:hover:active {
+button.accent.stroked:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.stroked:hover {
+button.accent.stroked:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.stroked:focus {
+button.accent.stroked:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.inbox:hover:active {
+button.accent.inbox:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.inbox:hover {
+button.accent.inbox:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.inbox:focus {
+button.accent.inbox:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.icon-button.stroked.warn,
-.icon-button.basic.warn {
+button.icon-button.stroked.warn,
+button.icon-button.basic.warn {
   color: var(--warn);
 }
 
-.icon-button.flat.warn,
-.icon-button.raised.warn {
+button.icon-button.flat.warn,
+button.icon-button.raised.warn {
   background-color: var(--warn);
   color: var(--warn-face);
 }
 
-.icon-button.raised.warn {
-  box-shadow: var(--button-shadow) var(--warn-dark);
+button.icon-button.raised.warn {
+  box-shadow: var(--box-shadow) var(--warn-dark);
 }
 
-.icon-button.inbox.warn {
+button.icon-button.inbox.warn {
   box-shadow: 0px 0px 2px 1px var(--warn-darker);
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.icon-button.stroked.warn {
+button.icon-button.stroked.warn {
   border-color: var(--warn-6);
 }
 
-.warn.basic:hover:active {
+button.warn.basic:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.basic:hover {
+button.warn.basic:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.basic:focus {
+button.warn.basic:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.flat:hover:active {
+button.warn.flat:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.flat:hover {
+button.warn.flat:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.flat:focus {
+button.warn.flat:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.raised:hover:active {
+button.warn.raised:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.raised:hover {
+button.warn.raised:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.raised:focus {
+button.warn.raised:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.stroked:hover:active {
+button.warn.stroked:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.stroked:hover {
+button.warn.stroked:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.stroked:focus {
+button.warn.stroked:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.inbox:hover:active {
+button.warn.inbox:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.inbox:hover {
+button.warn.inbox:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.inbox:focus {
+button.warn.inbox:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.icon-button.stroked.black,
-.icon-button.basic.black {
+button.icon-button.stroked.black,
+button.icon-button.basic.black {
   color: var(--black);
 }
 
-.icon-button.flat.black,
-.icon-button.raised.black {
+button.icon-button.flat.black,
+button.icon-button.raised.black {
   background-color: var(--black);
   color: var(--black-face);
 }
 
-.icon-button.raised.black {
-  box-shadow: var(--button-shadow) var(--black-dark);
+button.icon-button.raised.black {
+  box-shadow: var(--box-shadow) var(--black-dark);
 }
 
-.icon-button.inbox.black {
+button.icon-button.inbox.black {
   box-shadow: 0px 0px 2px 1px var(--black-darker);
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.icon-button.stroked.black {
+button.icon-button.stroked.black {
   border-color: var(--black-6);
 }
 
-.black.basic:hover:active {
+button.black.basic:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.basic:hover {
+button.black.basic:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.basic:focus {
+button.black.basic:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.flat:hover:active {
+button.black.flat:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.flat:hover {
+button.black.flat:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.flat:focus {
+button.black.flat:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.raised:hover:active {
+button.black.raised:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.raised:hover {
+button.black.raised:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.raised:focus {
+button.black.raised:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.stroked:hover:active {
+button.black.stroked:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.stroked:hover {
+button.black.stroked:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.stroked:focus {
+button.black.stroked:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.inbox:hover:active {
+button.black.inbox:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.inbox:hover {
+button.black.inbox:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.inbox:focus {
+button.black.inbox:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.icon-button.stroked.white,
-.icon-button.basic.white {
+button.icon-button.stroked.white,
+button.icon-button.basic.white {
   color: var(--white);
 }
 
-.icon-button.flat.white,
-.icon-button.raised.white {
+button.icon-button.flat.white,
+button.icon-button.raised.white {
   background-color: var(--white);
   color: var(--white-face);
 }
 
-.icon-button.raised.white {
-  box-shadow: var(--button-shadow) var(--white-dark);
+button.icon-button.raised.white {
+  box-shadow: var(--box-shadow) var(--white-dark);
 }
 
-.icon-button.inbox.white {
+button.icon-button.inbox.white {
   box-shadow: 0px 0px 2px 1px var(--white-darker);
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.icon-button.stroked.white {
+button.icon-button.stroked.white {
   border-color: var(--white-6);
 }
 
-.white.basic:hover:active {
+button.white.basic:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.basic:hover {
+button.white.basic:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.basic:focus {
+button.white.basic:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.flat:hover:active {
+button.white.flat:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.flat:hover {
+button.white.flat:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.flat:focus {
+button.white.flat:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.raised:hover:active {
+button.white.raised:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.raised:hover {
+button.white.raised:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.raised:focus {
+button.white.raised:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.stroked:hover:active {
+button.white.stroked:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.stroked:hover {
+button.white.stroked:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.stroked:focus {
+button.white.stroked:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.inbox:hover:active {
+button.white.inbox:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.inbox:hover {
+button.white.inbox:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.inbox:focus {
+button.white.inbox:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.icon-button.stroked.red,
-.icon-button.basic.red {
+button.icon-button.stroked.red,
+button.icon-button.basic.red {
   color: var(--red);
 }
 
-.icon-button.flat.red,
-.icon-button.raised.red {
+button.icon-button.flat.red,
+button.icon-button.raised.red {
   background-color: var(--red);
   color: var(--red-face);
 }
 
-.icon-button.raised.red {
-  box-shadow: var(--button-shadow) var(--red-dark);
+button.icon-button.raised.red {
+  box-shadow: var(--box-shadow) var(--red-dark);
 }
 
-.icon-button.inbox.red {
+button.icon-button.inbox.red {
   box-shadow: 0px 0px 2px 1px var(--red-darker);
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.icon-button.stroked.red {
+button.icon-button.stroked.red {
   border-color: var(--red-6);
 }
 
-.red.basic:hover:active {
+button.red.basic:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.basic:hover {
+button.red.basic:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.basic:focus {
+button.red.basic:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.flat:hover:active {
+button.red.flat:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.flat:hover {
+button.red.flat:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.flat:focus {
+button.red.flat:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.raised:hover:active {
+button.red.raised:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.raised:hover {
+button.red.raised:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.raised:focus {
+button.red.raised:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.stroked:hover:active {
+button.red.stroked:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.stroked:hover {
+button.red.stroked:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.stroked:focus {
+button.red.stroked:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.inbox:hover:active {
+button.red.inbox:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.inbox:hover {
+button.red.inbox:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.inbox:focus {
+button.red.inbox:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.icon-button.stroked.green,
-.icon-button.basic.green {
+button.icon-button.stroked.green,
+button.icon-button.basic.green {
   color: var(--green);
 }
 
-.icon-button.flat.green,
-.icon-button.raised.green {
+button.icon-button.flat.green,
+button.icon-button.raised.green {
   background-color: var(--green);
   color: var(--green-face);
 }
 
-.icon-button.raised.green {
-  box-shadow: var(--button-shadow) var(--green-dark);
+button.icon-button.raised.green {
+  box-shadow: var(--box-shadow) var(--green-dark);
 }
 
-.icon-button.inbox.green {
+button.icon-button.inbox.green {
   box-shadow: 0px 0px 2px 1px var(--green-darker);
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.icon-button.stroked.green {
+button.icon-button.stroked.green {
   border-color: var(--green-6);
 }
 
-.green.basic:hover:active {
+button.green.basic:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.basic:hover {
+button.green.basic:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.basic:focus {
+button.green.basic:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.flat:hover:active {
+button.green.flat:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.flat:hover {
+button.green.flat:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.flat:focus {
+button.green.flat:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.raised:hover:active {
+button.green.raised:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.raised:hover {
+button.green.raised:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.raised:focus {
+button.green.raised:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.stroked:hover:active {
+button.green.stroked:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.stroked:hover {
+button.green.stroked:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.stroked:focus {
+button.green.stroked:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.inbox:hover:active {
+button.green.inbox:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.inbox:hover {
+button.green.inbox:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.inbox:focus {
+button.green.inbox:focus {
   outline: 3px solid var(--green-lighter);
 }
 
 /** For each color */
-.combined-button.stroked.primary,
-.combined-button.basic.primary {
+button.combined-button.stroked.primary,
+button.combined-button.basic.primary {
   color: var(--primary);
 }
 
-.combined-button.flat.primary,
-.combined-button.raised.primary {
+button.combined-button.flat.primary,
+button.combined-button.raised.primary {
   background-color: var(--primary);
   color: var(--primary-face);
 }
 
-.combined-button.raised.primary {
-  box-shadow: var(--button-shadow) var(--primary-dark);
+button.combined-button.raised.primary {
+  box-shadow: var(--box-shadow) var(--primary-dark);
 }
 
-.combined-button.inbox.primary {
+button.combined-button.inbox.primary {
   box-shadow: 0px 0px 2px 1px var(--primary-darker);
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.combined-button.stroked.primary {
+button.combined-button.stroked.primary {
   border-color: var(--primary-6);
 }
 
-.primary.basic:hover:active {
+button.primary.basic:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.basic:hover {
+button.primary.basic:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.basic:focus {
+button.primary.basic:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.flat:hover:active {
+button.primary.flat:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.flat:hover {
+button.primary.flat:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.flat:focus {
+button.primary.flat:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.raised:hover:active {
+button.primary.raised:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.raised:hover {
+button.primary.raised:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.raised:focus {
+button.primary.raised:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.stroked:hover:active {
+button.primary.stroked:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.stroked:hover {
+button.primary.stroked:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.stroked:focus {
+button.primary.stroked:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.primary.inbox:hover:active {
+button.primary.inbox:hover:active {
   background-color: var(--primary-light);
   color: var(--primary-face);
 }
 
-.primary.inbox:hover {
+button.primary.inbox:hover {
   background-color: var(--primary-dark);
   color: var(--primary-dark-face);
 }
 
-.primary.inbox:focus {
+button.primary.inbox:focus {
   outline: 3px solid var(--primary-lighter);
 }
 
-.combined-button.stroked.secondary,
-.combined-button.basic.secondary {
+button.combined-button.stroked.secondary,
+button.combined-button.basic.secondary {
   color: var(--secondary);
 }
 
-.combined-button.flat.secondary,
-.combined-button.raised.secondary {
+button.combined-button.flat.secondary,
+button.combined-button.raised.secondary {
   background-color: var(--secondary);
   color: var(--secondary-face);
 }
 
-.combined-button.raised.secondary {
-  box-shadow: var(--button-shadow) var(--secondary-dark);
+button.combined-button.raised.secondary {
+  box-shadow: var(--box-shadow) var(--secondary-dark);
 }
 
-.combined-button.inbox.secondary {
+button.combined-button.inbox.secondary {
   box-shadow: 0px 0px 2px 1px var(--secondary-darker);
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.combined-button.stroked.secondary {
+button.combined-button.stroked.secondary {
   border-color: var(--secondary-6);
 }
 
-.secondary.basic:hover:active {
+button.secondary.basic:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.basic:hover {
+button.secondary.basic:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.basic:focus {
+button.secondary.basic:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.flat:hover:active {
+button.secondary.flat:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.flat:hover {
+button.secondary.flat:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.flat:focus {
+button.secondary.flat:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.raised:hover:active {
+button.secondary.raised:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.raised:hover {
+button.secondary.raised:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.raised:focus {
+button.secondary.raised:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.stroked:hover:active {
+button.secondary.stroked:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.stroked:hover {
+button.secondary.stroked:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.stroked:focus {
+button.secondary.stroked:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.secondary.inbox:hover:active {
+button.secondary.inbox:hover:active {
   background-color: var(--secondary-light);
   color: var(--secondary-face);
 }
 
-.secondary.inbox:hover {
+button.secondary.inbox:hover {
   background-color: var(--secondary-dark);
   color: var(--secondary-dark-face);
 }
 
-.secondary.inbox:focus {
+button.secondary.inbox:focus {
   outline: 3px solid var(--secondary-lighter);
 }
 
-.combined-button.stroked.accent,
-.combined-button.basic.accent {
+button.combined-button.stroked.accent,
+button.combined-button.basic.accent {
   color: var(--accent);
 }
 
-.combined-button.flat.accent,
-.combined-button.raised.accent {
+button.combined-button.flat.accent,
+button.combined-button.raised.accent {
   background-color: var(--accent);
   color: var(--accent-face);
 }
 
-.combined-button.raised.accent {
-  box-shadow: var(--button-shadow) var(--accent-dark);
+button.combined-button.raised.accent {
+  box-shadow: var(--box-shadow) var(--accent-dark);
 }
 
-.combined-button.inbox.accent {
+button.combined-button.inbox.accent {
   box-shadow: 0px 0px 2px 1px var(--accent-darker);
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.combined-button.stroked.accent {
+button.combined-button.stroked.accent {
   border-color: var(--accent-6);
 }
 
-.accent.basic:hover:active {
+button.accent.basic:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.basic:hover {
+button.accent.basic:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.basic:focus {
+button.accent.basic:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.flat:hover:active {
+button.accent.flat:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.flat:hover {
+button.accent.flat:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.flat:focus {
+button.accent.flat:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.raised:hover:active {
+button.accent.raised:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.raised:hover {
+button.accent.raised:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.raised:focus {
+button.accent.raised:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.stroked:hover:active {
+button.accent.stroked:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.stroked:hover {
+button.accent.stroked:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.stroked:focus {
+button.accent.stroked:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.accent.inbox:hover:active {
+button.accent.inbox:hover:active {
   background-color: var(--accent-light);
   color: var(--accent-face);
 }
 
-.accent.inbox:hover {
+button.accent.inbox:hover {
   background-color: var(--accent-dark);
   color: var(--accent-dark-face);
 }
 
-.accent.inbox:focus {
+button.accent.inbox:focus {
   outline: 3px solid var(--accent-lighter);
 }
 
-.combined-button.stroked.warn,
-.combined-button.basic.warn {
+button.combined-button.stroked.warn,
+button.combined-button.basic.warn {
   color: var(--warn);
 }
 
-.combined-button.flat.warn,
-.combined-button.raised.warn {
+button.combined-button.flat.warn,
+button.combined-button.raised.warn {
   background-color: var(--warn);
   color: var(--warn-face);
 }
 
-.combined-button.raised.warn {
-  box-shadow: var(--button-shadow) var(--warn-dark);
+button.combined-button.raised.warn {
+  box-shadow: var(--box-shadow) var(--warn-dark);
 }
 
-.combined-button.inbox.warn {
+button.combined-button.inbox.warn {
   box-shadow: 0px 0px 2px 1px var(--warn-darker);
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.combined-button.stroked.warn {
+button.combined-button.stroked.warn {
   border-color: var(--warn-6);
 }
 
-.warn.basic:hover:active {
+button.warn.basic:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.basic:hover {
+button.warn.basic:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.basic:focus {
+button.warn.basic:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.flat:hover:active {
+button.warn.flat:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.flat:hover {
+button.warn.flat:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.flat:focus {
+button.warn.flat:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.raised:hover:active {
+button.warn.raised:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.raised:hover {
+button.warn.raised:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.raised:focus {
+button.warn.raised:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.stroked:hover:active {
+button.warn.stroked:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.stroked:hover {
+button.warn.stroked:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.stroked:focus {
+button.warn.stroked:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.warn.inbox:hover:active {
+button.warn.inbox:hover:active {
   background-color: var(--warn-light);
   color: var(--warn-face);
 }
 
-.warn.inbox:hover {
+button.warn.inbox:hover {
   background-color: var(--warn-dark);
   color: var(--warn-dark-face);
 }
 
-.warn.inbox:focus {
+button.warn.inbox:focus {
   outline: 3px solid var(--warn-lighter);
 }
 
-.combined-button.stroked.black,
-.combined-button.basic.black {
+button.combined-button.stroked.black,
+button.combined-button.basic.black {
   color: var(--black);
 }
 
-.combined-button.flat.black,
-.combined-button.raised.black {
+button.combined-button.flat.black,
+button.combined-button.raised.black {
   background-color: var(--black);
   color: var(--black-face);
 }
 
-.combined-button.raised.black {
-  box-shadow: var(--button-shadow) var(--black-dark);
+button.combined-button.raised.black {
+  box-shadow: var(--box-shadow) var(--black-dark);
 }
 
-.combined-button.inbox.black {
+button.combined-button.inbox.black {
   box-shadow: 0px 0px 2px 1px var(--black-darker);
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.combined-button.stroked.black {
+button.combined-button.stroked.black {
   border-color: var(--black-6);
 }
 
-.black.basic:hover:active {
+button.black.basic:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.basic:hover {
+button.black.basic:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.basic:focus {
+button.black.basic:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.flat:hover:active {
+button.black.flat:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.flat:hover {
+button.black.flat:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.flat:focus {
+button.black.flat:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.raised:hover:active {
+button.black.raised:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.raised:hover {
+button.black.raised:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.raised:focus {
+button.black.raised:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.stroked:hover:active {
+button.black.stroked:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.stroked:hover {
+button.black.stroked:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.stroked:focus {
+button.black.stroked:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.black.inbox:hover:active {
+button.black.inbox:hover:active {
   background-color: var(--black-light);
   color: var(--black-face);
 }
 
-.black.inbox:hover {
+button.black.inbox:hover {
   background-color: var(--black-dark);
   color: var(--black-dark-face);
 }
 
-.black.inbox:focus {
+button.black.inbox:focus {
   outline: 3px solid var(--black-lighter);
 }
 
-.combined-button.stroked.white,
-.combined-button.basic.white {
+button.combined-button.stroked.white,
+button.combined-button.basic.white {
   color: var(--white);
 }
 
-.combined-button.flat.white,
-.combined-button.raised.white {
+button.combined-button.flat.white,
+button.combined-button.raised.white {
   background-color: var(--white);
   color: var(--white-face);
 }
 
-.combined-button.raised.white {
-  box-shadow: var(--button-shadow) var(--white-dark);
+button.combined-button.raised.white {
+  box-shadow: var(--box-shadow) var(--white-dark);
 }
 
-.combined-button.inbox.white {
+button.combined-button.inbox.white {
   box-shadow: 0px 0px 2px 1px var(--white-darker);
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.combined-button.stroked.white {
+button.combined-button.stroked.white {
   border-color: var(--white-6);
 }
 
-.white.basic:hover:active {
+button.white.basic:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.basic:hover {
+button.white.basic:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.basic:focus {
+button.white.basic:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.flat:hover:active {
+button.white.flat:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.flat:hover {
+button.white.flat:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.flat:focus {
+button.white.flat:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.raised:hover:active {
+button.white.raised:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.raised:hover {
+button.white.raised:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.raised:focus {
+button.white.raised:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.stroked:hover:active {
+button.white.stroked:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.stroked:hover {
+button.white.stroked:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.stroked:focus {
+button.white.stroked:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.white.inbox:hover:active {
+button.white.inbox:hover:active {
   background-color: var(--white-light);
   color: var(--white-face);
 }
 
-.white.inbox:hover {
+button.white.inbox:hover {
   background-color: var(--white-dark);
   color: var(--white-dark-face);
 }
 
-.white.inbox:focus {
+button.white.inbox:focus {
   outline: 3px solid var(--white-lighter);
 }
 
-.combined-button.stroked.red,
-.combined-button.basic.red {
+button.combined-button.stroked.red,
+button.combined-button.basic.red {
   color: var(--red);
 }
 
-.combined-button.flat.red,
-.combined-button.raised.red {
+button.combined-button.flat.red,
+button.combined-button.raised.red {
   background-color: var(--red);
   color: var(--red-face);
 }
 
-.combined-button.raised.red {
-  box-shadow: var(--button-shadow) var(--red-dark);
+button.combined-button.raised.red {
+  box-shadow: var(--box-shadow) var(--red-dark);
 }
 
-.combined-button.inbox.red {
+button.combined-button.inbox.red {
   box-shadow: 0px 0px 2px 1px var(--red-darker);
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.combined-button.stroked.red {
+button.combined-button.stroked.red {
   border-color: var(--red-6);
 }
 
-.red.basic:hover:active {
+button.red.basic:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.basic:hover {
+button.red.basic:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.basic:focus {
+button.red.basic:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.flat:hover:active {
+button.red.flat:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.flat:hover {
+button.red.flat:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.flat:focus {
+button.red.flat:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.raised:hover:active {
+button.red.raised:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.raised:hover {
+button.red.raised:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.raised:focus {
+button.red.raised:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.stroked:hover:active {
+button.red.stroked:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.stroked:hover {
+button.red.stroked:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.stroked:focus {
+button.red.stroked:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.red.inbox:hover:active {
+button.red.inbox:hover:active {
   background-color: var(--red-light);
   color: var(--red-face);
 }
 
-.red.inbox:hover {
+button.red.inbox:hover {
   background-color: var(--red-dark);
   color: var(--red-dark-face);
 }
 
-.red.inbox:focus {
+button.red.inbox:focus {
   outline: 3px solid var(--red-lighter);
 }
 
-.combined-button.stroked.green,
-.combined-button.basic.green {
+button.combined-button.stroked.green,
+button.combined-button.basic.green {
   color: var(--green);
 }
 
-.combined-button.flat.green,
-.combined-button.raised.green {
+button.combined-button.flat.green,
+button.combined-button.raised.green {
   background-color: var(--green);
   color: var(--green-face);
 }
 
-.combined-button.raised.green {
-  box-shadow: var(--button-shadow) var(--green-dark);
+button.combined-button.raised.green {
+  box-shadow: var(--box-shadow) var(--green-dark);
 }
 
-.combined-button.inbox.green {
+button.combined-button.inbox.green {
   box-shadow: 0px 0px 2px 1px var(--green-darker);
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.combined-button.stroked.green {
+button.combined-button.stroked.green {
   border-color: var(--green-6);
 }
 
-.green.basic:hover:active {
+button.green.basic:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.basic:hover {
+button.green.basic:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.basic:focus {
+button.green.basic:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.flat:hover:active {
+button.green.flat:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.flat:hover {
+button.green.flat:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.flat:focus {
+button.green.flat:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.raised:hover:active {
+button.green.raised:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.raised:hover {
+button.green.raised:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.raised:focus {
+button.green.raised:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.stroked:hover:active {
+button.green.stroked:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.stroked:hover {
+button.green.stroked:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.stroked:focus {
+button.green.stroked:focus {
   outline: 3px solid var(--green-lighter);
 }
 
-.green.inbox:hover:active {
+button.green.inbox:hover:active {
   background-color: var(--green-light);
   color: var(--green-face);
 }
 
-.green.inbox:hover {
+button.green.inbox:hover {
   background-color: var(--green-dark);
   color: var(--green-dark-face);
 }
 
-.green.inbox:focus {
+button.green.inbox:focus {
   outline: 3px solid var(--green-lighter);
 }
 
@@ -4223,7 +4193,6 @@
 
 .dropdown {
   position: relative;
-  align-self: flex-start;
 }
 
 .dropdown-items {
@@ -4246,6 +4215,9 @@
 .dropdown-items.column {
   display: flex;
   flex-direction: column;
+}
+.dropdown-items.column button:not(.icon-button) {
+  width: 100%;
 }
 
 .dropdown:hover > .dropdown-items {
@@ -5356,7 +5328,7 @@
   position: relative;
 }
 
-@keyframes bad-animation {
+@keyframes badge-animation {
   0% {
     transform: rotate(-1deg) translate(50%, -40%) rotate(20deg);
   }
@@ -5366,7 +5338,7 @@
 }
 [data-badge][data-badge-color=primary]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--primary-darker);
   color: var(--primary-dark-face);
@@ -5389,7 +5361,7 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--primary-dark);
   border-right: 5px solid var(--primary-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -5398,7 +5370,7 @@
 
 [data-badge][data-badge-color=secondary]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--secondary-darker);
   color: var(--secondary-dark-face);
@@ -5421,7 +5393,7 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--secondary-dark);
   border-right: 5px solid var(--secondary-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -5430,7 +5402,7 @@
 
 [data-badge][data-badge-color=accent]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--accent-darker);
   color: var(--accent-dark-face);
@@ -5453,7 +5425,7 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--accent-dark);
   border-right: 5px solid var(--accent-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -5462,7 +5434,7 @@
 
 [data-badge][data-badge-color=warn]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--warn-darker);
   color: var(--warn-dark-face);
@@ -5485,7 +5457,7 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--warn-dark);
   border-right: 5px solid var(--warn-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -5494,7 +5466,7 @@
 
 [data-badge][data-badge-color=black]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--black-darker);
   color: var(--black-dark-face);
@@ -5517,7 +5489,7 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--black-dark);
   border-right: 5px solid var(--black-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -5526,7 +5498,7 @@
 
 [data-badge][data-badge-color=white]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--white-darker);
   color: var(--white-dark-face);
@@ -5549,7 +5521,7 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--white-dark);
   border-right: 5px solid var(--white-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -5558,7 +5530,7 @@
 
 [data-badge][data-badge-color=red]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--red-darker);
   color: var(--red-dark-face);
@@ -5581,7 +5553,7 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--red-dark);
   border-right: 5px solid var(--red-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -5590,7 +5562,7 @@
 
 [data-badge][data-badge-color=green]::after {
   content: attr(data-badge);
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   background-color: var(--green-darker);
   color: var(--green-dark-face);
@@ -5613,11 +5585,1167 @@
   border-left: 5px solid white;
   border-top: 5px solid var(--green-dark);
   border-right: 5px solid var(--green-dark);
-  animation-name: bad-animation;
+  animation-name: badge-animation;
   animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   transform-origin: bottom left;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-container-gap);
+  background-color: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: var(--box-radius);
+  padding: 1em;
+  font-family: var(--font-content);
+  font-size: var(--form-font-size);
+}
+.form-container .form-actions {
+  display: flex;
+  flex-direction: row;
+  gap: var(--form-container-gap);
+  padding-top: var(--form-container-gap);
+}
+
+.input-container {
+  position: relative;
+  --color: white;
+  --light-color: white;
+  --border-style: solid;
+  --border-width-value: 0.15em;
+  --border-width: 0.15em;
+  --border-color: transparent;
+  --border-bottom-width: 0.15em;
+  --border-right-width: 0.15em;
+  --border-top-width: 0.15em;
+  --border-left-width: 0.15em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  color: var(--color);
+  min-height: 3.3em;
+  line-height: 3.3em;
+  letter-spacing: 0.1em;
+}
+.input-container label {
+  position: absolute;
+  letter-spacing: inherit;
+  text-transform: capitalize;
+  color: var(--color);
+  transition: all 400ms ease-in-out;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-left: 2em;
+  pointer-events: none;
+}
+.input-container input {
+  padding-left: 1em;
+  padding-right: 1em;
+  color: var(--color);
+  border-width: var(--border-width);
+  font-size: inherit;
+  min-height: inherit;
+  padding-top: 0.5em;
+  padding-left: 4em;
+  width: inherit;
+  letter-spacing: inherit;
+  border-radius: var(--box-radius);
+  transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out, background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
+}
+.input-container .icon {
+  position: absolute;
+  font-size: 2em;
+  margin-left: 0.3em;
+}
+
+.primary.input-container {
+  --color: var(--primary);
+  --color-1: var(--primary-1);
+  --color-2: var(--primary-2);
+  --color-3: var(--primary-3);
+  --color-4: var(--primary-4);
+  --color-5: var(--primary-5);
+  --color-6: var(--primary-6);
+  --color-7: var(--primary-7);
+  --color-8: var(--primary-8);
+  --color-9: var(--primary-9);
+  --color-10: var(--primary-10);
+  --color-dark: var(--primary-dark);
+  --color-darker: var(--primary-darker);
+  --color-light: var(--primary-light);
+  --color-lighter: var(--primary-lighter);
+  --color-face: var(--primary-face);
+  --color-dark-face: var(--primary-dark-face);
+  --color-light-face: var(--primary-light-face);
+}
+
+.secondary.input-container {
+  --color: var(--secondary);
+  --color-1: var(--secondary-1);
+  --color-2: var(--secondary-2);
+  --color-3: var(--secondary-3);
+  --color-4: var(--secondary-4);
+  --color-5: var(--secondary-5);
+  --color-6: var(--secondary-6);
+  --color-7: var(--secondary-7);
+  --color-8: var(--secondary-8);
+  --color-9: var(--secondary-9);
+  --color-10: var(--secondary-10);
+  --color-dark: var(--secondary-dark);
+  --color-darker: var(--secondary-darker);
+  --color-light: var(--secondary-light);
+  --color-lighter: var(--secondary-lighter);
+  --color-face: var(--secondary-face);
+  --color-dark-face: var(--secondary-dark-face);
+  --color-light-face: var(--secondary-light-face);
+}
+
+.accent.input-container {
+  --color: var(--accent);
+  --color-1: var(--accent-1);
+  --color-2: var(--accent-2);
+  --color-3: var(--accent-3);
+  --color-4: var(--accent-4);
+  --color-5: var(--accent-5);
+  --color-6: var(--accent-6);
+  --color-7: var(--accent-7);
+  --color-8: var(--accent-8);
+  --color-9: var(--accent-9);
+  --color-10: var(--accent-10);
+  --color-dark: var(--accent-dark);
+  --color-darker: var(--accent-darker);
+  --color-light: var(--accent-light);
+  --color-lighter: var(--accent-lighter);
+  --color-face: var(--accent-face);
+  --color-dark-face: var(--accent-dark-face);
+  --color-light-face: var(--accent-light-face);
+}
+
+.warn.input-container {
+  --color: var(--warn);
+  --color-1: var(--warn-1);
+  --color-2: var(--warn-2);
+  --color-3: var(--warn-3);
+  --color-4: var(--warn-4);
+  --color-5: var(--warn-5);
+  --color-6: var(--warn-6);
+  --color-7: var(--warn-7);
+  --color-8: var(--warn-8);
+  --color-9: var(--warn-9);
+  --color-10: var(--warn-10);
+  --color-dark: var(--warn-dark);
+  --color-darker: var(--warn-darker);
+  --color-light: var(--warn-light);
+  --color-lighter: var(--warn-lighter);
+  --color-face: var(--warn-face);
+  --color-dark-face: var(--warn-dark-face);
+  --color-light-face: var(--warn-light-face);
+}
+
+.black.input-container {
+  --color: var(--black);
+  --color-1: var(--black-1);
+  --color-2: var(--black-2);
+  --color-3: var(--black-3);
+  --color-4: var(--black-4);
+  --color-5: var(--black-5);
+  --color-6: var(--black-6);
+  --color-7: var(--black-7);
+  --color-8: var(--black-8);
+  --color-9: var(--black-9);
+  --color-10: var(--black-10);
+  --color-dark: var(--black-dark);
+  --color-darker: var(--black-darker);
+  --color-light: var(--black-light);
+  --color-lighter: var(--black-lighter);
+  --color-face: var(--black-face);
+  --color-dark-face: var(--black-dark-face);
+  --color-light-face: var(--black-light-face);
+}
+
+.white.input-container {
+  --color: var(--white);
+  --color-1: var(--white-1);
+  --color-2: var(--white-2);
+  --color-3: var(--white-3);
+  --color-4: var(--white-4);
+  --color-5: var(--white-5);
+  --color-6: var(--white-6);
+  --color-7: var(--white-7);
+  --color-8: var(--white-8);
+  --color-9: var(--white-9);
+  --color-10: var(--white-10);
+  --color-dark: var(--white-dark);
+  --color-darker: var(--white-darker);
+  --color-light: var(--white-light);
+  --color-lighter: var(--white-lighter);
+  --color-face: var(--white-face);
+  --color-dark-face: var(--white-dark-face);
+  --color-light-face: var(--white-light-face);
+}
+
+.red.input-container {
+  --color: var(--red);
+  --color-1: var(--red-1);
+  --color-2: var(--red-2);
+  --color-3: var(--red-3);
+  --color-4: var(--red-4);
+  --color-5: var(--red-5);
+  --color-6: var(--red-6);
+  --color-7: var(--red-7);
+  --color-8: var(--red-8);
+  --color-9: var(--red-9);
+  --color-10: var(--red-10);
+  --color-dark: var(--red-dark);
+  --color-darker: var(--red-darker);
+  --color-light: var(--red-light);
+  --color-lighter: var(--red-lighter);
+  --color-face: var(--red-face);
+  --color-dark-face: var(--red-dark-face);
+  --color-light-face: var(--red-light-face);
+}
+
+.green.input-container {
+  --color: var(--green);
+  --color-1: var(--green-1);
+  --color-2: var(--green-2);
+  --color-3: var(--green-3);
+  --color-4: var(--green-4);
+  --color-5: var(--green-5);
+  --color-6: var(--green-6);
+  --color-7: var(--green-7);
+  --color-8: var(--green-8);
+  --color-9: var(--green-9);
+  --color-10: var(--green-10);
+  --color-dark: var(--green-dark);
+  --color-darker: var(--green-darker);
+  --color-light: var(--green-light);
+  --color-lighter: var(--green-lighter);
+  --color-face: var(--green-face);
+  --color-dark-face: var(--green-dark-face);
+  --color-light-face: var(--green-light-face);
+}
+
+.input-container:has(:focus) label,
+.input-container:has(> input[has-value=true]) label,
+.input-container:has(> input:-webkit-autofill) label {
+  font-size: 0.8em;
+  line-height: 2em;
+  border-radius: 1em;
+  transform: translateY(-50%);
+  border: 5px solid var(--surface);
+  background-color: var(--color);
+  color: var(--color-face);
+  margin-left: 4em;
+}
+
+.input-container.basic input {
+  border: none;
+  outline: none;
+  color: var(--color-dark);
+  border-bottom: var(--border-width) var(--border-style) var(--color-2);
+  background-color: var(--color-1);
+}
+.input-container.basic input:focus {
+  border-bottom-color: var(--color);
+}
+
+.input-container.flat input {
+  border: none;
+  outline: none;
+  color: var(--color-dark);
+  background-color: var(--color-1);
+}
+.input-container.flat input:focus {
+  background-color: var(--color-3);
+}
+
+.input-container.stroked input {
+  color: var(--color-dark);
+  background-color: var(--color-1);
+  border: var(--border-width) var(--border-style) var(--color);
+}
+.input-container.stroked input:focus {
+  outline: none;
+  border-color: var(--color-darker);
+  background-color: var(--color-3);
+}
+
+.input-container.raised input {
+  border: none;
+  outline: none;
+  color: var(--color-dark);
+  background-color: var(--color-1);
+  box-shadow: 0px 3px 5px 1px var(--color-3);
+}
+.input-container.raised input:focus {
+  box-shadow: 0px 3px 5px 1px var(--color-6);
+}
+
+.decks {
+  display: block;
+  position: relative;
+  width: max-content;
+  height: max-content;
+  min-width: 200px;
+  min-height: 200px;
+}
+.decks .deck {
+  position: absolute;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.decks.vertical .deck:focus {
+  transform: translate(120%, 0%) !important;
+  transition: transform 400ms ease-in-out;
+}
+
+.decks.horizontal .deck:focus {
+  transform: translate(120%, 120%) !important;
+  transition: transform 400ms ease-in-out;
+}
+
+.primary.deck {
+  background-color: var(--primary);
+  box-shadow: 0px 0px 5px var(--primary-dark);
+}
+
+.secondary.deck {
+  background-color: var(--secondary);
+  box-shadow: 0px 0px 5px var(--secondary-dark);
+}
+
+.accent.deck {
+  background-color: var(--accent);
+  box-shadow: 0px 0px 5px var(--accent-dark);
+}
+
+.warn.deck {
+  background-color: var(--warn);
+  box-shadow: 0px 0px 5px var(--warn-dark);
+}
+
+.red.deck {
+  background-color: var(--red);
+  box-shadow: 0px 0px 5px var(--red-dark);
+}
+
+.green.deck {
+  background-color: var(--green);
+  box-shadow: 0px 0px 5px var(--green-dark);
+}
+
+.decks.vertical .deck:nth-child(1) {
+  transform: translate(0%, 0%);
+}
+
+.decks.horizontal .deck:nth-child(1) {
+  transform: translate(0%, 0%);
+}
+
+.decks.vertical .deck:nth-child(2) {
+  transform: translate(5%, 20%);
+}
+
+.decks.horizontal .deck:nth-child(2) {
+  transform: translate(20%, 5%);
+}
+
+.decks.vertical .deck:nth-child(3) {
+  transform: translate(10%, 40%);
+}
+
+.decks.horizontal .deck:nth-child(3) {
+  transform: translate(40%, 10%);
+}
+
+.decks.vertical .deck:nth-child(4) {
+  transform: translate(15%, 60%);
+}
+
+.decks.horizontal .deck:nth-child(4) {
+  transform: translate(60%, 15%);
+}
+
+.decks.vertical .deck:nth-child(5) {
+  transform: translate(20%, 80%);
+}
+
+.decks.horizontal .deck:nth-child(5) {
+  transform: translate(80%, 20%);
+}
+
+.decks.vertical .deck:nth-child(6) {
+  transform: translate(25%, 100%);
+}
+
+.decks.horizontal .deck:nth-child(6) {
+  transform: translate(100%, 25%);
+}
+
+.decks.vertical .deck:nth-child(7) {
+  transform: translate(30%, 120%);
+}
+
+.decks.horizontal .deck:nth-child(7) {
+  transform: translate(120%, 30%);
+}
+
+.decks.vertical .deck:nth-child(8) {
+  transform: translate(35%, 140%);
+}
+
+.decks.horizontal .deck:nth-child(8) {
+  transform: translate(140%, 35%);
+}
+
+.decks.vertical .deck:nth-child(9) {
+  transform: translate(40%, 160%);
+}
+
+.decks.horizontal .deck:nth-child(9) {
+  transform: translate(160%, 40%);
+}
+
+.decks.vertical .deck:nth-child(10) {
+  transform: translate(45%, 180%);
+}
+
+.decks.horizontal .deck:nth-child(10) {
+  transform: translate(180%, 45%);
+}
+
+.decks.vertical .deck:nth-child(11) {
+  transform: translate(50%, 200%);
+}
+
+.decks.horizontal .deck:nth-child(11) {
+  transform: translate(200%, 50%);
+}
+
+.decks.vertical .deck:nth-child(12) {
+  transform: translate(55%, 220%);
+}
+
+.decks.horizontal .deck:nth-child(12) {
+  transform: translate(220%, 55%);
+}
+
+.decks.vertical .deck:nth-child(13) {
+  transform: translate(60%, 240%);
+}
+
+.decks.horizontal .deck:nth-child(13) {
+  transform: translate(240%, 60%);
+}
+
+.decks.vertical .deck:nth-child(14) {
+  transform: translate(65%, 260%);
+}
+
+.decks.horizontal .deck:nth-child(14) {
+  transform: translate(260%, 65%);
+}
+
+.decks.vertical .deck:nth-child(15) {
+  transform: translate(70%, 280%);
+}
+
+.decks.horizontal .deck:nth-child(15) {
+  transform: translate(280%, 70%);
+}
+
+.decks.vertical .deck:nth-child(16) {
+  transform: translate(75%, 300%);
+}
+
+.decks.horizontal .deck:nth-child(16) {
+  transform: translate(300%, 75%);
+}
+
+.decks.vertical .deck:nth-child(17) {
+  transform: translate(80%, 320%);
+}
+
+.decks.horizontal .deck:nth-child(17) {
+  transform: translate(320%, 80%);
+}
+
+.decks.vertical .deck:nth-child(18) {
+  transform: translate(85%, 340%);
+}
+
+.decks.horizontal .deck:nth-child(18) {
+  transform: translate(340%, 85%);
+}
+
+.decks.vertical .deck:nth-child(19) {
+  transform: translate(90%, 360%);
+}
+
+.decks.horizontal .deck:nth-child(19) {
+  transform: translate(360%, 90%);
+}
+
+.decks.vertical .deck:nth-child(20) {
+  transform: translate(95%, 380%);
+}
+
+.decks.horizontal .deck:nth-child(20) {
+  transform: translate(380%, 95%);
+}
+
+.decks.vertical .deck:nth-child(21) {
+  transform: translate(100%, 400%);
+}
+
+.decks.horizontal .deck:nth-child(21) {
+  transform: translate(400%, 100%);
+}
+
+.decks.vertical .deck:nth-child(22) {
+  transform: translate(105%, 420%);
+}
+
+.decks.horizontal .deck:nth-child(22) {
+  transform: translate(420%, 105%);
+}
+
+.decks.vertical .deck:nth-child(23) {
+  transform: translate(110%, 440%);
+}
+
+.decks.horizontal .deck:nth-child(23) {
+  transform: translate(440%, 110%);
+}
+
+.decks.vertical .deck:nth-child(24) {
+  transform: translate(115%, 460%);
+}
+
+.decks.horizontal .deck:nth-child(24) {
+  transform: translate(460%, 115%);
+}
+
+.decks.vertical .deck:nth-child(25) {
+  transform: translate(120%, 480%);
+}
+
+.decks.horizontal .deck:nth-child(25) {
+  transform: translate(480%, 120%);
+}
+
+.decks.vertical .deck:nth-child(26) {
+  transform: translate(125%, 500%);
+}
+
+.decks.horizontal .deck:nth-child(26) {
+  transform: translate(500%, 125%);
+}
+
+.decks.vertical .deck:nth-child(27) {
+  transform: translate(130%, 520%);
+}
+
+.decks.horizontal .deck:nth-child(27) {
+  transform: translate(520%, 130%);
+}
+
+.decks.vertical .deck:nth-child(28) {
+  transform: translate(135%, 540%);
+}
+
+.decks.horizontal .deck:nth-child(28) {
+  transform: translate(540%, 135%);
+}
+
+.decks.vertical .deck:nth-child(29) {
+  transform: translate(140%, 560%);
+}
+
+.decks.horizontal .deck:nth-child(29) {
+  transform: translate(560%, 140%);
+}
+
+.decks.vertical .deck:nth-child(30) {
+  transform: translate(145%, 580%);
+}
+
+.decks.horizontal .deck:nth-child(30) {
+  transform: translate(580%, 145%);
+}
+
+.decks.vertical .deck:nth-child(31) {
+  transform: translate(150%, 600%);
+}
+
+.decks.horizontal .deck:nth-child(31) {
+  transform: translate(600%, 150%);
+}
+
+.decks.vertical .deck:nth-child(32) {
+  transform: translate(155%, 620%);
+}
+
+.decks.horizontal .deck:nth-child(32) {
+  transform: translate(620%, 155%);
+}
+
+.decks.vertical .deck:nth-child(33) {
+  transform: translate(160%, 640%);
+}
+
+.decks.horizontal .deck:nth-child(33) {
+  transform: translate(640%, 160%);
+}
+
+.decks.vertical .deck:nth-child(34) {
+  transform: translate(165%, 660%);
+}
+
+.decks.horizontal .deck:nth-child(34) {
+  transform: translate(660%, 165%);
+}
+
+.decks.vertical .deck:nth-child(35) {
+  transform: translate(170%, 680%);
+}
+
+.decks.horizontal .deck:nth-child(35) {
+  transform: translate(680%, 170%);
+}
+
+.decks.vertical .deck:nth-child(36) {
+  transform: translate(175%, 700%);
+}
+
+.decks.horizontal .deck:nth-child(36) {
+  transform: translate(700%, 175%);
+}
+
+.decks.vertical .deck:nth-child(37) {
+  transform: translate(180%, 720%);
+}
+
+.decks.horizontal .deck:nth-child(37) {
+  transform: translate(720%, 180%);
+}
+
+.decks.vertical .deck:nth-child(38) {
+  transform: translate(185%, 740%);
+}
+
+.decks.horizontal .deck:nth-child(38) {
+  transform: translate(740%, 185%);
+}
+
+.decks.vertical .deck:nth-child(39) {
+  transform: translate(190%, 760%);
+}
+
+.decks.horizontal .deck:nth-child(39) {
+  transform: translate(760%, 190%);
+}
+
+.decks.vertical .deck:nth-child(40) {
+  transform: translate(195%, 780%);
+}
+
+.decks.horizontal .deck:nth-child(40) {
+  transform: translate(780%, 195%);
+}
+
+.decks.vertical .deck:nth-child(41) {
+  transform: translate(200%, 800%);
+}
+
+.decks.horizontal .deck:nth-child(41) {
+  transform: translate(800%, 200%);
+}
+
+.decks.vertical .deck:nth-child(42) {
+  transform: translate(205%, 820%);
+}
+
+.decks.horizontal .deck:nth-child(42) {
+  transform: translate(820%, 205%);
+}
+
+.decks.vertical .deck:nth-child(43) {
+  transform: translate(210%, 840%);
+}
+
+.decks.horizontal .deck:nth-child(43) {
+  transform: translate(840%, 210%);
+}
+
+.decks.vertical .deck:nth-child(44) {
+  transform: translate(215%, 860%);
+}
+
+.decks.horizontal .deck:nth-child(44) {
+  transform: translate(860%, 215%);
+}
+
+.decks.vertical .deck:nth-child(45) {
+  transform: translate(220%, 880%);
+}
+
+.decks.horizontal .deck:nth-child(45) {
+  transform: translate(880%, 220%);
+}
+
+.decks.vertical .deck:nth-child(46) {
+  transform: translate(225%, 900%);
+}
+
+.decks.horizontal .deck:nth-child(46) {
+  transform: translate(900%, 225%);
+}
+
+.decks.vertical .deck:nth-child(47) {
+  transform: translate(230%, 920%);
+}
+
+.decks.horizontal .deck:nth-child(47) {
+  transform: translate(920%, 230%);
+}
+
+.decks.vertical .deck:nth-child(48) {
+  transform: translate(235%, 940%);
+}
+
+.decks.horizontal .deck:nth-child(48) {
+  transform: translate(940%, 235%);
+}
+
+.decks.vertical .deck:nth-child(49) {
+  transform: translate(240%, 960%);
+}
+
+.decks.horizontal .deck:nth-child(49) {
+  transform: translate(960%, 240%);
+}
+
+.decks.vertical .deck:nth-child(50) {
+  transform: translate(245%, 980%);
+}
+
+.decks.horizontal .deck:nth-child(50) {
+  transform: translate(980%, 245%);
+}
+
+.decks.vertical .deck:nth-child(51) {
+  transform: translate(250%, 1000%);
+}
+
+.decks.horizontal .deck:nth-child(51) {
+  transform: translate(1000%, 250%);
+}
+
+.decks.vertical .deck:nth-child(52) {
+  transform: translate(255%, 1020%);
+}
+
+.decks.horizontal .deck:nth-child(52) {
+  transform: translate(1020%, 255%);
+}
+
+.decks.vertical .deck:nth-child(53) {
+  transform: translate(260%, 1040%);
+}
+
+.decks.horizontal .deck:nth-child(53) {
+  transform: translate(1040%, 260%);
+}
+
+.decks.vertical .deck:nth-child(54) {
+  transform: translate(265%, 1060%);
+}
+
+.decks.horizontal .deck:nth-child(54) {
+  transform: translate(1060%, 265%);
+}
+
+.decks.vertical .deck:nth-child(55) {
+  transform: translate(270%, 1080%);
+}
+
+.decks.horizontal .deck:nth-child(55) {
+  transform: translate(1080%, 270%);
+}
+
+.decks.vertical .deck:nth-child(56) {
+  transform: translate(275%, 1100%);
+}
+
+.decks.horizontal .deck:nth-child(56) {
+  transform: translate(1100%, 275%);
+}
+
+.decks.vertical .deck:nth-child(57) {
+  transform: translate(280%, 1120%);
+}
+
+.decks.horizontal .deck:nth-child(57) {
+  transform: translate(1120%, 280%);
+}
+
+.decks.vertical .deck:nth-child(58) {
+  transform: translate(285%, 1140%);
+}
+
+.decks.horizontal .deck:nth-child(58) {
+  transform: translate(1140%, 285%);
+}
+
+.decks.vertical .deck:nth-child(59) {
+  transform: translate(290%, 1160%);
+}
+
+.decks.horizontal .deck:nth-child(59) {
+  transform: translate(1160%, 290%);
+}
+
+.decks.vertical .deck:nth-child(60) {
+  transform: translate(295%, 1180%);
+}
+
+.decks.horizontal .deck:nth-child(60) {
+  transform: translate(1180%, 295%);
+}
+
+.decks.vertical .deck:nth-child(61) {
+  transform: translate(300%, 1200%);
+}
+
+.decks.horizontal .deck:nth-child(61) {
+  transform: translate(1200%, 300%);
+}
+
+.decks.vertical .deck:nth-child(62) {
+  transform: translate(305%, 1220%);
+}
+
+.decks.horizontal .deck:nth-child(62) {
+  transform: translate(1220%, 305%);
+}
+
+.decks.vertical .deck:nth-child(63) {
+  transform: translate(310%, 1240%);
+}
+
+.decks.horizontal .deck:nth-child(63) {
+  transform: translate(1240%, 310%);
+}
+
+.decks.vertical .deck:nth-child(64) {
+  transform: translate(315%, 1260%);
+}
+
+.decks.horizontal .deck:nth-child(64) {
+  transform: translate(1260%, 315%);
+}
+
+.decks.vertical .deck:nth-child(65) {
+  transform: translate(320%, 1280%);
+}
+
+.decks.horizontal .deck:nth-child(65) {
+  transform: translate(1280%, 320%);
+}
+
+.decks.vertical .deck:nth-child(66) {
+  transform: translate(325%, 1300%);
+}
+
+.decks.horizontal .deck:nth-child(66) {
+  transform: translate(1300%, 325%);
+}
+
+.decks.vertical .deck:nth-child(67) {
+  transform: translate(330%, 1320%);
+}
+
+.decks.horizontal .deck:nth-child(67) {
+  transform: translate(1320%, 330%);
+}
+
+.decks.vertical .deck:nth-child(68) {
+  transform: translate(335%, 1340%);
+}
+
+.decks.horizontal .deck:nth-child(68) {
+  transform: translate(1340%, 335%);
+}
+
+.decks.vertical .deck:nth-child(69) {
+  transform: translate(340%, 1360%);
+}
+
+.decks.horizontal .deck:nth-child(69) {
+  transform: translate(1360%, 340%);
+}
+
+.decks.vertical .deck:nth-child(70) {
+  transform: translate(345%, 1380%);
+}
+
+.decks.horizontal .deck:nth-child(70) {
+  transform: translate(1380%, 345%);
+}
+
+.decks.vertical .deck:nth-child(71) {
+  transform: translate(350%, 1400%);
+}
+
+.decks.horizontal .deck:nth-child(71) {
+  transform: translate(1400%, 350%);
+}
+
+.decks.vertical .deck:nth-child(72) {
+  transform: translate(355%, 1420%);
+}
+
+.decks.horizontal .deck:nth-child(72) {
+  transform: translate(1420%, 355%);
+}
+
+.decks.vertical .deck:nth-child(73) {
+  transform: translate(360%, 1440%);
+}
+
+.decks.horizontal .deck:nth-child(73) {
+  transform: translate(1440%, 360%);
+}
+
+.decks.vertical .deck:nth-child(74) {
+  transform: translate(365%, 1460%);
+}
+
+.decks.horizontal .deck:nth-child(74) {
+  transform: translate(1460%, 365%);
+}
+
+.decks.vertical .deck:nth-child(75) {
+  transform: translate(370%, 1480%);
+}
+
+.decks.horizontal .deck:nth-child(75) {
+  transform: translate(1480%, 370%);
+}
+
+.decks.vertical .deck:nth-child(76) {
+  transform: translate(375%, 1500%);
+}
+
+.decks.horizontal .deck:nth-child(76) {
+  transform: translate(1500%, 375%);
+}
+
+.decks.vertical .deck:nth-child(77) {
+  transform: translate(380%, 1520%);
+}
+
+.decks.horizontal .deck:nth-child(77) {
+  transform: translate(1520%, 380%);
+}
+
+.decks.vertical .deck:nth-child(78) {
+  transform: translate(385%, 1540%);
+}
+
+.decks.horizontal .deck:nth-child(78) {
+  transform: translate(1540%, 385%);
+}
+
+.decks.vertical .deck:nth-child(79) {
+  transform: translate(390%, 1560%);
+}
+
+.decks.horizontal .deck:nth-child(79) {
+  transform: translate(1560%, 390%);
+}
+
+.decks.vertical .deck:nth-child(80) {
+  transform: translate(395%, 1580%);
+}
+
+.decks.horizontal .deck:nth-child(80) {
+  transform: translate(1580%, 395%);
+}
+
+.decks.vertical .deck:nth-child(81) {
+  transform: translate(400%, 1600%);
+}
+
+.decks.horizontal .deck:nth-child(81) {
+  transform: translate(1600%, 400%);
+}
+
+.decks.vertical .deck:nth-child(82) {
+  transform: translate(405%, 1620%);
+}
+
+.decks.horizontal .deck:nth-child(82) {
+  transform: translate(1620%, 405%);
+}
+
+.decks.vertical .deck:nth-child(83) {
+  transform: translate(410%, 1640%);
+}
+
+.decks.horizontal .deck:nth-child(83) {
+  transform: translate(1640%, 410%);
+}
+
+.decks.vertical .deck:nth-child(84) {
+  transform: translate(415%, 1660%);
+}
+
+.decks.horizontal .deck:nth-child(84) {
+  transform: translate(1660%, 415%);
+}
+
+.decks.vertical .deck:nth-child(85) {
+  transform: translate(420%, 1680%);
+}
+
+.decks.horizontal .deck:nth-child(85) {
+  transform: translate(1680%, 420%);
+}
+
+.decks.vertical .deck:nth-child(86) {
+  transform: translate(425%, 1700%);
+}
+
+.decks.horizontal .deck:nth-child(86) {
+  transform: translate(1700%, 425%);
+}
+
+.decks.vertical .deck:nth-child(87) {
+  transform: translate(430%, 1720%);
+}
+
+.decks.horizontal .deck:nth-child(87) {
+  transform: translate(1720%, 430%);
+}
+
+.decks.vertical .deck:nth-child(88) {
+  transform: translate(435%, 1740%);
+}
+
+.decks.horizontal .deck:nth-child(88) {
+  transform: translate(1740%, 435%);
+}
+
+.decks.vertical .deck:nth-child(89) {
+  transform: translate(440%, 1760%);
+}
+
+.decks.horizontal .deck:nth-child(89) {
+  transform: translate(1760%, 440%);
+}
+
+.decks.vertical .deck:nth-child(90) {
+  transform: translate(445%, 1780%);
+}
+
+.decks.horizontal .deck:nth-child(90) {
+  transform: translate(1780%, 445%);
+}
+
+.decks.vertical .deck:nth-child(91) {
+  transform: translate(450%, 1800%);
+}
+
+.decks.horizontal .deck:nth-child(91) {
+  transform: translate(1800%, 450%);
+}
+
+.decks.vertical .deck:nth-child(92) {
+  transform: translate(455%, 1820%);
+}
+
+.decks.horizontal .deck:nth-child(92) {
+  transform: translate(1820%, 455%);
+}
+
+.decks.vertical .deck:nth-child(93) {
+  transform: translate(460%, 1840%);
+}
+
+.decks.horizontal .deck:nth-child(93) {
+  transform: translate(1840%, 460%);
+}
+
+.decks.vertical .deck:nth-child(94) {
+  transform: translate(465%, 1860%);
+}
+
+.decks.horizontal .deck:nth-child(94) {
+  transform: translate(1860%, 465%);
+}
+
+.decks.vertical .deck:nth-child(95) {
+  transform: translate(470%, 1880%);
+}
+
+.decks.horizontal .deck:nth-child(95) {
+  transform: translate(1880%, 470%);
+}
+
+.decks.vertical .deck:nth-child(96) {
+  transform: translate(475%, 1900%);
+}
+
+.decks.horizontal .deck:nth-child(96) {
+  transform: translate(1900%, 475%);
+}
+
+.decks.vertical .deck:nth-child(97) {
+  transform: translate(480%, 1920%);
+}
+
+.decks.horizontal .deck:nth-child(97) {
+  transform: translate(1920%, 480%);
+}
+
+.decks.vertical .deck:nth-child(98) {
+  transform: translate(485%, 1940%);
+}
+
+.decks.horizontal .deck:nth-child(98) {
+  transform: translate(1940%, 485%);
+}
+
+.decks.vertical .deck:nth-child(99) {
+  transform: translate(490%, 1960%);
+}
+
+.decks.horizontal .deck:nth-child(99) {
+  transform: translate(1960%, 490%);
+}
+
+.decks.vertical .deck:nth-child(100) {
+  transform: translate(495%, 1980%);
+}
+
+.decks.horizontal .deck:nth-child(100) {
+  transform: translate(1980%, 495%);
+}
+
+:root {
+  --box-radius: 2em;
+  --box-shadow: -1px 1px 2px 1px;
+  --form-font-size: 1em;
+  --form-container-gap:2em;
 }
 
 ::-webkit-scrollbar {
@@ -5711,6 +6839,7 @@ span * {
 }
 
 :root {
+  --surface: white;
   --primary: hsl(200, 61%, 29%);
   --primary-face: var(--white);
   --primary-dark: #133a4e;

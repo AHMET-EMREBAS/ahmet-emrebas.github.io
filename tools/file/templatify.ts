@@ -1,5 +1,7 @@
 #!/usr/bin/env ts-node
-
+/**
+ * Add .template extention to all files under the provided directory.
+ */
 import { cwd } from 'process';
 import { forEachFile, input, isIn, required } from '../utils';
 import { readdirSync, renameSync } from 'fs';

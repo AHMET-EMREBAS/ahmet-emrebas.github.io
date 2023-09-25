@@ -22,16 +22,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './form.component.html',
 })
 export class FormComponent {
-  @ContentChildren(FormActionsDirective) tbFormActions?: TemplateRef<any>;
-
   componentType = InputComponent;
+
+  @ContentChildren(FormActionsDirective) tbFormActions?: TemplateRef<any>;
   @ContentChildren(InputComponent) children?: QueryList<InputComponent>;
 
-  @Output() submitEvent = new EventEmitter<Record<string, string>>();
+  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();
 
-  @Input() formValue?: Record<string, any>;
+  readonly formValue: Record<string, unknown> = {};
 
-  preventDefault(event: any) {
+  preventDefault(event: Event) {
     event.preventDefault();
   }
 
@@ -41,15 +41,13 @@ export class FormComponent {
       formValue: this.formValue,
     };
   }
+
   submit() {
     this.submitEvent.emit(this.formValue);
   }
 
   reset() {
-    if (this.formValue)
-      Object.entries(this.formValue).forEach(([key, value]) => {
-        delete (this.formValue as any)[key];
-      });
+    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);
   }
 }
 

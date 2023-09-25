@@ -1,7 +1,7 @@
 <form
   #form="ngForm"
   ngForm
-  class="form-container"
+  class="form-container primary"
   autocomplete="on"
   (ngSubmit)="submit(form)"
   (submit)="preventDefault($event)"
@@ -16,7 +16,7 @@
 
   <div class="form-actions">
     <ng-container
-      *ngTemplateOutlet="tbFormActions.first.templateRef"
+      *ngTemplateOutlet="tbFormActions?.first?.templateRef"
     ></ng-container>
   </div>
 </form>

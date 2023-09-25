@@ -157,12 +157,12 @@
         },
         {
             "name": "FormActionsDirective",
-            "id": "directive-FormActionsDirective-2dea82d51eb518e8ec678772bf7900b6e21b973b3d4f908279197c87e788b04dade18327a9aa004f3fd6bcfe98cff90250ef6281d5fcbeb42918d01295a6d1a9",
+            "id": "directive-FormActionsDirective-3b14336835f052022d637015a05de9c12ff46c8c31552ecc4f1b46a6eae56e14c7deebf61ad0ea711841e4ac55ba1258996744314ab34be2a1cd0cbbd173f40b",
             "file": "libs/material/src/form/form-actions/form-actions.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, ElementRef } from '@angular/core';\n\n@Directive({\n  selector: '[tbFormActions]',\n  standalone: true,\n})\nexport class FormActionsDirective {\n  constructor(public readonly elementRef: ElementRef<unknown>) {}\n\n}\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\n\n@Directive({\n  selector: '[tbFormActions]',\n  standalone: true,\n})\nexport class FormActionsDirective {\n  constructor(public readonly templateRef: TemplateRef<unknown>) {}\n}\n",
             "selector": "[tbFormActions]",
             "providers": [],
             "hostDirectives": [],
@@ -175,10 +175,10 @@
             "hostListeners": [],
             "propertiesClass": [
                 {
-                    "name": "elementRef",
+                    "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "ElementRef<>",
+                    "type": "TemplateRef<>",
                     "optional": false,
                     "description": "",
                     "line": 8,
@@ -196,8 +196,8 @@
                 "deprecationMessage": "",
                 "args": [
                     {
-                        "name": "elementRef",
-                        "type": "ElementRef<>",
+                        "name": "templateRef",
+                        "type": "TemplateRef<>",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
@@ -205,8 +205,8 @@
                 "line": 7,
                 "jsdoctags": [
                     {
-                        "name": "elementRef",
-                        "type": "ElementRef<>",
+                        "name": "templateRef",
+                        "type": "TemplateRef<>",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -725,7 +725,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-f7f17b911f740bc3d9c302b6dab68666ca8b15f5cb25d3399ef46533ef093158bae2b645ee9db1d4cf98197f1e3d6bd8b1b38128244e522de7f5f7439a7dabf1",
+            "id": "component-ButtonComponent-04d1868c152fd82e6180fb029ba20295f1a2306a447ee7da1eea396c31aac02adce01c2a640e7bbc93dfc046111355c228aac2410125bc37364ee27161b20704",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -735,7 +735,7 @@
             "selector": "tb-button",
             "styleUrls": [],
             "styles": [],
-            "template": "<button\n  [type]=\"buttonType\"\n  #button\n  (click)=\"emitClickEvent()\"\n  [tbTooltip]=\"tooltip\"\n  [tbTooltipPosition]=\"tooltipPosition\"\n  [attr.role]=\"role\"\n>\n  <span class=\"icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n  <span *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n</button>\n",
+            "template": "<button\n  [type]=\"type\"\n  #button\n  (click)=\"emitClickEvent()\"\n  [tbTooltip]=\"tooltip\"\n  [tbTooltipPosition]=\"tooltipPosition\"\n  [attr.role]=\"role\"\n>\n  <span class=\"icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n  <span *ngIf=\"type !== 'icon-button'\">\n    {{ label }}\n  </span>\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -745,8 +745,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 56,
-                    "type": "\"submit\" | \"reset\" | \"button\"",
+                    "line": 53,
+                    "type": "ButtonType",
                     "decorators": []
                 },
                 {
@@ -815,8 +815,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
-                    "type": "ButtonType",
+                    "line": 56,
+                    "type": "\"submit\" | \"reset\" | \"button\"",
                     "decorators": []
                 },
                 {
@@ -881,7 +881,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonVariant, ButtonType, Color, Icon, Position } from '../api';\nimport { CommonModule } from '@angular/common';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\nexport type ButtonEvent = {\n  id?: string;\n  type: 'click';\n  payload: {\n    uuid?: string;\n    label?: string;\n    message?: string;\n  };\n};\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, TooltipDirective],\n  template: `\n    <button\n      [type]=\"buttonType\"\n      #button\n      (click)=\"emitClickEvent()\"\n      [tbTooltip]=\"tooltip\"\n      [tbTooltipPosition]=\"tooltipPosition\"\n      [attr.role]=\"role\"\n    >\n      <span class=\"icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n      <span *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() tooltip?: string;\n  @Input() tooltipPosition?: Position;\n  @Input() type: ButtonType = 'button';\n  @Input() uuid = 'Id not set!';\n  @Input() variant: ButtonVariant = 'basic';\n  @Input() buttonType?: 'submit' | 'reset' | 'button' = 'button';\n  @Input() role?: 'menubar' | 'menuitem' | 'button' = 'button';\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.type, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({\n      type: 'click',\n      payload: {\n        label: this.label,\n        uuid: this.uuid,\n      },\n    });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonVariant, ButtonType, Color, Icon, Position } from '../api';\nimport { CommonModule } from '@angular/common';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\nexport type ButtonEvent = {\n  id?: string;\n  type: 'click';\n  payload: {\n    uuid?: string;\n    label?: string;\n    message?: string;\n  };\n};\n\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [CommonModule, TooltipDirective],\n  template: `\n    <button\n      [type]=\"type\"\n      #button\n      (click)=\"emitClickEvent()\"\n      [tbTooltip]=\"tooltip\"\n      [tbTooltipPosition]=\"tooltipPosition\"\n      [attr.role]=\"role\"\n    >\n      <span class=\"icon\" *ngIf=\"type !== 'button'\">{{ icon }}</span>\n      <span *ngIf=\"type !== 'icon-button'\">\n        {{ label }}\n      </span>\n    </button>\n  `,\n})\nexport class ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: 'small' | 'regular' | 'big' = 'regular';\n  @Input() tooltip?: string;\n  @Input() tooltipPosition?: Position;\n  @Input() buttonType: ButtonType = 'button';\n  @Input() uuid = 'Id not set!';\n  @Input() variant: ButtonVariant = 'basic';\n  @Input() type?: 'submit' | 'reset' | 'button' = 'button';\n  @Input() role?: 'menubar' | 'menuitem' | 'button' = 'button';\n  /** Click Event  */\n  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();\n\n  /** @ignore */\n  ngAfterViewInit(): void {\n    this.addClasses(this.size, this.variant, this.buttonType, this.color);\n  }\n\n  /** @ignore */\n  private addClasses(...className: string[]) {\n    this.button?.nativeElement.classList.add(...className);\n  }\n\n  emitClickEvent() {\n    this.clickEvent.emit({\n      type: 'click',\n      payload: {\n        label: this.label,\n        uuid: this.uuid,\n      },\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1055,18 +1055,13 @@
         },
         {
             "name": "FormComponent",
-            "id": "component-FormComponent-eb7f430836199ad7dde49f6e46690d46534a6019ce82a4e1e167ba426fe58517dbc299deb5f1c02ec5e067720d4074f3a4251b509b31f557848ca4a0271bb385",
+            "id": "component-FormComponent-bac57449844b2441467482632037e0f4504114d35139adec83f59257f01934f64b67cbbe0603e0e2d868387ea0e411cc05deb7f621b442a94c443bb9727a5352",
             "file": "libs/material/src/form/form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [
-                {
-                    "name": "InputComponent",
-                    "type": "component"
-                }
-            ],
+            "providers": [],
             "selector": "tb-form",
             "styleUrls": [],
             "styles": [],
@@ -1076,26 +1071,17 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
+            "outputsClass": [
                 {
-                    "name": "actionTemplate",
+                    "name": "submitEvent",
+                    "defaultValue": "new EventEmitter<Record<string, unknown>>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "QueryList<FormActionsDirective>",
-                    "optional": true,
-                    "description": "",
-                    "line": 16,
-                    "decorators": [
-                        {
-                            "name": "ContentChildren",
-                            "stringifiedArguments": "FormActionsDirective"
-                        }
-                    ],
-                    "modifierKind": [
-                        167
-                    ]
-                },
+                    "line": 30,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
                 {
                     "name": "children",
                     "deprecated": false,
@@ -1103,7 +1089,7 @@
                     "type": "QueryList<InputComponent>",
                     "optional": true,
                     "description": "",
-                    "line": 19,
+                    "line": 28,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -1122,10 +1108,118 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 25
+                },
+                {
+                    "name": "formValue",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<string | >",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        146
+                    ]
+                },
+                {
+                    "name": "tbFormActions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": true,
+                    "description": "",
+                    "line": 27,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "FormActionsDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "childValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "preventDefault",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "reset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "submit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1137,6 +1231,14 @@
                     "type": "module"
                 },
                 {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
                     "name": "InputComponent",
                     "type": "component"
                 }
@@ -1144,15 +1246,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, NgModule, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, InputComponent],\n  templateUrl: './form.component.html',\n  styles: [],\n  providers: [InputComponent],\n})\nexport class FormComponent {\n  @ContentChildren(FormActionsDirective)\n  actionTemplate?: QueryList<FormActionsDirective>;\n\n  componentType = InputComponent;\n  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  NgModule,\n  Output,\n  QueryList,\n  TemplateRef,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],\n  templateUrl: './form.component.html',\n})\nexport class FormComponent {\n  componentType = InputComponent;\n\n  @ContentChildren(FormActionsDirective) tbFormActions?: TemplateRef<any>;\n  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;\n\n  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();\n\n  readonly formValue: Record<string, unknown> = {};\n\n  preventDefault(event: Event) {\n    event.preventDefault();\n  }\n\n  childValue(value: any) {\n    return {\n      ...value,\n      formValue: this.formValue,\n    };\n  }\n\n  submit() {\n    this.submitEvent.emit(this.formValue);\n  }\n\n  reset() {\n    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);\n  }\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<form class=\"form-container\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentInputs]=\"child\"\n    *ngFor=\"let child of children\"\n  ></ng-container>\n\n  <div class=\"form-actions\">\n    <ng-container\n      *ngTemplateOutlet=\"actionTemplate?.first?.templateRef\"\n    ></ng-container>\n  </div>\n</form>\n"
+            "templateData": "<form\n  #form=\"ngForm\"\n  ngForm\n  class=\"form-container primary\"\n  autocomplete=\"on\"\n  (ngSubmit)=\"submit(form)\"\n  (submit)=\"preventDefault($event)\"\n  (reset)=\"reset()\"\n  novalidate\n>\n  <ng-container *ngFor=\"let child of children\">\n    <ng-container\n      *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n    ></ng-container>\n  </ng-container>\n\n  <div class=\"form-actions\">\n    <ng-container\n      *ngTemplateOutlet=\"tbFormActions?.first?.templateRef\"\n    ></ng-container>\n  </div>\n</form>\n"
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-e710a55696729b0dfec9f5824a42a53cfbce9d3650c499b8b18d453ec50fda8bbeba3b393a7b80c28629e29cef995f8974b604a6e074b86f0bcf9d151e633fd6",
+            "id": "component-InputComponent-92a259165abfa37426dfd2d7adb5f6f718c852d58350433038f11df6adb8121ea3a8695effaf21ea97d8e48db0832d9064d1e4b67ac8105a7cd8330a6e75af9b",
             "file": "libs/material/src/form/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1169,12 +1271,29 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "autocomplete",
+                    "defaultValue": "'on'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "",
+                    "decorators": []
+                },
+                {
                     "name": "color",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 20,
                     "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "formValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "Record<string | any>",
                     "decorators": []
                 },
                 {
@@ -1182,17 +1301,17 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 23,
                     "type": "Icon",
                     "decorators": []
                 },
                 {
-                    "name": "inputType",
-                    "defaultValue": "'basic'",
+                    "name": "id",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
-                    "type": "InputVariant",
+                    "line": 15,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -1200,7 +1319,34 @@
                     "defaultValue": "'Input Label'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 },
@@ -1209,14 +1355,43 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 22,
                     "type": "InputVariant",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleInput",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1235,11 +1410,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TextInputComponent } from '../text-input/text-input.component';\nimport { Color, Icon, InputVariant } from '../../api';\n\n@Component({\n  selector: 'tb-input',\n  standalone: true,\n  imports: [CommonModule, TextInputComponent],\n  templateUrl: './input.component.html',\n})\nexport class InputComponent {\n  @Input() inputType: InputVariant = 'basic';\n  @Input() color: Color = 'primary';\n  @Input() label = 'Input Label';\n  @Input() variant: InputVariant = 'basic';\n  @Input() icon: Icon = 'info';\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TextInputComponent } from '../text-input/text-input.component';\nimport { Color, Icon, InputVariant } from '../../api';\n\n@Component({\n  selector: 'tb-input',\n  standalone: true,\n  imports: [CommonModule, TextInputComponent],\n  templateUrl: './input.component.html',\n})\nexport class InputComponent {\n  /** @ignore */\n  @Input() __ngContext__: any;\n  @Input() id = '';\n  @Input() name = '';\n  @Input() value = '';\n  @Input() type: HTMLInputElement['type'] = 'text';\n  @Input() autocomplete: HTMLInputElement['autocomplete'] = 'on';\n  @Input() color: Color = 'primary';\n  @Input() label = 'Input Label';\n  @Input() variant: InputVariant = 'basic';\n  @Input() icon: Icon = 'info';\n  @Input() formValue?: Record<string, any>;\n\n  handleInput(event: any) {\n    if (this.formValue) {\n      this.formValue[this.name] = event;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<tb-text-input\n  [label]=\"label\"\n  [icon]=\"icon\"\n  [variant]=\"variant\"\n></tb-text-input>\n"
+            "templateData": "<tb-text-input\n  [autocomplete]=\"autocomplete\"\n  [value]=\"value\"\n  [name]=\"name\"\n  [id]=\"id\"\n  [color]=\"color\"\n  [type]=\"type\"\n  [label]=\"label\"\n  [icon]=\"icon\"\n  [variant]=\"variant\"\n  (inputEvent)=\"handleInput($event)\"\n></tb-text-input>\n"
         },
         {
             "name": "ListComponent",
@@ -1405,7 +1580,7 @@
         },
         {
             "name": "MenuComponent",
-            "id": "component-MenuComponent-ad1db597c0d0ab82258ee861a09993ef8f666d4462c2a80e521f7392ac7b5aca264306f0c937c0c33197acf3544ced1e57541788aa1a01c6874ad53bbfe888d5",
+            "id": "component-MenuComponent-4e10583fe83b1495eee857327336f264075b6f19f0f5c6602b1efb8a26f5303a4a4fe9c68af55eb3bca4231793e9f72c3e3df676daad39997c69e89da08129c8",
             "file": "libs/material/src/menu/menu.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1467,8 +1642,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 56,
-                    "type": "\"submit\" | \"reset\" | \"button\"",
+                    "line": 53,
+                    "type": "ButtonType",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -1561,8 +1736,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
-                    "type": "ButtonType",
+                    "line": 56,
+                    "type": "\"submit\" | \"reset\" | \"button\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -1670,7 +1845,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { Position } from '../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './menu.component.html',\n  styles: [],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class MenuComponent extends ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  readonly componentType = MenuComponent;\n\n  @Input()\n  @Output()\n  override clickEvent: EventEmitter<ButtonEvent> = new EventEmitter<ButtonEvent>();\n\n  @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;\n\n  @Input() childrenViaInput?: Partial<MenuComponent>[];\n\n  children?: Partial<MenuComponent>[];\n\n  @Input() position: Position = 'none';\n\n  @Input() showAs: 'row' | 'column' = 'column';\n\n  constructor(private readonly detector: ChangeDetectorRef) {\n    super();\n  }\n\n  /** @ignore */\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    if (!this.children)\n      this.children =\n        this.childrenViaInput || this.childrenViaContent?.toArray();\n    this.detector.detectChanges();\n  }\n\n  /** @ignore */\n  childValue(child: Partial<MenuComponent>) {\n    const {\n      type,\n      variant,\n      color,\n      size,\n      children,\n      label,\n      position,\n      showAs,\n      icon,\n      tooltip,\n      tooltipPosition,\n    } = child;\n\n    return {\n      type: type || this.type,\n      variant: variant || this.variant,\n      color: color || this.color,\n      size: size || this.size,\n      childrenViaInput: children,\n      label,\n      tooltip: tooltip || this.tooltip,\n      tooltipPosition: tooltipPosition || this.tooltipPosition,\n      position: position || this.position,\n      showAs: showAs || this.showAs,\n      icon,\n      clickEvent: this.clickEvent,\n    };\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { Position } from '../api';\n\n@Component({\n  selector: 'tb-menu',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  templateUrl: './menu.component.html',\n  styles: [],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class MenuComponent extends ButtonComponent implements AfterViewInit {\n  /** @ignore */\n  readonly componentType = MenuComponent;\n\n  @Input()\n  @Output()\n  override clickEvent: EventEmitter<ButtonEvent> = new EventEmitter<ButtonEvent>();\n\n  @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;\n\n  @Input() childrenViaInput?: Partial<MenuComponent>[];\n\n  children?: Partial<MenuComponent>[];\n\n  @Input() position: Position = 'none';\n\n  @Input() showAs: 'row' | 'column' = 'column';\n\n  constructor(private readonly detector: ChangeDetectorRef) {\n    super();\n  }\n\n  /** @ignore */\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n    if (!this.children)\n      this.children =\n        this.childrenViaInput || this.childrenViaContent?.toArray();\n    this.detector.detectChanges();\n  }\n\n  /** @ignore */\n  childValue(child: Partial<MenuComponent>) {\n    const {\n      buttonType: type,\n      variant,\n      color,\n      size,\n      children,\n      label,\n      position,\n      showAs,\n      icon,\n      tooltip,\n      tooltipPosition,\n    } = child;\n\n    return {\n      type: type || this.buttonType,\n      variant: variant || this.variant,\n      color: color || this.color,\n      size: size || this.size,\n      childrenViaInput: children,\n      label,\n      tooltip: tooltip || this.tooltip,\n      tooltipPosition: tooltipPosition || this.tooltipPosition,\n      position: position || this.position,\n      showAs: showAs || this.showAs,\n      icon,\n      clickEvent: this.clickEvent,\n    };\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1948,7 +2123,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-bee4cd031c18a1a09e0e5c030f38dfa9f6262e1988a4b11165431d597dd4a5deed605e2aa1fc883eea1bf0c69ab1694e009b346750052a2a61d6b94466ef3e1c",
+            "id": "component-ShowcaseComponent-635ef0b82d75211d9ae96dbc8a3035d713dd99d6682ff841a402c6553856df5bd75b1d1cb97a3be17e06a5768b9a8e69e07140d90780c3a755babddb04ecb7c4",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1976,7 +2151,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 47
+                    "line": 50
                 },
                 {
                     "name": "buttonTypes",
@@ -1986,7 +2161,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 52
                 },
                 {
                     "name": "buttonVariants",
@@ -1996,7 +2171,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 54
                 }
             ],
             "methodsClass": [
@@ -2013,13 +2188,41 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 62,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "event",
                             "type": "ButtonEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "submit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 66,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2037,6 +2240,14 @@
             "imports": [
                 {
                     "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
                     "type": "module"
                 },
                 {
@@ -2079,19 +2290,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\nimport { HasValueDirective } from '../form/has-value/has-value.directive';\nimport { FocusDirective } from '../form/focus/focus.directive';\n\nimport { FormComponent, FormModule } from '../form/form.component';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusDirective,\n    HasValueDirective,\n    FormModule,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  constructor() {}\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\nimport { HasValueDirective } from '../form/has-value/has-value.directive';\nimport { FocusDirective } from '../form/focus/focus.directive';\n\nimport { FormComponent, FormModule } from '../form/form.component';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusDirective,\n    HasValueDirective,\n    FormModule,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  submit(event: any) {\n    console.log(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 61
-            },
-            "templateData": "<!-- <tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n            tbBadge=\"100\"\n            [tbBadgeColor]=\"color\"\n            tbBadgePosition=\"top-right\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container> -->\n\n<tb-form>\n  <tb-input label=\"First Name\" icon=\"person\" variant=\"basic\"></tb-input>\n</tb-form>\n<!-- <hr />\n  <div class=\"decks vertical\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n  <div class=\"decks horizontal\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n</form> -->\n"
+            "templateData": "<!-- <tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n            tbBadge=\"100\"\n            [tbBadgeColor]=\"color\"\n            tbBadgePosition=\"top-right\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container> -->\n\n<tb-form (submitEvent)=\"submit($event)\">\n  <tb-input\n    name=\"firstName\"\n    type=\"text\"\n    color=\"primary\"\n    label=\"First Name\"\n    icon=\"person\"\n    variant=\"basic\"\n  ></tb-input>\n  <tb-input\n    name=\"lastName\"\n    type=\"text\"\n    color=\"secondary\"\n    label=\"Last Name\"\n    icon=\"person\"\n    variant=\"basic\"\n  ></tb-input>\n  <tb-input\n    name=\"email\"\n    type=\"email\"\n    color=\"accent\"\n    label=\"Email\"\n    icon=\"email\"\n    variant=\"basic\"\n  ></tb-input>\n  <tb-input\n    name=\"password\"\n    type=\"password\"\n    color=\"warn\"\n    label=\"Password\"\n    icon=\"password\"\n    variant=\"raised\"\n  ></tb-input>\n\n  <ng-template tbFormActions>\n    <tb-button\n      type=\"submit\"\n      icon=\"add\"\n      label=\"Submit\"\n      color=\"primary\"\n      variant=\"raised\"\n    ></tb-button>\n    <tb-button\n      type=\"reset\"\n      icon=\"refresh\"\n      label=\"Reset\"\n      color=\"secondary\"\n      variant=\"stroked\"\n    ></tb-button>\n  </ng-template>\n</tb-form>\n<!-- <hr />\n  <div class=\"decks vertical\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n  <div class=\"decks horizontal\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n</form> -->\n"
         },
         {
             "name": "StepperComponent",
@@ -2465,7 +2668,7 @@
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-e303a95f2c449af91abf6db493016554bd530bd2abbbd508516c44dd10e69a5a7017a4f8474936cde848c7a892bb8b6ad4eaf6a17cf97b8b423f7aefe8fd2a52",
+            "id": "component-TextInputComponent-591953e39b7206f28d79c57906b1987197952897e760b78396b667925ea0bf8f3fe73392d1f266eaa66f5dd2d460c567de74925a155b87c71e8128c33af4bc8a",
             "file": "libs/material/src/form/text-input/text-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2482,11 +2685,20 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "autocomplete",
+                    "defaultValue": "'off'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "",
+                    "decorators": []
+                },
+                {
                     "name": "color",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 32,
                     "type": "Color",
                     "decorators": []
                 },
@@ -2495,8 +2707,17 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 35,
                     "type": "Icon",
+                    "decorators": []
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -2504,7 +2725,34 @@
                     "defaultValue": "'Input Label'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 33,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
                     "type": "string",
                     "decorators": []
                 },
@@ -2513,14 +2761,34 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 34,
                     "type": "InputVariant",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "emitEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -2529,6 +2797,14 @@
             "imports": [
                 {
                     "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
                     "type": "module"
                 },
                 {
@@ -2543,11 +2819,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { HasValueDirective } from '../has-value/has-value.directive';\nimport { FocusDirective } from '../focus/focus.directive';\nimport { Color, Icon, InputVariant } from '../../api';\n\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [CommonModule, HasValueDirective, FocusDirective],\n  templateUrl: './text-input.component.html',\n  styles: [],\n})\nexport class TextInputComponent {\n  @Input() color: Color = 'primary';\n  @Input() label = 'Input Label';\n  @Input() variant: InputVariant = 'basic';\n  @Input() icon: Icon = 'info';\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  EventEmitter,\n  Input,\n  Output,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { HasValueDirective } from '../has-value/has-value.directive';\nimport { FocusDirective } from '../focus/focus.directive';\nimport { Color, Icon, InputVariant } from '../../api';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    HasValueDirective,\n    FocusDirective,\n  ],\n  templateUrl: './text-input.component.html',\n})\nexport class TextInputComponent {\n  @Output() inputEvent = new EventEmitter<string>();\n  @Input() value = '';\n  @Input() id = '';\n  @Input() name = '';\n  @Input() type: HTMLInputElement['type'] = 'text';\n  @Input() autocomplete: HTMLInputElement['autocomplete'] = 'off';\n  @Input() color: Color = 'primary';\n  @Input() label = 'Input Label';\n  @Input() variant: InputVariant = 'basic';\n  @Input() icon: Icon = 'info';\n\n  emitEvent() {\n    this.inputEvent.emit(this.value);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div class=\"input-container {{ color }} {{ variant }}\">\n  <span class=\"icon\"> {{ icon }}</span>\n  <label>{{ label }} </label>\n  <input type=\"text\" class=\"input\" tbHasValue />\n</div>\n"
+            "templateData": "<div class=\"input-container {{ color }} {{ variant }}\">\n  <span class=\"icon\"> {{ icon }}</span>\n  <label [for]=\"label\">{{ label }} </label>\n  <input\n    [(ngModel)]=\"value\"\n    [id]=\"label\"\n    [type]=\"type\"\n    [name]=\"name\"\n    [autocomplete]=\"autocomplete\"\n    (input)=\"emitEvent()\"\n    tbHasValue\n  />\n</div>\n"
         },
         {
             "name": "ToolbarComponent",
@@ -2602,13 +2878,13 @@
     "modules": [
         {
             "name": "FormModule",
-            "id": "module-FormModule-eb7f430836199ad7dde49f6e46690d46534a6019ce82a4e1e167ba426fe58517dbc299deb5f1c02ec5e067720d4074f3a4251b509b31f557848ca4a0271bb385",
+            "id": "module-FormModule-bac57449844b2441467482632037e0f4504114d35139adec83f59257f01934f64b67cbbe0603e0e2d868387ea0e411cc05deb7f621b442a94c443bb9727a5352",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/src/form/form.component.ts",
             "methods": [],
-            "sourceCode": "import { Component, ContentChildren, NgModule, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, InputComponent],\n  templateUrl: './form.component.html',\n  styles: [],\n  providers: [InputComponent],\n})\nexport class FormComponent {\n  @ContentChildren(FormActionsDirective)\n  actionTemplate?: QueryList<FormActionsDirective>;\n\n  componentType = InputComponent;\n  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  NgModule,\n  Output,\n  QueryList,\n  TemplateRef,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],\n  templateUrl: './form.component.html',\n})\nexport class FormComponent {\n  componentType = InputComponent;\n\n  @ContentChildren(FormActionsDirective) tbFormActions?: TemplateRef<any>;\n  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;\n\n  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();\n\n  readonly formValue: Record<string, unknown> = {};\n\n  preventDefault(event: Event) {\n    event.preventDefault();\n  }\n\n  childValue(value: any) {\n    return {\n      ...value,\n      formValue: this.formValue,\n    };\n  }\n\n  submit() {\n    this.submitEvent.emit(this.formValue);\n  }\n\n  reset() {\n    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);\n  }\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2677,7 +2953,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    buttonType: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -2698,6 +2974,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fonts works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/form works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -2753,6 +3039,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sticky-notes works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/tab/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2768,6 +3064,76 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/array-input works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/boolean-input works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/date-input works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/enum-input works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/input/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    id: '',\n    name: '',\n    value: '',\n    type: 'text',\n    autocomplete: 'on',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/number-input works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    value: '',\n    id: '',\n    name: '',\n    type: 'text',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/text-input works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -2798,6 +3164,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab-container works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "LoginForm",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'username',\n        color: 'primary',\n        autocomplete: 'email',\n        label: 'Username',\n        icon: 'email',\n      },\n      {\n        type: 'password',\n        name: 'password',\n        color: 'primary',\n        autocomplete: 'current-password',\n        label: 'Password',\n        icon: 'email',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
             },
             {
                 "name": "meta",
@@ -2838,6 +3214,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<FontsComponent>",
                 "defaultValue": "{\n  component: FontsComponent,\n  title: 'FontsComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormComponent>",
+                "defaultValue": "{\n  component: FormComponent,\n  title: 'FormComponent',\n}"
             },
             {
                 "name": "meta",
@@ -2903,6 +3289,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<StickyNotesComponent>",
+                "defaultValue": "{\n  component: StickyNotesComponent,\n  title: 'StickyNotesComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/tab/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2918,6 +3314,76 @@
                 "deprecationMessage": "",
                 "type": "Meta<ToolbarComponent>",
                 "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ArrayInputComponent>",
+                "defaultValue": "{\n  component: ArrayInputComponent,\n  title: 'ArrayInputComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<BooleanInputComponent>",
+                "defaultValue": "{\n  component: BooleanInputComponent,\n  title: 'BooleanInputComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DateInputComponent>",
+                "defaultValue": "{\n  component: DateInputComponent,\n  title: 'DateInputComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<EnumInputComponent>",
+                "defaultValue": "{\n  component: EnumInputComponent,\n  title: 'EnumInputComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/input/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputComponent>",
+                "defaultValue": "{\n  component: InputComponent,\n  title: 'InputComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<NumberInputComponent>",
+                "defaultValue": "{\n  component: NumberInputComponent,\n  title: 'NumberInputComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TextInputComponent>",
+                "defaultValue": "{\n  component: TextInputComponent,\n  title: 'TextInputComponent',\n}"
             },
             {
                 "name": "meta",
@@ -2967,7 +3433,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    buttonType: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -2993,6 +3459,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'firstName',\n        color: 'primary',\n        autocomplete: 'given-name',\n        label: 'First Name',\n        icon: 'person',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/list/list.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3007,7 +3483,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        type: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        type: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        buttonType: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3053,6 +3529,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/tab/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3068,6 +3554,76 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/input/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    id: '',\n    name: '',\n    value: '',\n    type: 'text',\n    autocomplete: 'on',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    value: '',\n    id: '',\n    name: '',\n    type: 'text',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3238,6 +3794,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<FormComponent>",
+                "file": "libs/material/src/form/form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<ListComponent>",
                 "file": "libs/material/src/list/list.component.stories.ts",
                 "deprecated": false,
@@ -3304,6 +3871,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<StickyNotesComponent>",
+                "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<TabComponent>",
                 "file": "libs/material/src/tab/tab.component.stories.ts",
                 "deprecated": false,
@@ -3317,6 +3895,83 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<ToolbarComponent>",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ArrayInputComponent>",
+                "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<BooleanInputComponent>",
+                "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DateInputComponent>",
+                "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<EnumInputComponent>",
+                "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<InputComponent>",
+                "file": "libs/material/src/form/input/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<NumberInputComponent>",
+                "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TextInputComponent>",
+                "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3399,7 +4054,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    type: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    uuid:'1',\n    label: 'Button',\n    buttonType: 'button',\n    variant: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -3419,7 +4074,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    type: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    uuid: '1',\n    label: 'home',\n    buttonType: 'button',\n    variant: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
             "libs/material/src/colors/colors.component.stories.ts": [
@@ -3486,6 +4141,48 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
+            "libs/material/src/form/form.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/form works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "LoginForm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'username',\n        color: 'primary',\n        autocomplete: 'email',\n        label: 'Username',\n        icon: 'email',\n      },\n      {\n        type: 'password',\n        name: 'password',\n        color: 'primary',\n        autocomplete: 'current-password',\n        label: 'Password',\n        icon: 'email',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormComponent>",
+                    "defaultValue": "{\n  component: FormComponent,\n  title: 'FormComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'firstName',\n        color: 'primary',\n        autocomplete: 'given-name',\n        label: 'First Name',\n        icon: 'person',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+                }
+            ],
             "libs/material/src/list/list.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -3547,7 +4244,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        type: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        type: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        type: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Triger 1',\n    color: 'primary',\n    position: 'bottom',\n\n    children: [\n      {\n        buttonType: 'button',\n        label: 'Label 1',\n        variant: 'basic',\n      } as Partial<MenuComponent>,\n      {\n        type: 'button',\n        label: 'Triger 2',\n        variant: 'basic',\n        color: 'accent',\n        position: 'right',\n\n        children: [\n          { type: 'button', label: 'Label 2', variant: 'flat' },\n          {\n            type: 'button',\n            label: 'Triger 3',\n            variant: 'basic',\n            color: 'secondary',\n            position: 'right',\n            showAs: 'row',\n            children: [\n              { type: 'button', label: 'Label 5', variant: 'flat' },\n              { type: 'button', label: 'Label 6', variant: 'flat' },\n              {\n                type: 'button',\n                label: 'Triger 4',\n                variant: 'basic',\n                color: 'warn',\n                position: 'top',\n                children: [\n                  {\n                    type: 'icon-button',\n                    icon: 'home',\n                    variant: 'raised',\n                    tooltip: 'Go to home page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'info',\n                    variant: 'raised',\n                    tooltip: 'Go to about page',\n                    tooltipPosition: 'top',\n                  },\n                  {\n                    type: 'icon-button',\n                    icon: 'apps',\n                    variant: 'raised',\n                    tooltip: 'Show services',\n                    tooltipPosition: 'top',\n                    position: 'bottom',\n                    showAs: 'column',\n                    color: 'primary',\n                    children: [\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'inventory',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'house',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'dashboard',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                      {\n                        buttonType: 'icon-button',\n                        icon: 'store',\n                        color: 'primary',\n                        variant: 'raised',\n                      } as Partial<MenuComponent>,\n                    ],\n                  },\n                ],\n              },\n            ],\n          },\n          { type: 'button', label: 'Label 4', variant: 'flat' },\n        ],\n      },\n    ] as unknown as Partial<MenuComponent>[],\n  },\n}"
                 }
             ],
             "libs/material/src/nav-list/nav-list.component.stories.ts": [
@@ -3646,6 +4343,38 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
+            "libs/material/src/sticky-notes/sticky-notes.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sticky-notes works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<StickyNotesComponent>",
+                    "defaultValue": "{\n  component: StickyNotesComponent,\n  title: 'StickyNotesComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/material/src/tab/tab.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -3708,6 +4437,230 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/form/array-input/array-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/array-input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ArrayInputComponent>",
+                    "defaultValue": "{\n  component: ArrayInputComponent,\n  title: 'ArrayInputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/form/boolean-input/boolean-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/boolean-input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<BooleanInputComponent>",
+                    "defaultValue": "{\n  component: BooleanInputComponent,\n  title: 'BooleanInputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/form/date-input/date-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/date-input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DateInputComponent>",
+                    "defaultValue": "{\n  component: DateInputComponent,\n  title: 'DateInputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/form/enum-input/enum-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/enum-input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<EnumInputComponent>",
+                    "defaultValue": "{\n  component: EnumInputComponent,\n  title: 'EnumInputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/form/input/input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/input/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    id: '',\n    name: '',\n    value: '',\n    type: 'text',\n    autocomplete: 'on',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/input/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputComponent>",
+                    "defaultValue": "{\n  component: InputComponent,\n  title: 'InputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/input/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    id: '',\n    name: '',\n    value: '',\n    type: 'text',\n    autocomplete: 'on',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n}"
+                }
+            ],
+            "libs/material/src/form/number-input/number-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/number-input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<NumberInputComponent>",
+                    "defaultValue": "{\n  component: NumberInputComponent,\n  title: 'NumberInputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/src/form/text-input/text-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    value: '',\n    id: '',\n    name: '',\n    type: 'text',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/text-input works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TextInputComponent>",
+                    "defaultValue": "{\n  component: TextInputComponent,\n  title: 'TextInputComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    value: '',\n    id: '',\n    name: '',\n    type: 'text',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n}"
                 }
             ],
             "libs/material/src/list/list-item/list-item.component.stories.ts": [
@@ -3978,6 +4931,19 @@
                     "kind": 180
                 }
             ],
+            "libs/material/src/form/form.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormComponent>",
+                    "file": "libs/material/src/form/form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "libs/material/src/list/list.component.stories.ts": [
                 {
                     "name": "Story",
@@ -4056,6 +5022,19 @@
                     "kind": 180
                 }
             ],
+            "libs/material/src/sticky-notes/sticky-notes.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<StickyNotesComponent>",
+                    "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "libs/material/src/tab/tab.component.stories.ts": [
                 {
                     "name": "Story",
@@ -4076,6 +5055,97 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ToolbarComponent>",
                     "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/array-input/array-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ArrayInputComponent>",
+                    "file": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/boolean-input/boolean-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<BooleanInputComponent>",
+                    "file": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/date-input/date-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DateInputComponent>",
+                    "file": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/enum-input/enum-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<EnumInputComponent>",
+                    "file": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/input/input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputComponent>",
+                    "file": "libs/material/src/form/input/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/number-input/number-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<NumberInputComponent>",
+                    "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/text-input/text-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TextInputComponent>",
+                    "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -4125,7 +5195,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 1,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -4294,10 +5364,70 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/array-input/array-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/form/array-input/array-input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ArrayInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/boolean-input/boolean-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -4312,10 +5442,70 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/date-input/date-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/form/date-input/date-input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "DateInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/enum-input/enum-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -4348,12 +5538,52 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/form/form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoginForm",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/form/form.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "FormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -4366,12 +5596,72 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/form/input/input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/input/input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/input/input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/form/input/input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -4384,12 +5674,42 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/text-input/text-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/form/text-input/text-input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "TextInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -4699,6 +6019,36 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "StepperComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

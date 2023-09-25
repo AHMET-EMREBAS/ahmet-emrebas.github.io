@@ -1,11 +1,10 @@
-@use '../colors' as colors;
+$_iconFontPath: '../../assets/fonts';
 
-$iconFontAssets: '../../assets/fonts';
 @font-face {
   font-family: Icon;
   font-style: normal;
   font-weight: 100 700;
-  src: url(./#{$iconFontAssets}/material-symbols.woff2) format('woff2');
+  src: url(./#{$_iconFontPath}/material-symbols.woff2) format('woff2');
 }
 
 .icon {
@@ -20,8 +19,6 @@ $iconFontAssets: '../../assets/fonts';
   -webkit-font-smoothing: antialiased;
 }
 
-@each $colorName in colors.$colorNames {
-  .icon.fill {
-    font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
-  }
+.icon.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
 }
