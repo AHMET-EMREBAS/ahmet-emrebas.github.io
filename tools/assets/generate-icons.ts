@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 
-import { readdirSync, statSync, readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 import sharp from 'sharp';
 import { fileName, forEachFile, mkdir } from '../utils';

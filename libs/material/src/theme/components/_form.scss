@@ -4,6 +4,11 @@
 .form-container {
   @include utils.column(var(--form-container-gap));
 
+  background-color: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: var(--box-radius);
+  padding: 1em;
+
   font-family: var(--font-content);
   font-size: var(--form-font-size);
   .form-actions {
