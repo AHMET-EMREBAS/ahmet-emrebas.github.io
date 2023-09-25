@@ -4193,6 +4193,8 @@ button.green.inbox:focus {
 
 .dropdown {
   position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .dropdown-items {
@@ -4216,10 +4218,6 @@ button.green.inbox:focus {
   display: flex;
   flex-direction: column;
 }
-.dropdown-items.column button:not(.icon-button) {
-  width: 100%;
-}
-
 .dropdown:hover > .dropdown-items {
   --scale: 1;
   opacity: 1;
