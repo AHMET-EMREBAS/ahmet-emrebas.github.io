@@ -95,6 +95,67 @@
             }
         },
         {
+            "name": "FocusOnCLickDirective",
+            "id": "directive-FocusOnCLickDirective-377d80f249ef61c4f4383e8aa6a231b22f7c09726ad443dac8ca8dcef507ccc436b528b129e4ad5f73f5ea33d1bc1485d77350498e5f67c0ea424c77c1a4b428",
+            "file": "libs/material/src/showcase/showcase.component.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\n\n@Directive({\n  selector: '[focusOnClick]',\n  standalone: true,\n})\nexport class FocusOnCLickDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.setAttribute('tabindex', '0');\n    this.elementRef.nativeElement.addEventListener('click', () => {\n      this.elementRef.nativeElement.focus();\n    });\n  }\n}\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusOnCLickDirective,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  constructor() {}\n}\n",
+            "selector": "[focusOnClick]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 22,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "ScrollDirectionDirective",
             "id": "directive-ScrollDirectionDirective-71816ef9e3fe5b850e7f78ffa6d8b4491f5da377ebea420212c50151e98c0997ed6dd382514094bf3c178b938e360274b61760444afca43737ef0d4f6dafd08a",
             "file": "libs/material/src/scroll-direction/scroll-direction.directive.ts",
@@ -322,7 +383,7 @@
     "components": [
         {
             "name": "AlertComponent",
-            "id": "component-AlertComponent-5f4a6d4a3ff1d50793029ad69bc5783aa6dae67439fe10245e3474e46bbbcded1f6ad93996be0c59dceb16a57359ac34ab205c1960cb900c30bc1366be9f096a",
+            "id": "component-AlertComponent-36ff2c4403a77966f52c0f429d4475a1e5ecc55350ab8ce2c31a5d81be432bbf4e7e082ff95c8467448cb5cf0c0ae2bd87534da94fc3d4c88ed42f5d0a1fe970",
             "file": "libs/material/src/alert/alert.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -332,7 +393,7 @@
             "selector": "tb-alert",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\" {{ color }}\" role=\"alert\">   <span class=\"icon\">{{ icon }}</span>\n   <span>{{ message }}</span>\n   <div class=\"grow-1\"></div>\n   <tb-button\n     buttonType=\"icon-button\"\n     buttonSize=\"small\"\n     buttonStyleType=\"inbox\"\n     [color]=\"color\"\n     icon=\"close\"\n   ></tb-button>\n </div>",
+            "template": "<div class=\" {{ color }}\" role=\"alert\">   <span class=\"icon\">{{ icon }}</span>\n   <span>{{ message }}</span>\n   <div class=\"grow-1\"></div>\n   <tb-button\n     type=\"icon-button\"\n     buttonSize=\"small\"\n     buttonStyleType=\"inbox\"\n     [color]=\"color\"\n     icon=\"close\"\n   ></tb-button>\n </div>",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -427,7 +488,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Color, Icon } from '../api';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\n@Component({\n  selector: 'tb-alert',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, TooltipDirective],\n  template: ` <div class=\" {{ color }}\" role=\"alert\">\n    <span class=\"icon\">{{ icon }}</span>\n    <span>{{ message }}</span>\n    <div class=\"grow-1\"></div>\n    <tb-button\n      buttonType=\"icon-button\"\n      buttonSize=\"small\"\n      buttonStyleType=\"inbox\"\n      [color]=\"color\"\n      icon=\"close\"\n    ></tb-button>\n  </div>`,\n})\nexport class AlertComponent {\n  /** Close event */\n  @Output() closeEvent = new EventEmitter<ButtonEvent>();\n  /** Alert color */\n  @Input() color: Color = 'primary';\n\n  /** Alert icon */\n  @Input() icon: Icon = 'info';\n\n  /** Alert message */\n  @Input() message = 'Message';\n\n  @Input() closable = true;\n\n  close() {\n    this.closeEvent.emit({\n      type: 'click',\n      payload: {\n        label: 'Closed alert',\n      },\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Color, Icon } from '../api';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { TooltipDirective } from '../tooltip/tooltip.directive';\n\n@Component({\n  selector: 'tb-alert',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, TooltipDirective],\n  template: ` <div class=\" {{ color }}\" role=\"alert\">\n    <span class=\"icon\">{{ icon }}</span>\n    <span>{{ message }}</span>\n    <div class=\"grow-1\"></div>\n    <tb-button\n      type=\"icon-button\"\n      buttonSize=\"small\"\n      buttonStyleType=\"inbox\"\n      [color]=\"color\"\n      icon=\"close\"\n    ></tb-button>\n  </div>`,\n})\nexport class AlertComponent {\n  /** Close event */\n  @Output() closeEvent = new EventEmitter<ButtonEvent>();\n  /** Alert color */\n  @Input() color: Color = 'primary';\n\n  /** Alert icon */\n  @Input() icon: Icon = 'info';\n\n  /** Alert message */\n  @Input() message = 'Message';\n\n  @Input() closable = true;\n\n  close() {\n    this.closeEvent.emit({\n      type: 'click',\n      payload: {\n        label: 'Closed alert',\n      },\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -1592,7 +1653,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-9200ed61980a0c8b4bf3d2689f852428b305164ca97d8a7f1dbdc306c8f492019335ecb5436c3e0e6db4dec336e099aae650d3dc974add06eec80f31437e05f1",
+            "id": "component-ShowcaseComponent-377d80f249ef61c4f4383e8aa6a231b22f7c09726ad443dac8ca8dcef507ccc436b528b129e4ad5f73f5ea33d1bc1485d77350498e5f67c0ea424c77c1a4b428",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1620,7 +1681,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 55
                 },
                 {
                     "name": "buttonTypes",
@@ -1630,7 +1691,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 57
                 },
                 {
                     "name": "buttonVariants",
@@ -1640,7 +1701,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 59
                 }
             ],
             "methodsClass": [
@@ -1657,7 +1718,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 67,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1706,12 +1767,16 @@
                 {
                     "name": "BadgeDirective",
                     "type": "directive"
+                },
+                {
+                    "name": "FocusOnCLickDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  constructor() {}\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\n\n@Directive({\n  selector: '[focusOnClick]',\n  standalone: true,\n})\nexport class FocusOnCLickDirective implements AfterViewInit {\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n  ngAfterViewInit(): void {\n    this.elementRef.nativeElement.setAttribute('tabindex', '0');\n    this.elementRef.nativeElement.addEventListener('click', () => {\n      this.elementRef.nativeElement.focus();\n    });\n  }\n}\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusOnCLickDirective,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  constructor() {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
@@ -1721,9 +1786,9 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 47
+                "line": 69
             },
-            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n            tbBadge=\"100\"\n            [tbBadgeColor]=\"color\"\n            tbBadgePosition=\"top-right\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container>\n\n<form class=\"form-container\">\n  <div class=\"input-container\">\n    <label>Text Input </label>\n    <input type=\"text\" class=\"input\" value=\"some value in input\" />\n  </div>\n\n  <div class=\"input-container\">\n    <label>Number Input </label>\n    <input type=\"number\" class=\"input\" value=\"50011231241\" />\n  </div>\n\n  <div class=\"form-actions\">\n    <tb-button\n      label=\"Submit\"\n      type=\"button\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-button>\n    <tb-button\n      label=\"Reset\"\n      type=\"button\"\n      variant=\"stroked\"\n      color=\"accent\"\n    ></tb-button>\n  </div>\n</form>\n"
+            "templateData": "<tb-toolbar>\n  <tb-menu\n    label=\"Home\"\n    icon=\"home\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"Go to home page\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"info\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    tooltip=\"About us\"\n    tooltipPosition=\"bottom\"\n  ></tb-menu>\n  <tb-menu\n    label=\"Home\"\n    icon=\"apps\"\n    type=\"icon-button\"\n    variant=\"flat\"\n    color=\"primary\"\n    position=\"bottom\"\n  >\n    <tb-menu\n      label=\"Solutions\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n      color=\"primary\"\n      position=\"right\"\n      showAs=\"row\"\n    >\n      <tb-menu\n        label=\"IM\"\n        icon=\"inventory\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"red\"\n        tooltip=\"We built a brand new inventory management application that comply with the modern world standards\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Pos\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"secondary\"\n        tooltip=\"Point of sale\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"CMS\"\n        icon=\"point_of_sale\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"accent\"\n        tooltip=\"Customer Management\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n      <tb-menu\n        label=\"Commerce\"\n        icon=\"store\"\n        type=\"combined-button\"\n        variant=\"flat\"\n        color=\"warn\"\n        tooltip=\"Sell with us.\"\n        tooltipPosition=\"top\"\n      ></tb-menu>\n    </tb-menu>\n    <tb-menu\n      label=\"Fullstack Development\"\n      icon=\"apps\"\n      type=\"combined-button\"\n      variant=\"raised\"\n    ></tb-menu>\n  </tb-menu>\n  <div class=\"grow-1\"></div>\n\n  <tb-menu\n    type=\"icon-button\"\n    icon=\"person\"\n    variant=\"inbox\"\n    color=\"primary\"\n    position=\"bottom\"\n    showAs=\"column\"\n    tooltipPosition=\"left\"\n  >\n    <tb-menu\n      tooltip=\"Logout\"\n      type=\"icon-button\"\n      icon=\"logout\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Settings\"\n      type=\"icon-button\"\n      icon=\"settings\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n    <tb-menu\n      tooltip=\"Inbox\"\n      type=\"icon-button\"\n      icon=\"inbox\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-menu>\n  </tb-menu>\n</tb-toolbar>\n\n<tb-tab-container>\n  <tb-tab [label]=\"type\" [active]=\"false\" *ngFor=\"let type of buttonTypes\">\n    <tb-tab-container>\n      <tb-tab\n        [label]=\"variant\"\n        [active]=\"false\"\n        *ngFor=\"let variant of buttonVariants\"\n      >\n        <div class=\"flex row align-center wrap gap-5 p-5\">\n          <tb-button\n            [type]=\"type\"\n            [variant]=\"variant\"\n            [color]=\"color\"\n            [label]=\"variant\"\n            *ngFor=\"let color of buttonColors\"\n            tbBadge=\"100\"\n            [tbBadgeColor]=\"color\"\n            tbBadgePosition=\"top-right\"\n          ></tb-button>\n        </div>\n      </tb-tab>\n    </tb-tab-container>\n  </tb-tab>\n</tb-tab-container>\n\n<form class=\"form-container\">\n  <div class=\"input-container basic\">\n    <label>Text Input </label>\n    <input type=\"text\" class=\"input\" value=\"some value in input\" />\n  </div>\n\n  <div class=\"input-container\">\n    <label>Number Input </label>\n    <input type=\"number\" class=\"input\" value=\"50011231241\" />\n  </div>\n\n  <div class=\"input-container\">\n    <label>Number Input </label>\n    <input type=\"number\" class=\"input\" value=\"50011231241\" />\n  </div>\n\n  <div class=\"input-container\">\n    <label>Number Input </label>\n    <input type=\"number\" class=\"input\" value=\"50011231241\" />\n  </div>\n\n  <div class=\"form-actions\">\n    <tb-button\n      label=\"Submit\"\n      type=\"button\"\n      variant=\"raised\"\n      color=\"primary\"\n    ></tb-button>\n    <tb-button\n      label=\"Reset\"\n      type=\"button\"\n      variant=\"stroked\"\n      color=\"accent\"\n    ></tb-button>\n  </div>\n  <div class=\"decks vertical\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n  <div class=\"decks horizontal\">\n    <div tabindex=\"0\" class=\"deck primary\"></div>\n    <div tabindex=\"1\" class=\"deck secondary\"></div>\n    <div tabindex=\"2\" class=\"deck accent\"></div>\n    <div tabindex=\"3\" class=\"deck warn\"></div>\n    <div tabindex=\"4\" class=\"deck red\"></div>\n    <div tabindex=\"5\" class=\"deck green\"></div>\n  </div>\n</form>\n"
         },
         {
             "name": "StepperComponent",
@@ -4071,6 +4136,15 @@
                 "name": "ShowcaseComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/showcase/showcase.component.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "FocusOnCLickDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

@@ -1,4 +1,6 @@
 @use '../common' as utils;
+@use '../colors' as colors;
+
 .form-container {
   @include utils.column(1em);
 
@@ -8,26 +10,117 @@
     @include utils.row(1em);
   }
 }
+
 .input-container {
+  --color: white;
+  --light-color: white;
+  --border-style: solid;
+  --border-width-value: 0.15em;
+  --border-width: 0.15em;
+  --border-color: transparent;
+
+  --border-bottom-width: 0.15em;
+  --border-right-width: 0.15em;
+  --border-top-width: 0.15em;
+  --border-left-width: 0.15em;
+
   @include utils.column(0.3em);
+  // padding: 0.3em;
+  color: var(--color);
 
   label {
+    color: inherit;
     padding-left: 1em;
     font-weight: 600;
     font-size: 1.1em;
     letter-spacing: 0.1em;
+    text-transform: capitalize;
   }
   input {
     @include utils.leftRightPadding(1em);
+    color: var(--color);
+    border-width: var(--border-width);
     font-size: 1em;
-    min-height: 50px;
+    min-height: 3em;
     letter-spacing: 0.1em;
+    transition: border-color 400ms ease-in-out, border-radius 200ms ease-in-out,
+      background-color 200ms ease-in-out;
   }
 }
 
-input {
-  border: none;
+@each $colorName in colors.$colorNames {
+  .#{$colorName}.input-container {
+    --color: var(--#{$colorName});
+    @for $i from 1 through 10 {
+      --color-#{$i}: var(--#{$colorName}-#{$i});
+    }
+
+    @each $variant
+      in (dark, darker, light, lighter, face, dark-face, light-face)
+    {
+      --color-#{$variant}: var(--#{$colorName}-#{$variant});
+    }
+  }
 }
 
+.input-container.basic {
+  input {
+    border: none;
+    outline: none;
+    color: var(--color-dark);
+    border-bottom: var(--border-width) var(--border-style) var(--color-2);
+    background-color: var(--color-1);
+  }
 
+  input:focus {
+    border-bottom-color: var(--color);
+  }
+}
 
+.input-container.flat {
+  input {
+    border: none;
+    outline: none;
+    color: var(--color-dark);
+    background-color: var(--color-1);
+  }
+
+  input:focus {
+    // border-bottom-color: var(--color);
+    background-color: var(--color-3);
+  }
+}
+
+.input-container.stroked {
+  input {
+    color: var(--color-dark);
+    background-color: var(--color-1);
+    border: var(--border-width) var(--border-style) var(--color);
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--color-darker);
+    background-color: var(--color-3);
+  }
+}
+.input-container.raised {
+  input {
+    border: none;
+    outline: none;
+    color: var(--color-dark);
+    background-color: var(--color-1);
+    box-shadow: -0px 3px 5px 1px var(--color-darker);
+  }
+
+  input:focus {
+    // border-bottom-color: var(--color);
+    background-color: var(--color-3);
+  }
+}
+
+.input-container.inbox {
+}
+
+.input-container.basic {
+}

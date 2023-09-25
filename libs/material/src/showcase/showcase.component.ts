@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+/* eslint-disable @angular-eslint/directive-selector */
+import {
+  AfterViewInit,
+  Component,
+  Directive,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent, ButtonEvent } from '../button';
 import { MenuComponent } from '../menu/menu.component';
@@ -7,6 +14,20 @@ import { TabContainerComponent } from '../tab/tab-container/tab-container.compon
 import { TabComponent } from '../tab/tab.component';
 import { ButtonType, ButtonVariant, Color } from '../api';
 import { BadgeDirective } from '../badge/badge.directive';
+
+@Directive({
+  selector: '[focusOnClick]',
+  standalone: true,
+})
+export class FocusOnCLickDirective implements AfterViewInit {
+  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.setAttribute('tabindex', '0');
+    this.elementRef.nativeElement.addEventListener('click', () => {
+      this.elementRef.nativeElement.focus();
+    });
+  }
+}
 
 @Component({
   selector: 'tb-showcase',
@@ -19,6 +40,7 @@ import { BadgeDirective } from '../badge/badge.directive';
     TabContainerComponent,
     TabComponent,
     BadgeDirective,
+    FocusOnCLickDirective,
   ],
   templateUrl: './showcase.component.html',
   styles: [

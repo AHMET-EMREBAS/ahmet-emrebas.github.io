@@ -1,7 +1,10 @@
 @use '../colors' as colors;
 
 $buttonTypes: (basic, flat, raised, inbox, stroked);
-
+:root {
+  --button-shadow: -1px 1px 2px 1px;
+  --button-border-radius: 0.3em;
+}
 /** Initial value */
 button.basic {
   background-color: rgba(0, 0, 0, 0);

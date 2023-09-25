@@ -42,3 +42,5 @@ export * from './form/enum-input/enum-input.component';
 export * from './form/date-input/date-input.component';
 
 export * from './form/array-input/array-input.component';
+
+export * from './sticky-notes/sticky-notes.component';
