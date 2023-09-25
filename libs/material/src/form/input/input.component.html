@@ -8,5 +8,5 @@
   [label]="label"
   [icon]="icon"
   [variant]="variant"
-  [value]="value"
+  (inputEvent)="handleInput($event)"
 ></tb-text-input>

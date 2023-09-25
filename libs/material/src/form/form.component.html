@@ -4,12 +4,13 @@
   class="form-container"
   autocomplete="on"
   (ngSubmit)="submit(form)"
-  (submit)="submit($event)"
+  (submit)="preventDefault($event)"
+  (reset)="reset()"
   novalidate
 >
   <ng-container *ngFor="let child of children">
     <ng-container
-      *ngComponentOutlet="componentType; inputs: child"
+      *ngComponentOutlet="componentType; inputs: childValue(child)"
     ></ng-container>
   </ng-container>
 

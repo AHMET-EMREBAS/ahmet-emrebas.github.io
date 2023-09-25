@@ -139,14 +139,15 @@
 </tb-tab-container> -->
 
 
-<tb-form (submitEvent)="submit($event)">
-  <tb-input name="firstName"  type="text"  color="primary" label="First Name" icon="person" variant="basic"></tb-input>
-  <tb-input name="lastName"  type="text"   color="secondary" label="Last Name" icon="person" variant="basic"></tb-input>
-  <tb-input name="email"  type="email" color="accent" label="Email" icon="email" variant="basic"></tb-input>
-  <tb-input name="password"  type="password" color="warn" label="Password" icon="password" variant="raised"></tb-input>
-  <tb-input name="street"  color="green" label="Street" icon="signpost" autocomplete="street-address" variant="basic"></tb-input>
-  <tb-input name="city"  color="green" label="City" icon="location_city" autocomplete="address-level2" variant="basic"></tb-input>
-  <tb-input name="state"  color="red" label="State" icon="flag" autocomplete="address-level1" variant="basic"></tb-input>
+<tb-form (submitEvent)="submit($event)" [formValue]="formValue">
+  
+  <tb-input  name="firstName"  type="text"  color="primary" label="First Name" icon="person" variant="basic"></tb-input>
+  <tb-input  name="lastName"  type="text"   color="secondary" label="Last Name" icon="person" variant="basic"></tb-input>
+  <tb-input  name="email"  type="email" color="accent" label="Email" icon="email" variant="basic"></tb-input>
+  <tb-input  name="password"  type="password" color="warn" label="Password" icon="password" variant="raised"></tb-input>
+  <tb-input  name="street"  color="green" label="Street" icon="signpost" autocomplete="street-address" variant="basic"></tb-input>
+  <tb-input  name="city"  color="green" label="City" icon="location_city" autocomplete="address-level2" variant="basic"></tb-input>
+  <tb-input  name="state"  color="red" label="State" icon="flag" autocomplete="address-level1" variant="basic"></tb-input>
   <ng-template tbFormActions>
     <tb-button type="submit" icon="add" label="Submit" color="primary" variant="raised"></tb-button>
     <tb-button type="reset" icon="refresh" label="Reset" color="secondary" variant="stroked"></tb-button>

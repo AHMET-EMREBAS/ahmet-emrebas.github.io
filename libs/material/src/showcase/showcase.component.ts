@@ -65,6 +65,7 @@ export class ShowcaseComponent {
 
   constructor() {}
 
+  formValue = {};
   submit(event: any) {
     console.log(event);
   }

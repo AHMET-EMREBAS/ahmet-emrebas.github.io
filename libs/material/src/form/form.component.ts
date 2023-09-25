@@ -4,6 +4,7 @@ import {
   Component,
   ContentChildren,
   EventEmitter,
+  Input,
   NgModule,
   Output,
   QueryList,
@@ -20,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './form.component.html',
 })
-export class FormComponent implements AfterViewInit {
+export class FormComponent {
   @ContentChildren(FormActionsDirective) tbFormActions?: TemplateRef<any>;
 
   componentType = InputComponent;
@@ -28,17 +29,27 @@ export class FormComponent implements AfterViewInit {
 
   @Output() submitEvent = new EventEmitter<Record<string, string>>();
 
-  ngAfterViewInit(): void {}
+  @Input() formValue?: Record<string, any>;
 
-  submit(event: any) {
-    if (event.preventDefault) {
-      event.preventDefault();
-    }
-    const formValue = this.children
-      ?.map((e) => ({ [e.name]: e.value }))
-      .reduce((p, c) => ({ ...p, ...c }));
+  preventDefault(event: any) {
+    event.preventDefault();
+  }
 
-    this.submitEvent.emit(formValue);
+  childValue(value: any) {
+    return {
+      ...value,
+      formValue: this.formValue,
+    };
+  }
+  submit() {
+    this.submitEvent.emit(this.formValue);
+  }
+
+  reset() {
+    if (this.formValue)
+      Object.entries(this.formValue).forEach(([key, value]) => {
+        delete (this.formValue as any)[key];
+      });
   }
 }
 

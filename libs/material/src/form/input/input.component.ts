@@ -21,4 +21,11 @@ export class InputComponent {
   @Input() label = 'Input Label';
   @Input() variant: InputVariant = 'basic';
   @Input() icon: Icon = 'info';
+  @Input() formValue?: Record<string, any>;
+
+  handleInput(event: any) {
+    if (this.formValue) {
+      this.formValue[this.name] = event;
+    }
+  }
 }

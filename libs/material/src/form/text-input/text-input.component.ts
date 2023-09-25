@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HasValueDirective } from '../has-value/has-value.directive';
 import { FocusDirective } from '../focus/focus.directive';
@@ -17,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './text-input.component.html',
 })
 export class TextInputComponent {
+  @Output() inputEvent = new EventEmitter<string>();
   @Input() value = '';
   @Input() id = '';
   @Input() name = '';
@@ -26,4 +33,8 @@ export class TextInputComponent {
   @Input() label = 'Input Label';
   @Input() variant: InputVariant = 'basic';
   @Input() icon: Icon = 'info';
+
+  emitEvent() {
+    this.inputEvent.emit(this.value);
+  }
 }
