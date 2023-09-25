@@ -29,15 +29,19 @@ export class MenuComponent extends ButtonComponent implements AfterViewInit {
   @Output()
   override clickEvent: EventEmitter<ButtonEvent> = new EventEmitter<ButtonEvent>();
 
+  /**  */
   @ContentChildren(MenuComponent) childrenViaContent?: QueryList<MenuComponent>;
 
+  /** For testing only */
   @Input() childrenViaInput?: Partial<MenuComponent>[];
-
-  children?: Partial<MenuComponent>[];
-
+  
+  /** To which direction the menu will open */
   @Input() position: Position = 'none';
 
+  /** Show menu items as */
   @Input() showAs: 'row' | 'column' = 'column';
+
+  children?: Partial<MenuComponent>[];
 
   constructor(private readonly detector: ChangeDetectorRef) {
     super();
@@ -65,8 +69,6 @@ export class MenuComponent extends ButtonComponent implements AfterViewInit {
       position,
       showAs,
       icon,
-      tooltip,
-      tooltipPosition,
     } = child;
 
     return {
@@ -77,8 +79,6 @@ export class MenuComponent extends ButtonComponent implements AfterViewInit {
       size: size || this.size,
       childrenViaInput: children,
       label,
-      tooltip: tooltip || this.tooltip,
-      tooltipPosition: tooltipPosition || this.tooltipPosition,
       position: position || this.position,
       showAs: showAs || this.showAs,
       icon,

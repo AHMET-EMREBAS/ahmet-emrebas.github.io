@@ -6,15 +6,16 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TabComponent } from '../tab.component';
 import { ScrollDirectionDirective } from '../../scroll-direction/scroll-direction.directive';
-
+import { TabComponent } from '../tab.component';
 @Component({
   selector: 'tb-tab-container',
   standalone: true,
-  imports: [CommonModule, TabComponent, ScrollDirectionDirective],
+  imports: [CommonModule, ScrollDirectionDirective],
   templateUrl: './tab-container.component.html',
   styles: [],
+
+  animations: [],
 })
 export class TabContainerComponent {
   @ViewChild('container') container?: ElementRef<HTMLDivElement>;
@@ -27,7 +28,6 @@ export class TabContainerComponent {
     return { label: child.label, active: child.active };
   }
   activate(child: Partial<TabComponent>) {
-    console.log(child);
     const updated = this.children?.toArray();
     updated?.forEach((e) => (e.active = false));
     if (updated) {

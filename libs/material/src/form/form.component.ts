@@ -1,14 +1,10 @@
 import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   ContentChildren,
   EventEmitter,
-  Input,
   NgModule,
   Output,
   QueryList,
-  TemplateRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './input/input.component';
@@ -24,8 +20,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class FormComponent {
   componentType = InputComponent;
 
-  @ContentChildren(FormActionsDirective) tbFormActions?: TemplateRef<any>;
-  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;
+  /** Form action container marked by FormActionDirective  */
+  @ContentChildren(FormActionsDirective)
+  tbFormActions?: QueryList<FormActionsDirective>;
+
+  @ContentChildren(InputComponent) children!: QueryList<InputComponent>;
 
   @Output() submitEvent = new EventEmitter<Record<string, unknown>>();
 

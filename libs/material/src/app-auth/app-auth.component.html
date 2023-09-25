@@ -1,0 +1,122 @@
+<tb-tab-container>
+  <tb-tab #tab label="Login" [active]="true" color="primary">
+    <tb-form (submitEvent)="submitLoginForm($event)">
+      <tb-input
+        name="username"
+        icon="person"
+        color="primary"
+        label="Username"
+        type="text"
+      ></tb-input>
+      <tb-input
+        name="password"
+        icon="password"
+        color="accent"
+        label="Password"
+        type="password"
+      ></tb-input>
+
+      <ng-template tbFormActions>
+        <tb-button
+          type="submit"
+          icon="login"
+          label="Login"
+          variant="raised"
+        ></tb-button>
+        <tb-button
+          type="reset"
+          icon="refresh"
+          label="Rest"
+          variant="stroked"
+        ></tb-button>
+      </ng-template>
+    </tb-form>
+  </tb-tab>
+
+  <tb-tab label="Forgot password" color="secondary">
+    <tb-form (submitEvent)="submitForgotForm($event)">
+      <tb-input
+        name="username"
+        icon="person"
+        color="primary"
+        label="Username"
+        type="text"
+      ></tb-input>
+
+      <ng-template tbFormActions>
+        <tb-button
+          type="submit"
+          icon="login"
+          label="Send me one time login code"
+          variant="raised"
+        ></tb-button>
+        <tb-button
+          type="reset"
+          icon="refresh"
+          label="Rest"
+          variant="stroked"
+        ></tb-button>
+      </ng-template>
+    </tb-form>
+  </tb-tab>
+  <tb-tab label="Secure login" color="accent">
+    <tb-form (submitEvent)="submitSecureForm($event)">
+      <tb-input
+        name="key"
+        icon="key"
+        color="primary"
+        label="One time secure code"
+        type="text"
+      ></tb-input>
+
+      <ng-template tbFormActions>
+        <tb-button
+          type="submit"
+          icon="login"
+          label="Login with secuirty key"
+          variant="raised"
+        ></tb-button>
+        <tb-button
+          type="reset"
+          icon="refresh"
+          label="Rest"
+          variant="stroked"
+        ></tb-button>
+      </ng-template>
+    </tb-form>
+  </tb-tab>
+  <tb-tab label="Signup" color="warn">
+    <tb-form (submitEvent)="submitSignupForm($event)">
+      <tb-input
+        name="username"
+        name="username"
+        icon="person"
+        color="primary"
+        label="Username"
+        type="text"
+      ></tb-input>
+      <tb-input
+        name="password"
+        icon="password"
+        color="accent"
+        label="Password"
+        type="password"
+      ></tb-input>
+
+      <ng-template tbFormActions>
+        <tb-button
+          type="submit"
+          icon="signature"
+          label="Signup"
+          variant="raised"
+        ></tb-button>
+        <tb-button
+          type="reset"
+          icon="refresh"
+          label="Rest"
+          variant="stroked"
+        ></tb-button>
+      </ng-template>
+    </tb-form>
+  </tb-tab>
+</tb-tab-container>

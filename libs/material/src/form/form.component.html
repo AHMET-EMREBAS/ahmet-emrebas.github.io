@@ -3,7 +3,7 @@
   ngForm
   class="form-container primary"
   autocomplete="on"
-  (ngSubmit)="submit(form)"
+  (ngSubmit)="submit()"
   (submit)="preventDefault($event)"
   (reset)="reset()"
   novalidate
@@ -16,7 +16,7 @@
 
   <div class="form-actions">
     <ng-container
-      *ngTemplateOutlet="tbFormActions?.first?.templateRef"
+      *ngTemplateOutlet="tbFormActions?.first?.templateRef!"
     ></ng-container>
   </div>
 </form>

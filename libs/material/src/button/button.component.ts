@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ButtonVariant, ButtonType, Color, Icon, Position } from '../api';
+import { ButtonVariant, ButtonType, Color, Icon } from '../api';
 import { CommonModule } from '@angular/common';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 
@@ -26,14 +26,7 @@ export type ButtonEvent = {
   standalone: true,
   imports: [CommonModule, TooltipDirective],
   template: `
-    <button
-      [type]="type"
-      #button
-      (click)="emitClickEvent()"
-      [tbTooltip]="tooltip"
-      [tbTooltipPosition]="tooltipPosition"
-      [attr.role]="role"
-    >
+    <button [type]="type" #button (click)="emitClickEvent()" [attr.role]="role">
       <span class="icon" *ngIf="type !== 'button'">{{ icon }}</span>
       <span *ngIf="buttonType !== 'icon-button'">
         {{ label }}
@@ -48,8 +41,6 @@ export class ButtonComponent implements AfterViewInit {
   @Input() icon: Icon = 'info';
   @Input() label = 'Button';
   @Input() size: 'small' | 'regular' | 'big' = 'regular';
-  @Input() tooltip?: string;
-  @Input() tooltipPosition?: Position;
   @Input() buttonType: ButtonType = 'button';
   @Input() uuid = 'Id not set!';
   @Input() variant: ButtonVariant = 'basic';

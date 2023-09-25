@@ -46,3 +46,7 @@ export * from './form/array-input/array-input.component';
 export * from './sticky-notes/sticky-notes.component';
 
 export * from './form/input/input.component';
+
+export * from './app-inventory/app-inventory.component';
+
+export * from './app-auth/app-auth.component';
