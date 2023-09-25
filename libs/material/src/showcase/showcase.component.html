@@ -1,4 +1,4 @@
-<tb-toolbar>
+<!-- <tb-toolbar>
   <tb-menu
     label="Home"
     icon="home"
@@ -136,4 +136,36 @@
       </tb-tab>
     </tb-tab-container>
   </tb-tab>
-</tb-tab-container>
+</tb-tab-container> -->
+
+
+<tb-form (submitEvent)="submit($event)" [formValue]="formValue">
+  
+  <tb-input  name="firstName"  type="text"  color="primary" label="First Name" icon="person" variant="basic"></tb-input>
+  <tb-input  name="lastName"  type="text"   color="secondary" label="Last Name" icon="person" variant="basic"></tb-input>
+  <tb-input  name="email"  type="email" color="accent" label="Email" icon="email" variant="basic"></tb-input>
+  <tb-input  name="password"  type="password" color="warn" label="Password" icon="password" variant="raised"></tb-input>
+
+  <ng-template tbFormActions>
+    <tb-button type="submit" icon="add" label="Submit" color="primary" variant="raised"></tb-button>
+    <tb-button type="reset" icon="refresh" label="Reset" color="secondary" variant="stroked"></tb-button>
+  </ng-template>
+</tb-form>
+<!-- <hr />
+  <div class="decks vertical">
+    <div tabindex="0" class="deck primary"></div>
+    <div tabindex="1" class="deck secondary"></div>
+    <div tabindex="2" class="deck accent"></div>
+    <div tabindex="3" class="deck warn"></div>
+    <div tabindex="4" class="deck red"></div>
+    <div tabindex="5" class="deck green"></div>
+  </div>
+  <div class="decks horizontal">
+    <div tabindex="0" class="deck primary"></div>
+    <div tabindex="1" class="deck secondary"></div>
+    <div tabindex="2" class="deck accent"></div>
+    <div tabindex="3" class="deck warn"></div>
+    <div tabindex="4" class="deck red"></div>
+    <div tabindex="5" class="deck green"></div>
+  </div>
+</form> -->

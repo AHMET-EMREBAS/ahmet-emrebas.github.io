@@ -1,0 +1,22 @@
+<form
+  #form="ngForm"
+  ngForm
+  class="form-container"
+  autocomplete="on"
+  (ngSubmit)="submit(form)"
+  (submit)="preventDefault($event)"
+  (reset)="reset()"
+  novalidate
+>
+  <ng-container *ngFor="let child of children">
+    <ng-container
+      *ngComponentOutlet="componentType; inputs: childValue(child)"
+    ></ng-container>
+  </ng-container>
+
+  <div class="form-actions">
+    <ng-container
+      *ngTemplateOutlet="tbFormActions.first.templateRef"
+    ></ng-container>
+  </div>
+</form>

@@ -19,7 +19,7 @@ export const Primary: Story = {
 
     children: [
       {
-        type: 'button',
+        buttonType: 'button',
         label: 'Label 1',
         variant: 'basic',
       } as Partial<MenuComponent>,
@@ -74,25 +74,25 @@ export const Primary: Story = {
                     color: 'primary',
                     children: [
                       {
-                        type: 'icon-button',
+                        buttonType: 'icon-button',
                         icon: 'inventory',
                         color: 'primary',
                         variant: 'raised',
                       } as Partial<MenuComponent>,
                       {
-                        type: 'icon-button',
+                        buttonType: 'icon-button',
                         icon: 'house',
                         color: 'primary',
                         variant: 'raised',
                       } as Partial<MenuComponent>,
                       {
-                        type: 'icon-button',
+                        buttonType: 'icon-button',
                         icon: 'dashboard',
                         color: 'primary',
                         variant: 'raised',
                       } as Partial<MenuComponent>,
                       {
-                        type: 'icon-button',
+                        buttonType: 'icon-button',
                         icon: 'store',
                         color: 'primary',
                         variant: 'raised',

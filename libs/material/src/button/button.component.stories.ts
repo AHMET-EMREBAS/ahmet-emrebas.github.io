@@ -15,7 +15,7 @@ export const Primary: Story = {
   args: {
     uuid: '1',
     label: 'home',
-    type: 'button',
+    buttonType: 'button',
     variant: 'basic',
     color: 'primary',
   },
@@ -25,7 +25,7 @@ export const Heading: Story = {
   args: {
     uuid:'1',
     label: 'Button',
-    type: 'button',
+    buttonType: 'button',
     variant: 'raised',
     color: 'primary',
   },

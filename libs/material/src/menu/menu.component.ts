@@ -55,7 +55,7 @@ export class MenuComponent extends ButtonComponent implements AfterViewInit {
   /** @ignore */
   childValue(child: Partial<MenuComponent>) {
     const {
-      type,
+      buttonType: type,
       variant,
       color,
       size,
@@ -69,7 +69,7 @@ export class MenuComponent extends ButtonComponent implements AfterViewInit {
     } = child;
 
     return {
-      type: type || this.type,
+      type: type || this.buttonType,
       variant: variant || this.variant,
       color: color || this.color,
       size: size || this.size,

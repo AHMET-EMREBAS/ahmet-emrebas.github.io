@@ -13,7 +13,7 @@ import { TooltipDirective } from '../tooltip/tooltip.directive';
     <span>{{ message }}</span>
     <div class="grow-1"></div>
     <tb-button
-      buttonType="icon-button"
+      type="icon-button"
       buttonSize="small"
       buttonStyleType="inbox"
       [color]="color"

@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+/* eslint-disable @angular-eslint/directive-selector */
+import {
+  AfterViewInit,
+  Component,
+  Directive,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent, ButtonEvent } from '../button';
 import { MenuComponent } from '../menu/menu.component';
@@ -7,18 +14,28 @@ import { TabContainerComponent } from '../tab/tab-container/tab-container.compon
 import { TabComponent } from '../tab/tab.component';
 import { ButtonType, ButtonVariant, Color } from '../api';
 import { BadgeDirective } from '../badge/badge.directive';
+import { HasValueDirective } from '../form/has-value/has-value.directive';
+import { FocusDirective } from '../form/focus/focus.directive';
+
+import { FormComponent, FormModule } from '../form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'tb-showcase',
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ButtonComponent,
     MenuComponent,
     ToolbarComponent,
     TabContainerComponent,
     TabComponent,
     BadgeDirective,
+    FocusDirective,
+    HasValueDirective,
+    FormModule,
   ],
   templateUrl: './showcase.component.html',
   styles: [
@@ -43,6 +60,13 @@ export class ShowcaseComponent {
   ] as ButtonVariant[];
 
   handle(event: ButtonEvent) {
+    console.log(event);
+  }
+
+  constructor() {}
+
+  formValue = {};
+  submit(event: any) {
     console.log(event);
   }
 }
