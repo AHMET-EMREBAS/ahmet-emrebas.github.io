@@ -38,6 +38,8 @@ $commonColors: (
 /** colors: primary, accent, warn */
 @mixin build($colors) {
   :root {
+    --surface: white;
+    
     @each $colorName, $color in $colors {
       --#{$colorName}: #{$color};
       --#{$colorName}-face: #{faceColor($color)};

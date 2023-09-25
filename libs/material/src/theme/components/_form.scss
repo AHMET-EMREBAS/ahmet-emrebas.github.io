@@ -1,6 +1,8 @@
 @use '../common' as utils;
 @use '../colors' as colors;
-
+:root {
+  --input-border-radius: 1em;
+}
 .form-container {
   @include utils.column(1em);
 
@@ -12,6 +14,8 @@
 }
 
 .input-container {
+  position: relative;
+  padding-top: 1em;
   --color: white;
   --light-color: white;
   --border-style: solid;
@@ -23,28 +27,48 @@
   --border-right-width: 0.15em;
   --border-top-width: 0.15em;
   --border-left-width: 0.15em;
+  // padding-top: 1em;
 
   @include utils.column(0.3em);
   // padding: 0.3em;
   color: var(--color);
+  min-height: 3.3em;
+  line-height: 3.3em;
+  letter-spacing: 0.1em;
 
   label {
-    color: inherit;
-    padding-left: 1em;
-    font-weight: 600;
-    font-size: 1.1em;
-    letter-spacing: 0.1em;
+    position: absolute;
+    letter-spacing: inherit;
     text-transform: capitalize;
+    color: var(--color);
+    transition: all 400ms ease-in-out;
+    height: fit-content;
+
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-left: 2em;
+    pointer-events: none;
   }
+
   input {
     @include utils.leftRightPadding(1em);
     color: var(--color);
     border-width: var(--border-width);
-    font-size: 1em;
-    min-height: 3em;
-    letter-spacing: 0.1em;
-    transition: border-color 400ms ease-in-out, border-radius 200ms ease-in-out,
-      background-color 200ms ease-in-out;
+    font-size: inherit;
+    min-height: inherit;
+    padding-top: 0.5em;
+    padding-left: 4em;
+    width: inherit;
+    letter-spacing: inherit;
+    border-radius: var(--input-border-radius);
+    transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out,
+      background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
+  }
+
+  .icon {
+    position: absolute;
+    font-size: 2em;
+    margin-left: 0.3em;
   }
 }
 
@@ -60,6 +84,20 @@
     {
       --color-#{$variant}: var(--#{$colorName}-#{$variant});
     }
+  }
+}
+
+.input-container:has(:focus),
+.input-container:has(> input[has-value='true']) {
+  label {
+    font-size: 0.8em;
+    line-height: 2em;
+    border-radius: 1em;
+    transform: translateY(-50%);
+    border: 5px solid var(--surface);
+    background-color: var(--color);
+    color: var(--color-face);
+    margin-left: 4em;
   }
 }
 
@@ -110,12 +148,11 @@
     outline: none;
     color: var(--color-dark);
     background-color: var(--color-1);
-    box-shadow: -0px 3px 5px 1px var(--color-darker);
+    box-shadow: -0px 3px 5px 1px var(--color-3);
   }
 
   input:focus {
-    // border-bottom-color: var(--color);
-    background-color: var(--color-3);
+    box-shadow: -0px 3px 5px 1px var(--color-6);
   }
 }
 

@@ -1,1 +1,13 @@
-<p>form works!</p>
+<form class="form-container">
+  <ng-container
+    [ngComponentOutlet]="componentType"
+    [ngComponentInputs]="child"
+    *ngFor="let child of children"
+  ></ng-container>
+
+  <div class="form-actions">
+    <ng-container
+      *ngTemplateOutlet="actionTemplate?.first?.templateRef"
+    ></ng-container>
+  </div>
+</form>

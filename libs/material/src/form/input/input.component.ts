@@ -1,17 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HasValueDirective } from '../has-value/has-value.directive';
-import { FocusDirective } from '../focus/focus.directive';
+import { TextInputComponent } from '../text-input/text-input.component';
 import { Color, Icon, InputVariant } from '../../api';
 
 @Component({
-  selector: 'tb-text-input',
+  selector: 'tb-input',
   standalone: true,
-  imports: [CommonModule, HasValueDirective, FocusDirective],
-  templateUrl: './text-input.component.html',
-  styles: [],
+  imports: [CommonModule, TextInputComponent],
+  templateUrl: './input.component.html',
 })
-export class TextInputComponent {
+export class InputComponent {
+  @Input() inputType: InputVariant = 'basic';
   @Input() color: Color = 'primary';
   @Input() label = 'Input Label';
   @Input() variant: InputVariant = 'basic';

@@ -4,7 +4,7 @@
   position: relative;
 }
 
-@keyframes bad-animation {
+@keyframes badge-animation {
   0% {
     transform: rotate(-1deg) translate(50%, -40%) rotate(20deg);
   }
@@ -17,7 +17,7 @@
 @each $color in colors.$colorNames {
   [data-badge][data-badge-color='#{$color}']::after {
     content: attr(data-badge);
-    z-index: 1;
+    z-index: 3;
     position: absolute;
     background-color: var(--#{$color}-darker);
     color: var(--#{$color}-dark-face);
@@ -43,7 +43,7 @@
     border-top: 5px solid var(--#{$color}-dark);
     border-right: 5px solid var(--#{$color}-dark);
 
-    animation-name: bad-animation;
+    animation-name: badge-animation;
     animation-duration: 400ms;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;

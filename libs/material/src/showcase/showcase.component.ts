@@ -14,20 +14,10 @@ import { TabContainerComponent } from '../tab/tab-container/tab-container.compon
 import { TabComponent } from '../tab/tab.component';
 import { ButtonType, ButtonVariant, Color } from '../api';
 import { BadgeDirective } from '../badge/badge.directive';
+import { HasValueDirective } from '../form/has-value/has-value.directive';
+import { FocusDirective } from '../form/focus/focus.directive';
 
-@Directive({
-  selector: '[focusOnClick]',
-  standalone: true,
-})
-export class FocusOnCLickDirective implements AfterViewInit {
-  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
-  ngAfterViewInit(): void {
-    this.elementRef.nativeElement.setAttribute('tabindex', '0');
-    this.elementRef.nativeElement.addEventListener('click', () => {
-      this.elementRef.nativeElement.focus();
-    });
-  }
-}
+import { FormComponent, FormModule } from '../form/form.component';
 
 @Component({
   selector: 'tb-showcase',
@@ -40,7 +30,9 @@ export class FocusOnCLickDirective implements AfterViewInit {
     TabContainerComponent,
     TabComponent,
     BadgeDirective,
-    FocusOnCLickDirective,
+    FocusDirective,
+    HasValueDirective,
+    FormModule,
   ],
   templateUrl: './showcase.component.html',
   styles: [
