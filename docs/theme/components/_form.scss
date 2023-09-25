@@ -1,0 +1,168 @@
+@use '../common' as utils;
+@use '../colors' as colors;
+
+.form-container {
+  @include utils.column(var(--form-container-gap));
+
+  background-color: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: var(--box-radius);
+  padding: 1em;
+
+  font-family: var(--font-content);
+  font-size: var(--form-font-size);
+  .form-actions {
+    @include utils.row(var(--form-container-gap));
+    padding-top: var(--form-container-gap);
+  }
+}
+
+.input-container {
+  position: relative;
+
+  --color: white;
+  --light-color: white;
+  --border-style: solid;
+  --border-width-value: 0.15em;
+  --border-width: 0.15em;
+  --border-color: transparent;
+
+  --border-bottom-width: 0.15em;
+  --border-right-width: 0.15em;
+  --border-top-width: 0.15em;
+  --border-left-width: 0.15em;
+  // padding-top: 1em;
+
+  @include utils.column(0.3em);
+  // padding: 0.3em;
+  color: var(--color);
+  min-height: 3.3em;
+  line-height: 3.3em;
+  letter-spacing: 0.1em;
+
+  label {
+    position: absolute;
+    letter-spacing: inherit;
+    text-transform: capitalize;
+    color: var(--color);
+    transition: all 400ms ease-in-out;
+    height: fit-content;
+
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-left: 2em;
+    pointer-events: none;
+  }
+
+  input {
+    @include utils.leftRightPadding(1em);
+    color: var(--color);
+    border-width: var(--border-width);
+    font-size: inherit;
+    min-height: inherit;
+    padding-top: 0.5em;
+    padding-left: 4em;
+    width: inherit;
+    letter-spacing: inherit;
+    border-radius: var(--box-radius);
+    transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out,
+      background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
+  }
+
+  .icon {
+    position: absolute;
+    font-size: 2em;
+    margin-left: 0.3em;
+  }
+}
+
+@each $colorName in colors.$colorNames {
+  .#{$colorName}.input-container {
+    --color: var(--#{$colorName});
+    @for $i from 1 through 10 {
+      --color-#{$i}: var(--#{$colorName}-#{$i});
+    }
+
+    @each $variant
+      in (dark, darker, light, lighter, face, dark-face, light-face)
+    {
+      --color-#{$variant}: var(--#{$colorName}-#{$variant});
+    }
+  }
+}
+
+.input-container:has(:focus),
+.input-container:has(> input[has-value='true']),
+.input-container:has(> input:-webkit-autofill) {
+  label {
+    font-size: 0.8em;
+    line-height: 2em;
+    border-radius: 1em;
+    transform: translateY(-50%);
+    border: 5px solid var(--surface);
+    background-color: var(--color);
+    color: var(--color-face);
+    margin-left: 4em;
+  }
+}
+
+.input-container.basic {
+  input {
+    border: none;
+    outline: none;
+    color: var(--color-dark);
+    border-bottom: var(--border-width) var(--border-style) var(--color-2);
+    background-color: var(--color-1);
+  }
+
+  input:focus {
+    border-bottom-color: var(--color);
+  }
+}
+
+.input-container.flat {
+  input {
+    border: none;
+    outline: none;
+    color: var(--color-dark);
+    background-color: var(--color-1);
+  }
+
+  input:focus {
+    // border-bottom-color: var(--color);
+    background-color: var(--color-3);
+  }
+}
+
+.input-container.stroked {
+  input {
+    color: var(--color-dark);
+    background-color: var(--color-1);
+    border: var(--border-width) var(--border-style) var(--color);
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--color-darker);
+    background-color: var(--color-3);
+  }
+}
+.input-container.raised {
+  input {
+    border: none;
+    outline: none;
+    color: var(--color-dark);
+    background-color: var(--color-1);
+    box-shadow: -0px 3px 5px 1px var(--color-3);
+  }
+
+  input:focus {
+    box-shadow: -0px 3px 5px 1px var(--color-6);
+  }
+}
+
+.input-container.inbox {
+}
+
+.input-container.basic {
+}

@@ -22,8 +22,9 @@ async function generateIcons(filePath: string) {
     await sharp(imageFile).resize(size, size).toFile(iconFilePath);
   }
   sharp(imageFile).resize(32, 32).toFile(join(distFolder, 'favicon.ico'));
+
   sharp(imageFile)
-    .resize(350, 150)
+    .resize(350, 150, {fit:'contain', background:'transparent' })
     .toFile(join(distFolder, 'icon-350x150.png'));
 }
 

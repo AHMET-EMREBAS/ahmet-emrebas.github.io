@@ -1250,7 +1250,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<form\n  #form=\"ngForm\"\n  ngForm\n  class=\"form-container\"\n  autocomplete=\"on\"\n  (ngSubmit)=\"submit(form)\"\n  (submit)=\"preventDefault($event)\"\n  (reset)=\"reset()\"\n  novalidate\n>\n  <ng-container *ngFor=\"let child of children\">\n    <ng-container\n      *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n    ></ng-container>\n  </ng-container>\n\n  <div class=\"form-actions\">\n    <ng-container\n      *ngTemplateOutlet=\"tbFormActions.first.templateRef\"\n    ></ng-container>\n  </div>\n</form>\n"
+            "templateData": "<form\n  #form=\"ngForm\"\n  ngForm\n  class=\"form-container primary\"\n  autocomplete=\"on\"\n  (ngSubmit)=\"submit(form)\"\n  (submit)=\"preventDefault($event)\"\n  (reset)=\"reset()\"\n  novalidate\n>\n  <ng-container *ngFor=\"let child of children\">\n    <ng-container\n      *ngComponentOutlet=\"componentType; inputs: childValue(child)\"\n    ></ng-container>\n  </ng-container>\n\n  <div class=\"form-actions\">\n    <ng-container\n      *ngTemplateOutlet=\"tbFormActions?.first?.templateRef\"\n    ></ng-container>\n  </div>\n</form>\n"
         },
         {
             "name": "InputComponent",
@@ -3166,6 +3166,16 @@
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab-container works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
+                "name": "LoginForm",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'username',\n        color: 'primary',\n        autocomplete: 'email',\n        label: 'Username',\n        icon: 'email',\n      },\n      {\n        type: 'password',\n        name: 'password',\n        color: 'primary',\n        autocomplete: 'current-password',\n        label: 'Password',\n        icon: 'email',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+            },
+            {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4141,6 +4151,16 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/form works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "LoginForm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'username',\n        color: 'primary',\n        autocomplete: 'email',\n        label: 'Username',\n        icon: 'email',\n      },\n      {\n        type: 'password',\n        name: 'password',\n        color: 'primary',\n        autocomplete: 'current-password',\n        label: 'Password',\n        icon: 'email',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
                 },
                 {
                     "name": "meta",
@@ -5523,6 +5543,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoginForm",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

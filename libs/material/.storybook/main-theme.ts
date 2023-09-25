@@ -8,4 +8,5 @@ export default create({
     brandUrl: 'https://ahmet-emrebas.github.io/',
     brandImage: 'assets/icons/icon-350x150.png',
     brandTarget: '_self',
+
 });
