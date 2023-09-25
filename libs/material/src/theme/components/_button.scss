@@ -1,10 +1,7 @@
 @use '../colors' as colors;
 
 $buttonTypes: (basic, flat, raised, inbox, stroked);
-:root {
-  --button-shadow: -1px 1px 2px 1px;
-  --button-border-radius: 0.3em;
-}
+
 /** Initial value */
 button.basic {
   background-color: rgba(0, 0, 0, 0);
@@ -15,7 +12,7 @@ button.basic {
 button.inbox {
   color: var(--primary-face);
   background-color: var(--primary);
-  box-shadow: var(--button-shadow) var(--primary-face);
+  box-shadow: var(--box-shadow) var(--primary-face);
   border: none;
 }
 
@@ -23,7 +20,7 @@ button.inbox {
 button.raised {
   color: var(--primary-face);
   background-color: var(--primary);
-  box-shadow: var(--button-shadow) var(--primary-dark);
+  box-shadow: var(--box-shadow) var(--primary-dark);
   border: none;
 }
 
@@ -76,7 +73,7 @@ button.stroked {
     }
 
     button.#{$className}.raised.#{$colorName} {
-      box-shadow: var(--button-shadow) var(--#{$colorName}-dark);
+      box-shadow: var(--box-shadow) var(--#{$colorName}-dark);
     }
     button.#{$className}.inbox.#{$colorName} {
       box-shadow: 0px 0px 2px 1px var(--#{$colorName}-darker);
@@ -108,7 +105,7 @@ button.stroked {
   text-wrap: nowrap;
   font-size: 1em;
 
-  border-radius: var(--button-border-radius);
+  border-radius: var(--box-radius);
 
   outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);

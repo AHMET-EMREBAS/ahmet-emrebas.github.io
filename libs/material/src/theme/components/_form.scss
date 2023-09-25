@@ -1,21 +1,20 @@
 @use '../common' as utils;
 @use '../colors' as colors;
-:root {
-  --input-border-radius: 1em;
-}
+
 .form-container {
-  @include utils.column(1em);
+  @include utils.column(var(--form-container-gap));
 
   font-family: var(--font-content);
-  font-size: 1em;
+  font-size: var(--form-font-size);
   .form-actions {
-    @include utils.row(1em);
+    @include utils.row(var(--form-container-gap));
+    padding-top: var(--form-container-gap);
   }
 }
 
 .input-container {
   position: relative;
-  padding-top: 1em;
+
   --color: white;
   --light-color: white;
   --border-style: solid;
@@ -60,7 +59,7 @@
     padding-left: 4em;
     width: inherit;
     letter-spacing: inherit;
-    border-radius: var(--input-border-radius);
+    border-radius: var(--box-radius);
     transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out,
       background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
   }
