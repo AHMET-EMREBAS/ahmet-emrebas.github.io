@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TabModule } from '../tab/tab.module';
 import { ButtonComponent } from '../button';
 import { FormModule } from '../form/form.module';

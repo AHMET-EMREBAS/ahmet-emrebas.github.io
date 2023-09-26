@@ -159,6 +159,90 @@
             }
         },
         {
+            "name": "ClassListDirective",
+            "id": "directive-ClassListDirective-67c8058121ee7b438cd2d43b6afa7b9cd739e076b051028051213c79bdfd78163a104caa43104ddf9f88fe70588c7193fe177284463206d81a9c0aaf762ed78e",
+            "file": "libs/material/src/micro/class-list/class-list.directive.ts",
+            "type": "directive",
+            "description": "<p>Class list items whose name either not starts with &quot;__&quot; nor ends with &quot;Event&quot;</p>\n",
+            "rawdescription": "\n\nClass list items whose name either not starts with \"__\" nor ends with \"Event\"\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';\n\n/**\n * Class list items whose name either not starts with \"__\" nor ends with \"Event\"\n */\n@Directive({\n  selector: '[tbClassList]',\n  standalone: true,\n})\nexport class ClassListDirective implements AfterViewInit {\n  @Input() tbClassList?: Record<string, any>;\n  constructor(public readonly elementRef: ElementRef<HTMLElement>) {}\n\n  ngAfterViewInit(): void {\n    console.log(this.tbClassList);\n    if (this.tbClassList) {\n      console.log('Adding classes');\n      const entries = Object.entries(this.tbClassList);\n      console.log(entries);\n      for (const [key, value] of entries) {\n        if (\n          key.startsWith('__') ||\n          key.startsWith('native') ||\n          key.startsWith('ng') ||\n          key.startsWith('can') ||\n          key.startsWith('emit') ||\n          key.startsWith('handle') || \n          key.startsWith('children') ||\n          key.startsWith('child') ||\n          key.endsWith('Event') ||\n          key.endsWith('Ref')  \n        ) {\n          continue;\n        }\n        console.log('adding the class:', key, value);\n        this.elementRef.nativeElement.classList.add(value);\n      }\n    }\n  }\n}\n",
+            "selector": "[tbClassList]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "tbClassList",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "Record<string | any>",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "elementRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123,
+                        146
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "FocusDirective",
             "id": "directive-FocusDirective-3227cc3eeea7a35be38bf49ddcbc8a7f1f494c117996e4b8ff9e4c7e19a8ab92fabfd5d3d9cb7966ce14ceb3c851371a7819852268e01a4f86f536f61121500d",
             "file": "libs/material/src/micro/focus/focus.directive.ts",
@@ -451,19 +535,19 @@
         },
         {
             "name": "SetAttributeDirective",
-            "id": "directive-SetAttributeDirective-06dad6fe5d820fc0c1407c88b31139987a4e96779cfba836713626d13340b08473cd144c4dbdd82ea60aad27e733781ec6209acfee46fdb5d3a7913b72da0ac5",
+            "id": "directive-SetAttributeDirective-f5eb746ad36311034ccd62e5930036c91ff44f4993aec41b0a17b179c75a76c9ffd6cf8d67fd12c9e9596c3df51612849564bc7181a9eca5ed1606662e45d8f3",
             "file": "libs/material/src/micro/set-attribute/set-attribute.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {\n  AfterViewInit,\n  ComponentRef,\n  Directive,\n  ElementRef,\n  Input,\n} from '@angular/core';\n\n@Directive({ selector: '[tbSetAttribute]', standalone: true })\nexport class SetAttributeDirective implements AfterViewInit {\n  @Input() tbSetattribute?: Record<string, any>;\n  constructor(public readonly elementRef: ElementRef<HTMLElement>) {}\n\n  ngAfterViewInit(): void {\n    if (this.tbSetattribute) {\n      const entries = Object.entries(this.tbSetattribute);\n      for (const [key, value] of entries) {\n        this.elementRef.nativeElement.setAttribute(key, value);\n      }\n    }\n  }\n}\n\n@Directive({ selector: '[tbSetComponentAttribute]', standalone: true })\nexport class SetComponentAttributeDirective implements AfterViewInit {\n  @Input() tbSetComponentAttribute?: Record<string, any>;\n\n  constructor(public readonly componentRef: ComponentRef<unknown>) {}\n\n  ngAfterViewInit(): void {\n    if (this.tbSetComponentAttribute) {\n      const attributes = Object.entries(this.tbSetComponentAttribute);\n      for (const [key, value] of attributes) {\n        this.componentRef.setInput(key, value);\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ComponentRef,\n  Directive,\n  ElementRef,\n  Input,\n} from '@angular/core';\n\n@Directive({ selector: '[tbSetAttribute]', standalone: true })\nexport class SetAttributeDirective implements AfterViewInit {\n  @Input() tbSetAttribute?: Record<string, any>;\n  constructor(public readonly elementRef: ElementRef<HTMLElement>) {}\n\n  ngAfterViewInit(): void {\n    if (this.tbSetAttribute) {\n      const entries = Object.entries(this.tbSetAttribute);\n      for (const [key, value] of entries) {\n        if (key.startsWith('__')) {\n          return;\n        }\n        this.elementRef.nativeElement.setAttribute(key, value);\n      }\n    }\n  }\n}\n",
             "selector": "[tbSetAttribute]",
             "providers": [],
             "hostDirectives": [],
             "standalone": true,
             "inputsClass": [
                 {
-                    "name": "tbSetattribute",
+                    "name": "tbSetAttribute",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 11,
@@ -535,12 +619,12 @@
         },
         {
             "name": "SetComponentAttributeDirective",
-            "id": "directive-SetComponentAttributeDirective-06dad6fe5d820fc0c1407c88b31139987a4e96779cfba836713626d13340b08473cd144c4dbdd82ea60aad27e733781ec6209acfee46fdb5d3a7913b72da0ac5",
-            "file": "libs/material/src/micro/set-attribute/set-attribute.directive.ts",
+            "id": "directive-SetComponentAttributeDirective-4817049550a4852cb9eb35210a039a77d3995a31435963913ae81b44bdb225cc56bc91635e21894aebdc1390a1119651914c9ac67863e15b52bbfbffee15173e",
+            "file": "libs/material/src/micro/set-component-attribute/set-component-attribute.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {\n  AfterViewInit,\n  ComponentRef,\n  Directive,\n  ElementRef,\n  Input,\n} from '@angular/core';\n\n@Directive({ selector: '[tbSetAttribute]', standalone: true })\nexport class SetAttributeDirective implements AfterViewInit {\n  @Input() tbSetattribute?: Record<string, any>;\n  constructor(public readonly elementRef: ElementRef<HTMLElement>) {}\n\n  ngAfterViewInit(): void {\n    if (this.tbSetattribute) {\n      const entries = Object.entries(this.tbSetattribute);\n      for (const [key, value] of entries) {\n        this.elementRef.nativeElement.setAttribute(key, value);\n      }\n    }\n  }\n}\n\n@Directive({ selector: '[tbSetComponentAttribute]', standalone: true })\nexport class SetComponentAttributeDirective implements AfterViewInit {\n  @Input() tbSetComponentAttribute?: Record<string, any>;\n\n  constructor(public readonly componentRef: ComponentRef<unknown>) {}\n\n  ngAfterViewInit(): void {\n    if (this.tbSetComponentAttribute) {\n      const attributes = Object.entries(this.tbSetComponentAttribute);\n      for (const [key, value] of attributes) {\n        this.componentRef.setInput(key, value);\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, ComponentRef, Directive, Input } from '@angular/core';\n\n@Directive({\n  selector: '[tbSetComponentAttribute]',\n  standalone: true,\n})\nexport class SetComponentAttributeDirective  implements AfterViewInit{\n  @Input() tbSetComponentAttribute?: Record<string, any>;\n\n  constructor(public readonly componentRef: ComponentRef<unknown>) {}\n\n  ngAfterViewInit(): void {\n    if (this.tbSetComponentAttribute) {\n      const attributes = Object.entries(this.tbSetComponentAttribute);\n      for (const [key, value] of attributes) {\n        this.componentRef.setInput(key, value);\n      }\n    }\n  }\n}\n",
             "selector": "[tbSetComponentAttribute]",
             "providers": [],
             "hostDirectives": [],
@@ -550,7 +634,7 @@
                     "name": "tbSetComponentAttribute",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 8,
                     "type": "Record<string | any>",
                     "decorators": []
                 }
@@ -568,7 +652,7 @@
                     "type": "ComponentRef<>",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 10,
                     "modifierKind": [
                         123,
                         146
@@ -582,7 +666,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 30,
+                    "line": 12,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -603,7 +687,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 26,
+                "line": 8,
                 "jsdoctags": [
                     {
                         "name": "componentRef",
@@ -1087,7 +1171,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<tb-tab-container>\n  <ng-template tbTab label=\"Login\" color=\"primary\">\n    <tb-form (submitEvent)=\"submitLoginForm($event)\">\n      <tb-input\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Login\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n\n  <ng-template tbTab label=\"Forgot password\" color=\"secondary\">\n    <tb-form (submitEvent)=\"submitForgotForm($event)\">\n      <tb-input\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Send me one time login code\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n  <ng-template tbTab label=\"Secure login\" color=\"accent\">\n    <tb-form (submitEvent)=\"submitSecureForm($event)\">\n      <tb-input\n        name=\"key\"\n        icon=\"key\"\n        color=\"primary\"\n        label=\"One time secure code\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Login with secuirty key\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n  <ng-template tbTab label=\"Signup\" color=\"warn\">\n    <tb-form (submitEvent)=\"submitSignupForm($event)\">\n      <tb-input\n        name=\"username\"\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"signature\"\n          label=\"Signup\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n</tb-tab-container>\n"
+            "templateData": "<tb-tab-container>\n  <ng-template tbTab label=\"Login\" color=\"primary\">\n    <tb-form (submitEvent)=\"submitLoginForm($event)\">\n      <tb-input\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"login\"\n          label=\"Login\"\n          style=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          style=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n\n  <ng-template tbTab label=\"Forgot password\" color=\"secondary\">\n    <tb-form (submitEvent)=\"submitForgotForm($event)\">\n      <tb-input\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"login\"\n          label=\"Send me one time login code\"\n          style=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          style=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n  <ng-template tbTab label=\"Secure login\" color=\"accent\">\n    <tb-form (submitEvent)=\"submitSecureForm($event)\">\n      <tb-input\n        name=\"key\"\n        icon=\"key\"\n        color=\"primary\"\n        label=\"One time secure code\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"login\"\n          label=\"Login with secuirty key\"\n          style=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          style=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n  <ng-template tbTab label=\"Signup\" color=\"warn\">\n    <tb-form (submitEvent)=\"submitSignupForm($event)\">\n      <tb-input\n        name=\"username\"\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"signature\"\n          label=\"Signup\"\n          style=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          style=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n</tb-tab-container>\n"
         },
         {
             "name": "AppInventoryComponent",
@@ -1222,7 +1306,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-b24b1b44ee603d2fade2da9dfc2a0ceed22e22c7318c470ea9ed28bce279b8677db0244f6e6612980c12f7345000d40842210beed5426843dcad5d2c034326f6",
+            "id": "component-ButtonComponent-3553edce75a7643c970ea86341cda187693095b842f37cbc90c1c4f97d4a85a8212c9ff96c30567918e005c784e61b05839d8e691cabed4520084bbdabc544d5",
             "file": "libs/material/src/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1232,35 +1316,17 @@
             "selector": "tb-button",
             "styleUrls": [],
             "styles": [],
-            "template": "<button #button [tbSetAttribute]=\"this\"  (click)=\"emitClickEvent()\">\n  <span class=\"icon\" *ngIf=\"canRenderIcon()\">{{ icon }}</span>\n  <span *ngIf=\"canRenderLabel()\"> {{ label }} </span>\n</button>\n",
+            "template": "<button\n  #button\n  [tbClassList]=\"this\"\n  [tbSetAttribute]=\"{ role: nativeRole, type: nativeType }\"\n  (click)=\"emitClickEvent()\"\n>\n  <span class=\"icon\" *ngIf=\"canRenderIcon()\">{{ icon }}</span>\n  <span *ngIf=\"canRenderLabel()\"> {{ label }} </span>\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "buttonStyle",
-                    "defaultValue": "'basic'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 33,
-                    "type": "ButtonStyle",
-                    "decorators": []
-                },
-                {
-                    "name": "buttonType",
-                    "defaultValue": "'button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 34,
-                    "type": "ButtonType",
-                    "decorators": []
-                },
-                {
                     "name": "color",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 40,
                     "type": "Color",
                     "decorators": []
                 },
@@ -1269,7 +1335,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 41,
                     "type": "Icon",
                     "decorators": []
                 },
@@ -1278,16 +1344,25 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 42,
                     "type": "string",
                     "decorators": []
                 },
                 {
-                    "name": "role",
+                    "name": "nativeRole",
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 44,
+                    "type": "",
+                    "decorators": []
+                },
+                {
+                    "name": "nativeType",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
                     "type": "",
                     "decorators": []
                 },
@@ -1296,8 +1371,17 @@
                     "defaultValue": "'regular'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 43,
                     "type": "ButtonSize",
+                    "decorators": []
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "ButtonStyle",
                     "decorators": []
                 },
                 {
@@ -1305,8 +1389,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
-                    "type": "",
+                    "line": 39,
+                    "type": "ButtonType",
                     "decorators": []
                 }
             ],
@@ -1316,7 +1400,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 36,
                     "type": "EventEmitter"
                 }
             ],
@@ -1328,7 +1412,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nshould wer render icon?",
@@ -1340,7 +1424,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nshould we render label?",
@@ -1352,7 +1436,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1371,7 +1455,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonStyle, ButtonType, Color, Icon } from '../api';\nimport { MicroModule } from '../micro/micro.module';\n\nexport type ButtonSize = 'small' | 'regular' | 'big';\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <button #button [tbSetAttribute]=\"this\"  (click)=\"emitClickEvent()\">\n      <span class=\"icon\" *ngIf=\"canRenderIcon()\">{{ icon }}</span>\n      <span *ngIf=\"canRenderLabel()\"> {{ label }} </span>\n    </button>\n  `,\n})\nexport class ButtonComponent {\n  /** @ignore */\n  @Input() __ngcontext__ = '';\n\n  /** @ignore */\n  @ViewChild('button') __buttonRef?: ElementRef<HTMLButtonElement>;\n\n  @Output() readonly clickEvent = new EventEmitter();\n  @Input() buttonStyle: ButtonStyle = 'basic';\n  @Input() buttonType: ButtonType = 'button';\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() role: HTMLButtonElement['role'] = 'button';\n  @Input() size: ButtonSize = 'regular';\n  @Input() type: HTMLButtonElement['type'] = 'button';\n\n  emitClickEvent() {\n    this.clickEvent.emit();\n  }\n\n  /** should wer render icon? */\n  canRenderIcon() {\n    const iconButtonTypes: ButtonType[] = ['combined-button', 'icon-button'];\n    return iconButtonTypes.includes(this.buttonType);\n  }\n\n  /** should we render label? */\n  canRenderLabel() {\n    const labelButtonTypes: ButtonType[] = [\n      'button',\n      'tab-button',\n      'combined-button',\n    ];\n    return labelButtonTypes.includes(this.buttonType);\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { ButtonStyle, ButtonType, Color, Icon } from '../api';\nimport { MicroModule } from '../micro/micro.module';\n\nexport type ButtonSize = 'small' | 'regular' | 'big';\n@Component({\n  selector: 'tb-button',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <button\n      #button\n      [tbClassList]=\"this\"\n      [tbSetAttribute]=\"{ role: nativeRole, type: nativeType }\"\n      (click)=\"emitClickEvent()\"\n    >\n      <span class=\"icon\" *ngIf=\"canRenderIcon()\">{{ icon }}</span>\n      <span *ngIf=\"canRenderLabel()\"> {{ label }} </span>\n    </button>\n  `,\n})\nexport class ButtonComponent {\n  /** @ignore */\n  @Input() __ngcontext__ = '';\n\n  /** @ignore */\n  @ViewChild('button') buttonRef?: ElementRef<HTMLButtonElement>;\n\n  @Output() readonly clickEvent = new EventEmitter();\n\n  @Input() style: ButtonStyle = 'basic';\n  @Input() type: ButtonType = 'button';\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n  @Input() label = 'Button';\n  @Input() size: ButtonSize = 'regular';\n  @Input() nativeRole: HTMLButtonElement['role'] = 'button';\n  @Input() nativeType: HTMLButtonElement['type'] = 'button';\n\n  emitClickEvent() {\n    this.clickEvent.emit();\n  }\n\n  /** should wer render icon? */\n  canRenderIcon() {\n    const iconButtonTypes: ButtonType[] = ['combined-button', 'icon-button'];\n    return iconButtonTypes.includes(this.type);\n  }\n\n  /** should we render label? */\n  canRenderLabel() {\n    const labelButtonTypes: ButtonType[] = [\n      'button',\n      'tab-button',\n      'combined-button',\n    ];\n    return labelButtonTypes.includes(this.type);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -2103,35 +2187,11 @@
                     "decorators": []
                 },
                 {
-                    "name": "buttonStyle",
-                    "defaultValue": "'basic'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 33,
-                    "type": "ButtonStyle",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ButtonComponent"
-                    }
-                },
-                {
-                    "name": "buttonType",
-                    "defaultValue": "'button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 34,
-                    "type": "ButtonType",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ButtonComponent"
-                    }
-                },
-                {
                     "name": "color",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 40,
                     "type": "Color",
                     "decorators": [],
                     "inheritance": {
@@ -2143,7 +2203,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 41,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -2155,7 +2215,7 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 42,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2163,11 +2223,23 @@
                     }
                 },
                 {
-                    "name": "role",
+                    "name": "nativeRole",
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 44,
+                    "type": "",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "nativeType",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -2179,8 +2251,20 @@
                     "defaultValue": "'regular'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 43,
                     "type": "ButtonSize",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "ButtonStyle",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -2191,8 +2275,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
-                    "type": "",
+                    "line": 39,
+                    "type": "ButtonType",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -2205,7 +2289,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 36,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -2239,7 +2323,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nshould wer render icon?",
@@ -2254,7 +2338,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nshould we render label?",
@@ -2269,7 +2353,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2646,7 +2730,7 @@
         },
         {
             "name": "TabButtonComponent",
-            "id": "component-TabButtonComponent-98c2242caf61f1ef5b71be147a583ab9e2abb999ac22a65abaf58629a3725103e513bc23f1b92349e9373ee598066d5576fd68531c1c4ffebcd911b7b221b016",
+            "id": "component-TabButtonComponent-b8f437dc8ca0016cf549867bed4979ad6e204869c31b181ce150110488c57f22954583ab90ad188da3be4b02a54dad20c09b040d97d65d4b51cb5d00c0f4f2ce",
             "file": "libs/material/src/tab/tab-button/tab-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2663,35 +2747,11 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "buttonStyle",
-                    "defaultValue": "'basic'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 33,
-                    "type": "ButtonStyle",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ButtonComponent"
-                    }
-                },
-                {
-                    "name": "buttonType",
-                    "defaultValue": "'button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 34,
-                    "type": "ButtonType",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ButtonComponent"
-                    }
-                },
-                {
                     "name": "color",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 40,
                     "type": "Color",
                     "decorators": [],
                     "inheritance": {
@@ -2703,7 +2763,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 41,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -2715,7 +2775,7 @@
                     "defaultValue": "'Button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 42,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2723,11 +2783,23 @@
                     }
                 },
                 {
-                    "name": "role",
+                    "name": "nativeRole",
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 44,
+                    "type": "",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "nativeType",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -2739,8 +2811,20 @@
                     "defaultValue": "'regular'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 43,
                     "type": "ButtonSize",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ButtonComponent"
+                    }
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "ButtonStyle",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -2751,8 +2835,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
-                    "type": "",
+                    "line": 39,
+                    "type": "ButtonType",
                     "decorators": [],
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -2765,7 +2849,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 36,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "ButtonComponent"
@@ -2774,7 +2858,7 @@
             ],
             "propertiesClass": [
                 {
-                    "name": "buttonType",
+                    "name": "type",
                     "defaultValue": "'tab-button'",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2795,7 +2879,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nshould wer render icon?",
@@ -2810,7 +2894,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nshould we render label?",
@@ -2825,7 +2909,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2847,7 +2931,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../../button';\nimport { ButtonType } from '../../api';\n\n@Component({\n  selector: 'tb-tab-button',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './tab-button.component.html',\n  styles: [],\n})\nexport class TabButtonComponent extends ButtonComponent {\n  override readonly buttonType: ButtonType = 'tab-button';\n   \n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from '../../button';\nimport { ButtonType } from '../../api';\n\n@Component({\n  selector: 'tb-tab-button',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './tab-button.component.html',\n  styles: [],\n})\nexport class TabButtonComponent extends ButtonComponent {\n  override readonly type: ButtonType = 'tab-button';\n   \n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3042,7 +3126,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<ng-container *ngIf=\"type === 'tab'\">\n  <div\n    #container\n    class=\"flex row gap-2 w-100 ox-auto oy-hidden pb-3 p-1 relative\"\n    tbScrollX\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <button\n        class=\"tab-button {{ child.color }} bottom\"\n        (click)=\"activateChild(child)\"\n      >\n        {{ child.label }}\n      </button>\n      <!-- <tb-button\n        class=\"bottom\"\n        buttonType=\"tab-button\"\n        [label]=\"child.label\"\n        [icon]=\"child.icon\"\n        (clickEvent)=\"activateChild(child)\"\n      ></tb-button> -->\n    </ng-container>\n  </div>\n\n  <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n    <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n      <ng-content></ng-content>\n    </ng-container>\n  </div>\n</ng-container>\n\n<!-- Sidenav -->\n<ng-container *ngIf=\"type === 'sidenav'\">\n  <div class=\"flex row gap-2 w-100\">\n    <tb-nav-list>\n      <tb-nav-list-item\n        [label]=\"child.label\"\n        [icon]=\"child.icon\"\n        [color]=\"child.color\"\n        (clickEvent)=\"activateChild(child)\"\n        *ngFor=\"let child of children\"\n      ></tb-nav-list-item>\n    </tb-nav-list>\n\n    <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n      <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n        <ng-content></ng-content>\n      </ng-container>\n    </div>\n  </div>\n</ng-container>\n"
+            "templateData": "<ng-container *ngIf=\"type === 'tab'\">\n  <div\n    #container\n    class=\"flex row gap-2 w-100 ox-auto oy-hidden pb-3 p-1 relative\"\n    tbScrollX\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <button\n        class=\"tab-button {{ child.color }} bottom\"\n        (click)=\"activateChild(child)\"\n      >\n        {{ child.label }}\n      </button>\n    </ng-container>\n  </div>\n\n  <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n    <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n      <ng-content></ng-content>\n    </ng-container>\n  </div>\n</ng-container>\n\n<!-- Sidenav -->\n<ng-container *ngIf=\"type === 'sidenav'\">\n  <div class=\"flex row gap-2 w-100\">\n    <tb-nav-list>\n      <tb-nav-list-item\n        [label]=\"child.label\"\n        [icon]=\"child.icon\"\n        [color]=\"child.color\"\n        (clickEvent)=\"activateChild(child)\"\n        *ngFor=\"let child of children\"\n      ></tb-nav-list-item>\n    </tb-nav-list>\n\n    <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n      <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n        <ng-content></ng-content>\n      </ng-container>\n    </div>\n  </div>\n</ng-container>\n"
         },
         {
             "name": "TextInputComponent",
@@ -3312,13 +3396,13 @@
         },
         {
             "name": "MicroModule",
-            "id": "module-MicroModule-1f7d84dbf1eb8a8b34bac106274188cde09bf1abd9f8c136eb50c83201ef9da21d8a4fec8fd2b359efdfca9753149a1a709ee323736474f877ba039b1e264673",
+            "id": "module-MicroModule-f4ef9f146f20625fc72e288716c67414fb4543867aeda36f62ed8f94b89f80f8151eab8b05ebcf333476ce48ff9322099e8e2d893d985e588f477c6bf07d46f5",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/src/micro/micro.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { BadgeDirective } from './badge/badge.directive';\nimport { FocusDirective } from './focus/focus.directive';\nimport { ScrollDirectionDirective } from './scroll-direction/scroll-direction.directive';\nimport {\n  SetAttributeDirective,\n  SetComponentAttributeDirective,\n} from './set-attribute/set-attribute.directive';\nimport { TooltipDirective } from './tooltip/tooltip.directive';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    BadgeDirective,\n    FocusDirective,\n    ScrollDirectionDirective,\n    SetAttributeDirective,\n    TooltipDirective,\n    SetComponentAttributeDirective,\n  ],\n  exports: [\n    CommonModule,\n    BadgeDirective,\n    FocusDirective,\n    ScrollDirectionDirective,\n    SetAttributeDirective,\n    SetComponentAttributeDirective,\n    TooltipDirective,\n  ],\n})\nexport class MicroModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { BadgeDirective } from './badge/badge.directive';\nimport { FocusDirective } from './focus/focus.directive';\nimport { ScrollDirectionDirective } from './scroll-direction/scroll-direction.directive';\nimport { SetAttributeDirective } from './set-attribute/set-attribute.directive';\nimport { TooltipDirective } from './tooltip/tooltip.directive';\nimport { SetComponentAttributeDirective } from './set-component-attribute/set-component-attribute.directive';\nimport { ClassListDirective } from './class-list/class-list.directive';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    BadgeDirective,\n    FocusDirective,\n    ScrollDirectionDirective,\n    SetAttributeDirective,\n    TooltipDirective,\n    SetComponentAttributeDirective,\n    ClassListDirective,\n  ],\n  exports: [\n    CommonModule,\n    BadgeDirective,\n    FocusDirective,\n    ScrollDirectionDirective,\n    SetAttributeDirective,\n    SetComponentAttributeDirective,\n    TooltipDirective,\n    ClassListDirective\n  ],\n})\nexport class MicroModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -3333,6 +3417,9 @@
                     "elements": [
                         {
                             "name": "BadgeDirective"
+                        },
+                        {
+                            "name": "ClassListDirective"
                         },
                         {
                             "name": "FocusDirective"
@@ -3353,6 +3440,9 @@
                     "elements": [
                         {
                             "name": "BadgeDirective"
+                        },
+                        {
+                            "name": "ClassListDirective"
                         },
                         {
                             "name": "FocusDirective"
@@ -3523,7 +3613,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'button',\n    buttonStyle: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Button',\n    type: 'button',\n    style: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -4013,7 +4103,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'home',\n    buttonType: 'button',\n    buttonStyle: 'basic',\n    color: 'primary',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'home',\n    type: 'button',\n    style: 'basic',\n    color: 'primary',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -4700,7 +4790,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    buttonType: 'button',\n    buttonStyle: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Button',\n    type: 'button',\n    style: 'raised',\n    color: 'primary',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const buttonElement = canvas.getByText(/Button/gi);\n    expect(buttonElement).toBeTruthy();\n    userEvent.hover(buttonElement);\n    userEvent.click(buttonElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -4720,7 +4810,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'home',\n    buttonType: 'button',\n    buttonStyle: 'basic',\n    color: 'primary',\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'home',\n    type: 'button',\n    style: 'basic',\n    color: 'primary',\n  },\n}"
                 }
             ],
             "libs/material/src/colors/colors.component.stories.ts": [
@@ -5813,7 +5903,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 0,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -6527,6 +6617,15 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/micro/class-list/class-list.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ClassListDirective",
+                "coveragePercent": 20,
+                "coverageCount": "1/5",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/micro/focus/focus.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
@@ -6554,7 +6653,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/micro/set-attribute/set-attribute.directive.ts",
+                "filePath": "libs/material/src/micro/set-component-attribute/set-component-attribute.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "SetComponentAttributeDirective",

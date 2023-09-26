@@ -27,13 +27,14 @@ export type ButtonSize = 'small' | 'regular' | 'big';
   `,
 })
 export class ButtonComponent {
-  /** @ignore */
-  @Input() __ngcontext__ = '';
-
-  /** @ignore */
+  /** @ignore Button eleemnt ref */
   @ViewChild('button') buttonRef?: ElementRef<HTMLButtonElement>;
 
+  /** Click Event */
   @Output() readonly clickEvent = new EventEmitter();
+
+  /** @ignore */
+  @Input() __ngcontext__ = '';
 
   @Input() style: ButtonStyle = 'basic';
   @Input() type: ButtonType = 'button';
