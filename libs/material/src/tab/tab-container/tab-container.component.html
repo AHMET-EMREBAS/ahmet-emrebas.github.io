@@ -6,18 +6,15 @@
   <ng-container *ngFor="let child of children">
     <button
       class="tab-button {{ child.color }} bottom"
-      (click)="activate(child)"
-      [attr.data-active]="child.active"
+      (click)="activateChild(child)"
     >
       {{ child.label }}
     </button>
   </ng-container>
 </div>
-<ng-container *ngFor="let child of children">
-  <ng-container
-    [ngComponentOutlet]="componentType"
-    [ngComponentOutletInputs]="childValue(child)"
-  >
+
+<div *ngIf="delayedChild$ | async as delayedChild" [@enter]>
+  <ng-container *ngTemplateOutlet="delayedChild.templateRef">
     <ng-content></ng-content>
   </ng-container>
-</ng-container>
+</div>

@@ -4527,7 +4527,6 @@ button.green.inbox:focus {
   box-sizing: border-box;
   cursor: pointer;
   background-color: transparent;
-  color: var(--primary);
   padding: 0px;
   padding-left: 1em;
   padding-right: 1em;
@@ -4550,6 +4549,10 @@ button.green.inbox:focus {
   vertical-align: middle;
   border: none;
   transition: border-color 200ms ease-in-out, outline-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.tab-button.primary {
+  color: var(--primary);
 }
 
 .primary.top.tab-button {
@@ -4620,6 +4623,10 @@ button.green.inbox:focus {
   border-left: 0.3em solid var(--primary);
 }
 
+.tab-button.secondary {
+  color: var(--secondary);
+}
+
 .secondary.top.tab-button {
   border-top: 0.3em solid var(--secondary-3);
 }
@@ -4686,6 +4693,10 @@ button.green.inbox:focus {
 .secondary.left.tab-button:focus,
 .secondary.left.tab-button[data-active=true] {
   border-left: 0.3em solid var(--secondary);
+}
+
+.tab-button.accent {
+  color: var(--accent);
 }
 
 .accent.top.tab-button {
@@ -4756,6 +4767,10 @@ button.green.inbox:focus {
   border-left: 0.3em solid var(--accent);
 }
 
+.tab-button.warn {
+  color: var(--warn);
+}
+
 .warn.top.tab-button {
   border-top: 0.3em solid var(--warn-3);
 }
@@ -4822,6 +4837,10 @@ button.green.inbox:focus {
 .warn.left.tab-button:focus,
 .warn.left.tab-button[data-active=true] {
   border-left: 0.3em solid var(--warn);
+}
+
+.tab-button.black {
+  color: var(--black);
 }
 
 .black.top.tab-button {
@@ -4892,6 +4911,10 @@ button.green.inbox:focus {
   border-left: 0.3em solid var(--black);
 }
 
+.tab-button.white {
+  color: var(--white);
+}
+
 .white.top.tab-button {
   border-top: 0.3em solid var(--white-3);
 }
@@ -4960,6 +4983,10 @@ button.green.inbox:focus {
   border-left: 0.3em solid var(--white);
 }
 
+.tab-button.red {
+  color: var(--red);
+}
+
 .red.top.tab-button {
   border-top: 0.3em solid var(--red-3);
 }
@@ -5026,6 +5053,10 @@ button.green.inbox:focus {
 .red.left.tab-button:focus,
 .red.left.tab-button[data-active=true] {
   border-left: 0.3em solid var(--red);
+}
+
+.tab-button.green {
+  color: var(--green);
 }
 
 .green.top.tab-button {
@@ -6923,10 +6954,6 @@ span * {
 .sb-main-padded.sb-show-main {
   padding: 0px;
   margin: 0px;
-}
-
-.docs-story > div:first-child {
-  min-height: 600px;
 }
 
 #storybook-root {

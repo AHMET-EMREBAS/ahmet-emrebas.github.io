@@ -22,7 +22,6 @@
   box-sizing: border-box;
   cursor: pointer;
   background-color: transparent;
-  color: var(--primary);
   padding: 0px;
   padding-left: 1em;
   padding-right: 1em;
@@ -58,6 +57,9 @@
 }
 // tab-button  primary bottom
 @each $colorName in colors.$colorNames {
+  .tab-button.#{$colorName} {
+    color: var(--#{$colorName});
+  }
   @each $side in (top, right, bottom, left) {
     .#{$colorName}.#{$side}.tab-button {
       border-#{$side}: 0.3em solid var(--#{$colorName}-3);

@@ -1,24 +1,17 @@
 /* eslint-disable @angular-eslint/directive-selector */
-import {
-  AfterViewInit,
-  Component,
-  Directive,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent, ButtonEvent } from '../button';
 import { MenuComponent } from '../menu/menu.component';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TabContainerComponent } from '../tab/tab-container/tab-container.component';
-import { TabComponent } from '../tab/tab.component';
 import { ButtonType, ButtonVariant, Color } from '../api';
 import { BadgeDirective } from '../badge/badge.directive';
 import { HasValueDirective } from '../form/has-value/has-value.directive';
 import { FocusDirective } from '../form/focus/focus.directive';
 
-import { FormComponent, FormModule } from '../form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormModule } from '../form/form.module';
 
 @Component({
   selector: 'tb-showcase',
@@ -31,7 +24,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MenuComponent,
     ToolbarComponent,
     TabContainerComponent,
-    TabComponent,
     BadgeDirective,
     FocusDirective,
     HasValueDirective,

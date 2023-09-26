@@ -1,5 +1,5 @@
 <tb-tab-container>
-  <tb-tab #tab label="Login" [active]="true" color="primary">
+  <ng-template tbTab label="Login" color="primary">
     <tb-form (submitEvent)="submitLoginForm($event)">
       <tb-input
         name="username"
@@ -31,9 +31,9 @@
         ></tb-button>
       </ng-template>
     </tb-form>
-  </tb-tab>
+  </ng-template>
 
-  <tb-tab label="Forgot password" color="secondary">
+  <ng-template tbTab label="Forgot password" color="secondary">
     <tb-form (submitEvent)="submitForgotForm($event)">
       <tb-input
         name="username"
@@ -58,8 +58,8 @@
         ></tb-button>
       </ng-template>
     </tb-form>
-  </tb-tab>
-  <tb-tab label="Secure login" color="accent">
+  </ng-template>
+  <ng-template tbTab label="Secure login" color="accent">
     <tb-form (submitEvent)="submitSecureForm($event)">
       <tb-input
         name="key"
@@ -84,8 +84,8 @@
         ></tb-button>
       </ng-template>
     </tb-form>
-  </tb-tab>
-  <tb-tab label="Signup" color="warn">
+  </ng-template>
+  <ng-template tbTab label="Signup" color="warn">
     <tb-form (submitEvent)="submitSignupForm($event)">
       <tb-input
         name="username"
@@ -118,5 +118,5 @@
         ></tb-button>
       </ng-template>
     </tb-form>
-  </tb-tab>
+  </ng-template>
 </tb-tab-container>

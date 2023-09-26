@@ -1,8 +1,23 @@
 /* eslint-disable @angular-eslint/directive-selector */
-import { Directive, TemplateRef } from '@angular/core';
-import { TabComponent } from './tab.component';
+import { Directive, Input, TemplateRef } from '@angular/core';
 
-@Directive({ selector: 'tbTab' })
-export class TabDirective {
-  constructor(public templateRef: TemplateRef<TabComponent>) {}
+import { Color } from '../api';
+
+export class TabInputs {
+  label = '';
+  color: Color = 'primary';
+
+  constructor(obj: Partial<TabInputs>) {
+    Object.assign(this, obj);
+  }
+}
+
+@Directive({ selector: '[tbTab]' })
+export class TabDirective implements TabInputs {
+  /** @ignore */
+  @Input() __ngContext__ = '';
+  @Input() label = '';
+  @Input() color: Color = 'primary';
+
+  constructor(public templateRef: TemplateRef<TabInputs>) {}
 }

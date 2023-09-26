@@ -2,7 +2,6 @@ import {
   Component,
   ContentChildren,
   EventEmitter,
-  NgModule,
   Output,
   QueryList,
 } from '@angular/core';
@@ -49,9 +48,3 @@ export class FormComponent {
     Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);
   }
 }
-
-@NgModule({
-  imports: [FormComponent, InputComponent, FormActionsDirective],
-  exports: [FormComponent, InputComponent, FormActionsDirective],
-})
-export class FormModule {}

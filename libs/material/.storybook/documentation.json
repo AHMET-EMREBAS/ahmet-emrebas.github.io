@@ -4,7 +4,71 @@
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "TabInputs",
+            "id": "class-TabInputs-ad18aeed224acd1fbca5130c219de2d9e4827ff7650274efc94de87fae71974c0555fb2a04716004fd77e5d9ee35a46695978f3a29c95ec0a9d6566e47dec52f",
+            "file": "libs/material/src/tab/tab.directive.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { Directive, Input, TemplateRef } from '@angular/core';\r\n\r\nimport { Color } from '../api';\r\n\r\nexport class TabInputs {\r\n  label = '';\r\n  color: Color = 'primary';\r\n\r\n  constructor(obj: Partial<TabInputs>) {\r\n    Object.assign(this, obj);\r\n  }\r\n}\r\n\r\n@Directive({ selector: '[tbTab]' })\r\nexport class TabDirective implements TabInputs {\r\n  /** @ignore */\r\n  @Input() __ngContext__ = '';\r\n  @Input() label = '';\r\n  @Input() color: Color = 'primary';\r\n\r\n  constructor(public templateRef: TemplateRef<TabInputs>) {}\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "obj",
+                        "type": "Partial<TabInputs>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "obj",
+                        "type": "Partial<TabInputs>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Color",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
     "directives": [
         {
             "name": "BadgeDirective",
@@ -387,17 +451,36 @@
         },
         {
             "name": "TabDirective",
-            "id": "directive-TabDirective-0e34045d6b9c52095c8711f6d7318f657cbfb5807f5bb12e2b6dfc51237de5f7da1dba233d88de6c34fc6b77ba790b3fd9f2b4b79a56acbaa1d131e17e3d5a27",
+            "id": "directive-TabDirective-ad18aeed224acd1fbca5130c219de2d9e4827ff7650274efc94de87fae71974c0555fb2a04716004fd77e5d9ee35a46695978f3a29c95ec0a9d6566e47dec52f",
             "file": "libs/material/src/tab/tab.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\r\nimport { TabComponent } from './tab.component';\r\n\r\n@Directive({ selector: 'tbTab' })\r\nexport class TabDirective {\r\n  constructor(public templateRef: TemplateRef<TabComponent>) {}\r\n}\r\n",
-            "selector": "tbTab",
+            "sourceCode": "import { Directive, Input, TemplateRef } from '@angular/core';\r\n\r\nimport { Color } from '../api';\r\n\r\nexport class TabInputs {\r\n  label = '';\r\n  color: Color = 'primary';\r\n\r\n  constructor(obj: Partial<TabInputs>) {\r\n    Object.assign(this, obj);\r\n  }\r\n}\r\n\r\n@Directive({ selector: '[tbTab]' })\r\nexport class TabDirective implements TabInputs {\r\n  /** @ignore */\r\n  @Input() __ngContext__ = '';\r\n  @Input() label = '';\r\n  @Input() color: Color = 'primary';\r\n\r\n  constructor(public templateRef: TemplateRef<TabInputs>) {}\r\n}\r\n",
+            "selector": "[tbTab]",
             "providers": [],
             "hostDirectives": [],
             "standalone": false,
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -408,16 +491,19 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<TabComponent>",
+                    "type": "TemplateRef<TabInputs>",
                     "optional": false,
                     "description": "",
-                    "line": 7,
+                    "line": 22,
                     "modifierKind": [
                         123
                     ]
                 }
             ],
             "methodsClass": [],
+            "implements": [
+                "TabInputs"
+            ],
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -426,16 +512,16 @@
                 "args": [
                     {
                         "name": "templateRef",
-                        "type": "TemplateRef<TabComponent>",
+                        "type": "TemplateRef<TabInputs>",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 6,
+                "line": 20,
                 "jsdoctags": [
                     {
                         "name": "templateRef",
-                        "type": "TemplateRef<TabComponent>",
+                        "type": "TemplateRef<TabInputs>",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -643,7 +729,7 @@
         },
         {
             "name": "AppAuthComponent",
-            "id": "component-AppAuthComponent-ccb32a032a1e8ad4097ed4e52cc67904232dc251968a5265dfa749cf2ac719d0911658a7472011786abae6e023dccac0e52dc8c943e533f9051dd1d5ce846704",
+            "id": "component-AppAuthComponent-d093cb2eee2a23187808a407666c976e6bf4a6dbe07702c68f48de0d69c8081834476939c486b40a41303608524eaaccd349f8d0a5083266f546a23db1e3c1ae",
             "file": "libs/material/src/app-auth/app-auth.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -665,7 +751,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 15,
                     "type": "EventEmitter"
                 },
                 {
@@ -673,7 +759,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 14,
                     "type": "EventEmitter"
                 },
                 {
@@ -681,7 +767,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 16,
                     "type": "EventEmitter"
                 },
                 {
@@ -689,7 +775,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 17,
                     "type": "EventEmitter"
                 }
             ],
@@ -708,7 +794,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 22,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -736,7 +822,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -764,7 +850,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -792,7 +878,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -834,11 +920,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabModule } from '../tab/tab.module';\nimport { FormModule } from '../form/form.component';\nimport { ButtonComponent } from '../button';\n\nimport {\n  animate,\n  state,\n  style,\n  transition,\n  trigger,\n} from '@angular/animations';\n@Component({\n  selector: 'tb-app-auth',\n  standalone: true,\n  imports: [CommonModule, TabModule, FormModule, ButtonComponent],\n  templateUrl: './app-auth.component.html',\n  animations: [\n    trigger('flyInOut', [\n      state('in', style({ transform: 'translateX(0)' })),\n      transition('void => *', [\n        style({ transform: 'translateX(-100%)' }),\n        animate(100),\n      ]),\n      transition('* => void', [\n        animate(100, style({ transform: 'translateX(100%)' })),\n      ]),\n    ]),\n  ],\n})\nexport class AppAuthComponent {\n  @Output() loginEvent = new EventEmitter();\n  @Output() forgotPasswordEvent = new EventEmitter();\n  @Output() secureEvent = new EventEmitter();\n  @Output() signupEvent = new EventEmitter();\n\n  submitLoginForm(formValue: Record<string, unknown>) {\n    this.loginEvent.emit(formValue);\n  }\n  submitForgotForm(formValue: Record<string, unknown>) {\n    this.forgotPasswordEvent.emit(formValue);\n  }\n  submitSecureForm(formValue: Record<string, unknown>) {\n    this.secureEvent.emit(formValue);\n  }\n  submitSignupForm(formValue: Record<string, unknown>) {\n    this.signupEvent.emit(formValue);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabModule } from '../tab/tab.module';\nimport { ButtonComponent } from '../button';\nimport { FormModule } from '../form/form.module';\n\n@Component({\n  selector: 'tb-app-auth',\n  standalone: true,\n  imports: [CommonModule, TabModule, FormModule, ButtonComponent],\n  templateUrl: './app-auth.component.html',\n})\nexport class AppAuthComponent {\n  @Output() loginEvent = new EventEmitter();\n  @Output() forgotPasswordEvent = new EventEmitter();\n  @Output() secureEvent = new EventEmitter();\n  @Output() signupEvent = new EventEmitter();\n\n  submitLoginForm(formValue: Record<string, unknown>) {\n    this.loginEvent.emit(formValue);\n  }\n  submitForgotForm(formValue: Record<string, unknown>) {\n    this.forgotPasswordEvent.emit(formValue);\n  }\n  submitSecureForm(formValue: Record<string, unknown>) {\n    this.secureEvent.emit(formValue);\n  }\n  submitSignupForm(formValue: Record<string, unknown>) {\n    this.signupEvent.emit(formValue);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<tb-tab-container>\n  <tb-tab label=\"Login\" [active]=\"true\" color=\"primary\">\n    <h1 @flyInOut>Login</h1>\n    <tb-form (submitEvent)=\"submitLoginForm($event)\" >\n      <tb-input\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Login\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </tb-tab>\n\n  <tb-tab label=\"Forgot password\" color=\"secondary\">\n    <tb-form (submitEvent)=\"submitForgotForm($event)\">\n      <tb-input\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Send me one time login code\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </tb-tab>\n  <tb-tab label=\"Secure login\" color=\"accent\">\n    <tb-form (submitEvent)=\"submitSecureForm($event)\">\n      <tb-input\n        icon=\"key\"\n        color=\"primary\"\n        label=\"One time secure code\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Login with secuirty key\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </tb-tab>\n  <tb-tab label=\"Signup\" color=\"warn\">\n    <tb-form (submitEvent)=\"submitSignupForm($event)\">\n      <tb-input\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"signature\"\n          label=\"Signup\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </tb-tab>\n</tb-tab-container>\n"
+            "templateData": "<tb-tab-container>\n  <ng-template tbTab label=\"Login\" color=\"primary\">\n    <tb-form (submitEvent)=\"submitLoginForm($event)\">\n      <tb-input\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Login\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n\n  <ng-template tbTab label=\"Forgot password\" color=\"secondary\">\n    <tb-form (submitEvent)=\"submitForgotForm($event)\">\n      <tb-input\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Send me one time login code\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n  <ng-template tbTab label=\"Secure login\" color=\"accent\">\n    <tb-form (submitEvent)=\"submitSecureForm($event)\">\n      <tb-input\n        name=\"key\"\n        icon=\"key\"\n        color=\"primary\"\n        label=\"One time secure code\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"login\"\n          label=\"Login with secuirty key\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n  <ng-template tbTab label=\"Signup\" color=\"warn\">\n    <tb-form (submitEvent)=\"submitSignupForm($event)\">\n      <tb-input\n        name=\"username\"\n        name=\"username\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          type=\"submit\"\n          icon=\"signature\"\n          label=\"Signup\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          type=\"reset\"\n          icon=\"refresh\"\n          label=\"Rest\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n</tb-tab-container>\n"
         },
         {
             "name": "AppInventoryComponent",
@@ -887,7 +973,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<tb-tab-container>\n  <tb-tab label=\"Tab 1\" [active]=\"true\"> Tab 1 </tb-tab>\n  <tb-tab label=\"Tab 2\"> Tab 2 </tb-tab>\n</tb-tab-container>\n"
+            "templateData": "<tb-tab-container>\n  <ng-template tbTab color=\"primary\" label=\"Tab 1\"> Tab 1 </ng-template>\n  <ng-template tbTab color=\"secondary\" label=\"Tab 2\"> Tab 2 </ng-template>\n</tb-tab-container>\n"
         },
         {
             "name": "ArrayInputComponent",
@@ -1287,7 +1373,7 @@
         },
         {
             "name": "FormComponent",
-            "id": "component-FormComponent-18dd5a89c4b0c587a13521a2a706634c5aa4416b47183dc3191df165af4caf252b7b3803609e22d36651bf9c63ac91f56b2ec6771b7c020f96a8aeeecd7caeeb",
+            "id": "component-FormComponent-a279f32f1963a356c75b5c93e793583e01e7af65be59eb785cf12fe56e152fea5376dbac8f0ff10c2330dba969fca8d704f84fbf4c3593ca0abd19c845e63b02",
             "file": "libs/material/src/form/form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1309,7 +1395,7 @@
                     "defaultValue": "new EventEmitter<Record<string, unknown>>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "EventEmitter"
                 }
             ],
@@ -1321,7 +1407,7 @@
                     "type": "QueryList<InputComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 26,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -1340,7 +1426,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 20
                 },
                 {
                     "name": "formValue",
@@ -1350,7 +1436,7 @@
                     "type": "Record<string | >",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "modifierKind": [
                         146
                     ]
@@ -1362,7 +1448,7 @@
                     "type": "QueryList<FormActionsDirective>",
                     "optional": true,
                     "description": "<p>Form action container marked by FormActionDirective</p>\n",
-                    "line": 25,
+                    "line": 24,
                     "rawdescription": "\nForm action container marked by FormActionDirective",
                     "decorators": [
                         {
@@ -1389,7 +1475,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1417,7 +1503,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1438,7 +1524,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1448,7 +1534,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1479,7 +1565,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  EventEmitter,\n  NgModule,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],\n  templateUrl: './form.component.html',\n})\nexport class FormComponent {\n  componentType = InputComponent;\n\n  /** Form action container marked by FormActionDirective  */\n  @ContentChildren(FormActionsDirective)\n  tbFormActions?: QueryList<FormActionsDirective>;\n\n  @ContentChildren(InputComponent) children!: QueryList<InputComponent>;\n\n  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();\n\n  readonly formValue: Record<string, unknown> = {};\n\n  preventDefault(event: Event) {\n    event.preventDefault();\n  }\n\n  childValue(value: any) {\n    return {\n      ...value,\n      formValue: this.formValue,\n    };\n  }\n\n  submit() {\n    this.submitEvent.emit(this.formValue);\n  }\n\n  reset() {\n    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);\n  }\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
+            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],\n  templateUrl: './form.component.html',\n})\nexport class FormComponent {\n  componentType = InputComponent;\n\n  /** Form action container marked by FormActionDirective  */\n  @ContentChildren(FormActionsDirective)\n  tbFormActions?: QueryList<FormActionsDirective>;\n\n  @ContentChildren(InputComponent) children!: QueryList<InputComponent>;\n\n  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();\n\n  readonly formValue: Record<string, unknown> = {};\n\n  preventDefault(event: Event) {\n    event.preventDefault();\n  }\n\n  childValue(value: any) {\n    return {\n      ...value,\n      formValue: this.formValue,\n    };\n  }\n\n  submit() {\n    this.submitEvent.emit(this.formValue);\n  }\n\n  reset() {\n    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2341,7 +2427,7 @@
         },
         {
             "name": "ShowcaseComponent",
-            "id": "component-ShowcaseComponent-635ef0b82d75211d9ae96dbc8a3035d713dd99d6682ff841a402c6553856df5bd75b1d1cb97a3be17e06a5768b9a8e69e07140d90780c3a755babddb04ecb7c4",
+            "id": "component-ShowcaseComponent-d7498dcde92591484261805122a9fa45dcd93e66dd6d8d091831fd803bc8377ec3bad493d0025efc0e97ecc141164cb15f635c715b67db2c2458f0fc1abc3ed1",
             "file": "libs/material/src/showcase/showcase.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2369,7 +2455,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 42
                 },
                 {
                     "name": "buttonTypes",
@@ -2379,7 +2465,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 44
                 },
                 {
                     "name": "buttonVariants",
@@ -2389,7 +2475,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 46
                 }
             ],
             "methodsClass": [
@@ -2406,7 +2492,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 62,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2434,7 +2520,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 66,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2485,10 +2571,6 @@
                     "type": "component"
                 },
                 {
-                    "name": "TabComponent",
-                    "type": "component"
-                },
-                {
                     "name": "BadgeDirective",
                     "type": "directive"
                 },
@@ -2508,7 +2590,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Directive,\n  ElementRef,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { TabComponent } from '../tab/tab.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\nimport { HasValueDirective } from '../form/has-value/has-value.directive';\nimport { FocusDirective } from '../form/focus/focus.directive';\n\nimport { FormComponent, FormModule } from '../form/form.component';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    TabComponent,\n    BadgeDirective,\n    FocusDirective,\n    HasValueDirective,\n    FormModule,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  submit(event: any) {\n    console.log(event);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent, ButtonEvent } from '../button';\nimport { MenuComponent } from '../menu/menu.component';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { TabContainerComponent } from '../tab/tab-container/tab-container.component';\nimport { ButtonType, ButtonVariant, Color } from '../api';\nimport { BadgeDirective } from '../badge/badge.directive';\nimport { HasValueDirective } from '../form/has-value/has-value.directive';\nimport { FocusDirective } from '../form/focus/focus.directive';\n\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { FormModule } from '../form/form.module';\n\n@Component({\n  selector: 'tb-showcase',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    ButtonComponent,\n    MenuComponent,\n    ToolbarComponent,\n    TabContainerComponent,\n    BadgeDirective,\n    FocusDirective,\n    HasValueDirective,\n    FormModule,\n  ],\n  templateUrl: './showcase.component.html',\n  styles: [\n    `\n      .container {\n        min-height: 2000px;\n      }\n    `,\n  ],\n})\nexport class ShowcaseComponent {\n  buttonColors = ['primary', 'secondary', 'accent', 'warn'] as Color[];\n\n  buttonTypes = ['button', 'icon-button', 'combined-button'] as ButtonType[];\n\n  buttonVariants = [\n    'basic',\n    'flat',\n    'inbox',\n    'raised',\n    'stroked',\n  ] as ButtonVariant[];\n\n  handle(event: ButtonEvent) {\n    console.log(event);\n  }\n\n  submit(event: any) {\n    console.log(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .container {\n        min-height: 2000px;\n      }\n    \n",
@@ -2597,95 +2679,8 @@
             "templateData": "<p>sticky-notes works!</p>\n"
         },
         {
-            "name": "TabComponent",
-            "id": "component-TabComponent-4c1e52a73a71c3bd0f082769d6a868eadac7abb2b9508690e7de0d524aa7340d35797b5c318c68ac6c8e356ad7762a5767e338402319376ff1e07f313eda48d1",
-            "file": "libs/material/src/tab/tab.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "tb-tab",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./tab.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "active",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 16,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "color",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 17,
-                    "type": "Color",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 15,
-                    "type": "string",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "content",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "QueryList<TabDirective>",
-                    "optional": true,
-                    "description": "",
-                    "line": 14,
-                    "decorators": [
-                        {
-                            "name": "ContentChildren",
-                            "stringifiedArguments": "TabDirective"
-                        }
-                    ],
-                    "modifierKind": [
-                        167
-                    ]
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, ContentChildren, Input, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabDirective } from './tab.directive';\nimport { Color } from '../api';\n\n@Component({\n  selector: 'tb-tab',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './tab.component.html',\n})\nexport class TabComponent {\n  @ContentChildren(TabDirective) content?: QueryList<TabDirective>;\n  @Input() label = '';\n  @Input() active = false;\n  @Input() color?: Color;\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "templateData": "<ng-content *ngIf=\"active\"></ng-content>\n"
-        },
-        {
             "name": "TabContainerComponent",
-            "id": "component-TabContainerComponent-7e9e00598ca6eb802f7168e1f1abf8fdea9d15e5c8437776261e7bcd3a64ea69965fa8fcd6580ac6a667f5f9359592cac11af3c2985416deaa38b337ca01459a",
+            "id": "component-TabContainerComponent-e5a1af36b61e23a3d6bc7de47d78b0be100c341ffc0540f6fd2edf7d49e1deca46539288052501cfc84d35c7002088228a6042ab763f6a7ec1987b82da96f108",
             "file": "libs/material/src/tab/tab-container/tab-container.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2704,26 +2699,8 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "children",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "QueryList<Partial<TabComponent>>",
-                    "optional": true,
-                    "description": "",
-                    "line": 22,
-                    "decorators": [
-                        {
-                            "name": "ContentChildren",
-                            "stringifiedArguments": "TabComponent"
-                        }
-                    ],
-                    "modifierKind": [
-                        167
-                    ]
-                },
-                {
-                    "name": "componentType",
-                    "defaultValue": "TabComponent",
+                    "name": "activeChild$",
+                    "defaultValue": "new BehaviorSubject<TabDirective | undefined>(undefined)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2732,13 +2709,31 @@
                     "line": 24
                 },
                 {
+                    "name": "children",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<TabDirective>",
+                    "optional": true,
+                    "description": "",
+                    "line": 22,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "TabDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        167
+                    ]
+                },
+                {
                     "name": "container",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ElementRef<HTMLDivElement>",
                     "optional": true,
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -2748,15 +2743,25 @@
                     "modifierKind": [
                         167
                     ]
+                },
+                {
+                    "name": "delayedChild$",
+                    "defaultValue": "this.activeChild$.pipe(debounceTime(200))",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "activate",
+                    "name": "activateChild",
                     "args": [
                         {
                             "name": "child",
-                            "type": "Partial<TabComponent>",
+                            "type": "TabDirective",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2764,69 +2769,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "child",
-                            "type": "Partial<TabComponent>",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "childValue",
-                    "args": [
-                        {
-                            "name": "child",
-                            "type": "Partial<TabComponent>",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Partial<TabComponent>",
-                    "typeParameters": [],
-                    "line": 26,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "child",
-                            "type": "Partial<TabComponent>",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "mousemove",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "MouseEvent",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 48,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "MouseEvent",
+                            "type": "TabDirective",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2848,7 +2797,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2882,11 +2831,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  ElementRef,\n  QueryList,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ScrollDirectionDirective } from '../../scroll-direction/scroll-direction.directive';\nimport { TabComponent } from '../tab.component';\n\n@Component({\n  selector: 'tb-tab-container',\n  standalone: true,\n  imports: [CommonModule, ScrollDirectionDirective],\n  templateUrl: './tab-container.component.html',\n  styles: [],\n})\nexport class TabContainerComponent {\n  @ViewChild('container') container?: ElementRef<HTMLDivElement>;\n\n  @ContentChildren(TabComponent) children?: QueryList<Partial<TabComponent>>;\n\n  componentType = TabComponent;\n\n  childValue(child: Partial<TabComponent>): Partial<TabComponent> {\n    return { label: child.label, active: child.active };\n  }\n  activate(child: Partial<TabComponent>) {\n    const updated = this.children?.toArray();\n    updated?.forEach((e) => (e.active = false));\n    if (updated) {\n      const found = updated.find((e) => e.label === child.label);\n      if (found) {\n        found.active = true;\n\n        this.children?.reset([...updated]);\n        this.children?.setDirty();\n      }\n    }\n  }\n\n  scroll(event: WheelEvent) {\n    event.preventDefault();\n    this.container?.nativeElement.scrollBy({ left: event.deltaY });\n  }\n\n  mousemove(event: MouseEvent) {\n    console.log(event);\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  ElementRef,\n  QueryList,\n  ViewChild,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ScrollDirectionDirective } from '../../scroll-direction/scroll-direction.directive';\nimport { BehaviorSubject, debounceTime } from 'rxjs';\nimport { TabDirective } from '../tab.directive';\nimport { fadeInOnEnterAnimation } from 'angular-animations';\n@Component({\n  selector: 'tb-tab-container',\n  standalone: true,\n  imports: [CommonModule, ScrollDirectionDirective],\n  templateUrl: './tab-container.component.html',\n  animations: [fadeInOnEnterAnimation({ anchor: 'enter', duration: 1000 })],\n})\nexport class TabContainerComponent {\n  @ViewChild('container') container?: ElementRef<HTMLDivElement>;\n  @ContentChildren(TabDirective) children?: QueryList<TabDirective>;\n\n  activeChild$ = new BehaviorSubject<TabDirective | undefined>(undefined);\n  delayedChild$ = this.activeChild$.pipe(debounceTime(200));\n\n  activateChild(child: TabDirective) {\n    this.activeChild$.next(undefined);\n    setTimeout(() => {\n      this.activeChild$.next(child);\n    }, 200);\n  }\n\n  scroll(event: WheelEvent) {\n    event.preventDefault();\n    this.container?.nativeElement.scrollBy({ left: event.deltaY });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div\n  #container\n  class=\"flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative\"\n  tbScrollX\n>\n  <ng-container *ngFor=\"let child of children\">\n    <button\n      class=\"tab-button {{ child.color }} bottom\"\n      (click)=\"activate(child)\"\n      [attr.data-active]=\"child.active\"\n    >\n      {{ child.label }}\n    </button>\n  </ng-container>\n</div>\n<ng-container *ngFor=\"let child of children\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"childValue(child)\"\n  >\n    <ng-content></ng-content>\n  </ng-container>\n</ng-container>\n"
+            "templateData": "<div\n  #container\n  class=\"flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative\"\n  tbScrollX\n>\n  <ng-container *ngFor=\"let child of children\">\n    <button\n      class=\"tab-button {{ child.color }} bottom\"\n      (click)=\"activateChild(child)\"\n    >\n      {{ child.label }}\n    </button>\n  </ng-container>\n</div>\n\n<div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n  <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n    <ng-content></ng-content>\n  </ng-container>\n</div>\n"
         },
         {
             "name": "TextInputComponent",
@@ -3100,63 +3049,7 @@
     "modules": [
         {
             "name": "FormModule",
-            "id": "module-FormModule-18dd5a89c4b0c587a13521a2a706634c5aa4416b47183dc3191df165af4caf252b7b3803609e22d36651bf9c63ac91f56b2ec6771b7c020f96a8aeeecd7caeeb",
-            "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
-            "file": "libs/material/src/form/form.component.ts",
-            "methods": [],
-            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  EventEmitter,\n  NgModule,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],\n  templateUrl: './form.component.html',\n})\nexport class FormComponent {\n  componentType = InputComponent;\n\n  /** Form action container marked by FormActionDirective  */\n  @ContentChildren(FormActionsDirective)\n  tbFormActions?: QueryList<FormActionsDirective>;\n\n  @ContentChildren(InputComponent) children!: QueryList<InputComponent>;\n\n  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();\n\n  readonly formValue: Record<string, unknown> = {};\n\n  preventDefault(event: Event) {\n    event.preventDefault();\n  }\n\n  childValue(value: any) {\n    return {\n      ...value,\n      formValue: this.formValue,\n    };\n  }\n\n  submit() {\n    this.submitEvent.emit(this.formValue);\n  }\n\n  reset() {\n    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);\n  }\n}\n\n@NgModule({\n  imports: [FormComponent, InputComponent, FormActionsDirective],\n  exports: [FormComponent, InputComponent, FormActionsDirective],\n})\nexport class FormModule {}\n",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "FormActionsDirective"
-                        },
-                        {
-                            "name": "FormComponent"
-                        },
-                        {
-                            "name": "InputComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "FormActionsDirective"
-                        },
-                        {
-                            "name": "FormComponent"
-                        },
-                        {
-                            "name": "InputComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "FormModule",
-            "id": "module-FormModule-dec09624a523f3be96a6f7f7efc6cae37831bdc080c374e1611c18d92487d01d53b3be94ce5fc99ba9cc52fec06fe889b39f21ef2f41bfd3201043ae29d465b7-1",
+            "id": "module-FormModule-dec09624a523f3be96a6f7f7efc6cae37831bdc080c374e1611c18d92487d01d53b3be94ce5fc99ba9cc52fec06fe889b39f21ef2f41bfd3201043ae29d465b7",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -3206,13 +3099,13 @@
         },
         {
             "name": "TabModule",
-            "id": "module-TabModule-882d7635feaf600fb421c9009a7808b0eaa533576d224e25c53bad362ced8abd2715798f227220f9e41c5ad415a566b4c51b935ddb564cdec5d14ffacce3b74b",
+            "id": "module-TabModule-f10566d36b4fa6717f3a16ae3752eb780c929682deda4d6125c8c6b92342c0a8b1d80014ed49310c4c8f36bdc61674ada71fd40f37f171c6e144250b340d18c5",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/src/tab/tab.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { TabDirective } from './tab.directive';\r\nimport { TabContainerComponent } from './tab-container/tab-container.component';\r\nimport { TabComponent } from './tab.component';\r\n\r\n@NgModule({\r\n  declarations: [TabDirective],\r\n  imports: [TabContainerComponent, TabComponent],\r\n  exports: [TabContainerComponent, TabDirective, TabComponent],\r\n})\r\nexport class TabModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { TabDirective } from './tab.directive';\r\nimport { TabContainerComponent } from './tab-container/tab-container.component';\r\n\r\n@NgModule({\r\n  declarations: [TabDirective],\r\n  imports: [TabContainerComponent],\r\n  exports: [TabContainerComponent, TabDirective],\r\n})\r\nexport class TabModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -3230,9 +3123,6 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "TabComponent"
-                        },
-                        {
                             "name": "TabContainerComponent"
                         }
                     ]
@@ -3240,9 +3130,6 @@
                 {
                     "type": "exports",
                     "elements": [
-                        {
-                            "name": "TabComponent"
-                        },
                         {
                             "name": "TabContainerComponent"
                         },
@@ -3393,16 +3280,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sticky-notes works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/tab/tab.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -3668,16 +3545,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/tab/tab.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<TabComponent>",
-                "defaultValue": "{\n  component: TabComponent,\n  title: 'TabComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3923,16 +3790,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/tab/tab.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -4295,17 +4152,6 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<StickyNotesComponent>",
                 "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 180
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<TabComponent>",
-                "file": "libs/material/src/tab/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4859,38 +4705,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/src/tab/tab.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/tab/tab.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/tab works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/tab/tab.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<TabComponent>",
-                    "defaultValue": "{\n  component: TabComponent,\n  title: 'TabComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/tab/tab.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: '',\n    active: false,\n  },\n}"
                 }
             ],
             "libs/material/src/toolbar/toolbar.component.stories.ts": [
@@ -5554,19 +5368,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<StickyNotesComponent>",
                     "file": "libs/material/src/sticky-notes/sticky-notes.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
-            "libs/material/src/tab/tab.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<TabComponent>",
-                    "file": "libs/material/src/tab/tab.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -6711,46 +6512,7 @@
                 "linktype": "component",
                 "name": "TabContainerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/tab/tab.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/tab/tab.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/tab/tab.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/tab/tab.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "TabComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -6759,7 +6521,16 @@
                 "linktype": "directive",
                 "name": "TabDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/tab/tab.directive.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TabInputs",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {

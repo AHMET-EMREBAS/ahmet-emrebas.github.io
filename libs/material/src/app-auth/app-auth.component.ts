@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabModule } from '../tab/tab.module';
-import { FormModule } from '../form/form.component';
 import { ButtonComponent } from '../button';
-import { slideInLeftOnEnterAnimation } from 'angular-animations';
+import { FormModule } from '../form/form.module';
 
 @Component({
   selector: 'tb-app-auth',

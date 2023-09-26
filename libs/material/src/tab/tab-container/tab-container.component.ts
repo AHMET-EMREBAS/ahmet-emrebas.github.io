@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ContentChildren,
   ElementRef,
@@ -7,38 +8,29 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollDirectionDirective } from '../../scroll-direction/scroll-direction.directive';
-import { TabComponent } from '../tab.component';
+import { BehaviorSubject, debounceTime } from 'rxjs';
+import { TabDirective } from '../tab.directive';
+import { fadeInOnEnterAnimation } from 'angular-animations';
 @Component({
   selector: 'tb-tab-container',
   standalone: true,
   imports: [CommonModule, ScrollDirectionDirective],
   templateUrl: './tab-container.component.html',
-  styles: [],
-
-  animations: [],
+  animations: [fadeInOnEnterAnimation({ anchor: 'enter', duration: 1000 })],
 })
-export class TabContainerComponent {
+export class TabContainerComponent implements AfterViewInit {
   @ViewChild('container') container?: ElementRef<HTMLDivElement>;
+  @ContentChildren(TabDirective) children?: QueryList<TabDirective>;
 
-  @ContentChildren(TabComponent) children?: QueryList<Partial<TabComponent>>;
+  activeChild$ = new BehaviorSubject<TabDirective | undefined>(undefined);
+  delayedChild$ = this.activeChild$.pipe(debounceTime(200));
 
-  componentType = TabComponent;
+  activateChild(child: TabDirective) {
+    this.activeChild$.next(undefined);
 
-  childValue(child: Partial<TabComponent>): Partial<TabComponent> {
-    return { label: child.label, active: child.active };
-  }
-  activate(child: Partial<TabComponent>) {
-    const updated = this.children?.toArray();
-    updated?.forEach((e) => (e.active = false));
-    if (updated) {
-      const found = updated.find((e) => e.label === child.label);
-      if (found) {
-        found.active = true;
-
-        this.children?.reset([...updated]);
-        this.children?.setDirty();
-      }
-    }
+    setTimeout(() => {
+      this.activeChild$.next(child);
+    }, 200);
   }
 
   scroll(event: WheelEvent) {
@@ -46,7 +38,9 @@ export class TabContainerComponent {
     this.container?.nativeElement.scrollBy({ left: event.deltaY });
   }
 
-  mousemove(event: MouseEvent) {
-    console.log(event);
+  ngAfterViewInit(): void {
+    if (this.children?.first) {
+      this.activateChild(this.children.first);
+    }
   }
 }
