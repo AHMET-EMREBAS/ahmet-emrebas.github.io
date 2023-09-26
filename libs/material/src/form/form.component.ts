@@ -22,7 +22,7 @@ export class FormComponent {
 
   /** Form action container marked by FormActionDirective  */
   @ContentChildren(FormActionsDirective)
-  tbFormActions?: QueryList<FormActionsDirective>;
+  actions?: QueryList<FormActionsDirective>;
 
   @ContentChildren(InputComponent) children!: QueryList<InputComponent>;
 

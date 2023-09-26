@@ -1,13 +1,12 @@
 <div class="dropdown {{ openDirection }} {{ color }}">
-  <tb-button
+  <tb-combined-button
     [color]="color"
     [label]="label"
-    [type]="type"
     [variant]="variant"
-    (clickEvent)="emitClickEvent()"
-    [icon]="icon"
+    (clickEvent)="emit()"
     [size]="size"
-  ></tb-button>
+    [icon]="icon"
+  ></tb-combined-button>
 
   <div
     class="dropdown-items {{ containerView }}"

@@ -7,6 +7,9 @@ import { SetAttributeDirective } from './set-attribute/set-attribute.directive';
 import { TooltipDirective } from './tooltip/tooltip.directive';
 import { SetComponentAttributeDirective } from './set-component-attribute/set-component-attribute.directive';
 import { ClassListDirective } from './class-list/class-list.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconComponent } from './icon/icon.component';
+import { HasValueDirective } from './has-value/has-value.directive';
 
 @NgModule({
   imports: [
@@ -18,6 +21,10 @@ import { ClassListDirective } from './class-list/class-list.directive';
     TooltipDirective,
     SetComponentAttributeDirective,
     ClassListDirective,
+    IconComponent,
+    HasValueDirective,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
@@ -27,7 +34,11 @@ import { ClassListDirective } from './class-list/class-list.directive';
     SetAttributeDirective,
     SetComponentAttributeDirective,
     TooltipDirective,
-    ClassListDirective
+    ClassListDirective,
+    IconComponent,
+    HasValueDirective,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class MicroModule {}

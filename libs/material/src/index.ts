@@ -16,7 +16,7 @@ export * from './form/enum-input/enum-input.component';
 export * from './form/form-actions/form-actions.directive';
 export * from './form/form.component';
 export * from './form/form.module';
-export * from './form/has-value/has-value.directive';
+export * from './micro/has-value/has-value.directive';
 export * from './form/input/input.component';
 export * from './form/number-input/number-input.component';
 export * from './form/text-input/text-input.component';
@@ -54,3 +54,9 @@ export * from './button/tab-button/tab-button.component';
 export * from './button/common-button/common-button.component';
 
 export * from './button/sample-buttons/sample-buttons.component';
+
+export * from './form/common-input/common-input.component';
+
+export * from './micro/icon/icon.component';
+
+export * from './form/enum-input/input-option/input-option.component';

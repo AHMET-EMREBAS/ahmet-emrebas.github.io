@@ -6,7 +6,7 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<BooleanInputComponent> = {
   component: BooleanInputComponent,
-  title: 'BooleanInputComponent',
+  title: 'Input Boolean',
 };
 export default meta;
 type Story = StoryObj<BooleanInputComponent>;

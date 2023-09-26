@@ -6,14 +6,13 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<InputComponent> = {
   component: InputComponent,
-  title: 'InputComponent',
+  title: 'Input',
 };
 export default meta;
 type Story = StoryObj<InputComponent>;
 
 export const Primary: Story = {
   args: {
-    id: '',
     name: '',
     value: '',
     type: 'text',
@@ -27,7 +26,6 @@ export const Primary: Story = {
 
 export const Heading: Story = {
   args: {
-    id: '',
     name: '',
     value: '',
     type: 'text',

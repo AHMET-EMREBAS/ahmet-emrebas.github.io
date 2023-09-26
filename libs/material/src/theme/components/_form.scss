@@ -15,8 +15,6 @@
 .form-title {
 }
 .input-container {
-  position: relative;
-
   --color: white;
   --light-color: white;
   --border-style: solid;
@@ -28,15 +26,15 @@
   --border-right-width: 0.15em;
   --border-top-width: 0.15em;
   --border-left-width: 0.15em;
-  // padding-top: 1em;
 
   @include utils.column(0.3em);
-  // padding: 0.3em;
+
+  position: relative;
   color: var(--color);
   min-height: 3.3em;
   line-height: 3.3em;
   letter-spacing: 0.1em;
-
+  font-size: var(--form-font-size);
   label {
     position: absolute;
     letter-spacing: inherit;
@@ -86,6 +84,13 @@
     {
       --color-#{$variant}: var(--#{$colorName}-#{$variant});
     }
+  }
+
+  .input-container .input-option {
+    color: var(--#{$colorName});
+  }
+  .input-container .input-option:hover {
+    color: var(--#{$colorName}-dark);
   }
 }
 
@@ -160,4 +165,27 @@
 }
 
 .input-container.basic {
+}
+
+.input-options {
+  position: absolute;
+  visibility: collapse;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  background-color: var(--surface);
+  min-height: 150px;
+  margin-top: 60px;
+  width: 100%;
+}
+.input-option {
+  user-select: none;
+  cursor: pointer;
+}
+
+.input-options:hover {
+  visibility: visible;
+}
+.input-container:has(:focus) .input-options {
+  visibility: visible;
 }

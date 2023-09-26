@@ -1,40 +1,26 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HasValueDirective } from '../has-value/has-value.directive';
-import { FocusDirective } from '../../micro/focus/focus.directive';
-import { Color, Icon, InputVariant } from '../../api';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { CommonInputComponent } from '../common-input/common-input.component';
+import { MicroModule } from '../../micro/micro.module';
+
 @Component({
   selector: 'tb-text-input',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HasValueDirective,
-    FocusDirective,
-  ],
-  templateUrl: './text-input.component.html',
+  imports: [MicroModule],
+  template: `
+    <div class="input-container {{ color }} {{ variant }}">
+      <span class="icon"> {{ icon }}</span>
+      <label [for]="name">{{ label }} </label>
+      <input
+        [(ngModel)]="value"
+        [id]="name"
+        type="text"
+        [name]="name"
+        [autocomplete]="autocomplete"
+        (input)="emit()"
+        tbHasValue
+      />
+      <span class="input-error" *ngIf="error">{{ error }}</span>
+    </div>
+  `,
 })
-export class TextInputComponent {
-  @Output() inputEvent = new EventEmitter<string>();
-  @Input() value = '';
-  @Input() id = '';
-  @Input() name = '';
-  @Input() type: HTMLInputElement['type'] = 'text';
-  @Input() autocomplete: HTMLInputElement['autocomplete'] = 'off';
-  @Input() color: Color = 'primary';
-  @Input() label = 'Input Label';
-  @Input() variant: InputVariant = 'basic';
-  @Input() icon: Icon = 'info';
-
-  emitEvent() {
-    this.inputEvent.emit(this.value);
-  }
-}
+export class TextInputComponent extends CommonInputComponent<string> {}

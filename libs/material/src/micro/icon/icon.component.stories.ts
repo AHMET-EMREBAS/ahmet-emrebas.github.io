@@ -1,24 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ArrayInputComponent } from './array-input.component';
+import { IconComponent } from './icon.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<ArrayInputComponent> = {
-  component: ArrayInputComponent,
-  title: 'Input Array',
+const meta: Meta<IconComponent> = {
+  component: IconComponent,
+  title: 'IconComponent',
 };
 export default meta;
-type Story = StoryObj<ArrayInputComponent>;
+type Story = StoryObj<IconComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    fill: '',
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: {
+    fill: '',
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/array-input works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/icon works!/gi)).toBeTruthy();
   },
 };

@@ -1,5 +1,8 @@
 import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
+/**
+ * If input has value then add "has-value" attribute to input element.
+ */
 @Directive({
   selector: '[tbHasValue]',
   standalone: true,

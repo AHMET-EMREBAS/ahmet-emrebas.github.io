@@ -1,15 +1,15 @@
 import { Component, ContentChildren, Input } from '@angular/core';
-import { ButtonComponent } from '../button';
+import { ButtonModule, CombinedButtonComponent } from '../button';
 import { Position } from '../api';
 import { MicroModule } from '../micro/micro.module';
 
 @Component({
   selector: 'tb-menu',
   standalone: true,
-  imports: [MicroModule, ButtonComponent],
+  imports: [MicroModule, ButtonModule],
   templateUrl: './menu.component.html',
 })
-export class MenuComponent extends ButtonComponent {
+export class MenuComponent extends CombinedButtonComponent {
   /** @ignore */
   readonly __componentType = MenuComponent;
   @ContentChildren(MenuComponent) children?: Record<string, any>[];

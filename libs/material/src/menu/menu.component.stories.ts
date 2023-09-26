@@ -16,7 +16,12 @@ export const Primary: Story = {
     label: 'Triger 1',
     color: 'primary',
     openDirection: 'bottom',
-    children: [],
+    children: [
+      { label: 'Label 1', icon: 'info' },
+      { label: 'Label 2', icon: 'info' },
+      { label: 'Label 3', icon: 'info' },
+      { label: 'Label 4', icon: 'info' },
+    ],
   },
 };
 
