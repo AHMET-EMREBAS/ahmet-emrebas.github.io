@@ -14,8 +14,8 @@ export type ButtonType =
   | 'combined-button'
   | 'tab-button';
 
-export type ButttonVariant = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox';
-
+export type ButttonVariant = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox' | 'tab';
+export type ButtonSize = 'small' | 'regular' | 'big';
 export type Position = 'top' | 'right' | 'bottom' | 'left';
 
 export type InputVariant = ButttonVariant;

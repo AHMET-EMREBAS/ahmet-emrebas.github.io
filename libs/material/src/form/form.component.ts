@@ -2,6 +2,7 @@ import {
   Component,
   ContentChildren,
   EventEmitter,
+  Input,
   Output,
   QueryList,
 } from '@angular/core';
@@ -26,6 +27,8 @@ export class FormComponent {
   @ContentChildren(InputComponent) children!: QueryList<InputComponent>;
 
   @Output() submitEvent = new EventEmitter<Record<string, unknown>>();
+  @Input() title = '';
+  @Input() subtitle = '';
 
   readonly formValue: Record<string, unknown> = {};
 

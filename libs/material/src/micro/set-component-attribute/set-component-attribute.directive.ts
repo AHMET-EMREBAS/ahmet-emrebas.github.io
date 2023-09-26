@@ -27,5 +27,4 @@ export class SetComponentAttributeDirective implements OnInit {
       }
     }
   }
-  ngAfterViewInit(): void {}
 }

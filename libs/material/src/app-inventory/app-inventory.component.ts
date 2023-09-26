@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-
 import { ButtonComponent } from '../button';
 import { TabModule } from '../tab/tab.module';
-
 import { MicroModule } from '../micro/micro.module';
-
 @Component({
   selector: 'tb-app-inventory',
   standalone: true,

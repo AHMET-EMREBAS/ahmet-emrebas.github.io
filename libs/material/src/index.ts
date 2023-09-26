@@ -36,8 +36,21 @@ export * from './nav-list/nav-list.component';
 export * from './notification/notification.component';
 export * from './stepper/stepper.component';
 export * from './sticky-notes/sticky-notes.component';
-export * from './tab/tab-button/tab-button.component';
-export * from './tab/tab-container/tab-container.component';
+export * from './tab/tab-container.component';
 export * from './tab/tab.directive';
 export * from './tab/tab.module';
 export * from './toolbar/toolbar.component';
+
+export * from './button/icon-button/icon-button.component';
+
+export * from './button/icon-button/icon-button.component';
+
+export * from './button/combined-button/combined-button.component';
+
+export * from './button/button/button.component';
+
+export * from './button/tab-button/tab-button.component';
+
+export * from './button/common-button/common-button.component';
+
+export * from './button/sample-buttons/sample-buttons.component';

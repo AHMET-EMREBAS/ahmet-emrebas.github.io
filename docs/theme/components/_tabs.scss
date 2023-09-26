@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.tabs-container > .tab {
+.tabs-container .tab {
   position: absolute;
   width: 100%;
   left: 0px;
@@ -18,61 +18,60 @@
   justify-content: flex-start;
 }
 
-@mixin tabbutton() {
-  box-sizing: border-box;
-  cursor: pointer;
-  background-color: transparent;
-  padding: 0px;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin: 0px;
-  height: 3em;
+// @mixin tabbutton() {
+//   box-sizing: border-box;
+//   cursor: pointer;
+//   background-color: transparent;
+//   padding: 0px;
+//   padding-left: 1em;
+//   padding-right: 1em;
+//   margin: 0px;
+//   height: 3em;
 
-  width: 100%;
-  text-wrap: nowrap;
+//   width: 100%;
+//   text-wrap: nowrap;
 
-  border-bottom: 0.3em solid var(--primary);
-  border-radius: 0px;
-  outline-color: transparent;
-  outline-width: 0.3em;
+//   border-bottom: 0.3em solid var(--primary);
+//   border-radius: 0px;
+//   outline-color: transparent;
+//   outline-width: 0.3em;
 
-  font-family: var(--font-button);
-  font-size: 1em;
-  font-weight: bolder;
-  letter-spacing: 0.1em;
-  text-transform: capitalize;
+//   font-family: var(--font-button);
+//   font-size: 1em;
+//   font-weight: bolder;
+//   letter-spacing: 0.1em;
+//   text-transform: capitalize;
 
-  user-select: none;
-  text-align: center;
-  vertical-align: middle;
+//   user-select: none;
+//   text-align: center;
+//   vertical-align: middle;
 
-  border: none;
-  transition: border-color 200ms ease-in-out, outline-color 200ms ease-in-out,
-    color 200ms ease-in-out;
-}
+//   border: none;
+//   transition: border-color 200ms ease-in-out, outline-color 200ms ease-in-out,
+//     color 200ms ease-in-out;
+// }
 
-.tab-button {
-  @include tabbutton();
-  // border-bottom: 0.3em solid var(--primary);
-}
-// tab-button  primary bottom
-@each $colorName in colors.$colorNames {
-  .tab-button.#{$colorName} {
-    color: var(--#{$colorName});
-  }
-  @each $side in (top, right, bottom, left) {
-    .#{$colorName}.#{$side}.tab-button {
-      border-#{$side}: 0.3em solid var(--#{$colorName}-3);
-    }
-    .#{$colorName}.#{$side}.tab-button:hover {
-      border-#{$side}: 0.3em solid var(--#{$colorName}-5);
-    }
-    .#{$colorName}.#{$side}.tab-button:active {
-      border-#{$side}: 0.3em solid var(--#{$colorName}-7);
-    }
-    .#{$colorName}.#{$side}.tab-button:focus,
-    .#{$colorName}.#{$side}.tab-button[data-active='true'] {
-      border-#{$side}: 0.3em solid var(--#{$colorName});
-    }
-  }
-}
+// .tab-button {
+//   @include tabbutton();
+// }
+// // tab-button  primary bottom
+// @each $colorName in colors.$colorNames {
+//   .tab-button.#{$colorName} {
+//     color: var(--#{$colorName});
+//   }
+//   @each $side in (top, right, bottom, left) {
+//     .#{$colorName}.#{$side}.tab-button {
+//       border-#{$side}: 0.3em solid var(--#{$colorName}-3);
+//     }
+//     .#{$colorName}.#{$side}.tab-button:hover {
+//       border-#{$side}: 0.3em solid var(--#{$colorName}-5);
+//     }
+//     .#{$colorName}.#{$side}.tab-button:active {
+//       border-#{$side}: 0.3em solid var(--#{$colorName}-7);
+//     }
+//     .#{$colorName}.#{$side}.tab-button:focus,
+//     .#{$colorName}.#{$side}.tab-button[data-active='true'] {
+//       border-#{$side}: 0.3em solid var(--#{$colorName});
+//     }
+//   }
+// }

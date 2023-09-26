@@ -3,20 +3,17 @@
 
 .form-container {
   @include utils.column(var(--form-container-gap));
-
+  position: relative;
   background-color: var(--surface);
-  border: 1px solid var(--primary);
-  border-radius: var(--box-radius);
-  padding: 1em;
-
   font-family: var(--font-content);
   font-size: var(--form-font-size);
+
   .form-actions {
     @include utils.row(var(--form-container-gap));
-    padding-top: var(--form-container-gap);
   }
 }
-
+.form-title {
+}
 .input-container {
   position: relative;
 
@@ -47,7 +44,8 @@
     color: var(--color);
     transition: all 400ms ease-in-out;
     height: fit-content;
-
+    // font-family: 1em;
+    // line-height: 1.2em;
     padding-left: 2em;
     padding-right: 2em;
     margin-left: 2em;
@@ -64,7 +62,7 @@
     padding-left: 4em;
     width: inherit;
     letter-spacing: inherit;
-    border-radius: var(--box-radius);
+
     transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out,
       background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
   }
@@ -96,13 +94,10 @@
 .input-container:has(> input:-webkit-autofill) {
   label {
     font-size: 0.8em;
-    line-height: 2em;
-    border-radius: 1em;
-    transform: translateY(-50%);
-    border: 5px solid var(--surface);
-    background-color: var(--color);
-    color: var(--color-face);
-    margin-left: 4em;
+    line-height: 0.8em;
+    margin-left: 3em;
+    font-weight: 200;
+    text-decoration: underline;
   }
 }
 

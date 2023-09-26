@@ -19,16 +19,18 @@ export class ClassListDirective implements AfterViewInit {
       console.log(entries);
       for (const [key, value] of entries) {
         if (
+          value === '' ||
+          key.startsWith('tooltip') ||
           key.startsWith('__') ||
           key.startsWith('native') ||
           key.startsWith('ng') ||
           key.startsWith('can') ||
           key.startsWith('emit') ||
-          key.startsWith('handle') || 
+          key.startsWith('handle') ||
           key.startsWith('children') ||
           key.startsWith('child') ||
           key.endsWith('Event') ||
-          key.endsWith('Ref')  
+          key.endsWith('Ref')
         ) {
           continue;
         }

@@ -17,8 +17,10 @@ import { Color, Icon } from '../api';
 })
 export class NavListComponent {
   componentType = NavListItemComponent;
-  @ContentChildren(NavListItemComponent)
-  children?: QueryList<Record<string, unknown>>;
+
+  @ContentChildren(NavListItemComponent) children?: QueryList<
+    Record<string, unknown>
+  >;
   @Input() color: Color = 'primary';
   @Input() icon: Icon = 'info';
 }

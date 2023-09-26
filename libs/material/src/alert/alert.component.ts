@@ -1,30 +1,23 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Color, Icon } from '../api';
-import { ButtonComponent } from '../button';
+import { IconButtonComponent } from '../button';
 import { MicroModule } from '../micro/micro.module';
 
 @Component({
   selector: 'tb-alert',
   standalone: true,
-  imports: [MicroModule, ButtonComponent],
-  template: ` <div class=" {{ color }}" role="alert">
+  imports: [MicroModule, IconButtonComponent],
+  template: `<div class=" {{ color }}" role="alert">
     <span class="icon">{{ icon }}</span>
     <span>{{ message }}</span>
     <div class="grow-1"></div>
-    <tb-button
+    <tb-icon-button
       [color]="color"
       icon="close"
       variant="inbox"
       size="small"
-      type="icon-button"
       (click)="emitCloseEvent()"
-    ></tb-button>
+    ></tb-icon-button>
   </div>`,
 })
 export class AlertComponent {

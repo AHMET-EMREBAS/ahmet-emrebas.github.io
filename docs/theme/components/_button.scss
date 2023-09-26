@@ -38,6 +38,36 @@ button.stroked {
   border: 1px solid var(--primary-6);
 }
 
+button.tab {
+  background-color: transparent;
+  color: var(--primary);
+  flex-grow: 1;
+  border: none;
+}
+
+@each $colorName in colors.$colorNames {
+  @each $side in (top, right, bottom, left) {
+    button.tab.#{$colorName}.#{$side} {
+      color: var(--#{$colorName});
+      border-#{$side}: 3px solid var(--#{$colorName}-5);
+
+      transition: border-color 200ms ease-in-out,
+        background-color 200ms ease-in-out;
+    }
+
+    button.tab.#{$colorName}.#{$side}:hover {
+      background-color: var(--#{$colorName}-2);
+    }
+    button.tab.#{$colorName}.#{$side}:active {
+      border-#{$side}: 3px solid var(--#{$colorName});
+      background-color: var(--#{$colorName}-5);
+    }
+    button.tab.#{$colorName}.#{$side}:focus {
+      border-#{$side}: 3px solid var(--#{$colorName});
+    }
+  }
+}
+
 @mixin active($buttonStyle, $colorName) {
   button.#{$colorName}.#{$buttonStyle}:hover:active {
     background-color: var(--#{$colorName}-light);
@@ -47,7 +77,7 @@ button.stroked {
 
 @mixin focus($buttonStyle, $colorName) {
   button.#{$colorName}.#{$buttonStyle}:focus {
-    outline: 3px solid var(--#{$colorName}-lighter);
+    outline: 3px solid var(--#{$colorName}-4);
   }
 }
 
@@ -104,8 +134,6 @@ button.stroked {
 
   text-wrap: nowrap;
   font-size: 1em;
-
-  border-radius: var(--box-radius);
 
   outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
