@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HasValueDirective } from '../has-value/has-value.directive';
-import { FocusDirective } from '../focus/focus.directive';
-import { Color, Icon, InputVariant } from '../../api';
+import { FocusDirective } from '../../micro/focus/focus.directive';
+import { Color, Icon, InputStyle } from '../../api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'tb-text-input',
@@ -31,7 +31,7 @@ export class TextInputComponent {
   @Input() autocomplete: HTMLInputElement['autocomplete'] = 'off';
   @Input() color: Color = 'primary';
   @Input() label = 'Input Label';
-  @Input() variant: InputVariant = 'basic';
+  @Input() variant: InputStyle = 'basic';
   @Input() icon: Icon = 'info';
 
   emitEvent() {

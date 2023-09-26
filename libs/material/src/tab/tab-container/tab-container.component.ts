@@ -8,20 +8,23 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ScrollDirectionDirective } from '../../scroll-direction/scroll-direction.directive';
+import { ScrollDirectionDirective } from '../../micro/scroll-direction/scroll-direction.directive';
 import { BehaviorSubject, debounceTime } from 'rxjs';
 import { TabDirective } from '../tab.directive';
 import { fadeInOnEnterAnimation } from 'angular-animations';
-import {
-  NavListComponent,
-  NavListModule,
-} from '../../nav-list/nav-list.component';
+import { NavListModule } from '../../nav-list/nav-list.component';
+import { TabButtonComponent } from '../tab-button/tab-button.component';
 
 export type TabContainerType = 'sidenav' | 'tab';
 @Component({
   selector: 'tb-tab-container',
   standalone: true,
-  imports: [CommonModule, ScrollDirectionDirective, NavListModule],
+  imports: [
+    CommonModule,
+    ScrollDirectionDirective,
+    NavListModule,
+    TabButtonComponent,
+  ],
   templateUrl: './tab-container.component.html',
   animations: [fadeInOnEnterAnimation({ anchor: 'enter', duration: 1000 })],
 })
@@ -35,10 +38,7 @@ export class TabContainerComponent implements AfterViewInit {
   delayedChild$ = this.activeChild$.pipe(debounceTime(200));
 
   activateChild(child: TabDirective) {
-    
-    console.log('Activating ', child);
     this.activeChild$.next(undefined);
-
     setTimeout(() => {
       this.activeChild$.next(child);
     }, 200);

@@ -5,15 +5,15 @@ import {
   Output,
   QueryList,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { InputComponent } from './input/input.component';
 import { FormActionsDirective } from './form-actions/form-actions.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MicroModule } from '../micro/micro.module';
 
 @Component({
   selector: 'tb-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],
+  imports: [MicroModule, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './form.component.html',
 })
 export class FormComponent {

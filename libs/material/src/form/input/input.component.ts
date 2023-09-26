@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TextInputComponent } from '../text-input/text-input.component';
-import { Color, Icon, InputVariant } from '../../api';
+import { Color, Icon, InputStyle } from '../../api';
 
 @Component({
   selector: 'tb-input',
@@ -19,7 +19,7 @@ export class InputComponent {
   @Input() autocomplete: HTMLInputElement['autocomplete'] = 'on';
   @Input() color: Color = 'primary';
   @Input() label = 'Input Label';
-  @Input() variant: InputVariant = 'basic';
+  @Input() variant: InputStyle = 'basic';
   @Input() icon: Icon = 'info';
   @Input() formValue?: Record<string, any>;
 

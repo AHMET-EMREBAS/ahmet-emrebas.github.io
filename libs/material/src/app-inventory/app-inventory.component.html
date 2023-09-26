@@ -1,5 +1,17 @@
 <tb-tab-container type="sidenav">
-  <ng-template tbTab icon="inventory" color="primary" label="Products">  <h1>Produtcs</h1> </ng-template>
-  <ng-template tbTab icon="category" color="primary" label="Categories">  <h1>Categories</h1> </ng-template>
-  <ng-template tbTab icon="money" color="primary" label="Pricing">  <h1>Pricing</h1> </ng-template>
+  <ng-template #tab tbTab icon="inventory" color="primary">
+    <h1>Produtcs</h1>
+  </ng-template>
+  <ng-template tbTab icon="category" color="primary">
+    <h1>Categories</h1>
+  </ng-template>
+  <ng-template tbTab icon="money" color="primary">
+    <h1>Pricing</h1>
+  </ng-template>
+  <ng-template tbTab icon="numbers" color="warn">
+    <h1>Quantities</h1>
+  </ng-template>
+  <ng-template tbTab icon="report" color="warn">
+    <h1>Reports</h1>
+  </ng-template>
 </tb-tab-container>

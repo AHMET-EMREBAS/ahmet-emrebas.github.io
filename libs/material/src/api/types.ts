@@ -8,12 +8,16 @@ export type Color =
   | 'black'
   | 'white';
 
-export type ButtonType = 'button' | 'icon-button' | 'combined-button';
+export type ButtonType =
+  | 'button'
+  | 'icon-button'
+  | 'combined-button'
+  | 'tab-button';
 
-export type ButtonVariant = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox';
+export type ButtonStyle = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox';
 
-export type Position = 'top' | 'right' | 'bottom' | 'left' | 'none';
+export type Position = 'top' | 'right' | 'bottom' | 'left';
 
-export type InputVariant = ButtonVariant;
+export type InputStyle = ButtonStyle;
 
 export type InputType = 'text' | 'number' | 'boolean' | 'date' | 'array';

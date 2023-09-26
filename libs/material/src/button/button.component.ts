@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -7,65 +6,61 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ButtonVariant, ButtonType, Color, Icon } from '../api';
-import { CommonModule } from '@angular/common';
-import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { ButtonStyle, ButtonType, Color, Icon } from '../api';
+import { MicroModule } from '../micro/micro.module';
 
-export type ButtonEvent = {
-  id?: string;
-  type: 'click';
-  payload: {
-    uuid?: string;
-    label?: string;
-    message?: string;
-  };
-};
-
+export type ButtonSize = 'small' | 'regular' | 'big';
 @Component({
   selector: 'tb-button',
   standalone: true,
-  imports: [CommonModule, TooltipDirective],
+  imports: [MicroModule],
   template: `
-    <button [type]="type" #button (click)="emitClickEvent()" [attr.role]="role">
-      <span class="icon" *ngIf="type !== 'button'">{{ icon }}</span>
-      <span *ngIf="buttonType !== 'icon-button'">
-        {{ label }}
-      </span>
+    <button
+      #button
+      [tbClassList]="this"
+      [tbSetAttribute]="{ role: nativeRole, type: nativeType }"
+      (click)="emitClickEvent()"
+    >
+      <span class="icon" *ngIf="canRenderIcon()">{{ icon }}</span>
+      <span *ngIf="canRenderLabel()"> {{ label }} </span>
     </button>
   `,
 })
-export class ButtonComponent implements AfterViewInit {
+export class ButtonComponent {
   /** @ignore */
-  @ViewChild('button') button?: ElementRef<HTMLButtonElement>;
+  @Input() __ngcontext__ = '';
+
+  /** @ignore */
+  @ViewChild('button') buttonRef?: ElementRef<HTMLButtonElement>;
+
+  @Output() readonly clickEvent = new EventEmitter();
+
+  @Input() style: ButtonStyle = 'basic';
+  @Input() type: ButtonType = 'button';
   @Input() color: Color = 'primary';
   @Input() icon: Icon = 'info';
   @Input() label = 'Button';
-  @Input() size: 'small' | 'regular' | 'big' = 'regular';
-  @Input() buttonType: ButtonType = 'button';
-  @Input() uuid = 'Id not set!';
-  @Input() variant: ButtonVariant = 'basic';
-  @Input() type?: 'submit' | 'reset' | 'button' = 'button';
-  @Input() role?: 'menubar' | 'menuitem' | 'button' = 'button';
-  /** Click Event  */
-  @Output() readonly clickEvent = new EventEmitter<ButtonEvent>();
-
-  /** @ignore */
-  ngAfterViewInit(): void {
-    this.addClasses(this.size, this.variant, this.buttonType, this.color);
-  }
-
-  /** @ignore */
-  private addClasses(...className: string[]) {
-    this.button?.nativeElement.classList.add(...className);
-  }
+  @Input() size: ButtonSize = 'regular';
+  @Input() nativeRole: HTMLButtonElement['role'] = 'button';
+  @Input() nativeType: HTMLButtonElement['type'] = 'button';
 
   emitClickEvent() {
-    this.clickEvent.emit({
-      type: 'click',
-      payload: {
-        label: this.label,
-        uuid: this.uuid,
-      },
-    });
+    this.clickEvent.emit();
+  }
+
+  /** should wer render icon? */
+  canRenderIcon() {
+    const iconButtonTypes: ButtonType[] = ['combined-button', 'icon-button'];
+    return iconButtonTypes.includes(this.type);
+  }
+
+  /** should we render label? */
+  canRenderLabel() {
+    const labelButtonTypes: ButtonType[] = [
+      'button',
+      'tab-button',
+      'combined-button',
+    ];
+    return labelButtonTypes.includes(this.type);
   }
 }

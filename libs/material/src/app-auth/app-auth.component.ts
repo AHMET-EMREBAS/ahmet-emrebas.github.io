@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { TabModule } from '../tab/tab.module';
 import { ButtonComponent } from '../button';
 import { FormModule } from '../form/form.module';
+import { MicroModule } from '../micro/micro.module';
 
 @Component({
   selector: 'tb-app-auth',
   standalone: true,
-  imports: [CommonModule, TabModule, FormModule, ButtonComponent],
+  imports: [MicroModule, TabModule, FormModule, ButtonComponent],
   templateUrl: './app-auth.component.html',
 })
 export class AppAuthComponent {

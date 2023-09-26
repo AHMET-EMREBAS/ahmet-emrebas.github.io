@@ -20,7 +20,7 @@ import { NgModel } from '@angular/forms';
 export class NavListComponent {
   componentType = NavListItemComponent;
   @ContentChildren(NavListItemComponent)
-  children?: QueryList<NavListItemComponent>;
+  children?: QueryList<Record<string, unknown>>;
   @Input() color: Color = 'primary';
   @Input() icon: Icon = 'info';
 }
