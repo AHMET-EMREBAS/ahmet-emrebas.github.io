@@ -6,7 +6,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ButtonStyle, ButtonType, Color, Icon } from '../api';
+import { ButttonVariant, ButtonType, Color, Icon, Position } from '../api';
 import { MicroModule } from '../micro/micro.module';
 
 export type ButtonSize = 'small' | 'regular' | 'big';
@@ -19,6 +19,8 @@ export type ButtonSize = 'small' | 'regular' | 'big';
       #button
       [tbClassList]="this"
       [tbSetAttribute]="{ role: nativeRole, type: nativeType }"
+      [tbTooltip]="tooltip"
+      [tbTooltipPosition]="tooltipPosition"
       (click)="emitClickEvent()"
     >
       <span class="icon" *ngIf="canRenderIcon()">{{ icon }}</span>
@@ -34,9 +36,11 @@ export class ButtonComponent {
   @Output() readonly clickEvent = new EventEmitter();
 
   /** @ignore */
-  @Input() __ngcontext__ = '';
+  @Input() __ngContext__ = '';
 
-  @Input() style: ButtonStyle = 'basic';
+  @Input() tooltip = '';
+  @Input() tooltipPosition: Position = 'bottom';
+  @Input() variant: ButttonVariant = 'basic';
   @Input() type: ButtonType = 'button';
   @Input() color: Color = 'primary';
   @Input() icon: Icon = 'info';
@@ -63,5 +67,9 @@ export class ButtonComponent {
       'combined-button',
     ];
     return labelButtonTypes.includes(this.type);
+  }
+
+  setInput(key: keyof this, value: any) {
+    this[key] = value;
   }
 }

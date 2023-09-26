@@ -14,7 +14,6 @@ export class MenuComponent extends ButtonComponent {
   readonly __componentType = MenuComponent;
   @ContentChildren(MenuComponent) children?: Record<string, any>[];
 
-
   @Input() openDirection: Position = 'bottom';
   @Input() containerView: 'row' | 'column' = 'column';
 }

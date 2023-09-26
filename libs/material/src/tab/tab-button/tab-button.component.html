@@ -1,3 +1,8 @@
-<button class="tab-button {{ color }} bottom" (click)="emitClickEvent()">
+<button
+  class="tab-button {{ color }} bottom"
+  tbTooltip="Tooltip"
+  tbTooltipPosition="right"
+  (click)="emitClickEvent()"
+>
   {{ label }}
 </button>

@@ -1,4 +1,9 @@
-<button class="nav-list-item {{ color }}" (click)="emitClickEvent()">
+<button
+  class="nav-list-item {{ color }}"
+  [tbTooltip]="tooltip"
+  [tbTooltipPosition]="tooltipPosition"
+  (click)="emitClickEvent()"
+>
   <span class="icon" *ngIf="icon">{{ icon }}</span>
   <span *ngIf="label">{{ label }}</span>
 </button>

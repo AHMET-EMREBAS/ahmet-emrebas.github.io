@@ -12,11 +12,16 @@ export default meta;
 type Story = StoryObj<AlertComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    color: 'primary',
+    icon: 'home',
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: {
+    color: 'red',
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText(/alert works!/gi)).toBeTruthy();

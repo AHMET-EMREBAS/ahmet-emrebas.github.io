@@ -15,7 +15,7 @@ export const Primary: Story = {
   args: {
     label: 'home',
     type: 'button',
-    style: 'basic',
+    variant: 'basic',
     color: 'primary',
   },
 };
@@ -24,7 +24,7 @@ export const Heading: Story = {
   args: {
     label: 'Button',
     type: 'button',
-    style: 'raised',
+    variant: 'raised',
     color: 'primary',
   },
   play: async ({ canvasElement }) => {

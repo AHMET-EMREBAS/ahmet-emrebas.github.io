@@ -1,20 +1,31 @@
-import { AfterViewInit, ComponentRef, Directive, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  ComponentRef,
+  Directive,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 @Directive({
   selector: '[tbSetComponentAttribute]',
   standalone: true,
 })
-export class SetComponentAttributeDirective  implements AfterViewInit{
+export class SetComponentAttributeDirective implements OnInit {
+  @Input() componentRef?: ComponentRef<any>;
   @Input() tbSetComponentAttribute?: Record<string, any>;
 
-  constructor(public readonly componentRef: ComponentRef<unknown>) {}
-
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     if (this.tbSetComponentAttribute) {
+      console.log(this.componentRef);
       const attributes = Object.entries(this.tbSetComponentAttribute);
       for (const [key, value] of attributes) {
-        this.componentRef.setInput(key, value);
+        if (key.startsWith('__')) {
+          continue;
+        }
+        console.log(`Adding input : ${key}  : ${value}`);
+        this.componentRef?.setInput(key, value);
       }
     }
   }
+  ngAfterViewInit(): void {}
 }

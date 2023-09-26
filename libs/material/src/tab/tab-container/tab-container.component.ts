@@ -7,24 +7,18 @@ import {
   QueryList,
   ViewChild,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ScrollDirectionDirective } from '../../micro/scroll-direction/scroll-direction.directive';
 import { BehaviorSubject, debounceTime } from 'rxjs';
 import { TabDirective } from '../tab.directive';
 import { fadeInOnEnterAnimation } from 'angular-animations';
 import { NavListModule } from '../../nav-list/nav-list.component';
-import { TabButtonComponent } from '../tab-button/tab-button.component';
+import { MicroModule } from '../../micro/micro.module';
+import { ButtonComponent } from '../../button';
 
 export type TabContainerType = 'sidenav' | 'tab';
 @Component({
   selector: 'tb-tab-container',
   standalone: true,
-  imports: [
-    CommonModule,
-    ScrollDirectionDirective,
-    NavListModule,
-    TabButtonComponent,
-  ],
+  imports: [MicroModule, NavListModule, ButtonComponent],
   templateUrl: './tab-container.component.html',
   animations: [fadeInOnEnterAnimation({ anchor: 'enter', duration: 1000 })],
 })

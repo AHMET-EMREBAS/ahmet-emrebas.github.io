@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Color, Icon } from '../api';
 import { ButtonComponent } from '../button';
 import { MicroModule } from '../micro/micro.module';
-// buttonType="icon-button"
-// buttonSize="small"
-// buttonStyle="inbox"
-// [color]="color"
-// icon="close"
-
 
 @Component({
   selector: 'tb-alert',
@@ -17,7 +17,14 @@ import { MicroModule } from '../micro/micro.module';
     <span class="icon">{{ icon }}</span>
     <span>{{ message }}</span>
     <div class="grow-1"></div>
-    <tb-button></tb-button>
+    <tb-button
+      [color]="color"
+      icon="close"
+      variant="inbox"
+      size="small"
+      type="icon-button"
+      (click)="emitCloseEvent()"
+    ></tb-button>
   </div>`,
 })
 export class AlertComponent {

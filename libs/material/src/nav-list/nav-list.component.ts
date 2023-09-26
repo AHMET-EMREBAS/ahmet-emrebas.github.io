@@ -8,14 +8,12 @@ import {
 import { CommonModule } from '@angular/common';
 import { NavListItemComponent } from './nav-list-item/nav-list-item.component';
 import { Color, Icon } from '../api';
-import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'tb-nav-list',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './nav-list.component.html',
-  styles: [],
 })
 export class NavListComponent {
   componentType = NavListItemComponent;

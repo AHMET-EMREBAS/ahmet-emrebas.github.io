@@ -14,10 +14,10 @@ export type ButtonType =
   | 'combined-button'
   | 'tab-button';
 
-export type ButtonStyle = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox';
+export type ButttonVariant = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox';
 
 export type Position = 'top' | 'right' | 'bottom' | 'left';
 
-export type InputStyle = ButtonStyle;
+export type InputVariant = ButttonVariant;
 
 export type InputType = 'text' | 'number' | 'boolean' | 'date' | 'array';
