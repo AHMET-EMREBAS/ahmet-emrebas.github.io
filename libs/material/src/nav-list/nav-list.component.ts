@@ -1,7 +1,14 @@
-import { Component, ContentChildren, Input, QueryList } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  Input,
+  NgModule,
+  QueryList,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavListItemComponent } from './nav-list-item/nav-list-item.component';
 import { Color, Icon } from '../api';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'tb-nav-list',
@@ -17,3 +24,9 @@ export class NavListComponent {
   @Input() color: Color = 'primary';
   @Input() icon: Icon = 'info';
 }
+
+@NgModule({
+  imports: [NavListComponent, NavListItemComponent],
+  exports: [NavListComponent, NavListItemComponent],
+})
+export class NavListModule {}

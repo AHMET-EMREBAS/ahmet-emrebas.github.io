@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/directive-selector */
 import { Directive, Input, TemplateRef } from '@angular/core';
 
-import { Color } from '../api';
+import { Color, Icon } from '../api';
 
 export class TabInputs {
   label = '';
@@ -18,6 +18,7 @@ export class TabDirective implements TabInputs {
   @Input() __ngContext__ = '';
   @Input() label = '';
   @Input() color: Color = 'primary';
+  @Input() icon: Icon = 'info';
 
   constructor(public templateRef: TemplateRef<TabInputs>) {}
 }

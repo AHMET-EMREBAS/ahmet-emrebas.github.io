@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Color, Icon } from '../../api';
 
@@ -10,7 +10,17 @@ import { Color, Icon } from '../../api';
   styles: [],
 })
 export class NavListItemComponent {
+  /** @ignore */
+  @Input()
+  @Output()
+  clickEvent = new EventEmitter();
+  @Input() __ngContext__ = '';
   @Input() label = '';
   @Input() color: Color = 'primary';
   @Input() icon: Icon = 'info';
+
+  emitClickEvent() {
+    console.log('Emitting click event', this);
+    this.clickEvent.emit({});
+  }
 }

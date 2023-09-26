@@ -1,4 +1,4 @@
-<button class="nav-list-item {{ color }}">
+<button class="nav-list-item {{ color }}" (click)="emitClickEvent()">
   <span class="icon" *ngIf="icon">{{ icon }}</span>
   <span *ngIf="label">{{ label }}</span>
 </button>

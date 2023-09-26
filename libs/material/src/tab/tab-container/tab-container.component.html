@@ -1,20 +1,43 @@
-<div
-  #container
-  class="flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative"
-  tbScrollX
->
-  <ng-container *ngFor="let child of children">
-    <button
-      class="tab-button {{ child.color }} bottom"
-      (click)="activateChild(child)"
-    >
-      {{ child.label }}
-    </button>
-  </ng-container>
-</div>
+<ng-container *ngIf="type === 'tab'">
+  <div
+    #container
+    class="flex row gap-2 w-100 ox-auto oy-hidden pb-3 relative"
+    tbScrollX
+  >
+    <ng-container *ngFor="let child of children">
+      <button
+        class="tab-button {{ child.color }} bottom"
+        (click)="activateChild(child)"
+      >
+        {{ child.label }}
+      </button>
+    </ng-container>
+  </div>
 
-<div *ngIf="delayedChild$ | async as delayedChild" [@enter]>
-  <ng-container *ngTemplateOutlet="delayedChild.templateRef">
-    <ng-content></ng-content>
-  </ng-container>
-</div>
+  <div *ngIf="delayedChild$ | async as delayedChild" [@enter]>
+    <ng-container *ngTemplateOutlet="delayedChild.templateRef">
+      <ng-content></ng-content>
+    </ng-container>
+  </div>
+</ng-container>
+
+<!-- Sidenav -->
+<ng-container *ngIf="type === 'sidenav'">
+  <div class="flex row gap-2 w-100">
+    <tb-nav-list>
+      <tb-nav-list-item
+        [label]="child.label"
+        [icon]="child.icon"
+        [color]="child.color"
+        (clickEvent)="activateChild(child)"
+        *ngFor="let child of children"
+      ></tb-nav-list-item>
+    </tb-nav-list>
+
+    <div *ngIf="delayedChild$ | async as delayedChild" [@enter]>
+      <ng-container *ngTemplateOutlet="delayedChild.templateRef">
+        <ng-content></ng-content>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
