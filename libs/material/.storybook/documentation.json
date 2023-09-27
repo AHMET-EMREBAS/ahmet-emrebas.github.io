@@ -4,7 +4,131 @@
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "FormValue",
+            "id": "class-FormValue-ad373ed9fd08eb8178db9f1df24bd631ce6f00cf32442098e307a047c3d76fcc160cf3813b024cf442cc35219b933a41fa322da64080649dc5da03e94cd84462",
+            "file": "libs/material/src/api/form-value.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "export class FormValue<T = Record<string, any>, K extends keyof T = keyof T> {\r\n  private readonly value = new Map<K, T[K] | undefined>();\r\n\r\n  set(key: K, value: T[K]) {\r\n    this.value.set(key, value);\r\n  }\r\n\r\n  get(key: K): T[K] | undefined {\r\n    return this.value.get(key);\r\n  }\r\n\r\n  reset() {\r\n    this.value.clear();\r\n  }\r\n\r\n  formValue() {\r\n    const result: Partial<Record<K, T[K]>> = {};\r\n\r\n    for (const [key, value] of this.value) result[key] = value;\r\n\r\n    return result;\r\n  }\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "value",
+                    "defaultValue": "new Map<K, T[K] | undefined>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2,
+                    "modifierKind": [
+                        121,
+                        146
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "formValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Partial<Record<K, T[K]>>",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "get",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "K",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": " | undefined",
+                    "typeParameters": [],
+                    "line": 8,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "K",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "reset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "set",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "K",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "value",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 4,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "K",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
     "directives": [
         {
             "name": "BadgeDirective",
@@ -1696,7 +1820,7 @@
         },
         {
             "name": "CommonInputComponent",
-            "id": "component-CommonInputComponent-546898052d266aa51e9f158f0b34c4b73cb8f2099b5dd0121ca72c899012b392697839fc22b62640683ed0448ed94cfc56e52813373dafd38778c6f2d96802c0",
+            "id": "component-CommonInputComponent-d73c5e69ce2c1b970cabb507bc032c29d774ab0422ac7d1059a209d99a0d77dfde94e43ba7169c0d6c67036745a4accdaf46a48ad6bd38f89ba7859cbe9ac285",
             "file": "libs/material/src/form/common-input/common-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1715,7 +1839,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 },
@@ -1723,7 +1847,7 @@
                     "name": "autocomplete",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "",
                     "decorators": []
                 },
@@ -1732,15 +1856,33 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 34,
                     "type": "Color",
+                    "decorators": []
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": []
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
                     "decorators": []
                 },
                 {
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 },
@@ -1748,7 +1890,7 @@
                     "name": "formName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 28,
                     "type": "string",
                     "decorators": []
                 },
@@ -1756,8 +1898,8 @@
                     "name": "formValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "Record<string | any>",
+                    "line": 16,
+                    "type": "FormValue",
                     "decorators": []
                 },
                 {
@@ -1765,7 +1907,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": []
                 },
@@ -1774,7 +1916,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "any",
                     "decorators": [
                         {
@@ -1788,7 +1930,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "InputType",
                     "decorators": []
                 },
@@ -1797,23 +1939,40 @@
                     "defaultValue": "'Not set'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "OptionType[]",
                     "decorators": []
                 },
                 {
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 32,
                     "type": "",
                     "decorators": []
                 },
@@ -1821,7 +1980,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 30,
                     "type": "T",
                     "decorators": []
                 },
@@ -1830,7 +1989,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 36,
                     "type": "InputVariant",
                     "decorators": []
                 }
@@ -1844,7 +2003,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -1868,7 +2027,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1878,7 +2037,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1892,7 +2051,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Optional,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { Color, Icon, InputType, InputVariant } from '../../api';\n\n@Component({ standalone: true, template: `` })\nexport class CommonInputComponent<T = any> {\n  @Optional()\n  @ViewChild('input')\n  inputRef!: ElementRef<HTMLInputElement>;\n\n  @Input()\n  @Output()\n  inputEvent = new EventEmitter<T>();\n\n  @Input() __ngContext__ = '';\n\n  @Input() formName?: string;\n\n  @Input() inputType?: InputType = 'text';\n  @Input() value?: T;\n  @Input() name!: string;\n  @Input() type?: HTMLInputElement['type'];\n  @Input() autocomplete?: HTMLInputElement['autocomplete'];\n  @Input() color?: Color = 'primary';\n  @Input() label?: string = 'Not set';\n  @Input() variant?: InputVariant = 'basic';\n  @Input() icon?: Icon = 'info';\n  @Input() error?: string;\n  @Input() formValue?: Record<string, any>;\n\n  emit() {\n    this.inputEvent.emit(this.value);\n  }\n\n  id() {\n    return `${this.formName}-${this.name}-${this.inputType}`;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Optional,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { Color, Direction, Icon, InputType, InputVariant } from '../../api';\nimport { OptionType } from '../enum-input/enum-input.component';\nimport { FormValue } from '../../api/form-value';\n\n@Component({ standalone: true, template: `` })\nexport class CommonInputComponent<T = any> {\n  @Input() formValue?: FormValue;\n\n  @Optional()\n  @ViewChild('input')\n  inputRef!: ElementRef<HTMLInputElement>;\n\n  @Input()\n  @Output()\n  inputEvent = new EventEmitter<T>();\n\n  @Input() __ngContext__ = '';\n\n  @Input() formName?: string;\n  @Input() inputType?: InputType = 'text';\n  @Input() value?: T;\n  @Input() name!: string;\n  @Input() type?: HTMLInputElement['type'];\n  @Input() autocomplete?: HTMLInputElement['autocomplete'];\n  @Input() color?: Color = 'primary';\n  @Input() label?: string = 'Not set';\n  @Input() variant?: InputVariant = 'basic';\n  @Input() icon?: Icon = 'info';\n  @Input() error?: string;\n\n  @Input() options?: OptionType[];\n  @Input() direction?: Direction = 'bottom';\n  @Input() distribution?: 'row' | 'column' = 'column';\n  @Input() multiple? = false;\n  emit() {\n    this.formValue?.set(this.name, this.value);\n    this.inputEvent.emit(this.value);\n  }\n\n  id() {\n    return `${this.formName}-${this.name}-${this.inputType}`;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -1964,7 +2123,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 26,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1975,7 +2134,7 @@
                     "name": "autocomplete",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -1987,8 +2146,32 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 34,
                     "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -1998,7 +2181,7 @@
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2009,7 +2192,7 @@
                     "name": "formName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 28,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2020,8 +2203,8 @@
                     "name": "formValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "Record<string | any>",
+                    "line": 16,
+                    "type": "FormValue",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2032,7 +2215,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -2044,7 +2227,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "any",
                     "decorators": [
                         {
@@ -2061,7 +2244,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "InputType",
                     "decorators": [],
                     "inheritance": {
@@ -2073,8 +2256,20 @@
                     "defaultValue": "'Not set'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2084,8 +2279,19 @@
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "OptionType[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2095,7 +2301,7 @@
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 32,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -2106,7 +2312,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 30,
                     "type": "T",
                     "decorators": [],
                     "inheritance": {
@@ -2118,7 +2324,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 36,
                     "type": "InputVariant",
                     "decorators": [],
                     "inheritance": {
@@ -2135,7 +2341,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -2253,7 +2459,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2266,7 +2472,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2296,7 +2502,7 @@
         },
         {
             "name": "EnumInputComponent",
-            "id": "component-EnumInputComponent-db5b9bd68e4a68b59ef38e318da7c0488e3caf686bf55e2e65e9785f0deb6d76d09a35aef770ed12e2feb7fba89252530fb5801b2b7eb3eb36fb9de17a705ca3",
+            "id": "component-EnumInputComponent-aa3814e6265121bba3cbce667d789c1eb5c16d903b340fd0bb6c1757ca9a1dd827904b7fd62f78ac42c92a0a5afc9b84d121e05339bd29e3694efe39eef3e248",
             "file": "libs/material/src/form/enum-input/enum-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2306,43 +2512,17 @@
             "selector": "tb-enum-input",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"name\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      [id]=\"name\"\n      type=\"text\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"emit()\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full \">\n    <div\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of options\"\n      (click)=\"setOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      type=\"text\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"emit()\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full \">\n    <div\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of options\"\n      (click)=\"setOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "direction",
-                    "defaultValue": "'bottom'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 50,
-                    "type": "Direction",
-                    "decorators": []
-                },
-                {
-                    "name": "distribution",
-                    "defaultValue": "'column'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 52,
-                    "type": "\"row\" | \"column\"",
-                    "decorators": []
-                },
-                {
-                    "name": "options",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 49,
-                    "type": "OptionType[]",
-                    "decorators": []
-                },
-                {
                     "name": "__ngContext__",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 26,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2353,7 +2533,7 @@
                     "name": "autocomplete",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -2365,8 +2545,32 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 34,
                     "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2376,7 +2580,7 @@
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2387,7 +2591,7 @@
                     "name": "formName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 28,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2398,8 +2602,8 @@
                     "name": "formValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "Record<string | any>",
+                    "line": 16,
+                    "type": "FormValue",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2410,7 +2614,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -2422,7 +2626,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "any",
                     "decorators": [
                         {
@@ -2439,7 +2643,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "InputType",
                     "decorators": [],
                     "inheritance": {
@@ -2451,8 +2655,20 @@
                     "defaultValue": "'Not set'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2462,8 +2678,19 @@
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "OptionType[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2473,7 +2700,7 @@
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 32,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -2484,7 +2711,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 30,
                     "type": "T",
                     "decorators": [],
                     "inheritance": {
@@ -2496,7 +2723,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 36,
                     "type": "InputVariant",
                     "decorators": [],
                     "inheritance": {
@@ -2513,7 +2740,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -2547,7 +2774,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 50,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2568,7 +2795,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2581,7 +2808,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2603,7 +2830,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, Input, ViewChild } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { Icon, Direction } from '../../api';\n\nexport type OptionType = {\n  icon: Icon;\n  value: string;\n};\n\n@Component({\n  selector: 'tb-enum-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"name\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          [id]=\"name\"\n          type=\"text\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"emit()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full \">\n        <div\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of options\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class EnumInputComponent extends CommonInputComponent {\n  @Input() options?: OptionType[];\n  @Input() direction: Direction = 'bottom';\n\n  @Input() distribution: 'row' | 'column' = 'column';\n  setOption(options: OptionType) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.focus();\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ElementRef, Input, ViewChild } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { Icon, Direction } from '../../api';\n\nexport type OptionType = {\n  icon: Icon;\n  value: string;\n};\n\n@Component({\n  selector: 'tb-enum-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          type=\"text\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"emit()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full \">\n        <div\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of options\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class EnumInputComponent extends CommonInputComponent {\n  setOption(options: OptionType) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.focus();\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2652,7 +2879,7 @@
         },
         {
             "name": "FormComponent",
-            "id": "component-FormComponent-14fe2b56189e47903a90fb9f13f8e7b5fa8bd22ccb942271c19a7db6bf185e132489ba722f405f8111fd7a509e8a59e4af73fa04aefbe75625b0356a5b8712b4",
+            "id": "component-FormComponent-a9481022e4fc7995ed70da004eb66a941a2bef35a1c60b0ce0b6b8af72010d1ddbbbf7437ba35af2aa5e28475bcd1d9329e232d9bcecfc6b412a083ad71309f2",
             "file": "libs/material/src/form/form.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2674,7 +2901,7 @@
                     "defaultValue": "'form'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 35,
                     "type": "string",
                     "decorators": []
                 },
@@ -2683,7 +2910,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 34,
                     "type": "string",
                     "decorators": []
                 },
@@ -2692,7 +2919,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 33,
                     "type": "string",
                     "decorators": []
                 }
@@ -2703,7 +2930,7 @@
                     "defaultValue": "new EventEmitter<Record<string, unknown>>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 32,
                     "type": "EventEmitter"
                 }
             ],
@@ -2715,7 +2942,7 @@
                     "type": "QueryList<FormActionsDirective>",
                     "optional": true,
                     "description": "<p>Form action container marked by FormActionDirective</p>\n",
-                    "line": 27,
+                    "line": 28,
                     "rawdescription": "\nForm action container marked by FormActionDirective",
                     "decorators": [
                         {
@@ -2734,7 +2961,7 @@
                     "type": "QueryList<InputComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -2753,17 +2980,17 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 24
                 },
                 {
                     "name": "formValue",
-                    "defaultValue": "{}",
+                    "defaultValue": "new FormValue()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Record<string | >",
+                    "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 36,
+                    "line": 37,
                     "modifierKind": [
                         146
                     ]
@@ -2783,7 +3010,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2811,7 +3038,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2832,7 +3059,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2842,7 +3069,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2873,7 +3100,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MicroModule } from '../micro/micro.module';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [MicroModule, FormsModule, ReactiveFormsModule, InputComponent],\n  templateUrl: './form.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class FormComponent {\n  componentType = InputComponent;\n\n  /** Form action container marked by FormActionDirective  */\n  @ContentChildren(FormActionsDirective)\n  actions?: QueryList<FormActionsDirective>;\n\n  @ContentChildren(InputComponent) children!: QueryList<InputComponent>;\n\n  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();\n  @Input() title = '';\n  @Input() subtitle = '';\n  @Input() name = 'form';\n\n  readonly formValue: Record<string, unknown> = {};\n\n  preventDefault(event: Event) {\n    event.preventDefault();\n  }\n\n  childValue(value: InputComponent) {\n    return value.inputs({ formName: this.name });\n  }\n\n  submit() {\n    this.submitEvent.emit(this.formValue);\n  }\n\n  reset() {\n    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);\n  }\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n} from '@angular/core';\nimport { InputComponent } from './input/input.component';\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MicroModule } from '../micro/micro.module';\nimport { FormValue } from '../api/form-value';\n\n@Component({\n  selector: 'tb-form',\n  standalone: true,\n  imports: [MicroModule, FormsModule, ReactiveFormsModule, InputComponent],\n  templateUrl: './form.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class FormComponent {\n  componentType = InputComponent;\n\n  /** Form action container marked by FormActionDirective  */\n  @ContentChildren(FormActionsDirective)\n  actions?: QueryList<FormActionsDirective>;\n\n  @ContentChildren(InputComponent) children!: QueryList<InputComponent>;\n\n  @Output() submitEvent = new EventEmitter<Record<string, unknown>>();\n  @Input() title = '';\n  @Input() subtitle = '';\n  @Input() name = 'form';\n\n  readonly formValue = new FormValue();\n\n  preventDefault(event: Event) {\n    event.preventDefault();\n  }\n\n  childValue(value: InputComponent) {\n    return value.inputs({ formName: this.name, formValue: this.formValue });\n  }\n\n  submit() {\n    this.submitEvent.emit(this.formValue.formValue());\n  }\n\n  reset() {\n    this.formValue.reset();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3103,7 +3330,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-b5f16b2d77b5962f1de30c1a7da16e7d337d2bdae6b8827b3f26a0a706cdeba4d69ad7396ab51aa3ca0afbeb958751bfb8aa58cafe18777f9abf54be26189124",
+            "id": "component-InputComponent-18424c835cc4c2c3a35d88e8d93b86731c7d7fb064ce74798d9ec5659541a2b9b0aed69d866e7e391c0f301bcf33cae5369d3a08f9d0fbd44d053efc5b47b702",
             "file": "libs/material/src/form/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3124,7 +3351,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 26,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3135,7 +3362,7 @@
                     "name": "autocomplete",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -3147,8 +3374,32 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 34,
                     "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -3158,7 +3409,7 @@
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3169,7 +3420,7 @@
                     "name": "formName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 28,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3180,8 +3431,8 @@
                     "name": "formValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "Record<string | any>",
+                    "line": 16,
+                    "type": "FormValue",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -3192,7 +3443,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -3204,7 +3455,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "any",
                     "decorators": [
                         {
@@ -3221,7 +3472,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "InputType",
                     "decorators": [],
                     "inheritance": {
@@ -3233,8 +3484,20 @@
                     "defaultValue": "'Not set'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -3244,8 +3507,19 @@
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "OptionType[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -3255,7 +3529,7 @@
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 32,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -3266,7 +3540,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 30,
                     "type": "T",
                     "decorators": [],
                     "inheritance": {
@@ -3278,7 +3552,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 36,
                     "type": "InputVariant",
                     "decorators": [],
                     "inheritance": {
@@ -3296,7 +3570,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 22
                 },
                 {
                     "name": "__date",
@@ -3306,7 +3580,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 19
                 },
                 {
                     "name": "__enum",
@@ -3316,7 +3590,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 21
                 },
                 {
                     "name": "__number",
@@ -3326,7 +3600,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 20
                 },
                 {
                     "name": "__text",
@@ -3336,7 +3610,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 18
                 },
                 {
                     "name": "inputRef",
@@ -3345,7 +3619,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -3390,7 +3664,7 @@
                     "optional": false,
                     "returnType": "Record<string, any>",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 24,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3412,7 +3686,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3425,7 +3699,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3451,7 +3725,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TextInputComponent } from '../text-input/text-input.component';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { DateInputComponent } from '../date-input/date-input.component';\nimport { NumberInputComponent } from '../number-input/number-input.component';\nimport { EnumInputComponent } from '../enum-input/enum-input.component';\nimport { BooleanInputComponent } from '../boolean-input/boolean-input.component';\n\n@Component({\n  selector: 'tb-input',\n  standalone: true,\n  imports: [CommonModule, TextInputComponent],\n  templateUrl: './input.component.html',\n})\nexport class InputComponent extends CommonInputComponent {\n  __text = TextInputComponent;\n  __date = DateInputComponent;\n  __number = NumberInputComponent;\n  __enum = EnumInputComponent;\n  __boolean = BooleanInputComponent;\n\n  inputs(extras?: Record<string, any>): Record<string, any> {\n    const { inputRef, __text, __date, __boolean, __enum, __number, ...rest } =\n      this;\n\n    return { ...rest, ...extras };\n  }\n\n  componentType() {\n    if (this.inputType === 'text') {\n      return this.__text;\n    } else if (this.inputType === 'number') {\n      return this.__number;\n    } else if (this.inputType === 'date') {\n      return this.__date;\n    } else if (this.inputType === 'select') {\n      return this.__enum;\n    }\n\n    return this.__text;\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TextInputComponent } from '../text-input/text-input.component';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { DateInputComponent } from '../date-input/date-input.component';\nimport { NumberInputComponent } from '../number-input/number-input.component';\nimport { EnumInputComponent } from '../enum-input/enum-input.component';\nimport { BooleanInputComponent } from '../boolean-input/boolean-input.component';\n\n@Component({\n  selector: 'tb-input',\n  standalone: true,\n  imports: [CommonModule, TextInputComponent],\n  templateUrl: './input.component.html',\n})\nexport class InputComponent extends CommonInputComponent {\n  __text = TextInputComponent;\n  __date = DateInputComponent;\n  __number = NumberInputComponent;\n  __enum = EnumInputComponent;\n  __boolean = BooleanInputComponent;\n\n  inputs(extras?: Record<string, any>): Record<string, any> {\n    const { inputRef, __text, __date, __boolean, __enum, __number, ...rest } =\n      this;\n    return { ...rest, ...extras };\n  }\n\n  componentType() {\n    if (this.inputType === 'text') {\n      return this.__text;\n    } else if (this.inputType === 'number') {\n      return this.__number;\n    } else if (this.inputType === 'date') {\n      return this.__date;\n    } else if (this.inputType === 'select') {\n      return this.__enum;\n    }\n\n    return this.__text;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4063,7 +4337,7 @@
         },
         {
             "name": "NumberInputComponent",
-            "id": "component-NumberInputComponent-8cbbe1bfe63dc88bf9a6e197e93d3e30adfddebee09e5ee772efc1ffba5b6390861aaf0c77197a429755c8422cb309f7f693ba774bfe27c1ff294e73b2d1804f",
+            "id": "component-NumberInputComponent-11869d3647bf56be21565771c1fbe9ffd55e4d4b01b11275ff8ecb5336360f1a0c04d1cf7b6b44dc1e93ec6ab6f4558221a70f9001f99676cfe1a0b3463f7f74",
             "file": "libs/material/src/form/number-input/number-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4073,7 +4347,7 @@
             "selector": "tb-number-input",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"input-container {{ color }} {{ variant }}\">\n  <span class=\"icon\"> {{ icon }}</span>\n  <label [for]=\"name\">{{ label }} </label>\n  <input\n    [(ngModel)]=\"value\"\n    [id]=\"name\"\n    type=\"number\"\n    [name]=\"name\"\n    [autocomplete]=\"autocomplete\"\n    (input)=\"emit()\"\n    tbHasValue\n  />\n  <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n</div>\n",
+            "template": "<div class=\"input-container {{ color }} {{ variant }}\">\n  <span class=\"icon\"> {{ icon }}</span>\n  <label [for]=\"id()\">{{ label }} </label>\n  <input\n    [(ngModel)]=\"value\"\n    [id]=\"id()\"\n    [attr.data-testid]=\"name\"\n    type=\"number\"\n    [name]=\"name\"\n    (input)=\"emit()\"\n    tbHasValue\n  />\n  <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -4083,7 +4357,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 26,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -4094,7 +4368,7 @@
                     "name": "autocomplete",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -4106,8 +4380,32 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 34,
                     "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4117,7 +4415,7 @@
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -4128,7 +4426,7 @@
                     "name": "formName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 28,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -4139,8 +4437,8 @@
                     "name": "formValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "Record<string | any>",
+                    "line": 16,
+                    "type": "FormValue",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4151,7 +4449,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -4163,7 +4461,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "any",
                     "decorators": [
                         {
@@ -4180,7 +4478,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "InputType",
                     "decorators": [],
                     "inheritance": {
@@ -4192,8 +4490,20 @@
                     "defaultValue": "'Not set'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4203,8 +4513,19 @@
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "OptionType[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4214,7 +4535,7 @@
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 32,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -4225,7 +4546,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 30,
                     "type": "T",
                     "decorators": [],
                     "inheritance": {
@@ -4237,7 +4558,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 36,
                     "type": "InputVariant",
                     "decorators": [],
                     "inheritance": {
@@ -4254,7 +4575,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -4281,7 +4602,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4294,7 +4615,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4316,7 +4637,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-number-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container {{ color }} {{ variant }}\">\n      <span class=\"icon\"> {{ icon }}</span>\n      <label [for]=\"name\">{{ label }} </label>\n      <input\n        [(ngModel)]=\"value\"\n        [id]=\"name\"\n        type=\"number\"\n        [name]=\"name\"\n        [autocomplete]=\"autocomplete\"\n        (input)=\"emit()\"\n        tbHasValue\n      />\n      <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n    </div>\n  `,\n})\nexport class NumberInputComponent extends CommonInputComponent<number> {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-number-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container {{ color }} {{ variant }}\">\n      <span class=\"icon\"> {{ icon }}</span>\n      <label [for]=\"id()\">{{ label }} </label>\n      <input\n        [(ngModel)]=\"value\"\n        [id]=\"id()\"\n        [attr.data-testid]=\"name\"\n        type=\"number\"\n        [name]=\"name\"\n        (input)=\"emit()\"\n        tbHasValue\n      />\n      <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n    </div>\n  `,\n})\nexport class NumberInputComponent extends CommonInputComponent<number> {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4417,7 +4738,7 @@
         },
         {
             "name": "SelectInputComponent",
-            "id": "component-SelectInputComponent-08c240c1a0ca69b2a21fd36e8655c42e5930cdfe514b73a8a91f61f2a42909d56bc6bc94eb3a6fe3d3b1dba3546e79bc3f67711ad250924fffc04bea81fd21ae",
+            "id": "component-SelectInputComponent-5d07373a5265075ac0c8718bf26e15e23661fdfc65141711ab8933f4a9dd6690c5c555c3623aa18dd88f5d42c7cfdfae0e6b18a32f7e7e7ca4641a49720cea9a",
             "file": "libs/material/src/form/select-input/select-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4427,43 +4748,17 @@
             "selector": "tb-select-input",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"name\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      [id]=\"id()\"\n      type=\"text\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"emit()\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full \">\n    <div\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of options\"\n      (click)=\"setOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"filterOptions()\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full \">\n    <div\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of filteredOptions\"\n      (click)=\"setOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "direction",
-                    "defaultValue": "'bottom'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 46,
-                    "type": "Direction",
-                    "decorators": []
-                },
-                {
-                    "name": "distribution",
-                    "defaultValue": "'column'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 48,
-                    "type": "\"row\" | \"column\"",
-                    "decorators": []
-                },
-                {
-                    "name": "options",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 45,
-                    "type": "OptionType[]",
-                    "decorators": []
-                },
-                {
                     "name": "__ngContext__",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 26,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -4474,7 +4769,7 @@
                     "name": "autocomplete",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -4486,8 +4781,32 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 34,
                     "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4497,7 +4816,7 @@
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -4508,7 +4827,7 @@
                     "name": "formName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 28,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -4519,8 +4838,8 @@
                     "name": "formValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "Record<string | any>",
+                    "line": 16,
+                    "type": "FormValue",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4531,7 +4850,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -4543,7 +4862,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "any",
                     "decorators": [
                         {
@@ -4560,7 +4879,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "InputType",
                     "decorators": [],
                     "inheritance": {
@@ -4572,8 +4891,20 @@
                     "defaultValue": "'Not set'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4583,8 +4914,19 @@
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "OptionType[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4594,7 +4936,7 @@
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 32,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -4605,7 +4947,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 30,
                     "type": "T",
                     "decorators": [],
                     "inheritance": {
@@ -4617,7 +4959,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 36,
                     "type": "InputVariant",
                     "decorators": [],
                     "inheritance": {
@@ -4628,13 +4970,23 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "filteredOptions",
+                    "defaultValue": "this.options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47
+                },
+                {
                     "name": "inputRef",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -4656,6 +5008,16 @@
             ],
             "methodsClass": [
                 {
+                    "name": "filterOptions",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "setOption",
                     "args": [
                         {
@@ -4668,7 +5030,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4689,7 +5051,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4702,7 +5064,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4724,7 +5086,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { Direction } from '../../api';\nimport { OptionType } from '../enum-input/enum-input.component';\n\n@Component({\n  selector: 'tb-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"name\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          [id]=\"id()\"\n          type=\"text\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"emit()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full \">\n        <div\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of options\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SelectInputComponent extends CommonInputComponent {\n  @Input() options?: OptionType[];\n  @Input() direction: Direction = 'bottom';\n\n  @Input() distribution: 'row' | 'column' = 'column';\n  setOption(options: OptionType) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.focus();\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { OptionType } from '../enum-input/enum-input.component';\n\n@Component({\n  selector: 'tb-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"filterOptions()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of filteredOptions\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SelectInputComponent extends CommonInputComponent {\n  filteredOptions = this.options;\n  setOption(options: OptionType) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.focus();\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n      this.emit();\n    });\n  }\n\n  filterOptions() {\n    this.filteredOptions = this.options?.filter((e) =>\n      e.value.toLowerCase().includes(this.value.toLowerCase())\n    );\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5000,7 +5362,7 @@
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-6651f6e1c08e9440ebbe0b7e43178d4223cef5e0c4352c2c093e9145da3401a9cc8c5054cc7cba09bce3161117ddf3fb87e227094ebb91007c23bb7657a241fe",
+            "id": "component-TextInputComponent-bf41ed24cab32364e877092d2f9a63b16b059af5933971e9d9e78e0024fb1a146510267b371d3f2c23f8970ab97901ebb20a340758e4e9377cb6858f64a4f9ff",
             "file": "libs/material/src/form/text-input/text-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5010,25 +5372,17 @@
             "selector": "tb-text-input",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"input-container {{ color }} {{ variant }}\">\n  <span class=\"icon\"> {{ icon }}</span>\n  <label [for]=\"name\">{{ label }} </label>\n  <input\n    [(ngModel)]=\"value\"\n    [id]=\"id()\"\n    type=\"text\"\n    [name]=\"name\"\n    [autocomplete]=\"autocomplete\"\n    (input)=\"emit()\"\n    tbHasValue\n  />\n  <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n</div>\n",
+            "template": "<div class=\"input-container {{ color }} {{ variant }}\">\n  <span class=\"icon\"> {{ icon }}</span>\n  <label [for]=\"name\">{{ label }} </label>\n  <input\n    [(ngModel)]=\"value\"\n    [id]=\"id()\"\n    [attr.data-testid]=\"name\"\n    type=\"text\"\n    [name]=\"name\"\n    [autocomplete]=\"autocomplete\"\n    (input)=\"emit()\"\n    tbHasValue\n  />\n  <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "detector",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 27,
-                    "type": "ChangeDetectorRef",
-                    "decorators": []
-                },
-                {
                     "name": "__ngContext__",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 26,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -5039,7 +5393,7 @@
                     "name": "autocomplete",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -5051,8 +5405,32 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 34,
                     "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -5062,7 +5440,7 @@
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -5073,7 +5451,7 @@
                     "name": "formName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 28,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -5084,8 +5462,8 @@
                     "name": "formValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "Record<string | any>",
+                    "line": 16,
+                    "type": "FormValue",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -5096,7 +5474,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -5108,7 +5486,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "any",
                     "decorators": [
                         {
@@ -5125,7 +5503,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "InputType",
                     "decorators": [],
                     "inheritance": {
@@ -5137,8 +5515,20 @@
                     "defaultValue": "'Not set'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -5148,8 +5538,19 @@
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "OptionType[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -5159,7 +5560,7 @@
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 32,
                     "type": "",
                     "decorators": [],
                     "inheritance": {
@@ -5170,7 +5571,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 30,
                     "type": "T",
                     "decorators": [],
                     "inheritance": {
@@ -5182,7 +5583,7 @@
                     "defaultValue": "'basic'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 36,
                     "type": "InputVariant",
                     "decorators": [],
                     "inheritance": {
@@ -5199,7 +5600,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -5226,7 +5627,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -5239,7 +5640,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -5261,7 +5662,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectorRef, Component, Input } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container {{ color }} {{ variant }}\">\n      <span class=\"icon\"> {{ icon }}</span>\n      <label [for]=\"name\">{{ label }} </label>\n      <input\n        [(ngModel)]=\"value\"\n        [id]=\"id()\"\n        type=\"text\"\n        [name]=\"name\"\n        [autocomplete]=\"autocomplete\"\n        (input)=\"emit()\"\n        tbHasValue\n      />\n      <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n    </div>\n  `,\n})\nexport class TextInputComponent extends CommonInputComponent<string> {\n  @Input() detector?: ChangeDetectorRef;\n}\n",
+            "sourceCode": "import { ChangeDetectorRef, Component, Input } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container {{ color }} {{ variant }}\">\n      <span class=\"icon\"> {{ icon }}</span>\n      <label [for]=\"name\">{{ label }} </label>\n      <input\n        [(ngModel)]=\"value\"\n        [id]=\"id()\"\n        [attr.data-testid]=\"name\"\n        type=\"text\"\n        [name]=\"name\"\n        [autocomplete]=\"autocomplete\"\n        (input)=\"emit()\"\n        tbHasValue\n      />\n      <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n    </div>\n  `,\n})\nexport class TextInputComponent extends CommonInputComponent<string> {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5905,6 +6306,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'Option 1' },\n      { icon: 'info', value: 'Option 2' },\n      { icon: 'info', value: 'Option 3' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('Option 1');\n\n    userEvent.click(option1,{delay:200});\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -6245,6 +6656,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SelectInputComponent>",
+                "defaultValue": "{\n  component: SelectInputComponent,\n  title: 'Input Select',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -6550,6 +6971,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    name: 'name',\n    color: 'accent',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: '123',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'Option 1' },\n      { icon: 'info', value: 'Option 2' },\n      { icon: 'info', value: 'Option 3' },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -7146,6 +7577,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<NumberInputComponent>",
                 "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SelectInputComponent>",
+                "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -8062,6 +8504,38 @@
                     "defaultValue": "{\n  args: {\n    name: 'name',\n    color: 'accent',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: '123',\n  },\n}"
                 }
             ],
+            "libs/material/src/form/select-input/select-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'Option 1' },\n      { icon: 'info', value: 'Option 2' },\n      { icon: 'info', value: 'Option 3' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('Option 1');\n\n    userEvent.click(option1,{delay:200});\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SelectInputComponent>",
+                    "defaultValue": "{\n  component: SelectInputComponent,\n  title: 'Input Select',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'Option 1' },\n      { icon: 'info', value: 'Option 2' },\n      { icon: 'info', value: 'Option 3' },\n    ],\n  },\n}"
+                }
+            ],
             "libs/material/src/form/text-input/text-input.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -8857,6 +9331,19 @@
                     "kind": 180
                 }
             ],
+            "libs/material/src/form/select-input/select-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SelectInputComponent>",
+                    "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "libs/material/src/form/text-input/text-input.component.stories.ts": [
                 {
                     "name": "Story",
@@ -8989,6 +9476,15 @@
                 "name": "slideFromRightOnEnter",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/api/form-value.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "FormValue",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -9486,7 +9982,7 @@
                 "linktype": "component",
                 "name": "CommonInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -9525,7 +10021,7 @@
                 "linktype": "component",
                 "name": "DateInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/27",
+                "coverageCount": "0/31",
                 "status": "low"
             },
             {
@@ -9564,7 +10060,7 @@
                 "linktype": "component",
                 "name": "EnumInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -9700,7 +10196,7 @@
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/25",
+                "coverageCount": "0/29",
                 "status": "low"
             },
             {
@@ -9739,7 +10235,37 @@
                 "linktype": "component",
                 "name": "NumberInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/22",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -9748,7 +10274,7 @@
                 "linktype": "component",
                 "name": "SelectInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -9787,7 +10313,7 @@
                 "linktype": "component",
                 "name": "TextInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/19",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {

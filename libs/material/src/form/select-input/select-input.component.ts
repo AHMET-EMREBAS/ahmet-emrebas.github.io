@@ -11,22 +11,26 @@ import { OptionType } from '../enum-input/enum-input.component';
     <div class="dropdown input-dropdown {{ direction }}  {{ color }}">
       <div class="input-container {{ color }} {{ variant }}">
         <span class="icon"> {{ icon }}</span>
-        <label [for]="name">{{ label }} </label>
+        <label [for]="id()">{{ label }} </label>
         <input
           #input
           [(ngModel)]="value"
           type="text"
           [id]="id()"
+          [attr.data-testid]="name"
           [name]="name"
           [autocomplete]="autocomplete"
-          (input)="emit()"
+          (input)="getOptions()"
+          (keydown)="handleKeyPress($event)"
           tbHasValue
         />
       </div>
-      <div class="dropdown-items {{ distribution }} w-full ">
+      <div class="dropdown-items {{ distribution }} w-full h-10em oy-auto ">
         <div
+          [attr.data-testid]="option.value"
+          [id]="id() + option.value"
           class="nav-list-item inline-input cursor-pointer {{ color }}"
-          *ngFor="let option of options"
+          *ngFor="let option of getOptions()"
           (click)="setOption(option)"
         >
           <tb-icon [icon]="option.icon"></tb-icon>
@@ -44,7 +48,6 @@ export class SelectInputComponent extends CommonInputComponent {
   setOption(options: OptionType) {
     this.inputRef.nativeElement.value = options.value;
     setTimeout(() => {
-      this.inputRef.nativeElement.focus();
       this.inputRef.nativeElement.dispatchEvent(
         new InputEvent('input', {
           bubbles: true,
@@ -53,6 +56,23 @@ export class SelectInputComponent extends CommonInputComponent {
           data: options.value,
         })
       );
+
+      this.emit();
     });
+  }
+
+  getOptions() {
+    return this.options?.filter((e) =>
+      e.value.toLowerCase().includes(this.value.toLowerCase())
+    );
+  }
+
+  handleKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Tab') {
+      const option = this.getOptions()?.pop();
+      if (option) {
+        this.setOption(option);
+      }
+    }
   }
 }

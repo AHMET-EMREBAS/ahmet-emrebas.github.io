@@ -16,11 +16,12 @@ export type OptionType = {
     <div class="dropdown input-dropdown {{ direction }}  {{ color }}">
       <div class="input-container {{ color }} {{ variant }}">
         <span class="icon"> {{ icon }}</span>
-        <label [for]="name">{{ label }} </label>
+        <label [for]="id()">{{ label }} </label>
         <input
           #input
           [(ngModel)]="value"
-          [id]="name"
+          [id]="id()"
+          [attr.data-testid]="name"
           type="text"
           [name]="name"
           [autocomplete]="autocomplete"

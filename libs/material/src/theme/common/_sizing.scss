@@ -6,17 +6,17 @@
   @each $unit in vars.$units {
     @each $property in (width, height) {
       .#{utils.fl($property)}-#{$size}#{$unit} {
-        width: #{(math.div(100, 12) * $size)} + #{$unit};
+        #{$property}: #{$size}#{$unit};
       }
     }
     @each $property in (padding, margin) {
       .#{utils.fl($property)}-#{$size}#{$unit} {
-        #{$property}: #{$size * 0.2}#{$unit};
+        #{$property}: #{$size}#{$unit};
       }
 
       @each $side in (top, right, bottom, left) {
         .#{utils.fl($property)}#{utils.fl($side)}-#{$size}#{$unit} {
-          #{$property}-#{$side}: #{$size * 0.2}#{$unit};
+          #{$property}-#{$side}: #{$size}#{$unit};
         }
       }
     }

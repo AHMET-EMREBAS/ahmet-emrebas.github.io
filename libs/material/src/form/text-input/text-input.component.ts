@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonInputComponent } from '../common-input/common-input.component';
 import { MicroModule } from '../../micro/micro.module';
 
@@ -13,6 +13,7 @@ import { MicroModule } from '../../micro/micro.module';
       <input
         [(ngModel)]="value"
         [id]="id()"
+        [attr.data-testid]="name"
         type="text"
         [name]="name"
         [autocomplete]="autocomplete"

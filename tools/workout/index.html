@@ -1,33 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Print Specific Element</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      [color] {
+        border: attr(color px) solid red;
+      }
+    </style>
   </head>
   <body>
-    <div id="elementToPrint">
-      <!-- Your content goes here -->
-      <p>This is the element you want to print.</p>
-    </div>
-    <button onclick="printElement()">Print Element</button>
+    <div color="230" data-color="red">Red color</div>
   </body>
 </html>
-
-<script>
-  function printElement() {
-    var element = document.getElementById('elementToPrint');
-
-    // Check if the element exists
-    if (element) {
-      var originalContents = document.body.innerHTML;
-      var printContents = element.innerHTML;
-      document.body.innerHTML = printContents;
-
-      window.print();
-
-      // Restore the original content
-      document.body.innerHTML = originalContents;
-    } else {
-      alert('Element not found.');
-    }
-  }
-</script>
