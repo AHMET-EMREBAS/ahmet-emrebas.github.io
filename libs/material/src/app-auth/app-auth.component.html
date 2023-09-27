@@ -1,4 +1,5 @@
 <tb-tab-container>
+  <!-- Login form -->
   <ng-template
     tbTab
     label="Login"
@@ -8,12 +9,14 @@
   >
     <tb-form
       (submitEvent)="submitLoginForm($event)"
+      name="login"
       title="Login"
-      subtitle="with credentials"
+      subtitle="With Credentials"
       ><tb-input
         name="name"
         autocomplete="username"
-        label="Some label"
+        label="Username"
+        icon="person"
       ></tb-input>
       <tb-input
         name="password"
@@ -41,6 +44,7 @@
     </tb-form>
   </ng-template>
 
+  <!-- Forgot password form -->
   <ng-template
     tbTab
     label="Forgot Password"
@@ -48,7 +52,12 @@
     color="primary"
     borderPosition="bottom"
   >
-    <tb-form (submitEvent)="submitForgotForm($event)">
+    <tb-form
+      (submitEvent)="submitForgotForm($event)"
+      name="forgot-password"
+      title="Forgot Password"
+      subtitle="Update your password"
+    >
       <tb-input
         name="username"
         label="Input label"
@@ -74,6 +83,8 @@
       </ng-template>
     </tb-form>
   </ng-template>
+
+  <!-- Secure login form -->
   <ng-template
     tbTab
     label="Secure Login"
@@ -81,7 +92,12 @@
     color="primary"
     borderPosition="bottom"
   >
-    <tb-form (submitEvent)="submitSecureForm($event)">
+    <tb-form
+      (submitEvent)="submitSecureForm($event)"
+      name="secure-login"
+      title="Login"
+      subtitle="With key"
+    >
       <tb-input
         name="key"
         label="Input label"
@@ -107,6 +123,8 @@
       </ng-template>
     </tb-form>
   </ng-template>
+
+  <!-- Signup form -->
   <ng-template
     tbTab
     label="Signup"
@@ -114,7 +132,12 @@
     color="accent"
     borderPosition="bottom"
   >
-    <tb-form (submitEvent)="submitSignupForm($event)">
+    <tb-form
+      (submitEvent)="submitSignupForm($event)"
+      name="signup"
+      title="Signup"
+      subtitle="Welcome"
+    >
       <tb-input
         name="username"
         label="Input label"

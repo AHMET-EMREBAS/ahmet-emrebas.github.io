@@ -60,3 +60,5 @@ export * from './form/common-input/common-input.component';
 export * from './micro/icon/icon.component';
 
 export * from './form/enum-input/input-option/input-option.component';
+
+export * from './form/select-input/select-input.component';

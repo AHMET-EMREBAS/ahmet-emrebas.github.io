@@ -53,11 +53,10 @@ import { ListOfDays, MonthNum } from '../../api';
   `,
 })
 export class DateInputComponent extends CommonInputComponent {
-  date = new Date();
-  year = this.date.getFullYear();
-  month = this.date.getMonth() + 1;
-  day = this.date.getDate() + 1;
-  @ViewChild('input') inputRef!: ElementRef<HTMLInputElement>;
+  @Input() date = new Date();
+  @Input() year = this.date.getFullYear();
+  @Input() month = this.date.getMonth() + 1;
+  @Input() day = this.date.getDate() + 1;
   @Input() selectRange = 3;
 
   openDate() {

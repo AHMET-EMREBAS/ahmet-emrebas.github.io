@@ -14,26 +14,30 @@ import { BooleanInputComponent } from '../boolean-input/boolean-input.component'
   templateUrl: './input.component.html',
 })
 export class InputComponent extends CommonInputComponent {
-  text = TextInputComponent;
-  date = DateInputComponent;
-  number = NumberInputComponent;
-  enum = EnumInputComponent;
-  boolean = BooleanInputComponent;
-  inputs(): Record<string, any> {
-    return this;
+  __text = TextInputComponent;
+  __date = DateInputComponent;
+  __number = NumberInputComponent;
+  __enum = EnumInputComponent;
+  __boolean = BooleanInputComponent;
+
+  inputs(extras?: Record<string, any>): Record<string, any> {
+    const { inputRef, __text, __date, __boolean, __enum, __number, ...rest } =
+      this;
+
+    return { ...rest, ...extras };
   }
 
   componentType() {
     if (this.inputType === 'text') {
-      return this.text;
+      return this.__text;
     } else if (this.inputType === 'number') {
-      return this.number;
+      return this.__number;
     } else if (this.inputType === 'date') {
-      return this.date;
+      return this.__date;
     } else if (this.inputType === 'select') {
-      return this.enum;
+      return this.__enum;
     }
 
-    return this.text;
+    return this.__text;
   }
 }

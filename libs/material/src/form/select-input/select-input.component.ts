@@ -1,15 +1,11 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { MicroModule } from '../../micro/micro.module';
+import { Component, Input } from '@angular/core';
 import { CommonInputComponent } from '../common-input/common-input.component';
-import { Icon, Direction } from '../../api';
-
-export type OptionType = {
-  icon: Icon;
-  value: string;
-};
+import { MicroModule } from '../../micro/micro.module';
+import { Direction } from '../../api';
+import { OptionType } from '../enum-input/enum-input.component';
 
 @Component({
-  selector: 'tb-enum-input',
+  selector: 'tb-select-input',
   standalone: true,
   imports: [MicroModule],
   template: `
@@ -20,7 +16,7 @@ export type OptionType = {
         <input
           #input
           [(ngModel)]="value"
-          [id]="name"
+          [id]="id()"
           type="text"
           [name]="name"
           [autocomplete]="autocomplete"
@@ -45,7 +41,7 @@ export type OptionType = {
     </div>
   `,
 })
-export class EnumInputComponent extends CommonInputComponent {
+export class SelectInputComponent extends CommonInputComponent {
   @Input() options?: OptionType[];
   @Input() direction: Direction = 'bottom';
 

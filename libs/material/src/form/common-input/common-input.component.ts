@@ -1,13 +1,28 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Optional,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Color, Icon, InputType, InputVariant } from '../../api';
 
 @Component({ standalone: true, template: `` })
 export class CommonInputComponent<T = any> {
+  @Optional()
+  @ViewChild('input')
+  inputRef!: ElementRef<HTMLInputElement>;
+
   @Input()
   @Output()
   inputEvent = new EventEmitter<T>();
 
   @Input() __ngContext__ = '';
+
+  @Input() formName?: string;
+
   @Input() inputType?: InputType = 'text';
   @Input() value?: T;
   @Input() name!: string;
@@ -22,5 +37,9 @@ export class CommonInputComponent<T = any> {
 
   emit() {
     this.inputEvent.emit(this.value);
+  }
+
+  id() {
+    return `${this.formName}-${this.name}-${this.inputType}`;
   }
 }
