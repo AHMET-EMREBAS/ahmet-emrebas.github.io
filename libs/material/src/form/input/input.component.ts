@@ -1,7 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TextInputComponent } from '../text-input/text-input.component';
-import { Color, Icon, InputVariant } from '../../api';
+import { CommonInputComponent } from '../common-input/common-input.component';
+import { DateInputComponent } from '../date-input/date-input.component';
+import { NumberInputComponent } from '../number-input/number-input.component';
+import { EnumInputComponent } from '../enum-input/enum-input.component';
+import { BooleanInputComponent } from '../boolean-input/boolean-input.component';
 
 @Component({
   selector: 'tb-input',
@@ -9,23 +14,30 @@ import { Color, Icon, InputVariant } from '../../api';
   imports: [CommonModule, TextInputComponent],
   templateUrl: './input.component.html',
 })
-export class InputComponent {
-  /** @ignore */
-  @Input() __ngContext__: any;
-  @Input() id = '';
-  @Input() name = '';
-  @Input() value = '';
-  @Input() type: HTMLInputElement['type'] = 'text';
-  @Input() autocomplete: HTMLInputElement['autocomplete'] = 'on';
-  @Input() color: Color = 'primary';
-  @Input() label = 'Input Label';
-  @Input() variant: InputVariant = 'basic';
-  @Input() icon: Icon = 'info';
-  @Input() formValue?: Record<string, any>;
+export class InputComponent extends CommonInputComponent {
+  __text = TextInputComponent;
+  __date = DateInputComponent;
+  __number = NumberInputComponent;
+  __enum = EnumInputComponent;
+  __boolean = BooleanInputComponent;
 
-  handleInput(event: any) {
-    if (this.formValue) {
-      this.formValue[this.name] = event;
+  inputs(extras?: Record<string, any>): Record<string, any> {
+    const { inputRef, __text, __date, __boolean, __enum, __number, ...rest } =
+      this;
+    return { ...rest, ...extras };
+  }
+
+  componentType() {
+    if (this.inputType === 'text') {
+      return this.__text;
+    } else if (this.inputType === 'number') {
+      return this.__number;
+    } else if (this.inputType === 'date') {
+      return this.__date;
+    } else if (this.inputType === 'select') {
+      return this.__enum;
     }
+
+    return this.__text;
   }
 }

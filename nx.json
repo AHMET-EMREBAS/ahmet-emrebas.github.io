@@ -94,6 +94,7 @@
       "style": "scss",
       "project": "material",
       "inlineStyle": true,
+      "inlineTemplate": true,
       "export": true,
       "standalone": true
     },

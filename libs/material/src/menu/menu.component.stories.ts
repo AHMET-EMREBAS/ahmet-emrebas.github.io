@@ -15,98 +15,13 @@ export const Primary: Story = {
   args: {
     label: 'Triger 1',
     color: 'primary',
-    position: 'bottom',
-
+    openDirection: 'bottom',
     children: [
-      {
-        buttonType: 'button',
-        label: 'Label 1',
-        variant: 'basic',
-      } as Partial<MenuComponent>,
-      {
-        type: 'button',
-        label: 'Triger 2',
-        variant: 'basic',
-        color: 'accent',
-        position: 'right',
-
-        children: [
-          { type: 'button', label: 'Label 2', variant: 'flat' },
-          {
-            type: 'button',
-            label: 'Triger 3',
-            variant: 'basic',
-            color: 'secondary',
-            position: 'right',
-            showAs: 'row',
-            children: [
-              { type: 'button', label: 'Label 5', variant: 'flat' },
-              { type: 'button', label: 'Label 6', variant: 'flat' },
-              {
-                type: 'button',
-                label: 'Triger 4',
-                variant: 'basic',
-                color: 'warn',
-                position: 'top',
-                children: [
-                  {
-                    type: 'icon-button',
-                    icon: 'home',
-                    variant: 'raised',
-                    tooltip: 'Go to home page',
-                    tooltipPosition: 'top',
-                  },
-                  {
-                    type: 'icon-button',
-                    icon: 'info',
-                    variant: 'raised',
-                    tooltip: 'Go to about page',
-                    tooltipPosition: 'top',
-                  },
-                  {
-                    type: 'icon-button',
-                    icon: 'apps',
-                    variant: 'raised',
-                    tooltip: 'Show services',
-                    tooltipPosition: 'top',
-                    position: 'bottom',
-                    showAs: 'column',
-                    color: 'primary',
-                    children: [
-                      {
-                        buttonType: 'icon-button',
-                        icon: 'inventory',
-                        color: 'primary',
-                        variant: 'raised',
-                      } as Partial<MenuComponent>,
-                      {
-                        buttonType: 'icon-button',
-                        icon: 'house',
-                        color: 'primary',
-                        variant: 'raised',
-                      } as Partial<MenuComponent>,
-                      {
-                        buttonType: 'icon-button',
-                        icon: 'dashboard',
-                        color: 'primary',
-                        variant: 'raised',
-                      } as Partial<MenuComponent>,
-                      {
-                        buttonType: 'icon-button',
-                        icon: 'store',
-                        color: 'primary',
-                        variant: 'raised',
-                      } as Partial<MenuComponent>,
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-          { type: 'button', label: 'Label 4', variant: 'flat' },
-        ],
-      },
-    ] as unknown as Partial<MenuComponent>[],
+      { label: 'Label 1', icon: 'info' },
+      { label: 'Label 2', icon: 'info' },
+      { label: 'Label 3', icon: 'info' },
+      { label: 'Label 4', icon: 'info' },
+    ],
   },
 };
 

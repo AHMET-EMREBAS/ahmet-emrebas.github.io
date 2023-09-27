@@ -6,7 +6,7 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<ArrayInputComponent> = {
   component: ArrayInputComponent,
-  title: 'ArrayInputComponent',
+  title: 'Input Array',
 };
 export default meta;
 type Story = StoryObj<ArrayInputComponent>;

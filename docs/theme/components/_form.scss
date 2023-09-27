@@ -3,23 +3,17 @@
 
 .form-container {
   @include utils.column(var(--form-container-gap));
-
+  position: relative;
   background-color: var(--surface);
-  border: 1px solid var(--primary);
-  border-radius: var(--box-radius);
-  padding: 1em;
-
   font-family: var(--font-content);
   font-size: var(--form-font-size);
+
   .form-actions {
     @include utils.row(var(--form-container-gap));
-    padding-top: var(--form-container-gap);
   }
 }
 
 .input-container {
-  position: relative;
-
   --color: white;
   --light-color: white;
   --border-style: solid;
@@ -31,15 +25,15 @@
   --border-right-width: 0.15em;
   --border-top-width: 0.15em;
   --border-left-width: 0.15em;
-  // padding-top: 1em;
 
   @include utils.column(0.3em);
-  // padding: 0.3em;
+
+  position: relative;
   color: var(--color);
   min-height: 3.3em;
   line-height: 3.3em;
   letter-spacing: 0.1em;
-
+  font-size: var(--form-font-size);
   label {
     position: absolute;
     letter-spacing: inherit;
@@ -47,7 +41,8 @@
     color: var(--color);
     transition: all 400ms ease-in-out;
     height: fit-content;
-
+    // font-family: 1em;
+    // line-height: 1.2em;
     padding-left: 2em;
     padding-right: 2em;
     margin-left: 2em;
@@ -64,7 +59,7 @@
     padding-left: 4em;
     width: inherit;
     letter-spacing: inherit;
-    border-radius: var(--box-radius);
+
     transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out,
       background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
   }
@@ -89,20 +84,25 @@
       --color-#{$variant}: var(--#{$colorName}-#{$variant});
     }
   }
+
+  .input-container .input-option {
+    color: var(--#{$colorName});
+  }
+  .input-container .input-option:hover {
+    color: var(--#{$colorName}-dark);
+  }
 }
 
 .input-container:has(:focus),
 .input-container:has(> input[has-value='true']),
 .input-container:has(> input:-webkit-autofill) {
   label {
+    margin-top: 0.3em;
     font-size: 0.8em;
-    line-height: 2em;
-    border-radius: 1em;
-    transform: translateY(-50%);
-    border: 5px solid var(--surface);
-    background-color: var(--color);
-    color: var(--color-face);
-    margin-left: 4em;
+    line-height: 0.8em;
+    margin-left: 3em;
+    font-weight: 200;
+    text-decoration: underline;
   }
 }
 
@@ -165,4 +165,24 @@
 }
 
 .input-container.basic {
+}
+
+.inline-input {
+  input {
+    height: 50px;
+  }
+
+  input[type='radio'] {
+    transform: scale(2);
+    height: 50px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+    height: 50px;
+  }
 }

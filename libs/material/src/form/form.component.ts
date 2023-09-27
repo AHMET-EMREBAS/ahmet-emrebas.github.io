@@ -1,58 +1,54 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
   EventEmitter,
   Input,
-  NgModule,
   Output,
   QueryList,
-  TemplateRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { InputComponent } from './input/input.component';
 import { FormActionsDirective } from './form-actions/form-actions.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MicroModule } from '../micro/micro.module';
+import { FormValue } from '../api/form-value';
 
 @Component({
   selector: 'tb-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],
+  imports: [MicroModule, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent {
   componentType = InputComponent;
 
-  @ContentChildren(FormActionsDirective) tbFormActions?: TemplateRef<any>;
-  @ContentChildren(InputComponent) children?: QueryList<InputComponent>;
+  /** Form action container marked by FormActionDirective  */
+  @ContentChildren(FormActionsDirective)
+  actions?: QueryList<FormActionsDirective>;
+
+  @ContentChildren(InputComponent) children!: QueryList<InputComponent>;
 
   @Output() submitEvent = new EventEmitter<Record<string, unknown>>();
+  @Input() title = '';
+  @Input() subtitle = '';
+  @Input() name = 'form';
 
-  readonly formValue: Record<string, unknown> = {};
+  readonly formValue = new FormValue();
 
   preventDefault(event: Event) {
     event.preventDefault();
   }
 
-  childValue(value: any) {
-    return {
-      ...value,
-      formValue: this.formValue,
-    };
+  childValue(value: InputComponent) {
+    return value.inputs({ formName: this.name, formValue: this.formValue });
   }
 
   submit() {
-    this.submitEvent.emit(this.formValue);
+    this.submitEvent.emit(this.formValue.formValue());
   }
 
   reset() {
-    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);
+    this.formValue.reset();
   }
 }
-
-@NgModule({
-  imports: [FormComponent, InputComponent, FormActionsDirective],
-  exports: [FormComponent, InputComponent, FormActionsDirective],
-})
-export class FormModule {}

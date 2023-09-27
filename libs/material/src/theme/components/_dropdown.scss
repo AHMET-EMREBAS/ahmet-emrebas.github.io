@@ -58,6 +58,14 @@
   animation-duration: 1s;
 }
 
+.dropdown.input-dropdown:has(*:focus):not(*:hover) > .dropdown-items {
+  --scale: 0;
+  opacity: 0;
+  visibility: collapse;
+  animation-name: delayed-collapse;
+  animation-duration: 5s;
+}
+
 .bottom.dropdown:has(*:focus) > .dropdown-items,
 .bottom.dropdown:hover > .dropdown-items {
   --scale: 1;

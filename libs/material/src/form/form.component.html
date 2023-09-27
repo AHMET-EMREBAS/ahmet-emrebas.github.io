@@ -3,11 +3,15 @@
   ngForm
   class="form-container primary"
   autocomplete="on"
-  (ngSubmit)="submit(form)"
+  (ngSubmit)="submit()"
   (submit)="preventDefault($event)"
   (reset)="reset()"
   novalidate
 >
+  <h1 class="title-1 form-title" [attr.substring]="subtitle" *ngIf="title">
+    {{ title }}
+  </h1>
+
   <ng-container *ngFor="let child of children">
     <ng-container
       *ngComponentOutlet="componentType; inputs: childValue(child)"
@@ -16,7 +20,7 @@
 
   <div class="form-actions">
     <ng-container
-      *ngTemplateOutlet="tbFormActions?.first?.templateRef"
+      *ngTemplateOutlet="actions?.first?.templateRef!"
     ></ng-container>
   </div>
 </form>

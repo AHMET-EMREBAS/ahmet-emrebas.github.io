@@ -14,7 +14,6 @@ type Story = StoryObj<NavListItemComponent>;
 export const Primary: Story = {
   args: {
     label: '',
-    color: 'primary',
     icon: 'info',
   },
 };
@@ -22,7 +21,6 @@ export const Primary: Story = {
 export const Heading: Story = {
   args: {
     label: '',
-    color: 'primary',
     icon: 'info',
   },
   play: async ({ canvasElement }) => {

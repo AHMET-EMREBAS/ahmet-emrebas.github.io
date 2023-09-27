@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "icons":"./tools/assets/icons.ts",
+    "icons": "./tools/assets/icons.ts",
     "stories": "npx nx g @nx/angular:stories",
     "storybook": "npx nx run material:storybook",
     "build": "npx nx run material:build-storybook"
@@ -99,6 +99,7 @@
     "@ngrx/store": "^16.2.0",
     "@nx/devkit": "16.8.1",
     "@swc/helpers": "~0.5.0",
+    "angular-animations": "^0.11.0",
     "axios": "^1.0.0",
     "openai": "^4.7.1",
     "react": "^18.2.0",

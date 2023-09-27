@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { TextInputComponent } from './text-input.component';
 
-import { within } from '@storybook/testing-library';
+import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import { useArgs } from '@storybook/manager-api';
 
 const meta: Meta<TextInputComponent> = {
   component: TextInputComponent,
-  title: 'TextInputComponent',
+  title: 'Input Text',
 };
 export default meta;
 type Story = StoryObj<TextInputComponent>;
@@ -14,9 +15,7 @@ type Story = StoryObj<TextInputComponent>;
 export const Primary: Story = {
   args: {
     value: '',
-    id: '',
-    name: '',
-    type: 'text',
+    name: 'name',
     autocomplete: 'off',
     color: 'primary',
     label: 'Input Label',
@@ -28,17 +27,20 @@ export const Primary: Story = {
 export const Heading: Story = {
   args: {
     value: '',
-    id: '',
-    name: '',
-    type: 'text',
+    name: 'name',
     autocomplete: 'off',
     color: 'primary',
-    label: 'Input Label',
+    label: 'Name',
     variant: 'basic',
     icon: 'info',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/text-input works!/gi)).toBeTruthy();
+    const inputElement = canvas.getByLabelText(/Name/gi);
+
+    expect(inputElement).toBeTruthy();
+
+    userEvent.type(inputElement, 'How you doing');
+    expect(canvas.getByText(/info/gi)).toBeTruthy();
   },
 };

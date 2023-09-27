@@ -1,0 +1,97 @@
+@use '../colors' as colors;
+
+.date-picker .dayname,
+.date-picker .day {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-picker {
+  --day-color: var(--black-3);
+  --day-bg-color: var(--white-face);
+  --day-border: 1px solid var(--black-3);
+  --dary-border-radius: 100%;
+  * {
+    font-size: 1em;
+  }
+  font-size: 1em;
+  font-weight: 200;
+
+  user-select: none;
+  cursor: pointer;
+
+  .years {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+  }
+
+  .month {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    width: 18em;
+    .dayname {
+      width: 2em;
+      height: 2em;
+    }
+    .day {
+      width: 2em;
+      height: 2em;
+      color: var(--day-color);
+      border: var(--day-border);
+      border-radius: var(--dary-border-radius);
+    }
+  }
+}
+
+.date-picker {
+  @each $colorName in colors.$colorNames {
+    .in-month.day.#{$colorName} {
+      font-weight: 600;
+      --day-color: var(--#{$colorName});
+      --day-border: 1px solid var(--#{$colorName});
+    }
+
+    .in-month.day.#{$colorName}:hover {
+      background-color: var(--#{$colorName}-light);
+    }
+    .in-month.day.current-date.#{$colorName} {
+      background-color: var(--#{$colorName});
+      color: var(--#{$colorName}-face);
+    }
+  }
+}
+
+// .day:active ~ .day {
+//   border: 1px solid red !important;
+// }
+
+// @for $i from 1 to 31 {
+//   .day-#{$i}:hover + .day-#{$i + 1},
+//   .day-#{$i}:hover + .day-#{$i + -1} {
+//     border: 3px solid red;
+//   }
+// }
+@for $i from 1 through 55 {
+  @for $range from 1 through 10 {
+    .select-range-#{$range}.month:has(.day:nth-child(#{$i}):hover) {
+      @for $p from $i + 1 through $i + $range {
+        .day:nth-child(#{$p}) {
+          background-color: var(--primary) !important;
+          color: var(--primary-face) !important;
+        }
+      }
+
+      @for $p from $i - $range through $i {
+        .day:nth-child(#{$p}) {
+          background-color: var(--primary) !important;
+          color: var(--primary-face) !important;
+        }
+      }
+    }
+  }
+}

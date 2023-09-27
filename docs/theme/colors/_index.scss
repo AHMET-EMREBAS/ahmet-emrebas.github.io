@@ -39,7 +39,7 @@ $commonColors: (
 @mixin build($colors) {
   :root {
     --surface: white;
-    
+
     @each $colorName, $color in $colors {
       --#{$colorName}: #{$color};
       --#{$colorName}-face: #{faceColor($color)};
@@ -64,37 +64,3 @@ $commonColors: (
 }
 
 @include build($commonColors);
-
-.not.primary {
-  background-color: var(--secondary) !important;
-  color: var(--secondary-face) !important;
-}
-
-.not.secondary {
-  background-color: var(--primary) !important;
-  color: var(--primary-face) !important;
-}
-
-.not.accent {
-  background-color: var(--primary) !important;
-  color: var(--primary-face) !important;
-}
-
-.not.white {
-  background-color: var(--black) !important;
-  color: var(--black-face) !important;
-}
-.not.black {
-  background-color: var(--white) !important;
-  color: var(--white-face) !important;
-}
-
-.not.red {
-  background-color: var(--white) !important;
-  color: var(--white-face) !important;
-}
-
-.not.green {
-  background-color: var(--black) !important;
-  color: var(--black-face) !important;
-}

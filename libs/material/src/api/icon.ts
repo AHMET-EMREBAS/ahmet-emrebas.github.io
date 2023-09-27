@@ -1,4 +1,5 @@
 export type Icon =
+  | 'signature'
   | '10k'
   | '10mp'
   | '11mp'
