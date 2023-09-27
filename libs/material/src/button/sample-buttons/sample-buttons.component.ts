@@ -9,7 +9,7 @@ import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
   imports: [MicroModule, ButtonModule],
   template: `
     <div
-      class="flex  gap-2 p-2 wrap justify-flex-start"
+      class="flex  gap-2em p-2em wrap justify-flex-start"
       *ngFor="let variant of variants"
     >
       <tb-button
@@ -20,7 +20,7 @@ import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
       ></tb-button>
     </div>
     <div
-      class="flex row gap-2 p-2 wrap justify-flex-start"
+      class="flex row gap-2em p-2em wrap justify-flex-start"
       *ngFor="let variant of variants"
     >
       <tb-icon-button
@@ -31,7 +31,7 @@ import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
       ></tb-icon-button>
     </div>
     <div
-      class="flex row gap-2 p-2 wrap justify-flex-start"
+      class="flex row gap-2em p-2em wrap justify-flex-start"
       *ngFor="let variant of variants"
     >
       <tb-combined-button
@@ -42,7 +42,7 @@ import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
         *ngFor="let color of colors"
       ></tb-combined-button>
     </div>
-    <div class="flex row gap-2 p-2 wrap justify-flex-start">
+    <div class="flex row gap-2em p-2em wrap justify-flex-start">
       <tb-button
         label="tab button {{ position }} "
         color="primary"

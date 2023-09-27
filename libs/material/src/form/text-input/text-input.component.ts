@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+} from '@angular/core';
 import { CommonInputComponent } from '../common-input/common-input.component';
 import { MicroModule } from '../../micro/micro.module';
 
@@ -23,4 +29,6 @@ import { MicroModule } from '../../micro/micro.module';
     </div>
   `,
 })
-export class TextInputComponent extends CommonInputComponent<string> {}
+export class TextInputComponent extends CommonInputComponent<string> {
+  @Input() detector?: ChangeDetectorRef;
+}

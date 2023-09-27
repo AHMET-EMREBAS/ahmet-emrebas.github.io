@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { TabModule } from '../tab/tab.module';
 import { ButtonComponent } from '../button';
 import { FormModule } from '../form/form.module';

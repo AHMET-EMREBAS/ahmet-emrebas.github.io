@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ContentChildren,
   EventEmitter,
@@ -10,12 +11,14 @@ import { InputComponent } from './input/input.component';
 import { FormActionsDirective } from './form-actions/form-actions.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MicroModule } from '../micro/micro.module';
+import { TextInputComponent } from './text-input/text-input.component';
 
 @Component({
   selector: 'tb-form',
   standalone: true,
   imports: [MicroModule, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent {
   componentType = InputComponent;

@@ -10,16 +10,14 @@
       (submitEvent)="submitLoginForm($event)"
       title="Login"
       subtitle="with credentials"
-    >
-      <tb-input
-        name="username"
-        icon="person"
-        color="primary"
-        label="Username"
-        type="text"
+      ><tb-input
+        name="name"
+        autocomplete="username"
+        label="Some label"
       ></tb-input>
       <tb-input
         name="password"
+        label="Input label"
         icon="password"
         color="accent"
         label="Password"
@@ -53,6 +51,7 @@
     <tb-form (submitEvent)="submitForgotForm($event)">
       <tb-input
         name="username"
+        label="Input label"
         icon="person"
         color="primary"
         label="Username"
@@ -85,6 +84,7 @@
     <tb-form (submitEvent)="submitSecureForm($event)">
       <tb-input
         name="key"
+        label="Input label"
         icon="key"
         color="primary"
         label="Keylo"
@@ -117,7 +117,9 @@
     <tb-form (submitEvent)="submitSignupForm($event)">
       <tb-input
         name="username"
+        label="Input label"
         name="username"
+        label="Input label"
         icon="person"
         color="primary"
         label="Username"
@@ -125,6 +127,7 @@
       ></tb-input>
       <tb-input
         name="password"
+        label="Input label"
         icon="password"
         color="accent"
         label="Password"

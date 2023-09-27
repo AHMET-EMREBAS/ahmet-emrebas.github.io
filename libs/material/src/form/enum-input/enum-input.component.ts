@@ -53,7 +53,6 @@ export class EnumInputComponent extends CommonInputComponent {
   @Input() distribution: 'row' | 'column' = 'column';
   setOption(options: OptionType) {
     this.inputRef.nativeElement.value = options.value;
-
     setTimeout(() => {
       this.inputRef.nativeElement.focus();
       this.inputRef.nativeElement.dispatchEvent(

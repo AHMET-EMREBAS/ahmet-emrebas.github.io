@@ -1,20 +1,23 @@
 @use 'sass:math';
 @use 'utils' as utils;
+@use 'vars' as vars;
 
-@for $size from 1 through 12 {
-  @each $property in (width) {
-    .#{utils.fl($property)}-#{$size} {
-      width: #{(math.div(100, 12) * $size)} + '%';
+@for $size from 1 through 100 {
+  @each $unit in vars.$units {
+    @each $property in (width, height) {
+      .#{utils.fl($property)}-#{$size}#{$unit} {
+        width: #{(math.div(100, 12) * $size)} + #{$unit};
+      }
     }
-  }
-  @each $property in (padding, margin) {
-    .#{utils.fl($property)}-#{$size} {
-      #{$property}: #{$size * 0.2}em;
-    }
+    @each $property in (padding, margin) {
+      .#{utils.fl($property)}-#{$size}#{$unit} {
+        #{$property}: #{$size * 0.2}#{$unit};
+      }
 
-    @each $side in (top, right, bottom, left) {
-      .#{utils.fl($property)}#{utils.fl($side)}-#{$size} {
-        #{$property}-#{$side}: #{$size * 0.2}em;
+      @each $side in (top, right, bottom, left) {
+        .#{utils.fl($property)}#{utils.fl($side)}-#{$size}#{$unit} {
+          #{$property}-#{$side}: #{$size * 0.2}#{$unit};
+        }
       }
     }
   }
@@ -23,6 +26,7 @@
 .w-full {
   width: 100%;
 }
+
 .fit-content {
   width: fit-content;
 }
