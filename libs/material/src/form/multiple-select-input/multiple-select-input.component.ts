@@ -4,7 +4,7 @@ import { MicroModule } from '../../micro/micro.module';
 import { SelectOption } from '../../api';
 
 @Component({
-  selector: 'tb-select-input',
+  selector: 'tb-multiple-select-input',
   standalone: true,
   imports: [MicroModule],
   template: `
@@ -21,7 +21,6 @@ import { SelectOption } from '../../api';
           [name]="name"
           [autocomplete]="autocomplete"
           (input)="getOptions()"
-          (keydown)="handleKeyPress($event)"
           tbHasValue
         />
       </div>
@@ -31,12 +30,12 @@ import { SelectOption } from '../../api';
           [id]="id() + option.value"
           class="nav-list-item inline-input cursor-pointer {{ color }}"
           *ngFor="let option of getOptions()"
-          (click)="setOption(option)"
+          (click)="selectOption(option)"
         >
           <tb-icon [icon]="option.icon"></tb-icon>
           <span>{{ option.value }}</span>
           <div class="grow-1"></div>
-          <span class="icon {{ color }}-face" *ngIf="value === option.value">
+          <span class="icon {{ color }}-face" *ngIf="option.selected">
             check
           </span>
         </div>
@@ -44,35 +43,18 @@ import { SelectOption } from '../../api';
     </div>
   `,
 })
-export class SelectInputComponent extends CommonInputComponent {
-  setOption(options: SelectOption) {
-    this.inputRef.nativeElement.value = options.value;
-    setTimeout(() => {
-      this.inputRef.nativeElement.dispatchEvent(
-        new InputEvent('input', {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          data: options.value,
-        })
-      );
+export class MultipleSelectInputComponent extends CommonInputComponent {
+  selectOption(option: SelectOption) {
+    option.selected = !option.selected;
+  }
 
-      this.emit();
-    });
+  override emit(): void {
+    this.inputEvent.emit(this.options?.filter((e) => e.selected));
   }
 
   getOptions() {
     return this.options?.filter((e) =>
       e.value.toLowerCase().includes(this.value.toLowerCase())
     );
-  }
-
-  handleKeyPress(event: KeyboardEvent) {
-    if (event.key === 'Tab') {
-      const option = this.getOptions()?.pop();
-      if (option) {
-        this.setOption(option);
-      }
-    }
   }
 }

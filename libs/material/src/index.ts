@@ -62,3 +62,5 @@ export * from './micro/icon/icon.component';
 export * from './form/enum-input/input-option/input-option.component';
 
 export * from './form/select-input/select-input.component';
+
+export * from './form/multiple-select-input/multiple-select-input.component';

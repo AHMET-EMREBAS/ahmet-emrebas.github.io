@@ -1,12 +1,7 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MicroModule } from '../../micro/micro.module';
 import { CommonInputComponent } from '../common-input/common-input.component';
-import { Icon, Direction } from '../../api';
-
-export type OptionType = {
-  icon: Icon;
-  value: string;
-};
+import { SelectOption } from '../../api';
 
 @Component({
   selector: 'tb-enum-input',
@@ -47,7 +42,7 @@ export type OptionType = {
   `,
 })
 export class EnumInputComponent extends CommonInputComponent {
-  setOption(options: OptionType) {
+  setOption(options: SelectOption) {
     this.inputRef.nativeElement.value = options.value;
     setTimeout(() => {
       this.inputRef.nativeElement.focus();

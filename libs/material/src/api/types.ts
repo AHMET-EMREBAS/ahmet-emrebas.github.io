@@ -1,3 +1,5 @@
+import { Icon } from './icon';
+
 export type Color =
   | 'primary'
   | 'secondary'
@@ -8,6 +10,13 @@ export type Color =
   | 'black'
   | 'white';
 
+export type SelectOption = {
+  id?: string;
+  icon?: Icon;
+  label?: string;
+  value: string;
+  selected?: boolean;
+};
 export type ButtonType =
   | 'button'
   | 'icon-button'

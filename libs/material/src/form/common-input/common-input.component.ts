@@ -7,8 +7,8 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Color, Direction, Icon, InputType, InputVariant } from '../../api';
-import { OptionType } from '../enum-input/enum-input.component';
+import { Color, Direction, Icon, InputType, InputVariant, SelectOption } from '../../api';
+
 import { FormValue } from '../../api/form-value';
 
 @Component({ standalone: true, template: `` })
@@ -37,10 +37,10 @@ export class CommonInputComponent<T = any> {
   @Input() icon?: Icon = 'info';
   @Input() error?: string;
 
-  @Input() options?: OptionType[];
+  @Input() options?: SelectOption[];
   @Input() direction?: Direction = 'bottom';
   @Input() distribution?: 'row' | 'column' = 'column';
-  @Input() multiple? = false;
+
   emit() {
     this.formValue?.set(this.name, this.value);
     this.inputEvent.emit(this.value);
