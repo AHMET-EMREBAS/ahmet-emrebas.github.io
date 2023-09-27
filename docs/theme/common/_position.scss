@@ -20,14 +20,6 @@ $positions: (static, relative, absolute, fixed, sticky);
   }
 }
 
-.o-auto {
-  overflow: auto;
-}
-
-.ox-hidden {
-  overflow: hidden;
-}
-
 @each $axis in (x, y) {
   .o#{$axis}-auto {
     overflow-#{$axis}: auto;

@@ -12,11 +12,8 @@
     @include utils.row(var(--form-container-gap));
   }
 }
-.form-title {
-}
-.input-container {
-  position: relative;
 
+.input-container {
   --color: white;
   --light-color: white;
   --border-style: solid;
@@ -28,15 +25,15 @@
   --border-right-width: 0.15em;
   --border-top-width: 0.15em;
   --border-left-width: 0.15em;
-  // padding-top: 1em;
 
   @include utils.column(0.3em);
-  // padding: 0.3em;
+
+  position: relative;
   color: var(--color);
   min-height: 3.3em;
   line-height: 3.3em;
   letter-spacing: 0.1em;
-
+  font-size: var(--form-font-size);
   label {
     position: absolute;
     letter-spacing: inherit;
@@ -87,12 +84,20 @@
       --color-#{$variant}: var(--#{$colorName}-#{$variant});
     }
   }
+
+  .input-container .input-option {
+    color: var(--#{$colorName});
+  }
+  .input-container .input-option:hover {
+    color: var(--#{$colorName}-dark);
+  }
 }
 
 .input-container:has(:focus),
 .input-container:has(> input[has-value='true']),
 .input-container:has(> input:-webkit-autofill) {
   label {
+    margin-top: 0.3em;
     font-size: 0.8em;
     line-height: 0.8em;
     margin-left: 3em;
@@ -160,4 +165,24 @@
 }
 
 .input-container.basic {
+}
+
+.inline-input {
+  input {
+    height: 50px;
+  }
+
+  input[type='radio'] {
+    transform: scale(2);
+    height: 50px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+    height: 50px;
+  }
 }

@@ -1,10 +1,6 @@
-$displays: (
-  block,
-  flex,
-  grid,
-  inline,
-  inline-block,
-);
+@use 'vars' as vars;
+
+$displays: (block, flex, grid, inline, inline-block);
 
 @each $d in $displays {
   .#{$d} {
@@ -82,27 +78,31 @@ $alignContent: (
 
 // Min: 0.5em
 // Max: 5em
-@for $size from 1 through 12{
-  .gap-#{$size} {
-    row-gap: #{$size * 0.5}em;
-    column-gap: #{$size * 0.5}em;
-  }
+@for $size from 1 through 100 {
+  @each $unit in vars.$units {
+    .gap-#{$size}#{$unit} {
+      row-gap: #{$size * 0.5}#{$unit};
+      column-gap: #{$size * 0.5}#{$unit};
+    }
 
-  .row-gap-#{$size} {
-    row-gap: #{$size * 0.5}em;
-  }
-  .column-gap-#{$size} {
-    column-gap: #{$size * 0.5}em;
+    .row-gap-#{$size}#{$unit} {
+      row-gap: #{$size * 0.5}#{$unit};
+    }
+    .column-gap-#{$size}#{$unit} {
+      column-gap: #{$size * 0.5}#{$unit};
+    }
   }
 }
 
-@for $order from 1 through 12{
+
+
+@for $order from 1 through 100 {
   .order-#{$order} {
     order: #{$order};
   }
 }
 
-@for $size from 1 through 12{
+@for $size from 1 through 12 {
   .grow-#{$size} {
     flex-grow: #{$size};
   }

@@ -4104,7 +4104,7 @@
         },
         {
             "name": "MultipleSelectInputComponent",
-            "id": "component-MultipleSelectInputComponent-74f479ff8bad207502b6e07e0072bff8b0c95f99e41f7a17a8336a8e2069785be6a320e7b16876bf46ae2f8c8be7f6b4e94201cb9771a3d78a5bd8c65a99d161",
+            "id": "component-MultipleSelectInputComponent-d133e6237ca4ba2beace3982694de2bf8033bcb4cf3e9256bcac103e3bab2009fdb0bcededda49276c4012bfae1f3c8677f24d8d01d8acc667dccc7c68989686",
             "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4114,7 +4114,7 @@
             "selector": "tb-multiple-select-input",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"getOptions()\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n    <div\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of getOptions()\"\n      (click)=\"selectOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"getOptions()\"\n      (keydown)=\"handleKeyDown($event)\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"selected-items\">\n    {{ selectedItems() }}\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n    <div\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of getOptions()\"\n      (click)=\"selectOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -4357,7 +4357,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 72,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4373,7 +4373,65 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 104,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleInput",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleKeyDown",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "searchText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "selectedItems",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4390,7 +4448,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 59,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4433,7 +4491,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-multiple-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"selectOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class MultipleSelectInputComponent extends CommonInputComponent {\n  selectOption(option: SelectOption) {\n    option.selected = !option.selected;\n  }\n\n  override emit(): void {\n    this.inputEvent.emit(this.options?.filter((e) => e.selected));\n  }\n\n  getOptions() {\n    return this.options?.filter((e) =>\n      e.value.toLowerCase().includes(this.value.toLowerCase())\n    );\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-multiple-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          (keydown)=\"handleKeyDown($event)\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"selected-items\">\n        {{ selectedItems() }}\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"selectOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class MultipleSelectInputComponent extends CommonInputComponent<string> {\n  selectedItems() {\n    return (\n      this.options\n        ?.filter((e) => e.selected)\n        .map((e) => e.value)\n        .join(',') || ''\n    );\n  }\n  selectOption(option: SelectOption) {\n    option.selected = !option.selected;\n    this.inputRef.nativeElement.value = this.selectedItems() + ',';\n    this.inputRef.nativeElement.dispatchEvent(\n      new InputEvent('input', {\n        bubbles: true,\n        cancelable: true,\n        composed: true,\n      })\n    );\n    this.inputRef.nativeElement.focus();\n  }\n\n  override emit(): void {\n    this.inputEvent.emit(this.selectedItems());\n  }\n  handleInput() {\n    const selectedItems = this.value!.split(',');\n    const lastSelected = selectedItems!.pop()!;\n  }\n  searchText() {\n    return this.value?.split(',').pop()?.toLowerCase() || '';\n  }\n\n  handleKeyDown(event: KeyboardEvent) {\n    console.log(event);\n    if (event.key === 'Tab') {\n      event.preventDefault();\n      const option = this.getOptions()?.shift();\n      if (option) {\n        this.selectOption(option);\n      }\n    }\n\n    if (event.key === 'Backspace') {\n      event.preventDefault();\n      const list = this.inputRef.nativeElement.value.split(',');\n      const deletedItem = list.pop();\n      const item = this.options?.find((e) => e.value === deletedItem);\n      if (item) {\n        item.selected = false;\n      }\n      this.inputRef.nativeElement.value = list.join(',');\n    }\n  }\n  getOptions() {\n    return this.options?.filter((e) => {\n      return e.value.toLowerCase().includes(this.searchText()) && !e.selected\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -10593,7 +10651,7 @@
                 "linktype": "component",
                 "name": "MultipleSelectInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/23",
+                "coverageCount": "0/27",
                 "status": "low"
             },
             {
