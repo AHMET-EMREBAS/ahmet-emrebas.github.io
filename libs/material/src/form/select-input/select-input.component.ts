@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonInputComponent } from '../common-input/common-input.component';
 import { MicroModule } from '../../micro/micro.module';
-import { Direction } from '../../api';
 import { OptionType } from '../enum-input/enum-input.component';
 
 @Component({
@@ -16,8 +15,8 @@ import { OptionType } from '../enum-input/enum-input.component';
         <input
           #input
           [(ngModel)]="value"
-          [id]="id()"
           type="text"
+          [id]="id()"
           [name]="name"
           [autocomplete]="autocomplete"
           (input)="emit()"
@@ -42,10 +41,6 @@ import { OptionType } from '../enum-input/enum-input.component';
   `,
 })
 export class SelectInputComponent extends CommonInputComponent {
-  @Input() options?: OptionType[];
-  @Input() direction: Direction = 'bottom';
-
-  @Input() distribution: 'row' | 'column' = 'column';
   setOption(options: OptionType) {
     this.inputRef.nativeElement.value = options.value;
     setTimeout(() => {

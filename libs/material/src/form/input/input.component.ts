@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TextInputComponent } from '../text-input/text-input.component';
@@ -23,7 +24,6 @@ export class InputComponent extends CommonInputComponent {
   inputs(extras?: Record<string, any>): Record<string, any> {
     const { inputRef, __text, __date, __boolean, __enum, __number, ...rest } =
       this;
-
     return { ...rest, ...extras };
   }
 

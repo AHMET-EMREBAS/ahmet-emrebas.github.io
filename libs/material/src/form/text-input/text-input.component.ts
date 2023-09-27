@@ -23,6 +23,4 @@ import { MicroModule } from '../../micro/micro.module';
     </div>
   `,
 })
-export class TextInputComponent extends CommonInputComponent<string> {
-  @Input() detector?: ChangeDetectorRef;
-}
+export class TextInputComponent extends CommonInputComponent<string> {}

@@ -46,10 +46,6 @@ export type OptionType = {
   `,
 })
 export class EnumInputComponent extends CommonInputComponent {
-  @Input() options?: OptionType[];
-  @Input() direction: Direction = 'bottom';
-
-  @Input() distribution: 'row' | 'column' = 'column';
   setOption(options: OptionType) {
     this.inputRef.nativeElement.value = options.value;
     setTimeout(() => {

@@ -11,6 +11,7 @@ import { InputComponent } from './input/input.component';
 import { FormActionsDirective } from './form-actions/form-actions.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MicroModule } from '../micro/micro.module';
+import { FormValue } from '../api/form-value';
 
 @Component({
   selector: 'tb-form',
@@ -33,21 +34,21 @@ export class FormComponent {
   @Input() subtitle = '';
   @Input() name = 'form';
 
-  readonly formValue: Record<string, unknown> = {};
+  readonly formValue = new FormValue();
 
   preventDefault(event: Event) {
     event.preventDefault();
   }
 
   childValue(value: InputComponent) {
-    return value.inputs({ formName: this.name });
+    return value.inputs({ formName: this.name, formValue: this.formValue });
   }
 
   submit() {
-    this.submitEvent.emit(this.formValue);
+    this.submitEvent.emit(this.formValue.formValue());
   }
 
   reset() {
-    Object.keys(this.formValue).forEach((e) => delete this.formValue[e]);
+    this.formValue.reset();
   }
 }
