@@ -1820,7 +1820,7 @@
         },
         {
             "name": "CommonInputComponent",
-            "id": "component-CommonInputComponent-d73c5e69ce2c1b970cabb507bc032c29d774ab0422ac7d1059a209d99a0d77dfde94e43ba7169c0d6c67036745a4accdaf46a48ad6bd38f89ba7859cbe9ac285",
+            "id": "component-CommonInputComponent-0a2048554ccc2e594b397e24f0f83b0a662dcff023a5f21051753e84146ca1b07e56df6c940aa596e1658e2858c530bf4784c023de792352944494500c248474",
             "file": "libs/material/src/form/common-input/common-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1944,15 +1944,6 @@
                     "decorators": []
                 },
                 {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1965,7 +1956,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 40,
-                    "type": "OptionType[]",
+                    "type": "SelectOption[]",
                     "decorators": []
                 },
                 {
@@ -2051,7 +2042,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Optional,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { Color, Direction, Icon, InputType, InputVariant } from '../../api';\nimport { OptionType } from '../enum-input/enum-input.component';\nimport { FormValue } from '../../api/form-value';\n\n@Component({ standalone: true, template: `` })\nexport class CommonInputComponent<T = any> {\n  @Input() formValue?: FormValue;\n\n  @Optional()\n  @ViewChild('input')\n  inputRef!: ElementRef<HTMLInputElement>;\n\n  @Input()\n  @Output()\n  inputEvent = new EventEmitter<T>();\n\n  @Input() __ngContext__ = '';\n\n  @Input() formName?: string;\n  @Input() inputType?: InputType = 'text';\n  @Input() value?: T;\n  @Input() name!: string;\n  @Input() type?: HTMLInputElement['type'];\n  @Input() autocomplete?: HTMLInputElement['autocomplete'];\n  @Input() color?: Color = 'primary';\n  @Input() label?: string = 'Not set';\n  @Input() variant?: InputVariant = 'basic';\n  @Input() icon?: Icon = 'info';\n  @Input() error?: string;\n\n  @Input() options?: OptionType[];\n  @Input() direction?: Direction = 'bottom';\n  @Input() distribution?: 'row' | 'column' = 'column';\n  @Input() multiple? = false;\n  emit() {\n    this.formValue?.set(this.name, this.value);\n    this.inputEvent.emit(this.value);\n  }\n\n  id() {\n    return `${this.formName}-${this.name}-${this.inputType}`;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Optional,\n  Output,\n  ViewChild,\n} from '@angular/core';\nimport { Color, Direction, Icon, InputType, InputVariant, SelectOption } from '../../api';\n\nimport { FormValue } from '../../api/form-value';\n\n@Component({ standalone: true, template: `` })\nexport class CommonInputComponent<T = any> {\n  @Input() formValue?: FormValue;\n\n  @Optional()\n  @ViewChild('input')\n  inputRef!: ElementRef<HTMLInputElement>;\n\n  @Input()\n  @Output()\n  inputEvent = new EventEmitter<T>();\n\n  @Input() __ngContext__ = '';\n\n  @Input() formName?: string;\n  @Input() inputType?: InputType = 'text';\n  @Input() value?: T;\n  @Input() name!: string;\n  @Input() type?: HTMLInputElement['type'];\n  @Input() autocomplete?: HTMLInputElement['autocomplete'];\n  @Input() color?: Color = 'primary';\n  @Input() label?: string = 'Not set';\n  @Input() variant?: InputVariant = 'basic';\n  @Input() icon?: Icon = 'info';\n  @Input() error?: string;\n\n  @Input() options?: SelectOption[];\n  @Input() direction?: Direction = 'bottom';\n  @Input() distribution?: 'row' | 'column' = 'column';\n\n  emit() {\n    this.formValue?.set(this.name, this.value);\n    this.inputEvent.emit(this.value);\n  }\n\n  id() {\n    return `${this.formName}-${this.name}-${this.inputType}`;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -2264,18 +2255,6 @@
                     }
                 },
                 {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "boolean",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                },
-                {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2291,7 +2270,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 40,
-                    "type": "OptionType[]",
+                    "type": "SelectOption[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2502,7 +2481,7 @@
         },
         {
             "name": "EnumInputComponent",
-            "id": "component-EnumInputComponent-aa3814e6265121bba3cbce667d789c1eb5c16d903b340fd0bb6c1757ca9a1dd827904b7fd62f78ac42c92a0a5afc9b84d121e05339bd29e3694efe39eef3e248",
+            "id": "component-EnumInputComponent-bdbc261e5254c9ef4bdfe7af58c989ee9586b3f7c0dc565c2e19c7dc03fd5ab4b38270d82d975df3eb93d14f49fe51ab4b2901e02655f9fb0750cc23d2e84593",
             "file": "libs/material/src/form/enum-input/enum-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2663,18 +2642,6 @@
                     }
                 },
                 {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "boolean",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                },
-                {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2690,7 +2657,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 40,
-                    "type": "OptionType[]",
+                    "type": "SelectOption[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -2766,7 +2733,7 @@
                     "args": [
                         {
                             "name": "options",
-                            "type": "OptionType",
+                            "type": "SelectOption",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2774,13 +2741,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "options",
-                            "type": "OptionType",
+                            "type": "SelectOption",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2830,7 +2797,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, Input, ViewChild } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { Icon, Direction } from '../../api';\n\nexport type OptionType = {\n  icon: Icon;\n  value: string;\n};\n\n@Component({\n  selector: 'tb-enum-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          type=\"text\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"emit()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full \">\n        <div\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of options\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class EnumInputComponent extends CommonInputComponent {\n  setOption(options: OptionType) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.focus();\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-enum-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          type=\"text\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"emit()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full \">\n        <div\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of options\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class EnumInputComponent extends CommonInputComponent {\n  setOption(options: SelectOption) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.focus();\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3492,18 +3459,6 @@
                     }
                 },
                 {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "boolean",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                },
-                {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -3519,7 +3474,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 40,
-                    "type": "OptionType[]",
+                    "type": "SelectOption[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4148,6 +4103,343 @@
             "templateData": "<div class=\"dropdown {{ openDirection }} {{ color }}\">\n  <tb-combined-button\n    [color]=\"color\"\n    [label]=\"label\"\n    [variant]=\"variant\"\n    (clickEvent)=\"emit()\"\n    [size]=\"size\"\n    [icon]=\"icon\"\n  ></tb-combined-button>\n\n  <div\n    class=\"dropdown-items {{ containerView }}\"\n    *ngIf=\"children && children.length > 0\"\n  >\n    <ng-container *ngFor=\"let child of children\">\n      <ng-container\n        [ngComponentOutletInputs]=\"child\"\n        [ngComponentOutlet]=\"__componentType\"\n      ></ng-container>\n    </ng-container>\n  </div>\n</div>\n"
         },
         {
+            "name": "MultipleSelectInputComponent",
+            "id": "component-MultipleSelectInputComponent-74f479ff8bad207502b6e07e0072bff8b0c95f99e41f7a17a8336a8e2069785be6a320e7b16876bf46ae2f8c8be7f6b4e94201cb9771a3d78a5bd8c65a99d161",
+            "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-multiple-select-input",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"getOptions()\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n    <div\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of getOptions()\"\n      (click)=\"selectOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "__ngContext__",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "autocomplete",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "error",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "formName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "formValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "FormValue",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter<T>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "any",
+                    "decorators": [
+                        {
+                            "name": "Output",
+                            "stringifiedArguments": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "inputType",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "InputType",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Not set'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "SelectOption[]",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "T",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "InputVariant",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLInputElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "Optional",
+                            "stringifiedArguments": ""
+                        },
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'input'"
+                        }
+                    ],
+                    "modifierKind": [
+                        167,
+                        167
+                    ],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "emit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 51,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        161
+                    ],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "getOptions",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "selectOption",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "SelectOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "SelectOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "id",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "MicroModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-multiple-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"selectOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class MultipleSelectInputComponent extends CommonInputComponent {\n  selectOption(option: SelectOption) {\n    option.selected = !option.selected;\n  }\n\n  override emit(): void {\n    this.inputEvent.emit(this.options?.filter((e) => e.selected));\n  }\n\n  getOptions() {\n    return this.options?.filter((e) =>\n      e.value.toLowerCase().includes(this.value.toLowerCase())\n    );\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": "CommonInputComponent"
+        },
+        {
             "name": "NavListComponent",
             "id": "component-NavListComponent-5082431e894a995f20aee2afe8a3d54b0c0bd75efaa86afad16c98bba2aa37465f68018b86ba64ef475fcf9de633744b871cffd0d90213eef4b93cde79b29ccf",
             "file": "libs/material/src/nav-list/nav-list.component.ts",
@@ -4498,18 +4790,6 @@
                     }
                 },
                 {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "boolean",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                },
-                {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -4525,7 +4805,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 40,
-                    "type": "OptionType[]",
+                    "type": "SelectOption[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4738,7 +5018,7 @@
         },
         {
             "name": "SelectInputComponent",
-            "id": "component-SelectInputComponent-5d07373a5265075ac0c8718bf26e15e23661fdfc65141711ab8933f4a9dd6690c5c555c3623aa18dd88f5d42c7cfdfae0e6b18a32f7e7e7ca4641a49720cea9a",
+            "id": "component-SelectInputComponent-8922ea8704201b807181b7df1a7f865b1990efa9dfbb412fb0217954dccaa66655a0299e5361ad921ca5cbfab91adc773afa1859a5559160691f86a19f13242e",
             "file": "libs/material/src/form/select-input/select-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4748,7 +5028,7 @@
             "selector": "tb-select-input",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"filterOptions()\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full \">\n    <div\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of filteredOptions\"\n      (click)=\"setOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"getOptions()\"\n      (keydown)=\"handleKeyPress($event)\"\n      tbHasValue\n    />\n  </div>\n  <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n    <div\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n      *ngFor=\"let option of getOptions()\"\n      (click)=\"setOption(option)\"\n    >\n      <tb-icon [icon]=\"option.icon\"></tb-icon>\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n      <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n        check\n      </span>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -4899,18 +5179,6 @@
                     }
                 },
                 {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "boolean",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                },
-                {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -4926,7 +5194,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 40,
-                    "type": "OptionType[]",
+                    "type": "SelectOption[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -4970,16 +5238,6 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "filteredOptions",
-                    "defaultValue": "this.options",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 47
-                },
-                {
                     "name": "inputRef",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -5008,21 +5266,49 @@
             ],
             "methodsClass": [
                 {
-                    "name": "filterOptions",
+                    "name": "getOptions",
                     "args": [],
                     "optional": false,
-                    "returnType": "void",
+                    "returnType": "any",
                     "typeParameters": [],
                     "line": 64,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
+                    "name": "handleKeyPress",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "setOption",
                     "args": [
                         {
                             "name": "options",
-                            "type": "OptionType",
+                            "type": "SelectOption",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -5036,7 +5322,7 @@
                     "jsdoctags": [
                         {
                             "name": "options",
-                            "type": "OptionType",
+                            "type": "SelectOption",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -5086,7 +5372,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { OptionType } from '../enum-input/enum-input.component';\n\n@Component({\n  selector: 'tb-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"filterOptions()\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of filteredOptions\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SelectInputComponent extends CommonInputComponent {\n  filteredOptions = this.options;\n  setOption(options: OptionType) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.focus();\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n      this.emit();\n    });\n  }\n\n  filterOptions() {\n    this.filteredOptions = this.options?.filter((e) =>\n      e.value.toLowerCase().includes(this.value.toLowerCase())\n    );\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          (keydown)=\"handleKeyPress($event)\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SelectInputComponent extends CommonInputComponent {\n  setOption(options: SelectOption) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n\n      this.emit();\n    });\n  }\n\n  getOptions() {\n    return this.options?.filter((e) =>\n      e.value.toLowerCase().includes(this.value.toLowerCase())\n    );\n  }\n\n  handleKeyPress(event: KeyboardEvent) {\n    if (event.key === 'Tab') {\n      const option = this.getOptions()?.pop();\n      if (option) {\n        this.setOption(option);\n      }\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5362,7 +5648,7 @@
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-bf41ed24cab32364e877092d2f9a63b16b059af5933971e9d9e78e0024fb1a146510267b371d3f2c23f8970ab97901ebb20a340758e4e9377cb6858f64a4f9ff",
+            "id": "component-TextInputComponent-3adbdc2d16bb7f332a4a8016d04670dc866da8f14aa474f5dc64df6e52887eef63d35bb6e23e352a46b7d4e8035f17b9d1a11627dc66f1a7db339c59a40cd76b",
             "file": "libs/material/src/form/text-input/text-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5523,18 +5809,6 @@
                     }
                 },
                 {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "boolean",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "CommonInputComponent"
-                    }
-                },
-                {
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -5550,7 +5824,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 40,
-                    "type": "OptionType[]",
+                    "type": "SelectOption[]",
                     "decorators": [],
                     "inheritance": {
                         "file": "CommonInputComponent"
@@ -5662,7 +5936,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectorRef, Component, Input } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container {{ color }} {{ variant }}\">\n      <span class=\"icon\"> {{ icon }}</span>\n      <label [for]=\"name\">{{ label }} </label>\n      <input\n        [(ngModel)]=\"value\"\n        [id]=\"id()\"\n        [attr.data-testid]=\"name\"\n        type=\"text\"\n        [name]=\"name\"\n        [autocomplete]=\"autocomplete\"\n        (input)=\"emit()\"\n        tbHasValue\n      />\n      <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n    </div>\n  `,\n})\nexport class TextInputComponent extends CommonInputComponent<string> {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-text-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container {{ color }} {{ variant }}\">\n      <span class=\"icon\"> {{ icon }}</span>\n      <label [for]=\"name\">{{ label }} </label>\n      <input\n        [(ngModel)]=\"value\"\n        [id]=\"id()\"\n        [attr.data-testid]=\"name\"\n        type=\"text\"\n        [name]=\"name\"\n        [autocomplete]=\"autocomplete\"\n        (input)=\"emit()\"\n        tbHasValue\n      />\n      <span class=\"input-error\" *ngIf=\"error\">{{ error }}</span>\n    </div>\n  `,\n})\nexport class TextInputComponent extends CommonInputComponent<string> {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -6296,6 +6570,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'computer', value: 'PC' },\n      { icon: 'bed', value: 'Furniture' },\n      { icon: 'water', value: 'Food' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('B 1');\n\n    userEvent.click(option1, { delay: 200 });\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -6310,7 +6594,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'Option 1' },\n      { icon: 'info', value: 'Option 2' },\n      { icon: 'info', value: 'Option 3' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('Option 1');\n\n    userEvent.click(option1,{delay:200});\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
+                "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'A 1' },\n      { icon: 'info', value: 'B 1' },\n      { icon: 'info', value: 'C 1' },\n      { icon: 'info', value: 'D 1' },\n      { icon: 'info', value: 'E 1' },\n      { icon: 'info', value: 'F 1' },\n      { icon: 'info', value: 'G 1' },\n      { icon: 'info', value: 'H 1' },\n      {\n        icon: 'info',\n        value: 'Very long option. Very long option . Very long option',\n      },\n      { icon: 'info', value: 'I 1' },\n      { icon: 'info', value: 'J 1' },\n      { icon: 'info', value: 'K 1 ' },\n      { icon: 'info', value: 'K 1' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('B 1');\n\n    userEvent.click(option1, { delay: 200 });\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -6646,6 +6930,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<MultipleSelectInputComponent>",
+                "defaultValue": "{\n  component: MultipleSelectInputComponent,\n  title: 'Input Multi Select',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/form/number-input/number-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -6961,6 +7255,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    name: '',\n    value: '',\n    type: 'text',\n    autocomplete: 'on',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -7286,11 +7590,11 @@
                 "kind": 189
             },
             {
-                "name": "OptionType",
+                "name": "SelectOption",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "literal type",
-                "file": "libs/material/src/form/enum-input/enum-input.component.ts",
+                "file": "libs/material/src/api/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -7566,6 +7870,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<InputComponent>",
                 "file": "libs/material/src/form/input/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<MultipleSelectInputComponent>",
+                "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -8472,6 +8787,38 @@
                     "defaultValue": "{\n  args: {\n    name: '',\n    value: '',\n    type: 'text',\n    autocomplete: 'on',\n    color: 'primary',\n    label: 'Input Label',\n    variant: 'basic',\n    icon: 'info',\n  },\n}"
                 }
             ],
+            "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'computer', value: 'PC' },\n      { icon: 'bed', value: 'Furniture' },\n      { icon: 'water', value: 'Food' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('B 1');\n\n    userEvent.click(option1, { delay: 200 });\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<MultipleSelectInputComponent>",
+                    "defaultValue": "{\n  component: MultipleSelectInputComponent,\n  title: 'Input Multi Select',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/material/src/form/number-input/number-input.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -8513,7 +8860,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'Option 1' },\n      { icon: 'info', value: 'Option 2' },\n      { icon: 'info', value: 'Option 3' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('Option 1');\n\n    userEvent.click(option1,{delay:200});\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'A 1' },\n      { icon: 'info', value: 'B 1' },\n      { icon: 'info', value: 'C 1' },\n      { icon: 'info', value: 'D 1' },\n      { icon: 'info', value: 'E 1' },\n      { icon: 'info', value: 'F 1' },\n      { icon: 'info', value: 'G 1' },\n      { icon: 'info', value: 'H 1' },\n      {\n        icon: 'info',\n        value: 'Very long option. Very long option . Very long option',\n      },\n      { icon: 'info', value: 'I 1' },\n      { icon: 'info', value: 'J 1' },\n      { icon: 'info', value: 'K 1 ' },\n      { icon: 'info', value: 'K 1' },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByLabelText(/Category/gi)).toBeTruthy();\n    const elem = canvas.getByLabelText(/Category/gi);\n    userEvent.click(elem);\n\n    const option1 = canvas.getByTestId('B 1');\n\n    userEvent.click(option1, { delay: 200 });\n\n    // userEvent.selectOptions(elem, 'Option 1');\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -8965,6 +9312,17 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 189
+                },
+                {
+                    "name": "SelectOption",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/src/api/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
                 }
             ],
             "libs/material/src/api/icon.ts": [
@@ -8978,19 +9336,6 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 189
-                }
-            ],
-            "libs/material/src/form/enum-input/enum-input.component.ts": [
-                {
-                    "name": "OptionType",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "literal type",
-                    "file": "libs/material/src/form/enum-input/enum-input.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
                 }
             ],
             "libs/material/src/alert/alert.component.stories.ts": [
@@ -9312,6 +9657,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputComponent>",
                     "file": "libs/material/src/form/input/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<MultipleSelectInputComponent>",
+                    "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -9982,7 +10340,7 @@
                 "linktype": "component",
                 "name": "CommonInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -10021,7 +10379,7 @@
                 "linktype": "component",
                 "name": "DateInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/31",
+                "coverageCount": "0/30",
                 "status": "low"
             },
             {
@@ -10060,7 +10418,7 @@
                 "linktype": "component",
                 "name": "EnumInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/23",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -10196,7 +10554,46 @@
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/29",
+                "coverageCount": "0/28",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/multiple-select-input/multiple-select-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/multiple-select-input/multiple-select-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MultipleSelectInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -10235,7 +10632,7 @@
                 "linktype": "component",
                 "name": "NumberInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -10274,7 +10671,7 @@
                 "linktype": "component",
                 "name": "SelectInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/25",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {
@@ -10313,7 +10710,7 @@
                 "linktype": "component",
                 "name": "TextInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
