@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonModule } from '../button.module';
 import { MicroModule } from '../../micro/micro.module';
-import { ButtonType, ButttonVariant, Color, Position } from '../../api';
+import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
 
 @Component({
   standalone: true,
@@ -57,7 +57,7 @@ export class SampleButtonsComponent {
   buttons: any[] = [];
 
   buttonTypes: ButtonType[] = ['button', 'combined-button', 'icon-button'];
-  positions: Position[] = ['bottom', 'left', 'top', 'right'];
+  positions: Direction[] = ['bottom', 'left', 'top', 'right'];
 
   variants: ButttonVariant[] = ['basic', 'flat', 'inbox', 'raised', 'stroked'];
 

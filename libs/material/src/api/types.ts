@@ -16,7 +16,7 @@ export type ButtonType =
 
 export type ButttonVariant = 'basic' | 'raised' | 'flat' | 'stroked' | 'inbox' | 'tab';
 export type ButtonSize = 'small' | 'regular' | 'big';
-export type Position = 'top' | 'right' | 'bottom' | 'left';
+export type Direction = 'top' | 'right' | 'bottom' | 'left';
 
 export type InputVariant = ButttonVariant;
 

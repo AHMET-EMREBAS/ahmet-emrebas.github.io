@@ -1,6 +1,6 @@
 import { Component, ContentChildren, Input } from '@angular/core';
 import { ButtonModule, CombinedButtonComponent } from '../button';
-import { Position } from '../api';
+import { Direction } from '../api';
 import { MicroModule } from '../micro/micro.module';
 
 @Component({
@@ -14,6 +14,6 @@ export class MenuComponent extends CombinedButtonComponent {
   readonly __componentType = MenuComponent;
   @ContentChildren(MenuComponent) children?: Record<string, any>[];
 
-  @Input() openDirection: Position = 'bottom';
+  @Input() openDirection: Direction = 'bottom';
   @Input() containerView: 'row' | 'column' = 'column';
 }

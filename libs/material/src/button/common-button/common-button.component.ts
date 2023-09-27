@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ButtonSize, ButttonVariant, Color, Position } from '../../api';
+import { ButtonSize, ButttonVariant, Color, Direction } from '../../api';
 import { MicroModule } from '../../micro/micro.module';
 
 @Component({
@@ -10,11 +10,11 @@ import { MicroModule } from '../../micro/micro.module';
 })
 export class CommonButtonComponent {
   @Input() tooltip?: string = '';
-  @Input() tooltipPosition?: Position;
+  @Input() tooltipPosition?: Direction;
   @Input() color?: Color = 'primary';
   @Input() variant?: ButttonVariant = 'basic';
   @Input() size?: ButtonSize = 'regular';
-  @Input() borderPosition?: Position;
+  @Input() borderPosition?: Direction;
   @Input() nativeType: HTMLButtonElement['type'] = 'button';
 
   @Output() clickEvent = new EventEmitter();

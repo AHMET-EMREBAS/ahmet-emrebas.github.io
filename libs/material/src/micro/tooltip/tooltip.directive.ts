@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
-import { Position } from './../../api';
+import { Direction } from './../../api';
 
 @Directive({
   selector: '[tbTooltip]',
@@ -7,7 +7,7 @@ import { Position } from './../../api';
 })
 export class TooltipDirective implements AfterViewInit {
   @Input() tbTooltip?: string = '';
-  @Input() tbTooltipPosition?: Position = 'bottom';
+  @Input() tbTooltipPosition?: Direction = 'bottom';
   constructor(private readonly elementRef: ElementRef<HTMLButtonElement>) {}
 
   ngAfterViewInit(): void {

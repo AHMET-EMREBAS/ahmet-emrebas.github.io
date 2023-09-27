@@ -14,6 +14,7 @@ export class HasValueDirective implements AfterViewInit {
     this.elementRef.nativeElement.addEventListener(
       'input',
       (event: InputEvent | any) => {
+        console.log('Input Event: ', event.data);
         const data = event.data;
         if (data?.length > 0) {
           this.markAsHasValue();
