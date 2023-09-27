@@ -3,7 +3,14 @@ import { Component, Input } from '@angular/core';
 import { CommonButtonComponent } from '../common-button';
 
 import { MicroModule } from '../../micro/micro.module';
-
+// class="button {{ color }} {{ variant }} {{ size }} {{ borderPosition }}"
+// (click)="emit()"
+// [tbBadge]="badge"
+// [tbBadgeColor]="badgeColor"
+// [tbBadgePosition]="badgePosition"
+// [tbTooltip]="tooltip"
+// [tbTooltipPosition]="tooltipPosition"
+// [type]="nativeType"
 @Component({
   selector: 'tb-combined-button',
   standalone: true,

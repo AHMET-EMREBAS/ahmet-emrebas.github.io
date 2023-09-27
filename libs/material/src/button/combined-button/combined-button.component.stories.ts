@@ -17,6 +17,10 @@ export const Primary: Story = {
     variant: 'basic',
     icon: 'info',
     color: 'primary',
+    size:'small',
+    badge: '100',
+    badgePosition: 'top-right',
+    badgeColor: 'primary',
   },
 };
 

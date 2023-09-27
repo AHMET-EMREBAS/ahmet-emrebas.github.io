@@ -8,13 +8,11 @@ import {
   ButttonVariant,
   BadgePosition,
 } from '../api';
-import { CommonButtonComponent } from '../button';
 import { NavListItemComponent } from '../nav-list/nav-list-item/nav-list-item.component';
 
 @Directive({ selector: '[tbTab]' })
-export class TabDirective
-  implements CommonButtonComponent, NavListItemComponent
-{
+export class TabDirective implements NavListItemComponent {
+  
   @Input() clickEvent: EventEmitter<any> = new EventEmitter();
 
   @Input() __ngContext__ = '';

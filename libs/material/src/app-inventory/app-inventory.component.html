@@ -1,7 +1,12 @@
-<button tbBadge="Badge" tbBadgeColor="primary" tbBadgePosition="top-right">Hello world</button>
+<tb-button
+  badge="100"
+  variant="raised"
+  badgePosition="top-right"
+  badgeColor="primary"
+  label="label"
+></tb-button>
 
 <tb-tab-container type="sidenav">
-  
   <ng-template
     tbTab
     label="Products"
@@ -9,7 +14,6 @@
     color="primary"
     badge="100"
     badgePosition="top-right"
-    badgeColor="warn"
   >
     <h1>Product content</h1>
   </ng-template>

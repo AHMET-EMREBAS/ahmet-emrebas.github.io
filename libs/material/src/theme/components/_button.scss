@@ -125,7 +125,7 @@ button.tab {
 
 @mixin button() {
   cursor: pointer;
-
+  position: relative;
   padding: 0px;
   padding-left: 1em;
   padding-right: 1em;
