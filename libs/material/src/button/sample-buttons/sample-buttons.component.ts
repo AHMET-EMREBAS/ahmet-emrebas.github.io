@@ -16,6 +16,9 @@ import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
         [label]="variant + ' ' + 'Button'"
         [variant]="variant"
         [color]="color"
+        badge="100"
+        badgePosition="top-right"
+        badgeColor="accent"
         *ngFor="let color of colors"
       ></tb-button>
     </div>

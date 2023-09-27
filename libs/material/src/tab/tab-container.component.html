@@ -1,12 +1,15 @@
 <ng-container *ngIf="type === 'tab'">
-  <div #container class="flex row ox-auto oy-hidden relative pb-3" tbScrollX>
+  <div #container class="flex row ox-auto oy-hidden relative pb-3em" tbScrollX>
     <ng-container *ngFor="let child of children">
       <tb-combined-button
-        [label]="child.label"
-        [borderPosition]="child.borderPosition"
-        [color]="child.color"
         [icon]="child.icon"
-        variant="tab"
+        [label]="child.label"
+        [color]="child.color"
+        [tooltip]="child.tooltip"
+        [tooltipPosition]="child.tooltipPosition"
+        [badge]="child.badge"
+        [badgePosition]="child.badgePosition"
+        [badgeColor]="child.badgeColor"
         (clickEvent)="activateChild(child)"
       ></tb-combined-button>
     </ng-container>
@@ -21,11 +24,19 @@
 
 <!-- Sidenav -->
 <ng-container *ngIf="type === 'sidenav'">
-  <div class="flex row gap-2 w-100">
+  <div class="flex row gap-1em">
     <tb-nav-list>
       <tb-nav-list-item
-        (clickEvent)="activateChild(child)"
         *ngFor="let child of children"
+        [icon]="child.icon"
+        [label]="child.label"
+        [color]="child.color"
+        [tooltip]="child.tooltip"
+        [tooltipPosition]="child.tooltipPosition"
+        [badge]="child.badge"
+        [badgePosition]="child.badgePosition"
+        [badgeColor]="child.badgeColor"
+        (clickEvent)="activateChild(child)"
       ></tb-nav-list-item>
     </tb-nav-list>
 

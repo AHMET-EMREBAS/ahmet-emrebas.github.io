@@ -23,7 +23,7 @@ export const Primary: Story = {
 
 export const Heading: Story = {
   args: {
-    label: 'Button',
+    label: 'Raised Button',
     variant: 'raised',
     color: 'secondary',
     tooltip: 'Tooltip',
@@ -31,6 +31,6 @@ export const Heading: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/button works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Raised Button/gi)).toBeTruthy();
   },
 };

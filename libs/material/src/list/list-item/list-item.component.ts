@@ -12,5 +12,5 @@ import { Color, Icon } from '../../api';
 export class ListItemComponent {
   @Input() label = '';
   @Input() color: Color = 'primary';
-  @Input() icon?: Icon  = 'info';
+  @Input() icon?: Icon = 'info';
 }

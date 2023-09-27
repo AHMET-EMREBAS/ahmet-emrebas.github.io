@@ -5,6 +5,7 @@ import { FormActionsDirective } from './form-actions/form-actions.directive';
 import { TextInputComponent } from './text-input/text-input.component';
 import { DateInputComponent } from './date-input/date-input.component';
 import { EnumInputComponent } from './enum-input/enum-input.component';
+import { MultipleSelectInputComponent } from './multiple-select-input/multiple-select-input.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { EnumInputComponent } from './enum-input/enum-input.component';
     TextInputComponent,
     DateInputComponent,
     EnumInputComponent,
+    MultipleSelectInputComponent,
     FormActionsDirective,
   ],
   exports: [
@@ -21,6 +23,7 @@ import { EnumInputComponent } from './enum-input/enum-input.component';
     TextInputComponent,
     DateInputComponent,
     EnumInputComponent,
+    MultipleSelectInputComponent,
     FormActionsDirective,
   ],
 })

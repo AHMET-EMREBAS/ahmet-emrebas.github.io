@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
-import { Color } from './../../api';
+import { Color, BadgePosition } from './../../api';
 
 @Directive({
   selector: '[tbBadge]',
@@ -7,12 +7,8 @@ import { Color } from './../../api';
 })
 export class BadgeDirective implements AfterViewInit {
   @Input() tbBadge?: string;
-  @Input() tbBadgePosition:
-    | 'top-right'
-    | 'top-left'
-    | 'bottom-left'
-    | 'bottom-right' = 'top-right';
-  @Input() tbBadgeColor: Color = 'primary';
+  @Input() tbBadgePosition?: BadgePosition = 'top-right';
+  @Input() tbBadgeColor?: Color = 'primary';
   constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
 
   ngAfterViewInit(): void {
@@ -20,11 +16,11 @@ export class BadgeDirective implements AfterViewInit {
       this.elementRef.nativeElement.setAttribute('data-badge', this.tbBadge);
       this.elementRef.nativeElement.setAttribute(
         'data-badge-position',
-        this.tbBadgePosition
+        this.tbBadgePosition || ''
       );
       this.elementRef.nativeElement.setAttribute(
         'data-badge-color',
-        this.tbBadgeColor
+        this.tbBadgeColor || ''
       );
     }
   }

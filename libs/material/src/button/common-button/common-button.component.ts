@@ -1,5 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ButtonSize, ButttonVariant, Color, Direction } from '../../api';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import {
+  BadgePosition,
+  ButtonSize,
+  ButttonVariant,
+  Color,
+  Direction,
+} from '../../api';
 import { MicroModule } from '../../micro/micro.module';
 
 @Component({
@@ -9,15 +22,28 @@ import { MicroModule } from '../../micro/micro.module';
   template: ``,
 })
 export class CommonButtonComponent {
+  /** @ignore */
+
+  @ViewChild('button') ref?: ElementRef<HTMLButtonElement>;
+
+  @Input() __ngContext__ = '';
+  @Input() badge?: string;
+  @Input() badgeColor?: Color;
+  @Input() badgePosition?: BadgePosition;
+  @Input() borderPosition?: Direction;
+  @Input() color?: Color = 'primary';
+  @Input() icon?: string;
+  @Input() label?: string;
+  @Input() nativeType: HTMLButtonElement['type'] = 'button';
+  @Input() size?: ButtonSize = 'regular';
   @Input() tooltip?: string = '';
   @Input() tooltipPosition?: Direction;
-  @Input() color?: Color = 'primary';
   @Input() variant?: ButttonVariant = 'basic';
-  @Input() size?: ButtonSize = 'regular';
-  @Input() borderPosition?: Direction;
-  @Input() nativeType: HTMLButtonElement['type'] = 'button';
+  /** Only supported by tab variant */
 
-  @Output() clickEvent = new EventEmitter();
+  @Input()
+  @Output()
+  clickEvent = new EventEmitter();
 
   emit() {
     this.clickEvent.emit();

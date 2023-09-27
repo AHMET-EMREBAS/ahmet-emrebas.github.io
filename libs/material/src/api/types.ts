@@ -9,7 +9,12 @@ export type Color =
   | 'green'
   | 'black'
   | 'white';
-
+export type BadgePosition =
+  | 'top-right'
+  | 'top-left'
+  | 'bottom-left'
+  | 'bottom-right';
+  
 export type SelectOption = {
   id?: string;
   icon?: Icon;

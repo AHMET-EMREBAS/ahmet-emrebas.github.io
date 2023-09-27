@@ -22,13 +22,13 @@ export const Primary: Story = {
 
 export const Heading: Story = {
   args: {
-    label: 'Combined',
+    label: 'Combined Button',
     variant: 'basic',
     icon: 'info',
     color: 'accent',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/combined-button works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Combined Button/gi)).toBeTruthy();
   },
 };

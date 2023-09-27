@@ -5702,7 +5702,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<ng-container *ngIf=\"type === 'tab'\">\n  <div #container class=\"flex row ox-auto oy-hidden relative pb-3\" tbScrollX>\n    <ng-container *ngFor=\"let child of children\">\n      <tb-combined-button\n        [label]=\"child.label\"\n        [borderPosition]=\"child.borderPosition\"\n        [color]=\"child.color\"\n        [icon]=\"child.icon\"\n        variant=\"tab\"\n        (clickEvent)=\"activateChild(child)\"\n      ></tb-combined-button>\n    </ng-container>\n  </div>\n\n  <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n    <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n      <ng-content></ng-content>\n    </ng-container>\n  </div>\n</ng-container>\n\n<!-- Sidenav -->\n<ng-container *ngIf=\"type === 'sidenav'\">\n  <div class=\"flex row gap-2 w-100\">\n    <tb-nav-list>\n      <tb-nav-list-item\n        (clickEvent)=\"activateChild(child)\"\n        *ngFor=\"let child of children\"\n      ></tb-nav-list-item>\n    </tb-nav-list>\n\n    <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n      <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n        <ng-content></ng-content>\n      </ng-container>\n    </div>\n  </div>\n</ng-container>\n"
+            "templateData": "<ng-container *ngIf=\"type === 'tab'\">\n  <div #container class=\"flex row ox-auto oy-hidden relative pb-3em\" tbScrollX>\n    <ng-container *ngFor=\"let child of children\">\n      <tb-combined-button\n        [label]=\"child.label\"\n        [borderPosition]=\"child.borderPosition\"\n        [color]=\"child.color\"\n        [icon]=\"child.icon\"\n        variant=\"tab\"\n        (clickEvent)=\"activateChild(child)\"\n      ></tb-combined-button>\n    </ng-container>\n  </div>\n\n  <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n    <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n      <ng-content></ng-content>\n    </ng-container>\n  </div>\n</ng-container>\n\n<!-- Sidenav -->\n<ng-container *ngIf=\"type === 'sidenav'\">\n  <div class=\"flex row gap-2em w-100\">\n    <tb-nav-list>\n      <tb-nav-list-item\n        (clickEvent)=\"activateChild(child)\"\n        *ngFor=\"let child of children\"\n      ></tb-nav-list-item>\n    </tb-nav-list>\n\n    <div *ngIf=\"delayedChild$ | async as delayedChild\" [@enter]>\n      <ng-container *ngTemplateOutlet=\"delayedChild.templateRef\">\n        <ng-content></ng-content>\n      </ng-container>\n    </div>\n  </div>\n</ng-container>\n"
         },
         {
             "name": "TextInputComponent",
@@ -6109,13 +6109,13 @@
         },
         {
             "name": "FormModule",
-            "id": "module-FormModule-7922e7c13efe0bde8cdb8d0091ffac7dc3fa5e5c0807cc80b7a3e7391dcca4fc2d45a5b4a5f18a9cec417eaebae356736eda53c3cb6eb76c7f1eca67a60b8efe",
+            "id": "module-FormModule-cbb6b0ddc3c56afe8cc777e70d011a520fb88cc4c29ef06aa14be02ad605a866caf67a00ec86839bd85bd6d0ed1edf953f83629cf7508090141e55314eba072c",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/src/form/form.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { FormComponent } from './form.component';\r\nimport { InputComponent } from './input/input.component';\r\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\r\nimport { TextInputComponent } from './text-input/text-input.component';\r\nimport { DateInputComponent } from './date-input/date-input.component';\r\nimport { EnumInputComponent } from './enum-input/enum-input.component';\r\n\r\n@NgModule({\r\n  imports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DateInputComponent,\r\n    EnumInputComponent,\r\n    FormActionsDirective,\r\n  ],\r\n  exports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DateInputComponent,\r\n    EnumInputComponent,\r\n    FormActionsDirective,\r\n  ],\r\n})\r\nexport class FormModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { FormComponent } from './form.component';\r\nimport { InputComponent } from './input/input.component';\r\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\r\nimport { TextInputComponent } from './text-input/text-input.component';\r\nimport { DateInputComponent } from './date-input/date-input.component';\r\nimport { EnumInputComponent } from './enum-input/enum-input.component';\r\nimport { MultipleSelectInputComponent } from './multiple-select-input/multiple-select-input.component';\r\n\r\n@NgModule({\r\n  imports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DateInputComponent,\r\n    EnumInputComponent,\r\n    MultipleSelectInputComponent,\r\n    FormActionsDirective,\r\n  ],\r\n  exports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DateInputComponent,\r\n    EnumInputComponent,\r\n    MultipleSelectInputComponent,\r\n    FormActionsDirective,\r\n  ],\r\n})\r\nexport class FormModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -6144,6 +6144,9 @@
                             "name": "InputComponent"
                         },
                         {
+                            "name": "MultipleSelectInputComponent"
+                        },
+                        {
                             "name": "TextInputComponent"
                         }
                     ]
@@ -6165,6 +6168,9 @@
                         },
                         {
                             "name": "InputComponent"
+                        },
+                        {
+                            "name": "MultipleSelectInputComponent"
                         },
                         {
                             "name": "TextInputComponent"

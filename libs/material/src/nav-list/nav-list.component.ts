@@ -5,24 +5,39 @@ import {
   NgModule,
   QueryList,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NavListItemComponent } from './nav-list-item/nav-list-item.component';
 import { Color, Icon } from '../api';
+import { MicroModule } from '../micro/micro.module';
 
 @Component({
   selector: 'tb-nav-list',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './nav-list.component.html',
+  imports: [MicroModule],
+  template: `
+    <div class="nav-list">
+      <ng-container *ngFor="let child of children">
+        <ng-container
+          *ngComponentOutlet="componentType; inputs: childValue(child)"
+        ></ng-container>
+      </ng-container>
+    </div>
+  `,
 })
 export class NavListComponent {
-  componentType = NavListItemComponent;
+  @Input() __ngContext__ = '';
+  @Input() componentType = NavListItemComponent;
 
-  @ContentChildren(NavListItemComponent) children?: QueryList<
-    Record<string, unknown>
-  >;
+  @ContentChildren(NavListItemComponent)
+  children?: QueryList<NavListItemComponent>;
+
   @Input() color: Color = 'primary';
   @Input() icon: Icon = 'info';
+
+  childValue(child: NavListItemComponent): Record<string, any> {
+    const { ref, ...rest } = child;
+    return rest;
+  }
 }
 
 @NgModule({
