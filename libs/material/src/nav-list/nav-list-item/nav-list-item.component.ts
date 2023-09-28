@@ -10,11 +10,6 @@ import { CombinedButtonComponent } from '../../button';
     <button
       class="nav-list-item {{ color }} {{ variant }} {{ borderPosition }} "
       (click)="emit()"
-      [tbBadge]="badge"
-      [tbBadgeColor]="badgeColor"
-      [tbBadgePosition]="badgePosition"
-      [tbTooltip]="tooltip"
-      [tbTooltipPosition]="tooltipPosition"
     >
       <span class="icon">{{ icon }}</span>
       <span>{{ label }}</span>

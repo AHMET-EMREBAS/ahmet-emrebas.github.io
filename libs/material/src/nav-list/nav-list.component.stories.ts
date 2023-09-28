@@ -4,7 +4,6 @@ import { NavListComponent } from './nav-list.component';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { NavListItemComponent } from './nav-list-item/nav-list-item.component';
-import { QueryList } from '@angular/core';
 
 const meta: Meta<NavListComponent> = {
   component: NavListComponent,
@@ -23,16 +22,11 @@ export const Primary: Story = {
         label: 'First Item',
         icon: 'info',
         color: 'warn',
-        tooltipPosition: 'bottom',
-        tooltip: 'Tooltip',
       } as NavListItemComponent,
       {
         label: 'Secondar Item',
         icon: 'apps',
         color: 'red',
-        badge:'100', 
-        badgeColor:'red', 
-        badgePosition:'top-right'
       } as NavListItemComponent,
       {
         label: 'Third Item',

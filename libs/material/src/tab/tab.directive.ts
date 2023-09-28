@@ -12,21 +12,16 @@ import { NavListItemComponent } from '../nav-list/nav-list-item/nav-list-item.co
 
 @Directive({ selector: '[tbTab]' })
 export class TabDirective implements NavListItemComponent {
-  
   @Input() clickEvent: EventEmitter<any> = new EventEmitter();
 
   @Input() __ngContext__ = '';
-  @Input() badge?: string;
-  @Input() badgeColor?: Color;
-  @Input() badgePosition?: BadgePosition;
+
   @Input() borderPosition?: Direction = 'bottom';
   @Input() color?: Color = 'primary';
   @Input() icon?: Icon = 'info';
   @Input() label?: string = '';
   @Input() nativeType: 'submit' | 'reset' | 'button' = 'button';
   @Input() size?: ButtonSize | undefined = 'regular';
-  @Input() tooltip?: string | undefined = '';
-  @Input() tooltipPosition?: Direction | undefined;
   @Input() variant?: ButttonVariant | undefined = 'tab';
 
   constructor(public templateRef: TemplateRef<TabDirective>) {}

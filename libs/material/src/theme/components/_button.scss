@@ -2,6 +2,7 @@
 
 $buttonTypes: (basic, flat, raised, inbox, stroked);
 
+
 /** Initial value */
 button.basic {
   background-color: rgba(0, 0, 0, 0);
@@ -135,6 +136,9 @@ button.tab {
   text-wrap: nowrap;
   font-size: 1em;
 
+  width: 100%;
+  
+
   outline-width: 0.3em;
   outline-color: rgba(255, 255, 255, 0);
 
@@ -216,4 +220,16 @@ button.combined-button {
 
 .big.button {
   font-size: 3em;
+}
+
+@each $key, $value in (small: 1em, medium: 2em, big: 3em) {
+  .#{$key}.icon-button {
+    font-size: #{$value};
+  }
+  .#{$key}.button {
+    font-size: #{$value};
+  }
+  .#{$key}.combined-button {
+    font-size: #{$value};
+  }
 }

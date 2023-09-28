@@ -17,22 +17,18 @@ export const Primary: Story = {
     variant: 'basic',
     icon: 'info',
     color: 'primary',
-    size:'small',
-    badge: '100',
-    badgePosition: 'top-right',
-    badgeColor: 'primary',
   },
 };
 
 export const Heading: Story = {
   args: {
-    label: 'Combined Button',
+    label: 'Combined',
     variant: 'basic',
     icon: 'info',
-    color: 'accent',
+    color: 'primary',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/Combined Button/gi)).toBeTruthy();
+    expect(canvas.getByText(/Combined/gi)).toBeTruthy();
   },
 };

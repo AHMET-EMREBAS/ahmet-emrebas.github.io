@@ -8,13 +8,8 @@ import { MicroModule } from '../../micro/micro.module';
   imports: [MicroModule],
   template: ` <button
     class="button {{ color }} {{ variant }} {{ size }} {{ borderPosition }}"
-    (click)="emit()"
-    [tbBadge]="badge"
-    [tbBadgeColor]="badgeColor"
-    [tbBadgePosition]="badgePosition"
-    [tbTooltip]="tooltip"
-    [tbTooltipPosition]="tooltipPosition"
     [type]="nativeType"
+    (click)="emit()"
   >
     {{ label }}
   </button>`,

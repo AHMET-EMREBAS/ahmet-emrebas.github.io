@@ -13,14 +13,15 @@ type Story = StoryObj<AlertComponent>;
 
 export const Primary: Story = {
   args: {
-    color: 'primary',
-    icon: 'home',
+    color: 'red',
+    icon: 'info',
   },
 };
 
 export const Heading: Story = {
   args: {
     color: 'red',
+    icon: 'info',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

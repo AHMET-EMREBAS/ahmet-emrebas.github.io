@@ -1,19 +1,15 @@
-
 <ng-container *ngIf="type === 'tab'">
-  <div #container class="flex row ox-auto oy-hidden relative pb-3em" tbScrollX>
-    <ng-container *ngFor="let child of children">
-      <tb-combined-button
-        [icon]="child.icon"
-        [label]="child.label"
-        [color]="child.color"
-        [tooltip]="child.tooltip"
-        [tooltipPosition]="child.tooltipPosition"
-        [badge]="child.badge"
-        [badgePosition]="child.badgePosition"
-        [badgeColor]="child.badgeColor"
-        (clickEvent)="activateChild(child)"
+  <div #container class="flex justify-stretch relative p-1em" tbScrollX>
+    <tb-combined-button
+      (clickEvent)="activateChild(child)"
+      [color]="child.color"
+      [icon]="child.icon"
+      [label]="child.label"
+      *ngFor="let child of children"
+      borderPosition="bottom"
+      class="w-100per"
+      variant="tab"
       ></tb-combined-button>
-    </ng-container>
   </div>
 
   <div *ngIf="delayedChild$ | async as delayedChild" [@enter]>
@@ -32,11 +28,6 @@
         [icon]="child.icon"
         [label]="child.label"
         [color]="child.color"
-        [tooltip]="child.tooltip"
-        [tooltipPosition]="child.tooltipPosition"
-        [badge]="child.badge"
-        [badgePosition]="child.badgePosition"
-        [badgeColor]="child.badgeColor"
         (clickEvent)="activateChild(child)"
       ></tb-nav-list-item>
     </tb-nav-list>

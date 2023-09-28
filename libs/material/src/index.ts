@@ -16,18 +16,16 @@ export * from './button/icon-button/icon-button.component';
 export * from './button/sample-buttons/sample-buttons.component';
 export * from './colors/colors.component';
 export * from './fonts/fonts.component';
-export * from './form/array-input/array-input.component';
 export * from './form/boolean-input/boolean-input.component';
 export * from './form/common-input/common-input.component';
-export * from './form/date-input/date-input.component';
-export * from './form/enum-input/enum-input.component';
-export * from './form/enum-input/input-option/input-option.component';
+export * from './form/date-picker/date-picker.component';
 export * from './form/form-actions/form-actions.directive';
 export * from './form/form.component';
 export * from './form/form.module';
 export * from './form/input/input.component';
 export * from './form/multiple-select-input/multiple-select-input.component';
 export * from './form/number-input/number-input.component';
+export * from './form/search-input/search-input.component';
 export * from './form/select-input/select-input.component';
 export * from './form/text-input/text-input.component';
 export * from './list/list-item/list-item.component';
@@ -48,15 +46,12 @@ export * from './nav-list/nav-list.component';
 export * from './notification/notification.component';
 export * from './stepper/stepper.component';
 export * from './sticky-notes/sticky-notes.component';
+export * from './tab/tab-button/tab-button.component';
 export * from './tab/tab-container.component';
 export * from './tab/tab.directive';
 export * from './tab/tab.module';
+export * from './table/paginator/paginator.component';
+export * from './table/table.component';
 export * from './toolbar/toolbar.component';
 
-export * from './table/table.component';
-
-export * from './table/paginator/paginator.component';
-
-export * from './form/search-input/search-input.component';
-
-export * from './tab/tab-button/tab-button.component';
+export * from './form/date-input/date-input.component';

@@ -4,6 +4,7 @@ import { TabModule } from '../tab/tab.module';
 import { MicroModule } from '../micro/micro.module';
 import { FormModule } from '../form/form.module';
 import { NavListModule } from '../nav-list/nav-list.component';
+
 @Component({
   selector: 'tb-app-inventory',
   standalone: true,

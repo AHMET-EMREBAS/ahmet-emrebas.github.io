@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector */
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonModule } from '../button.module';
 import { MicroModule } from '../../micro/micro.module';
 import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
@@ -16,9 +16,6 @@ import { ButtonType, ButttonVariant, Color, Direction } from '../../api';
         [label]="variant + ' ' + 'Button'"
         [variant]="variant"
         [color]="color"
-        badge="100"
-        badgePosition="top-right"
-        badgeColor="accent"
         *ngFor="let color of colors"
       ></tb-button>
     </div>

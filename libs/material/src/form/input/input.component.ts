@@ -1,29 +1,42 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TextInputComponent } from '../text-input/text-input.component';
 import { CommonInputComponent } from '../common-input/common-input.component';
-import { DateInputComponent } from '../date-input/date-input.component';
+import { DatePickerComponent } from '../date-picker/date-picker.component';
 import { NumberInputComponent } from '../number-input/number-input.component';
-import { EnumInputComponent } from '../enum-input/enum-input.component';
 import { BooleanInputComponent } from '../boolean-input/boolean-input.component';
+import { SelectInputComponent } from '../select-input/select-input.component';
+import { MultipleSelectInputComponent } from '../multiple-select-input/multiple-select-input.component';
+import { MicroModule } from '../../micro/micro.module';
 
 @Component({
   selector: 'tb-input',
   standalone: true,
-  imports: [CommonModule, TextInputComponent],
-  templateUrl: './input.component.html',
+  imports: [MicroModule],
+  template: `
+    <ng-container *ngComponentOutlet="componentType(); inputs: inputs()">
+    </ng-container>
+  `,
 })
 export class InputComponent extends CommonInputComponent {
   __text = TextInputComponent;
-  __date = DateInputComponent;
+  __date = DatePickerComponent;
   __number = NumberInputComponent;
-  __enum = EnumInputComponent;
+  __select = SelectInputComponent;
+  __multi_select = MultipleSelectInputComponent;
   __boolean = BooleanInputComponent;
 
   inputs(extras?: Record<string, any>): Record<string, any> {
-    const { inputRef, __text, __date, __boolean, __enum, __number, ...rest } =
-      this;
+    const {
+      inputRef,
+      __text,
+      __date,
+      __boolean,
+      __select,
+      __multi_select,
+      __number,
+      ...rest
+    } = this;
     return { ...rest, ...extras };
   }
 
@@ -35,7 +48,11 @@ export class InputComponent extends CommonInputComponent {
     } else if (this.inputType === 'date') {
       return this.__date;
     } else if (this.inputType === 'select') {
-      return this.__enum;
+      return this.__select;
+    } else if (this.inputType === 'boolean') {
+      return this.__boolean;
+    } else if (this.inputType === 'multi-select') {
+      return this.__multi_select;
     }
 
     return this.__text;

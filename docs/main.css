@@ -38422,6 +38422,7 @@ button.tab.green.left:focus {
 /** Initial value */
 button.button {
   cursor: pointer;
+  position: relative;
   padding: 0px;
   padding-left: 1em;
   padding-right: 1em;
@@ -38467,6 +38468,7 @@ button.icon-button .icon {
 
 button.combined-button {
   cursor: pointer;
+  position: relative;
   padding: 0px;
   padding-left: 1em;
   padding-right: 1em;

@@ -12,14 +12,7 @@ export default meta;
 type Story = StoryObj<DateInputComponent>;
 
 export const Primary: Story = {
-  args: {
-    value: '',
-    name: 'name',
-    autocomplete: 'off',
-    color: 'warn',
-    label: 'Date of birth',
-    icon: 'info',
-  },
+  args: {},
 };
 
 export const Heading: Story = {

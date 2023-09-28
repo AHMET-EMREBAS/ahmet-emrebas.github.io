@@ -14,26 +14,26 @@ import { SelectOption } from '../../api';
         <label [for]="id()">{{ label }} </label>
         <input
           #input
-          [(ngModel)]="value"
+          [(ngModel)]="searchtext"
           type="text"
           [id]="id()"
           [attr.data-testid]="name"
           [name]="name"
           [autocomplete]="autocomplete"
-          (input)="getOptions()"
-          (keydown)="handleKeyDown($event)"
+          (input)="filterOptions()"
           tbHasValue
         />
+
+        <!--TODO :  Add closeable chip here -->
+        <span>{{ selectedItems() }}</span>
       </div>
-      <div class="selected-items">
-        {{ selectedItems() }}
-      </div>
+
       <div class="dropdown-items {{ distribution }} w-full h-10em oy-auto ">
         <div
           [attr.data-testid]="option.value"
           [id]="id() + option.value"
           class="nav-list-item inline-input cursor-pointer {{ color }}"
-          *ngFor="let option of getOptions()"
+          *ngFor="let option of filterOptions()"
           (click)="selectOption(option)"
         >
           <tb-icon [icon]="option.icon"></tb-icon>
@@ -48,62 +48,19 @@ import { SelectOption } from '../../api';
   `,
 })
 export class MultipleSelectInputComponent extends CommonInputComponent<string> {
-  selectedItems() {
-    return (
-      this.options
-        ?.filter((e) => e.selected)
-        .map((e) => e.value)
-        .join(',') || ''
-    );
-  }
+  searchtext = '';
+
   selectOption(option: SelectOption) {
     option.selected = !option.selected;
-    this.inputRef.nativeElement.value = this.selectedItems() + ',';
-    this.inputRef.nativeElement.dispatchEvent(
-      new InputEvent('input', {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-      })
+  }
+  
+  filterOptions(): SelectOption[] | undefined {
+    return this.options?.filter((e) =>
+      e.value.toLowerCase().includes(this.searchtext?.toLowerCase() || '')
     );
-    this.inputRef.nativeElement.focus();
   }
 
-  override emit(): void {
-    this.inputEvent.emit(this.selectedItems());
-  }
-  handleInput() {
-    const selectedItems = this.value!.split(',');
-    const lastSelected = selectedItems!.pop()!;
-  }
-  searchText() {
-    return this.value?.split(',').pop()?.toLowerCase() || '';
-  }
-
-  handleKeyDown(event: KeyboardEvent) {
-    console.log(event);
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      const option = this.getOptions()?.shift();
-      if (option) {
-        this.selectOption(option);
-      }
-    }
-
-    if (event.key === 'Backspace') {
-      event.preventDefault();
-      const list = this.inputRef.nativeElement.value.split(',');
-      const deletedItem = list.pop();
-      const item = this.options?.find((e) => e.value === deletedItem);
-      if (item) {
-        item.selected = false;
-      }
-      this.inputRef.nativeElement.value = list.join(',');
-    }
-  }
-  getOptions() {
-    return this.options?.filter((e) => {
-      return e.value.toLowerCase().includes(this.searchText()) && !e.selected
-    });
+  selectedItems() {
+    return this.options?.filter((e) => e.selected);
   }
 }

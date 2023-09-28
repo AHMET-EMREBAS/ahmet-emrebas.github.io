@@ -11,8 +11,10 @@ export class TooltipDirective implements AfterViewInit {
   constructor(private readonly elementRef: ElementRef<HTMLButtonElement>) {}
 
   ngAfterViewInit(): void {
-    const e = this.elementRef.nativeElement;
-    e.setAttribute('aria-label', this.tbTooltip || '');
-    e.setAttribute('tooltip-position', this.tbTooltipPosition || 'bottom');
+    setTimeout(() => {
+      const e = this.elementRef.nativeElement;
+      e.setAttribute('aria-label', this.tbTooltip || '');
+      e.setAttribute('tooltip-position', this.tbTooltipPosition || 'bottom');
+    }, 1000);
   }
 }
