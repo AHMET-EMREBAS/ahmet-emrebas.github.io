@@ -7,8 +7,19 @@ import { Color, Icon } from '../api';
   selector: 'tb-list',
   standalone: true,
   imports: [CommonModule, ListItemComponent],
-  templateUrl: './list.component.html',
-  styles: [],
+  template: `
+    <div class="list">
+      <ng-container
+        [ngComponentOutlet]="componentType"
+        [ngComponentOutletInputs]="{
+          label: child.label,
+          icon: child.icon || icon,
+          color: child.color || color
+        }"
+        *ngFor="let child of children"
+      ></ng-container>
+    </div>
+  `,
 })
 export class ListComponent {
   componentType = ListItemComponent;

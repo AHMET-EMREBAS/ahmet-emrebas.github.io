@@ -6,6 +6,7 @@ import { TextInputComponent } from './text-input/text-input.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { MultipleSelectInputComponent } from './multiple-select-input/multiple-select-input.component';
 import { BooleanInputComponent } from './boolean-input/boolean-input.component';
+import { SimpleSelectComponent } from './simple-select/simple-select.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { BooleanInputComponent } from './boolean-input/boolean-input.component';
     TextInputComponent,
     DatePickerComponent,
     MultipleSelectInputComponent,
+    SimpleSelectComponent,
     BooleanInputComponent,
     FormActionsDirective,
   ],
@@ -24,6 +26,7 @@ import { BooleanInputComponent } from './boolean-input/boolean-input.component';
     DatePickerComponent,
     BooleanInputComponent,
     MultipleSelectInputComponent,
+    SimpleSelectComponent,
     FormActionsDirective,
   ],
 })

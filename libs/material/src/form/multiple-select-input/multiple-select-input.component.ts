@@ -53,10 +53,10 @@ export class MultipleSelectInputComponent extends CommonInputComponent<string> {
   selectOption(option: SelectOption) {
     option.selected = !option.selected;
   }
-  
+
   filterOptions(): SelectOption[] | undefined {
     return this.options?.filter((e) =>
-      e.value.toLowerCase().includes(this.searchtext?.toLowerCase() || '')
+      e.value?.toLowerCase().includes(this.searchtext?.toLowerCase() || '')
     );
   }
 

@@ -17,22 +17,26 @@ export const LoginForm: Story = {
   args: {
     children: [
       {
-        type: 'text',
-        name: 'username',
-        color: 'primary',
-        autocomplete: 'email',
-        label: 'Username',
-        icon: 'email',
+        inputs() {
+          return {
+            label: 'Username',
+            type: 'text',
+            name: 'username',
+            icon: 'person',
+          };
+        },
       },
       {
-        type: 'password',
-        name: 'password',
-        color: 'primary',
-        autocomplete: 'current-password',
-        label: 'Password',
-        icon: 'email',
+        inputs() {
+          return {
+            label: 'Password',
+            type: 'password',
+            name: 'password',
+            icon: 'password',
+          };
+        },
       },
-    ] as InputComponent[],
+    ],
   } as any,
 };
 
@@ -40,19 +44,34 @@ export const Primary: Story = {
   args: {
     children: [
       {
-        type: 'text',
-        name: 'firstName',
-        color: 'primary',
-        autocomplete: 'given-name',
-        label: 'First Name',
-        icon: 'person',
+        inputs() {
+          return {
+            label: 'Username',
+            type: 'text',
+            name: 'username',
+            icon: 'person',
+          };
+        },
       },
-    ] as InputComponent[],
+    ],
   } as any,
 };
 
 export const Heading: Story = {
-  args: {},
+  args: {
+    children: [
+      {
+        inputs() {
+          return {
+            label: 'Username',
+            type: 'text',
+            name: 'username',
+            icon: 'person',
+          };
+        },
+      },
+    ],
+  } as any,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText(/form works!/gi)).toBeTruthy();

@@ -3381,7 +3381,7 @@
         },
         {
             "name": "IconButtonComponent",
-            "id": "component-IconButtonComponent-e6d58f677191eba3037e911a795ce93f41ce56a70d76a66ddd16bd56a9f37fac5ee241f53b16bbbfb34c0e2725666c34f419e4df4b812afd7c84e4f5c87e2da7",
+            "id": "component-IconButtonComponent-c903c8f4a6c5aed2aafa93063a55bca3359caee10b5d75a4ad998ed35f8506453eb4f7c28ce76d92b591fddc7e48c0a0648d89ee1636e8b041d4c26b04173bbb",
             "file": "libs/material/src/button/icon-button/icon-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3391,7 +3391,7 @@
             "selector": "tb-icon-button",
             "styleUrls": [],
             "styles": [],
-            "template": "<button    class=\"icon-button  {{ color }} {{ variant }} {{ size }} {{borderPosition}}\"\n    (click)=\"emit()\"\n    [type]=\"nativeType\"\n  >\n    <span class=\"icon\">{{ icon }}</span>\n  </button>",
+            "template": "<button    class=\"icon-button  {{ color }} {{ variant }} {{ size }} {{\n      borderPosition\n    }}\"\n    (click)=\"emit()\"\n    [type]=\"nativeType\"\n  >\n    <span class=\"icon\">{{ icon }}</span>\n  </button>",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -3540,7 +3540,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonButtonComponent } from '../common-button';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-icon-button',\n  standalone: true,\n  imports: [MicroModule],\n  template: `<button\n    class=\"icon-button  {{ color }} {{ variant }} {{ size }} {{borderPosition}}\"\n    (click)=\"emit()\"\n    [type]=\"nativeType\"\n  >\n    <span class=\"icon\">{{ icon }}</span>\n  </button>`,\n})\nexport class IconButtonComponent extends CommonButtonComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonButtonComponent } from '../common-button';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-icon-button',\n  standalone: true,\n  imports: [MicroModule],\n  template: `<button\n    class=\"icon-button  {{ color }} {{ variant }} {{ size }} {{\n      borderPosition\n    }}\"\n    (click)=\"emit()\"\n    [type]=\"nativeType\"\n  >\n    <span class=\"icon\">{{ icon }}</span>\n  </button>`,\n})\nexport class IconButtonComponent extends CommonButtonComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4009,7 +4009,7 @@
         },
         {
             "name": "ListComponent",
-            "id": "component-ListComponent-7ba9273f994579f9cc77cea2886382473ec99dd48846af0ffa8292043480f54bea5c195c6a1331cd141733172bc2d2efcbe62d4848a4f8a9f2a7e54a59a38637",
+            "id": "component-ListComponent-93e89809a275bff8ea9d53b361ee2f9b8527a950fae2859a0a7c0ecfa5b5272d76c929b0597b5310e985a0114c4c7c0f13aa8d98b54f2ca1a15d8cf559663f80",
             "file": "libs/material/src/list/list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4019,9 +4019,8 @@
             "selector": "tb-list",
             "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./list.component.html"
-            ],
+            "template": "<div class=\"list\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"{\n      label: child.label,\n      icon: child.icon || icon,\n      color: child.color || color\n    }\"\n    *ngFor=\"let child of children\"\n  ></ng-container>\n</div>\n",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
@@ -4030,7 +4029,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 28,
                     "type": "Color",
                     "decorators": []
                 },
@@ -4039,7 +4038,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 29,
                     "type": "Icon",
                     "decorators": []
                 }
@@ -4053,7 +4052,7 @@
                     "type": "QueryList<ListItemComponent>",
                     "optional": true,
                     "description": "",
-                    "line": 15,
+                    "line": 26,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -4072,7 +4071,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 25
                 }
             ],
             "methodsClass": [],
@@ -4094,15 +4093,14 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, Input, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ListItemComponent } from './list-item/list-item.component';\nimport { Color, Icon } from '../api';\n\n@Component({\n  selector: 'tb-list',\n  standalone: true,\n  imports: [CommonModule, ListItemComponent],\n  templateUrl: './list.component.html',\n  styles: [],\n})\nexport class ListComponent {\n  componentType = ListItemComponent;\n  @ContentChildren(ListItemComponent) children?: QueryList<ListItemComponent>;\n\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n}\n",
+            "sourceCode": "import { Component, ContentChildren, Input, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ListItemComponent } from './list-item/list-item.component';\nimport { Color, Icon } from '../api';\n\n@Component({\n  selector: 'tb-list',\n  standalone: true,\n  imports: [CommonModule, ListItemComponent],\n  template: `\n    <div class=\"list\">\n      <ng-container\n        [ngComponentOutlet]=\"componentType\"\n        [ngComponentOutletInputs]=\"{\n          label: child.label,\n          icon: child.icon || icon,\n          color: child.color || color\n        }\"\n        *ngFor=\"let child of children\"\n      ></ng-container>\n    </div>\n  `,\n})\nexport class ListComponent {\n  componentType = ListItemComponent;\n  @ContentChildren(ListItemComponent) children?: QueryList<ListItemComponent>;\n\n  @Input() color: Color = 'primary';\n  @Input() icon: Icon = 'info';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
-            "templateData": "<div class=\"list\">\n  <ng-container\n    [ngComponentOutlet]=\"componentType\"\n    [ngComponentOutletInputs]=\"{\n      label: child.label,\n      icon: child.icon || icon,\n      color: child.color || color\n    }\"\n    *ngFor=\"let child of children\"\n  ></ng-container>\n</div>\n"
+            "stylesData": ""
         },
         {
             "name": "ListItemComponent",
-            "id": "component-ListItemComponent-2c31ef4a6b5f91ef7647401b0dbed1c12d237ffef5cd1916621de75fffea05fb927a7f084fbccdfc377b8e3e6d92158befa01a040452d2a26ec1e36a2d16f335",
+            "id": "component-ListItemComponent-f42e5c5ba70fd682975028a95397f6b7db0b0a948cd149c570a34136cf21f7912cd786c0733ecac541e80748706144ec372248644b81dbc6caefc9ff4cfc8b85",
             "file": "libs/material/src/list/list-item/list-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4112,9 +4110,8 @@
             "selector": "tb-list-item",
             "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./list-item.component.html"
-            ],
+            "template": "<div class=\"list-item {{ color }}\">\n  <span class=\"icon\">{{ icon }}</span>\n  <span>{{ label }}</span>\n</div>\n",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
@@ -4123,7 +4120,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 18,
                     "type": "Color",
                     "decorators": []
                 },
@@ -4132,7 +4129,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 19,
                     "type": "Icon",
                     "decorators": []
                 },
@@ -4141,7 +4138,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 }
@@ -4163,11 +4160,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Color, Icon } from '../../api';\n\n@Component({\n  selector: 'tb-list-item',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './list-item.component.html',\n  styles: [],\n})\nexport class ListItemComponent {\n  @Input() label = '';\n  @Input() color: Color = 'primary';\n  @Input() icon?: Icon = 'info';\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { Color, Icon } from '../../api';\n\n@Component({\n  selector: 'tb-list-item',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"list-item {{ color }}\">\n      <span class=\"icon\">{{ icon }}</span>\n      <span>{{ label }}</span>\n    </div>\n  `,\n})\nexport class ListItemComponent {\n  @Input() label = '';\n  @Input() color: Color = 'primary';\n  @Input() icon?: Icon = 'info';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
-            "templateData": "<div class=\"list-item {{ color }}\">\n  <span class=\"icon\">{{ icon }}</span>\n  <span>{{ label }}</span>\n</div>\n"
+            "stylesData": ""
         },
         {
             "name": "MenuComponent",
@@ -4381,7 +4377,7 @@
         },
         {
             "name": "MultipleSelectInputComponent",
-            "id": "component-MultipleSelectInputComponent-f876de77d27598d4bf229eb8f4acae942a4d664c1f1db529a70ffa2bd35207455558219cd2e9618c1b7240586af8c4c35e03f6dd9fc5e9fd6f064b061412da25",
+            "id": "component-MultipleSelectInputComponent-d9a05084fa7f09a57c8d50f2c185392ae921d4872ef1d734b79b26a65b52617648fe1ff025b3d365d3683ae54d55b14d82ad347fb9e68e6e18534c8a12d1c6c2",
             "file": "libs/material/src/form/multiple-select-input/multiple-select-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4727,7 +4723,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-multiple-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"searchtext\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"filterOptions()\"\n          tbHasValue\n        />\n\n        <!--TODO :  Add closeable chip here -->\n        <span>{{ selectedItems() }}</span>\n      </div>\n\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of filterOptions()\"\n          (click)=\"selectOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class MultipleSelectInputComponent extends CommonInputComponent<string> {\n  searchtext = '';\n\n  selectOption(option: SelectOption) {\n    option.selected = !option.selected;\n  }\n  \n  filterOptions(): SelectOption[] | undefined {\n    return this.options?.filter((e) =>\n      e.value.toLowerCase().includes(this.searchtext?.toLowerCase() || '')\n    );\n  }\n\n  selectedItems() {\n    return this.options?.filter((e) => e.selected);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-multiple-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"searchtext\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"filterOptions()\"\n          tbHasValue\n        />\n\n        <!--TODO :  Add closeable chip here -->\n        <span>{{ selectedItems() }}</span>\n      </div>\n\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of filterOptions()\"\n          (click)=\"selectOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"option.selected\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class MultipleSelectInputComponent extends CommonInputComponent<string> {\n  searchtext = '';\n\n  selectOption(option: SelectOption) {\n    option.selected = !option.selected;\n  }\n\n  filterOptions(): SelectOption[] | undefined {\n    return this.options?.filter((e) =>\n      e.value?.toLowerCase().includes(this.searchtext?.toLowerCase() || '')\n    );\n  }\n\n  selectedItems() {\n    return this.options?.filter((e) => e.selected);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5363,7 +5359,7 @@
         },
         {
             "name": "PaginatorComponent",
-            "id": "component-PaginatorComponent-3d7fc66ce386646d402948b67e918ea1e61738170a0ba7a6631d5e3759132815eb94df0ab87c86563b6f4b5c34766cb6366f9a835ce641b8e8a92dd9a5338039",
+            "id": "component-PaginatorComponent-6c3b5d7babe82b8b8e7e13fde2391807fedf774a76f6e7b0554aa4b234057c1e8eaa215e75cf5fdf5a6fb9e90b64d4d54480273c211abc62d7fe61aed89a1415",
             "file": "libs/material/src/table/paginator/paginator.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5373,14 +5369,189 @@
             "selector": "tb-paginator",
             "styleUrls": [],
             "styles": [],
-            "template": "<p>paginator works!</p>",
+            "template": "<div class=\"flex row justify-space-between align-center gap-4em p-1em\">\n  <span>Showing {{ pageLength }} of {{ itemCount }} items</span>\n  <div class=\"flex row gap-1em center border-1\">\n    <span>Page length</span>\n    <tb-button\n      size=\"small\"\n      [label]=\"pl + ''\"\n      (click)=\"setPageLength(pl)\"\n      [variant]=\"pageLength === pl ? 'raised' : 'basic'\"\n      *ngFor=\"let pl of pageLengthOptions\"\n    ></tb-button>\n  </div>\n  <div class=\"flex row gap-1em p-1em align-center \">\n    <tb-icon-button\n      size=\"small\"\n      icon=\"first_page\"\n      (clickEvent)=\"firstPage()\"\n    ></tb-icon-button>\n\n    <tb-icon-button\n      size=\"small\"\n      variant=\"stroked\"\n      icon=\"navigate_before\"\n      (clickEvent)=\"previous()\"\n    ></tb-icon-button>\n\n    <div class=\"flex row gap-1em \">\n      <tb-button\n        size=\"small\"\n        [label]=\"b + ''\"\n        [variant]=\"currentPage === b ? 'raised' : 'basic'\"\n        *ngFor=\"let b of getPageButtons()\"\n        (click)=\"selectPage(b)\"\n      ></tb-button>\n    </div>\n    <tb-icon-button\n      size=\"small\"\n      variant=\"stroked\"\n      icon=\"navigate_next\"\n      (clickEvent)=\"next()\"\n    ></tb-icon-button>\n\n    <tb-icon-button\n      size=\"small\"\n      icon=\"last_page\"\n      (clickEvent)=\"lastPage()\"\n    ></tb-icon-button>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "itemCount",
+                    "defaultValue": "100",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "pageLength",
+                    "defaultValue": "10",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 73,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "pageLengthOptions",
+                    "defaultValue": "[4, 10, 20, 50, 100]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 74,
+                    "type": "{}",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "pageEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 76,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "currentPage",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 71
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "emitPageEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 121,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "firstPage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 111,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getPageButtons",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 100,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getPageLengthOptions",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "SelectOption[]",
+                    "typeParameters": [],
+                    "line": 128,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "lastPage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 116,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "next",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 87,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "previous",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 93,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "selectPage",
+                    "args": [
+                        {
+                            "name": "pn",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "pn",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setPageLength",
+                    "args": [
+                        {
+                            "name": "length",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "length",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -5388,14 +5559,22 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "MicroModule",
                     "type": "module"
+                },
+                {
+                    "name": "ButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "SimpleSelectComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-paginator',\n  standalone: true,\n  imports: [CommonModule],\n  template: `<p>paginator works!</p>`,\n  styles: [],\n})\nexport class PaginatorComponent {}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  EventEmitter,\n  Input,\n  Output,\n} from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { ButtonModule } from '../../button';\nimport { SelectOption } from '../../api';\nimport { SimpleSelectComponent } from '../../form/simple-select/simple-select.component';\n\n@Component({\n  selector: 'tb-paginator',\n  standalone: true,\n  imports: [MicroModule, ButtonModule, SimpleSelectComponent],\n  template: `\n    <div class=\"flex row justify-space-between align-center gap-4em p-1em\">\n      <span>Showing {{ pageLength }} of {{ itemCount }} items</span>\n      <div class=\"flex row gap-1em center border-1\">\n        <span>Page length</span>\n        <tb-button\n          size=\"small\"\n          [label]=\"pl + ''\"\n          (click)=\"setPageLength(pl)\"\n          [variant]=\"pageLength === pl ? 'raised' : 'basic'\"\n          *ngFor=\"let pl of pageLengthOptions\"\n        ></tb-button>\n      </div>\n      <div class=\"flex row gap-1em p-1em align-center \">\n        <tb-icon-button\n          size=\"small\"\n          icon=\"first_page\"\n          (clickEvent)=\"firstPage()\"\n        ></tb-icon-button>\n\n        <tb-icon-button\n          size=\"small\"\n          variant=\"stroked\"\n          icon=\"navigate_before\"\n          (clickEvent)=\"previous()\"\n        ></tb-icon-button>\n\n        <div class=\"flex row gap-1em \">\n          <tb-button\n            size=\"small\"\n            [label]=\"b + ''\"\n            [variant]=\"currentPage === b ? 'raised' : 'basic'\"\n            *ngFor=\"let b of getPageButtons()\"\n            (click)=\"selectPage(b)\"\n          ></tb-button>\n        </div>\n        <tb-icon-button\n          size=\"small\"\n          variant=\"stroked\"\n          icon=\"navigate_next\"\n          (clickEvent)=\"next()\"\n        ></tb-icon-button>\n\n        <tb-icon-button\n          size=\"small\"\n          icon=\"last_page\"\n          (clickEvent)=\"lastPage()\"\n        ></tb-icon-button>\n      </div>\n    </div>\n  `,\n  styles: [],\n})\nexport class PaginatorComponent {\n  currentPage = 1;\n\n  @Input() pageLength = 10;\n  @Input() pageLengthOptions = [4, 10, 20, 50, 100];\n  @Input() itemCount = 100;\n  @Output() pageEvent = new EventEmitter();\n\n  setPageLength(length: number) {\n    this.pageLength = length;\n    this.emitPageEvent();\n  }\n\n  selectPage(pn: number) {\n    this.currentPage = pn;\n    this.emitPageEvent();\n  }\n  next() {\n    if (this.currentPage * this.pageLength < this.itemCount) {\n      this.currentPage++;\n    }\n    this.emitPageEvent();\n  }\n  previous() {\n    if (this.currentPage >= 2) {\n      this.currentPage--;\n    }\n    this.emitPageEvent();\n  }\n\n  getPageButtons() {\n    if (this.currentPage <= 1) {\n      return [1, 2, 3];\n    }\n    if (this.pageLength * (this.currentPage + 1) <= this.itemCount) {\n      return [this.currentPage - 1, this.currentPage, this.currentPage + 1];\n    }\n\n    return [this.currentPage - 2, this.currentPage - 1, this.currentPage];\n  }\n\n  firstPage() {\n    this.currentPage = 1;\n    this.emitPageEvent();\n  }\n\n  lastPage() {\n    this.currentPage = this.itemCount / this.pageLength;\n    this.emitPageEvent();\n  }\n\n  emitPageEvent() {\n    this.pageEvent.emit({\n      pageLength: this.pageLength,\n      page: this.currentPage,\n    });\n  }\n\n  getPageLengthOptions(): SelectOption[] {\n    return this.pageLengthOptions.map((e) => {\n      return {\n        value: e.toString(),\n        icon: 'table_chart',\n      };\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -5895,6 +6074,380 @@
             "extends": "CommonInputComponent"
         },
         {
+            "name": "SimpleSelectComponent",
+            "id": "component-SimpleSelectComponent-6d9f56550f5fb5e492c93c0d8976ca2a0c05439e5b0862c28e5ee5bde8e8a679d3f4a741928b81885063885563733cde614ed9754ff76dfcd9a9f75049efd002",
+            "file": "libs/material/src/form/simple-select/simple-select.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tb-simple-select",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }} fit-content\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"getOptions()\"\n      (keydown)=\"handleKeyPress($event)\"\n      tbHasValue\n    />\n  </div>\n  <div\n    class=\"dropdown-items {{\n      distribution\n    }} w-full  h-10em oy-auto ox-auto \"\n  >\n    <div\n      class=\"nav-list-item inline-input fit-content  cursor-pointer h-2em text-center {{\n        color\n      }}\"\n      [class.accent]=\"value === option.value\"\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      *ngFor=\"let option of getOptions()\"\n      (click)=\"setOption(option)\"\n    >\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n    </div>\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "__ngContext__",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "autocomplete",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "Color",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "Direction",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "distribution",
+                    "defaultValue": "'column'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "\"row\" | \"column\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "error",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "formName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "formValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "FormValue",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter<T>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "any",
+                    "decorators": [
+                        {
+                            "name": "Output",
+                            "stringifiedArguments": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "inputType",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "InputType",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Not set'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "SelectOption[]",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "T",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "InputVariant",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLInputElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "Optional",
+                            "stringifiedArguments": ""
+                        },
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'input'"
+                        }
+                    ],
+                    "modifierKind": [
+                        167,
+                        167
+                    ],
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getOptions",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "[] | undefined",
+                    "typeParameters": [],
+                    "line": 51,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        161
+                    ],
+                    "inheritance": {
+                        "file": "SelectInputComponent"
+                    }
+                },
+                {
+                    "name": "handleKeyPress",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "SelectInputComponent"
+                    }
+                },
+                {
+                    "name": "setOption",
+                    "args": [
+                        {
+                            "name": "options",
+                            "type": "SelectOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "options",
+                            "type": "SelectOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "SelectInputComponent"
+                    }
+                },
+                {
+                    "name": "emit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                },
+                {
+                    "name": "id",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "CommonInputComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "MicroModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\nimport { SelectInputComponent } from '../select-input/select-input.component';\n\n@Component({\n  selector: 'tb-simple-select',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }} fit-content\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          (keydown)=\"handleKeyPress($event)\"\n          tbHasValue\n        />\n      </div>\n      <div\n        class=\"dropdown-items {{\n          distribution\n        }} w-full  h-10em oy-auto ox-auto \"\n      >\n        <div\n          class=\"nav-list-item inline-input fit-content  cursor-pointer h-2em text-center {{\n            color\n          }}\"\n          [class.accent]=\"value === option.value\"\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"setOption(option)\"\n        >\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SimpleSelectComponent extends SelectInputComponent {\n  override getOptions(): SelectOption[] | undefined {\n    return this.options;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": "SelectInputComponent"
+        },
+        {
             "name": "StepperComponent",
             "id": "component-StepperComponent-81ee66b5ca55a1812ac403263adc9250453b313090a453cc03bd136ba53ea6d925156d1682daed49dcfc3bedc5a638ade395c804c62dbed1feb0b3f675a778c0",
             "file": "libs/material/src/stepper/stepper.component.ts",
@@ -6367,7 +6920,7 @@
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-bd04d596632c58969f596a9b1703ca3c1a97f3d6b5055640f028682623d73de81089b4825f70caa87abf5b0ad706fa11f1245db24ef5945bdc27eef78c0b9ddb",
+            "id": "component-TableComponent-4190e904707ec4689e9816349635343abd91b9e258d7bb853e18c005d3c0175e0b6f8ee558230f196a40e77d55948901d12df6e5bf089257d5afdc3d8b5fddb3",
             "file": "libs/material/src/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6377,14 +6930,91 @@
             "selector": "tb-table",
             "styleUrls": [],
             "styles": [],
-            "template": "",
+            "template": "<table class=\"table\" border=\"0\">\n  <thead class=\"table-header\">\n    <tr class=\"table-header-row\">\n      <th *ngFor=\"let col of columns\" (click)=\"sort(col)\">{{ col }}</th>\n    </tr>\n  </thead>\n\n  <tbody class=\"table-body\">\n    <tr *ngFor=\"let item of data\" class=\"table-body-row\">\n      <td *ngFor=\"let col of columns\">{{ item[col] }}</td>\n    </tr>\n  </tbody>\n</table>\n<tb-paginator></tb-paginator>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "columns",
+                    "defaultValue": "['id', 'name']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string[]",
+                    "decorators": []
+                },
+                {
+                    "name": "data",
+                    "defaultValue": "[\n    { id: 1, name: 'Apple' },\n    { id: 2, name: 'Orange' },\n    { id: 3, name: 'Orange' },\n    { id: 4, name: 'Orange' },\n    { id: 5, name: 'Orange' },\n    { id: 6, name: 'Orange' },\n    { id: 7, name: 'Orange' },\n    { id: 8, name: 'Orange' },\n    { id: 9, name: 'Orange' },\n    { id: 10, name: 'Orange' },\n    { id: 11, name: 'Orange' },\n    { id: 12, name: 'Orange' },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "Record<string, any>[]",
+                    "decorators": []
+                },
+                {
+                    "name": "visibleColumns",
+                    "defaultValue": "['id', 'name']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "string[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "sortEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "filteredData",
+                    "defaultValue": "this.data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "sort",
+                    "args": [
+                        {
+                            "name": "col",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "col",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -6392,14 +7022,18 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "MicroModule",
                     "type": "module"
+                },
+                {
+                    "name": "PaginatorComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'tb-table',\n  standalone: true,\n  imports: [CommonModule],\n  template: ``,\n  styles: [],\n})\nexport class TableComponent {}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { MicroModule } from '../micro/micro.module';\nimport { PaginatorComponent } from './paginator/paginator.component';\n\n@Component({\n  selector: 'tb-table',\n  standalone: true,\n  imports: [MicroModule, PaginatorComponent],\n  template: `\n    <table class=\"table\" border=\"0\">\n      <thead class=\"table-header\">\n        <tr class=\"table-header-row\">\n          <th *ngFor=\"let col of columns\" (click)=\"sort(col)\">{{ col }}</th>\n        </tr>\n      </thead>\n\n      <tbody class=\"table-body\">\n        <tr *ngFor=\"let item of data\" class=\"table-body-row\">\n          <td *ngFor=\"let col of columns\">{{ item[col] }}</td>\n        </tr>\n      </tbody>\n    </table>\n    <tb-paginator></tb-paginator>\n  `,\n  styles: [],\n})\nexport class TableComponent {\n  @Output() sortEvent = new EventEmitter();\n  @Input() columns: string[] = ['id', 'name'];\n  @Input() visibleColumns: string[] = ['id', 'name'];\n  @Input() data: Record<string, any>[] = [\n    { id: 1, name: 'Apple' },\n    { id: 2, name: 'Orange' },\n    { id: 3, name: 'Orange' },\n    { id: 4, name: 'Orange' },\n    { id: 5, name: 'Orange' },\n    { id: 6, name: 'Orange' },\n    { id: 7, name: 'Orange' },\n    { id: 8, name: 'Orange' },\n    { id: 9, name: 'Orange' },\n    { id: 10, name: 'Orange' },\n    { id: 11, name: 'Orange' },\n    { id: 12, name: 'Orange' },\n  ];\n  filteredData = this.data;\n\n  sort(col: string) {\n    this.sortEvent.emit(col);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -6809,13 +7443,13 @@
         },
         {
             "name": "FormModule",
-            "id": "module-FormModule-5a8ffde63ec31b5461e1d4682afa1437e3cd33d7f369378a63a1bc455ffc2a5b65073779d9231f4a5a5e04588471d6898f449070a5743a90f633297b32c3b157",
+            "id": "module-FormModule-48ce3e2e57edd094ae4535fe80d1754aaa309051ec557e246a0f7a8c1287e86a4154ec0713802982af58f945737e99b709fe4016686578cf78d61db3ea11d589",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/src/form/form.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { FormComponent } from './form.component';\r\nimport { InputComponent } from './input/input.component';\r\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\r\nimport { TextInputComponent } from './text-input/text-input.component';\r\nimport { DatePickerComponent } from './date-picker/date-picker.component';\r\nimport { MultipleSelectInputComponent } from './multiple-select-input/multiple-select-input.component';\r\nimport { BooleanInputComponent } from './boolean-input/boolean-input.component';\r\n\r\n@NgModule({\r\n  imports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DatePickerComponent,\r\n    MultipleSelectInputComponent,\r\n    BooleanInputComponent,\r\n    FormActionsDirective,\r\n  ],\r\n  exports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DatePickerComponent,\r\n    BooleanInputComponent,\r\n    MultipleSelectInputComponent,\r\n    FormActionsDirective,\r\n  ],\r\n})\r\nexport class FormModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { FormComponent } from './form.component';\r\nimport { InputComponent } from './input/input.component';\r\nimport { FormActionsDirective } from './form-actions/form-actions.directive';\r\nimport { TextInputComponent } from './text-input/text-input.component';\r\nimport { DatePickerComponent } from './date-picker/date-picker.component';\r\nimport { MultipleSelectInputComponent } from './multiple-select-input/multiple-select-input.component';\r\nimport { BooleanInputComponent } from './boolean-input/boolean-input.component';\r\nimport { SimpleSelectComponent } from './simple-select/simple-select.component';\r\n\r\n@NgModule({\r\n  imports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DatePickerComponent,\r\n    MultipleSelectInputComponent,\r\n    SimpleSelectComponent,\r\n    BooleanInputComponent,\r\n    FormActionsDirective,\r\n  ],\r\n  exports: [\r\n    FormComponent,\r\n    InputComponent,\r\n    TextInputComponent,\r\n    DatePickerComponent,\r\n    BooleanInputComponent,\r\n    MultipleSelectInputComponent,\r\n    SimpleSelectComponent,\r\n    FormActionsDirective,\r\n  ],\r\n})\r\nexport class FormModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -6847,6 +7481,9 @@
                             "name": "MultipleSelectInputComponent"
                         },
                         {
+                            "name": "SimpleSelectComponent"
+                        },
+                        {
                             "name": "TextInputComponent"
                         }
                     ]
@@ -6871,6 +7508,9 @@
                         },
                         {
                             "name": "MultipleSelectInputComponent"
+                        },
+                        {
+                            "name": "SimpleSelectComponent"
                         },
                         {
                             "name": "TextInputComponent"
@@ -7138,7 +7778,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    children: [\n      {\n        inputs() {\n          return {\n            label: 'Username',\n            type: 'text',\n            name: 'username',\n            icon: 'person',\n          };\n        },\n      },\n    ],\n  } as any,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/form works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -7364,6 +8004,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/simple-select works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -7418,7 +8068,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/paginator works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Showing 10 of 100 items/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "ListOfDays",
@@ -7448,7 +8098,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'username',\n        color: 'primary',\n        autocomplete: 'email',\n        label: 'Username',\n        icon: 'email',\n      },\n      {\n        type: 'password',\n        name: 'password',\n        color: 'primary',\n        autocomplete: 'current-password',\n        label: 'Password',\n        icon: 'email',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+                "defaultValue": "{\n  args: {\n    children: [\n      {\n        inputs() {\n          return {\n            label: 'Username',\n            type: 'text',\n            name: 'username',\n            icon: 'person',\n          };\n        },\n      },\n      {\n        inputs() {\n          return {\n            label: 'Password',\n            type: 'password',\n            name: 'password',\n            icon: 'password',\n          };\n        },\n      },\n    ],\n  } as any,\n}"
             },
             {
                 "name": "meta",
@@ -7734,6 +8384,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SimpleSelectComponent>",
+                "defaultValue": "{\n  component: SimpleSelectComponent,\n  title: 'Input Simple Select',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -7848,7 +8508,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'firstName',\n        color: 'primary',\n        autocomplete: 'given-name',\n        label: 'First Name',\n        icon: 'person',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+                "defaultValue": "{\n  args: {\n    children: [\n      {\n        inputs() {\n          return {\n            label: 'Username',\n            type: 'text',\n            name: 'username',\n            icon: 'person',\n          };\n        },\n      },\n    ],\n  } as any,\n}"
             },
             {
                 "name": "Primary",
@@ -8074,6 +8734,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    value: '',\n    icon: 'pages',\n    name: 'page length',\n    label: 'page length',\n\n    options: [\n      { value: '1' },\n      { value: '2' },\n      { value: '3' },\n      { value: '4' },\n      { value: '5' },\n      { value: '6' },\n      { value: '7' },\n    ],\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -8128,7 +8798,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n}"
             }
         ],
         "functions": [
@@ -8717,6 +9387,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<SimpleSelectComponent>",
+                "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<TextInputComponent>",
                 "file": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "deprecated": false,
@@ -8962,7 +9643,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        inputs() {\n          return {\n            label: 'Username',\n            type: 'text',\n            name: 'username',\n            icon: 'person',\n          };\n        },\n      },\n    ],\n  } as any,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/form works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "LoginForm",
@@ -8972,7 +9653,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'username',\n        color: 'primary',\n        autocomplete: 'email',\n        label: 'Username',\n        icon: 'email',\n      },\n      {\n        type: 'password',\n        name: 'password',\n        color: 'primary',\n        autocomplete: 'current-password',\n        label: 'Password',\n        icon: 'email',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        inputs() {\n          return {\n            label: 'Username',\n            type: 'text',\n            name: 'username',\n            icon: 'person',\n          };\n        },\n      },\n      {\n        inputs() {\n          return {\n            label: 'Password',\n            type: 'password',\n            name: 'password',\n            icon: 'password',\n          };\n        },\n      },\n    ],\n  } as any,\n}"
                 },
                 {
                     "name": "meta",
@@ -8992,7 +9673,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        type: 'text',\n        name: 'firstName',\n        color: 'primary',\n        autocomplete: 'given-name',\n        label: 'First Name',\n        icon: 'person',\n      },\n    ] as InputComponent[],\n  } as any,\n}"
+                    "defaultValue": "{\n  args: {\n    children: [\n      {\n        inputs() {\n          return {\n            label: 'Username',\n            type: 'text',\n            name: 'username',\n            icon: 'person',\n          };\n        },\n      },\n    ],\n  } as any,\n}"
                 }
             ],
             "libs/material/src/list/list.component.stories.ts": [
@@ -9699,6 +10380,38 @@
                     "defaultValue": "{\n  args: {\n    value: '',\n    name: 'category',\n    autocomplete: 'off',\n    color: 'primary',\n    label: 'category',\n    variant: 'basic',\n    icon: 'category',\n    options: [\n      { icon: 'info', value: 'Option 1' },\n      { icon: 'info', value: 'Option 2' },\n      { icon: 'info', value: 'Option 3' },\n    ],\n  },\n}"
                 }
             ],
+            "libs/material/src/form/simple-select/simple-select.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/simple-select works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SimpleSelectComponent>",
+                    "defaultValue": "{\n  component: SimpleSelectComponent,\n  title: 'Input Simple Select',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    value: '',\n    icon: 'pages',\n    name: 'page length',\n    label: 'page length',\n\n    options: [\n      { value: '1' },\n      { value: '2' },\n      { value: '3' },\n      { value: '4' },\n      { value: '5' },\n      { value: '6' },\n      { value: '7' },\n    ],\n  },\n}"
+                }
+            ],
             "libs/material/src/form/text-input/text-input.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -9868,7 +10581,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/paginator works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Showing 10 of 100 items/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -9888,7 +10601,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n}"
                 }
             ],
             "libs/material/src/api/types.ts": [
@@ -10555,6 +11268,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<SelectInputComponent>",
                     "file": "libs/material/src/form/select-input/select-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "libs/material/src/form/simple-select/simple-select.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SimpleSelectComponent>",
+                    "file": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -11478,6 +12204,45 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/simple-select/simple-select.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/src/form/simple-select/simple-select.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SimpleSelectComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/24",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/src/form/text-input/text-input.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -12062,7 +12827,7 @@
                 "linktype": "component",
                 "name": "PaginatorComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
@@ -12101,7 +12866,7 @@
                 "linktype": "component",
                 "name": "TableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {

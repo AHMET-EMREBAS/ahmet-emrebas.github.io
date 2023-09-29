@@ -1,0 +1,8 @@
+@use '../colors' as colors;
+
+@each $colorName in colors.$colorNames {
+  .border.#{$colorName} {
+    border-color: var(--#{$colorName});
+  }
+}
+

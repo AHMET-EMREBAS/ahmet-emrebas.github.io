@@ -1,37 +1,47 @@
-import { AfterViewInit, Component, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MicroModule } from '../../micro/micro.module';
 import { ButtonModule } from '../../button';
+import { SelectOption } from '../../api';
+import { SimpleSelectComponent } from '../../form/simple-select/simple-select.component';
 
 @Component({
   selector: 'tb-paginator',
   standalone: true,
-  imports: [MicroModule, ButtonModule],
+  imports: [MicroModule, ButtonModule, SimpleSelectComponent],
   template: `
-    <div class="flex row align-center gap-4em">
+    <div class="flex row justify-space-between align-center gap-4em p-1em">
       <span>Showing {{ pageLength }} of {{ itemCount }} items</span>
-      <div class="flex row gap-4em align-center ">
+      <div class="flex row gap-1em center border-1">
+        <span>Page length</span>
+        <tb-button
+          size="small"
+          [label]="pl + ''"
+          (click)="setPageLength(pl)"
+          [variant]="pageLength === pl ? 'stroked' : 'basic'"
+          *ngFor="let pl of pageLengthOptions"
+        ></tb-button>
+      </div>
+      <div class="flex row gap-1em p-1em align-center ">
+        <tb-icon-button
+          size="small"
+          icon="first_page"
+          (clickEvent)="firstPage()"
+        ></tb-icon-button>
+
         <tb-icon-button
           size="small"
           variant="stroked"
           icon="navigate_before"
           (clickEvent)="previous()"
         ></tb-icon-button>
-        <div class="flex row gap-2em">
-          <tb-button
-            size="small"
-            label="First"
-            (clickEvent)="firstPage()"
-          ></tb-button>
+
+        <div class="flex row gap-1em ">
           <tb-button
             size="small"
             [label]="b + ''"
+            [variant]="currentPage === b ? 'stroked' : 'basic'"
             *ngFor="let b of getPageButtons()"
             (click)="selectPage(b)"
-          ></tb-button>
-          <tb-button
-            size="small"
-            label="Last"
-            (clickEvent)="lastPage()"
           ></tb-button>
         </div>
         <tb-icon-button
@@ -40,37 +50,46 @@ import { ButtonModule } from '../../button';
           icon="navigate_next"
           (clickEvent)="next()"
         ></tb-icon-button>
+
+        <tb-icon-button
+          size="small"
+          icon="last_page"
+          (clickEvent)="lastPage()"
+        ></tb-icon-button>
       </div>
     </div>
   `,
   styles: [],
 })
-export class PaginatorComponent implements AfterViewInit {
+export class PaginatorComponent {
   currentPage = 1;
 
   @Input() pageLength = 10;
   @Input() pageLengthOptions = [4, 10, 20, 50, 100];
   @Input() itemCount = 100;
-  @Input() changeEvent = new EventEmitter();
+  @Output() pageEvent = new EventEmitter();
 
-  ngAfterViewInit(): void {
-    this.emitChangeEvent();
+  setPageLength(length: number) {
+    this.pageLength = length;
+    this.currentPage = 1;
+    this.emitPageEvent();
   }
 
   selectPage(pn: number) {
     this.currentPage = pn;
+    this.emitPageEvent();
   }
   next() {
     if (this.currentPage * this.pageLength < this.itemCount) {
       this.currentPage++;
     }
-    this.emitChangeEvent();
+    this.emitPageEvent();
   }
   previous() {
     if (this.currentPage >= 2) {
       this.currentPage--;
     }
-    this.emitChangeEvent();
+    this.emitPageEvent();
   }
 
   getPageButtons() {
@@ -86,16 +105,27 @@ export class PaginatorComponent implements AfterViewInit {
 
   firstPage() {
     this.currentPage = 1;
-
-    this.emitChangeEvent();
+    this.emitPageEvent();
   }
 
   lastPage() {
-    this.currentPage = this.itemCount / this.pageLength;
-    this.emitChangeEvent();
+    this.currentPage = Math.ceil(this.itemCount / this.pageLength);
+    this.emitPageEvent();
   }
 
-  emitChangeEvent() {
-    this.changeEvent.emit({ ...this });
+  emitPageEvent() {
+    this.pageEvent.emit({
+      pageLength: this.pageLength,
+      page: this.currentPage,
+    });
+  }
+
+  getPageLengthOptions(): SelectOption[] {
+    return this.pageLengthOptions.map((e) => {
+      return {
+        value: e.toString(),
+        icon: 'table_chart',
+      };
+    });
   }
 }
