@@ -7475,6 +7475,38 @@
   font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
 }
 
+.icon.primary {
+  color: var(--primary);
+}
+
+.icon.secondary {
+  color: var(--secondary);
+}
+
+.icon.accent {
+  color: var(--accent);
+}
+
+.icon.warn {
+  color: var(--warn);
+}
+
+.icon.black {
+  color: var(--black);
+}
+
+.icon.white {
+  color: var(--white);
+}
+
+.icon.red {
+  color: var(--red);
+}
+
+.icon.green {
+  color: var(--green);
+}
+
 .w-1em {
   width: 1em;
 }
@@ -68127,6 +68159,17 @@ td,
 th {
   border: none !important;
   outline: none !important;
+}
+
+.chip {
+  padding: 1em;
+  background-color: var(--primary);
+  color: var(--primary-face);
+  border-radius: 2em;
+}
+
+.small.chip {
+  font-size: 0.6em;
 }
 
 ::-webkit-scrollbar {
