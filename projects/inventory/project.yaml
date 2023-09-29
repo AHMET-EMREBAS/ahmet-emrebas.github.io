@@ -1,0 +1,7 @@
+models:
+  - Product
+  - Category
+  - User
+  - Role
+  - Permission
+  - Sku

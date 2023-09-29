@@ -1,0 +1,33 @@
+properties:
+  # Product Name
+  - name: name
+    type: string
+    validations:
+      minLength: 3
+      maxLength: 30
+    ui:
+      type: text
+      label: Product Name
+
+  # Product Description
+  - name: description
+    type: string
+    validations:
+      minLength: 3
+      maxLength: 400
+    ui:
+      type: textarea
+      label: Product Description
+
+# Relations
+relations:
+  - name: categories
+    target: Category
+    type: ManyToMany
+    nullable: true
+
+required:
+  - name
+
+unique:
+  - name

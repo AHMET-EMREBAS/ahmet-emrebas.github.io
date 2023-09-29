@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "FullstackProject",
+    "title": "FullstackProject",
+    "properties": {
+        "models": {
+            "type": "array",
+            "items": {
+                "$ref": "./model-names/index.schema.json"
+            },
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "models"
+    ]
+}

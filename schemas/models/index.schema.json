@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "DatabaseModel",
+    "title": "DatabaseModel",
+    "properties": {
+        "unique": {
+            "type": "array",
+            "default": "name",
+            "items": {
+                "$ref": "../property-names/index.schema.json"
+            },
+            "uniqueItems": true
+        },
+        "required": {
+            "type": "array",
+            "items": {
+                "$ref": "../property-names/index.schema.json"
+            },
+            "uniqueItems": true,
+            "default": [
+                "name"
+            ]
+        },
+        "properties": {
+            "type": "array",
+            "items": {
+                "$ref": "../properties/index.schema.json"
+            }
+        },
+        "relations": {
+            "type": "array",
+            "items": {
+                "$ref": "../relations/index.schema.json"
+            }
+        }
+    }
+}

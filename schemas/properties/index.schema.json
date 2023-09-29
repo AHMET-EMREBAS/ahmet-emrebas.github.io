@@ -1,0 +1,191 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "Property",
+    "title": "Property",
+    "oneOf": [
+        {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/common"
+                },
+                {
+                    "$ref": "#/definitions/string"
+                }
+            ]
+        },
+        {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/common"
+                },
+                {
+                    "$ref": "#/definitions/number"
+                }
+            ]
+        },
+        {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/common"
+                },
+                {
+                    "$ref": "#/definitions/date"
+                }
+            ]
+        },
+        {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/common"
+                },
+                {
+                    "$ref": "#/definitions/boolean"
+                }
+            ]
+        }
+    ],
+    "definitions": {
+        "common": {
+            "properties": {
+                "name": {
+                    "$ref": "../property-names/index.schema.json",
+                    "default": "name",
+                    "uniqueItems": true
+                },
+                "type": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "uniqueItems": true
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ]
+        },
+        "string": {
+            "properties": {
+                "type": {
+                    "const": "string"
+                },
+                "ui": {
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "text",
+                                "textarea",
+                                "select"
+                            ],
+                            "default": "text"
+                        },
+                        "label": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                },
+                "validations": {
+                    "properties": {
+                        "minLength": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "default": 3
+                        },
+                        "maxLength": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "default": 30
+                        }
+                    }
+                }
+            }
+        },
+        "number": {
+            "properties": {
+                "type": {
+                    "const": "number"
+                },
+                "ui": {
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "number",
+                                "range",
+                                "speed",
+                                "select"
+                            ],
+                            "default": "number",
+                            "label": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "validations": {
+                    "properties": {
+                        "maximum": {
+                            "type": "number",
+                            "default": 500000
+                        },
+                        "minimum": {
+                            "type": "number",
+                            "default": -500000
+                        }
+                    }
+                }
+            }
+        },
+        "date": {
+            "properties": {
+                "type": {
+                    "const": "Date"
+                },
+                "ui": {
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "date",
+                                "datetime",
+                                "select"
+                            ],
+                            "default": "date",
+                            "label": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "boolean": {
+            "properties": {
+                "type": {
+                    "const": "boolean"
+                },
+                "ui": {
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "checkbox",
+                                "switch",
+                                "toggle-button"
+                            ],
+                            "default": "checkbox",
+                            "label": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

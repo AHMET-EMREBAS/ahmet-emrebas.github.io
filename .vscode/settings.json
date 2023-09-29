@@ -1,3 +1,18 @@
 {
-  "eslint.validate": ["json"]
+  "eslint.validate": ["json"],
+
+  "json.schemas": [
+    {
+      "fileMatch": ["/projects/*/models/*.yaml"],
+      "url": "/schemas/model.schema.json"
+    },
+    {
+      "fileMatch": ["/projects/*/*.yaml"],
+      "url": "/schemas/project.schema.json"
+    }
+  ],
+  "yaml.schemas": {
+    "./schemas/index.schema.json": ["/projects/*/project.yaml"],
+    "./schemas/models/index.schema.json": ["/projects/models/*.yaml"]
+  }
 }

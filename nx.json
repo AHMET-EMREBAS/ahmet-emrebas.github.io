@@ -17,7 +17,7 @@
   "workspaceLayout": {
     "projectNameAndRootFormat": "derived",
     "appsDir": "apps",
-    "libsDir": "libs",
+    "libsDir": "libs"
   },
   "targetDefaults": {
     "build": {

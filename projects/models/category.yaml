@@ -1,0 +1,15 @@
+properties:
+  - name: name
+    type: string
+    validations:
+      minLength: 3
+      maxLength: 30
+    ui:
+      type: text
+      label: Category Name
+
+required:
+  - name
+
+unique:
+  - name
