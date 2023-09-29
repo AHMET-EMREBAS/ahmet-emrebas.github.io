@@ -55,3 +55,5 @@ export * from './table/table.component';
 export * from './toolbar/toolbar.component';
 
 export * from './form/date-input/date-input.component';
+
+export * from './form/simple-select/simple-select.component';

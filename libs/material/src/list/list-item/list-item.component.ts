@@ -6,8 +6,12 @@ import { Color, Icon } from '../../api';
   selector: 'tb-list-item',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './list-item.component.html',
-  styles: [],
+  template: `
+    <div class="list-item {{ color }}">
+      <span class="icon">{{ icon }}</span>
+      <span>{{ label }}</span>
+    </div>
+  `,
 })
 export class ListItemComponent {
   @Input() label = '';

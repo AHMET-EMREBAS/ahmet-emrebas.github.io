@@ -12,13 +12,19 @@ export default meta;
 type Story = StoryObj<PaginatorComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    pageLengthOptions: [10, 20, 30],
+    itemCount: 100,
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: {
+    pageLengthOptions: [10, 20, 30],
+    itemCount: 100,
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/paginator works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Showing 10 of 100 items/gi)).toBeTruthy();
   },
 };
