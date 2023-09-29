@@ -8,6 +8,9 @@
       .#{utils.fl($property)}-#{$size}#{$unit} {
         #{$property}: #{$size}#{$unit};
       }
+      .#{utils.fl($property)}-#{$size}per {
+        #{$property}: $size * 1%;
+      }
     }
     @each $property in (padding, margin) {
       .#{utils.fl($property)}-#{$size}#{$unit} {

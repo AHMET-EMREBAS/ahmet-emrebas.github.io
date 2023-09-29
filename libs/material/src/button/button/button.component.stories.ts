@@ -16,21 +16,17 @@ export const Primary: Story = {
     label: 'Button',
     variant: 'basic',
     color: 'primary',
-    tooltip: 'Tooltip',
-    tooltipPosition: 'bottom',
   },
 };
 
 export const Heading: Story = {
   args: {
-    label: 'Button',
+    label: 'Raised Button',
     variant: 'raised',
     color: 'secondary',
-    tooltip: 'Tooltip',
-    tooltipPosition: 'bottom',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/button works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Raised Button/gi)).toBeTruthy();
   },
 };

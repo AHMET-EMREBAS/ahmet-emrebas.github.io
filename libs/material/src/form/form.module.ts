@@ -3,24 +3,27 @@ import { FormComponent } from './form.component';
 import { InputComponent } from './input/input.component';
 import { FormActionsDirective } from './form-actions/form-actions.directive';
 import { TextInputComponent } from './text-input/text-input.component';
-import { DateInputComponent } from './date-input/date-input.component';
-import { EnumInputComponent } from './enum-input/enum-input.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { MultipleSelectInputComponent } from './multiple-select-input/multiple-select-input.component';
+import { BooleanInputComponent } from './boolean-input/boolean-input.component';
 
 @NgModule({
   imports: [
     FormComponent,
     InputComponent,
     TextInputComponent,
-    DateInputComponent,
-    EnumInputComponent,
+    DatePickerComponent,
+    MultipleSelectInputComponent,
+    BooleanInputComponent,
     FormActionsDirective,
   ],
   exports: [
     FormComponent,
     InputComponent,
     TextInputComponent,
-    DateInputComponent,
-    EnumInputComponent,
+    DatePickerComponent,
+    BooleanInputComponent,
+    MultipleSelectInputComponent,
     FormActionsDirective,
   ],
 })

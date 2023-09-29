@@ -1,15 +1,15 @@
 <ng-container *ngIf="type === 'tab'">
-  <div #container class="flex row ox-auto oy-hidden relative pb-3" tbScrollX>
-    <ng-container *ngFor="let child of children">
-      <tb-combined-button
-        [label]="child.label"
-        [borderPosition]="child.borderPosition"
-        [color]="child.color"
-        [icon]="child.icon"
-        variant="tab"
-        (clickEvent)="activateChild(child)"
+  <div #container class="flex justify-stretch relative p-1em" tbScrollX>
+    <tb-combined-button
+      (clickEvent)="activateChild(child)"
+      [color]="child.color"
+      [icon]="child.icon"
+      [label]="child.label"
+      *ngFor="let child of children"
+      borderPosition="bottom"
+      class="w-100per"
+      variant="tab"
       ></tb-combined-button>
-    </ng-container>
   </div>
 
   <div *ngIf="delayedChild$ | async as delayedChild" [@enter]>
@@ -21,11 +21,14 @@
 
 <!-- Sidenav -->
 <ng-container *ngIf="type === 'sidenav'">
-  <div class="flex row gap-2 w-100">
+  <div class="flex row gap-1em">
     <tb-nav-list>
       <tb-nav-list-item
-        (clickEvent)="activateChild(child)"
         *ngFor="let child of children"
+        [icon]="child.icon"
+        [label]="child.label"
+        [color]="child.color"
+        (clickEvent)="activateChild(child)"
       ></tb-nav-list-item>
     </tb-nav-list>
 

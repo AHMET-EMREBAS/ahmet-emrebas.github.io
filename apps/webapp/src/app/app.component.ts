@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  name = $localize`Ahmet Emrebas `;
-  title = $localize`webapp ${this.name} `;
+  author = $localize`Ahmet Emrebas `;
+  title = $localize`webapp built by ${this.author}`;
 }

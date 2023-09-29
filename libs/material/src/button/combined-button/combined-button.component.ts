@@ -1,26 +1,24 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 import { CommonButtonComponent } from '../common-button';
-import { Icon } from '../../api';
+
+import { MicroModule } from '../../micro/micro.module';
 
 @Component({
   selector: 'tb-combined-button',
   standalone: true,
-  imports: [CommonModule],
-  template: `<button
-    class="combined-button  {{ color }} {{ variant }} {{ size }} {{
+  imports: [MicroModule],
+
+  template: ` <button
+    #button
+    class="button combined-button  {{ color }} {{ variant }} {{ size }} {{
       borderPosition
     }}"
-    [type]="nativeType"
     (click)="emit()"
+    [type]="nativeType"
   >
     <span class="icon" *ngIf="icon">{{ icon }}</span>
     <span *ngIf="label">{{ label }}</span>
   </button>`,
-  styles: [],
 })
-export class CombinedButtonComponent extends CommonButtonComponent {
-  @Input() label?: string;
-  @Input() icon?: Icon;
-}
+export class CombinedButtonComponent extends CommonButtonComponent {}

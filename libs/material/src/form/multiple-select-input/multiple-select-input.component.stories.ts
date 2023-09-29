@@ -12,7 +12,21 @@ export default meta;
 type Story = StoryObj<MultipleSelectInputComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    value: '',
+    name: 'category',
+    autocomplete: 'off',
+    color: 'primary',
+    label: 'category',
+    variant: 'basic',
+    icon: 'category',
+
+    options: [
+      { icon: 'computer', value: 'PC' },
+      { icon: 'bed', value: 'Furniture' },
+      { icon: 'water', value: 'Food' },
+    ],
+  },
 };
 
 export const Heading: Story = {
@@ -24,6 +38,7 @@ export const Heading: Story = {
     label: 'category',
     variant: 'basic',
     icon: 'category',
+
     options: [
       { icon: 'computer', value: 'PC' },
       { icon: 'bed', value: 'Furniture' },

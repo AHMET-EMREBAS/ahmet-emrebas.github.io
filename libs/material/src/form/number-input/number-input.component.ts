@@ -11,13 +11,13 @@ import { MicroModule } from '../../micro/micro.module';
       <span class="icon"> {{ icon }}</span>
       <label [for]="id()">{{ label }} </label>
       <input
-        [(ngModel)]="value"
-        [id]="id()"
-        [attr.data-testid]="name"
-        type="number"
-        [name]="name"
         (input)="emit()"
+        [(ngModel)]="value"
+        [attr.data-testid]="name"
+        [id]="id()"
+        [name]="name"
         tbHasValue
+        type="number"
       />
       <span class="input-error" *ngIf="error">{{ error }}</span>
     </div>

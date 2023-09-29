@@ -25,10 +25,10 @@ export const Heading: Story = {
     label: 'Combined',
     variant: 'basic',
     icon: 'info',
-    color: 'accent',
+    color: 'primary',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/combined-button works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Combined/gi)).toBeTruthy();
   },
 };

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonButtonComponent } from '../common-button';
 import { MicroModule } from '../../micro/micro.module';
 
@@ -9,14 +9,10 @@ import { MicroModule } from '../../micro/micro.module';
   template: ` <button
     class="button {{ color }} {{ variant }} {{ size }} {{ borderPosition }}"
     [type]="nativeType"
-    [tbTooltip]="tooltip"
-    [tbTooltipPosition]="tooltipPosition"
     (click)="emit()"
   >
     {{ label }}
   </button>`,
   styles: [],
 })
-export class ButtonComponent extends CommonButtonComponent {
-  @Input() label?: string;
-}
+export class ButtonComponent extends CommonButtonComponent {}
