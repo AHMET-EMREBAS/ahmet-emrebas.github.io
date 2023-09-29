@@ -1,28 +1,24 @@
-import { Exclude, Expose, Transform } from 'class-transformer';
-import { Min, IsIn, IsOptional } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { Dto } from '../entities';
+import { Property } from '../property';
 
-@Exclude()
+@Dto()
 export class QueryDto {
-  @Expose()
-  @Min(0)
-  @IsOptional()
+  @Property({ type: 'integer', default: 20, nullable: true, minimum: 1 })
   take = 20;
 
-  @Expose()
-  @Min(0)
-  @IsOptional()
+  @Property({ type: 'integer', default: 0, nullable: true, minimum: 1 })
   skip = 0;
 
-  @Expose()
-  @IsOptional()
-  orderBy?: string;
-
-  @Expose()
-  @IsIn(['asc', 'desc'])
-  @IsOptional()
+  @Property({
+    type: 'string',
+    enum: ['asc', 'desc'],
+    nullable: true,
+    default: 'asc',
+  })
   orderDir?: 'asc' | 'desc' = 'asc';
-  
-  @Expose()
+
+  @Property({ type: 'string', nullable: true })
   @Transform(({ obj }) => {
     if (obj.orderBy && obj.orderDir) {
       return {
@@ -31,6 +27,5 @@ export class QueryDto {
     }
     return undefined;
   })
-  @IsOptional()
   order?: any;
 }

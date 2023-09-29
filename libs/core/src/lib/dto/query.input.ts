@@ -1,23 +1,16 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
-import { Exclude, Expose, Transform } from 'class-transformer';
-import { IsIn, IsOptional, Min } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { Input } from '../entities';
+import { Field } from '../property';
 
-@InputType()
-@Exclude()
+@Input()
 export class QueryInput {
-  @Expose()
-  @Field(() => Int)
-  @Min(0)
-  @IsOptional()
+  @Field({ type: 'integer', nullable: true, default: 20 })
   take = 20;
 
-  @Expose()
-  @Field(() => Int)
-  @Min(0)
-  @IsOptional()
+  @Field({ type: 'integer', nullable: true, default: 0 })
   skip = 0;
 
-  @Expose()
+  @Field({ type: 'string', nullable: true })
   @Transform(({ obj }) => {
     if (obj.orderBy && obj.orderDir) {
       return {
@@ -26,12 +19,8 @@ export class QueryInput {
     }
     return undefined;
   })
-  @IsOptional()
   order?: any;
 
-  @Expose()
-  @Field(() => String)
-  @IsIn(['asc', 'desc'])
-  @IsOptional()
+  @Field({ type: 'string', enum: ['asc', 'desc'] })
   orderDir?: 'asc' | 'desc' = 'asc';
 }

@@ -22,7 +22,6 @@ export class ProductResolver {
 
   @Query(() => [ProductObject])
   findProducts(@Args('query', ValidationPipe()) query: QueryProductInput) {
-    console.log(query);
     return this.repo.find(query);
   }
 
@@ -32,7 +31,9 @@ export class ProductResolver {
   }
 
   @Mutation(() => ProductObject)
-  async createProduct(@Args('body', ValidationPipe()) body: CreateProductInput) {
+  async createProduct(
+    @Args('body', ValidationPipe()) body: CreateProductInput
+  ) {
     const saved = await this.repo.save(body);
     publishProductSave(saved);
     return saved;

@@ -1,5 +1,4 @@
-import { Column, Entity } from 'typeorm';
-import { BaseEntity } from '@techbir/core';
+import { BaseEntity, Column, Entity } from '@techbir/core';
 
 @Entity()
 export class Product extends BaseEntity {

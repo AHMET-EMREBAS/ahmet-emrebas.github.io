@@ -21,6 +21,16 @@
                 "name"
             ]
         },
+        "searchable": {
+            "type": "array",
+            "items": {
+                "$ref": "../property-names/index.schema.json"
+            },
+            "uniqueItems": true,
+            "default": [
+                "name"
+            ]
+        },
         "properties": {
             "type": "array",
             "items": {

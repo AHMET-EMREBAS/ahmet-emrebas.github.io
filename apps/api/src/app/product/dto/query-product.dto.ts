@@ -1,24 +1,20 @@
-import { QueryDto, QueryInterface } from '@techbir/core';
-import { Exclude, Expose, Transform } from 'class-transformer';
-import { IsIn, IsOptional } from 'class-validator';
-import { ILike } from 'typeorm';
+import {
+  Dto,
+  Property,
+  QueryDto,
+  QueryInterface,
+  QueryStringTransformer,
+} from '@techbir/core';
 
-@Exclude()
+import { productSearchables } from '../product.searchables';
+import { productOrderables } from '../product.orderables';
+
+@Dto()
 export class QueryProductDto extends QueryDto implements QueryInterface {
-  @Expose()
-  @Transform(({ value }) => {
-    if (value) {
-      return {
-        name: ILike(`%${value}%`),
-      };
-    }
-    return undefined;
-  })
-  @IsOptional()
+  @Property({ type: 'string', maxLength: 30, nullable: true })
+  @QueryStringTransformer(productSearchables())
   query: any;
 
-  @Expose()
-  @IsIn(['name', 'id'])
-  @IsOptional()
+  @Property({ type: 'string', enum: productOrderables(), nullable: true })
   orderBy = 'id';
 }

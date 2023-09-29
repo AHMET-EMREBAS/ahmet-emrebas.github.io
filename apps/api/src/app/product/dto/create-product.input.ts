@@ -1,7 +1,7 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, Input } from '@techbir/core';
 import { Product } from '../entity';
 
-@InputType()
+@Input()
 export class CreateProductInput implements Product {
-  @Field(() => String) name: string;
+  @Field({ type: 'string', minLength: 3, maxLength: 30 }) name: string;
 }
