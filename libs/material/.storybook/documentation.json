@@ -2370,7 +2370,7 @@
         },
         {
             "name": "DateInputComponent",
-            "id": "component-DateInputComponent-b18d7270a6611a2e071062906d2c8fdefbea413a924fafb885374638cb169ae7c28975c0d23a9cd1a2d6fd3a1ac9e24cef12af84f77ca79626e2b009f00f096b",
+            "id": "component-DateInputComponent-3d6456d8f5b8a36c281bcc011898b4e02855692a9b8595609c6d558680cf7060ee213176241192ddbdb556567eb5ba9a13e26695d871f5722f8da10357e0aff0",
             "file": "libs/material/src/form/date-input/date-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2380,7 +2380,7 @@
             "selector": "tb-date-input",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"input-container\">\n  <label [for]=\"id()\">{{ label }}</label>\n  <input [(ngModel)]=\"value\" [id]=\"id()\" type=\"date\" (input)=\"emit()\" ) />\n</div>\n",
+            "template": "<div class=\"input-container {{ color }} {{ variant }} \">\n  <span class=\"icon\">{{ icon }}</span>\n  <label [for]=\"id()\">{{ label }}</label>\n  <input #input [(ngModel)]=\"value\" [id]=\"id()\" type=\"date\" (input)=\"emit()\" />\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -2618,6 +2618,16 @@
             ],
             "methodsClass": [
                 {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "emit",
                     "args": [],
                     "optional": false,
@@ -2658,11 +2668,14 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-date-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container\">\n      <label [for]=\"id()\">{{ label }}</label>\n      <input [(ngModel)]=\"value\" [id]=\"id()\" type=\"date\" (input)=\"emit()\" ) />\n    </div>\n  `,\n})\nexport class DateInputComponent extends CommonInputComponent {}\n",
+            "sourceCode": "import { AfterViewInit, Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\n\n@Component({\n  selector: 'tb-date-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"input-container {{ color }} {{ variant }} \">\n      <span class=\"icon\">{{ icon }}</span>\n      <label [for]=\"id()\">{{ label }}</label>\n      <input #input [(ngModel)]=\"value\" [id]=\"id()\" type=\"date\" (input)=\"emit()\" />\n    </div>\n  `,\n})\nexport class DateInputComponent extends CommonInputComponent implements AfterViewInit{\n  \n  ngAfterViewInit(): void {\n    this.inputRef.nativeElement.setAttribute('has-value', 'true')\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": "CommonInputComponent"
+            "extends": "CommonInputComponent",
+            "implements": [
+                "AfterViewInit"
+            ]
         },
         {
             "name": "DatePickerComponent",
@@ -7655,7 +7668,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DateInputComponent>",
-                "defaultValue": "{\n  component: DateInputComponent,\n  title: 'DateInputComponent',\n}"
+                "defaultValue": "{\n  component: DateInputComponent,\n  title: 'Input Date',\n}"
             },
             {
                 "name": "meta",
@@ -7665,7 +7678,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DatePickerComponent>",
-                "defaultValue": "{\n  component: DatePickerComponent,\n  title: 'Input Date',\n}"
+                "defaultValue": "{\n  component: DatePickerComponent,\n  title: 'Input DatePicker',\n}"
             },
             {
                 "name": "meta",
@@ -9481,7 +9494,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DateInputComponent>",
-                    "defaultValue": "{\n  component: DateInputComponent,\n  title: 'DateInputComponent',\n}"
+                    "defaultValue": "{\n  component: DateInputComponent,\n  title: 'Input Date',\n}"
                 },
                 {
                     "name": "Primary",
@@ -9513,7 +9526,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DatePickerComponent>",
-                    "defaultValue": "{\n  component: DatePickerComponent,\n  title: 'Input Date',\n}"
+                    "defaultValue": "{\n  component: DatePickerComponent,\n  title: 'Input DatePicker',\n}"
                 },
                 {
                     "name": "Primary",
@@ -11169,7 +11182,7 @@
                 "linktype": "component",
                 "name": "DateInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
