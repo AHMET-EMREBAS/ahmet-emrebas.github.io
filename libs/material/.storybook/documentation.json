@@ -5359,7 +5359,7 @@
         },
         {
             "name": "PaginatorComponent",
-            "id": "component-PaginatorComponent-f9f27c166a4e0a6c4df6c76190e4ebcbec6568e419829abc0897f2257f49836f147622c06b503b00f6fcd3d43bd8b46a2adce171e3d94673786eb1ad8c13ab04",
+            "id": "component-PaginatorComponent-6c3b5d7babe82b8b8e7e13fde2391807fedf774a76f6e7b0554aa4b234057c1e8eaa215e75cf5fdf5a6fb9e90b64d4d54480273c211abc62d7fe61aed89a1415",
             "file": "libs/material/src/table/paginator/paginator.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5369,26 +5369,17 @@
             "selector": "tb-paginator",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"flex row justify-space-between align-center gap-4em p-1em\">\n  <span>Showing {{ pageLength }} of {{ itemCount }} items</span>\n  <div class=\"flex row gap-4em align-center \">\n    <tb-icon-button\n      size=\"small\"\n      variant=\"stroked\"\n      icon=\"navigate_before\"\n      (clickEvent)=\"previous()\"\n    ></tb-icon-button>\n\n    <div class=\"flex row gap-2em\">\n      <tb-button\n        size=\"small\"\n        label=\"First\"\n        (clickEvent)=\"firstPage()\"\n      ></tb-button>\n      <tb-button\n        size=\"small\"\n        [label]=\"b + ''\"\n        [variant]=\"currentPage === b ? 'raised' : 'stroked'\"\n        *ngFor=\"let b of getPageButtons()\"\n        (click)=\"selectPage(b)\"\n      ></tb-button>\n      <tb-button\n        size=\"small\"\n        label=\"Last\"\n        (clickEvent)=\"lastPage()\"\n      ></tb-button>\n    </div>\n    <tb-icon-button\n      size=\"small\"\n      variant=\"stroked\"\n      icon=\"navigate_next\"\n      (clickEvent)=\"next()\"\n    ></tb-icon-button>\n  </div>\n</div>\n",
+            "template": "<div class=\"flex row justify-space-between align-center gap-4em p-1em\">\n  <span>Showing {{ pageLength }} of {{ itemCount }} items</span>\n  <div class=\"flex row gap-1em center border-1\">\n    <span>Page length</span>\n    <tb-button\n      size=\"small\"\n      [label]=\"pl + ''\"\n      (click)=\"setPageLength(pl)\"\n      [variant]=\"pageLength === pl ? 'raised' : 'basic'\"\n      *ngFor=\"let pl of pageLengthOptions\"\n    ></tb-button>\n  </div>\n  <div class=\"flex row gap-1em p-1em align-center \">\n    <tb-icon-button\n      size=\"small\"\n      icon=\"first_page\"\n      (clickEvent)=\"firstPage()\"\n    ></tb-icon-button>\n\n    <tb-icon-button\n      size=\"small\"\n      variant=\"stroked\"\n      icon=\"navigate_before\"\n      (clickEvent)=\"previous()\"\n    ></tb-icon-button>\n\n    <div class=\"flex row gap-1em \">\n      <tb-button\n        size=\"small\"\n        [label]=\"b + ''\"\n        [variant]=\"currentPage === b ? 'raised' : 'basic'\"\n        *ngFor=\"let b of getPageButtons()\"\n        (click)=\"selectPage(b)\"\n      ></tb-button>\n    </div>\n    <tb-icon-button\n      size=\"small\"\n      variant=\"stroked\"\n      icon=\"navigate_next\"\n      (clickEvent)=\"next()\"\n    ></tb-icon-button>\n\n    <tb-icon-button\n      size=\"small\"\n      icon=\"last_page\"\n      (clickEvent)=\"lastPage()\"\n    ></tb-icon-button>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "changeEvent",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 58,
-                    "type": "any",
-                    "decorators": []
-                },
-                {
                     "name": "itemCount",
                     "defaultValue": "100",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 57,
+                    "line": 75,
                     "type": "number",
                     "decorators": []
                 },
@@ -5397,7 +5388,7 @@
                     "defaultValue": "10",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 55,
+                    "line": 73,
                     "type": "number",
                     "decorators": []
                 },
@@ -5406,12 +5397,21 @@
                     "defaultValue": "[4, 10, 20, 50, 100]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 56,
+                    "line": 74,
                     "type": "{}",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "pageEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 76,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
                 {
                     "name": "currentPage",
@@ -5421,17 +5421,17 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 53
+                    "line": 71
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "emitChangeEvent",
+                    "name": "emitPageEvent",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 102,
+                    "line": 121,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5441,7 +5441,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 91,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5451,7 +5451,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 80,
+                    "line": 100,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5461,7 +5461,7 @@
                     "optional": false,
                     "returnType": "SelectOption[]",
                     "typeParameters": [],
-                    "line": 106,
+                    "line": 128,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5471,7 +5471,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 97,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5481,17 +5481,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 60,
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5501,7 +5491,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 73,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5518,12 +5508,40 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 83,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "pn",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setPageLength",
+                    "args": [
+                        {
+                            "name": "length",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "length",
                             "type": "number",
                             "deprecated": false,
                             "deprecationMessage": "",
@@ -5556,13 +5574,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, EventEmitter, Input } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { ButtonModule } from '../../button';\nimport { SelectOption } from '../../api';\nimport { SimpleSelectComponent } from '../../form/simple-select/simple-select.component';\n\n@Component({\n  selector: 'tb-paginator',\n  standalone: true,\n  imports: [MicroModule, ButtonModule, SimpleSelectComponent],\n  template: `\n    <div class=\"flex row justify-space-between align-center gap-4em p-1em\">\n      <span>Showing {{ pageLength }} of {{ itemCount }} items</span>\n      <div class=\"flex row gap-4em align-center \">\n        <tb-icon-button\n          size=\"small\"\n          variant=\"stroked\"\n          icon=\"navigate_before\"\n          (clickEvent)=\"previous()\"\n        ></tb-icon-button>\n\n        <div class=\"flex row gap-2em\">\n          <tb-button\n            size=\"small\"\n            label=\"First\"\n            (clickEvent)=\"firstPage()\"\n          ></tb-button>\n          <tb-button\n            size=\"small\"\n            [label]=\"b + ''\"\n            [variant]=\"currentPage === b ? 'raised' : 'stroked'\"\n            *ngFor=\"let b of getPageButtons()\"\n            (click)=\"selectPage(b)\"\n          ></tb-button>\n          <tb-button\n            size=\"small\"\n            label=\"Last\"\n            (clickEvent)=\"lastPage()\"\n          ></tb-button>\n        </div>\n        <tb-icon-button\n          size=\"small\"\n          variant=\"stroked\"\n          icon=\"navigate_next\"\n          (clickEvent)=\"next()\"\n        ></tb-icon-button>\n      </div>\n    </div>\n  `,\n  styles: [],\n})\nexport class PaginatorComponent implements AfterViewInit {\n  currentPage = 1;\n\n  @Input() pageLength = 10;\n  @Input() pageLengthOptions = [4, 10, 20, 50, 100];\n  @Input() itemCount = 100;\n  @Input() changeEvent = new EventEmitter();\n\n  ngAfterViewInit(): void {\n    this.emitChangeEvent();\n  }\n\n  selectPage(pn: number) {\n    this.currentPage = pn;\n  }\n  next() {\n    if (this.currentPage * this.pageLength < this.itemCount) {\n      this.currentPage++;\n    }\n    this.emitChangeEvent();\n  }\n  previous() {\n    if (this.currentPage >= 2) {\n      this.currentPage--;\n    }\n    this.emitChangeEvent();\n  }\n\n  getPageButtons() {\n    if (this.currentPage <= 1) {\n      return [1, 2, 3];\n    }\n    if (this.pageLength * (this.currentPage + 1) <= this.itemCount) {\n      return [this.currentPage - 1, this.currentPage, this.currentPage + 1];\n    }\n\n    return [this.currentPage - 2, this.currentPage - 1, this.currentPage];\n  }\n\n  firstPage() {\n    this.currentPage = 1;\n\n    this.emitChangeEvent();\n  }\n\n  lastPage() {\n    this.currentPage = this.itemCount / this.pageLength;\n    this.emitChangeEvent();\n  }\n\n  emitChangeEvent() {\n    this.changeEvent.emit({ ...this });\n  }\n\n  getPageLengthOptions(): SelectOption[] {\n    return this.pageLengthOptions.map((e) => {\n      return {\n        value: e.toString(),\n        icon: 'table_chart',\n      };\n    });\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  EventEmitter,\n  Input,\n  Output,\n} from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { ButtonModule } from '../../button';\nimport { SelectOption } from '../../api';\nimport { SimpleSelectComponent } from '../../form/simple-select/simple-select.component';\n\n@Component({\n  selector: 'tb-paginator',\n  standalone: true,\n  imports: [MicroModule, ButtonModule, SimpleSelectComponent],\n  template: `\n    <div class=\"flex row justify-space-between align-center gap-4em p-1em\">\n      <span>Showing {{ pageLength }} of {{ itemCount }} items</span>\n      <div class=\"flex row gap-1em center border-1\">\n        <span>Page length</span>\n        <tb-button\n          size=\"small\"\n          [label]=\"pl + ''\"\n          (click)=\"setPageLength(pl)\"\n          [variant]=\"pageLength === pl ? 'raised' : 'basic'\"\n          *ngFor=\"let pl of pageLengthOptions\"\n        ></tb-button>\n      </div>\n      <div class=\"flex row gap-1em p-1em align-center \">\n        <tb-icon-button\n          size=\"small\"\n          icon=\"first_page\"\n          (clickEvent)=\"firstPage()\"\n        ></tb-icon-button>\n\n        <tb-icon-button\n          size=\"small\"\n          variant=\"stroked\"\n          icon=\"navigate_before\"\n          (clickEvent)=\"previous()\"\n        ></tb-icon-button>\n\n        <div class=\"flex row gap-1em \">\n          <tb-button\n            size=\"small\"\n            [label]=\"b + ''\"\n            [variant]=\"currentPage === b ? 'raised' : 'basic'\"\n            *ngFor=\"let b of getPageButtons()\"\n            (click)=\"selectPage(b)\"\n          ></tb-button>\n        </div>\n        <tb-icon-button\n          size=\"small\"\n          variant=\"stroked\"\n          icon=\"navigate_next\"\n          (clickEvent)=\"next()\"\n        ></tb-icon-button>\n\n        <tb-icon-button\n          size=\"small\"\n          icon=\"last_page\"\n          (clickEvent)=\"lastPage()\"\n        ></tb-icon-button>\n      </div>\n    </div>\n  `,\n  styles: [],\n})\nexport class PaginatorComponent {\n  currentPage = 1;\n\n  @Input() pageLength = 10;\n  @Input() pageLengthOptions = [4, 10, 20, 50, 100];\n  @Input() itemCount = 100;\n  @Output() pageEvent = new EventEmitter();\n\n  setPageLength(length: number) {\n    this.pageLength = length;\n    this.emitPageEvent();\n  }\n\n  selectPage(pn: number) {\n    this.currentPage = pn;\n    this.emitPageEvent();\n  }\n  next() {\n    if (this.currentPage * this.pageLength < this.itemCount) {\n      this.currentPage++;\n    }\n    this.emitPageEvent();\n  }\n  previous() {\n    if (this.currentPage >= 2) {\n      this.currentPage--;\n    }\n    this.emitPageEvent();\n  }\n\n  getPageButtons() {\n    if (this.currentPage <= 1) {\n      return [1, 2, 3];\n    }\n    if (this.pageLength * (this.currentPage + 1) <= this.itemCount) {\n      return [this.currentPage - 1, this.currentPage, this.currentPage + 1];\n    }\n\n    return [this.currentPage - 2, this.currentPage - 1, this.currentPage];\n  }\n\n  firstPage() {\n    this.currentPage = 1;\n    this.emitPageEvent();\n  }\n\n  lastPage() {\n    this.currentPage = this.itemCount / this.pageLength;\n    this.emitPageEvent();\n  }\n\n  emitPageEvent() {\n    this.pageEvent.emit({\n      pageLength: this.pageLength,\n      page: this.currentPage,\n    });\n  }\n\n  getPageLengthOptions(): SelectOption[] {\n    return this.pageLengthOptions.map((e) => {\n      return {\n        value: e.toString(),\n        icon: 'table_chart',\n      };\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
-            "implements": [
-                "AfterViewInit"
-            ]
+            "stylesData": ""
         },
         {
             "name": "SampleButtonsComponent",
@@ -5698,7 +5713,7 @@
         },
         {
             "name": "SelectInputComponent",
-            "id": "component-SelectInputComponent-d6e51180d196faef3febc054dc534afd9c2b8f7464dee2b4a64a4eace18a12d5a1f2e03f9a8cd07aefb5adf8f49e8f12d9ce36e0005d940cdacc60e487c4f782",
+            "id": "component-SelectInputComponent-8922ea8704201b807181b7df1a7f865b1990efa9dfbb412fb0217954dccaa66655a0299e5361ad921ca5cbfab91adc773afa1859a5559160691f86a19f13242e",
             "file": "libs/material/src/form/select-input/select-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6052,7 +6067,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          (keydown)=\"handleKeyPress($event)\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SelectInputComponent extends CommonInputComponent {\n  setOption(options: SelectOption) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n\n      this.emit();\n    });\n  }\n\n  getOptions() {\n    return this.options?.filter((e) =>\n      e.value?.toLowerCase().includes(this.value?.toLowerCase())\n    );\n  }\n\n  handleKeyPress(event: KeyboardEvent) {\n    if (event.key === 'Tab') {\n      const option = this.getOptions()?.pop();\n      if (option) {\n        this.setOption(option);\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-select-input',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }}\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          (keydown)=\"handleKeyPress($event)\"\n          tbHasValue\n        />\n      </div>\n      <div class=\"dropdown-items {{ distribution }} w-full h-10em oy-auto \">\n        <div\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          class=\"nav-list-item inline-input cursor-pointer {{ color }}\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"setOption(option)\"\n        >\n          <tb-icon [icon]=\"option.icon\"></tb-icon>\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n          <span class=\"icon {{ color }}-face\" *ngIf=\"value === option.value\">\n            check\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SelectInputComponent extends CommonInputComponent {\n  setOption(options: SelectOption) {\n    this.inputRef.nativeElement.value = options.value;\n    setTimeout(() => {\n      this.inputRef.nativeElement.dispatchEvent(\n        new InputEvent('input', {\n          bubbles: true,\n          cancelable: true,\n          composed: true,\n          data: options.value,\n        })\n      );\n\n      this.emit();\n    });\n  }\n\n  getOptions() {\n    return this.options?.filter((e) =>\n      e.value.toLowerCase().includes(this.value.toLowerCase())\n    );\n  }\n\n  handleKeyPress(event: KeyboardEvent) {\n    if (event.key === 'Tab') {\n      const option = this.getOptions()?.pop();\n      if (option) {\n        this.setOption(option);\n      }\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -6060,7 +6075,7 @@
         },
         {
             "name": "SimpleSelectComponent",
-            "id": "component-SimpleSelectComponent-391e6a9abdf9e6e3543f120af5ed50d1b8d8c6b05c7152b79cda5604cd7f1759d2920d7a67d666cf138a53e3746dc094d333aebf275bda7046921afeaad8210f",
+            "id": "component-SimpleSelectComponent-6d9f56550f5fb5e492c93c0d8976ca2a0c05439e5b0862c28e5ee5bde8e8a679d3f4a741928b81885063885563733cde614ed9754ff76dfcd9a9f75049efd002",
             "file": "libs/material/src/form/simple-select/simple-select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6070,7 +6085,7 @@
             "selector": "tb-simple-select",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"dropdown input-dropdown\">\n  <div class=\"input-container w-50px\">\n    <label [for]=\"id()\">{{ label }}</label>\n    <input [id]=\"id()\" [(ngModel)]=\"value\" [name]=\"name\" (input)=\"emit()\" />\n  </div>\n\n  <div class=\"dropdown-items\">\n    <div class=\"list primary\">\n      <div\n        class=\"list-item primary\"\n        *ngFor=\"let option of options\"\n        (click)=\"selectOption(option)\"\n      >\n        {{ option.value }}\n      </div>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"dropdown input-dropdown {{ direction }}  {{ color }} fit-content\">\n  <div class=\"input-container {{ color }} {{ variant }}\">\n    <span class=\"icon\"> {{ icon }}</span>\n    <label [for]=\"id()\">{{ label }} </label>\n    <input\n      #input\n      [(ngModel)]=\"value\"\n      type=\"text\"\n      [id]=\"id()\"\n      [attr.data-testid]=\"name\"\n      [name]=\"name\"\n      [autocomplete]=\"autocomplete\"\n      (input)=\"getOptions()\"\n      (keydown)=\"handleKeyPress($event)\"\n      tbHasValue\n    />\n  </div>\n  <div\n    class=\"dropdown-items {{\n      distribution\n    }} w-full  h-10em oy-auto ox-auto \"\n  >\n    <div\n      class=\"nav-list-item inline-input fit-content  cursor-pointer h-2em text-center {{\n        color\n      }}\"\n      [class.accent]=\"value === option.value\"\n      [attr.data-testid]=\"option.value\"\n      [id]=\"id() + option.value\"\n      *ngFor=\"let option of getOptions()\"\n      (click)=\"setOption(option)\"\n    >\n      <span>{{ option.value }}</span>\n      <div class=\"grow-1\"></div>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -6308,10 +6323,57 @@
             ],
             "methodsClass": [
                 {
-                    "name": "selectOption",
+                    "name": "getOptions",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "[] | undefined",
+                    "typeParameters": [],
+                    "line": 51,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        161
+                    ],
+                    "inheritance": {
+                        "file": "SelectInputComponent"
+                    }
+                },
+                {
+                    "name": "handleKeyPress",
                     "args": [
                         {
-                            "name": "option",
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "SelectInputComponent"
+                    }
+                },
+                {
+                    "name": "setOption",
+                    "args": [
+                        {
+                            "name": "options",
                             "type": "SelectOption",
                             "deprecated": false,
                             "deprecationMessage": ""
@@ -6320,12 +6382,12 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "option",
+                            "name": "options",
                             "type": "SelectOption",
                             "deprecated": false,
                             "deprecationMessage": "",
@@ -6333,7 +6395,10 @@
                                 "text": "param"
                             }
                         }
-                    ]
+                    ],
+                    "inheritance": {
+                        "file": "SelectInputComponent"
+                    }
                 },
                 {
                     "name": "emit",
@@ -6376,11 +6441,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonInputComponent } from '../common-input/common-input.component';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\n\n@Component({\n  selector: 'tb-simple-select',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown\">\n      <div class=\"input-container w-50px\">\n        <label [for]=\"id()\">{{ label }}</label>\n        <input [id]=\"id()\" [(ngModel)]=\"value\" [name]=\"name\" (input)=\"emit()\" />\n      </div>\n\n      <div class=\"dropdown-items\">\n        <div class=\"list primary\">\n          <div\n            class=\"list-item primary\"\n            *ngFor=\"let option of options\"\n            (click)=\"selectOption(option)\"\n          >\n            {{ option.value }}\n          </div>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [],\n})\nexport class SimpleSelectComponent extends CommonInputComponent {\n  selectOption(option: SelectOption) {\n    this.value = option;\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { SelectOption } from '../../api';\nimport { SelectInputComponent } from '../select-input/select-input.component';\n\n@Component({\n  selector: 'tb-simple-select',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <div class=\"dropdown input-dropdown {{ direction }}  {{ color }} fit-content\">\n      <div class=\"input-container {{ color }} {{ variant }}\">\n        <span class=\"icon\"> {{ icon }}</span>\n        <label [for]=\"id()\">{{ label }} </label>\n        <input\n          #input\n          [(ngModel)]=\"value\"\n          type=\"text\"\n          [id]=\"id()\"\n          [attr.data-testid]=\"name\"\n          [name]=\"name\"\n          [autocomplete]=\"autocomplete\"\n          (input)=\"getOptions()\"\n          (keydown)=\"handleKeyPress($event)\"\n          tbHasValue\n        />\n      </div>\n      <div\n        class=\"dropdown-items {{\n          distribution\n        }} w-full  h-10em oy-auto ox-auto \"\n      >\n        <div\n          class=\"nav-list-item inline-input fit-content  cursor-pointer h-2em text-center {{\n            color\n          }}\"\n          [class.accent]=\"value === option.value\"\n          [attr.data-testid]=\"option.value\"\n          [id]=\"id() + option.value\"\n          *ngFor=\"let option of getOptions()\"\n          (click)=\"setOption(option)\"\n        >\n          <span>{{ option.value }}</span>\n          <div class=\"grow-1\"></div>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class SimpleSelectComponent extends SelectInputComponent {\n  override getOptions(): SelectOption[] | undefined {\n    return this.options;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": "CommonInputComponent"
+            "extends": "SelectInputComponent"
         },
         {
             "name": "StepperComponent",
@@ -8003,7 +8068,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/paginator works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Showing 10 of 100 items/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "ListOfDays",
@@ -8673,7 +8738,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    value: '',\n    icon: 'pages',\n    name: 'page length',\n    label: 'page length',\n\n    options: [\n      { value: '1' },\n      { value: '2' },\n      { value: '3' },\n      { value: '4' },\n      { value: '5' },\n      { value: '6' },\n      { value: '7' },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -8733,7 +8798,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n}"
             }
         ],
         "functions": [
@@ -10344,7 +10409,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    value: '',\n    icon: 'pages',\n    name: 'page length',\n    label: 'page length',\n\n    options: [\n      { value: '1' },\n      { value: '2' },\n      { value: '3' },\n      { value: '4' },\n      { value: '5' },\n      { value: '6' },\n      { value: '7' },\n    ],\n  },\n}"
                 }
             ],
             "libs/material/src/form/text-input/text-input.component.stories.ts": [
@@ -10516,7 +10581,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/paginator works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Showing 10 of 100 items/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -10536,7 +10601,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    pageLengthOptions: [10, 20, 30],\n    itemCount: 100,\n  },\n}"
                 }
             ],
             "libs/material/src/api/types.ts": [
@@ -12174,7 +12239,7 @@
                 "linktype": "component",
                 "name": "SimpleSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {

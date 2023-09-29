@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MicroModule } from '../../micro/micro.module';
 import { ButtonModule } from '../../button';
 import { SelectOption } from '../../api';
@@ -23,7 +17,7 @@ import { SimpleSelectComponent } from '../../form/simple-select/simple-select.co
           size="small"
           [label]="pl + ''"
           (click)="setPageLength(pl)"
-          [variant]="pageLength === pl ? 'raised' : 'basic'"
+          [variant]="pageLength === pl ? 'stroked' : 'basic'"
           *ngFor="let pl of pageLengthOptions"
         ></tb-button>
       </div>
@@ -45,7 +39,7 @@ import { SimpleSelectComponent } from '../../form/simple-select/simple-select.co
           <tb-button
             size="small"
             [label]="b + ''"
-            [variant]="currentPage === b ? 'raised' : 'basic'"
+            [variant]="currentPage === b ? 'stroked' : 'basic'"
             *ngFor="let b of getPageButtons()"
             (click)="selectPage(b)"
           ></tb-button>
@@ -77,6 +71,7 @@ export class PaginatorComponent {
 
   setPageLength(length: number) {
     this.pageLength = length;
+    this.currentPage = 1;
     this.emitPageEvent();
   }
 
@@ -114,7 +109,7 @@ export class PaginatorComponent {
   }
 
   lastPage() {
-    this.currentPage = this.itemCount / this.pageLength;
+    this.currentPage = Math.ceil(this.itemCount / this.pageLength);
     this.emitPageEvent();
   }
 
