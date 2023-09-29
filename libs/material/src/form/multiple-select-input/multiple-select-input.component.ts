@@ -17,6 +17,7 @@ import { SelectOption } from '../../api';
           [(ngModel)]="value"
           [id]="id()"
           type="text"
+          autocomplete="off"
           (input)="inputHandler()"
           (keydown)="keydownHandler($event)"
         />
@@ -41,7 +42,7 @@ import { SelectOption } from '../../api';
   `,
 })
 export class MultipleSelectInputComponent
-  extends CommonInputComponent<string>
+  extends CommonInputComponent<SelectOption[]>
   implements AfterViewInit
 {
   filteredOptions: SelectOption[] = [];
@@ -105,5 +106,9 @@ export class MultipleSelectInputComponent
         .join(',') + ',';
     this.filteredOptions = [...(this.options || [])];
     this.emit();
+  }
+
+  override emit(): void {
+    this.inputEvent.emit(this.options?.filter((e) => e.selected));
   }
 }

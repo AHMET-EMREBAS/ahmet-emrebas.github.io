@@ -35,6 +35,7 @@ export class InputComponent extends CommonInputComponent {
       __select,
       __multi_select,
       __number,
+      inputEvent,
       ...rest
     } = this;
     return { ...rest, ...extras };

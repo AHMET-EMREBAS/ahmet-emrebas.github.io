@@ -7,7 +7,14 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Color, Direction, Icon, InputType, InputVariant, SelectOption } from '../../api';
+import {
+  Color,
+  Direction,
+  Icon,
+  InputType,
+  InputVariant,
+  SelectOption,
+} from '../../api';
 
 import { FormValue } from '../../api/form-value';
 
@@ -19,15 +26,13 @@ export class CommonInputComponent<T = any> {
   @ViewChild('input')
   inputRef!: ElementRef<HTMLInputElement>;
 
-  @Input()
-  @Output()
-  inputEvent = new EventEmitter<T>();
+  @Output() inputEvent = new EventEmitter<T>();
 
   @Input() __ngContext__ = '';
 
   @Input() formName?: string;
   @Input() inputType?: InputType = 'text';
-  @Input() value?: T;
+  @Input() value?: any;
   @Input() name!: string;
   @Input() type?: HTMLInputElement['type'];
   @Input() autocomplete?: HTMLInputElement['autocomplete'];
