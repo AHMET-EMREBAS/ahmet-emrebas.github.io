@@ -4,9 +4,7 @@ import { InputComponent } from './input/input.component';
 import { FormActionsDirective } from './form-actions/form-actions.directive';
 import { TextInputComponent } from './text-input/text-input.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
-import { MultipleSelectInputComponent } from './multiple-select-input/multiple-select-input.component';
 import { BooleanInputComponent } from './boolean-input/boolean-input.component';
-import { SimpleSelectComponent } from './simple-select/simple-select.component';
 
 @NgModule({
   imports: [
@@ -14,8 +12,7 @@ import { SimpleSelectComponent } from './simple-select/simple-select.component';
     InputComponent,
     TextInputComponent,
     DatePickerComponent,
-    MultipleSelectInputComponent,
-    SimpleSelectComponent,
+
     BooleanInputComponent,
     FormActionsDirective,
   ],
@@ -25,8 +22,6 @@ import { SimpleSelectComponent } from './simple-select/simple-select.component';
     TextInputComponent,
     DatePickerComponent,
     BooleanInputComponent,
-    MultipleSelectInputComponent,
-    SimpleSelectComponent,
     FormActionsDirective,
   ],
 })

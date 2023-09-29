@@ -30,7 +30,6 @@ import { PageEvent, SortEvent } from '../api';
       (pageEvent)="emitPageEvent($event)"
     ></tb-paginator>
   `,
-  styles: [],
 })
 export class TableComponent {
   @Input() itemCount = 100;
