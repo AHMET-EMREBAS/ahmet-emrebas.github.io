@@ -6,7 +6,7 @@
     "icons": "./tools/assets/icons.ts",
     "stories": "npx nx g @nx/angular:stories",
     "storybook": "npx nx run material:storybook",
-    "build": "npx nx run material:build-storybook"
+    "build": "npx nx run material:build-storybook & npx ts-node ./tools/scripts/update-story-title.ts"
   },
   "private": true,
   "devDependencies": {
