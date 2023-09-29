@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "DatabaseModel",
+    "title": "DatabaseModel",
+    "properties": {
+        "properties": {
+            "patternProperties": {
+                "^[a-zAZ-]{1,}$": {
+                    "$ref": "../properties/index.schema.json"
+                }
+            },
+            "propertyNames": {
+                "$ref": "../property-names/index.schema.json"
+            }
+        }
+    },
+    "definitions": {
+        "string": {
+            "properties": {
+                "type": {
+                    "const": "string"
+                },
+                "minLength": {
+                    "type": "integer"
+                },
+                "maxLength": {
+                    "type": "integer"
+                }
+            }
+        },
+        "number": {
+            "properties": {
+                "type": {
+                    "const": "number"
+                },
+                "maximum": {
+                    "type": "number"
+                },
+                "minimum": {
+                    "type": "number"
+                }
+            }
+        },
+        "date": {
+            "properties": {
+                "type": {
+                    "const": "Date"
+                }
+            }
+        },
+        "boolean": {
+            "properties": {
+                "type": {
+                    "const": "boolean"
+                }
+            }
+        }
+    }
+}

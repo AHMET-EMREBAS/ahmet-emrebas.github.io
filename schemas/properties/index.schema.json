@@ -1,0 +1,70 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "Property",
+    "title": "Property",
+    "oneOf": [
+           {"allOf": [{"$ref": "#/definitions/common"},{"$ref": "#/definitions/string"}]},
+        {"allOf": [{"$ref": "#/definitions/common"},{"$ref": "#/definitions/number"}]},
+        {"allOf": [{"$ref": "#/definitions/common"},{"$ref": "#/definitions/date"}]},
+        {"allOf": [{"$ref": "#/definitions/common"},{"$ref": "#/definitions/boolean"}]}
+    ],
+    "definitions": {
+        "common": {
+            "properties": {
+                "options": {
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "icon":{
+                    "$ref": "./icon.schema.json"
+                }
+            }
+        },
+        "string": {
+            "properties": {
+                "type": {
+                    "const": "string"
+                },
+                "inputType": {
+                    "enum": [
+                        "text",
+                        "select"
+                    ]
+                },
+                "minLength": {
+                    "type": "integer"
+                },
+                "maxLength": {
+                    "type": "integer"
+                }
+            }
+        },
+        "number": {
+            "properties": {
+                "type": {
+                    "const": "number"
+                },
+                "maximum": {
+                    "type": "number"
+                },
+                "minimum": {
+                    "type": "number"
+                }
+            }
+        },
+        "date": {
+            "properties": {
+                "type": {
+                    "const": "Date"
+                }
+            }
+        },
+        "boolean": {
+            "properties": {
+                "type": {
+                    "const": "boolean"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "enum": [
+        "price",
+        "cost",
+        "category",
+        "categories",
+        "department",
+        "departments",
+        "upc",
+        "sku",
+        "skus"
+    ]
+}
