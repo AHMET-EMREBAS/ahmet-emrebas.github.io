@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonInputComponent } from '../common-input/common-input.component';
 import { MicroModule } from '../../micro/micro.module';
 import { SelectOption } from '../../api';
@@ -10,69 +10,113 @@ import { SelectOption } from '../../api';
   template: `
     <div class="dropdown input-dropdown {{ direction }}  {{ color }}">
       <div class="input-container {{ color }} {{ variant }}">
-        <span class="icon"> {{ icon }}</span>
-        <label [for]="id()">{{ label }} </label>
+        <label [for]="id()"></label>
+        <span class="icon">{{ icon }}</span>
         <input
           #input
           [(ngModel)]="value"
-          type="text"
           [id]="id()"
-          [attr.data-testid]="name"
-          [name]="name"
-          [autocomplete]="autocomplete"
-          (input)="getOptions()"
-          (keydown)="handleKeyPress($event)"
-          tbHasValue
+          type="text"
+          autocomplete="off"
+          (input)="inputHandler()"
+          (keydown)="keydownHandler($event)"
         />
       </div>
-      <div class="dropdown-items {{ distribution }} w-full h-10em oy-auto ">
+
+      <div class="dropdown-items {{ distribution }}  w-full h-10em oy-auto ">
         <div
-          [attr.data-testid]="option.value"
-          [id]="id() + option.value"
-          class="nav-list-item inline-input cursor-pointer {{ color }}"
-          *ngFor="let option of getOptions()"
-          (click)="setOption(option)"
+          class="list-item {{ color }}"
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option)"
         >
-          <tb-icon [icon]="option.icon"></tb-icon>
-          <span>{{ option.value }}</span>
-          <div class="grow-1"></div>
-          <span class="icon {{ color }}-face" *ngIf="value === option.value">
-            check
-          </span>
+          <span
+            class="icon"
+            *ngIf="option.icon"
+            [class.accent]="option.selected"
+            >{{ option.icon }}</span
+          >
+          <span> {{ option.label || option.value }}</span>
         </div>
       </div>
     </div>
   `,
 })
-export class SelectInputComponent extends CommonInputComponent {
-  setOption(options: SelectOption) {
-    this.inputRef.nativeElement.value = options.value;
-    setTimeout(() => {
-      this.inputRef.nativeElement.dispatchEvent(
-        new InputEvent('input', {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          data: options.value,
-        })
-      );
+export class SelectInputComponent
+  extends CommonInputComponent
+  implements AfterViewInit
+{
+  multiple = false;
+  filteredOptions: SelectOption[] = [];
 
-      this.emit();
+  ngAfterViewInit(): void {
+    this.filteredOptions = [...(this.options || [])];
+  }
+
+  inputHandler() {
+    const lastText = this.value?.split(',').pop()?.toLowerCase() || '';
+
+    if (lastText?.length > 0) {
+      this.filteredOptions = [
+        ...(this.options?.filter((e) => {
+          return e.value.toLowerCase().includes(lastText.toLowerCase());
+        }) || []),
+      ];
+    } else {
+      this.filteredOptions = this.options || [];
+    }
+  }
+
+  backspaceHandler(event: KeyboardEvent) {
+    if (this.multiple == false) {
+      return;
+    }
+
+    event.preventDefault();
+    const values = this.value?.split(',');
+    values?.splice(-1, 1);
+    this.value = values?.join(',');
+
+    this.options?.forEach((e) => {
+      if (this.value?.includes(e.value)) {
+        e.selected = true;
+      } else {
+        e.selected = false;
+      }
     });
   }
 
-  getOptions() {
-    return this.options?.filter((e) =>
-      e.value.toLowerCase().includes(this.value.toLowerCase())
-    );
+  enterHandler(event: KeyboardEvent) {
+    const option = this.filteredOptions[0];
+    this.selectOption(option);
   }
 
-  handleKeyPress(event: KeyboardEvent) {
-    if (event.key === 'Tab') {
-      const option = this.getOptions()?.pop();
-      if (option) {
-        this.setOption(option);
-      }
+  keydownHandler(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.enterHandler(event);
+    } else if (event.key === 'Backspace') {
+      this.backspaceHandler(event);
     }
+  }
+
+  selectOption(option: SelectOption) {
+    if (this.multiple === false) {
+      this.options?.forEach((e) => (e.selected = false));
+    }
+    const found = this.options?.find((e) => e.value === option.value);
+    if (found) {
+      found.selected = !found.selected;
+    }
+    this.value =
+      this.options
+        ?.filter((e) => e.selected)
+        .map((e) => e.value)
+        .join(',') + ',';
+
+    this.filteredOptions = [...(this.options || [])];
+    this.emit();
+  }
+
+  override emit(): void {
+    this.inputEvent.emit(this.options?.filter((e) => e.selected));
   }
 }

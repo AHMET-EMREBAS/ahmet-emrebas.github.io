@@ -1,3 +1,5 @@
+@use '../colors' as colors;
+
 $_iconFontPath: '../../assets/fonts';
 
 @font-face {
@@ -21,4 +23,10 @@ $_iconFontPath: '../../assets/fonts';
 
 .icon.fill {
   font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+}
+
+@each $colorName in colors.$colorNames {
+  .icon.#{$colorName} {
+    color: var(--#{$colorName});
+  }
 }

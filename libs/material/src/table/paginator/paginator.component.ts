@@ -2,12 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MicroModule } from '../../micro/micro.module';
 import { ButtonModule } from '../../button';
 import { SelectOption } from '../../api';
-import { SimpleSelectComponent } from '../../form/simple-select/simple-select.component';
 
 @Component({
   selector: 'tb-paginator',
   standalone: true,
-  imports: [MicroModule, ButtonModule, SimpleSelectComponent],
+  imports: [MicroModule, ButtonModule],
   template: `
     <div class="flex row justify-space-between align-center gap-4em p-1em">
       <span>Showing {{ pageLength }} of {{ itemCount }} items</span>

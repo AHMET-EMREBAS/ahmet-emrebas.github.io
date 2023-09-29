@@ -1,0 +1,10 @@
+.chip {
+  padding: 1em;
+  background-color: var(--primary);
+  color: var(--primary-face);
+  border-radius: 2em;
+}
+
+.small.chip {
+  font-size: 0.6em;
+}
