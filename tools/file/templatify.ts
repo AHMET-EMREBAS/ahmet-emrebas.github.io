@@ -3,27 +3,32 @@
  * Add .template extention to all files under the provided directory.
  */
 import { cwd } from 'process';
-import { forEachFile, input, isIn, required } from '../utils';
-import { readdirSync, renameSync } from 'fs';
+import {
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+} from 'fs';
 import { join } from 'path';
+import { names } from '@nx/devkit';
+import { forEachFile } from '../utils/for-each-file';
 
-const generatorName = required(input(1), 'Project name');
+const NAMES = names('product');
 
-const WORKING_DIR = join(cwd(), 'libs/gen/src/generators');
+const WORKING_DIR = join(cwd(), 'templates', NAMES.fileName);
+const TARGET_DIR = join(cwd(), 'templates', '__fileName__');
 
-const generatorsList = readdirSync(WORKING_DIR);
+const dirs = readdirSync(WORKING_DIR);
 
-required(isIn(generatorName, generatorsList), 'Generator');
+forEachFile(WORKING_DIR, (filePath: string) => {
+  const fileContent = readFileSync(filePath).toString();
+  const newContent = fileContent
+    .replace(/Product/g, '<%- className %>')
+    .replace(/product/g, '<%- fileName %>')
+    .replace(/PRODUCT/g, '<%- constantName %>')
 
-const generatorPath = join(WORKING_DIR, generatorName, 'files');
+  const newTargetDir = filePath.replace(/product/g, '__fileName__') + '.template';
 
-const templateFiles = readdirSync(generatorPath);
-
-console.log(templateFiles);
-
-forEachFile(generatorPath, (filePath) => {
-  console.log(filePath);
-  if (!filePath.endsWith('.template')) {
-    renameSync(filePath, filePath + '.template');
-  }
+  writeFileSync(newTargetDir, newContent);
 });

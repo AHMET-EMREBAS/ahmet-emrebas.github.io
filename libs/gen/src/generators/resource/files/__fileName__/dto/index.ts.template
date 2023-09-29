@@ -1,0 +1,6 @@
+export * from './create-<%- fileName %>.dto';
+export * from './create-<%- fileName %>.input';
+export * from './update-<%- fileName %>.input';
+export * from './update-<%- fileName %>.dto';
+export * from './query-<%- fileName %>.dto';
+export * from './query-<%- fileName %>.input';

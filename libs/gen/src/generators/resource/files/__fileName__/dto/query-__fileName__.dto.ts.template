@@ -1,0 +1,20 @@
+import {
+  Dto,
+  Property,
+  QueryDto,
+  QueryInterface,
+  QueryStringTransformer,
+} from '@techbir/core';
+
+import { <%- fileName %>Searchables } from '../<%- fileName %>.searchables';
+import { <%- fileName %>Orderables } from '../<%- fileName %>.orderables';
+
+@Dto()
+export class Query<%- className %>Dto extends QueryDto implements QueryInterface {
+  @Property({ type: 'string', maxLength: 30, nullable: true })
+  @QueryStringTransformer(<%- fileName %>Searchables())
+  query: any;
+
+  @Property({ type: 'string', enum: <%- fileName %>Orderables(), nullable: true })
+  orderBy = 'id';
+}

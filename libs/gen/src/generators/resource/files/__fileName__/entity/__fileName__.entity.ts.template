@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity } from '@techbir/core';
 
 @Entity()
-export class Product extends BaseEntity {
+export class <%- className %> extends BaseEntity {
   @Column({ type: 'string', unique: true }) name: string;
 }

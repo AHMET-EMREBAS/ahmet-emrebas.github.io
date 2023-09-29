@@ -1,0 +1,73 @@
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+
+import { Repository } from 'typeorm';
+import { <%- className %>, <%- className %>Object } from './entity';
+import { Create<%- className %>Input, Query<%- className %>Input } from './dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import {
+  publish<%- className %>Delete,
+  publish<%- className %>Save,
+  publish<%- className %>Update,
+  subscribe<%- className %>Delete,
+  subscribe<%- className %>Save,
+  subscribe<%- className %>Update,
+} from './<%- fileName %>.pub';
+import { ValidationPipe } from '@techbir/core';
+
+@Resolver(() => <%- className %>Object)
+export class <%- className %>Resolver {
+  constructor(
+    @InjectRepository(<%- className %>) private readonly repo: Repository<<%- className %>>
+  ) {}
+
+  @Query(() => [<%- className %>Object])
+  find<%- className %>s(@Args('query', ValidationPipe()) query: Query<%- className %>Input) {
+    return this.repo.find(query);
+  }
+
+  @Query(() => <%- className %>Object)
+  find<%- className %>sById(@Args('id') id: number) {
+    return this.repo.findOneBy({ id });
+  }
+
+  @Mutation(() => <%- className %>Object)
+  async create<%- className %>(
+    @Args('body', ValidationPipe()) body: Create<%- className %>Input
+  ) {
+    const saved = await this.repo.save(body);
+    publish<%- className %>Save(saved);
+    return saved;
+  }
+
+  @Mutation(() => <%- className %>Object)
+  async update<%- className %>(
+    @Args('id') id: number,
+    @Args('body', ValidationPipe()) body: Create<%- className %>Input
+  ) {
+    const updated = await this.repo.update(id, body);
+    publish<%- className %>Update(updated.raw);
+    return updated;
+  }
+
+  @Mutation(() => <%- className %>Object)
+  async delete<%- className %>(@Args('id') id: number) {
+    const deleted = await this.repo.delete(id);
+    publish<%- className %>Delete(deleted.raw);
+    return deleted.raw;
+  }
+
+  @Subscription(() => <%- className %>Object)
+  <%- fileName %>SaveEvent() {
+    return subscribe<%- className %>Save();
+  }
+
+  @Subscription(() => <%- className %>Object)
+  <%- fileName %>DeleteEvent() {
+    return subscribe<%- className %>Delete();
+  }
+
+  @Subscription(() => <%- className %>Object)
+  <%- fileName %>UpdateEvent() {
+    return subscribe<%- className %>Update();
+  }
+}

@@ -1,0 +1,62 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { <%- className %> } from './entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Create<%- className %>Dto, Query<%- className %>Dto, Update<%- className %>Dto } from './dto';
+import {
+  publish<%- className %>Delete,
+  publish<%- className %>Save,
+  publish<%- className %>Update,
+} from './<%- fileName %>.pub';
+import { ValidationPipe } from '@techbir/core';
+
+@Controller()
+export class <%- className %>Controller {
+  constructor(
+    @InjectRepository(<%- className %>) private readonly repo: Repository<<%- className %>>
+  ) {}
+
+  @Get('<%- fileName %>s')
+  find<%- className %>s(@Query(ValidationPipe()) options: Query<%- className %>Dto) {
+    return this.repo.find(options);
+  }
+
+  @Get('<%- fileName %>/:id')
+  find<%- className %>ById(@Param('id', ParseIntPipe) id: number) {
+    return this.repo.findOneBy({ id });
+  }
+
+  @Post('<%- fileName %>')
+  async create<%- className %>(@Body(ValidationPipe()) body: Create<%- className %>Dto) {
+    const saved = await this.repo.save(body);
+    publish<%- className %>Save(saved);
+    return saved;
+  }
+
+  @Put('<%- fileName %>/:id')
+  async update<%- className %>(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(ValidationPipe()) body: Update<%- className %>Dto
+  ) {
+    const updated = await this.repo.update(id, body);
+    publish<%- className %>Update(updated.raw);
+    return updated;
+  }
+
+  @Delete('<%- fileName %>/:id')
+  async delete<%- className %>(@Param('id', ParseIntPipe) id: number) {
+    const deleted = await this.repo.delete(id);
+    publish<%- className %>Delete(deleted.raw);
+    return deleted;
+  }
+}
