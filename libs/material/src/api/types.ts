@@ -15,6 +15,16 @@ export type BadgePosition =
   | 'bottom-left'
   | 'bottom-right';
 
+export type SortEvent = {
+  direction?: 'asc' | 'desc';
+  property?: string;
+};
+
+export type PageEvent = {
+  pageLength: number;
+  page: number;
+};
+
 export type SelectOption = {
   id?: string;
   icon?: Icon;
