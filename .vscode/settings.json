@@ -13,6 +13,6 @@
   ],
   "yaml.schemas": {
     "./schemas/index.schema.json": ["/projects/*/project.yaml"],
-    "./schemas/models/index.schema.json": ["/projects/*/models/*.yaml"]
+    "./schemas/models/index.schema.json": ["/projects/models/*.yaml"]
   }
 }

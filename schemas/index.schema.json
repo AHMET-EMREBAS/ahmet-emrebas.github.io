@@ -6,11 +6,12 @@
         "models": {
             "type": "array",
             "items": {
-                "$ref": "./models/index.schema.json"
-            }
+                "$ref": "./model-names/index.schema.json"
+            },
+            "uniqueItems": true
         }
     },
     "required": [
-        "properties"
+        "models"
     ]
 }

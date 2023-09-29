@@ -3,56 +3,34 @@
     "$id": "DatabaseModel",
     "title": "DatabaseModel",
     "properties": {
-        "properties": {
-            "patternProperties": {
-                "^[a-zAZ-]{1,}$": {
-                    "$ref": "../properties/index.schema.json"
-                }
-            },
-            "propertyNames": {
+        "unique": {
+            "type": "array",
+            "default": "name",
+            "items": {
                 "$ref": "../property-names/index.schema.json"
-            }
-        }
-    },
-    "definitions": {
-        "string": {
-            "properties": {
-                "type": {
-                    "const": "string"
-                },
-                "minLength": {
-                    "type": "integer"
-                },
-                "maxLength": {
-                    "type": "integer"
-                }
+            },
+            "uniqueItems": true
+        },
+        "required": {
+            "type": "array",
+            "items": {
+                "$ref": "../property-names/index.schema.json"
+            },
+            "uniqueItems": true,
+            "default": [
+                "name"
+            ]
+        },
+        "properties": {
+            "type": "array",
+            "items": {
+                "$ref": "../properties/index.schema.json"
             }
         },
-        "number": {
-            "properties": {
-                "type": {
-                    "const": "number"
-                },
-                "maximum": {
-                    "type": "number"
-                },
-                "minimum": {
-                    "type": "number"
-                }
-            }
-        },
-        "date": {
-            "properties": {
-                "type": {
-                    "const": "Date"
-                }
-            }
-        },
-        "boolean": {
-            "properties": {
-                "type": {
-                    "const": "boolean"
-                }
+        "relations": {
+            "type": "array",
+            "items": {
+                "$ref": "../relations/index.schema.json"
             }
         }
     }

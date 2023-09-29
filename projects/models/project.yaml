@@ -1,0 +1,15 @@
+properties:
+  - name: name
+    type: string
+    ui:
+      type: text
+
+    validations:
+      minLength: 3
+      maxLength: 30
+
+unique:
+  - name
+
+required:
+  - name
