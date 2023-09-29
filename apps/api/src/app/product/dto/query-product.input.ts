@@ -1,11 +1,15 @@
-import { QueryDto, QueryInterface } from '@techbir/core';
+import { Field, InputType } from '@nestjs/graphql';
+import { QueryInput, QueryInterface } from '@techbir/core';
 import { Exclude, Expose, Transform } from 'class-transformer';
 import { IsIn, IsOptional } from 'class-validator';
 import { ILike } from 'typeorm';
 
+@InputType()
 @Exclude()
-export class QueryProductDto extends QueryDto implements QueryInterface {
+export class QueryProductInput extends QueryInput implements QueryInterface {
   @Expose()
+  @Field(() => String, { nullable: true })
+  @IsOptional()
   @Transform(({ value }) => {
     if (value) {
       return {
@@ -14,11 +18,11 @@ export class QueryProductDto extends QueryDto implements QueryInterface {
     }
     return undefined;
   })
-  @IsOptional()
   query: any;
 
   @Expose()
-  @IsIn(['name', 'id'])
+  @Field(() => String, { nullable: true })
   @IsOptional()
-  orderBy = 'id';
+  @IsIn(['name', 'id'])
+  orderBy: string;
 }

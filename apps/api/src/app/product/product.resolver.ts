@@ -1,9 +1,18 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Product } from './entity/product.entity';
-import { FindManyOptions, Repository } from 'typeorm';
-import { ProductObject } from './entity';
-import { CreateProductInput, QueryProductArg } from './dto';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+
+import { Repository } from 'typeorm';
+import { Product, ProductObject } from './entity';
+import { CreateProductInput, QueryProductInput } from './dto';
 import { InjectRepository } from '@nestjs/typeorm';
+import {
+  publishProductDelete,
+  publishProductSave,
+  publishProductUpdate,
+  subscribeProductDelete,
+  subscribeProductSave,
+  subscribeProductUpdate,
+} from './product.pub';
+import { ValidationPipe } from '@techbir/core';
 
 @Resolver(() => ProductObject)
 export class ProductResolver {
@@ -12,12 +21,52 @@ export class ProductResolver {
   ) {}
 
   @Query(() => [ProductObject])
-  products(@Args('query') query: QueryProductArg) {
+  findProducts(@Args('query', ValidationPipe()) query: QueryProductInput) {
+    console.log(query);
     return this.repo.find(query);
   }
 
+  @Query(() => ProductObject)
+  findProductsById(@Args('id') id: number) {
+    return this.repo.findOneBy({ id });
+  }
+
   @Mutation(() => ProductObject)
-  createProduct(@Args('body') body: CreateProductInput) {
-    return this.repo.save(body);
+  async createProduct(@Args('body', ValidationPipe()) body: CreateProductInput) {
+    const saved = await this.repo.save(body);
+    publishProductSave(saved);
+    return saved;
+  }
+
+  @Mutation(() => ProductObject)
+  async updateProduct(
+    @Args('id') id: number,
+    @Args('body', ValidationPipe()) body: CreateProductInput
+  ) {
+    const updated = await this.repo.update(id, body);
+    publishProductUpdate(updated.raw);
+    return updated;
+  }
+
+  @Mutation(() => ProductObject)
+  async deleteProduct(@Args('id') id: number) {
+    const deleted = await this.repo.delete(id);
+    publishProductDelete(deleted.raw);
+    return deleted.raw;
+  }
+
+  @Subscription(() => ProductObject)
+  productSaveEvent() {
+    return subscribeProductSave();
+  }
+
+  @Subscription(() => ProductObject)
+  productDeleteEvent() {
+    return subscribeProductDelete();
+  }
+
+  @Subscription(() => ProductObject)
+  productUpdateEvent() {
+    return subscribeProductUpdate();
   }
 }
