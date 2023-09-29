@@ -102,7 +102,9 @@
         "assets": [
           "libs/material/src/assets",
           "libs/material/src/theme",
-          "libs/material/src/favicon.svg"
+          "libs/material/src/favicon.svg",
+          "libs/material/src/sitemap.xml",
+          "libs/material/src/googleb1a3583d7c6a5dce.html"
         ],
         "styles": [
           "libs/material/src/style.scss"
