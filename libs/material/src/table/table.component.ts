@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MicroModule } from '../micro/micro.module';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { PageEvent, SortEvent } from '../api';
 
 @Component({
   selector: 'tb-table',
@@ -15,17 +16,30 @@ import { PaginatorComponent } from './paginator/paginator.component';
       </thead>
 
       <tbody class="table-body">
-        <tr *ngFor="let item of data" class="table-body-row">
+        <tr
+          *ngFor="let item of data"
+          class="table-body-row"
+          (click)="emitRowClick(data)"
+        >
           <td *ngFor="let col of columns">{{ item[col] }}</td>
         </tr>
       </tbody>
     </table>
-    <tb-paginator></tb-paginator>
+    <tb-paginator
+      [itemCount]="itemCount"
+      (pageEvent)="emitPageEvent($event)"
+    ></tb-paginator>
   `,
   styles: [],
 })
 export class TableComponent {
+  @Input() itemCount = 100;
+
   @Output() sortEvent = new EventEmitter();
+  @Output() pageEvent = new EventEmitter();
+  @Output() searchEvent = new EventEmitter();
+  @Output() rowClickEvent = new EventEmitter();
+
   @Input() columns: string[] = ['id', 'name'];
   @Input() visibleColumns: string[] = ['id', 'name'];
   @Input() data: Record<string, any>[] = [
@@ -42,9 +56,22 @@ export class TableComponent {
     { id: 11, name: 'Orange' },
     { id: 12, name: 'Orange' },
   ];
+
   filteredData = this.data;
 
   sort(col: string) {
-    this.sortEvent.emit(col);
+    //
+  }
+
+  emitSortEvent(event: SortEvent) {
+    this.sortEvent.emit(event);
+  }
+
+  emitPageEvent(event: PageEvent) {
+    this.pageEvent.emit(event);
+  }
+
+  emitRowClick(rowData: any) {
+    this.rowClickEvent.emit(rowData);
   }
 }

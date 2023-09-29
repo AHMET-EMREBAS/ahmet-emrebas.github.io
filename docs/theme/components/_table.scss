@@ -1,0 +1,33 @@
+
+
+.table {
+  width: 100%;
+  font-size: 1em;
+  font-family: var(--font-family);
+  border-collapse: collapse;
+  --color: var(--primary);
+}
+.table-header-row,
+.table-body-row {
+  font-size: 1em;
+  border: none;
+  height: 3em;
+  border-bottom: 1px solid var(--color) !important;
+
+  & th {
+    text-transform: capitalize;
+  }
+
+  text-align: left;
+  & th,
+  & td {
+    padding-left: 1em;
+  }
+}
+
+tr,
+td,
+th {
+  border: none !important;
+  outline: none !important;
+}
