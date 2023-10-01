@@ -10,13 +10,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 import { join } from 'path';
-import {
-  ProductModule,
-  PriceModule,
-  QuantityModule,
-  FeatureModule,
-  StoreModule,
-} from '@techbir/resources';
+import { ProductModule } from '@techbir/resources';
 
 @Module({
   imports: [
@@ -41,10 +35,6 @@ import {
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     ProductModule,
-    PriceModule,
-    QuantityModule,
-    FeatureModule,
-    StoreModule,
   ],
   controllers: [AppController],
   providers: [AppService],

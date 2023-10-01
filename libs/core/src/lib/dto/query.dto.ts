@@ -1,31 +1,68 @@
-import { Transform } from 'class-transformer';
-import { Dto } from '../entities';
+import { InputType } from '@nestjs/graphql';
 import { Property } from '../property';
+import { FindOptionsWhere } from 'typeorm';
+import { ILikeTransformer } from '../transformer';
+import { Expose, Transform } from 'class-transformer';
+// import { ParseBooleanTransformer, ParseIntTransformer } from '../transformers';
 
-@Dto()
+@InputType({ isAbstract: true })
 export class QueryDto {
-  @Property({ type: 'integer', defaultValue: 20, nullable: true, minimum: 1 })
-  take = 20;
+  /**
+   * Offset (paginated) where from entities should be taken.
+   */
 
-  @Property({ type: 'integer', defaultValue: 0, nullable: true, minimum: 1 })
-  skip = 0;
+  @Property({ name: 'skip', type: 'number', minimum: 0, defaultValue: 0 })
+  skip?: number;
+
+  /**
+   * Limit (paginated) - max number of entities should be taken.
+   */
+  @Property({
+    name: 'take',
+    type: 'number',
+    maximum: 100,
+    minimum: 0,
+    defaultValue: 20,
+  })
+  take?: number;
 
   @Property({
+    name: 'select',
     type: 'string',
-    enum: ['asc', 'desc'],
-    nullable: true,
-    defaultValue: 'asc',
+    isArray: true,
+    minLength: 1,
+    maxLength: 30,
   })
-  orderDir?: 'asc' | 'desc' = 'asc';
+  select?: string[];
 
-  @Property({ type: 'string', nullable: true })
+  /**
+   * Order, in which entities should be ordered.
+   */
+  @Property({ name: 'orderBy', type: 'string' })
+  orderBy?: string;
+
+  @Property({ name: 'orderDir', type: 'string' })
+  orderDir?: 'ASC' | 'DESC' | '-1' | '1';
+
   @Transform(({ obj }) => {
     if (obj.orderBy && obj.orderDir) {
-      return {
-        [obj.orderBy]: obj.orderDir,
-      };
+      return { [obj.orderBy]: obj.orderDir };
+    } else {
+      return undefined;
     }
-    return undefined;
   })
-  order?: any;
+  @Expose()
+  order?: Record<string, string>;
+
+  @Property({ name: 'withDeleted', type: 'boolean' })
+  withDeleted?: boolean;
+
+  @Property({ name: 'search', type: 'string' })
+  search?: string;
+
+  @Property({ name: 'before', type: 'string' })
+  before?: string;
+
+  @Property({ name: 'after', type: 'string' })
+  after?: string;
 }

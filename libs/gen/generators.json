@@ -9,6 +9,11 @@
       "factory": "./src/generators/entity/generator",
       "schema": "./src/generators/entity/schema.json",
       "description": "entity generator"
+    },
+    "graph": {
+      "factory": "./src/generators/graph/generator",
+      "schema": "./src/generators/graph/schema.json",
+      "description": "graph generator"
     }
   }
 }

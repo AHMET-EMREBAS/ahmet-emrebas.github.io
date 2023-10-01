@@ -4,13 +4,13 @@ import { Field } from '../property';
 
 @Input()
 export class QueryInput {
-  @Field({ type: 'integer', nullable: true, defaultValue: 20 })
+  @Field({ name: 'take', type: 'number', defaultValue: 20 })
   take = 20;
 
-  @Field({ type: 'integer', nullable: true, defaultValue: 0 })
+  @Field({ name: 'skip', type: 'number', defaultValue: 0 })
   skip = 0;
 
-  @Field({ type: 'string', nullable: true })
+  @Field({ name: 'order', type: 'string' })
   @Transform(({ obj }) => {
     if (obj.orderBy && obj.orderDir) {
       return {
@@ -21,6 +21,6 @@ export class QueryInput {
   })
   order?: any;
 
-  @Field({ type: 'string', enum: ['asc', 'desc'], nullable: true })
+  @Field({ name: 'orderDir', type: 'string', enum: ['asc', 'desc'] })
   orderDir?: 'asc' | 'desc' = 'asc';
 }

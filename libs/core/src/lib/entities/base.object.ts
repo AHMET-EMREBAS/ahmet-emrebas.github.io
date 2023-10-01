@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType({ isAbstract: true })
-export class BaseObject {
+export class BaseInput {
   @Field(() => Number, { nullable: true }) id?: number;
   @Field(() => Date, { nullable: true }) updatedAt?: Date;
   @Field(() => Date, { nullable: true }) deletedAt?: Date;

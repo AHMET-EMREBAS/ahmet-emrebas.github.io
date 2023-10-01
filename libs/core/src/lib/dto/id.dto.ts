@@ -3,6 +3,6 @@ import { Dto } from '../entities';
 
 @Dto()
 export class IDDto {
-  @Property({ type: 'number' })
+  @Property({ name: 'id', type: 'number' })
   id?: number;
 }

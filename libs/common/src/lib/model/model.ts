@@ -1,3 +1,5 @@
+import { ClassConstructor } from '@techbir/utils';
+
 export class PropertyTypeClass {
   readonly string = 'string';
   readonly number = 'number';
@@ -63,6 +65,7 @@ export class StringProperty<
   minLength?: number;
   maxLength?: number;
   format?: StringFormat;
+  enum?: string[];
 }
 
 export class NumberProperty extends CommonProperty<number> {
@@ -79,9 +82,9 @@ export class DateProperty extends CommonProperty {
   override readonly type = 'Date';
 }
 
-export class ObjectProperty<ObjectType = string> extends CommonProperty<
-  Record<string, any>
-> {
+export class ObjectProperty<
+  ObjectType = ClassConstructor<any>
+> extends CommonProperty<Record<string, any>> {
   override readonly type = 'object';
   objectType?: ObjectType;
 }

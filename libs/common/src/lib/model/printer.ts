@@ -52,12 +52,10 @@ export class PropertyPrinter {
         }
       } else if (this.modelVariant === 'graphql') {
         if (RelationTypeClass.isType(type as RelationType)) {
-          return `@Field(${options},${
-            (this.property as RelationOptions).target
-          })`;
+          return `@Field(${options})`;
         } else {
           if (this.property.type === 'object') {
-            return `@Field(${options}, ${this.property.objectType})`;
+            return `@Field(${options})`;
           }
           return `@Field(${options})`;
         }

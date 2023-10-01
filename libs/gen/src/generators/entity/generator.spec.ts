@@ -6,14 +6,13 @@ import { EntityGeneratorSchema } from './schema';
 
 describe('entity generator', () => {
   let tree: Tree;
-  const options: EntityGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
   });
 
   it('should run successfully', async () => {
-    await entityGenerator(tree, options);
+    await entityGenerator(tree);
     const config = readProjectConfiguration(tree, 'test');
     expect(config).toBeDefined();
   });
