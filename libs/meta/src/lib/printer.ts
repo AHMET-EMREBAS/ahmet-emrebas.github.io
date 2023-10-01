@@ -20,9 +20,18 @@ export class PropertyPrinter {
     if (this.modelType === 'object') {
       return '';
     }
-    return this.property.type === 'object'
-      ? this.property.objectType
-      : this.property.type;
+
+    if (this.property.type === 'object') {
+      if (this.property.isArray) {
+        return `${this.property.objectType}[]`;
+      }
+      return `${this.property.objectType}`;
+    } else {
+      if (this.property.isArray) {
+        return `${this.property.type}[]`;
+      }
+      return `${this.property.type}`;
+    }
   }
 
   decorators() {
@@ -103,8 +112,19 @@ export class ModelPrinter {
     return '';
   }
 
+  protected imports() {
+    return Object.entries(this.model.relations || {}).map(([name, value]) => {
+      return `import { ${
+        value.target
+      } } from '../../${value.target.toLowerCase()}';`;
+    });
+  }
+
   protected properties() {
-    return Object.entries(this.model.properties || {})
+    return [
+      ...Object.entries(this.model.properties || {}),
+      ...Object.entries(this.model.relations || {}),
+    ]
       .map(([name, value]) => {
         return new PropertyPrinter(this.modelType, this.modelVariant, {
           ...value,
