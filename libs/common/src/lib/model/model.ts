@@ -106,7 +106,7 @@ export type OnDeleteUpdateType =
 
 export class RelationOptions extends Accassors {
   name!: string;
-  target!: string;
+  target!: any;
   type!: RelationType;
   join?: true;
   eager?: true;

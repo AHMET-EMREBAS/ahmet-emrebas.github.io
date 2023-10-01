@@ -26,9 +26,7 @@ export function DescriptionProperty(
   };
 }
 
-export function UpcProperty(
-  options?: Partial<StringProperty>
-): StringProperty {
+export function UpcProperty(options?: Partial<StringProperty>): StringProperty {
   return {
     name: 'upc',
     type: 'string',
@@ -46,11 +44,10 @@ export function CategoryRelation(
     name: 'category',
     target: 'Category',
     eager: true,
+    join: true,
     ...options,
   };
 }
-
-
 
 export function PriceProperty(
   options?: Partial<NumberProperty>

@@ -5,7 +5,7 @@ import {
   RelationType,
   RelationTypeClass,
 } from './model';
-import { names, uniq } from '@techbir/utils';
+import { names, stringify, uniq } from '@techbir/utils';
 export type ModelVariant = 'dto' | 'entity' | 'graphql' | 'regular';
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
@@ -26,17 +26,20 @@ export class PropertyPrinter {
         return `${this.property.objectType}[]`;
       }
       return `${this.property.objectType}`;
-    } else {
-      if (this.property.isArray) {
-        return `${this.property.type}[]`;
+    } else if (RelationTypeClass.isType(this.property.type as RelationType)) {
+      if (this.property.type.endsWith('Many')) {
+        return `${(this.property as RelationOptions).target}[]`;
+      } else {
+        return `${(this.property as RelationOptions).target}`;
       }
+    } else {
       return `${this.property.type}`;
     }
   }
 
-  decorators() {
+  protected decorators() {
     const { type } = this.property;
-    const options = JSON.stringify(this.property);
+    const options = stringify(this.property);
 
     if (this.modelType === 'class') {
       if (this.modelVariant === 'dto') {
@@ -159,7 +162,7 @@ export class ModelPrinter {
 
     const secondaryImports = uniq(
       Object.entries(this.model.relations || {}).map(([name, value]) => {
-        return `import { ${value.target} } from '../../${
+        return `import { ${value.target} } from './../${
           names(value.target).fileName
         }';`;
       })

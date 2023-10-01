@@ -1,5 +1,5 @@
-import { Constructor, RelationOptions } from '@techbir/common';
-import { propertyDecorators } from '@techbir/utils';
+import { RelationOptions } from '@techbir/common';
+import { ClassConstructor, propertyDecorators } from '@techbir/utils';
 import {
   JoinColumn,
   JoinTable,
@@ -11,7 +11,7 @@ import {
 
 export function Relation({ type, target, join, ...rest }: RelationOptions) {
   const ds = [];
-  const __target = () => target as Constructor<any>;
+  const __target = () => target as ClassConstructor<any>;
   const __id = (t: any) => t.id;
 
   if (type === 'ManyToMany') {
