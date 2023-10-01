@@ -1,8 +1,18 @@
-import { Model, Property, Relation } from './types';
+import {
+  Model,
+  Property,
+  Relation,
+  RelationType,
+  RelationTypeClass,
+} from './types';
+
+export type ModelVariant = 'dto' | 'entity' | 'regular';
+export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
 export class PropertyPrinter {
   constructor(
     private readonly modelType: ModelType,
+    private readonly modelVariant: ModelVariant,
     private readonly property: Property | Relation
   ) {}
 
@@ -13,6 +23,24 @@ export class PropertyPrinter {
     return this.property.type === 'object'
       ? this.property.objectType
       : this.property.type;
+  }
+
+  decorators() {
+    const { type } = this.property;
+    const options = JSON.stringify(this.property);
+
+    if (this.modelType === 'class') {
+      if (this.modelVariant === 'dto') {
+        return `@Property(${options})\n`;
+      } else if (this.modelVariant === 'entity') {
+        if (RelationTypeClass.isType(type as RelationType)) {
+          return `@Relation(${options})`;
+        } else {
+          return `@Column(${options})\n`;
+        }
+      }
+    }
+    return '';
   }
 
   protected accessors() {
@@ -56,15 +84,14 @@ export class PropertyPrinter {
 
   print() {
     const { name } = this.property;
-    return `${this.accessors()}${name}${this.required()}${this.type()}${this.defaultValue()}`;
+    return `${this.decorators()}${this.accessors()}${name}${this.required()}${this.type()}${this.defaultValue()}`;
   }
 }
-
-export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
 export class ModelPrinter {
   constructor(
     private readonly modelType: ModelType,
+    private readonly modelVariant: ModelVariant,
     private readonly model: Model
   ) {}
 
@@ -79,19 +106,27 @@ export class ModelPrinter {
   protected properties() {
     return Object.entries(this.model.properties || {})
       .map(([name, value]) => {
-        return new PropertyPrinter(this.modelType, { ...value, name });
+        return new PropertyPrinter(this.modelType, this.modelVariant, {
+          ...value,
+          name,
+        });
       })
       .map((e) => e.print())
       .join('\n');
   }
 
-  print() {
-    return ` 
-    export ${this.type} { 
-        
-        ${this.properties()}
-
+  protected decorators() {
+    if (this.modelType === 'class') {
+      if (this.modelVariant === 'entity') {
+        return `@Entity()`;
+      } else if (this.modelVariant === 'dto') {
+        return '@Dto()';
+      }
     }
-    `;
+    return '';
+  }
+
+  print() {
+    return `${this.decorators()}\nexport ${this.type} {\n${this.properties()}}`;
   }
 }

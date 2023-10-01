@@ -1,4 +1,27 @@
-export type PropertyType = 'string' | 'number' | 'boolean' | 'Date' | 'object';
+export class PropertyTypeClass {
+  readonly string = 'string';
+  readonly number = 'number';
+  readonly boolean = 'boolean';
+  readonly Date = 'Date';
+  readonly object = 'object';
+
+  static isType(type: keyof PropertyTypeClass) {
+    return new PropertyTypeClass()[type];
+  }
+}
+
+export class RelationTypeClass {
+  readonly ManyToMany = 'ManyToMany';
+  readonly OneToMany = 'OneToMany';
+  readonly OneToOne = 'OneToOne';
+  readonly ManyToOne = 'ManyToOne';
+  static isType(type: keyof RelationTypeClass) {
+    return new RelationTypeClass()[type];
+  }
+}
+export type RelationType = keyof RelationTypeClass;
+
+export type PropertyType = keyof PropertyTypeClass;
 
 export type TransformOptions = { object: any; value: any };
 export type TransformFn = (options: TransformOptions) => any;
@@ -69,12 +92,6 @@ export type Property =
   | DateProperty
   | ObjectProperty;
 
-export type RelationType =
-  | 'ManyToMany'
-  | 'OneToMany'
-  | 'OneToOne'
-  | 'ManyToOne';
-
 export type CascadeType =
   | boolean
   | ('insert' | 'update' | 'remove' | 'soft-remove' | 'recover')[];
@@ -94,6 +111,7 @@ export class Relation extends Accassors {
   eager?: true;
   required?: true;
   defaultValue?: any;
+  isArray?: true;
   cascade?: CascadeType;
   onDelete?: OnDeleteUpdateType;
   onUpdate?: OnDeleteUpdateType;
