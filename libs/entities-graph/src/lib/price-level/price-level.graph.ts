@@ -1,5 +1,5 @@
-import { Field, Input, BaseInput } from '@techbir/core';
-@Input()
+import { Field, ObjectType, BaseInput } from '@techbir/core';
+@ObjectType()
 export class PriceLevel extends BaseInput {
   @Field({
     name: 'name',

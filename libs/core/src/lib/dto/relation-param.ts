@@ -1,12 +1,12 @@
-import { Property } from '../property';
-import { InputType } from '@nestjs/graphql';
+import { Input } from '../entities';
+import { Field } from '../property';
 
-@InputType()
+@Input()
 export class RelationUnsetParam {
-  @Property({ name: 'id', type: 'number' })
+  @Field({ name: 'id', type: 'number' })
   id!: number;
 
-  @Property({
+  @Field({
     name: 'relationName',
     type: 'string',
     minLength: 1,
@@ -15,8 +15,8 @@ export class RelationUnsetParam {
   relationName!: string;
 }
 
-@InputType()
+@Input()
 export class RelationParam extends RelationUnsetParam {
-  @Property({ name: 'relationId', type: 'number' })
+  @Field({ name: 'relationId', type: 'number' })
   relationId!: number;
 }

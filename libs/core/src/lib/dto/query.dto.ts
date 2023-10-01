@@ -1,9 +1,6 @@
 import { InputType } from '@nestjs/graphql';
 import { Property } from '../property';
-import { FindOptionsWhere } from 'typeorm';
-import { ILikeTransformer } from '../transformer';
 import { Expose, Transform } from 'class-transformer';
-// import { ParseBooleanTransformer, ParseIntTransformer } from '../transformers';
 
 @InputType({ isAbstract: true })
 export class QueryDto {

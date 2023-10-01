@@ -1,7 +1,7 @@
-import { Field, Input, BaseInput } from '@techbir/core';
+import { Field, ObjectType, BaseInput } from '@techbir/core';
 import { Product } from './../product';
 import { PriceLevel } from './../price-level';
-@Input()
+@ObjectType()
 export class Price extends BaseInput {
   @Field({
     name: 'price',
@@ -28,7 +28,6 @@ export class Price extends BaseInput {
     target: Product,
   })
   product?: Product;
-  
   @Field({
     type: 'ManyToOne',
     onDelete: 'CASCADE',

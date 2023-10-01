@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ProductModule } from '@techbir/resources';
+import { AppGraphModule } from './app-graph.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { ProductModule } from '@techbir/resources';
       synchronize: true,
       dropSchema: true,
     }),
-  
+    AppGraphModule,
     ProductModule,
   ],
   controllers: [AppController],

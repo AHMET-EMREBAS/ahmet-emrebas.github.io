@@ -154,7 +154,7 @@ export class ModelPrinter {
       } else if (this.modelVariant === 'entity') {
         primaryImports = `import { Entity, Column, Relation, BaseEntity } from '${this.corePackage}';`;
       } else if (this.modelVariant === 'graphql') {
-        primaryImports = `import { Field, Input, BaseInput } from '${this.corePackage}';`;
+        primaryImports = `import { Field, ObjectType, BaseInput } from '${this.corePackage}';`;
       }
     }
 
@@ -191,7 +191,7 @@ export class ModelPrinter {
       } else if (this.modelVariant === 'dto') {
         return '@Dto()';
       } else if (this.modelVariant === 'graphql') {
-        return `@Input()`;
+        return `@ObjectType()`;
       }
     }
     return '';

@@ -1,6 +1,5 @@
-import { Field, Input, BaseInput } from '@techbir/core';
-
-@Input()
+import { Field, ObjectType, BaseInput, Input } from '@techbir/core';
+@ObjectType()
 export class Category extends BaseInput {
   @Field({
     name: 'name',
