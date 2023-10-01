@@ -1,3 +1,4 @@
+import { Constructor } from './constructor';
 import { ModelNames } from './model-names';
 import { PropertyNames } from './property-names';
 import { PropertyType } from './property-options';
@@ -38,7 +39,7 @@ export type RelationOptions = {
    * What is the target model for this relation
    * Let's say this model is product model, then target model might be category, price, quantity etc.
    */
-  target: ModelNames;
+  target: ModelNames | Constructor;
 
   /**
    * Realtion type of 'ManyToMany' | 'ManyToOne' | 'OneToOne' | 'OneToMany'

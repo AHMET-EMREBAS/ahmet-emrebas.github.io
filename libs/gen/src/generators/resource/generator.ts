@@ -2,7 +2,6 @@ import { formatFiles, generateFiles, Tree, names } from '@nx/devkit';
 
 import { ResourceGeneratorSchema } from './schema';
 import { join } from 'path';
-import { cwd } from 'process';
 
 export async function resourceGenerator(
   tree: Tree,

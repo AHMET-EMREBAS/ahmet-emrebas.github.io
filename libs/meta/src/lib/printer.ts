@@ -1,12 +1,13 @@
 import {
   Model,
+  ObjectProperty,
   Property,
   Relation,
   RelationType,
   RelationTypeClass,
 } from './types';
 import { names, uniq } from '@techbir/utils';
-export type ModelVariant = 'dto' | 'entity' | 'regular';
+export type ModelVariant = 'dto' | 'entity' | 'graphql' | 'regular';
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
 export class PropertyPrinter {
@@ -46,6 +47,15 @@ export class PropertyPrinter {
           return `@Relation(${options})`;
         } else {
           return `@Column(${options})\n`;
+        }
+      } else if (this.modelVariant === 'graphql') {
+        if (RelationTypeClass.isType(type as RelationType)) {
+          return `@Field(${options},${(this.property as Relation).target})`;
+        } else {
+          if (this.property.type === 'object') {
+            return `@Field(${options}, ${this.property.objectType})`;
+          }
+          return `@Field(${options})`;
         }
       }
     }
@@ -98,6 +108,17 @@ export class PropertyPrinter {
 }
 
 export class ModelPrinter {
+  private commonPackage = '@techbir/common';
+  private corePackage = '@techbir/core';
+
+  setCommonPackageName(pakcageName: string) {
+    this.commonPackage = pakcageName;
+  }
+
+  setCorePackageName(pakcageName: string) {
+    this.corePackage = pakcageName;
+  }
+
   constructor(
     private readonly modelType: ModelType,
     private readonly modelVariant: ModelVariant,
@@ -116,13 +137,27 @@ export class ModelPrinter {
     if (this.modelType === 'object') {
       return '';
     }
-    return uniq(
+    let primaryImports = '';
+
+    if (this.modelType === 'class') {
+      if (this.modelVariant === 'dto') {
+        primaryImports = `import { Dto, Property } form '${this.commonPackage}';`;
+      } else if (this.modelVariant === 'entity') {
+        primaryImports = `import { Entity, Column, Relation} from '${this.corePackage}';`;
+      } else if (this.modelVariant === 'graphql') {
+        primaryImports = `import { Field, Input } from '${this.corePackage}';`;
+      }
+    }
+
+    const secondaryImports = uniq(
       Object.entries(this.model.relations || {}).map(([name, value]) => {
         return `import { ${value.target} } from '../../${
           names(value.target).fileName
         }';`;
       })
     ).join('\n');
+
+    return [primaryImports, secondaryImports].join('\n');
   }
 
   protected properties() {
@@ -146,12 +181,14 @@ export class ModelPrinter {
         return `@Entity()`;
       } else if (this.modelVariant === 'dto') {
         return '@Dto()';
+      } else if (this.modelVariant === 'graphql') {
+        return `@Input()`;
       }
     }
     return '';
   }
 
   print() {
-    return `${this.imports()}${this.decorators()}\nexport ${this.type} {\n${this.properties()}}`;
+    return `${this.imports()}${this.decorators()}\nexport ${this.type()} {\n${this.properties()}}`;
   }
 }
