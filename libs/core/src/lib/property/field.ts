@@ -4,8 +4,6 @@ import { propertyDecorators } from '@techbir/utils';
 import { ClassConstructor, Expose } from 'class-transformer';
 
 export function Field(o?: PropertyOptions | RelationOptions) {
-
-  
   const fieldOptions = {
     defaultValue: o?.defaultValue,
     nullable: o?.required !== true,
@@ -31,7 +29,6 @@ export function Field(o?: PropertyOptions | RelationOptions) {
         throw new Error(`Object type must be provided for ${o.name} property`);
       }
     }
-    throw new Error('Field could not match any type!');
   }
 
   return propertyDecorators(

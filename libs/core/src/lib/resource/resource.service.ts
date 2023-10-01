@@ -40,6 +40,7 @@ export class ResourceService<T extends ObjectLiteral = any> {
   async insert(body: any) {
     await this.throwIfNotUnique(body);
     try {
+      
       const result = await this.__repo.insert(body);
       const savedId = result.identifiers[0]['id'];
 

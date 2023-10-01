@@ -30,5 +30,5 @@ export function Relation({ type, target, join, ...rest }: RelationOptions) {
   if (type === 'ManyToOne' || type === 'OneToOne')
     if (join) ds.push(JoinColumn());
 
-  return propertyDecorators();
+  return propertyDecorators(...ds);
 }

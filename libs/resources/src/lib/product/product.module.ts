@@ -8,7 +8,7 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class ProductService extends ResourceService {
   constructor(@InjectRepository(Product) repo: Repository<Product>) {
-    super(repo, []);
+    super(repo, ['name']);
   }
 }
 

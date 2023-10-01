@@ -18,14 +18,12 @@ const valiationPipe = (dto: any) => {
 };
 
 export function createController(options: ResourceClasses): any {
-  const { entity, queryDto } = options;
+  const { entity, queryDto, createDto, updateDto } = options;
   const End = new EndPointManager(options);
 
   @ApiTags(End.TAG)
   class Controller {
-    constructor(
-      private readonly __service: ResourceService<typeof entity>
-    ) {}
+    constructor(private readonly __service: ResourceService<typeof entity>) {}
 
     @End.FindAll()
     findAll(@NestQuery(valiationPipe(queryDto)) query: Partial<QueryDto>) {
@@ -40,12 +38,15 @@ export function createController(options: ResourceClasses): any {
     }
 
     @End.SaveOne()
-    async save(@Body() body: any) {
+    async save(@Body(valiationPipe(createDto)) body: any) {
       return await this.__service.insert(body);
     }
 
     @End.UpdateOne()
-    async update(@IdParam() id: number, @Body() body: any) {
+    async update(
+      @IdParam() id: number,
+      @Body(valiationPipe(updateDto)) body: any
+    ) {
       return await this.__service.update(id, body);
     }
 

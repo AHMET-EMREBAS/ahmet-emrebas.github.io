@@ -31,8 +31,8 @@ export function Validations(o?: PropertyOptions | RelationOptions) {
   }
 
   if (o?.type === 'number') {
-    if (o.minimum) push(Min(o.minimum));
-    if (o.maximum) push(Max(o.maximum));
+    if (o.minimum) push(Min(o.minimum, fo));
+    if (o.maximum) push(Max(o.maximum, fo));
   }
 
   return propertyDecorators(...decorators);

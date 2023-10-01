@@ -1,4 +1,6 @@
-import { PropertyOptions } from '@techbir/common';
+import { PropertyOptions, Validations } from '@techbir/common';
+import { propertyDecorators } from '@techbir/utils';
+import { Expose } from 'class-transformer';
 import { Column as _Column, ColumnOptions as _ColumnOptions } from 'typeorm';
 
 export type ColumnOptions = Omit<_ColumnOptions, 'type'> & {
@@ -12,5 +14,14 @@ export function Column(options?: PropertyOptions) {
   if (options?.type === 'boolean') type = 'boolean';
   if (options?.type === 'Date') type = 'date';
 
-  return _Column({ ...options, type, default: options?.defaultValue });
+  return propertyDecorators(
+    Validations(options),
+    Expose(),
+    _Column({
+      ...options,
+      type,
+      default: options?.defaultValue,
+      nullable: options?.required !== true,
+    })
+  );
 }
