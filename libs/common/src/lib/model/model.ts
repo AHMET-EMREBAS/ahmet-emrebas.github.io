@@ -67,8 +67,8 @@ export class StringProperty<
 
 export class NumberProperty extends CommonProperty<number> {
   override readonly type = 'number';
-  min?: number;
-  max?: number;
+  minimum?: number;
+  maximum?: number;
 }
 
 export class BooleanProperty extends CommonProperty<boolean> {

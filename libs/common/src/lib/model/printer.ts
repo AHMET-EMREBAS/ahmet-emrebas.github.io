@@ -1,4 +1,10 @@
-import { Model, PropertyOptions, RelationOptions, RelationType, RelationTypeClass } from './model';
+import {
+  Model,
+  PropertyOptions,
+  RelationOptions,
+  RelationType,
+  RelationTypeClass,
+} from './model';
 import { names, uniq } from '@techbir/utils';
 export type ModelVariant = 'dto' | 'entity' | 'graphql' | 'regular';
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
@@ -43,7 +49,9 @@ export class PropertyPrinter {
         }
       } else if (this.modelVariant === 'graphql') {
         if (RelationTypeClass.isType(type as RelationType)) {
-          return `@Field(${options},${(this.property as RelationOptions).target})`;
+          return `@Field(${options},${
+            (this.property as RelationOptions).target
+          })`;
         } else {
           if (this.property.type === 'object') {
             return `@Field(${options}, ${this.property.objectType})`;
@@ -119,10 +127,17 @@ export class ModelPrinter {
   ) {}
 
   protected type() {
-    const { name } = this.model;
-    if (this.modelType === 'object') return `const ${name} = `;
-    if (this.modelType === 'interface') return `interface ${name} `;
-    if (this.modelType === 'class') return `class ${name}`;
+    const NAMES = names(this.model.name);
+    if (this.modelType === 'object') return `const ${NAMES.constName} = `;
+    if (this.modelType === 'interface') return `interface ${NAMES.className} `;
+    if (this.modelType === 'class') {
+      if (this.modelVariant === 'entity') {
+        return `class ${NAMES.className} extends BaseEntity`;
+      } else if (this.modelVariant === 'graphql') {
+        return `class ${NAMES.className} extends BaseInput`;
+      }
+    }
+    if (this.modelType === 'type') return `type ${NAMES.className}`;
     return '';
   }
 
@@ -136,9 +151,9 @@ export class ModelPrinter {
       if (this.modelVariant === 'dto') {
         primaryImports = `import { Dto, Property } form '${this.commonPackage}';`;
       } else if (this.modelVariant === 'entity') {
-        primaryImports = `import { Entity, Column, Relation} from '${this.corePackage}';`;
+        primaryImports = `import { Entity, Column, Relation, BaseEntity } from '${this.corePackage}';`;
       } else if (this.modelVariant === 'graphql') {
-        primaryImports = `import { Field, Input } from '${this.corePackage}';`;
+        primaryImports = `import { Field, Input, BaseInput } from '${this.corePackage}';`;
       }
     }
 

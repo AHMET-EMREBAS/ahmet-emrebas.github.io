@@ -3,6 +3,7 @@ import { clearSpace } from '@techbir/utils';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { PropertyOptions } from './model';
+
 describe('Property printer', () => {
   it('Should print regular properties', () => {
     const property: PropertyOptions = {
@@ -44,7 +45,6 @@ describe('Property printer', () => {
       properties: { name: { type: 'string', name: 'name' } },
     }).print();
 
-    writeFileSync(join(__dirname, 'some.ts'), result);
     expect(clearSpace(result)).toBe(
       clearSpace(
         `import { Entity, Column, Relation} from '@techbir/core';\n@Entity()\nexport class Product {\n@Column({\"type\":\"string\",\"name\":\"name\"})\nname?:string;}`
