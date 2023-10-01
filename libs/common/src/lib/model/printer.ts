@@ -6,7 +6,12 @@ import {
   RelationTypeClass,
 } from './model';
 import { names, stringify, uniq } from '@techbir/utils';
-export type ModelVariant = 'dto' | 'entity' | 'graphql' | 'regular';
+export type ModelVariant =
+  | 'dto'
+  | 'entity'
+  | 'graphql'
+  | 'graphql-input'
+  | 'regular';
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
 export class PropertyPrinter {
@@ -50,7 +55,10 @@ export class PropertyPrinter {
         } else {
           return `@Column(${options})\n`;
         }
-      } else if (this.modelVariant === 'graphql') {
+      } else if (
+        this.modelVariant === 'graphql' ||
+        this.modelVariant === 'graphql-input'
+      ) {
         if (RelationTypeClass.isType(type as RelationType)) {
           return `@Field(${options})`;
         } else {
@@ -136,6 +144,8 @@ export class ModelPrinter {
         return `class ${NAMES.className} extends BaseEntity`;
       } else if (this.modelVariant === 'graphql') {
         return `class ${NAMES.className} extends BaseInput`;
+      } else if (this.modelVariant === 'graphql-input') {
+        return `class Create${NAMES.className}Input`;
       }
     }
     if (this.modelType === 'type') return `type ${NAMES.className}`;
@@ -154,9 +164,13 @@ export class ModelPrinter {
       } else if (this.modelVariant === 'entity') {
         primaryImports = `import { Entity, Column, Relation, BaseEntity } from '${this.corePackage}';`;
       } else if (this.modelVariant === 'graphql') {
-        primaryImports = `import { Field, ObjectType, BaseInput } from '${this.corePackage}';`;
+        primaryImports = `import { Field, ObjectType,Input, BaseInput } from '${this.corePackage}';`;
+      } else if (this.modelVariant === 'graphql-input') {
+        primaryImports = `import { Field, Input } from '${this.corePackage}';`;
       }
     }
+
+    primaryImports += `\nimport { PartialType } from '@nestjs/graphql';`;
 
     const secondaryImports = uniq(
       Object.entries(this.model.relations || {}).map(([name, value]) => {
@@ -192,6 +206,8 @@ export class ModelPrinter {
         return '@Dto()';
       } else if (this.modelVariant === 'graphql') {
         return `@ObjectType()`;
+      } else if (this.modelVariant === 'graphql-input') {
+        return `@Input()`;
       }
     }
     return '';

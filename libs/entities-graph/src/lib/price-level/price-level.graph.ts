@@ -1,4 +1,5 @@
-import { Field, ObjectType, BaseInput } from '@techbir/core';
+import { Field, ObjectType, Input, BaseInput } from '@techbir/core';
+import { PartialType } from '@nestjs/graphql';
 @ObjectType()
 export class PriceLevel extends BaseInput {
   @Field({

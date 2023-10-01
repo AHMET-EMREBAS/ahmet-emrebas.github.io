@@ -1,1 +1,3 @@
 export * from './<%- fileName %>.graph';
+export * from './create-<%- fileName %>.input.graph';
+export * from './update-<%- fileName %>.input.graph';

@@ -12,7 +12,8 @@ export async function graphGenerator(tree: Tree) {
     generateFiles(tree, join(__dirname, 'files'), TARGET, {
       ...names(m.name),
       fileName: Names.fileName,
-      content: new ModelPrinter('class', 'graphql', m).print(),
+      object: new ModelPrinter('class', 'graphql', m).print(),
+      createObject: new ModelPrinter('class', 'graphql-input', m).print(),
     });
   }
   await formatFiles(tree);
