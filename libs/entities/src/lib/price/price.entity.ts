@@ -1,6 +1,7 @@
 import { Entity, Column, Relation, BaseEntity } from '@techbir/core';
 import { Product } from './../product';
 import { PriceLevel } from './../price-level';
+
 @Entity()
 export class Price extends BaseEntity {
   @Column({
@@ -11,6 +12,7 @@ export class Price extends BaseEntity {
     maximum: 9007199254740991,
   })
   price?: number = 0;
+
   @Column({
     name: 'cost',
     type: 'number',
@@ -19,6 +21,7 @@ export class Price extends BaseEntity {
     maximum: 9007199254740991,
   })
   cost?: number = 0;
+
   @Relation({
     type: 'ManyToOne',
     onDelete: 'CASCADE',
@@ -28,6 +31,7 @@ export class Price extends BaseEntity {
     target: Product,
   })
   product?: Product;
+  
   @Relation({
     type: 'ManyToOne',
     onDelete: 'CASCADE',

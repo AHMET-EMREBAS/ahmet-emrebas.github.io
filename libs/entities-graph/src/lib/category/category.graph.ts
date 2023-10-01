@@ -1,5 +1,5 @@
-import { Field, ObjectType, Input, BaseInput } from '@techbir/core';
-import { PartialType } from '@nestjs/graphql';
+import { Field, ObjectType, BaseInput } from '@techbir/core';
+
 @ObjectType()
 export class Category extends BaseInput {
   @Field({

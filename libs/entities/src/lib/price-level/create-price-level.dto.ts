@@ -1,8 +1,8 @@
-import { Entity, Column, Relation, BaseEntity } from '@techbir/core';
+import { Dto, Property, IDDto } from '@techbir/core';
 import { PartialType } from '@nestjs/graphql';
-@Entity()
-export class PriceLevel extends BaseEntity {
-  @Column({
+@Dto()
+export class CreatePriceLevelDto {
+  @Property({
     name: 'name',
     type: 'string',
     minLength: 3,

@@ -12,7 +12,8 @@ export async function entityGenerator(tree: Tree) {
     generateFiles(tree, join(__dirname, 'files'), TARGET, {
       ...names(m.name),
       fileName: Names.fileName,
-      content: new ModelPrinter('class', 'entity', m).print(),
+      entity: new ModelPrinter('class', 'entity', m).print(),
+      createDto: new ModelPrinter('class', 'dto', m).print(),
     });
   }
   await formatFiles(tree);

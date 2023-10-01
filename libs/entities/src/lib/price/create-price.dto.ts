@@ -1,8 +1,10 @@
-import { Field, Input, IDInput } from '@techbir/core';
-
-@Input()
-export class CreatePriceInput {
-  @Field({
+import { Dto, Property, IDDto } from '@techbir/core';
+import { PartialType } from '@nestjs/graphql';
+import { Product } from './../product';
+import { PriceLevel } from './../price-level';
+@Dto()
+export class CreatePriceDto {
+  @Property({
     name: 'price',
     type: 'number',
     defaultValue: 0,
@@ -10,7 +12,7 @@ export class CreatePriceInput {
     maximum: 9007199254740991,
   })
   price?: number = 0;
-  @Field({
+  @Property({
     name: 'cost',
     type: 'number',
     defaultValue: 0,
@@ -18,22 +20,22 @@ export class CreatePriceInput {
     maximum: 9007199254740991,
   })
   cost?: number = 0;
-  @Field({
+  @Property({
     type: 'ManyToOne',
     onDelete: 'CASCADE',
     join: true,
     eager: true,
     name: 'product',
-    target: IDInput,
+    target: IDDto,
   })
-  product?: IDInput;
-  @Field({
+  product?: IDDto;
+  @Property({
     type: 'ManyToOne',
     onDelete: 'CASCADE',
     join: true,
     eager: true,
     name: 'priceLevel',
-    target: IDInput,
+    target: IDDto,
   })
-  priceLevel?: IDInput;
+  priceLevel?: IDDto;
 }

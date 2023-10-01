@@ -35,6 +35,9 @@ export class PropertyPrinter {
       if (this.modelVariant === 'graphql-input') {
         return this.property.type.endsWith('Many') ? `IDInput[]` : 'IDInput';
       }
+      if (this.modelVariant === 'dto') {
+        return this.property.type.endsWith('Many') ? 'IDDto[]' : 'IDDto';
+      }
       if (this.property.type.endsWith('Many')) {
         return `${(this.property as RelationOptions).target}[]`;
       } else {
@@ -51,7 +54,13 @@ export class PropertyPrinter {
 
     if (this.modelType === 'class') {
       if (this.modelVariant === 'dto') {
-        return `@Property(${options})\n`;
+        if (RelationTypeClass.isType(type as RelationType)) {
+          const __options = { ...this.property };
+          (__options as RelationOptions).target = 'IDDto';
+          return `@Property(${stringify(__options)})`;
+        } else {
+          return `@Property(${options})\n`;
+        }
       } else if (this.modelVariant === 'entity') {
         if (RelationTypeClass.isType(type as RelationType)) {
           return `@Relation(${options})`;
@@ -151,6 +160,8 @@ export class ModelPrinter {
     if (this.modelType === 'class') {
       if (this.modelVariant === 'entity') {
         return `class ${NAMES.className} extends BaseEntity`;
+      } else if (this.modelVariant === 'dto') {
+        return `class Create${NAMES.className}Dto`;
       } else if (this.modelVariant === 'graphql') {
         return `class ${NAMES.className} extends BaseInput`;
       } else if (this.modelVariant === 'graphql-input') {
@@ -169,7 +180,7 @@ export class ModelPrinter {
 
     if (this.modelType === 'class') {
       if (this.modelVariant === 'dto') {
-        primaryImports = `import { Dto, Property } form '${this.commonPackage}';`;
+        primaryImports = `import { Dto, Property, IDDto } from '${this.corePackage}';`;
       } else if (this.modelVariant === 'entity') {
         primaryImports = `import { Entity, Column, Relation, BaseEntity } from '${this.corePackage}';`;
       } else if (this.modelVariant === 'graphql') {

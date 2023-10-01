@@ -1,4 +1,5 @@
-import { Entity, Column, Relation, BaseEntity } from '@techbir/core';
+import { Entity, Column, BaseEntity } from '@techbir/core';
+
 @Entity()
 export class Category extends BaseEntity {
   @Column({
