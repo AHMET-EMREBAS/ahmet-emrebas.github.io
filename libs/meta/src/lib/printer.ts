@@ -5,7 +5,7 @@ import {
   RelationType,
   RelationTypeClass,
 } from './types';
-
+import { names, uniq } from '@techbir/utils';
 export type ModelVariant = 'dto' | 'entity' | 'regular';
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
@@ -113,11 +113,16 @@ export class ModelPrinter {
   }
 
   protected imports() {
-    return Object.entries(this.model.relations || {}).map(([name, value]) => {
-      return `import { ${
-        value.target
-      } } from '../../${value.target.toLowerCase()}';`;
-    });
+    if (this.modelType === 'object') {
+      return '';
+    }
+    return uniq(
+      Object.entries(this.model.relations || {}).map(([name, value]) => {
+        return `import { ${value.target} } from '../../${
+          names(value.target).fileName
+        }';`;
+      })
+    ).join('\n');
   }
 
   protected properties() {
@@ -147,6 +152,6 @@ export class ModelPrinter {
   }
 
   print() {
-    return `${this.decorators()}\nexport ${this.type} {\n${this.properties()}}`;
+    return `${this.imports()}${this.decorators()}\nexport ${this.type} {\n${this.properties()}}`;
   }
 }
