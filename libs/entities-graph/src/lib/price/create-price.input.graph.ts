@@ -1,4 +1,4 @@
-import { Field, Input } from '@techbir/core';
+import { Field, Input, IDInput } from '@techbir/core';
 import { PartialType } from '@nestjs/graphql';
 import { Product } from './../product';
 import { PriceLevel } from './../price-level';
@@ -26,16 +26,16 @@ export class CreatePriceInput {
     join: true,
     eager: true,
     name: 'product',
-    target: Product,
+    target: IDInput,
   })
-  product?: Product;
+  product?: IDInput;
   @Field({
     type: 'ManyToOne',
     onDelete: 'CASCADE',
     join: true,
     eager: true,
     name: 'priceLevel',
-    target: PriceLevel,
+    target: IDInput,
   })
-  priceLevel?: PriceLevel;
+  priceLevel?: IDInput;
 }

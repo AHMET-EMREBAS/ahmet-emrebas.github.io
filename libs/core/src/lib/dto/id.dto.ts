@@ -8,7 +8,7 @@ export class IDDto {
 }
 
 @Input()
-export class IDINput {
+export class IDInput {
   @Field({ name: 'id', type: 'number' })
   id?: number;
 }

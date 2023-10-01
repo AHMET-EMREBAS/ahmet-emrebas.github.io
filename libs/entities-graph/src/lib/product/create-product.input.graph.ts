@@ -1,4 +1,4 @@
-import { Field, Input } from '@techbir/core';
+import { Field, Input, IDInput } from '@techbir/core';
 import { PartialType } from '@nestjs/graphql';
 import { Category } from './../category';
 @Input()
@@ -19,9 +19,9 @@ export class CreateProductInput {
   @Field({
     type: 'ManyToOne',
     name: 'category',
-    target: Category,
+    target: IDInput,
     eager: true,
     join: true,
   })
-  category?: Category;
+  category?: IDInput;
 }

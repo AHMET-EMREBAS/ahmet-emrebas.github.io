@@ -32,6 +32,9 @@ export class PropertyPrinter {
       }
       return `${this.property.objectType}`;
     } else if (RelationTypeClass.isType(this.property.type as RelationType)) {
+      if (this.modelVariant === 'graphql-input') {
+        return this.property.type.endsWith('Many') ? `IDInput[]` : 'IDInput';
+      }
       if (this.property.type.endsWith('Many')) {
         return `${(this.property as RelationOptions).target}[]`;
       } else {
@@ -43,8 +46,8 @@ export class PropertyPrinter {
   }
 
   protected decorators() {
-    const { type } = this.property;
-    const options = stringify(this.property);
+    const { type } = { ...this.property };
+    const options = stringify({ ...this.property });
 
     if (this.modelType === 'class') {
       if (this.modelVariant === 'dto') {
@@ -60,7 +63,13 @@ export class PropertyPrinter {
         this.modelVariant === 'graphql-input'
       ) {
         if (RelationTypeClass.isType(type as RelationType)) {
-          return `@Field(${options})`;
+          if (this.modelVariant === 'graphql-input') {
+            const __options = { ...this.property };
+            (__options as RelationOptions).target = 'IDInput';
+            return `@Field(${stringify(__options)})`;
+          } else {
+            return `@Field(${options})`;
+          }
         } else {
           if (this.property.type === 'object') {
             return `@Field(${options})`;
@@ -166,7 +175,7 @@ export class ModelPrinter {
       } else if (this.modelVariant === 'graphql') {
         primaryImports = `import { Field, ObjectType,Input, BaseInput } from '${this.corePackage}';`;
       } else if (this.modelVariant === 'graphql-input') {
-        primaryImports = `import { Field, Input } from '${this.corePackage}';`;
+        primaryImports = `import { Field, Input, IDInput  } from '${this.corePackage}';`;
       }
     }
 
@@ -183,7 +192,7 @@ export class ModelPrinter {
     return [primaryImports, secondaryImports].join('\n');
   }
 
-  protected properties() {
+  properties() {
     return [
       ...Object.entries(this.model.properties || {}),
       ...Object.entries(this.model.relations || {}),

@@ -1,4 +1,4 @@
-import { Field, Input } from '@techbir/core';
+import { Field, Input, IDInput } from '@techbir/core';
 import { PartialType } from '@nestjs/graphql';
 @Input()
 export class CreateCategoryInput {
