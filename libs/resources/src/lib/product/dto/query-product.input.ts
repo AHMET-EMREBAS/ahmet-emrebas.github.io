@@ -12,8 +12,8 @@ import { productSearchables } from '../product.searchables';
 export class QueryProductInput extends QueryInput implements QueryInterface {
   @Field({ type: 'string', nullable: true })
   @QueryStringTransformer(productSearchables())
-  query: any;
+  search?: any;
 
   @Field({ type: 'string', nullable: true, enum: productOrderables() })
-  orderBy: string;
+  orderBy?: string;
 }

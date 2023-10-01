@@ -1,4 +1,4 @@
 export interface QueryInterface {
-  query: any;
-  orderBy: string;
+  search?: any;
+  orderBy?: string;
 }

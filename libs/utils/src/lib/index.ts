@@ -10,3 +10,4 @@ export * from './plural'
 export * from './stringify'
 export * from './temp-value'
 export * from './uniq'
+export * from './class-contructor';

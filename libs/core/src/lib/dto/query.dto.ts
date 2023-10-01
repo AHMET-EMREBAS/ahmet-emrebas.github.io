@@ -4,17 +4,17 @@ import { Property } from '../property';
 
 @Dto()
 export class QueryDto {
-  @Property({ type: 'integer', default: 20, nullable: true, minimum: 1 })
+  @Property({ type: 'integer', defaultValue: 20, nullable: true, minimum: 1 })
   take = 20;
 
-  @Property({ type: 'integer', default: 0, nullable: true, minimum: 1 })
+  @Property({ type: 'integer', defaultValue: 0, nullable: true, minimum: 1 })
   skip = 0;
 
   @Property({
     type: 'string',
     enum: ['asc', 'desc'],
     nullable: true,
-    default: 'asc',
+    defaultValue: 'asc',
   })
   orderDir?: 'asc' | 'desc' = 'asc';
 

@@ -13,8 +13,8 @@ import { productOrderables } from '../product.orderables';
 export class QueryProductDto extends QueryDto implements QueryInterface {
   @Property({ type: 'string', maxLength: 30, nullable: true })
   @QueryStringTransformer(productSearchables())
-  query: any;
+  search?: any;
 
   @Property({ type: 'string', enum: productOrderables(), nullable: true })
-  orderBy = 'id';
+  orderBy? = 'id';
 }

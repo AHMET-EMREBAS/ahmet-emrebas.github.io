@@ -12,8 +12,8 @@ import { <%- fileName %>Searchables } from '../<%- fileName %>.searchables';
 export class Query<%- className %>Input extends QueryInput implements QueryInterface {
   @Field({ type: 'string', nullable: true })
   @QueryStringTransformer(<%- fileName %>Searchables())
-  query: any;
+  query?: any;
 
   @Field({ type: 'string', nullable: true, enum: <%- fileName %>Orderables() })
-  orderBy: string;
+  orderBy?: string;
 }

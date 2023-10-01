@@ -3,13 +3,20 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductModule } from './product/product.module';
+
 import { GraphQLModule } from '@nestjs/graphql';
 
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 import { join } from 'path';
+import {
+  ProductModule,
+  PriceModule,
+  QuantityModule,
+  FeatureModule,
+  StoreModule,
+} from '@techbir/resources';
 
 @Module({
   imports: [
@@ -34,6 +41,10 @@ import { join } from 'path';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     ProductModule,
+    PriceModule,
+    QuantityModule,
+    FeatureModule,
+    StoreModule,
   ],
   controllers: [AppController],
   providers: [AppService],

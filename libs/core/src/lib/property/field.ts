@@ -1,9 +1,9 @@
 import { FieldOptions, Field as _Field, Int } from '@nestjs/graphql';
-import { SchemaObject, Validations } from '@techbir/common';
+import { Constructor, PropertyOptions, Validations } from '@techbir/common';
 import { propertyDecorators } from '@techbir/utils';
 import { Expose } from 'class-transformer';
 
-export function Field(o?: SchemaObject) {
+export function Field(o?: PropertyOptions) {
   const ds: PropertyDecorator[] = [Expose(), Validations(o)];
 
   if (!o) return propertyDecorators(...ds);
@@ -15,6 +15,11 @@ export function Field(o?: SchemaObject) {
   if (o.type === 'integer') ds.push(_Field(() => Int, fo));
   if (o.type === 'date') ds.push(_Field(() => Date, fo));
   if (o.type === 'boolean') ds.push(_Field(() => Boolean, fo));
-
+  if (o.type === 'object') {
+    if (!o.target) {
+      throw new Error('Target is required!');
+    }
+    ds.push(_Field(() => o.target as Constructor, fo));
+  }
   return propertyDecorators(...ds);
 }
