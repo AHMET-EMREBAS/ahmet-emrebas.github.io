@@ -1,5 +1,5 @@
 export * from './logger';
 export * from './config';
-export * from './validation';
+export * from './decorators';
 export * from './types';
 export * from './colors';

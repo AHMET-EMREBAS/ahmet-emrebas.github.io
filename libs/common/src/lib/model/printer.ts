@@ -1,11 +1,4 @@
-import {
-  Model,
-  ObjectProperty,
-  Property,
-  Relation,
-  RelationType,
-  RelationTypeClass,
-} from './types';
+import { Model, PropertyOptions, RelationOptions, RelationType, RelationTypeClass } from './model';
 import { names, uniq } from '@techbir/utils';
 export type ModelVariant = 'dto' | 'entity' | 'graphql' | 'regular';
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
@@ -14,7 +7,7 @@ export class PropertyPrinter {
   constructor(
     private readonly modelType: ModelType,
     private readonly modelVariant: ModelVariant,
-    private readonly property: Property | Relation
+    private readonly property: PropertyOptions | RelationOptions
   ) {}
 
   protected type() {
@@ -50,7 +43,7 @@ export class PropertyPrinter {
         }
       } else if (this.modelVariant === 'graphql') {
         if (RelationTypeClass.isType(type as RelationType)) {
-          return `@Field(${options},${(this.property as Relation).target})`;
+          return `@Field(${options},${(this.property as RelationOptions).target})`;
         } else {
           if (this.property.type === 'object') {
             return `@Field(${options}, ${this.property.objectType})`;

@@ -1,11 +1,11 @@
-import { Property } from './types';
-import { ModelPrinter, PropertyPrinter } from './printer';
-import { clearSpace, stringify } from '@techbir/utils';
+import { PropertyPrinter, ModelPrinter } from './printer';
+import { clearSpace } from '@techbir/utils';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
+import { PropertyOptions } from './model';
 describe('Property printer', () => {
   it('Should print regular properties', () => {
-    const property: Property = {
+    const property: PropertyOptions = {
       name: 'name',
       type: 'string',
     };
@@ -25,7 +25,7 @@ describe('Property printer', () => {
   });
 
   it('should print dto and entity properties', () => {
-    const property: Property = {
+    const property: PropertyOptions = {
       name: 'name',
       type: 'string',
     };

@@ -1,6 +1,7 @@
 export class PropertyTypeClass {
   readonly string = 'string';
   readonly number = 'number';
+
   readonly boolean = 'boolean';
   readonly Date = 'Date';
   readonly object = 'object';
@@ -85,7 +86,7 @@ export class ObjectProperty<ObjectType = string> extends CommonProperty<
   objectType?: ObjectType;
 }
 
-export type Property =
+export type PropertyOptions =
   | StringProperty
   | NumberProperty
   | BooleanProperty
@@ -103,7 +104,7 @@ export type OnDeleteUpdateType =
   | 'DEFAULT'
   | 'NO ACTION';
 
-export class Relation extends Accassors {
+export class RelationOptions extends Accassors {
   name!: string;
   target!: string;
   type!: RelationType;
@@ -119,6 +120,6 @@ export class Relation extends Accassors {
 
 export class Model {
   name!: string;
-  properties?: Record<string, Property>;
-  relations?: Record<string, Relation>;
+  properties?: Record<string, PropertyOptions>;
+  relations?: Record<string, RelationOptions>;
 }
