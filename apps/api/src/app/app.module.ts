@@ -4,13 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import {
-  CategoryModule,
-  PriceLevelModule,
-  PriceModule,
-  ProductModule,
-} from '@techbir/resources';
 import { AppGraphModule } from './app-graph.module';
+import { ResourceModules } from './resource-modules';
 
 @Module({
   imports: [
@@ -24,10 +19,7 @@ import { AppGraphModule } from './app-graph.module';
       dropSchema: true,
     }),
     AppGraphModule,
-    ProductModule,
-    PriceModule,
-    CategoryModule,
-    PriceLevelModule,
+    ...ResourceModules,
   ],
   controllers: [AppController],
   providers: [AppService],

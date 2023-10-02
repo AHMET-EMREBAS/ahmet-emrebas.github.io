@@ -1,8 +1,8 @@
-import { InputType } from '@nestjs/graphql';
 import { Property } from '../property';
 import { Expose, Transform } from 'class-transformer';
+import { Dto } from '../entities';
 
-@InputType({ isAbstract: true })
+@Dto()
 export class QueryDto {
   /**
    * Offset (paginated) where from entities should be taken.

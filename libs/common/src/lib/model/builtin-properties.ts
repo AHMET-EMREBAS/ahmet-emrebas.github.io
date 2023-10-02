@@ -14,6 +14,31 @@ export function UniqueNameProperty(
   };
 }
 
+export function UsernameProperty(
+  options?: Partial<StringProperty>
+): StringProperty {
+  return {
+    name: 'username',
+    type: 'string',
+    format: 'email',
+    unique: true,
+    required: true,
+    ...options,
+  };
+}
+
+export function PasswordProperty(
+  options?: Partial<StringProperty>
+): StringProperty {
+  return {
+    name: 'password',
+    type: 'string',
+    format: 'password',
+    required: true,
+    ...options,
+  };
+}
+
 export function DescriptionProperty(
   options?: Partial<StringProperty>
 ): StringProperty {
@@ -36,18 +61,6 @@ export function UpcProperty(options?: Partial<StringProperty>): StringProperty {
   };
 }
 
-export function CategoryRelation(
-  options?: Partial<RelationOptions>
-): RelationOptions {
-  return {
-    type: 'ManyToOne',
-    name: 'category',
-    target: 'Category',
-    eager: true,
-    join: true,
-    ...options,
-  };
-}
 
 export function PriceProperty(
   options?: Partial<NumberProperty>
@@ -60,21 +73,4 @@ export function PriceProperty(
     maximum: Number.MAX_SAFE_INTEGER,
     ...options,
   };
-}
-
-export function OwnerRelation(
-  options?: Partial<RelationOptions>
-): RelationOptions {
-  if (options?.name && options.target) {
-    return {
-      type: 'ManyToOne',
-      onDelete: 'CASCADE',
-      join: true,
-      eager: true,
-      name: options.name,
-      target: options.target,
-      ...options,
-    };
-  }
-  throw new Error('target and name are requried!');
 }

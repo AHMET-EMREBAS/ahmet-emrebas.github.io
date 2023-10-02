@@ -5,10 +5,9 @@ import {
   Query as RequestQuery,
   Body as RequestBody,
   PipeTransform,
-  ValidationPipe,
 } from '@nestjs/common';
 import { Args } from '@nestjs/graphql';
-import { RelationParam, RelationUnsetParam } from '../dto';
+import { RelationParam, RelationUnsetParam, ValidationPipe } from '../dto';
 
 /**
  * Id param
@@ -50,7 +49,7 @@ export function NestQuery(...pipes: PipeTransform[]) {
  * @returns
  */
 export function Body(...pipes: PipeTransform[]) {
-  return RequestBody(...pipes, ValidationPipe);
+  return RequestBody(...pipes, ValidationPipe());
 }
 
 /**
@@ -66,7 +65,11 @@ export function IdArg() {
  * @returns
  */
 export function RelationArg() {
-  return Args('options', { type: () => RelationParam });
+  return Args(
+    'options',
+    { type: () => RelationParam },
+    ValidationPipe(RelationParam)
+  );
 }
 
 /**
@@ -75,7 +78,11 @@ export function RelationArg() {
  * @returns
  */
 export function RelationUnsetArg() {
-  return Args('options', { type: () => RelationUnsetParam });
+  return Args(
+    'options',
+    { type: () => RelationUnsetParam },
+    ValidationPipe(RelationUnsetParam)
+  );
 }
 
 /**
@@ -84,7 +91,7 @@ export function RelationUnsetArg() {
  * @returns
  */
 export function BodyArg(dto: ClassConstructor<any>) {
-  return Args('body', { type: () => dto });
+  return Args('body', { type: () => dto }, ValidationPipe(dto));
 }
 
 /**
@@ -93,5 +100,9 @@ export function BodyArg(dto: ClassConstructor<any>) {
  * @returns
  */
 export function QueryArg(dto: ClassConstructor<any>) {
-  return Args('query', { type: () => dto, nullable: true });
+  return Args(
+    'query',
+    { type: () => dto, nullable: true },
+    ValidationPipe(dto)
+  );
 }

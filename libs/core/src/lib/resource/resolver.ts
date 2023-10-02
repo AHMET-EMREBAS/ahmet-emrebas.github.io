@@ -10,13 +10,18 @@ import {
 import { RelationParam, RelationUnsetParam } from '../dto';
 import { ResourceService } from './resource.service';
 import { ResourceClasses } from './resource-classes';
+import { ServerLogger } from '@techbir/common';
+import { plainToInstance } from 'class-transformer';
 
 export function createResolver(options: ResourceClasses): any {
   const End = new EndPointManager(options);
   const { createDto, updateDto, queryDto, pubSub } = options;
 
   class BaseResolver {
-    constructor(private readonly __service: ResourceService) {}
+    logger = new ServerLogger();
+    constructor(private readonly __service: ResourceService) {
+      this.logger.setContext(End.NAME + 'Controller');
+    }
 
     @End.GFindAll()
     findAll(@QueryArg(queryDto) query?: any) {

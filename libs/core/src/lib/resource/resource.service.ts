@@ -6,12 +6,17 @@ import {
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
+import { instanceToInstance } from 'class-transformer';
+import { ServerLogger } from '@techbir/common';
 
 export class ResourceService<T extends ObjectLiteral = any> {
+  logger = new ServerLogger();
   constructor(
     protected readonly __repo: Repository<T>,
     protected readonly __uniques?: string[]
-  ) {}
+  ) {
+    this.logger.setContext(__repo.metadata.name + 'Service');
+  }
 
   private async throwIfNotUnique(body: T) {
     for (const u of this.__uniques || []) {
@@ -26,6 +31,7 @@ export class ResourceService<T extends ObjectLiteral = any> {
   }
 
   async findAll(query: QueryDto) {
+    this.logger.debug('Query', [query]);
     return await this.__repo.find({ ...(query as any) });
   }
 
@@ -40,7 +46,6 @@ export class ResourceService<T extends ObjectLiteral = any> {
   async insert(body: any) {
     await this.throwIfNotUnique(body);
     try {
-      
       const result = await this.__repo.insert(body);
       const savedId = result.identifiers[0]['id'];
 

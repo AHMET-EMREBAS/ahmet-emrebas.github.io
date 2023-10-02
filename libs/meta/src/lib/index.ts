@@ -1,6 +1,9 @@
-import { Category } from './category';
-import { Price } from './price';
-import { PriceLevel } from './price-level';
-import { Product } from './product';
+import * as CommonModels from './common';
+import * as ProductModels from './product';
+import * as UserModels from './user';
 
-export const Models = [Product, Price, PriceLevel, Category];
+export const Models = [
+  ...Object.values(CommonModels),
+  ...Object.values(ProductModels),
+  ...Object.values(UserModels),
+];
