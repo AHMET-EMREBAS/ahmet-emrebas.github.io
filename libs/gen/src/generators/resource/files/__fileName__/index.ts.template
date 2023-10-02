@@ -1,8 +1,0 @@
-export * from './dto';
-export * from './entity';
-export * from './<%- fileName %>.controller';
-export * from './<%- fileName %>.module';
-export * from './<%- fileName %>.pub';
-export * from './<%- fileName %>.resolver';
-export * from './<%- fileName %>.searchables';
-export * from './<%- fileName %>.orderables';

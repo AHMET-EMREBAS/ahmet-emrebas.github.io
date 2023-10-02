@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ResourceService } from '@techbir/core';
-import { Product } from '@techbir/entities';
+import { <%- className %> } from '@techbir/entities';
 import { Repository } from 'typeorm';
 import { PubSub } from 'graphql-subscriptions';
 
-export const ProductPubSub = new PubSub();
+export const <%- className %>PubSub = new PubSub()
 
 @Injectable()
-export class ProductService extends ResourceService {
-  constructor(@InjectRepository(Product) repo: Repository<Product>) {
+export class <%- className %>Service extends ResourceService {
+  constructor(@InjectRepository(<%- className %>) repo: Repository<<%- className %>>) {
     super(repo, ['name']);
   }
 }

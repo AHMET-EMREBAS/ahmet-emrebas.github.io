@@ -5,15 +5,14 @@ import {
   Product,
   UpdatePriceInput,
 } from '@techbir/entities-graph';
-import { PubSub } from 'graphql-subscriptions';
-import { ProductService } from './product.service';
+import { ProductService, ProductPubSub } from './product.service';
 
 @Resolver(() => Product)
 export class ProductResolver extends createResolver({
   entity: Product,
   createDto: CreateProductInput,
   queryDto: QueryInput,
-  pubSub: new PubSub(),
+  pubSub: ProductPubSub,
   updateDto: UpdatePriceInput,
 }) {
   constructor(service: ProductService) {

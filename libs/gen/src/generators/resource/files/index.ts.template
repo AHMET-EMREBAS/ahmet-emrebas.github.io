@@ -1,0 +1,4 @@
+export * from './<%- fileName %>.module';
+export * from './<%- fileName %>.controller';
+export * from './<%- fileName %>.resolver';
+export * from './<%- fileName %>.service';

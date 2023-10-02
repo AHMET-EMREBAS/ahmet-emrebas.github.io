@@ -1,6 +1,0 @@
-import { PartialType } from '@nestjs/graphql';
-import { Create<%- className %>Input } from './create-<%- fileName %>.input';
-import { Input } from '@techbir/core';
-
-@Input()
-export class Update<%- className %>Input extends PartialType(Create<%- className %>Input) {}

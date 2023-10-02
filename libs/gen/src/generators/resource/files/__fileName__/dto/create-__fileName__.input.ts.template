@@ -1,7 +1,0 @@
-import { Field, Input } from '@techbir/core';
-import { <%- className %> } from '../entity';
-
-@Input()
-export class Create<%- className %>Input implements <%- className %> {
-  @Field({ type: 'string', minLength: 3, maxLength: 30 }) name?: string;
-}

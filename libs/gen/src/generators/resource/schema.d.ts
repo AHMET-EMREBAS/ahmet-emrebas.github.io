@@ -1,3 +1,1 @@
-export interface ResourceGeneratorSchema {
-  name: string;
-}
+export interface ResourceGeneratorSchema {}

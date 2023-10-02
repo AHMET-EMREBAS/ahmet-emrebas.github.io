@@ -13,7 +13,7 @@ describe('resource generator', () => {
   });
 
   it('should run successfully', async () => {
-    await resourceGenerator(tree, options);
+    await resourceGenerator(tree);
     const config = readProjectConfiguration(tree, 'test');
     expect(config).toBeDefined();
   });

@@ -1,7 +1,0 @@
-import { BaseObject, Field, ObjectType } from '@techbir/core';
-import { <%- className %> } from './<%- fileName %>.entity';
-
-@ObjectType()
-export class <%- className %>Object extends BaseObject implements <%- className %> {
-  @Field({ type: 'string' }) name?: string;
-}

@@ -1,0 +1,21 @@
+import { Resolver } from '@nestjs/graphql';
+import { QueryInput, createResolver } from '@techbir/core';
+import {
+  Create<%- className %>Input,
+  <%- className %>,
+  UpdatePriceInput,
+} from '@techbir/entities-graph';
+import { <%- className %>Service, <%- className %>PubSub } from './<%- fileName %>.service';
+
+@Resolver(() => <%- className %>)
+export class <%- className %>Resolver extends createResolver({
+  entity: <%- className %>,
+  createDto: Create<%- className %>Input,
+  queryDto: QueryInput,
+  pubSub: <%- className %>PubSub,
+  updateDto: UpdatePriceInput,
+}) {
+  constructor(service: <%- className %>Service) {
+    super(service);
+  }
+}
