@@ -9,12 +9,13 @@ import { MicroModule } from '../../micro/micro.module';
   template: `
     <div class="input-container {{ color }} {{ variant }}">
       <span class="icon"> {{ icon }}</span>
-      <label [for]="name">{{ label }} </label>
+      <label class="label" [for]="name">{{ label }} </label>
       <input
+        class="input"
         [(ngModel)]="value"
         [id]="id()"
         [attr.data-testid]="name"
-        type="text"
+        [type]="type"
         [name]="name"
         [autocomplete]="autocomplete"
         (input)="emit()"

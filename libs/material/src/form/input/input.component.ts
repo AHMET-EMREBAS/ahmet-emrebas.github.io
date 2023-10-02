@@ -8,6 +8,7 @@ import { BooleanInputComponent } from '../boolean-input/boolean-input.component'
 import { SelectInputComponent } from '../select-input/select-input.component';
 
 import { MicroModule } from '../../micro/micro.module';
+import { TextareaComponent } from '../textarea/textarea.component';
 
 @Component({
   selector: 'tb-input',
@@ -20,6 +21,7 @@ import { MicroModule } from '../../micro/micro.module';
 })
 export class InputComponent extends CommonInputComponent {
   __text = TextInputComponent;
+  __textarea = TextareaComponent;
   __date = DatePickerComponent;
   __number = NumberInputComponent;
   __select = SelectInputComponent;
@@ -29,6 +31,7 @@ export class InputComponent extends CommonInputComponent {
     const {
       inputRef,
       __text,
+      __textarea,
       __date,
       __boolean,
       __select,
@@ -42,6 +45,8 @@ export class InputComponent extends CommonInputComponent {
   componentType() {
     if (this.inputType === 'text') {
       return this.__text;
+    } else if (this.inputType == 'textarea') {
+      return this.__textarea;
     } else if (this.inputType === 'number') {
       return this.__number;
     } else if (this.inputType === 'date') {

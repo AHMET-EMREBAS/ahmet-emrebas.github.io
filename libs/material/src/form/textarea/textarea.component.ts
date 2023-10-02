@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
-import { CommonInputComponent } from '../common-input/common-input.component';
 import { MicroModule } from '../../micro/micro.module';
+import { CommonInputComponent } from '../common-input/common-input.component';
 
 @Component({
-  selector: 'tb-number-input',
+  selector: 'tb-textarea',
   standalone: true,
   imports: [MicroModule],
   template: `
     <div class="input-container {{ color }} {{ variant }}">
       <span class="icon"> {{ icon }}</span>
-      <label class="label" [for]="id()">{{ label }} </label>
-      <input 
+      <label class="label" [for]="name">{{ label }} </label>
+      <textarea
         class="input"
-        (input)="emit()"
         [(ngModel)]="value"
-        [attr.data-testid]="name"
         [id]="id()"
+        [attr.data-testid]="name"
         [name]="name"
+        [autocomplete]="autocomplete"
+        (input)="emit()"
         tbHasValue
-        type="number"
-      />
+      ></textarea>
       <span class="input-error" *ngIf="error">{{ error }}</span>
     </div>
   `,
 })
-export class NumberInputComponent extends CommonInputComponent<number> {}
+export class TextareaComponent extends CommonInputComponent {}

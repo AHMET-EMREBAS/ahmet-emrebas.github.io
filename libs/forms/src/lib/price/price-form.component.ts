@@ -11,7 +11,7 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
       <tb-form (submitEvent)="submit($event)">
         <tb-input
           i18n-label
-          type="number"
+          inputType="number"
           name="price"
           label="Price"
           icon="attach_money"
@@ -20,7 +20,7 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
         ></tb-input>
         <tb-input
           i18n-label
-          type="number"
+          inputType="number"
           name="cost"
           label="Cost"
           icon="money_off"

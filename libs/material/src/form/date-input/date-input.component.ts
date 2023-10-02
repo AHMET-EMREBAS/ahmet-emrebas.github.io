@@ -9,8 +9,8 @@ import { MicroModule } from '../../micro/micro.module';
   template: `
     <div class="input-container {{ color }} {{ variant }} ">
       <span class="icon">{{ icon }}</span>
-      <label [for]="id()">{{ label }}</label>
-      <input #input [(ngModel)]="value" [id]="id()" type="date" (input)="emit()" />
+      <label class="label" [for]="id()">{{ label }}</label>
+      <input class="input" #input [(ngModel)]="value" [id]="id()" type="date" (input)="emit()" />
     </div>
   `,
 })

@@ -11,7 +11,7 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
       <tb-form (submitEvent)="submit($event)">
         <tb-input
           i18n-label
-          type="text"
+          inputType="text"
           name="username"
           label="Username"
           icon="person"
@@ -20,7 +20,7 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
         ></tb-input>
         <tb-input
           i18n-label
-          type="password"
+          inputType="password"
           name="password"
           label="Password"
           icon="password"

@@ -85,14 +85,14 @@ export function PriceProperty(
   options?: Partial<NumberProperty>
 ): NumberProperty {
   return {
+    defaultValue: 0,
+    icon: 'attach_money',
+    inputType: 'number',
+    label: 'Price',
+    maximum: Number.MAX_SAFE_INTEGER,
+    minimum: 0,
     name: 'price',
     type: 'number',
-    defaultValue: 0,
-    minimum: 0,
-    maximum: Number.MAX_SAFE_INTEGER,
-    inputType: 'number',
-    icon: 'attach_money',
-    label: 'Price',
     ...options,
   };
 }

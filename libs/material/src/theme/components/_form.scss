@@ -34,7 +34,7 @@
   line-height: 3.3em;
   letter-spacing: 0.1em;
   font-size: var(--form-font-size);
-  label {
+  .label {
     position: absolute;
     letter-spacing: inherit;
     text-transform: capitalize;
@@ -49,7 +49,16 @@
     pointer-events: none;
   }
 
-  input {
+  // textarea.input {
+  //   min-height: 4em !important;
+  //   padding-top: 1em;
+  // }
+
+  textarea{ 
+    padding-top: 1em !important;
+  }
+
+  .input {
     @include utils.leftRightPadding(1em);
     color: var(--color);
     border-width: var(--border-width);
@@ -59,7 +68,7 @@
     padding-left: 4em;
     width: inherit;
     letter-spacing: inherit;
-
+    font-family: inherit;
     transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out,
       background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
   }
@@ -94,9 +103,9 @@
 }
 
 .input-container:has(:focus),
-.input-container:has(> input[has-value='true']),
-.input-container:has(> input:-webkit-autofill) {
-  label {
+.input-container:has(> .input[has-value='true']),
+.input-container:has(> .input:-webkit-autofill) {
+  .label {
     margin-top: 0.3em;
     font-size: 0.8em;
     line-height: 0.8em;
@@ -107,7 +116,7 @@
 }
 
 .input-container.basic {
-  input {
+  .input {
     border: none;
     outline: none;
     color: var(--color-dark);
@@ -115,40 +124,40 @@
     background-color: var(--color-1);
   }
 
-  input:focus {
+  .input:focus {
     border-bottom-color: var(--color);
   }
 }
 
 .input-container.flat {
-  input {
+  .input {
     border: none;
     outline: none;
     color: var(--color-dark);
     background-color: var(--color-1);
   }
 
-  input:focus {
+  .input:focus {
     // border-bottom-color: var(--color);
     background-color: var(--color-3);
   }
 }
 
 .input-container.stroked {
-  input {
+  .input {
     color: var(--color-dark);
     background-color: var(--color-1);
     border: var(--border-width) var(--border-style) var(--color);
   }
 
-  input:focus {
+  .input:focus {
     outline: none;
     border-color: var(--color-darker);
     background-color: var(--color-3);
   }
 }
 .input-container.raised {
-  input {
+  .input {
     border: none;
     outline: none;
     color: var(--color-dark);
@@ -156,7 +165,7 @@
     box-shadow: -0px 3px 5px 1px var(--color-3);
   }
 
-  input:focus {
+  .input:focus {
     box-shadow: -0px 3px 5px 1px var(--color-6);
   }
 }
@@ -168,7 +177,7 @@
 }
 
 .inline-input {
-  input {
+  .input {
     height: 50px;
   }
 
@@ -177,7 +186,7 @@
   //   height: 50px;
   // }
 
-  label {
+  .label {
     display: flex;
     align-items: center;
     width: 100%;

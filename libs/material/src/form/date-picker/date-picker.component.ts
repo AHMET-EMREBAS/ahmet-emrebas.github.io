@@ -21,6 +21,7 @@ import { ListOfDays, MonthNum } from '../../api';
         />
         <span>Month</span>
         <input
+          class="input"
           type="number"
           min="1"
           max="12"
@@ -29,6 +30,7 @@ import { ListOfDays, MonthNum } from '../../api';
         />
         <span>Range</span>
         <input
+          class="input"
           type="number"
           min="1"
           max="31"

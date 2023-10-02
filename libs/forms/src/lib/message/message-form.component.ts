@@ -11,7 +11,7 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
       <tb-form (submitEvent)="submit($event)">
         <tb-input
           i18n-label
-          type="text"
+          inputType="textarea"
           name="message"
           label="Message"
           icon="message"

@@ -52,7 +52,7 @@ export class PropertyPrinter {
   formField() {
     const { name, inputType, icon, label, required } = this
       .property as PropertyOptions;
-    return `<tb-input i18n-label type="${inputType}" name="${name}" label="${label}" icon="${icon}" autocomplete="off" required="${required}"></tb-input>`;
+    return `<tb-input i18n-label inputType="${inputType}" name="${name}" label="${label}" icon="${icon}" autocomplete="off" required="${required}"></tb-input>`;
   }
 
   protected decorators() {
