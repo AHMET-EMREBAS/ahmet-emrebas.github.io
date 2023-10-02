@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreatePermissionInput,
   Permission,
-  UpdatePriceInput,
+  UpdatePermissionInput,
 } from '@techbir/entities-graph';
 import { PermissionService, PermissionPubSub } from './permission.service';
 
@@ -13,7 +13,7 @@ export class PermissionResolver extends createResolver({
   createDto: CreatePermissionInput,
   queryDto: QueryInput,
   pubSub: PermissionPubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdatePermissionInput,
 }) {
   constructor(service: PermissionService) {
     super(service);

@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreateGroupInput,
   Group,
-  UpdatePriceInput,
+  UpdateGroupInput,
 } from '@techbir/entities-graph';
 import { GroupService, GroupPubSub } from './group.service';
 
@@ -13,7 +13,7 @@ export class GroupResolver extends createResolver({
   createDto: CreateGroupInput,
   queryDto: QueryInput,
   pubSub: GroupPubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdateGroupInput,
 }) {
   constructor(service: GroupService) {
     super(service);

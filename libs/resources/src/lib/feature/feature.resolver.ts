@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreateFeatureInput,
   Feature,
-  UpdatePriceInput,
+  UpdateFeatureInput,
 } from '@techbir/entities-graph';
 import { FeatureService, FeaturePubSub } from './feature.service';
 
@@ -13,7 +13,7 @@ export class FeatureResolver extends createResolver({
   createDto: CreateFeatureInput,
   queryDto: QueryInput,
   pubSub: FeaturePubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdateFeatureInput,
 }) {
   constructor(service: FeatureService) {
     super(service);

@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   Create<%- className %>Input,
   <%- className %>,
-  UpdatePriceInput,
+  Update<%- className %>Input,
 } from '@techbir/entities-graph';
 import { <%- className %>Service, <%- className %>PubSub } from './<%- fileName %>.service';
 
@@ -13,7 +13,7 @@ export class <%- className %>Resolver extends createResolver({
   createDto: Create<%- className %>Input,
   queryDto: QueryInput,
   pubSub: <%- className %>PubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: Update<%- className %>Input,
 }) {
   constructor(service: <%- className %>Service) {
     super(service);

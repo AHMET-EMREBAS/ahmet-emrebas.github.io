@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreatePriceLevelInput,
   PriceLevel,
-  UpdatePriceInput,
+  UpdatePriceLevelInput,
 } from '@techbir/entities-graph';
 import { PriceLevelService, PriceLevelPubSub } from './price-level.service';
 
@@ -13,7 +13,7 @@ export class PriceLevelResolver extends createResolver({
   createDto: CreatePriceLevelInput,
   queryDto: QueryInput,
   pubSub: PriceLevelPubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdatePriceLevelInput,
 }) {
   constructor(service: PriceLevelService) {
     super(service);

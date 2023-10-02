@@ -12,7 +12,10 @@ export function Field(o?: PropertyOptions | RelationOptions) {
   let typeHandler!: () => ClassConstructor<any>;
 
   if ((o as RelationOptions).target) {
-    typeHandler = () => (o as RelationOptions).target;
+    typeHandler = () =>
+      o?.isArray || o?.type.endsWith('Many')
+        ? [(o as RelationOptions).target]
+        : (o as RelationOptions).target;
   } else {
     if (o?.type === 'string') {
       typeHandler = () => String;

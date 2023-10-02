@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreateMessageInput,
   Message,
-  UpdatePriceInput,
+  UpdateMessageInput,
 } from '@techbir/entities-graph';
 import { MessageService, MessagePubSub } from './message.service';
 
@@ -13,7 +13,7 @@ export class MessageResolver extends createResolver({
   createDto: CreateMessageInput,
   queryDto: QueryInput,
   pubSub: MessagePubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdateMessageInput,
 }) {
   constructor(service: MessageService) {
     super(service);

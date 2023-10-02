@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreateRoleInput,
   Role,
-  UpdatePriceInput,
+  UpdateRoleInput,
 } from '@techbir/entities-graph';
 import { RoleService, RolePubSub } from './role.service';
 
@@ -13,7 +13,7 @@ export class RoleResolver extends createResolver({
   createDto: CreateRoleInput,
   queryDto: QueryInput,
   pubSub: RolePubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdateRoleInput,
 }) {
   constructor(service: RoleService) {
     super(service);

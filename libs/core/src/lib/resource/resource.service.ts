@@ -62,7 +62,8 @@ export class ResourceService<T extends ObjectLiteral = any> {
   async save(body: T) {
     await this.throwIfNotUnique(body);
     try {
-      return await this.__repo.save(body);
+      const saved = await this.__repo.save(body);
+      return await this.findOneById(saved['id']);
     } catch (err) {
       console.error(err);
       throw new UnprocessableEntityException();
@@ -91,14 +92,15 @@ export class ResourceService<T extends ObjectLiteral = any> {
   }
 
   async addRelation({ id, relationId, relationName }: RelationParam) {
-    const found = await this.findOneById(id);
+    await this.findOneById(id);
     try {
       await this.__repo
         .createQueryBuilder()
         .relation(relationName)
         .of(id)
         .add(relationId);
-      return found;
+
+      return await this.findOneById(id);
     } catch (err) {
       console.error(err);
       throw new UnprocessableEntityException();
@@ -106,7 +108,7 @@ export class ResourceService<T extends ObjectLiteral = any> {
   }
 
   async removeRelation({ id, relationId, relationName }: RelationParam) {
-    const found = await this.findOneById(id);
+    await this.findOneById(id);
     try {
       await this.__repo
         .createQueryBuilder()
@@ -114,8 +116,7 @@ export class ResourceService<T extends ObjectLiteral = any> {
         .relation(relationName)
         .of(id)
         .remove(relationId);
-
-      return found;
+      return await this.findOneById(id);
     } catch (err) {
       console.error(err);
       throw new UnprocessableEntityException();
@@ -130,7 +131,7 @@ export class ResourceService<T extends ObjectLiteral = any> {
         .relation(relationName)
         .of(id)
         .set(relationId);
-      return found;
+      return await this.findOneById(id);
     } catch (err) {
       console.error(err);
       throw new UnprocessableEntityException();
@@ -145,7 +146,7 @@ export class ResourceService<T extends ObjectLiteral = any> {
         .relation(relationName)
         .of(id)
         .set(null);
-      return found;
+      return await this.findOneById(id);
     } catch (err) {
       console.error(err);
       throw new UnprocessableEntityException();

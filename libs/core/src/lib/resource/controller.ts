@@ -39,7 +39,7 @@ export function createController(options: ResourceClasses): any {
 
     @End.SaveOne()
     async save(@Body(valiationPipe(createDto)) body: any) {
-      return await this.__service.insert(body);
+      return await this.__service.save(body);
     }
 
     @End.UpdateOne()

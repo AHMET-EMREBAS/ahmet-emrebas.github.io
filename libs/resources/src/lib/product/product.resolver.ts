@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreateProductInput,
   Product,
-  UpdatePriceInput,
+  UpdateProductInput,
 } from '@techbir/entities-graph';
 import { ProductService, ProductPubSub } from './product.service';
 
@@ -13,7 +13,7 @@ export class ProductResolver extends createResolver({
   createDto: CreateProductInput,
   queryDto: QueryInput,
   pubSub: ProductPubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdateProductInput,
 }) {
   constructor(service: ProductService) {
     super(service);

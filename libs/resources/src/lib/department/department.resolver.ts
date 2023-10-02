@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreateDepartmentInput,
   Department,
-  UpdatePriceInput,
+  UpdateDepartmentInput,
 } from '@techbir/entities-graph';
 import { DepartmentService, DepartmentPubSub } from './department.service';
 
@@ -13,7 +13,7 @@ export class DepartmentResolver extends createResolver({
   createDto: CreateDepartmentInput,
   queryDto: QueryInput,
   pubSub: DepartmentPubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdateDepartmentInput,
 }) {
   constructor(service: DepartmentService) {
     super(service);

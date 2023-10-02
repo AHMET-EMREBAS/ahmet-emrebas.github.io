@@ -3,7 +3,7 @@ import { QueryInput, createResolver } from '@techbir/core';
 import {
   CreateStoreInput,
   Store,
-  UpdatePriceInput,
+  UpdateStoreInput,
 } from '@techbir/entities-graph';
 import { StoreService, StorePubSub } from './store.service';
 
@@ -13,7 +13,7 @@ export class StoreResolver extends createResolver({
   createDto: CreateStoreInput,
   queryDto: QueryInput,
   pubSub: StorePubSub,
-  updateDto: UpdatePriceInput,
+  updateDto: UpdateStoreInput,
 }) {
   constructor(service: StoreService) {
     super(service);

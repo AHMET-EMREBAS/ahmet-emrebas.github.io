@@ -35,7 +35,8 @@ export function createResolver(options: ResourceClasses): any {
 
     @End.GSave()
     async save(@BodyArg(createDto) body: any) {
-      return await this.__service.insert(body);
+      this.logger.debug('Save', [body]);
+      return await this.__service.save(body);
     }
 
     @End.GUpdate()
