@@ -20,6 +20,7 @@
       "@techbir/core": ["libs/core/src/index.ts"],
       "@techbir/entities": ["libs/entities/src/index.ts"],
       "@techbir/entities-graph": ["libs/entities-graph/src/index.ts"],
+      "@techbir/forms": ["libs/forms/src/index.ts"],
       "@techbir/gen": ["libs/gen/src/index.ts"],
       "@techbir/material": ["libs/material/src"],
       "@techbir/material-api": ["libs/material-api/src/index.ts"],

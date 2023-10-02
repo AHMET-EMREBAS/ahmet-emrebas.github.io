@@ -12,6 +12,7 @@ export type ModelVariant =
   | 'graphql'
   | 'graphql-input'
   | 'regular';
+
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
 export class PropertyPrinter {
@@ -46,6 +47,12 @@ export class PropertyPrinter {
     } else {
       return `${this.property.type}`;
     }
+  }
+
+  formField() {
+    const { name, inputType, icon, label, required } = this
+      .property as PropertyOptions;
+    return `<tb-input i18n-label type="${inputType}" name="${name}" label="${label}" icon="${icon}" autocomplete="off" required="${required}"></tb-input>`;
   }
 
   protected decorators() {
@@ -231,6 +238,21 @@ export class ModelPrinter {
       }
     }
     return '';
+  }
+
+  formFields() {
+    return [
+      ...Object.entries(this.model.properties || {}),
+      ...Object.entries(this.model.relations || {}),
+    ]
+      .map(([name, value]) => {
+        return new PropertyPrinter(this.modelType, this.modelVariant, {
+          ...value,
+          name,
+        });
+      })
+      .map((e) => e.formField())
+      .join('\n');
   }
 
   print() {

@@ -1,4 +1,5 @@
 import { ClassConstructor } from '@techbir/utils';
+import { Icon } from '../types';
 
 export class PropertyTypeClass {
   readonly string = 'string';
@@ -47,6 +48,14 @@ export class Accassors {
   static?: true;
 }
 
+export class CommonUIProperties {
+  icon?: Icon;
+  label?: string;
+  prefix?: string;
+  suffix?: string;
+  inputType: HTMLInputElement['type'] = 'text';
+}
+
 export class CommonProperty<T = any> extends Accassors {
   type!: PropertyType;
   name!: string;
@@ -54,6 +63,10 @@ export class CommonProperty<T = any> extends Accassors {
   unique?: true;
   hash?: true;
   isArray?: true;
+  icon?: Icon;
+  label?: string;
+  prefix?: string;
+  suffix?: string;
   transformers?: TransformFn[];
   defaultValue?: T;
 }
@@ -89,12 +102,14 @@ export class ObjectProperty<
   objectType?: ObjectType;
 }
 
-export type PropertyOptions =
+export type PropertyOptions = (
   | StringProperty
   | NumberProperty
   | BooleanProperty
   | DateProperty
-  | ObjectProperty;
+  | ObjectProperty
+) &
+  CommonUIProperties;
 
 export type CascadeType =
   | boolean

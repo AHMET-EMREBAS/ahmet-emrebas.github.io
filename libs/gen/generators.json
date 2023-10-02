@@ -14,6 +14,11 @@
       "factory": "./src/generators/graph/generator",
       "schema": "./src/generators/graph/schema.json",
       "description": "graph generator"
+    },
+    "form": {
+      "factory": "./src/generators/form/generator",
+      "schema": "./src/generators/form/schema.json",
+      "description": "form generator"
     }
   }
 }

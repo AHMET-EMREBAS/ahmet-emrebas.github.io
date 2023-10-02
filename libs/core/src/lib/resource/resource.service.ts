@@ -6,7 +6,6 @@ import {
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
-import { instanceToInstance } from 'class-transformer';
 import { ServerLogger } from '@techbir/common';
 
 export class ResourceService<T extends ObjectLiteral = any> {

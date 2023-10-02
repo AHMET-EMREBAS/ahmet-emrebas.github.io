@@ -10,12 +10,13 @@ import { entityConfig } from './entity-metadata';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ButtonModule } from '@techbir/material';
+import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
+
   imports: [
-    ButtonModule,
     BrowserAnimationsModule,
+    ProductComponent,
     RouterModule.forRoot(appRoutes, {
       useHash: true,
       initialNavigation: 'enabledBlocking',
