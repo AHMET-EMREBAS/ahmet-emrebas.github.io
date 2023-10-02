@@ -26,7 +26,7 @@ export const Price: Model = {
   name: 'price',
   properties: {
     price: PriceProperty(),
-    cost: PriceProperty({ name: 'cost' }),
+    cost: PriceProperty({ name: 'cost', label: 'Cost', icon: 'money_off' }),
   },
   relations: {
     product: OwnerRelation({ name: 'product', target: 'Product' }),

@@ -9,6 +9,10 @@ export const MessageModel: Model = {
       minLength: 0,
       maxLength: 500,
       required: true,
+      inputType: 'text',
+      autocomplete: 'off',
+      icon: 'message',
+      label: 'Message',
     },
   },
   relations: {

@@ -4,6 +4,7 @@ import {
   PasswordProperty,
   SubManyRelation,
   UniqueNameProperty,
+  UsernameProperty,
 } from '@techbir/common';
 
 export const Permission: Model = ModelWithName({ name: 'permission' });
@@ -21,7 +22,7 @@ export const Role: Model = {
 export const User: Model = {
   name: 'user',
   properties: {
-    username: UniqueNameProperty(),
+    username: UsernameProperty(),
     password: PasswordProperty(),
   },
   relations: {

@@ -1,14 +1,18 @@
-import { NumberProperty, RelationOptions, StringProperty } from './model';
+import { NumberProperty, StringProperty } from './model';
 
 export function UniqueNameProperty(
   options?: Partial<StringProperty>
 ): StringProperty {
   return {
-    name: 'name',
-    type: 'string',
-    minLength: 3,
+    autocomplete: 'off',
+    icon: 'info',
+    inputType: 'text',
+    label: 'Name',
     maxLength: 30,
+    minLength: 3,
+    name: 'name',
     required: true,
+    type: 'string',
     unique: true,
     ...options,
   };
@@ -18,11 +22,15 @@ export function UsernameProperty(
   options?: Partial<StringProperty>
 ): StringProperty {
   return {
-    name: 'username',
-    type: 'string',
+    autocomplete: 'username',
     format: 'email',
-    unique: true,
+    icon: 'person',
+    inputType: 'text',
+    label: 'Username',
+    name: 'username',
     required: true,
+    type: 'string',
+    unique: true,
     ...options,
   };
 }
@@ -35,6 +43,10 @@ export function PasswordProperty(
     type: 'string',
     format: 'password',
     required: true,
+    autocomplete: 'current-password',
+    inputType: 'password',
+    icon: 'password',
+    label: 'Password',
     ...options,
   };
 }
@@ -47,6 +59,10 @@ export function DescriptionProperty(
     type: 'string',
     minLength: 3,
     maxLength: 400,
+    inputType: 'textarea',
+    autocomplete: 'off',
+    icon: 'description',
+    label: 'Description',
     ...options,
   };
 }
@@ -57,10 +73,13 @@ export function UpcProperty(options?: Partial<StringProperty>): StringProperty {
     type: 'string',
     minLength: 11,
     maxLength: 13,
+    inputType: 'text',
+    autocomplete: 'off',
+    icon: 'qr_code',
+    label: 'Upc',
     ...options,
   };
 }
-
 
 export function PriceProperty(
   options?: Partial<NumberProperty>
@@ -71,6 +90,9 @@ export function PriceProperty(
     defaultValue: 0,
     minimum: 0,
     maximum: Number.MAX_SAFE_INTEGER,
+    inputType: 'number',
+    icon: 'attach_money',
+    label: 'Price',
     ...options,
   };
 }

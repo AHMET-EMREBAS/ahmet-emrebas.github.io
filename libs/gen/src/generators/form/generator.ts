@@ -5,11 +5,10 @@ import { join } from 'path';
 import { Models } from '@techbir/meta';
 import { ModelPrinter } from '@techbir/common';
 
-export async function formGenerator(tree: Tree, options: FormGeneratorSchema) {
+export async function formGenerator(tree: Tree) {
   for (const m of Models) {
     const Names = names(m.name);
-    const TARGET = join('libs', 'entities', 'src', 'lib', Names.fileName);
-    console.log(TARGET);
+    const TARGET = join('libs', 'forms', 'src', 'lib', Names.fileName);
     generateFiles(tree, join(__dirname, 'files'), TARGET, {
       ...names(m.name),
       fileName: Names.fileName,

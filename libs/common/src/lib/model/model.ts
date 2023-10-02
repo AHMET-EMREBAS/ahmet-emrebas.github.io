@@ -48,14 +48,6 @@ export class Accassors {
   static?: true;
 }
 
-export class CommonUIProperties {
-  icon?: Icon;
-  label?: string;
-  prefix?: string;
-  suffix?: string;
-  inputType: HTMLInputElement['type'] = 'text';
-}
-
 export class CommonProperty<T = any> extends Accassors {
   type!: PropertyType;
   name!: string;
@@ -69,6 +61,8 @@ export class CommonProperty<T = any> extends Accassors {
   suffix?: string;
   transformers?: TransformFn[];
   defaultValue?: T;
+  inputType?: HTMLInputElement['type'] = 'text';
+  autocomplete?: HTMLInputElement['autocomplete'];
 }
 
 export class StringProperty<
@@ -102,14 +96,12 @@ export class ObjectProperty<
   objectType?: ObjectType;
 }
 
-export type PropertyOptions = (
+export type PropertyOptions =
   | StringProperty
   | NumberProperty
   | BooleanProperty
   | DateProperty
-  | ObjectProperty
-) &
-  CommonUIProperties;
+  | ObjectProperty;
 
 export type CascadeType =
   | boolean
@@ -134,6 +126,11 @@ export class RelationOptions extends Accassors {
   cascade?: CascadeType;
   onDelete?: OnDeleteUpdateType;
   onUpdate?: OnDeleteUpdateType;
+  icon?: Icon;
+  label?: string;
+  prefix?: string;
+  suffix?: string;
+  inputType?: HTMLInputElement['type'] = 'text';
 }
 
 export class Model {

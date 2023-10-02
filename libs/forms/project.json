@@ -2,7 +2,7 @@
   "name": "forms",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/forms/src",
-  "prefix": "techbir",
+  "prefix": "tb",
   "tags": [],
   "projectType": "library",
   "targets": {

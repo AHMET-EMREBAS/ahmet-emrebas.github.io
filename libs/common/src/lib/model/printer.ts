@@ -241,10 +241,7 @@ export class ModelPrinter {
   }
 
   formFields() {
-    return [
-      ...Object.entries(this.model.properties || {}),
-      ...Object.entries(this.model.relations || {}),
-    ]
+    return [...Object.entries(this.model.properties || {})]
       .map(([name, value]) => {
         return new PropertyPrinter(this.modelType, this.modelVariant, {
           ...value,
