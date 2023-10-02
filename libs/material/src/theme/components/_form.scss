@@ -54,7 +54,7 @@
   //   padding-top: 1em;
   // }
 
-  textarea{ 
+  textarea {
     padding-top: 1em !important;
   }
 
@@ -77,6 +77,14 @@
     position: absolute;
     font-size: 2em;
     margin-left: 0.3em;
+  }
+
+  .input-error {
+    color: var(--red);
+    font-weight: 700;
+    font-size: 1em !important;
+    letter-spacing: 0.2em !important;
+
   }
 }
 

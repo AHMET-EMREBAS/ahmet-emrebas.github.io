@@ -1,5 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
+import { Component } from '@angular/core';
+import {
+  ButtonModule,
+  FormModule,
+  MicroModule,
+  CommonFormComponent,
+} from '@techbir/material';
+import { PriceLevelFormDto } from './price-level-form.dto';
 
 @Component({
   standalone: true,
@@ -43,9 +49,8 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
     </div>
   `,
 })
-export class PriceLevelComponent {
-  @Output() submitEvent = new EventEmitter();
-  submit(event: any) {
-    this.submitEvent.emit(event);
+export class PriceLevelFormComponent extends CommonFormComponent {
+  constructor() {
+    super(PriceLevelFormDto);
   }
 }

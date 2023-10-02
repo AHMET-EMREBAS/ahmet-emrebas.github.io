@@ -1,23 +1,29 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
 import {
-  ProductComponent,
-  CategoryComponent,
-  PriceLevelComponent,
-  PriceComponent,
-  MessageComponent,
+  ProductFormComponent,
+  CategoryFormComponent,
+  PriceLevelFormComponent,
+  PriceFormComponent,
+  MessageFormComponent,
+  RoleFormComponent,
+  PermissionFormComponent,
 } from '@techbir/forms';
 @Component({
   standalone: true,
 
   imports: [
-    ProductComponent,
-    CategoryComponent,
-    PriceLevelComponent,
-    PriceComponent,
-    MessageComponent,
+    ProductFormComponent,
+    CategoryFormComponent,
+    PriceLevelFormComponent,
+    PriceFormComponent,
+    MessageFormComponent,
+    RoleFormComponent,
+    PermissionFormComponent,
   ],
   template: `
+    <tb-role-form (submitEvent)="submit($event)"></tb-role-form>
+    <tb-permission-form (submitEvent)="submit($event)"></tb-permission-form>
     <tb-product-form (submitEvent)="submit($event)"></tb-product-form>
     <tb-category-form (submitEvent)="submit($event)"></tb-category-form>
     <tb-price-level-form (submitEvent)="submit($event)"></tb-price-level-form>

@@ -4,3 +4,4 @@ export * from './decorators';
 export * from './types';
 export * from './colors';
 export * from './model';
+export * from './validators';

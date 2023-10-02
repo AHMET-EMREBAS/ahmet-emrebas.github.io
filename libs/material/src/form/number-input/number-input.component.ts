@@ -7,10 +7,17 @@ import { MicroModule } from '../../micro/micro.module';
   standalone: true,
   imports: [MicroModule],
   template: `
-    <div class="input-container {{ color }} {{ variant }}">
+    <div
+      class="input-container {{ color }} {{ variant }}"
+      [tbTooltip]="error"
+      tbTooltipPosition="bottom"
+      [class.red]="error"
+    >
       <span class="icon"> {{ icon }}</span>
-      <label class="label" [for]="id()">{{ label }} </label>
-      <input 
+      <label class="label" [for]="id()">
+        {{ label }} <span class="input-error" *ngIf="error">{{ error }}</span>
+      </label>
+      <input
         class="input"
         (input)="emit()"
         [(ngModel)]="value"
@@ -20,7 +27,6 @@ import { MicroModule } from '../../micro/micro.module';
         tbHasValue
         type="number"
       />
-      <span class="input-error" *ngIf="error">{{ error }}</span>
     </div>
   `,
 })

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
+import { Component } from '@angular/core';
+import { ButtonModule, FormModule, MicroModule, CommonFormComponent} from '@techbir/material';
+import { <%- className -%>FormDto  } from './<%- fileName -%>-form.dto'
 
 @Component({
   standalone: true,
@@ -36,9 +37,10 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
     </div>
   `,
 })
-export class <%- className %>Component {
-  @Output() submitEvent = new EventEmitter();
-  submit(event: any) {
-    this.submitEvent.emit(event);
+export class <%- className %>FormComponent extends CommonFormComponent {
+
+   constructor() {
+    super(<%- className -%>FormDto);
   }
 }
+

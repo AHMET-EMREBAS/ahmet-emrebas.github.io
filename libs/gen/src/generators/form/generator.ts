@@ -12,7 +12,8 @@ export async function formGenerator(tree: Tree) {
     generateFiles(tree, join(__dirname, 'files'), TARGET, {
       ...names(m.name),
       fileName: Names.fileName,
-      formFields: new ModelPrinter('class', 'entity', m).formFields()
+      formFields: new ModelPrinter('class', 'entity', m).formFields(),
+      properties: new ModelPrinter('class', 'entity', m).formProperties(),
     });
   }
   await formatFiles(tree);

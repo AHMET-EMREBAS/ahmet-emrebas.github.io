@@ -55,6 +55,13 @@ export class PropertyPrinter {
     return `<tb-input i18n-label inputType="${inputType}" name="${name}" label="${label}" icon="${icon}" autocomplete="off" required="${required}"></tb-input>`;
   }
 
+  formProperty() {
+    return `
+    @Validations(${stringify(this.property)})
+    ${this.property.name}?:${this.property.type};
+    `;
+  }
+
   protected decorators() {
     const { type } = { ...this.property };
     const options = stringify({ ...this.property });
@@ -249,6 +256,18 @@ export class ModelPrinter {
         });
       })
       .map((e) => e.formField())
+      .join('\n');
+  }
+
+  formProperties() {
+    return [...Object.entries(this.model.properties || {})]
+      .map(([name, value]) => {
+        return new PropertyPrinter(this.modelType, this.modelVariant, {
+          ...value,
+          name,
+        });
+      })
+      .map((e) => e.formProperty())
       .join('\n');
   }
 

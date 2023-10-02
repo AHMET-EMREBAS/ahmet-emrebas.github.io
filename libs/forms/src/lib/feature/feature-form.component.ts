@@ -1,5 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
+import { Component } from '@angular/core';
+import {
+  ButtonModule,
+  FormModule,
+  MicroModule,
+  CommonFormComponent,
+} from '@techbir/material';
+import { FeatureFormDto } from './feature-form.dto';
 
 @Component({
   standalone: true,
@@ -52,9 +58,8 @@ import { ButtonModule, FormModule, MicroModule } from '@techbir/material';
     </div>
   `,
 })
-export class FeatureComponent {
-  @Output() submitEvent = new EventEmitter();
-  submit(event: any) {
-    this.submitEvent.emit(event);
+export class FeatureFormComponent extends CommonFormComponent {
+  constructor() {
+    super(FeatureFormDto);
   }
 }

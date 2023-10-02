@@ -7,9 +7,17 @@ import { CommonInputComponent } from '../common-input/common-input.component';
   standalone: true,
   imports: [MicroModule],
   template: `
-    <div class="input-container {{ color }} {{ variant }}">
+    <div
+      class="input-container {{ color }} {{ variant }}"
+      [tbTooltip]="error"
+      tbTooltipPosition="bottom"
+      [class.red]="error"
+    >
       <span class="icon"> {{ icon }}</span>
-      <label class="label" [for]="name">{{ label }} </label>
+      <label class="label" [for]="name">
+        {{ label }}
+        <span class="input-error" *ngIf="error">{{ error }}</span>
+      </label>
       <textarea
         class="input"
         [(ngModel)]="value"
@@ -20,7 +28,6 @@ import { CommonInputComponent } from '../common-input/common-input.component';
         (input)="emit()"
         tbHasValue
       ></textarea>
-      <span class="input-error" *ngIf="error">{{ error }}</span>
     </div>
   `,
 })

@@ -1,10 +1,10 @@
 @use '../colors' as colors;
 
-[aria-label][tooltip-postion][tooltip-active='false'] {
-  --scale: 0;
-  visibility: hidden !important;
-  position: absolute !important;
-}
+// [aria-label][tooltip-postion][tooltip-active='false'] {
+//   --scale: 0;
+//   visibility: hidden !important;
+//   position: absolute !important;
+// }
 
 [aria-label][tooltip-position] {
   position: relative;
