@@ -1,0 +1,24 @@
+{
+  "generators": {
+    "resource": {
+      "factory": "./src/generators/resource/generator",
+      "schema": "./src/generators/resource/schema.json",
+      "description": "resource generator"
+    },
+    "entity": {
+      "factory": "./src/generators/entity/generator",
+      "schema": "./src/generators/entity/schema.json",
+      "description": "entity generator"
+    },
+    "graph": {
+      "factory": "./src/generators/graph/generator",
+      "schema": "./src/generators/graph/schema.json",
+      "description": "graph generator"
+    },
+    "form": {
+      "factory": "./src/generators/form/generator",
+      "schema": "./src/generators/form/schema.json",
+      "description": "form generator"
+    }
+  }
+}

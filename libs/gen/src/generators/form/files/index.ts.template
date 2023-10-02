@@ -1,0 +1,2 @@
+export * from './<%- fileName -%>-form.component';
+export * from './<%- fileName -%>-form.dto';

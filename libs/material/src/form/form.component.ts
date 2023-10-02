@@ -18,9 +18,10 @@ import { FormValue } from '../api/form-value';
   standalone: true,
   imports: [MicroModule, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent {
+  @Input() errors: Record<string, string> = {};
+
   componentType = InputComponent;
 
   /** Form action container marked by FormActionDirective  */
@@ -41,7 +42,11 @@ export class FormComponent {
   }
 
   childValue(value: InputComponent) {
-    return value.inputs({ formName: this.name, formValue: this.formValue });
+    return value.inputs({
+      formName: this.name,
+      formValue: this.formValue,
+      error: this.errors[value.name],
+    });
   }
 
   submit() {

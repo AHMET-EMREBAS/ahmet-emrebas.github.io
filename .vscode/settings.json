@@ -1,6 +1,5 @@
 {
   "eslint.validate": ["json"],
-
   "json.schemas": [
     {
       "fileMatch": ["/projects/*/models/*.yaml"],

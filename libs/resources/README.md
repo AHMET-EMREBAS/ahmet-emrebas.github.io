@@ -1,0 +1,3 @@
+# resources
+
+Project resource modules.

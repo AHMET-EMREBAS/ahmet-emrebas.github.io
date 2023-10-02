@@ -10,9 +10,10 @@ import { SelectOption } from '../../api';
   template: `
     <div class="dropdown input-dropdown {{ direction }}  {{ color }}">
       <div class="input-container {{ color }} {{ variant }}">
-        <label [for]="id()"></label>
+        <label class="label" [for]="id()"></label>
         <span class="icon">{{ icon }}</span>
         <input
+          class="input"
           #input
           [(ngModel)]="value"
           [id]="id()"

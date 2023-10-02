@@ -12,8 +12,10 @@ export class Logger {
   }
 
   protected table(objs?: LogObjectMessage) {
-    if (objs) {
-      objs.forEach((e) => console.table(objs));
+    if (objs && objs.forEach) {
+      objs?.forEach((e) => console.table(objs));
+    } else {
+      console.log(objs);
     }
   }
 

@@ -1,0 +1,8 @@
+import { Validations } from '@techbir/common'; 
+
+
+export class <%- className -%>FormDto { 
+
+    <%- properties %>
+
+}

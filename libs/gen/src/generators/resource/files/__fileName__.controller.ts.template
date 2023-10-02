@@ -1,0 +1,17 @@
+import { Controller } from '@nestjs/common';
+import { QueryDto, createController } from '@techbir/core';
+import { Create<%- className %>Dto, <%- className %>, Update<%- className %>Dto } from '@techbir/entities';
+import { <%- className %>Service, <%- className %>PubSub } from './<%- fileName %>.service';
+
+@Controller()
+export class <%- className %>Controller extends createController({
+  createDto: Create<%- className %>Dto,
+  entity: <%- className %>,
+  pubSub: <%- className %>PubSub,
+  queryDto: QueryDto,
+  updateDto: Update<%- className %>Dto,
+}) {
+  constructor(service: <%- className %>Service) {
+    super(service);
+  }
+}

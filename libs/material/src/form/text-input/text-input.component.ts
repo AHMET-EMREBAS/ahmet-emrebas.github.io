@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonInputComponent } from '../common-input/common-input.component';
 import { MicroModule } from '../../micro/micro.module';
 
@@ -7,20 +7,27 @@ import { MicroModule } from '../../micro/micro.module';
   standalone: true,
   imports: [MicroModule],
   template: `
-    <div class="input-container {{ color }} {{ variant }}">
+    <div
+      class="input-container {{ color }} {{ variant }}"
+      [tbTooltip]="error"
+      tbTooltipPosition="bottom"
+      [class.red]="error"
+    >
       <span class="icon"> {{ icon }}</span>
-      <label [for]="name">{{ label }} </label>
+      <label class="label" [for]="name">
+        {{ label }}
+      </label>
       <input
+        class="input"
         [(ngModel)]="value"
         [id]="id()"
         [attr.data-testid]="name"
-        type="text"
+        [type]="type"
         [name]="name"
         [autocomplete]="autocomplete"
         (input)="emit()"
         tbHasValue
       />
-      <span class="input-error" *ngIf="error">{{ error }}</span>
     </div>
   `,
 })

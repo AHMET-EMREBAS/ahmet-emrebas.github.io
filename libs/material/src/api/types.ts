@@ -52,6 +52,8 @@ export type InputVariant = ButttonVariant;
 
 export type InputType =
   | 'text'
+  | 'textarea'
+  | 'password'
   | 'number'
   | 'boolean'
   | 'date'

@@ -9,12 +9,13 @@ import { MicroModule } from '../../micro/micro.module';
   template: `
     <div class="flex row align-center gap-2em ">
       <input
+        class="input"
         [(ngModel)]="value"
         [id]="id()"
         type="checkbox"
         class="w-20px h-20px"
       />
-      <label [for]="id()">{{ label }}</label>
+      <label class="label" [for]="id()">{{ label }}</label>
     </div>
   `,
 })
