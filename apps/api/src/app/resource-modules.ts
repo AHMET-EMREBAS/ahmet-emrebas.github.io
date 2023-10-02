@@ -10,6 +10,7 @@ import {
   DepartmentModule,
   PermissionModule,
   PriceLevelModule,
+  MessageModule,
 } from '@techbir/resources';
 
 export const ResourceModules = [
@@ -24,4 +25,5 @@ export const ResourceModules = [
   DepartmentModule,
   PermissionModule,
   PriceLevelModule,
+  MessageModule,
 ];
