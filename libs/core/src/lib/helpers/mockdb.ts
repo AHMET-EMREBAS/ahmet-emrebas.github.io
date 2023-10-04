@@ -2,9 +2,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 export function Mockdb(name: string) {
   return TypeOrmModule.forRoot({
-    type: 'sqlite',
+    type: 'better-sqlite3',
     database: `tmp/test/${name}.sqlite`,
-
     autoLoadEntities: true,
     synchronize: true,
     dropSchema: true,

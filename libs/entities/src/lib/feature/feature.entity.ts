@@ -5,14 +5,27 @@ import { PartialType } from '@nestjs/graphql';
 @Entity()
 export class Feature extends BaseEntity {
   @Column({
-    name: 'name',
-    type: 'string',
-    minLength: 3,
+    autocomplete: 'off',
+    icon: 'info',
+    inputType: 'text',
+    label: 'Name',
     maxLength: 30,
+    minLength: 3,
+    name: 'name',
     required: true,
+    type: 'string',
     unique: true,
   })
   name!: string;
-  @Column({ name: 'value', type: 'string', minLength: 3, maxLength: 400 })
+  @Column({
+    name: 'value',
+    type: 'string',
+    minLength: 3,
+    maxLength: 400,
+    inputType: 'textarea',
+    autocomplete: 'off',
+    icon: 'description',
+    label: 'Description',
+  })
   value?: string;
 }

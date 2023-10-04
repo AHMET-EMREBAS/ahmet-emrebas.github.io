@@ -47,6 +47,7 @@ export function PasswordProperty(
     inputType: 'password',
     icon: 'password',
     label: 'Password',
+    hash: true,
     ...options,
   };
 }

@@ -34,6 +34,8 @@ export class ResourceService<T extends ObjectLiteral = any> {
     return await this.__repo.find({ ...(query as any) });
   }
 
+
+
   async findOneById(id: number) {
     try {
       return await this.__repo.findOneByOrFail({ id } as any);

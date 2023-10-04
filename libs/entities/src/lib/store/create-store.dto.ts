@@ -6,11 +6,15 @@ import { PriceLevel } from './../price-level';
 @Dto()
 export class CreateStoreDto {
   @Property({
-    name: 'name',
-    type: 'string',
-    minLength: 3,
+    autocomplete: 'off',
+    icon: 'info',
+    inputType: 'text',
+    label: 'Name',
     maxLength: 30,
+    minLength: 3,
+    name: 'name',
     required: true,
+    type: 'string',
     unique: true,
   })
   name!: string;

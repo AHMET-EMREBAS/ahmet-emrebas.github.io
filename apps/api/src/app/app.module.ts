@@ -1,14 +1,16 @@
-import { Module } from '@nestjs/common';
-
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-
 import { AppGraphModule } from './app-graph.module';
-import { ResourceModules } from './resource-modules';
+import { AppService } from './app.service';
+import { AuthModule } from '@techbir/auth';
+import { ConfigModule } from '@nestjs/config';
+import { GmailModule } from '@techbir/mail';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PermissionModule, RoleModule, UserModule } from '@techbir/resources';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({}),
     TypeOrmModule.forRoot({
       type: 'mysql',
       database: 'testdb',
@@ -18,8 +20,12 @@ import { ResourceModules } from './resource-modules';
       synchronize: true,
       dropSchema: true,
     }),
+    UserModule,
+    RoleModule,
+    PermissionModule,
     AppGraphModule,
-    ...ResourceModules,
+    GmailModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
