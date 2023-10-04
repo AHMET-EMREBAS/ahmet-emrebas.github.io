@@ -1,4 +1,5 @@
 import {
+  BoolProperty,
   Model,
   ModelWithName,
   PasswordProperty,
@@ -22,8 +23,9 @@ export const Role: Model = {
 export const User: Model = {
   name: 'user',
   properties: {
-    username: UsernameProperty(),
-    password: PasswordProperty(),
+    username: UsernameProperty({ name: 'username' }),
+    password: PasswordProperty({ name: 'password' }),
+    isAdmin: BoolProperty({ name: 'isAdmin' }),
   },
   relations: {
     roles: SubManyRelation({ name: 'roles', target: 'Role' }),

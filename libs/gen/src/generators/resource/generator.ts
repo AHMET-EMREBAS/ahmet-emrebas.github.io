@@ -26,9 +26,16 @@ export async function resourceGenerator(tree: Tree) {
     const Names = names(m.name);
     const TARGET = join('libs', 'resources', 'src', 'lib', Names.fileName);
 
+    const uniqueProperties = Object.entries(m.properties || {})
+      .filter(([key, value]) => value.unique)
+      .map(([key, value]) => value.name)
+      .map((e) => `"${e}"`)
+      .join(',');
+
     generateFiles(tree, join(__dirname, 'files'), TARGET, {
       ...names(m.name),
       relationTargets: relationTargets(m).join(','),
+      uniqueProperties,
     });
   }
   await formatFiles(tree);

@@ -29,6 +29,14 @@ export class User extends BaseEntity {
     hash: true,
   })
   password!: string;
+  @Column({
+    defaultValue: false,
+    name: 'isAdmin',
+    type: 'boolean',
+    icon: 'check_box_outline_blank',
+    inputType: 'checkbox',
+  })
+  isAdmin?: boolean = false;
   @Relation({
     type: 'ManyToMany',
     eager: true,

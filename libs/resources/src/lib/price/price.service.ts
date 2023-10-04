@@ -10,6 +10,6 @@ export const PricePubSub = new PubSub();
 @Injectable()
 export class PriceService extends ResourceService {
   constructor(@InjectRepository(Price) repo: Repository<Price>) {
-    super(repo, ['name']);
+    super(repo, []);
   }
 }

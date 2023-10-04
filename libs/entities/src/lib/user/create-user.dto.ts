@@ -30,6 +30,14 @@ export class CreateUserDto {
   })
   password!: string;
   @Property({
+    defaultValue: false,
+    name: 'isAdmin',
+    type: 'boolean',
+    icon: 'check_box_outline_blank',
+    inputType: 'checkbox',
+  })
+  isAdmin?: boolean = false;
+  @Property({
     type: 'ManyToMany',
     eager: true,
     join: true,

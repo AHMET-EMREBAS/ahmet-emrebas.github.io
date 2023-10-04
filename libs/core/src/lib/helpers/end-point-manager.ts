@@ -26,6 +26,7 @@ import {
   PublishOnSaveInterceptor,
 } from '../interceptors';
 import { ClassConstructor } from 'class-transformer';
+import { ReadPermission, WritePermission } from '../auth';
 
 const API_NOT_FOUND_DESCRIPTION = 'Could not find the entity by the id!';
 
@@ -76,6 +77,7 @@ export class EndPointManager {
 
   FindAll() {
     return applyDecorators(
+      ReadPermission(this.entity.name),
       ApiTags('Read'),
       ApiOperation({ summary: `Find All ${this.PLURAL}` }),
       ApiOkResponse({
@@ -91,6 +93,7 @@ export class EndPointManager {
 
   FindOneById() {
     return applyDecorators(
+      ReadPermission(this.entity.name),
       ApiTags('Read'),
       ApiOperation({ summary: 'Find one by id' }),
       ApiOkResponse({ type: this.entity, description: 'Success' }),
@@ -101,6 +104,7 @@ export class EndPointManager {
 
   SaveOne() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       ApiTags('Create'),
       ApiOperation({ summary: `Save ${this.SINGULAR}` }),
       ApiCreatedResponse({ type: this.entity, description: 'Success' }),
@@ -115,6 +119,7 @@ export class EndPointManager {
 
   UpdateOne() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       ApiTags('Update'),
       ApiOperation({ summary: `Update ${this.SINGULAR}` }),
       ApiCreatedResponse({ type: this.entity, description: 'Success' }),
@@ -128,6 +133,7 @@ export class EndPointManager {
 
   DeleteOne() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       ApiTags('Delete'),
       ApiOperation({ summary: `Delete ${this.SINGULAR} By Id` }),
       ApiOkResponse({ type: Boolean, description: 'Success' }),
@@ -140,6 +146,7 @@ export class EndPointManager {
 
   AddRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       ApiTags('Relations'),
       ApiOperation({ summary: `Add relation by id to ${this.SINGULAR}` }),
       ApiOkResponse({ type: Boolean, description: 'Success' }),
@@ -152,6 +159,7 @@ export class EndPointManager {
 
   RemoveRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       ApiTags('Relations'),
       ApiOperation({
         summary: `Delete relation by id from ${this.SINGULAR}`,
@@ -165,6 +173,7 @@ export class EndPointManager {
 
   SetRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       ApiTags('Relations'),
       ApiOperation({ summary: `Set relation by id to ${this.SINGULAR}` }),
       ApiOkResponse({ type: Boolean, description: 'Success' }),
@@ -176,6 +185,7 @@ export class EndPointManager {
 
   UnsetRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       ApiTags('Relations'),
       ApiOperation({ summary: `Unset relation from ${this.SINGULAR}` }),
       ApiOkResponse({ type: Boolean, description: 'Success' }),
@@ -187,23 +197,30 @@ export class EndPointManager {
 
   // GraphQL
   GFindAll() {
-    return GraphQuery(() => [this.entity], {
-      name: `find${this.PLURAL}`,
-      nullable: true,
-      description: 'Find all entitites by query',
-    });
+    return applyDecorators(
+      ReadPermission(this.entity.name),
+      GraphQuery(() => [this.entity], {
+        name: `find${this.PLURAL}`,
+        nullable: true,
+        description: 'Find all entitites by query',
+      })
+    );
   }
 
   GFindOneById() {
-    return GraphQuery(() => this.entity, {
-      name: `find${this.SINGULAR}`,
-      nullable: true,
-      description: 'Find entity by id.',
-    });
+    return applyDecorators(
+      ReadPermission(this.entity.name),
+      GraphQuery(() => this.entity, {
+        name: `find${this.SINGULAR}`,
+        nullable: true,
+        description: 'Find entity by id.',
+      })
+    );
   }
 
   GSave() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       Mutation(() => this.entity, {
         name: `new${this.SINGULAR}`,
         description: 'Save entity.',
@@ -214,6 +231,7 @@ export class EndPointManager {
 
   GUpdate() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       Mutation(() => this.entity, {
         name: `update${this.SINGULAR}`,
         description: 'Udpate entity by id.',
@@ -224,6 +242,7 @@ export class EndPointManager {
 
   GDelete() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       Mutation(() => this.entity, {
         name: `delete${this.SINGULAR}`,
         description: 'Delete entity by id.',
@@ -234,6 +253,7 @@ export class EndPointManager {
 
   GAddRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       Mutation(() => this.entity, {
         name: `addTo${this.SINGULAR}`,
         description: 'Add relation (many-to-many) to the entity.',
@@ -244,6 +264,7 @@ export class EndPointManager {
 
   GRemoveRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       Mutation(() => this.entity, {
         name: `removeFrom${this.SINGULAR}`,
         description: 'Add relation (many-to-many) to the entity.',
@@ -254,6 +275,7 @@ export class EndPointManager {
 
   GSetRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       Mutation(() => this.entity, {
         name: `setTo${this.SINGULAR}`,
         description: 'Set relation (many-to-one) to the entity.',
@@ -264,6 +286,7 @@ export class EndPointManager {
 
   GUnsetRelation() {
     return applyDecorators(
+      WritePermission(this.entity.name),
       Mutation(() => this.entity, {
         name: `unsetFrom${this.SINGULAR}`,
         description: 'Unset relation (many-to-one) from the entity.',
@@ -273,24 +296,33 @@ export class EndPointManager {
   }
 
   SavedSubscription() {
-    return Subscription(() => this.entity, {
-      name: this.SAVED_SUB_NAME,
-      description: 'Subscription for save event.',
-    });
+    return applyDecorators(
+      ReadPermission(this.entity.name),
+      Subscription(() => this.entity, {
+        name: this.SAVED_SUB_NAME,
+        description: 'Subscription for save event.',
+      })
+    );
   }
 
   DeletedSubscription() {
-    return Subscription(() => this.entity, {
-      name: this.DELETED_SUB_NAME,
-      description: 'Subscription for delete event.',
-    });
+    return applyDecorators(
+      ReadPermission(this.entity.name),
+      Subscription(() => this.entity, {
+        name: this.DELETED_SUB_NAME,
+        description: 'Subscription for delete event.',
+      })
+    );
   }
 
   ChangeSubscription() {
-    return Subscription(() => this.entity, {
-      name: this.CHANGED_SUB_NAME,
-      description: 'Subscription for change event.',
-    });
+    return applyDecorators(
+      ReadPermission(this.entity.name),
+      Subscription(() => this.entity, {
+        name: this.CHANGED_SUB_NAME,
+        description: 'Subscription for change event.',
+      })
+    );
   }
 
   private pub(name: string, payload: unknown) {

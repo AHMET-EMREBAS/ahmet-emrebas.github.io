@@ -10,6 +10,6 @@ export const MessagePubSub = new PubSub();
 @Injectable()
 export class MessageService extends ResourceService {
   constructor(@InjectRepository(Message) repo: Repository<Message>) {
-    super(repo, ['name']);
+    super(repo, []);
   }
 }

@@ -1,4 +1,4 @@
-import { NumberProperty, StringProperty } from './model';
+import { BooleanProperty, NumberProperty, StringProperty } from './model';
 
 export function UniqueNameProperty(
   options?: Partial<StringProperty>
@@ -94,6 +94,19 @@ export function PriceProperty(
     minimum: 0,
     name: 'price',
     type: 'number',
+    ...options,
+  };
+}
+
+export function BoolProperty(
+  options?: Partial<BooleanProperty>
+): BooleanProperty {
+  return {
+    defaultValue: false,
+    name: 'bool',
+    type: 'boolean',
+    icon: 'check_box_outline_blank',
+    inputType: 'checkbox',
     ...options,
   };
 }

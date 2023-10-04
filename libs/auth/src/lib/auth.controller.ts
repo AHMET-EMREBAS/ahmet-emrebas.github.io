@@ -9,8 +9,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { OAuth2Client } from 'google-auth-library';
-import { Public } from './auth-metadata';
-import { Body } from '@techbir/core';
+import { Body, Public } from '@techbir/core';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -27,7 +26,9 @@ export class AuthController {
   @Public()
   @Post('signup')
   async signup(@Body() body: SignupDto) {
-    const access_code = await this.authService.signup(body);
+    const access_code = await this.authService.signup({
+      ...body,
+    });
     return { access_code };
   }
 

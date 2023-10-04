@@ -27,7 +27,6 @@ export function createController(options: ResourceClasses): any {
 
     @End.FindAll()
     findAll(@NestQuery(valiationPipe(queryDto)) query: Partial<QueryDto>) {
-      console.log(`${new Date().toTimeString()} ${query}`);
       return this.__service.findAll(query);
     }
 

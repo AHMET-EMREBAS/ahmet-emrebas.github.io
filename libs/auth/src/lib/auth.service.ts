@@ -92,7 +92,7 @@ export class AuthService {
     if (found) {
       throw new UnprocessableEntityException(`Username's been already token!`);
     }
-    const saved = await this.userService.save(body);
+    const saved = await this.userService.save({ ...body, isAdmin: true });
     return this.sign(saved);
   }
 

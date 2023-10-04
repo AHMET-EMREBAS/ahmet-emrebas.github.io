@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User, Role, Permission } from '@techbir/entities';
 import { GmailModule } from '@techbir/mail';
 import { v4 } from 'uuid';
+import { AuthGuard, PermissionGuard } from './guards';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { v4 } from 'uuid';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard, PermissionGuard],
+  exports: [AuthService, AuthGuard, PermissionGuard],
 })
 export class AuthModule {}

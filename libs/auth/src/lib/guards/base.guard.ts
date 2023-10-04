@@ -1,7 +1,7 @@
 import { Reflector } from '@nestjs/core';
 import { AuthService } from '../auth.service';
 import { ExecutionContext, UnauthorizedException } from '@nestjs/common';
-import { IS_PUBLIC_TOKEN, PERMISSION_TOKEN } from '../auth-metadata';
+import { IS_PUBLIC_TOKEN, PERMISSION_TOKEN } from '@techbir/core';
 import { User } from '@techbir/entities';
 
 export class BaseGuard {
@@ -38,6 +38,10 @@ export class BaseGuard {
     ]);
   }
 
+  isAdmin(context: ExecutionContext) {
+    return this.getUser(context).isAdmin;
+  }
+
   requiredPermission(context: ExecutionContext) {
     return this.reflector.getAllAndOverride(PERMISSION_TOKEN, [
       context.getHandler(),
@@ -62,6 +66,8 @@ export class BaseGuard {
       }
     }
 
-    throw new UnauthorizedException('You do not have the permisison');
+    throw new UnauthorizedException(
+      `You do not have the permisison ${rPermission}`
+    );
   }
 }
