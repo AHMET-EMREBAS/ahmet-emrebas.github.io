@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   ButtonModule,
   FormModule,
@@ -59,7 +60,7 @@ import { PriceFormDto } from './price-form.dto';
   `,
 })
 export class PriceFormComponent extends CommonFormComponent {
-  constructor() {
-    super(PriceFormDto);
+  constructor(route: ActivatedRoute) {
+    super(PriceFormDto, route);
   }
 }

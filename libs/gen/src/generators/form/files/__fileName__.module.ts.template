@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { <%- className %>FormComponent } from './<%- fileName %>-form.component';
-import { <%- className %>TableComponent } from './<%- fileName %>.table.component';
+import { <%- className %>TableComponent } from './<%- fileName %>-table.component';
 import { RouterModule, Routes } from '@angular/router';
 import { <%- className %>Service } from './<%- fileName %>.service';
 import {

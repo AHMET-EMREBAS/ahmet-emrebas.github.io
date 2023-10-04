@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   ButtonModule,
   FormModule,
@@ -50,7 +51,7 @@ import { PermissionFormDto } from './permission-form.dto';
   `,
 })
 export class PermissionFormComponent extends CommonFormComponent {
-  constructor() {
-    super(PermissionFormDto);
+  constructor(route: ActivatedRoute) {
+    super(PermissionFormDto, route);
   }
 }

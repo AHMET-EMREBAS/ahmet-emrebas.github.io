@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ProductFormComponent } from './product-form.component';
-import { ProductTableComponent } from './product.table.component';
+import { ProductTableComponent } from './product-table.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductService } from './product.service';
 import {
@@ -10,7 +10,7 @@ import {
   TableComponent,
 } from '@techbir/material';
 
-export const productRoutes: Routes = [
+const routes: Routes = [
   { path: '', component: ProductTableComponent },
   {
     path: 'create',
@@ -29,7 +29,7 @@ export const productRoutes: Routes = [
     FormModule,
     ButtonModule,
     TableComponent,
-    RouterModule.forChild(productRoutes),
+    RouterModule.forChild(routes),
   ],
   providers: [ProductService],
 })

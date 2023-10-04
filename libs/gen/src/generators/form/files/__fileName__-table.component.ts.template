@@ -18,6 +18,6 @@ import { <%- className %> } from './<%- fileName %>';
 })
 export class <%- className %>TableComponent extends CommonTableComponent<<%- className %>> {
   constructor(service: <%- className %>Service) {
- 
+    super(service);
   }
 }

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonTableComponent } from '@techbir/material';
-import { ProductService } from './product.service';
-import { Product } from './product';
+import { PriceService } from './price.service';
+import { Price } from './price';
 
 @Component({
-  selector: 'tb-product-table',
+  selector: 'tb-price-table',
   template: ` <tb-table
     [columns]="columns || []"
     [visibleColumns]="visibleColumns || []"
@@ -16,11 +16,8 @@ import { Product } from './product';
     (rowClickEvent)="handleRowClickEvent($event)"
   ></tb-table>`,
 })
-export class ProductTableComponent extends CommonTableComponent<Product> {
-  constructor(service: ProductService) {
+export class PriceTableComponent extends CommonTableComponent<Price> {
+  constructor(service: PriceService) {
     super(service);
-    service.addOneToCache({ id: 1, name: 'some', description: 'some' });
-    service.addOneToCache({ id: 2, name: 'some', description: 'some' });
-    service.addOneToCache({ id: 3, name: 'some', description: 'some' });
   }
 }

@@ -1,4 +1,5 @@
 export * from './<%- fileName %>-form.component';
+export * from './<%- fileName %>-table.component';
 export * from './<%- fileName %>-form.dto';
 export * from './<%- fileName %>.module';
 export * from './<%- fileName %>.service';

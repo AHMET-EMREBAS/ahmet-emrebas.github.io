@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   ButtonModule,
   FormModule,
@@ -59,7 +60,7 @@ import { FeatureFormDto } from './feature-form.dto';
   `,
 })
 export class FeatureFormComponent extends CommonFormComponent {
-  constructor() {
-    super(FeatureFormDto);
+  constructor(route: ActivatedRoute) {
+    super(FeatureFormDto, route);
   }
 }

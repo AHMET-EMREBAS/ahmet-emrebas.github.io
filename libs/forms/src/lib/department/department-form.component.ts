@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   ButtonModule,
   FormModule,
@@ -50,7 +51,7 @@ import { DepartmentFormDto } from './department-form.dto';
   `,
 })
 export class DepartmentFormComponent extends CommonFormComponent {
-  constructor() {
-    super(DepartmentFormDto);
+  constructor(route: ActivatedRoute) {
+    super(DepartmentFormDto, route);
   }
 }

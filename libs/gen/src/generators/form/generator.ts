@@ -10,12 +10,13 @@ export async function formGenerator(tree: Tree) {
     generateFiles(tree, join(__dirname, 'files'), TARGET, {
       ...names(m.name),
       fileName: Names.fileName,
-      columnNames: Object.entries(m.properties || {}).map(
-        ([key, value]) => value.name
-      ),
+      columnNames: Object.entries(m.properties || {})
+        .map(([key, value]) => value.name)
+        .map((e) => `"${e}"`)
+        .join(','),
       formFields: new ModelPrinter('class', 'entity', m).formFields(),
       formProperties: new ModelPrinter('class', 'entity', m).formProperties(),
-      interfaceProperties: new ModelPrinter('interface', 'dto', m).properties(),
+      interfaceProperties: new ModelPrinter('interface', 'client', m).properties(),
     });
   }
   await formatFiles(tree);

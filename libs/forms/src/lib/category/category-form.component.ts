@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   ButtonModule,
   FormModule,
@@ -50,7 +51,7 @@ import { CategoryFormDto } from './category-form.dto';
   `,
 })
 export class CategoryFormComponent extends CommonFormComponent {
-  constructor() {
-    super(CategoryFormDto);
+  constructor(route: ActivatedRoute) {
+    super(CategoryFormDto, route);
   }
 }

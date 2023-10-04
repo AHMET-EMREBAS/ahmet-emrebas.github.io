@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
-import { CommonFormComponent } from '@techbir/material';
-import { ProductFormDto } from './product-form.dto';
 import { ActivatedRoute } from '@angular/router';
+import {
+  ButtonModule,
+  FormModule,
+  MicroModule,
+  CommonFormComponent,
+} from '@techbir/material';
+import { ProductFormDto } from './product-form.dto';
 
 @Component({
+  standalone: true,
+  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-product-form',
   template: `
     <div class="flex column gap-2em p-1em">
       <h1 class="title-2" substring="Safe form" i18n>Create Product</h1>
-      <tb-form (submitEvent)="submit($event)" [defaultValue]="defaultValue">
+      <tb-form (submitEvent)="submit($event)">
         <tb-input
           i18n-label
           inputType="text"

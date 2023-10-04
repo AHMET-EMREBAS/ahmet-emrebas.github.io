@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   ButtonModule,
   FormModule,
@@ -50,7 +51,7 @@ import { MessageFormDto } from './message-form.dto';
   `,
 })
 export class MessageFormComponent extends CommonFormComponent {
-  constructor() {
-    super(MessageFormDto);
+  constructor(route: ActivatedRoute) {
+    super(MessageFormDto, route);
   }
 }

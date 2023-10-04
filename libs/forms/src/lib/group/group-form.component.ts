@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   ButtonModule,
   FormModule,
@@ -50,7 +51,7 @@ import { GroupFormDto } from './group-form.dto';
   `,
 })
 export class GroupFormComponent extends CommonFormComponent {
-  constructor() {
-    super(GroupFormDto);
+  constructor(route: ActivatedRoute) {
+    super(GroupFormDto, route);
   }
 }
