@@ -36,6 +36,15 @@ class Sample {
     join: true,
   })
   category?: Category;
+
+  @Relation({
+    name: 'categories',
+    type: 'ManyToMany',
+    target: 'Category',
+    eager: true,
+    join: true,
+  })
+  categories?: Category[];
 }
 
 @Dto()
@@ -134,6 +143,99 @@ describe('Resource Service', () => {
       };
 
       expect(deleteEntity).rejects.toThrow();
+    });
+  });
+
+  describe('Manage Relations', () => {
+    let saved: Sample;
+    let cat1: Category;
+    let cat2: Category;
+    let cat3: Category;
+    let cat4: Category;
+
+    beforeAll(async () => {
+      saved = await service.save({ name: 'entity to be updated', age: 18 });
+
+      cat1 = await categoryRepo.save({ name: 'cat1' });
+      cat2 = await categoryRepo.save({ name: 'cat2' });
+      cat3 = await categoryRepo.save({ name: 'cat3' });
+      cat4 = await categoryRepo.save({ name: 'cat4' });
+    });
+    it('should set relation', async () => {
+      await service.setRelation({
+        id: saved.id!,
+        relationId: cat1.id!,
+        relationName: 'category',
+      });
+
+      const found = await service.findOneById(saved.id!);
+      const cat = found.category;
+
+      expect(cat).toBeDefined();
+      expect(cat?.id).toBe(cat1?.id);
+    });
+
+    it('should add relation', async () => {
+      await service.addRelation({
+        id: saved.id!,
+        relationId: cat1.id!,
+        relationName: 'categories',
+      });
+      await service.addRelation({
+        id: saved.id!,
+        relationId: cat2.id!,
+        relationName: 'categories',
+      });
+
+      const found = await service.findOneById(saved.id!);
+
+      const cats = found.categories;
+
+      const foundCat1 = cats?.find((e) => e.id === cat1.id);
+      const foundCat2 = cats?.find((e) => e.id === cat2.id);
+      expect(foundCat1?.id).toBe(cat1.id);
+      expect(foundCat2?.id).toBe(cat2.id);
+    });
+
+    it('should remove relation', async () => {
+      try {
+        await service.addRelation({
+          id: saved.id!,
+          relationId: cat1.id!,
+          relationName: 'categories',
+        });
+        await service.addRelation({
+          id: saved.id!,
+          relationId: cat2.id!,
+          relationName: 'categories',
+        });
+      } catch (err) {
+        // Ignore
+      }
+
+      const beforeDelete = await service.findOneById(saved.id!);
+
+      expect(
+        beforeDelete.categories?.find((e) => e.id === cat1.id)
+      ).toBeDefined();
+      expect(
+        beforeDelete.categories?.find((e) => e.id === cat2.id)
+      ).toBeDefined();
+
+      await service.removeRelation({
+        id: saved.id!,
+        relationId: cat1.id!,
+        relationName: 'categories',
+      });
+
+      const afterDelete = await service.findOneById(saved.id!);
+
+      expect(
+        afterDelete.categories?.find((e) => e.id === cat1.id)
+      ).toBeUndefined();
+      expect(
+        afterDelete.categories?.find((e) => e.id === cat2.id)
+      ).toBeDefined();
     });
   });
 });
