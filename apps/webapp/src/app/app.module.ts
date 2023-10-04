@@ -9,7 +9,11 @@ import { entityConfig } from './entity-metadata';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ButtonModule, ToolbarComponent } from '@techbir/material';
+import {
+  ButtonModule,
+  TableComponent,
+  ToolbarComponent,
+} from '@techbir/material';
 import { WebsiteComponent } from './website/website.component';
 
 @NgModule({
@@ -19,6 +23,7 @@ import { WebsiteComponent } from './website/website.component';
     BrowserAnimationsModule,
     ToolbarComponent,
     ButtonModule,
+    TableComponent,
     RouterModule.forRoot(appRoutes, {
       useHash: true,
       initialNavigation: 'enabledBlocking',

@@ -8,7 +8,7 @@ import {
 import { InventoryComponent } from './inventory.component';
 import { RouterModule } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ProductFormComponent } from '@techbir/forms';
+import { ProductModule, productRoutes } from '@techbir/forms';
 
 @NgModule({
   declarations: [InventoryComponent, NavigationComponent],
@@ -24,10 +24,7 @@ import { ProductFormComponent } from '@techbir/forms';
         children: [
           {
             path: 'product',
-            children: [
-              { path: '', component: ProductFormComponent },
-              { path: 'create', component: ProductFormComponent },
-            ],
+            loadChildren: () => ProductModule,
           },
         ],
       },

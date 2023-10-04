@@ -26,22 +26,20 @@ import { PageEvent, SortEvent } from '../api';
       </tbody>
     </table>
     <tb-paginator
-      [itemCount]="itemCount"
+      [itemCount]="count"
       (pageEvent)="emitPageEvent($event)"
     ></tb-paginator>
   `,
 })
 export class TableComponent {
-  @Input() itemCount = 100;
+  @Input() sortBy = 'id';
+  @Input() sortDir: 'asc' | 'desc' = 'asc';
 
-  @Output() sortEvent = new EventEmitter();
-  @Output() pageEvent = new EventEmitter();
-  @Output() searchEvent = new EventEmitter();
-  @Output() rowClickEvent = new EventEmitter();
+  @Input() count = 100;
 
   @Input() columns: string[] = ['id', 'name'];
   @Input() visibleColumns: string[] = ['id', 'name'];
-  @Input() data: Record<string, any>[] = [
+  @Input() data: any[] = [
     { id: 1, name: 'Apple' },
     { id: 2, name: 'Orange' },
     { id: 3, name: 'Orange' },
@@ -56,10 +54,17 @@ export class TableComponent {
     { id: 12, name: 'Orange' },
   ];
 
+  @Output() sortEvent = new EventEmitter<SortEvent>();
+  @Output() pageEvent = new EventEmitter<PageEvent>();
+  @Output() searchEvent = new EventEmitter<string>();
+  @Output() rowClickEvent = new EventEmitter<any>();
+
   filteredData = this.data;
 
   sort(col: string) {
-    //
+    this.sortBy = col;
+    this.sortDir = 'asc';
+    this.emitSortEvent({ direction: this.sortDir, property: this.sortBy });
   }
 
   emitSortEvent(event: SortEvent) {
