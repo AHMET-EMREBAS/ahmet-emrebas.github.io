@@ -2,6 +2,24 @@ import { formatFiles, generateFiles, Tree, names } from '@nx/devkit';
 import { join } from 'path';
 import { Models } from '@techbir/meta';
 import { uniq } from '@techbir/utils';
+import { Model } from '@techbir/common';
+
+function relationTargets(model: Model) {
+  const relations: string[] = [];
+  Object.entries(model.relations || {}).forEach(([name, value]) => {
+    relations.push(value.target);
+
+    const found = Models.find(
+      (e) => e.name.toLowerCase() === value.target.toLowerCase()
+    );
+
+    if (found) {
+      relations.push(...relationTargets(found));
+    }
+  });
+
+  return uniq([...relations]);
+}
 
 export async function resourceGenerator(tree: Tree) {
   for (const m of Models) {
@@ -10,11 +28,7 @@ export async function resourceGenerator(tree: Tree) {
 
     generateFiles(tree, join(__dirname, 'files'), TARGET, {
       ...names(m.name),
-      relationTargets: uniq(
-        Object.entries(m.relations || {}).map(([key, value]) => {
-          return value.target;
-        })
-      ).join(','),
+      relationTargets: relationTargets(m).join(','),
     });
   }
   await formatFiles(tree);

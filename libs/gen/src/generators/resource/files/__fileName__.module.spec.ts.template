@@ -1,0 +1,37 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { MockDbWithEntities } from '@techbir/core';
+import { <%- className %> , <%- relationTargets %>} from '@techbir/entities';
+import { <%- className %>Controller } from './<%- fileName  %>.controller';
+import { <%- className %>Service } from './<%- fileName  %>.service';
+import { Repository } from 'typeorm';
+import { getRepositoryToken } from '@nestjs/typeorm';
+
+describe('<%- className %> Module', () => {
+  let app: TestingModule;
+  let service: <%- className %>Service;
+  let controller: <%- className %>Controller;
+  let repo: Repository<<%- className %>>;
+
+  beforeAll(async () => {
+    app = await Test.createTestingModule({
+      imports: [...MockDbWithEntities('<%- propertyName  %>', [<%- className %>, <%- relationTargets %>])],
+      controllers: [<%- className %>Controller],
+      providers: [<%- className %>Service],
+    }).compile();
+
+    app = await app.init();
+
+    service = app.get(<%- className %>Service);
+    repo = app.get(getRepositoryToken(<%- className %>));
+    controller = app.get(<%- className %>Controller);
+  });
+
+  it.each`
+    name                            | value
+    ${<%- className %>Service.name}         | ${<%- className %>Service}
+    ${<%- className %>Controller.name}      | ${<%- className %>Controller}
+    ${<%- className %>.name + 'Repository'} | ${getRepositoryToken(<%- className %>)}
+  `('$name should be defined', ({ value }) => {
+    expect(app.get(value)).toBeDefined();
+  });
+});

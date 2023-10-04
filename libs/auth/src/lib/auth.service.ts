@@ -25,6 +25,7 @@ export class SecurityCodeService {}
 @Injectable()
 export class AuthService {
   private readonly securityCodeMap = new Map<string, string>();
+
   constructor(
     private readonly jwtService: JwtService,
     private readonly emailService: GmailService,
@@ -41,6 +42,21 @@ export class AuthService {
     return this.userService.findOneBy({ username });
   }
 
+  /**
+   * For testing
+   * Get security code without updating it.
+   * @param username
+   * @returns
+   */
+  __getSecurityCode(username: string) {
+    return this.securityCodeMap.get(username);
+  }
+
+  /**
+   * Get the last security code and set a new one.
+   * @param username
+   * @returns
+   */
   getSecurityCode(username: string) {
     const code = this.securityCodeMap.get(username);
     this.securityCodeMap.set(username, v4());

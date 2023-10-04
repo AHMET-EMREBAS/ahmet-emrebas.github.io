@@ -23,7 +23,7 @@ export class GmailService {
   async info(options?: MailOptions) {
     return await this.send({
       ...options,
-      from: 'info@aemrebas.com',
+      from: '"Info ℹ️" <info@aemrebas.com>',
       subject: 'Info | ' + options?.subject,
     });
   }
@@ -31,7 +31,7 @@ export class GmailService {
   async security(options?: MailOptions & { code: string }) {
     return await this.send({
       ...options,
-      from: 'security@aemrebas.com',
+      from: '"Security 🔐" <security@aemrebas.com>',
       subject: 'Security | ' + options?.subject,
     });
   }
