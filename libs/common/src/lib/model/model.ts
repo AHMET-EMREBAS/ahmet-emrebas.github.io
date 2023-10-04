@@ -61,7 +61,7 @@ export class CommonProperty<T = any> extends Accassors {
   suffix?: string;
   transformers?: TransformFn[];
   defaultValue?: T;
-  inputType?: HTMLInputElement['type'] = 'text';
+  inputType?: string;
   autocomplete?: HTMLInputElement['autocomplete'];
 }
 

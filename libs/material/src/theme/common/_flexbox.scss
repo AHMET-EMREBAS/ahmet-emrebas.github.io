@@ -94,8 +94,6 @@ $alignContent: (
   }
 }
 
-
-
 @for $order from 1 through 100 {
   .order-#{$order} {
     order: #{$order};
@@ -124,4 +122,10 @@ $alignContent: (
 .text-center {
   text-align: center;
   vertical-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
 }

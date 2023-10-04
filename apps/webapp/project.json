@@ -2,7 +2,7 @@
   "name": "webapp",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "website",
+  "prefix": "tb",
   "sourceRoot": "apps/webapp/src",
   "tags": [],
   "targets": {

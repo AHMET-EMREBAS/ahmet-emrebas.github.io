@@ -33,6 +33,15 @@ import { UserFormDto } from './user-form.dto';
           autocomplete="off"
           required="true"
         ></tb-input>
+        <tb-input
+          i18n-label
+          inputType="boolean"
+          name="isAdmin"
+          label="undefined"
+          icon="check_box_outline_blank"
+          autocomplete="off"
+          required="undefined"
+        ></tb-input>
 
         <div *tbFormActions>
           <div class="flex gap-2em">

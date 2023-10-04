@@ -106,7 +106,7 @@ export function BoolProperty(
     name: 'bool',
     type: 'boolean',
     icon: 'check_box_outline_blank',
-    inputType: 'checkbox',
+    inputType: 'boolean',
     ...options,
   };
 }

@@ -11,6 +11,7 @@ export class AppController {
   getData() {
     return this.appService.getData();
   }
+  
   async getDecodedOAuthJwtGoogle(token: string) {
     const CLIENT_ID_GOOGLE = process.env.GOOGLE_CLIENT_ID;
 

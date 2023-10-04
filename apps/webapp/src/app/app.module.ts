@@ -2,7 +2,6 @@ import { NgModule, isDevMode } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { StoreModule } from '@ngrx/store';
 import { EntityDataModule } from '@ngrx/data';
@@ -10,13 +9,16 @@ import { entityConfig } from './entity-metadata';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AllFormsComponent } from './product/product.component';
+import { ButtonModule, ToolbarComponent } from '@techbir/material';
+import { WebsiteComponent } from './website/website.component';
+
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, WebsiteComponent],
 
   imports: [
     BrowserAnimationsModule,
-    AllFormsComponent,
+    ToolbarComponent,
+    ButtonModule,
     RouterModule.forRoot(appRoutes, {
       useHash: true,
       initialNavigation: 'enabledBlocking',

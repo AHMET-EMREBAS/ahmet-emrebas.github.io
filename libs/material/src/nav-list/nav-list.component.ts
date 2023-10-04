@@ -9,11 +9,11 @@ import {
 import { NavListItemComponent } from './nav-list-item/nav-list-item.component';
 import { Color, Icon } from '../api';
 import { MicroModule } from '../micro/micro.module';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'tb-nav-list',
   standalone: true,
-  imports: [MicroModule],
+  imports: [MicroModule, RouterModule],
   template: `
     <div class="nav-list">
       <ng-container *ngFor="let child of children">

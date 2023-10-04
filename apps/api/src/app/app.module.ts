@@ -6,7 +6,13 @@ import { ConfigModule } from '@nestjs/config';
 import { GmailModule } from '@techbir/mail';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PermissionModule, RoleModule, UserModule } from '@techbir/resources';
+import {
+  PermissionModule,
+  PermissionService,
+  RoleModule,
+  RoleService,
+  UserModule,
+} from '@techbir/resources';
 import { APP_GUARD } from '@nestjs/core';
 
 @Module({
