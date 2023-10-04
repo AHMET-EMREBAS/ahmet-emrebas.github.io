@@ -13,35 +13,35 @@
     />
   </tb-toolbar>
 
-  <div
-    class="flex column gap-1em pt-1em pb-1em"
-    style="max-width: 200px"
-    *ngIf="open"
-  >
-    <tb-nav-list>
-      <tb-nav-list-item
-        label="Product"
-        icon="inventory"
-        [route]="['product']"
-      ></tb-nav-list-item>
+  <div class="flex row gap-1em pt-1em pb-1em">
+    <div class="flex column gap-1em" style="max-width: 200px" *ngIf="open">
+      <tb-nav-list>
+        <tb-nav-list-item
+          label="Product"
+          icon="inventory"
+          [route]="['product']"
+        ></tb-nav-list-item>
 
-      <tb-nav-list-item
-        label="Price"
-        icon="attach_money"
-        [route]="['price']"
-      ></tb-nav-list-item>
-      <tb-nav-list-item
-        label="Quantity"
-        icon="123"
-        [route]="['quantity']"
-      ></tb-nav-list-item>
-    </tb-nav-list>
+        <tb-nav-list-item
+          label="Price"
+          icon="attach_money"
+          [route]="['price']"
+        ></tb-nav-list-item>
+        <tb-nav-list-item
+          label="Quantity"
+          icon="123"
+          [route]="['quantity']"
+        ></tb-nav-list-item>
+      </tb-nav-list>
 
-    <tb-nav-list>
-      <tb-nav-list-item label="Category" icon="category"></tb-nav-list-item>
-      <tb-nav-list-item label="Department" icon="category"></tb-nav-list-item>
-    </tb-nav-list>
+      <tb-nav-list>
+        <tb-nav-list-item label="Category" icon="category"></tb-nav-list-item>
+        <tb-nav-list-item label="Department" icon="category"></tb-nav-list-item>
+      </tb-nav-list>
+    </div>
+
+    <div class="grow-1 pr-1em pl-1em">
+      <ng-content></ng-content>
+    </div>
   </div>
-
-  <ng-content></ng-content>
 </div>

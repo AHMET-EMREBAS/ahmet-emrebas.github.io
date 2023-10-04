@@ -2,14 +2,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MicroModule } from '../micro/micro.module';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { PageEvent, SearchEvent, SortEvent } from '../api';
-import { SearchInputComponent } from '../form/search-input/search-input.component';
+import { TextInputComponent } from '../form/text-input/text-input.component';
 
 @Component({
   selector: 'tb-table',
   standalone: true,
-  imports: [MicroModule, PaginatorComponent, SearchInputComponent],
+  imports: [MicroModule, PaginatorComponent, TextInputComponent],
   template: `
-    <tb-search-input></tb-search-input>
+    <tb-text-input
+      label="Search"
+      (inputEvent)="emitSearchEvent($event)"
+      icon="search"
+    ></tb-text-input>
     <table class="table" border="0">
       <thead class="table-header">
         <tr class="table-header-row">
@@ -79,5 +83,9 @@ export class TableComponent {
 
   emitRowClick(rowData: any) {
     this.rowClickEvent.emit(rowData);
+  }
+
+  emitSearchEvent(search: string) {
+    this.searchEvent.emit({ search });
   }
 }
