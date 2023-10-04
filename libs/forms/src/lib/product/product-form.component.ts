@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonFormComponent } from '@techbir/material';
 import { ProductFormDto } from './product-form.dto';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'tb-product-form',
   template: `
     <div class="flex column gap-2em p-1em">
       <h1 class="title-2" substring="Safe form" i18n>Create Product</h1>
-      <tb-form (submitEvent)="submit($event)">
+      <tb-form (submitEvent)="submit($event)" [defaultValue]="defaultValue">
         <tb-input
           i18n-label
           inputType="text"
@@ -61,7 +62,7 @@ import { ProductFormDto } from './product-form.dto';
   `,
 })
 export class ProductFormComponent extends CommonFormComponent {
-  constructor() {
-    super(ProductFormDto);
+  constructor(route: ActivatedRoute) {
+    super(ProductFormDto, route);
   }
 }

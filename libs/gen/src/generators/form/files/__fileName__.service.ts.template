@@ -1,0 +1,14 @@
+import { BaseNgrxService } from '@techbir/material';
+import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
+import { Injectable } from '@angular/core';
+import { <%- className %> } from './<%- fileName %>';
+
+@Injectable()
+export class <%- className %>Service extends BaseNgrxService<<%- className %>> {
+  override __columns: (keyof <%- className %>)[] = [ <%- columnNames %> ];
+  override __visibleColumns: (keyof <%- className %>)[] = [<%- columnNames %>];
+
+  constructor(factory: EntityCollectionServiceElementsFactory) {
+    super('<%- className %>', factory);
+  }
+}

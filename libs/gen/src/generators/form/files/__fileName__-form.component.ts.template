@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ButtonModule, FormModule, MicroModule, CommonFormComponent} from '@techbir/material';
 import { <%- className -%>FormDto  } from './<%- fileName -%>-form.dto'
 
@@ -39,8 +40,8 @@ import { <%- className -%>FormDto  } from './<%- fileName -%>-form.dto'
 })
 export class <%- className %>FormComponent extends CommonFormComponent {
 
-   constructor() {
-    super(<%- className -%>FormDto);
+   constructor(route: ActivatedRoute) {
+    super(<%- className -%>FormDto, route);
   }
 }
 

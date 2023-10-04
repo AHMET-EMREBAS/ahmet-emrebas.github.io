@@ -1,13 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MicroModule } from '../micro/micro.module';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { PageEvent, SortEvent } from '../api';
+import { PageEvent, SearchEvent, SortEvent } from '../api';
+import { SearchInputComponent } from '../form/search-input/search-input.component';
 
 @Component({
   selector: 'tb-table',
   standalone: true,
-  imports: [MicroModule, PaginatorComponent],
+  imports: [MicroModule, PaginatorComponent, SearchInputComponent],
   template: `
+    <tb-search-input></tb-search-input>
     <table class="table" border="0">
       <thead class="table-header">
         <tr class="table-header-row">
@@ -19,7 +21,7 @@ import { PageEvent, SortEvent } from '../api';
         <tr
           *ngFor="let item of data"
           class="table-body-row"
-          (click)="emitRowClick(data)"
+          (click)="emitRowClick(item)"
         >
           <td *ngFor="let col of columns">{{ item[col] }}</td>
         </tr>
@@ -56,7 +58,7 @@ export class TableComponent {
 
   @Output() sortEvent = new EventEmitter<SortEvent>();
   @Output() pageEvent = new EventEmitter<PageEvent>();
-  @Output() searchEvent = new EventEmitter<string>();
+  @Output() searchEvent = new EventEmitter<SearchEvent>();
   @Output() rowClickEvent = new EventEmitter<any>();
 
   filteredData = this.data;
@@ -64,7 +66,7 @@ export class TableComponent {
   sort(col: string) {
     this.sortBy = col;
     this.sortDir = 'asc';
-    this.emitSortEvent({ direction: this.sortDir, property: this.sortBy });
+    this.emitSortEvent({ orderDir: this.sortDir, orderBy: this.sortBy });
   }
 
   emitSortEvent(event: SortEvent) {

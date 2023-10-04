@@ -1,0 +1,36 @@
+import { NgModule } from '@angular/core';
+import { <%- className %>FormComponent } from './<%- fileName %>-form.component';
+import { <%- className %>TableComponent } from './<%- fileName %>.table.component';
+import { RouterModule, Routes } from '@angular/router';
+import { <%- className %>Service } from './<%- fileName %>.service';
+import {
+  ButtonModule,
+  FormModule,
+  MicroModule,
+  TableComponent,
+} from '@techbir/material';
+
+const routes: Routes = [
+  { path: '', component: <%- className %>TableComponent },
+  {
+    path: 'create',
+    component: <%- className %>FormComponent,
+  },
+  {
+    path: 'update/:id',
+    component: <%- className %>FormComponent,
+  },
+];
+
+@NgModule({
+  declarations: [<%- className %>FormComponent, <%- className %>TableComponent],
+  imports: [
+    MicroModule,
+    FormModule,
+    ButtonModule,
+    TableComponent,
+    RouterModule.forChild(routes),
+  ],
+  providers: [<%- className %>Service],
+})
+export class <%- className %>Module {}

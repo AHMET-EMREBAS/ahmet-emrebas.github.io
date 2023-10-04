@@ -1,2 +1,6 @@
-export * from './<%- fileName -%>-form.component';
-export * from './<%- fileName -%>-form.dto';
+export * from './<%- fileName %>-form.component';
+export * from './<%- fileName %>-form.dto';
+export * from './<%- fileName %>.module';
+export * from './<%- fileName %>.service';
+export * from './<%- fileName %>';
+
