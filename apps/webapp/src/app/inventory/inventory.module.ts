@@ -8,7 +8,7 @@ import {
 import { InventoryComponent } from './inventory.component';
 import { RouterModule } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ProductModule, productRoutes } from '@techbir/forms';
+import { CategoryModule, ProductModule } from '@techbir/forms';
 
 @NgModule({
   declarations: [InventoryComponent, NavigationComponent],
@@ -25,6 +25,10 @@ import { ProductModule, productRoutes } from '@techbir/forms';
           {
             path: 'product',
             loadChildren: () => ProductModule,
+          },
+          {
+            path: 'category',
+            loadChildren: () => CategoryModule,
           },
         ],
       },

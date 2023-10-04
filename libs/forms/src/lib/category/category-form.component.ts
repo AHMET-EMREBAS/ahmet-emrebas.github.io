@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { CommonFormComponent } from '@techbir/material';
 import { CategoryFormDto } from './category-form.dto';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-category-form',
   template: `
     <div class="flex column gap-2em p-1em">

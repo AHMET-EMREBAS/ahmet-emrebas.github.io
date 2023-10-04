@@ -5,8 +5,8 @@ import { Feature } from './feature';
 
 @Injectable()
 export class FeatureService extends BaseNgrxService<Feature> {
-  override __columns: (keyof Feature)[] = ['name', 'description'];
-  override __visibleColumns: (keyof Feature)[] = ['name', 'description'];
+  override __columns: (keyof Feature)[] = ['name', 'value'];
+  override __visibleColumns: (keyof Feature)[] = ['name', 'value'];
 
   constructor(factory: EntityCollectionServiceElementsFactory) {
     super('Feature', factory);

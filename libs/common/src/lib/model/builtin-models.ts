@@ -14,7 +14,7 @@ export function ModelWithNameValue(options: Pick<Model, 'name'>): Model {
   return {
     properties: {
       name: UniqueNameProperty(),
-      value: DescriptionProperty(),
+      value: DescriptionProperty({ name: 'value' }),
     },
     ...options,
   };
