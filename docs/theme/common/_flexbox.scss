@@ -94,8 +94,6 @@ $alignContent: (
   }
 }
 
-
-
 @for $order from 1 through 100 {
   .order-#{$order} {
     order: #{$order};

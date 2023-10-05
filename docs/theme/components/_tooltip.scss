@@ -1,10 +1,10 @@
 @use '../colors' as colors;
 
-[aria-label][tooltip-postion][tooltip-active='false'] {
-  --scale: 0;
-  visibility: hidden !important;
-  position: absolute !important;
-}
+// [aria-label][tooltip-postion][tooltip-active='false'] {
+//   --scale: 0;
+//   visibility: hidden !important;
+//   position: absolute !important;
+// }
 
 [aria-label][tooltip-position] {
   position: relative;
@@ -35,8 +35,8 @@
 
 [aria-label][tooltip-position]::before {
   content: attr(aria-label);
-  background-color: var(--tooltip-color);
-  color: var(--tooltip-color-face);
+  background-color: var(--accent);
+  color: var(--accent-face);
   padding: 0.5em;
   border-radius: 0.3em;
   max-width: 20em;
@@ -79,7 +79,7 @@
   --translate-y: -50%;
   right: 0px;
   top: 50%;
-  border-right-color: var(--tooltip-color);
+  border-right-color: var(--accent);
   transform-origin: left center;
 }
 
@@ -98,7 +98,7 @@
   --translate-y: calc(var(--arrow-size));
   left: 50%;
   bottom: 0px;
-  border-bottom-color: var(--tooltip-color);
+  border-bottom-color: var(--accent);
   transform-origin: top center;
 }
 
@@ -118,7 +118,7 @@
   --translate-y: calc(-1 * var(--arrow-size));
   top: 0px;
   left: 50%;
-  border-top-color: var(--tooltip-color);
+  border-top-color: var(--accent);
   transform-origin: bottom center;
 }
 
@@ -141,11 +141,11 @@
   transform-origin: right center;
 }
 
-@each $colorName in colors.$colorNames {
-  .#{$colorName}[aria-label][tooltip-position]::before,
-  .#{$colorName}[aria-label][tooltip-position]::after {
-    --tooltip-color: var(--#{$colorName}-dark);
-    --tooltip-color-face: var(--#{$colorName}-face);
-  }
-}
+// @each $colorName in colors.$colorNames {
+//   .#{$colorName}[aria-label][tooltip-position]::before,
+//   .#{$colorName}[aria-label][tooltip-position]::after {
+//     --tooltip-color: var(--#{$colorName}-dark);
+//     --tooltip-color-face: var(--#{$colorName}-face);
+//   }
+// }
 // font-family: var(--font-content) !important;
