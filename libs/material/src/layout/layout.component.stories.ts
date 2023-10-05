@@ -1,13 +1,14 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { AppAuthComponent } from './app-auth.component';
+import { LayoutComponent } from './layout.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const meta: Meta<AppAuthComponent> = {
-  component: AppAuthComponent,
-  title: 'App Auth',
+const meta: Meta<LayoutComponent> = {
+  component: LayoutComponent,
+  title: 'A Layout',
   decorators: [
     moduleMetadata({
       imports: [BrowserAnimationsModule],
@@ -15,7 +16,7 @@ const meta: Meta<AppAuthComponent> = {
   ],
 };
 export default meta;
-type Story = StoryObj<AppAuthComponent>;
+type Story = StoryObj<LayoutComponent>;
 
 export const Primary: Story = {
   args: {},
@@ -25,6 +26,6 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/app-auth works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();
   },
 };

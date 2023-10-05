@@ -38806,12 +38806,6 @@ button.green.inbox:focus {
   color: var(--green-face);
 }
 
-[aria-label][tooltip-postion][tooltip-active=false] {
-  --scale: 0;
-  visibility: hidden !important;
-  position: absolute !important;
-}
-
 [aria-label][tooltip-position] {
   position: relative;
 }
@@ -38841,8 +38835,8 @@ button.green.inbox:focus {
 
 [aria-label][tooltip-position]::before {
   content: attr(aria-label);
-  background-color: var(--tooltip-color);
-  color: var(--tooltip-color-face);
+  background-color: var(--accent);
+  color: var(--accent-face);
   padding: 0.5em;
   border-radius: 0.3em;
   max-width: 20em;
@@ -38882,7 +38876,7 @@ button.green.inbox:focus {
   --translate-y: -50%;
   right: 0px;
   top: 50%;
-  border-right-color: var(--tooltip-color);
+  border-right-color: var(--accent);
   transform-origin: left center;
 }
 
@@ -38900,7 +38894,7 @@ button.green.inbox:focus {
   --translate-y: calc(var(--arrow-size));
   left: 50%;
   bottom: 0px;
-  border-bottom-color: var(--tooltip-color);
+  border-bottom-color: var(--accent);
   transform-origin: top center;
 }
 
@@ -38919,7 +38913,7 @@ button.green.inbox:focus {
   --translate-y: calc(-1 * var(--arrow-size));
   top: 0px;
   left: 50%;
-  border-top-color: var(--tooltip-color);
+  border-top-color: var(--accent);
   transform-origin: bottom center;
 }
 
@@ -38939,54 +38933,6 @@ button.green.inbox:focus {
   top: 50%;
   border-left-color: var(--tooltip-color);
   transform-origin: right center;
-}
-
-.primary[aria-label][tooltip-position]::before,
-.primary[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--primary-dark);
-  --tooltip-color-face: var(--primary-face);
-}
-
-.secondary[aria-label][tooltip-position]::before,
-.secondary[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--secondary-dark);
-  --tooltip-color-face: var(--secondary-face);
-}
-
-.accent[aria-label][tooltip-position]::before,
-.accent[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--accent-dark);
-  --tooltip-color-face: var(--accent-face);
-}
-
-.warn[aria-label][tooltip-position]::before,
-.warn[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--warn-dark);
-  --tooltip-color-face: var(--warn-face);
-}
-
-.black[aria-label][tooltip-position]::before,
-.black[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--black-dark);
-  --tooltip-color-face: var(--black-face);
-}
-
-.white[aria-label][tooltip-position]::before,
-.white[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--white-dark);
-  --tooltip-color-face: var(--white-face);
-}
-
-.red[aria-label][tooltip-position]::before,
-.red[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--red-dark);
-  --tooltip-color-face: var(--red-face);
-}
-
-.green[aria-label][tooltip-position]::before,
-.green[aria-label][tooltip-position]::after {
-  --tooltip-color: var(--green-dark);
-  --tooltip-color-face: var(--green-face);
 }
 
 .dropdown {
@@ -39843,7 +39789,7 @@ button.green.inbox:focus {
   letter-spacing: 0.1em;
   font-size: var(--form-font-size);
 }
-.input-container label {
+.input-container .label {
   position: absolute;
   letter-spacing: inherit;
   text-transform: capitalize;
@@ -39856,7 +39802,10 @@ button.green.inbox:focus {
   margin-left: 2em;
   pointer-events: none;
 }
-.input-container input {
+.input-container textarea {
+  padding-top: 1em !important;
+}
+.input-container .input {
   padding-left: 1em;
   padding-right: 1em;
   color: var(--color);
@@ -39867,12 +39816,19 @@ button.green.inbox:focus {
   padding-left: 4em;
   width: inherit;
   letter-spacing: inherit;
+  font-family: inherit;
   transition: border-color 400ms ease-in-out, border-radius 400ms ease-in-out, background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
 }
 .input-container .icon {
   position: absolute;
   font-size: 2em;
   margin-left: 0.3em;
+}
+.input-container .input-error {
+  color: var(--red);
+  font-weight: 700;
+  font-size: 1em !important;
+  letter-spacing: 0.2em !important;
 }
 
 .primary.input-container {
@@ -40107,9 +40063,9 @@ button.green.inbox:focus {
   color: var(--green-dark);
 }
 
-.input-container:has(:focus) label,
-.input-container:has(> input[has-value=true]) label,
-.input-container:has(> input:-webkit-autofill) label {
+.input-container:has(:focus) .label,
+.input-container:has(> .input[has-value=true]) .label,
+.input-container:has(> .input:-webkit-autofill) .label {
   margin-top: 0.3em;
   font-size: 0.8em;
   line-height: 0.8em;
@@ -40118,53 +40074,53 @@ button.green.inbox:focus {
   text-decoration: underline;
 }
 
-.input-container.basic input {
+.input-container.basic .input {
   border: none;
   outline: none;
   color: var(--color-dark);
   border-bottom: var(--border-width) var(--border-style) var(--color-2);
   background-color: var(--color-1);
 }
-.input-container.basic input:focus {
+.input-container.basic .input:focus {
   border-bottom-color: var(--color);
 }
 
-.input-container.flat input {
+.input-container.flat .input {
   border: none;
   outline: none;
   color: var(--color-dark);
   background-color: var(--color-1);
 }
-.input-container.flat input:focus {
+.input-container.flat .input:focus {
   background-color: var(--color-3);
 }
 
-.input-container.stroked input {
+.input-container.stroked .input {
   color: var(--color-dark);
   background-color: var(--color-1);
   border: var(--border-width) var(--border-style) var(--color);
 }
-.input-container.stroked input:focus {
+.input-container.stroked .input:focus {
   outline: none;
   border-color: var(--color-darker);
   background-color: var(--color-3);
 }
 
-.input-container.raised input {
+.input-container.raised .input {
   border: none;
   outline: none;
   color: var(--color-dark);
   background-color: var(--color-1);
   box-shadow: 0px 3px 5px 1px var(--color-3);
 }
-.input-container.raised input:focus {
+.input-container.raised .input:focus {
   box-shadow: 0px 3px 5px 1px var(--color-6);
 }
 
-.inline-input input {
+.inline-input .input {
   height: 50px;
 }
-.inline-input label {
+.inline-input .label {
   display: flex;
   align-items: center;
   width: 100%;
@@ -68218,6 +68174,7 @@ body {
   padding: 0px;
   margin: 0px;
   font-family: var(--font-content);
+  font-size: 16px;
 }
 
 h1 {
@@ -68262,6 +68219,12 @@ span * {
   vertical-align: middle;
 }
 
+@media only screen and (max-width: 600px) {
+  body,
+  html {
+    font-size: 14px;
+  }
+}
 :root {
   --surface: white;
   --primary: hsl(200, 61%, 29%);

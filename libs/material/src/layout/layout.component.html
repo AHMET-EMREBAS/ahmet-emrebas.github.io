@@ -1,0 +1,93 @@
+<div class="flex column w-100per h-100vh relative">
+  <tb-toolbar>
+    <img
+      src="/assets/icons/icon-72x72.png"
+      alt="Logo"
+      style="width: 30px; height: 30px; margin-right: 1em"
+    />
+
+    <tb-icon-button
+      [icon]="leftOpen ? 'menu_open' : 'menu'"
+      color="white"
+      (clickEvent)="leftOpen = !leftOpen"
+    ></tb-icon-button>
+
+    <span style="color: #ffffff">{{ title.getTitle() }}</span>
+
+    <div class="grow-1"></div>
+
+    <tb-icon-button
+      icon="settings"
+      color="white"
+      (clickEvent)="rightOpen = !rightOpen"
+    ></tb-icon-button>
+  </tb-toolbar>
+  <div class="flex row w-100per"></div>
+
+  <div class="flex row w-100per grow-1 relative">
+    <div
+      class="flex column h-100% gap-2em"
+      style="
+        background-color: var(--primary);
+        min-width: 200px;
+        left: 0px;
+        height: 100%;
+      "
+      *ngIf="leftOpen"
+      [class.absolute]="isMobile"
+      (click)="leftOpen = false"
+      [@enter]
+      [@leave]
+    >
+      <tb-nav-list>
+        <tb-nav-list-item
+          [label]="item.label"
+          [icon]="item.icon"
+          [route]="item.route"
+          *ngFor="let item of leftPrimaryMenu"
+        ></tb-nav-list-item>
+      </tb-nav-list>
+      <tb-nav-list>
+        <tb-nav-list-item
+          [label]="item.label"
+          [icon]="item.icon"
+          [route]="item.route"
+          *ngFor="let item of leftSecondaryMenu"
+        ></tb-nav-list-item>
+      </tb-nav-list>
+    </div>
+    <div class="flex column grow-1" style="border: 5px dashed var(--primary-5)">
+      Content
+    </div>
+    <div
+      class="flex column h-100per r-0 gap-2em"
+      style="background-color: var(--primary); min-width: 200px"
+      *ngIf="rightOpen"
+      [class.absolute]="isMobile"
+      (click)="rightOpen = false"
+      [@enter]
+      [@leave]
+    >
+      <tb-nav-list>
+        <tb-nav-list-item
+          [label]="item.label"
+          [icon]="item.icon"
+          [route]="item.route"
+          *ngFor="let item of rightPrimaryMenu"
+        ></tb-nav-list-item>
+      </tb-nav-list>
+      <tb-nav-list>
+        <tb-nav-list-item
+          [label]="item.label"
+          [icon]="item.icon"
+          [route]="item.route"
+          *ngFor="let item of rightSecondaryMenu"
+        ></tb-nav-list-item>
+      </tb-nav-list>
+    </div>
+  </div>
+
+  <tb-toolbar>
+    <ng-content select="[statusbar]"></ng-content>
+  </tb-toolbar>
+</div>

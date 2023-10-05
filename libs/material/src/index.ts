@@ -1,13 +1,16 @@
 // @index(['./**/*.{component,directive,module}.ts', './api/*.ts'], f => `export * from '${f.path}'`)
 export * from './alert/alert.component';
 export * from './api/animations';
+export * from './api/base-ngrx-service';
+export * from './api/common-form-component';
+export * from './api/common-table-component';
 export * from './api/form-value';
 export * from './api/icon';
 export * from './api/index';
 export * from './api/month-table';
+export * from './api/nav-item';
 export * from './api/types';
 export * from './app-auth/app-auth.component';
-export * from './app-inventory/app-inventory.component';
 export * from './button/button.module';
 export * from './button/button/button.component';
 export * from './button/combined-button/combined-button.component';
@@ -28,6 +31,8 @@ export * from './form/number-input/number-input.component';
 export * from './form/search-input/search-input.component';
 export * from './form/select-input/select-input.component';
 export * from './form/text-input/text-input.component';
+export * from './form/textarea/textarea.component';
+export * from './layout/layout.component';
 export * from './list/list-item/list-item.component';
 export * from './list/list.component';
 export * from './menu/menu.component';
@@ -53,5 +58,3 @@ export * from './tab/tab.module';
 export * from './table/paginator/paginator.component';
 export * from './table/table.component';
 export * from './toolbar/toolbar.component';
-
-export * from './form/textarea/textarea.component';

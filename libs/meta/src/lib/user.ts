@@ -30,7 +30,7 @@ export const User: Model = {
   properties: {
     username: UsernameProperty({ name: 'username' }),
     password: PasswordProperty({ name: 'password' }),
-    isAdmin: BoolProperty({ name: 'isAdmin' }),
+    isAdmin: BoolProperty({ name: 'isAdmin', label: 'Is Admin' }),
   },
   relations: {
     roles: SubManyRelation({ name: 'roles', target: 'Role' }),

@@ -4,3 +4,4 @@ export * from './month-table';
 export * from './common-form-component';
 export * from './base-ngrx-service';
 export * from './common-table-component';
+export * from './nav-item';

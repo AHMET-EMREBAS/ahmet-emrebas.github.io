@@ -32,7 +32,7 @@ import { UserService } from './user.service';
           i18n-label
           inputType="boolean"
           name="isAdmin"
-          label="undefined"
+          label="Is Admin"
           icon="check_box_outline_blank"
           autocomplete="off"
           required="undefined"

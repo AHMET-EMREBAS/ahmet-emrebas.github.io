@@ -1,7 +1,5 @@
 #!/usr/bin/env ts-node
 
-// !  <title>@storybook/angular - Storybook</title>
-
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { cwd } from 'process';

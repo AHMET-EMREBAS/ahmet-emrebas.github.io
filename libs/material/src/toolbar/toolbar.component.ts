@@ -7,10 +7,11 @@ import { Color } from '../api';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="toolbar {{ color }}">
+    <div class="toolbar {{ color }} w-100per">
       <ng-content></ng-content>
     </div>
   `,
+  
 })
 export class ToolbarComponent {
   @Input() color: Color = 'primary';
