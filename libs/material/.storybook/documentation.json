@@ -1309,7 +1309,7 @@
         },
         {
             "name": "AppAuthComponent",
-            "id": "component-AppAuthComponent-f3917fba8ced3355495e1017929096adadc32bb73a3c71ef2d6b875d754953655a8c35b33dad96f14e27e7f0e27fe413b63ac96ebade828798cc55000231c68d",
+            "id": "component-AppAuthComponent-1a6012821c08a242562a1ea3362076c34cef7b6b9a40fea7b08887cf4d854756982581286361a07d565b74bb692d32e1313e037246e790dce2fc35524edd9b45",
             "file": "libs/material/src/app-auth/app-auth.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1331,7 +1331,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 15,
                     "type": "EventEmitter"
                 },
                 {
@@ -1339,7 +1339,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 14,
                     "type": "EventEmitter"
                 },
                 {
@@ -1347,7 +1347,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 16,
                     "type": "EventEmitter"
                 },
                 {
@@ -1355,7 +1355,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 17,
                     "type": "EventEmitter"
                 }
             ],
@@ -1374,7 +1374,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 22,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1402,7 +1402,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1430,7 +1430,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1458,7 +1458,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1500,68 +1500,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  EventEmitter,\n  Output,\n} from '@angular/core';\nimport { TabModule } from '../tab/tab.module';\nimport { ButtonComponent } from '../button';\nimport { FormModule } from '../form/form.module';\nimport { MicroModule } from '../micro/micro.module';\n\n@Component({\n  selector: 'tb-app-auth',\n  standalone: true,\n  imports: [MicroModule, TabModule, FormModule, ButtonComponent],\n  templateUrl: './app-auth.component.html',\n})\nexport class AppAuthComponent {\n  @Output() loginEvent = new EventEmitter();\n  @Output() forgotPasswordEvent = new EventEmitter();\n  @Output() secureEvent = new EventEmitter();\n  @Output() signupEvent = new EventEmitter();\n\n  submitLoginForm(formValue: Record<string, unknown>) {\n    this.loginEvent.emit(formValue);\n  }\n  submitForgotForm(formValue: Record<string, unknown>) {\n    this.forgotPasswordEvent.emit(formValue);\n  }\n  submitSecureForm(formValue: Record<string, unknown>) {\n    this.secureEvent.emit(formValue);\n  }\n  submitSignupForm(formValue: Record<string, unknown>) {\n    this.signupEvent.emit(formValue);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\nimport { TabModule } from '../tab/tab.module';\nimport { ButtonComponent } from '../button';\nimport { FormModule } from '../form/form.module';\nimport { MicroModule } from '../micro/micro.module';\n\n@Component({\n  selector: 'tb-app-auth',\n  standalone: true,\n  imports: [MicroModule, TabModule, FormModule, ButtonComponent],\n  templateUrl: './app-auth.component.html',\n})\nexport class AppAuthComponent {\n  @Output() loginEvent = new EventEmitter();\n  @Output() forgotPasswordEvent = new EventEmitter();\n  @Output() secureEvent = new EventEmitter();\n  @Output() signupEvent = new EventEmitter();\n\n  submitLoginForm(formValue: Record<string, unknown>) {\n    this.loginEvent.emit(formValue);\n  }\n  submitForgotForm(formValue: Record<string, unknown>) {\n    this.forgotPasswordEvent.emit(formValue);\n  }\n  submitSecureForm(formValue: Record<string, unknown>) {\n    this.secureEvent.emit(formValue);\n  }\n  submitSignupForm(formValue: Record<string, unknown>) {\n    this.signupEvent.emit(formValue);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "templateData": "<tb-tab-container>\n  <!-- Login form -->\n  <ng-template\n    tbTab\n    label=\"Login\"\n    icon=\"login\"\n    color=\"primary\"\n    badge=\"100\"\n    badgePosition=\"bottom-right\"\n    borderPosition=\"bottom\"\n  >\n    <tb-form\n      (submitEvent)=\"submitLoginForm($event)\"\n      name=\"login\"\n      title=\"Login\"\n      subtitle=\"With Credentials\"\n      ><tb-input\n        name=\"name\"\n        autocomplete=\"username\"\n        label=\"Username\"\n        icon=\"person\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        label=\"Input label\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"login\"\n          label=\"Login\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Reset\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n\n  <!-- Forgot password form -->\n  <ng-template\n    tbTab\n    label=\"Forgot Password\"\n    icon=\"password\"\n    color=\"primary\"\n    borderPosition=\"bottom\"\n  >\n    <tb-form\n      (submitEvent)=\"submitForgotForm($event)\"\n      name=\"forgot-password\"\n      title=\"Forgot Password\"\n      subtitle=\"Update your password\"\n    >\n      <tb-input\n        name=\"username\"\n        label=\"Input label\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"login\"\n          label=\"Get Key\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Reset\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n\n  <!-- Secure login form -->\n  <ng-template\n    tbTab\n    label=\"Secure Login\"\n    icon=\"key\"\n    color=\"primary\"\n    borderPosition=\"bottom\"\n  >\n    <tb-form\n      (submitEvent)=\"submitSecureForm($event)\"\n      name=\"secure-login\"\n      title=\"Login\"\n      subtitle=\"With key\"\n    >\n      <tb-input\n        name=\"key\"\n        label=\"Input label\"\n        icon=\"key\"\n        color=\"primary\"\n        label=\"Keylo\"\n        type=\"text\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"login\"\n          label=\"Verify\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Reset\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n\n  <!-- Signup form -->\n  <ng-template\n    tbTab\n    label=\"Signup\"\n    icon=\"house\"\n    color=\"accent\"\n    borderPosition=\"bottom\"\n  >\n    <tb-form\n      (submitEvent)=\"submitSignupForm($event)\"\n      name=\"signup\"\n      title=\"Signup\"\n      subtitle=\"Welcome\"\n    >\n      <tb-input\n        name=\"username\"\n        label=\"Input label\"\n        name=\"username\"\n        label=\"Input label\"\n        icon=\"person\"\n        color=\"primary\"\n        label=\"Username\"\n        type=\"text\"\n      ></tb-input>\n      <tb-input\n        name=\"password\"\n        label=\"Input label\"\n        icon=\"password\"\n        color=\"accent\"\n        label=\"Password\"\n        type=\"password\"\n      ></tb-input>\n\n      <ng-template tbFormActions>\n        <tb-button\n          nativeType=\"submit\"\n          icon=\"signature\"\n          label=\"Signup\"\n          color=\"red\"\n          variant=\"raised\"\n        ></tb-button>\n        <tb-button\n          nativeType=\"reset\"\n          icon=\"refresh\"\n          label=\"Reset\"\n          variant=\"stroked\"\n        ></tb-button>\n      </ng-template>\n    </tb-form>\n  </ng-template>\n</tb-tab-container>\n"
-        },
-        {
-            "name": "AppInventoryComponent",
-            "id": "component-AppInventoryComponent-9562a491c12b22effd1de98201648ff42cb75ca7ff2461d0423362c818984436632bfe47c9955a5248ab0feb33b4ea2d13155807defbc507bb4c62db2ab623ce",
-            "file": "libs/material/src/app-inventory/app-inventory.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "tb-app-inventory",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./app-inventory.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "MicroModule",
-                    "type": "module"
-                },
-                {
-                    "name": "TabModule",
-                    "type": "module"
-                },
-                {
-                    "name": "NavListModule",
-                    "type": "module"
-                },
-                {
-                    "name": "ButtonComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "FormModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { ButtonComponent } from '../button';\nimport { TabModule } from '../tab/tab.module';\nimport { MicroModule } from '../micro/micro.module';\nimport { FormModule } from '../form/form.module';\nimport { NavListModule } from '../nav-list/nav-list.component';\n\n@Component({\n  selector: 'tb-app-inventory',\n  standalone: true,\n  imports: [MicroModule, TabModule, NavListModule, ButtonComponent, FormModule],\n  templateUrl: './app-inventory.component.html',\n})\nexport class AppInventoryComponent {}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "templateData": "<tb-tab-container type=\"sidenav\">\n  <ng-template tbTab label=\"Products\" icon=\"info\" color=\"primary\">\n    <h1>Product content</h1>\n  </ng-template>\n  <ng-template tbTab label=\"Stock\" icon=\"info\" color=\"primary\">\n    <h1>Stock</h1>\n  </ng-template>\n  <ng-template tbTab label=\"Pricing\" icon=\"attach_money\" color=\"primary\">\n    <h1>Pricing</h1>\n  </ng-template>\n</tb-tab-container>\n"
         },
         {
             "name": "BooleanInputComponent",
@@ -4638,8 +4581,9 @@
         },
         {
             "name": "LayoutComponent",
-            "id": "component-LayoutComponent-d4cf9340c59c926b31e23118f7159a146e7e3e65c0e3d7a20a20ff3382c213fd2b56df35e94da1c24c5519d0f2db34a947966e241675fe448f598cfe348d9be7",
+            "id": "component-LayoutComponent-8b6ccd96e43beb779e5bb847c5a51b0ad0c86912c5de8ea02eb14e75cd0e3c55712fb1358eacbcaa3d0a867bfdbd38a945ba1235a9eff76df572daf39cf61d6a",
             "file": "libs/material/src/layout/layout.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -4657,20 +4601,100 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "isMobile",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "leftOpen",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "leftPrimaryMenu",
+                    "defaultValue": "[\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NavItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "leftSecondaryMenu",
+                    "defaultValue": "[\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NavItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "rightOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "rightPrimaryMenu",
+                    "defaultValue": "[\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NavItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 48
+                },
+                {
+                    "name": "rightSecondaryMenu",
+                    "defaultValue": "[\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NavItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 56
+                },
+                {
                     "name": "title",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Title",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 65,
                     "modifierKind": [
                         123,
                         146
                     ]
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -4678,7 +4702,7 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "RouterModule",
+                    "name": "MicroModule",
                     "type": "module"
                 },
                 {
@@ -4697,7 +4721,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { NavListModule } from '../nav-list/nav-list.component';\nimport { ButtonModule } from '../button';\nimport { Title } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\n\n@Component({\n  selector: 'tb-layout',\n  standalone: true,\n  imports: [RouterModule, ToolbarComponent, NavListModule, ButtonModule],\n  templateUrl: './layout.component.html',\n})\nexport class LayoutComponent {\n  constructor(public readonly title: Title) {}\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  ChangeDetectionStrategy,\n  Component,\n} from '@angular/core';\nimport { ToolbarComponent } from '../toolbar/toolbar.component';\nimport { NavListModule } from '../nav-list/nav-list.component';\nimport { ButtonModule } from '../button';\nimport { Title } from '@angular/platform-browser';\nimport { MicroModule } from '../micro/micro.module';\nimport {\n  fadeInOnEnterAnimation,\n  fadeOutOnLeaveAnimation,\n} from 'angular-animations';\nimport { NavItem } from '../api';\n\n@Component({\n  selector: 'tb-layout',\n  standalone: true,\n  imports: [MicroModule, ToolbarComponent, NavListModule, ButtonModule],\n  templateUrl: './layout.component.html',\n  animations: [\n    fadeInOnEnterAnimation({ anchor: 'enter', duration: 400 }),\n    fadeOutOnLeaveAnimation({ anchor: 'leave', duration: 400 }),\n  ],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class LayoutComponent implements AfterViewInit {\n  leftOpen = true;\n  rightOpen = false;\n  isMobile?: boolean;\n\n  leftPrimaryMenu: NavItem[] = [\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n  ];\n  leftSecondaryMenu: NavItem[] = [\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n    { label: 'Left menu item', icon: 'info', route: ['route'] },\n  ];\n\n  rightPrimaryMenu: NavItem[] = [\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n  ];\n  rightSecondaryMenu: NavItem[] = [\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n    { label: 'Right menu item', icon: 'task', route: ['route'] },\n  ];\n\n  constructor(public readonly title: Title) {}\n\n  ngAfterViewInit(): void {\n    const html = document.querySelector('html');\n    console.log(html?.clientWidth);\n    if (html && html.clientWidth < 500) {\n      console.log('Is Mobile');\n      this.isMobile = true;\n      this.leftOpen = false;\n      this.rightOpen = false;\n    } else {\n      console.log('Is Desktop');\n      this.isMobile = false;\n      this.leftOpen = true;\n      this.rightOpen = false;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4714,7 +4738,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 14,
+                "line": 63,
                 "jsdoctags": [
                     {
                         "name": "title",
@@ -4727,7 +4751,10 @@
                     }
                 ]
             },
-            "templateData": "<div class=\"flex column w-100per h-100per\" style=\"border: 1px solid red\">\r\n  <tb-toolbar>\r\n    <tb-icon-button icon=\"menu\" color=\"white\"></tb-icon-button>\r\n\r\n    <span style=\"color: #ffffff\">{{ title.getTitle() }}</span>\r\n\r\n    <div class=\"grow-1\"></div>\r\n\r\n    <img\r\n      src=\"/assets/icons/icon-72x72.png\"\r\n      alt=\"Logo\"\r\n      style=\"width: 30px; height: 30px\"\r\n    />\r\n  </tb-toolbar>\r\n  <div class=\"flex row w-100per\" style=\"border: 1px solid red\"></div>\r\n\r\n  <div class=\"flex row gap-1em w-100per\">\r\n    <div class=\"flex column\">\r\n      <tb-nav-list>\r\n        <tb-nav-list-item></tb-nav-list-item>\r\n        <tb-nav-list-item></tb-nav-list-item>\r\n        <tb-nav-list-item></tb-nav-list-item>\r\n        <tb-nav-list-item></tb-nav-list-item>\r\n      </tb-nav-list>\r\n    </div>\r\n    <div class=\"flex column\">Content</div>\r\n    <div class=\"flex column\">Right side menu</div>\r\n  </div>\r\n\r\n  <div class=\"flex row w-100per\">statusbar</div>\r\n</div>\r\n"
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"flex column w-100per h-100vh relative\">\r\n  <tb-toolbar>\r\n    <img\r\n      src=\"/assets/icons/icon-72x72.png\"\r\n      alt=\"Logo\"\r\n      style=\"width: 30px; height: 30px; margin-right: 1em\"\r\n    />\r\n\r\n    <tb-icon-button\r\n      [icon]=\"leftOpen ? 'menu_open' : 'menu'\"\r\n      color=\"white\"\r\n      (clickEvent)=\"leftOpen = !leftOpen\"\r\n    ></tb-icon-button>\r\n\r\n    <span style=\"color: #ffffff\">{{ title.getTitle() }}</span>\r\n\r\n    <div class=\"grow-1\"></div>\r\n\r\n    <tb-icon-button\r\n      icon=\"settings\"\r\n      color=\"white\"\r\n      (clickEvent)=\"rightOpen = !rightOpen\"\r\n    ></tb-icon-button>\r\n  </tb-toolbar>\r\n  <div class=\"flex row w-100per\"></div>\r\n\r\n  <div class=\"flex row w-100per grow-1 relative\">\r\n    <div\r\n      class=\"flex column h-100% gap-2em\"\r\n      style=\"\r\n        background-color: var(--primary);\r\n        min-width: 200px;\r\n        left: 0px;\r\n        height: 100%;\r\n      \"\r\n      *ngIf=\"leftOpen\"\r\n      [class.absolute]=\"isMobile\"\r\n      (click)=\"leftOpen = false\"\r\n      [@enter]\r\n      [@leave]\r\n    >\r\n      <tb-nav-list>\r\n        <tb-nav-list-item\r\n          [label]=\"item.label\"\r\n          [icon]=\"item.icon\"\r\n          [route]=\"item.route\"\r\n          *ngFor=\"let item of leftPrimaryMenu\"\r\n        ></tb-nav-list-item>\r\n      </tb-nav-list>\r\n      <tb-nav-list>\r\n        <tb-nav-list-item\r\n          [label]=\"item.label\"\r\n          [icon]=\"item.icon\"\r\n          [route]=\"item.route\"\r\n          *ngFor=\"let item of leftSecondaryMenu\"\r\n        ></tb-nav-list-item>\r\n      </tb-nav-list>\r\n    </div>\r\n    <div class=\"flex column grow-1\" style=\"border: 5px dashed var(--primary-5)\">\r\n      Content\r\n    </div>\r\n    <div\r\n      class=\"flex column h-100per r-0 gap-2em\"\r\n      style=\"background-color: var(--primary); min-width: 200px\"\r\n      *ngIf=\"rightOpen\"\r\n      [class.absolute]=\"isMobile\"\r\n      (click)=\"rightOpen = false\"\r\n      [@enter]\r\n      [@leave]\r\n    >\r\n      <tb-nav-list>\r\n        <tb-nav-list-item\r\n          [label]=\"item.label\"\r\n          [icon]=\"item.icon\"\r\n          [route]=\"item.route\"\r\n          *ngFor=\"let item of rightPrimaryMenu\"\r\n        ></tb-nav-list-item>\r\n      </tb-nav-list>\r\n      <tb-nav-list>\r\n        <tb-nav-list-item\r\n          [label]=\"item.label\"\r\n          [icon]=\"item.icon\"\r\n          [route]=\"item.route\"\r\n          *ngFor=\"let item of rightSecondaryMenu\"\r\n        ></tb-nav-list-item>\r\n      </tb-nav-list>\r\n    </div>\r\n  </div>\r\n\r\n  <tb-toolbar>\r\n    <ng-content select=\"[statusbar]\"></ng-content>\r\n  </tb-toolbar>\r\n</div>\r\n"
         },
         {
             "name": "ListComponent",
@@ -5227,7 +5254,7 @@
         },
         {
             "name": "NavListItemComponent",
-            "id": "component-NavListItemComponent-10d31a208d0ae4b20abf3fdd6cfaef12b2ddc3a5be482a4d4ad89149f3b3951b2e5bc10334813c6f3a5b0e1e6e1a5fd70e37042aa0fd59a86798997bcdbf4250",
+            "id": "component-NavListItemComponent-fdbaa9b9e409cce51e32051cee795a164e78891c7b0f23ddb6157b2989eb00f2e0f85578393ec71247ff105bafb5e4edef3b5583c240f0b436c84563be768a51",
             "file": "libs/material/src/nav-list/nav-list-item/nav-list-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5237,7 +5264,7 @@
             "selector": "tb-nav-list-item",
             "styleUrls": [],
             "styles": [],
-            "template": "<button\n  class=\"nav-list-item {{ color }} {{ variant }} {{ borderPosition }} \"\n  (click)=\"emit()\"\n  [routerLink]=\"route ? route : undefined\"\n>\n  <span class=\"icon\">{{ icon }}</span>\n  <span>{{ label }}</span>\n</button>\n",
+            "template": "<button\n  class=\"nav-list-item {{ color }} {{ variant }} {{ borderPosition }} \"\n  (click)=\"emit()\"\n  [attr.routerLink]=\"route ? route : undefined\"\n>\n  <span class=\"icon\">{{ icon }}</span>\n  <span>{{ label }}</span>\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -5246,7 +5273,7 @@
                     "name": "route",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 21,
                     "type": "string | string[]",
                     "decorators": []
                 },
@@ -5389,16 +5416,12 @@
                 {
                     "name": "MicroModule",
                     "type": "module"
-                },
-                {
-                    "name": "RouterModule",
-                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { CombinedButtonComponent } from '../../button';\nimport { RouterModule } from '@angular/router';\n\n@Component({\n  selector: 'tb-nav-list-item',\n  standalone: true,\n  imports: [MicroModule, RouterModule],\n  template: `\n    <button\n      class=\"nav-list-item {{ color }} {{ variant }} {{ borderPosition }} \"\n      (click)=\"emit()\"\n      [routerLink]=\"route ? route : undefined\"\n    >\n      <span class=\"icon\">{{ icon }}</span>\n      <span>{{ label }}</span>\n    </button>\n  `,\n})\nexport class NavListItemComponent extends CombinedButtonComponent {\n  @Input() route?: string | string[];\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { MicroModule } from '../../micro/micro.module';\nimport { CombinedButtonComponent } from '../../button';\n\n@Component({\n  selector: 'tb-nav-list-item',\n  standalone: true,\n  imports: [MicroModule],\n  template: `\n    <button\n      class=\"nav-list-item {{ color }} {{ variant }} {{ borderPosition }} \"\n      (click)=\"emit()\"\n      [attr.routerLink]=\"route ? route : undefined\"\n    >\n      <span class=\"icon\">{{ icon }}</span>\n      <span>{{ label }}</span>\n    </button>\n  `,\n})\nexport class NavListItemComponent extends CombinedButtonComponent {\n  @Input() route?: string | string[];\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -8279,16 +8302,6 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/app-inventory works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/src/colors/colors.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -8653,17 +8666,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AppAuthComponent>",
-                "defaultValue": "{\n  component: AppAuthComponent,\n  title: 'AppAuthComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AppInventoryComponent>",
-                "defaultValue": "{\n  component: AppInventoryComponent,\n  title: 'AppInventoryComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: AppAuthComponent,\n  title: 'App Auth',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -8703,7 +8706,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LayoutComponent>",
-                "defaultValue": "{\n  component: LayoutComponent,\n  title: 'LayoutComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [RouterModule.forChild([])],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: LayoutComponent,\n  title: 'A Layout',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -8963,7 +8966,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<NavListItemComponent>",
-                "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n}"
+                "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [RouterModule.forChild([])],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -9000,16 +9003,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/src/app-auth/app-auth.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -9600,6 +9593,17 @@
                 "kind": 189
             },
             {
+                "name": "NavItem",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/src/api/nav-item.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
                 "name": "PageEvent",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -9660,17 +9664,6 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<AppAuthComponent>",
                 "file": "libs/material/src/app-auth/app-auth.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 180
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<AppInventoryComponent>",
-                "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -10093,45 +10086,13 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AppAuthComponent>",
-                    "defaultValue": "{\n  component: AppAuthComponent,\n  title: 'AppAuthComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: AppAuthComponent,\n  title: 'App Auth',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/src/app-auth/app-auth.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/src/app-inventory/app-inventory.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/app-inventory works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AppInventoryComponent>",
-                    "defaultValue": "{\n  component: AppInventoryComponent,\n  title: 'AppInventoryComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -10263,7 +10224,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LayoutComponent>",
-                    "defaultValue": "{\n  component: LayoutComponent,\n  title: 'LayoutComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [RouterModule.forChild([])],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: LayoutComponent,\n  title: 'A Layout',\n  decorators: [\n    moduleMetadata({\n      imports: [BrowserAnimationsModule],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -11095,7 +11056,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<NavListItemComponent>",
-                    "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n}"
+                    "defaultValue": "{\n  component: NavListItemComponent,\n  title: 'NavListItemComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [RouterModule.forChild([])],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -11511,6 +11472,19 @@
                     "kind": 189
                 }
             ],
+            "libs/material/src/api/nav-item.ts": [
+                {
+                    "name": "NavItem",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/src/api/nav-item.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "libs/material/src/alert/alert.component.stories.ts": [
                 {
                     "name": "Story",
@@ -11531,19 +11505,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<AppAuthComponent>",
                     "file": "libs/material/src/app-auth/app-auth.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 180
-                }
-            ],
-            "libs/material/src/app-inventory/app-inventory.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<AppInventoryComponent>",
-                    "file": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -12138,45 +12099,6 @@
                 "name": "AppAuthComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/9",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/app-inventory/app-inventory.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/src/app-inventory/app-inventory.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "AppInventoryComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -12906,7 +12828,7 @@
                 "linktype": "component",
                 "name": "LayoutComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {

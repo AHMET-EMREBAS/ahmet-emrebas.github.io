@@ -24,14 +24,15 @@
   </tb-toolbar>
   <div class="flex row w-100per"></div>
 
-  <div class="flex row w-100per grow-1 relative">
+  <div class="flex row w-100per grow-1 relative" style="max-height: 100%">
     <div
       class="flex column h-100% gap-2em"
       style="
         background-color: var(--primary);
         min-width: 200px;
-        left: 0px;
-        height: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        overflow-y: auto;
       "
       *ngIf="leftOpen"
       [class.absolute]="isMobile"
@@ -60,8 +61,14 @@
       Content
     </div>
     <div
-      class="flex column h-100per r-0 gap-2em"
-      style="background-color: var(--primary); min-width: 200px"
+      class="flex column h-100per r-0 gap-2em oy-auto"
+      style="
+        background-color: var(--primary);
+        min-width: 200px;
+        max-height: 100%;
+        overflow: hidden;
+        overflow-y: auto;
+      "
       *ngIf="rightOpen"
       [class.absolute]="isMobile"
       (click)="rightOpen = false"
