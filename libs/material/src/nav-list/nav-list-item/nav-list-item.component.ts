@@ -1,17 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { MicroModule } from '../../micro/micro.module';
 import { CombinedButtonComponent } from '../../button';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'tb-nav-list-item',
   standalone: true,
-  imports: [MicroModule, RouterModule],
+  imports: [MicroModule],
   template: `
     <button
       class="nav-list-item {{ color }} {{ variant }} {{ borderPosition }} "
       (click)="emit()"
-      [routerLink]="route ? route : undefined"
+      [attr.routerLink]="route ? route : undefined"
     >
       <span class="icon">{{ icon }}</span>
       <span>{{ label }}</span>
