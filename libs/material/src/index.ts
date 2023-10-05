@@ -11,7 +11,6 @@ export * from './api/month-table';
 export * from './api/nav-item';
 export * from './api/types';
 export * from './app-auth/app-auth.component';
-export * from './app-inventory/app-inventory.component';
 export * from './button/button.module';
 export * from './button/button/button.component';
 export * from './button/combined-button/combined-button.component';

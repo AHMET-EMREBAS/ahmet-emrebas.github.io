@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const meta: Meta<LayoutComponent> = {
   component: LayoutComponent,
-  title: 'LayoutComponent',
+  title: 'A Layout',
   decorators: [
     moduleMetadata({
       imports: [BrowserAnimationsModule],

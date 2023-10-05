@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const meta: Meta<AppAuthComponent> = {
   component: AppAuthComponent,
-  title: 'AppAuthComponent',
+  title: 'App Auth',
   decorators: [
     moduleMetadata({
       imports: [BrowserAnimationsModule],

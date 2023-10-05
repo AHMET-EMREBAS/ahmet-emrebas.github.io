@@ -89,7 +89,7 @@
         "{options.outputDir}"
       ],
       "options": {
-        "outputDir": "docs/storybook",
+        "outputDir": "docs",
         "configDir": "libs/material/.storybook",
         "browserTarget": "material:build-storybook",
         "compodoc": true,
