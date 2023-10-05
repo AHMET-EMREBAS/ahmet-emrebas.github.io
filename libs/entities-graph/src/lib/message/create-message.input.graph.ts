@@ -11,6 +11,10 @@ export class CreateMessageInput {
     minLength: 0,
     maxLength: 500,
     required: true,
+    inputType: 'textarea',
+    autocomplete: 'off',
+    icon: 'message',
+    label: 'Message',
   })
   message!: string;
   @Field({

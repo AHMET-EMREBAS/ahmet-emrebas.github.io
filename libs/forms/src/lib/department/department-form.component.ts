@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { DepartmentFormDto } from './department-form.dto';
+import { DepartmentService } from './department.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-department-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -50,7 +45,7 @@ import { DepartmentFormDto } from './department-form.dto';
   `,
 })
 export class DepartmentFormComponent extends CommonFormComponent {
-  constructor() {
-    super(DepartmentFormDto);
+  constructor(service: DepartmentService, route: ActivatedRoute) {
+    super(service, DepartmentFormDto, route);
   }
 }

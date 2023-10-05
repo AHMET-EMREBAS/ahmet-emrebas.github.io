@@ -10,6 +10,6 @@ export const <%- className %>PubSub = new PubSub()
 @Injectable()
 export class <%- className %>Service extends ResourceService {
   constructor(@InjectRepository(<%- className %>) repo: Repository<<%- className %>>) {
-    super(repo, ['name']);
+    super(repo, [<%- uniqueProperties %>]);
   }
 }

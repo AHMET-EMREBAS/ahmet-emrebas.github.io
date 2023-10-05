@@ -61,7 +61,7 @@ export class CommonProperty<T = any> extends Accassors {
   suffix?: string;
   transformers?: TransformFn[];
   defaultValue?: T;
-  inputType?: HTMLInputElement['type'] = 'text';
+  inputType?: string;
   autocomplete?: HTMLInputElement['autocomplete'];
 }
 
@@ -134,6 +134,7 @@ export class RelationOptions extends Accassors {
 }
 
 export class Model {
+  icon?: Icon;
   name!: string;
   properties?: Record<string, PropertyOptions>;
   relations?: Record<string, RelationOptions>;

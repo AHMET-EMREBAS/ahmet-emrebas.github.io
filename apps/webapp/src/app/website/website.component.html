@@ -1,0 +1,47 @@
+<div class="flex column align-center p-2em w-100per">
+  <h1>Social Links</h1>
+  <div class="flex column gap-2em p-2em" style="width: 100%; max-width: 900px">
+    <div class="flex column gap-2em justify-center">
+      <a href="https://github.com/AHMET-EMREBAS" target="_blank">
+        <tb-button color="black" variant="raised" label="Github"></tb-button>
+      </a>
+
+      <a href="https://www.linkedin.com/in/ahmet-emrebas/">
+        <tb-button
+          color="primary"
+          variant="raised"
+          label="LinkedIn"
+        ></tb-button>
+      </a>
+      <a href="https://stackoverflow.com/users/12603032/ahmet-emrebas">
+        <tb-button
+          color="accent"
+          variant="raised"
+          label="StackOverflow"
+        ></tb-button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="flex column align-center p-2em w-100per">
+  <h1>Projects</h1>
+  <div class="flex column gap-2em p-2em" style="width: 100%; max-width: 900px">
+    <tb-button
+      variant="raised"
+      color="primary"
+      label="Inventory"
+      [routerLink]="['inventory']"
+      routerLinkActive="router-link-active"
+    >
+    </tb-button>
+
+    <a href="/storybook" target="_blank">
+      <tb-button
+        variant="raised"
+        color="secondary"
+        label="UI Framework"
+      ></tb-button>
+    </a>
+  </div>
+</div>

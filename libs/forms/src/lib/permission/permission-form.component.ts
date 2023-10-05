@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { PermissionFormDto } from './permission-form.dto';
+import { PermissionService } from './permission.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-permission-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -50,7 +45,7 @@ import { PermissionFormDto } from './permission-form.dto';
   `,
 })
 export class PermissionFormComponent extends CommonFormComponent {
-  constructor() {
-    super(PermissionFormDto);
+  constructor(service: PermissionService, route: ActivatedRoute) {
+    super(service, PermissionFormDto, route);
   }
 }

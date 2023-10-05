@@ -20,6 +20,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('ApiDocs')
     .setVersion('1.0')
+    .addBearerAuth({ type: 'apiKey' })
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

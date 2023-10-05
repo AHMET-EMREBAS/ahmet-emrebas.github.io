@@ -1,0 +1,28 @@
+import { NgModule } from '@angular/core';
+import { <%- className %>FormComponent } from './<%- fileName %>-form.component';
+import { <%- className %>TableComponent } from './<%- fileName %>-table.component';
+import { RouterModule } from '@angular/router';
+import { <%- className %>Service } from './<%- fileName %>.service';
+import {
+  ButtonModule,
+  FormModule,
+  MicroModule,
+  TableComponent,
+  ToolbarComponent,
+} from '@techbir/material';
+import { <%- className %>Component } from './<%- fileName %>.component';
+import { routes<%- className %> } from './<%- fileName %>.routes';
+
+@NgModule({
+  declarations: [<%- className %>FormComponent, <%- className %>TableComponent, <%- className %>Component],
+  imports: [
+    MicroModule,
+    ToolbarComponent,
+    FormModule,
+    ButtonModule,
+    TableComponent,
+    RouterModule.forChild(routes<%- className %>),
+  ],
+  providers: [<%- className %>Service],
+})
+export class <%- className %>Module {}

@@ -16,12 +16,16 @@ export type BadgePosition =
   | 'bottom-right';
 
 export type SortEvent = {
-  direction?: 'asc' | 'desc';
-  property?: string;
+  orderDir?: 'asc' | 'desc';
+  orderBy?: string;
+};
+
+export type SearchEvent = {
+  search?: string;
 };
 
 export type PageEvent = {
-  pageLength: number;
+  take: number;
   page: number;
 };
 

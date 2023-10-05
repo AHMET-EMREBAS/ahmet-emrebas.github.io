@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { FeatureFormDto } from './feature-form.dto';
+import { FeatureService } from './feature.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-feature-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -59,7 +54,7 @@ import { FeatureFormDto } from './feature-form.dto';
   `,
 })
 export class FeatureFormComponent extends CommonFormComponent {
-  constructor() {
-    super(FeatureFormDto);
+  constructor(service: FeatureService, route: ActivatedRoute) {
+    super(service, FeatureFormDto, route);
   }
 }

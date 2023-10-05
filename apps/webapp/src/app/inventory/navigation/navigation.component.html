@@ -1,0 +1,41 @@
+<div class="flex column w-100vw h-100vh">
+  <tb-toolbar>
+    <tb-icon-button
+      color="white"
+      [icon]="open ? 'menu_open' : 'menu'"
+      (click)="open = !open"
+    ></tb-icon-button>
+
+    <tb-list-item
+      color="primary"
+      variant="basic"
+      [label]="title.getTitle()"
+      icon="pages"
+    >
+    </tb-list-item>
+
+    <div class="grow-1"></div>
+    <img
+      src="/assets/icons/icon-72x72.png"
+      alt="logo"
+      style="width: 30px; height: 30px"
+    />
+  </tb-toolbar>
+
+  <div class="flex row gap-1em pt-1em pb-1em">
+    <div class="flex column gap-1em" style="max-width: 200px" *ngIf="open">
+      <tb-nav-list>
+        <tb-nav-list-item
+          [label]="route.label"
+          [icon]="route.icon"
+          [route]="[route.route]"
+          *ngFor="let route of routes"
+        ></tb-nav-list-item>
+      </tb-nav-list>
+    </div>
+
+    <div class="grow-1 pr-1em pl-1em">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

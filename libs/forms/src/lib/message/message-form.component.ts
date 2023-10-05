@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { MessageFormDto } from './message-form.dto';
+import { MessageService } from './message.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-message-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -50,7 +45,7 @@ import { MessageFormDto } from './message-form.dto';
   `,
 })
 export class MessageFormComponent extends CommonFormComponent {
-  constructor() {
-    super(MessageFormDto);
+  constructor(service: MessageService, route: ActivatedRoute) {
+    super(service, MessageFormDto, route);
   }
 }

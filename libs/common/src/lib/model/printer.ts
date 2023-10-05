@@ -11,7 +11,8 @@ export type ModelVariant =
   | 'entity'
   | 'graphql'
   | 'graphql-input'
-  | 'regular';
+  | 'regular'
+  | 'client';
 
 export type ModelType = 'class' | 'interface' | 'object' | 'type';
 
@@ -127,6 +128,10 @@ export class PropertyPrinter {
       return ':';
     }
 
+    if (this.modelType === 'interface') {
+      return '?:';
+    }
+
     return this.property.required === true ? '!:' : '?:';
   }
 
@@ -218,10 +223,24 @@ export class ModelPrinter {
   }
 
   properties() {
-    return [
-      ...Object.entries(this.model.properties || {}),
-      ...Object.entries(this.model.relations || {}),
-    ]
+    const list = [];
+
+    if (this.modelType === 'interface' && this.modelVariant === 'client') {
+      if (this.model.properties) {
+        this.model.properties['id'] = {
+          type: 'number',
+          name: 'id',
+        };
+        list.push(...Object.entries(this.model.properties || {}));
+      }
+    } else {
+      list.push(
+        ...Object.entries(this.model.properties || {}),
+        ...Object.entries(this.model.relations || {})
+      );
+    }
+
+    return list
       .map(([name, value]) => {
         return new PropertyPrinter(this.modelType, this.modelVariant, {
           ...value,

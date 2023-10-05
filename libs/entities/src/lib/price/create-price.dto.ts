@@ -7,19 +7,25 @@ import { PriceLevel } from './../price-level';
 @Dto()
 export class CreatePriceDto {
   @Property({
+    defaultValue: 0,
+    icon: 'attach_money',
+    inputType: 'number',
+    label: 'Price',
+    maximum: 9007199254740991,
+    minimum: 0,
     name: 'price',
     type: 'number',
-    defaultValue: 0,
-    minimum: 0,
-    maximum: 9007199254740991,
   })
   price?: number = 0;
   @Property({
+    defaultValue: 0,
+    icon: 'money_off',
+    inputType: 'number',
+    label: 'Cost',
+    maximum: 9007199254740991,
+    minimum: 0,
     name: 'cost',
     type: 'number',
-    defaultValue: 0,
-    minimum: 0,
-    maximum: 9007199254740991,
   })
   cost?: number = 0;
   @Property({

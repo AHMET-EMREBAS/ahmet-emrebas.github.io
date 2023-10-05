@@ -6,11 +6,15 @@ import { Permission } from './../permission';
 @Entity()
 export class Role extends BaseEntity {
   @Column({
-    name: 'name',
-    type: 'string',
-    minLength: 3,
+    autocomplete: 'off',
+    icon: 'info',
+    inputType: 'text',
+    label: 'Name',
     maxLength: 30,
+    minLength: 3,
+    name: 'name',
     required: true,
+    type: 'string',
     unique: true,
   })
   name!: string;

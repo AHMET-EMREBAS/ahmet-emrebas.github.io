@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { UserFormDto } from './user-form.dto';
+import { UserService } from './user.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-user-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -32,6 +27,15 @@ import { UserFormDto } from './user-form.dto';
           icon="password"
           autocomplete="off"
           required="true"
+        ></tb-input>
+        <tb-input
+          i18n-label
+          inputType="boolean"
+          name="isAdmin"
+          label="undefined"
+          icon="check_box_outline_blank"
+          autocomplete="off"
+          required="undefined"
         ></tb-input>
 
         <div *tbFormActions>
@@ -59,7 +63,7 @@ import { UserFormDto } from './user-form.dto';
   `,
 })
 export class UserFormComponent extends CommonFormComponent {
-  constructor() {
-    super(UserFormDto);
+  constructor(service: UserService, route: ActivatedRoute) {
+    super(service, UserFormDto, route);
   }
 }

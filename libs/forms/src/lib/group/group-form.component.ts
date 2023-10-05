@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { GroupFormDto } from './group-form.dto';
+import { GroupService } from './group.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-group-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -50,7 +45,7 @@ import { GroupFormDto } from './group-form.dto';
   `,
 })
 export class GroupFormComponent extends CommonFormComponent {
-  constructor() {
-    super(GroupFormDto);
+  constructor(service: GroupService, route: ActivatedRoute) {
+    super(service, GroupFormDto, route);
   }
 }

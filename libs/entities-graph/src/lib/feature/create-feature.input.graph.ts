@@ -5,14 +5,27 @@ import { PartialType } from '@nestjs/graphql';
 @Input()
 export class CreateFeatureInput {
   @Field({
-    name: 'name',
-    type: 'string',
-    minLength: 3,
+    autocomplete: 'off',
+    icon: 'info',
+    inputType: 'text',
+    label: 'Name',
     maxLength: 30,
+    minLength: 3,
+    name: 'name',
     required: true,
+    type: 'string',
     unique: true,
   })
   name!: string;
-  @Field({ name: 'value', type: 'string', minLength: 3, maxLength: 400 })
+  @Field({
+    name: 'value',
+    type: 'string',
+    minLength: 3,
+    maxLength: 400,
+    inputType: 'textarea',
+    autocomplete: 'off',
+    icon: 'description',
+    label: 'Description',
+  })
   value?: string;
 }

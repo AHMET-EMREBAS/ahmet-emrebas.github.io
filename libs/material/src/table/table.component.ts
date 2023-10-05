@@ -1,13 +1,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MicroModule } from '../micro/micro.module';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { PageEvent, SortEvent } from '../api';
+import { PageEvent, SearchEvent, SortEvent } from '../api';
+import { TextInputComponent } from '../form/text-input/text-input.component';
 
 @Component({
   selector: 'tb-table',
   standalone: true,
-  imports: [MicroModule, PaginatorComponent],
+  imports: [MicroModule, PaginatorComponent, TextInputComponent],
   template: `
+    <tb-text-input
+      label="Search"
+      (inputEvent)="emitSearchEvent($event)"
+      icon="search"
+    ></tb-text-input>
     <table class="table" border="0">
       <thead class="table-header">
         <tr class="table-header-row">
@@ -19,29 +25,27 @@ import { PageEvent, SortEvent } from '../api';
         <tr
           *ngFor="let item of data"
           class="table-body-row"
-          (click)="emitRowClick(data)"
+          (click)="emitRowClick(item)"
         >
           <td *ngFor="let col of columns">{{ item[col] }}</td>
         </tr>
       </tbody>
     </table>
     <tb-paginator
-      [itemCount]="itemCount"
+      [itemCount]="count"
       (pageEvent)="emitPageEvent($event)"
     ></tb-paginator>
   `,
 })
 export class TableComponent {
-  @Input() itemCount = 100;
+  @Input() sortBy = 'id';
+  @Input() sortDir: 'asc' | 'desc' = 'asc';
 
-  @Output() sortEvent = new EventEmitter();
-  @Output() pageEvent = new EventEmitter();
-  @Output() searchEvent = new EventEmitter();
-  @Output() rowClickEvent = new EventEmitter();
+  @Input() count = 100;
 
   @Input() columns: string[] = ['id', 'name'];
   @Input() visibleColumns: string[] = ['id', 'name'];
-  @Input() data: Record<string, any>[] = [
+  @Input() data: any[] = [
     { id: 1, name: 'Apple' },
     { id: 2, name: 'Orange' },
     { id: 3, name: 'Orange' },
@@ -56,10 +60,17 @@ export class TableComponent {
     { id: 12, name: 'Orange' },
   ];
 
+  @Output() sortEvent = new EventEmitter<SortEvent>();
+  @Output() pageEvent = new EventEmitter<PageEvent>();
+  @Output() searchEvent = new EventEmitter<SearchEvent>();
+  @Output() rowClickEvent = new EventEmitter<any>();
+
   filteredData = this.data;
 
   sort(col: string) {
-    //
+    this.sortBy = col;
+    this.sortDir = 'asc';
+    this.emitSortEvent({ orderDir: this.sortDir, orderBy: this.sortBy });
   }
 
   emitSortEvent(event: SortEvent) {
@@ -72,5 +83,9 @@ export class TableComponent {
 
   emitRowClick(rowData: any) {
     this.rowClickEvent.emit(rowData);
+  }
+
+  emitSearchEvent(search: string) {
+    this.searchEvent.emit({ search });
   }
 }

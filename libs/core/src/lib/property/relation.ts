@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { RelationOptions } from '@techbir/common';
 import { ClassConstructor, propertyDecorators } from '@techbir/utils';
 import {
@@ -10,7 +11,14 @@ import {
 } from 'typeorm';
 
 export function Relation({ type, target, join, ...rest }: RelationOptions) {
-  const ds = [];
+  const ds = [
+    ApiProperty({
+      type: type.endsWith('Many') ? 'array' : 'object',
+      default: type.endsWith('Many') ? [{ id: '1' }] : { id: 1 },
+      nullable: true,
+      required: false,
+    }),
+  ];
   const __target = () => target as ClassConstructor<any>;
   const __id = (t: any) => t.id;
 

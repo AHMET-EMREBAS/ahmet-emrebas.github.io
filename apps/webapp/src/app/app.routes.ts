@@ -1,4 +1,19 @@
 import { Route } from '@angular/router';
-import { AllFormsComponent } from './product/product.component';
+import { InventoryModule } from './inventory/inventory.module';
+import { AuthModule } from './auth/auth.module';
+import { WebsiteComponent } from './website/website.component';
 
-export const appRoutes: Route[] = [{ path: '', component: AllFormsComponent }];
+export const appRoutes: Route[] = [
+  {
+    path: '',
+    component: WebsiteComponent,
+  },
+  {
+    path: 'inventory',
+    loadChildren: () => InventoryModule,
+  },
+  {
+    path: 'auth',
+    loadChildren: () => AuthModule,
+  },
+];

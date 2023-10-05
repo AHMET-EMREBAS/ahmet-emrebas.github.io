@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { RoleFormDto } from './role-form.dto';
+import { RoleService } from './role.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-role-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -50,7 +45,7 @@ import { RoleFormDto } from './role-form.dto';
   `,
 })
 export class RoleFormComponent extends CommonFormComponent {
-  constructor() {
-    super(RoleFormDto);
+  constructor(service: RoleService, route: ActivatedRoute) {
+    super(service, RoleFormDto, route);
   }
 }

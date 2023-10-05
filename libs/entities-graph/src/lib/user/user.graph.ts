@@ -6,11 +6,14 @@ import { Role } from './../role';
 @ObjectType()
 export class User extends BaseInput {
   @Field({
+    autocomplete: 'username',
+    format: 'email',
+    icon: 'person',
+    inputType: 'text',
+    label: 'Username',
     name: 'username',
-    type: 'string',
-    minLength: 3,
-    maxLength: 30,
     required: true,
+    type: 'string',
     unique: true,
   })
   username!: string;
@@ -19,8 +22,21 @@ export class User extends BaseInput {
     type: 'string',
     format: 'password',
     required: true,
+    autocomplete: 'current-password',
+    inputType: 'password',
+    icon: 'password',
+    label: 'Password',
+    hash: true,
   })
   password!: string;
+  @Field({
+    defaultValue: false,
+    name: 'isAdmin',
+    type: 'boolean',
+    icon: 'check_box_outline_blank',
+    inputType: 'checkbox',
+  })
+  isAdmin?: boolean = false;
   @Field({
     type: 'ManyToMany',
     eager: true,

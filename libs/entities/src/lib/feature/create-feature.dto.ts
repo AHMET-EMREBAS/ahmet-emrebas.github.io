@@ -5,14 +5,27 @@ import { PartialType } from '@nestjs/graphql';
 @Dto()
 export class CreateFeatureDto {
   @Property({
-    name: 'name',
-    type: 'string',
-    minLength: 3,
+    autocomplete: 'off',
+    icon: 'info',
+    inputType: 'text',
+    label: 'Name',
     maxLength: 30,
+    minLength: 3,
+    name: 'name',
     required: true,
+    type: 'string',
     unique: true,
   })
   name!: string;
-  @Property({ name: 'value', type: 'string', minLength: 3, maxLength: 400 })
+  @Property({
+    name: 'value',
+    type: 'string',
+    minLength: 3,
+    maxLength: 400,
+    inputType: 'textarea',
+    autocomplete: 'off',
+    icon: 'description',
+    label: 'Description',
+  })
   value?: string;
 }

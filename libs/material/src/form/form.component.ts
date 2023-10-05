@@ -35,6 +35,9 @@ export class FormComponent {
   @Input() subtitle = '';
   @Input() name = 'form';
 
+  @Input() defaultValue?: any;
+  
+
   readonly formValue = new FormValue();
 
   preventDefault(event: Event) {

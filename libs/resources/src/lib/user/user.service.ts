@@ -10,6 +10,6 @@ export const UserPubSub = new PubSub();
 @Injectable()
 export class UserService extends ResourceService {
   constructor(@InjectRepository(User) repo: Repository<User>) {
-    super(repo, ['name']);
+    super(repo, ['username']);
   }
 }

@@ -23,6 +23,16 @@ export class UserFormDto {
     inputType: 'password',
     icon: 'password',
     label: 'Password',
+    hash: true,
   })
   password?: string;
+
+  @Validations({
+    defaultValue: false,
+    name: 'isAdmin',
+    type: 'boolean',
+    icon: 'check_box_outline_blank',
+    inputType: 'boolean',
+  })
+  isAdmin?: boolean;
 }

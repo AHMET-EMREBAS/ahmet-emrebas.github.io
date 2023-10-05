@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  ButtonModule,
-  FormModule,
-  MicroModule,
-  CommonFormComponent,
-} from '@techbir/material';
+import { ActivatedRoute } from '@angular/router';
+import { CommonFormComponent } from '@techbir/material';
 import { PriceFormDto } from './price-form.dto';
+import { PriceService } from './price.service';
 
 @Component({
-  standalone: true,
-  imports: [MicroModule, FormModule, ButtonModule],
   selector: 'tb-price-form',
   template: `
     <div class="flex column gap-2em p-1em">
@@ -59,7 +54,7 @@ import { PriceFormDto } from './price-form.dto';
   `,
 })
 export class PriceFormComponent extends CommonFormComponent {
-  constructor() {
-    super(PriceFormDto);
+  constructor(service: PriceService, route: ActivatedRoute) {
+    super(service, PriceFormDto, route);
   }
 }

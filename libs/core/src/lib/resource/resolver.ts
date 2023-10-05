@@ -11,7 +11,6 @@ import { RelationParam, RelationUnsetParam } from '../dto';
 import { ResourceService } from './resource.service';
 import { ResourceClasses } from './resource-classes';
 import { ServerLogger } from '@techbir/common';
-import { plainToInstance } from 'class-transformer';
 
 export function createResolver(options: ResourceClasses): any {
   const End = new EndPointManager(options);

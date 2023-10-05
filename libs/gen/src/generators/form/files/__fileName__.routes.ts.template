@@ -1,0 +1,30 @@
+import { Routes } from '@angular/router';
+import { <%- className %>Component } from './<%- fileName %>.component';
+import { <%- className %>TableComponent } from './<%- fileName %>-table.component';
+import { <%- className %>FormComponent } from './<%- fileName %>-form.component';
+
+export const routes<%- className %>: Routes = [
+  {
+    path: '',
+    component: <%- className %>Component,
+
+    children: [
+      { path: '', redirectTo: 'view', pathMatch: 'full' },
+      {
+        path: 'view',
+        component: <%- className %>TableComponent,
+        title: 'View <%- className %>',
+      },
+      {
+        path: 'create',
+        component: <%- className %>FormComponent,
+        title: 'Create <%- className %>',
+      },
+      {
+        path: 'update/:id',
+        component: <%- className %>FormComponent,
+        title: 'Update <%- className %>',
+      },
+    ],
+  },
+];
