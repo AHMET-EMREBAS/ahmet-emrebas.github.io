@@ -6,14 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { GmailModule } from '@techbir/mail';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {
-  PermissionModule,
-  PermissionService,
-  RoleModule,
-  RoleService,
-  UserModule,
-} from '@techbir/resources';
 import { APP_GUARD } from '@nestjs/core';
+import { ResourceModules } from './resource-modules';
 
 @Module({
   imports: [
@@ -28,19 +22,17 @@ import { APP_GUARD } from '@nestjs/core';
       dropSchema: true,
     }),
     AuthModule,
-    UserModule,
-    RoleModule,
-    PermissionModule,
     AppGraphModule,
+    ...ResourceModules,
     GmailModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
   ],
 })
 export class AppModule {}

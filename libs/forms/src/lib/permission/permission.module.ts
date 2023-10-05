@@ -1,35 +1,31 @@
 import { NgModule } from '@angular/core';
 import { PermissionFormComponent } from './permission-form.component';
 import { PermissionTableComponent } from './permission-table.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { PermissionService } from './permission.service';
 import {
   ButtonModule,
   FormModule,
   MicroModule,
   TableComponent,
+  ToolbarComponent,
 } from '@techbir/material';
-
-const routes: Routes = [
-  { path: '', component: PermissionTableComponent },
-  {
-    path: 'create',
-    component: PermissionFormComponent,
-  },
-  {
-    path: 'update/:id',
-    component: PermissionFormComponent,
-  },
-];
+import { PermissionComponent } from './permission.component';
+import { routesPermission } from './permission.routes';
 
 @NgModule({
-  declarations: [PermissionFormComponent, PermissionTableComponent],
+  declarations: [
+    PermissionFormComponent,
+    PermissionTableComponent,
+    PermissionComponent,
+  ],
   imports: [
     MicroModule,
+    ToolbarComponent,
     FormModule,
     ButtonModule,
     TableComponent,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routesPermission),
   ],
   providers: [PermissionService],
 })

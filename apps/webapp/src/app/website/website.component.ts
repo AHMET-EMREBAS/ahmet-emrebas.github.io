@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'website-website',
+  selector: 'tb-website',
   templateUrl: 'website.component.html',
 })
 export class WebsiteComponent {}

@@ -1,35 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PriceFormComponent } from './price-form.component';
 import { PriceTableComponent } from './price-table.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { PriceService } from './price.service';
 import {
   ButtonModule,
   FormModule,
   MicroModule,
   TableComponent,
+  ToolbarComponent,
 } from '@techbir/material';
-
-const routes: Routes = [
-  { path: '', component: PriceTableComponent },
-  {
-    path: 'create',
-    component: PriceFormComponent,
-  },
-  {
-    path: 'update/:id',
-    component: PriceFormComponent,
-  },
-];
+import { PriceComponent } from './price.component';
+import { routesPrice } from './price.routes';
 
 @NgModule({
-  declarations: [PriceFormComponent, PriceTableComponent],
+  declarations: [PriceFormComponent, PriceTableComponent, PriceComponent],
   imports: [
     MicroModule,
+    ToolbarComponent,
     FormModule,
     ButtonModule,
     TableComponent,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routesPrice),
   ],
   providers: [PriceService],
 })

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonFormComponent } from '@techbir/material';
 import { PermissionFormDto } from './permission-form.dto';
+import { PermissionService } from './permission.service';
 
 @Component({
   selector: 'tb-permission-form',
@@ -44,7 +45,7 @@ import { PermissionFormDto } from './permission-form.dto';
   `,
 })
 export class PermissionFormComponent extends CommonFormComponent {
-  constructor(route: ActivatedRoute) {
-    super(PermissionFormDto, route);
+  constructor(service: PermissionService, route: ActivatedRoute) {
+    super(service, PermissionFormDto, route);
   }
 }

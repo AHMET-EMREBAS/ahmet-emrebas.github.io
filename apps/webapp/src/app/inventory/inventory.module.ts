@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
   ButtonModule,
+  ListComponent,
+  ListItemComponent,
   MicroModule,
   NavListModule,
   ToolbarComponent,
@@ -8,7 +10,7 @@ import {
 import { InventoryComponent } from './inventory.component';
 import { RouterModule } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
-import { CategoryModule, ProductModule } from '@techbir/forms';
+import { routesInventory } from './inventory.routes';
 
 @NgModule({
   declarations: [InventoryComponent, NavigationComponent],
@@ -17,22 +19,9 @@ import { CategoryModule, ProductModule } from '@techbir/forms';
     ToolbarComponent,
     ButtonModule,
     NavListModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: InventoryComponent,
-        children: [
-          {
-            path: 'product',
-            loadChildren: () => ProductModule,
-          },
-          {
-            path: 'category',
-            loadChildren: () => CategoryModule,
-          },
-        ],
-      },
-    ]),
+    ListComponent,
+    ListItemComponent,
+    RouterModule.forChild(routesInventory),
   ],
 })
 export class InventoryModule {}

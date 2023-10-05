@@ -1,35 +1,27 @@
 import { NgModule } from '@angular/core';
 import { MessageFormComponent } from './message-form.component';
 import { MessageTableComponent } from './message-table.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MessageService } from './message.service';
 import {
   ButtonModule,
   FormModule,
   MicroModule,
   TableComponent,
+  ToolbarComponent,
 } from '@techbir/material';
-
-const routes: Routes = [
-  { path: '', component: MessageTableComponent },
-  {
-    path: 'create',
-    component: MessageFormComponent,
-  },
-  {
-    path: 'update/:id',
-    component: MessageFormComponent,
-  },
-];
+import { MessageComponent } from './message.component';
+import { routesMessage } from './message.routes';
 
 @NgModule({
-  declarations: [MessageFormComponent, MessageTableComponent],
+  declarations: [MessageFormComponent, MessageTableComponent, MessageComponent],
   imports: [
     MicroModule,
+    ToolbarComponent,
     FormModule,
     ButtonModule,
     TableComponent,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routesMessage),
   ],
   providers: [MessageService],
 })

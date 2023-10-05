@@ -5,6 +5,15 @@
       [icon]="open ? 'menu_open' : 'menu'"
       (click)="open = !open"
     ></tb-icon-button>
+
+    <tb-list-item
+      color="primary"
+      variant="basic"
+      [label]="title.getTitle()"
+      icon="pages"
+    >
+    </tb-list-item>
+
     <div class="grow-1"></div>
     <img
       src="/assets/icons/icon-72x72.png"
@@ -17,26 +26,11 @@
     <div class="flex column gap-1em" style="max-width: 200px" *ngIf="open">
       <tb-nav-list>
         <tb-nav-list-item
-          label="Product"
-          icon="inventory"
-          [route]="['product']"
+          [label]="route.label"
+          [icon]="route.icon"
+          [route]="[route.route]"
+          *ngFor="let route of routes"
         ></tb-nav-list-item>
-
-        <tb-nav-list-item
-          label="Price"
-          icon="attach_money"
-          [route]="['price']"
-        ></tb-nav-list-item>
-        <tb-nav-list-item
-          label="Quantity"
-          icon="123"
-          [route]="['quantity']"
-        ></tb-nav-list-item>
-      </tb-nav-list>
-
-      <tb-nav-list>
-        <tb-nav-list-item label="Category" icon="category"></tb-nav-list-item>
-        <tb-nav-list-item label="Department" icon="category"></tb-nav-list-item>
       </tb-nav-list>
     </div>
 

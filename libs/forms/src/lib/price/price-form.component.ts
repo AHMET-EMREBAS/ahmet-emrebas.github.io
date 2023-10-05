@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonFormComponent } from '@techbir/material';
 import { PriceFormDto } from './price-form.dto';
+import { PriceService } from './price.service';
 
 @Component({
   selector: 'tb-price-form',
@@ -53,7 +54,7 @@ import { PriceFormDto } from './price-form.dto';
   `,
 })
 export class PriceFormComponent extends CommonFormComponent {
-  constructor(route: ActivatedRoute) {
-    super(PriceFormDto, route);
+  constructor(service: PriceService, route: ActivatedRoute) {
+    super(service, PriceFormDto, route);
   }
 }

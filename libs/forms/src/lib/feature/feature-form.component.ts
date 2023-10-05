@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonFormComponent } from '@techbir/material';
 import { FeatureFormDto } from './feature-form.dto';
+import { FeatureService } from './feature.service';
 
 @Component({
   selector: 'tb-feature-form',
@@ -53,7 +54,7 @@ import { FeatureFormDto } from './feature-form.dto';
   `,
 })
 export class FeatureFormComponent extends CommonFormComponent {
-  constructor(route: ActivatedRoute) {
-    super(FeatureFormDto, route);
+  constructor(service: FeatureService, route: ActivatedRoute) {
+    super(service, FeatureFormDto, route);
   }
 }

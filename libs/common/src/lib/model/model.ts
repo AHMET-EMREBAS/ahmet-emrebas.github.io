@@ -134,6 +134,7 @@ export class RelationOptions extends Accassors {
 }
 
 export class Model {
+  icon?: Icon;
   name!: string;
   properties?: Record<string, PropertyOptions>;
   relations?: Record<string, RelationOptions>;

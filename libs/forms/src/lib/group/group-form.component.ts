@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonFormComponent } from '@techbir/material';
 import { GroupFormDto } from './group-form.dto';
+import { GroupService } from './group.service';
 
 @Component({
   selector: 'tb-group-form',
@@ -44,7 +45,7 @@ import { GroupFormDto } from './group-form.dto';
   `,
 })
 export class GroupFormComponent extends CommonFormComponent {
-  constructor(route: ActivatedRoute) {
-    super(GroupFormDto, route);
+  constructor(service: GroupService, route: ActivatedRoute) {
+    super(service, GroupFormDto, route);
   }
 }

@@ -10,7 +10,9 @@ export class CommonTableComponent<T> {
   columns: (keyof T)[] = this.service.columns();
   visibleColumns: (keyof T)[] = this.service.visibleColumns();
 
-  constructor(protected service: BaseNgrxService<T>) {}
+  constructor(protected service: BaseNgrxService<T>) {
+    this.service.getAll();
+  }
 
   handleSortEvent(event: SortEvent) {
     this.service.handleSortEvent(event);

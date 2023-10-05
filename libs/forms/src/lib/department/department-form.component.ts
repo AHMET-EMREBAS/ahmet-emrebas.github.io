@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonFormComponent } from '@techbir/material';
 import { DepartmentFormDto } from './department-form.dto';
+import { DepartmentService } from './department.service';
 
 @Component({
   selector: 'tb-department-form',
@@ -44,7 +45,7 @@ import { DepartmentFormDto } from './department-form.dto';
   `,
 })
 export class DepartmentFormComponent extends CommonFormComponent {
-  constructor(route: ActivatedRoute) {
-    super(DepartmentFormDto, route);
+  constructor(service: DepartmentService, route: ActivatedRoute) {
+    super(service, DepartmentFormDto, route);
   }
 }

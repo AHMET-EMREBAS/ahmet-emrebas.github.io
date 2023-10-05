@@ -1,35 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RoleFormComponent } from './role-form.component';
 import { RoleTableComponent } from './role-table.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { RoleService } from './role.service';
 import {
   ButtonModule,
   FormModule,
   MicroModule,
   TableComponent,
+  ToolbarComponent,
 } from '@techbir/material';
-
-const routes: Routes = [
-  { path: '', component: RoleTableComponent },
-  {
-    path: 'create',
-    component: RoleFormComponent,
-  },
-  {
-    path: 'update/:id',
-    component: RoleFormComponent,
-  },
-];
+import { RoleComponent } from './role.component';
+import { routesRole } from './role.routes';
 
 @NgModule({
-  declarations: [RoleFormComponent, RoleTableComponent],
+  declarations: [RoleFormComponent, RoleTableComponent, RoleComponent],
   imports: [
     MicroModule,
+    ToolbarComponent,
     FormModule,
     ButtonModule,
     TableComponent,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routesRole),
   ],
   providers: [RoleService],
 })

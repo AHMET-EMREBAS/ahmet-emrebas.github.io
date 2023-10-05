@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonFormComponent } from '@techbir/material';
 import { RoleFormDto } from './role-form.dto';
+import { RoleService } from './role.service';
 
 @Component({
   selector: 'tb-role-form',
@@ -44,7 +45,7 @@ import { RoleFormDto } from './role-form.dto';
   `,
 })
 export class RoleFormComponent extends CommonFormComponent {
-  constructor(route: ActivatedRoute) {
-    super(RoleFormDto, route);
+  constructor(service: RoleService, route: ActivatedRoute) {
+    super(service, RoleFormDto, route);
   }
 }

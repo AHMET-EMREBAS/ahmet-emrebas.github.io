@@ -1,35 +1,27 @@
 import { NgModule } from '@angular/core';
 import { FeatureFormComponent } from './feature-form.component';
 import { FeatureTableComponent } from './feature-table.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FeatureService } from './feature.service';
 import {
   ButtonModule,
   FormModule,
   MicroModule,
   TableComponent,
+  ToolbarComponent,
 } from '@techbir/material';
-
-const routes: Routes = [
-  { path: '', component: FeatureTableComponent },
-  {
-    path: 'create',
-    component: FeatureFormComponent,
-  },
-  {
-    path: 'update/:id',
-    component: FeatureFormComponent,
-  },
-];
+import { FeatureComponent } from './feature.component';
+import { routesFeature } from './feature.routes';
 
 @NgModule({
-  declarations: [FeatureFormComponent, FeatureTableComponent],
+  declarations: [FeatureFormComponent, FeatureTableComponent, FeatureComponent],
   imports: [
     MicroModule,
+    ToolbarComponent,
     FormModule,
     ButtonModule,
     TableComponent,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routesFeature),
   ],
   providers: [FeatureService],
 })

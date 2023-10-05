@@ -1,35 +1,27 @@
 import { NgModule } from '@angular/core';
 import { StoreFormComponent } from './store-form.component';
 import { StoreTableComponent } from './store-table.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { StoreService } from './store.service';
 import {
   ButtonModule,
   FormModule,
   MicroModule,
   TableComponent,
+  ToolbarComponent,
 } from '@techbir/material';
-
-const routes: Routes = [
-  { path: '', component: StoreTableComponent },
-  {
-    path: 'create',
-    component: StoreFormComponent,
-  },
-  {
-    path: 'update/:id',
-    component: StoreFormComponent,
-  },
-];
+import { StoreComponent } from './store.component';
+import { routesStore } from './store.routes';
 
 @NgModule({
-  declarations: [StoreFormComponent, StoreTableComponent],
+  declarations: [StoreFormComponent, StoreTableComponent, StoreComponent],
   imports: [
     MicroModule,
+    ToolbarComponent,
     FormModule,
     ButtonModule,
     TableComponent,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routesStore),
   ],
   providers: [StoreService],
 })

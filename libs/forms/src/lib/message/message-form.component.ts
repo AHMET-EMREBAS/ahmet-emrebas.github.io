@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonFormComponent } from '@techbir/material';
 import { MessageFormDto } from './message-form.dto';
+import { MessageService } from './message.service';
 
 @Component({
   selector: 'tb-message-form',
@@ -44,7 +45,7 @@ import { MessageFormDto } from './message-form.dto';
   `,
 })
 export class MessageFormComponent extends CommonFormComponent {
-  constructor(route: ActivatedRoute) {
-    super(MessageFormDto, route);
+  constructor(service: MessageService, route: ActivatedRoute) {
+    super(service, MessageFormDto, route);
   }
 }

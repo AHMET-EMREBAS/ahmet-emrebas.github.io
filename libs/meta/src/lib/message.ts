@@ -1,6 +1,7 @@
 import { Model, OwnerRelation } from '@techbir/common';
 
 export const MessageModel: Model = {
+  icon: 'message',
   name: 'message',
   properties: {
     message: {
