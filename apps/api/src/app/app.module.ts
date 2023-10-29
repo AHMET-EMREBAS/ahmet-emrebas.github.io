@@ -7,7 +7,6 @@ import { GmailModule } from '@techbir/mail';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_GUARD } from '@nestjs/core';
-import { ResourceModules } from './resource-modules';
 
 @Module({
   imports: [
@@ -23,16 +22,15 @@ import { ResourceModules } from './resource-modules';
     }),
     AuthModule,
     AppGraphModule,
-    ...ResourceModules,
     GmailModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: AuthGuard,
-    // },
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
   ],
 })
 export class AppModule {}
